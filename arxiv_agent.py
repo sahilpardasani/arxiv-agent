@@ -143,15 +143,16 @@ def extract_conference_info(paper: dict) -> Optional[dict]:
     for conf in TOP_TIER_CONFERENCES:
         if conf.lower() in comment_lower:
             # Try to extract year if present (4 digits)
-            year_match = re.search(r"(?:'(\d{2})|(20\d{2}|19\d{2}))", comment)
+            year_match = re.search(r"(?:'(\d{2})|(\d{2})(?!\d)|(20\d{2}|19\d{2}))", comment)
             if year_match:
-    # Handle both formats: '26 -> 2026, and 2026 -> 2026
-                if year_match.group(1):  # Matched '26 format
+                if year_match.group(1):  # Matched '26 format (e.g., WWW'26)
                     year = "20" + year_match.group(1)
+                elif year_match.group(2):  # Matched 26 format (e.g., WWW 26)
+                    year = "20" + year_match.group(2)
                 else:  # Matched 2026 format
-                    year = year_match.group(2)
+                    year = year_match.group(3)
             else:
-                    year = "Unknown"
+                year = "Unknown"
             
             return {
                 "conference": conf,
