@@ -1,13 +1,9 @@
 #!/usr/bin/env python3
-"""
-Conference-filtered arXiv Paper Agent
-Fetches ONLY papers from top-tier conferences (matching arXiv format).
-"""
-
 import os
 import json
 import re
 import asyncio
+import time
 from datetime import datetime
 from typing import Optional
 import feedparser
@@ -17,87 +13,108 @@ from groq import Groq
 # Initialize Groq client
 client = Groq(api_key=os.getenv("GROQ_API_KEY"))
 
-# Top-tier conferences - exact names as they appear in arXiv
-TOP_TIER_CONFERENCES = {
-    # ML/AI (Tier 1)
-    "NeurIPS", "NEURIPS",
-    "ICML", 
-    "ICLR",
-    "IJCAI",
-    "AAAI",
-    
-    # Computer Vision
-    "CVPR", "IEEE/CVF Conference on Computer Vision",
-    "ICCV", "IEEE International Conference on Computer Vision",
-    "ECCV", "European Conference on Computer Vision",
-    
-    # NLP
-    "ACL", "Association for Computational Linguistics",
-    "EMNLP", "Empirical Methods in Natural Language Processing",
-    "NAACL", "North American Chapter of the Association for Computational Linguistics",
-    
-    # Robotics
-    "ICRA", "International Conference on Robotics and Automation",
-    "IROS", "Intelligent Robots and Systems",
-    "CoRL", "Conference on Robot Learning",
-    
-    # Systems
-    "OSDI", "Operating Systems Design and Implementation",
-    "SOSP", "Symposium on Operating Systems Principles",
-    "ATC", "USENIX Annual Technical Conference",
-    "EuroSys",
-    "ASPLOS",
-    
-    # Databases
-    "VLDB",
-    "SIGMOD",
-    "PODS",
-    "ICDE",
-    
-    # Other Top-Tier
-    "KDD",
-    "WWW",
-    "ISMIR",
-    "SecDev", "Secure Development",  # Added based on your example
-    "USENIX", "USENIX Security",
-    "CCS", "ACM CCS","ICSE"
-    "NDSS",
+# Conference categories by field
+CONFERENCE_CATEGORIES = {
+    "General ML/AI": {
+        "NeurIPS", "NEURIPS", "ICML", "ICLR", "AAAI", "IJCAI", "UAI",
+        "COLM", "AISTATS"
+    },
+    "Computer Vision": {
+        "CVPR", "IEEE/CVF Conference on Computer Vision",
+        "ICCV", "IEEE International Conference on Computer Vision",
+        "ECCV", "European Conference on Computer Vision", "WACV"
+    },
+    "Natural Language Processing": {
+        "ACL", "Association for Computational Linguistics",
+        "EMNLP", "Empirical Methods in Natural Language Processing",
+        "NAACL", "North American Chapter of the Association for Computational Linguistics",
+        "COLING", "EACL"
+    },
+    "Robotics": {
+        "ICRA", "International Conference on Robotics and Automation",
+        "IROS", "Intelligent Robots and Systems",
+        "CoRL", "Conference on Robot Learning", "RSS"
+    },
+    "Data Mining & Applied ML": {
+        "KDD", "WWW", "ICDM"
+    },
+    "Theory & Foundations": {
+        "STOC", "FOCS", "SODA"
+    },
+    "Systems & Architecture": {
+        "OSDI", "Operating Systems Design and Implementation",
+        "SOSP", "Symposium on Operating Systems Principles",
+        "ATC", "USENIX Annual Technical Conference",
+        "EuroSys", "ASPLOS", "SIGCOMM"
+    },
+    "Human-Computer Interaction": {
+        "CHI", "ACM Conference on Human Factors in Computing Systems"
+    },
+    "Security": {
+        "SecDev", "Secure Development",
+        "USENIX", "USENIX Security", "CCS", "ACM CCS", "NDSS"
+    },
+    "Databases": {
+        "VLDB", "SIGMOD", "PODS", "ICDE"
+    },
+    "Software Engineering": {
+        "ICSE"
+    },
+    "Other": {
+        "ISMIR"
+    }
 }
+
+# Flatten for backward compatibility
+TOP_TIER_CONFERENCES = set()
+for conferences in CONFERENCE_CATEGORIES.values():
+    TOP_TIER_CONFERENCES.update(conferences)
 
 ARXIV_CATEGORIES = [
     "cs.AI",      # Artificial Intelligence
     "cs.LG",      # Machine Learning
     "cs.CL",      # Computation and Language (NLP)
     "cs.CV",      # Computer Vision
+    "cs.SE",      # Software Engineering
     "stat.ML",    # Machine Learning (Statistics)
 ]
 
-async def fetch_arxiv_papers(days: int = 1, max_results: int = 50) -> list:
+async def fetch_arxiv_papers_single_session(max_results: int = 100) -> list:
     """
-    Fetch recent arXiv papers from AI/ML categories.
+    Fetch recent arXiv papers using a SINGLE persistent session.
+    This respects arXiv rate limits: 1 request per 3 seconds.
     """
     papers = []
     
-    for category in ARXIV_CATEGORIES:
-        query = f"cat:{category}"
-        
-        url = "http://export.arxiv.org/api/query"
-        params = {
-            "search_query": query,
-            "start": 0,
-            "max_results": max_results,
-            "sortBy": "submittedDate",
-            "sortOrder": "descending",
-        }
-        
-        try:
-            async with aiohttp.ClientSession() as session:
-                async with session.get(url, params=params, timeout=aiohttp.ClientTimeout(total=10)) as resp:
+    # Create ONE session for all requests
+    async with aiohttp.ClientSession() as session:
+        for index, category in enumerate(ARXIV_CATEGORIES):
+            query = f"cat:{category}"
+            
+            url = "http://export.arxiv.org/api/query"
+            params = {
+                "search_query": query,
+                "start": 0,
+                "max_results": max_results,
+                "sortBy": "submittedDate",
+                "sortOrder": "descending",
+            }
+            
+            try:
+                print(f"  Fetching {category}...", end=" ", flush=True)
+                
+                # Wait 3 seconds between requests (arXiv rate limit)
+                if index > 0:
+                    print(f"⏳ waiting...", end=" ", flush=True)
+                    await asyncio.sleep(3)
+                
+                async with session.get(url, params=params, timeout=aiohttp.ClientTimeout(total=30)) as resp:
                     if resp.status == 200:
                         text = await resp.text()
                         feed = feedparser.parse(text)
                         
                         if hasattr(feed, 'entries') and len(feed.entries) > 0:
+                            print(f"✓ {len(feed.entries)} papers")
                             for entry in feed.entries:
                                 try:
                                     paper = {
@@ -111,11 +128,48 @@ async def fetch_arxiv_papers(days: int = 1, max_results: int = 50) -> list:
                                     }
                                     papers.append(paper)
                                 except Exception as e:
-                                    print(f"Error parsing entry: {e}")
+                                    pass
                         else:
-                            print(f"⚠ No entries found for {category}")
-        except Exception as e:
-            print(f"Error fetching from {category}: {e}")
+                            print(f"⚠ No entries found")
+                    elif resp.status == 429:
+                        print(f"❌ RATE LIMITED")
+                        print(f"\n    arXiv: Rate limit exceeded. Waiting 30 seconds...\n")
+                        await asyncio.sleep(30)
+                        
+                        # Retry after wait
+                        print(f"  Retrying {category}...", end=" ", flush=True)
+                        async with session.get(url, params=params, timeout=aiohttp.ClientTimeout(total=30)) as resp2:
+                            if resp2.status == 200:
+                                text = await resp2.text()
+                                feed = feedparser.parse(text)
+                                if hasattr(feed, 'entries') and len(feed.entries) > 0:
+                                    print(f"✓ {len(feed.entries)} papers")
+                                    for entry in feed.entries:
+                                        try:
+                                            paper = {
+                                                "title": entry.get("title", ""),
+                                                "arxiv_id": entry.get("id", "").split("/abs/")[-1],
+                                                "authors": [author.get("name", "") for author in entry.get("authors", [])],
+                                                "published": entry.get("published", ""),
+                                                "summary": entry.get("summary", "").replace("\n", " "),
+                                                "categories": entry.get("arxiv_primary_category", {}).get("term", category) if hasattr(entry, 'arxiv_primary_category') else category,
+                                                "comment": entry.get("arxiv_comment", ""),
+                                            }
+                                            papers.append(paper)
+                                        except Exception as e:
+                                            pass
+                            else:
+                                print(f"❌ Retry failed: HTTP {resp2.status}")
+                    else:
+                        text = await resp.text()
+                        print(f"❌ HTTP {resp.status}: {text[:100]}")
+                        
+            except asyncio.TimeoutError:
+                print(f"❌ TIMEOUT")
+            except aiohttp.ClientError as e:
+                print(f"❌ ERROR: {type(e).__name__}")
+            except Exception as e:
+                print(f"❌ ERROR: {str(e)}")
     
     return papers
 
@@ -123,14 +177,6 @@ async def fetch_arxiv_papers(days: int = 1, max_results: int = 50) -> list:
 def extract_conference_info(paper: dict) -> Optional[dict]:
     """
     Extract conference information from paper's comment field.
-    
-    arXiv format examples:
-    - "SecDev 2026 in Montreal, Canada, 10 pages, maximum 16 pages"
-    - "Proceedings of the 2026 ACM Secure Development Conference (SecDev 2026)"
-    - "To appear in ICML 2024"
-    - "Accepted to NeurIPS 2024"
-    
-    Returns: {"conference": "SecDev", "year": "2026", "comment": full_comment}
     """
     comment = paper.get('comment', '').strip()
     
@@ -139,54 +185,47 @@ def extract_conference_info(paper: dict) -> Optional[dict]:
     
     comment_lower = comment.lower()
     
-    # Look for any top-tier conference name in the comment
     for conf in TOP_TIER_CONFERENCES:
         if conf.lower() in comment_lower:
-            # Find the position of the conference name in the comment
             conf_pos = comment_lower.find(conf.lower())
-            
-            # Look for year near the conference name (within 10 characters after it)
             search_area = comment[conf_pos:conf_pos+50]
             
-            # Try multiple year formats: '26, 2026, 26 (with boundaries)
             year_match = re.search(r"'(\d{2})|(\d{4})", search_area)
             
             if year_match:
-                if year_match.group(1):  # Matched '26 format
+                if year_match.group(1):
                     year = "20" + year_match.group(1)
-                else:  # Matched 2026 format
+                else:
                     year = year_match.group(2)
             else:
-                # Fallback: search entire comment for any 4-digit year
                 year_match = re.search(r"(20\d{2}|19\d{2})", comment)
                 year = year_match.group(1) if year_match else "Unknown"
+            
+            category = "Other"
+            for cat, confs in CONFERENCE_CATEGORIES.items():
+                if conf in confs:
+                    category = cat
+                    break
             
             return {
                 "conference": conf,
                 "year": year,
                 "comment": comment,
-                "raw_comment": paper.get('comment', '')
+                "raw_comment": paper.get('comment', ''),
+                "category": category
             }
     
     return None
 
 
 def is_conference_paper(paper: dict) -> bool:
-    """
-    Check if paper is from a top-tier conference.
-    Looks for conference info in the comment field (as arXiv presents it).
-    """
+    """Check if paper is from a top-tier conference."""
     conf_info = extract_conference_info(paper)
     return conf_info is not None
 
 
 def generate_paper_analysis(paper: dict) -> dict:
-    """
-    Use Groq to analyze a paper and generate:
-    1. Problem statement
-    2. Executive summary (relevance to AI bottlenecks)
-    3. Technical breakdown (for engineers)
-    """
+    """Use Groq to analyze a paper."""
     
     analysis_prompt = f"""Analyze this arXiv paper and provide a comprehensive breakdown:
 
@@ -222,12 +261,7 @@ Be precise and technical. If the paper doesn't provide specific numbers, say 'No
     try:
         message = client.chat.completions.create(
             model="llama-3.1-8b-instant",
-            messages=[
-                {
-                    "role": "user",
-                    "content": analysis_prompt
-                }
-            ],
+            messages=[{"role": "user", "content": analysis_prompt}],
             temperature=0.3,
             max_tokens=1500,
         )
@@ -244,21 +278,27 @@ Be precise and technical. If the paper doesn't provide specific numbers, say 'No
 
 
 async def run_daily_pipeline() -> list:
-    """
-    Main pipeline: fetch papers → filter for conference papers → analyze
-    """
+    """Main pipeline: fetch papers → filter for conference papers → analyze"""
     print(f"[{datetime.now().isoformat()}] Starting arXiv paper analysis pipeline...")
     
     # Step 1: Fetch papers
-    print("Fetching recent papers from arXiv...")
-    papers = await fetch_arxiv_papers(days=1, max_results=100)
-    print(f"✓ Fetched {len(papers)} papers")
+    print("\n" + "="*60)
+    print("STEP 1: Fetching papers from arXiv (respecting rate limits)...")
+    print("="*60)
+    papers = await fetch_arxiv_papers_single_session(max_results=100)
+    print(f"\n✓ Total fetched: {len(papers)} papers\n")
+    
+    if len(papers) == 0:
+        print("⚠️  WARNING: No papers fetched from arXiv!")
+        print("Try running again in a few minutes.")
+        return []
     
     # Step 2: Filter for conference papers
-    print("Filtering for papers from top-tier conferences...")
+    print("="*60)
+    print("STEP 2: Filtering for top-tier conference papers...")
+    print("="*60)
     conference_papers = [p for p in papers if is_conference_paper(p)]
     
-    # Extract conference info for logging
     conference_info = {}
     for p in conference_papers:
         conf_data = extract_conference_info(p)
@@ -273,18 +313,21 @@ async def run_daily_pipeline() -> list:
             print(f"     - {conf}: {count} paper(s)")
     
     if len(conference_papers) == 0:
-        print("⚠ No papers found from top-tier conferences")
+        print("⚠ No conference papers found")
+        return []
     
-    # Step 3: Analyze TOP 10 PAPERS ONLY
-    print("Analyzing top 24 papers with Groq (llama-3.1-8b-instant)...")
+    # Step 3: Analyze TOP 24 PAPERS
+    print("\n" + "="*60)
+    print("STEP 3: Analyzing top 24 papers with Groq...")
+    print("="*60)
     analyzed_papers = []
     
     top_24_papers = conference_papers[:24]
     
     for i, paper in enumerate(top_24_papers):
         conf_info = extract_conference_info(paper)
-        conf_display = f"{conf_info['conference']} {conf_info['year']}" if conf_info else "Unknown Conference"
-        print(f"  [{i+1}/{len(top_24_papers)}] Analyzing {paper['arxiv_id']} ({conf_display})...")
+        conf_display = f"{conf_info['conference']} {conf_info['year']}" if conf_info else "Unknown"
+        print(f"  [{i+1:2d}/{len(top_24_papers)}] {paper['arxiv_id']:12s} ({conf_display:30s})...", end=" ", flush=True)
         
         analysis = generate_paper_analysis(paper)
         if analysis:
@@ -294,12 +337,13 @@ async def run_daily_pipeline() -> list:
                 "analyzed_at": datetime.now().isoformat(),
                 "conference_info": conf_info,
             })
+            print("✓")
         else:
-            print(f"    ⚠ Failed to analyze, skipping...")
+            print("⚠")
         
-        await asyncio.sleep(1)  # Rate limit
+        await asyncio.sleep(1)
     
-    print(f"✓ Successfully analyzed {len(analyzed_papers)} papers")
+    print(f"\n✓ Successfully analyzed {len(analyzed_papers)} papers")
     return analyzed_papers
 
 
@@ -309,6 +353,7 @@ def save_results(results: list, output_file: str = "papers.json"):
         "last_updated": datetime.now().isoformat(),
         "total_papers": len(results),
         "papers": results,
+        "categories": list(CONFERENCE_CATEGORIES.keys())
     }
     
     with open(output_file, "w") as f:
@@ -326,7 +371,6 @@ async def main():
 
 
 if __name__ == "__main__":
-    # Run the pipeline
     data = asyncio.run(main())
     print("\n✅ Pipeline complete!")
-    print(f"Results: {len(data['papers'])} papers analyzed (from top-tier conferences)")
+    print(f"Results: {len(data['papers'])} papers analyzed")
