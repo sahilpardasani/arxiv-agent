@@ -261,15 +261,15 @@ async def run_daily_pipeline() -> list:
         print("⚠ No papers found from top-tier conferences")
     
     # Step 3: Analyze TOP 10 PAPERS ONLY
-    print("Analyzing top 10 papers with Groq (llama-3.1-8b-instant)...")
+    print("Analyzing top 24 papers with Groq (llama-3.1-8b-instant)...")
     analyzed_papers = []
     
-    top_12_papers = conference_papers[:12]
+    top_24_papers = conference_papers[:24]
     
-    for i, paper in enumerate(top_12_papers):
+    for i, paper in enumerate(top_24_papers):
         conf_info = extract_conference_info(paper)
         conf_display = f"{conf_info['conference']} {conf_info['year']}" if conf_info else "Unknown Conference"
-        print(f"  [{i+1}/{len(top_12_papers)}] Analyzing {paper['arxiv_id']} ({conf_display})...")
+        print(f"  [{i+1}/{len(top_24_papers)}] Analyzing {paper['arxiv_id']} ({conf_display})...")
         
         analysis = generate_paper_analysis(paper)
         if analysis:

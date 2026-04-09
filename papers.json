@@ -1,6 +1,6 @@
 {
-  "last_updated": "2026-04-09T00:59:28.297159",
-  "total_papers": 12,
+  "last_updated": "2026-04-09T02:05:00.162821",
+  "total_papers": 24,
   "papers": [
     {
       "paper": {
@@ -18,30 +18,30 @@
         "comment": "SecDev 2026 in Montreal, Canada, 10 pages, maximum 16 pages"
       },
       "analysis": {
-        "problem_statement": "Developing tools for security and privacy analysis that require Linear Temporal Logic (LTL) formulas as input is challenging due to the intricate semantics of LTL, hindering accessibility for developers and analysts.",
-        "bottleneck_addressed": "Contextual understanding and semantic interpretation in Large Language Models (LLMs) for formal logic translation.",
-        "executive_summary": "This paper evaluates the effectiveness of LLMs in translating natural language fragments into LTL formulas, highlighting the need for improved contextual understanding and semantic interpretation in AI models. This matters to the current AI landscape as it enables broader access to security and privacy analysis tools, crucial for software, networks, and systems development. The results have implications for the development of more accurate and efficient AI-powered formal logic translation tools.",
+        "problem_statement": "Evaluating the effectiveness of Large Language Models (LLMs) in translating natural language fragments into Propositional Linear Temporal Logic (LTL) formulas.",
+        "bottleneck_addressed": "Contextual understanding and semantic translation of formal logic expressions from natural language inputs",
+        "executive_summary": "This paper addresses a critical pain point in the AI landscape by evaluating the ability of LLMs to translate natural language requirements and policies into formal LTL expressions. This is crucial for security and privacy analysis tools, which often require LTL formulas as input. The results have implications for developers and analysts who need to express complex requirements and policies in a machine-understandable format.",
         "key_metrics": {
-          "primary_metric": "Improved LTL translation performance with reformulated task as a Python code-completion problem",
+          "primary_metric": "Improved translation performance with more detailed prompts and reformulating the task as a Python code-completion problem",
           "metric_value": "Not disclosed",
           "baseline": "Human-generated and synthetic ground-truth data",
-          "improvement_percentage": "Not disclosed"
+          "improvement_percentage": "Not quantifiable"
         },
         "technical_breakdown": {
-          "method": "The paper evaluates the effectiveness of several representative LLMs in translating assertive English sentences into LTL formulas using both human-generated and synthetic ground-truth data. The results reveal that LLMs perform better on syntactic aspects of LTL than on semantic ones. The task is reformulated as a Python code-completion problem to improve overall performance.",
-          "architecture": "The paper uses a combination of human-generated and synthetic ground-truth data, and evaluates the performance of several representative LLMs. The reformulation of the task as a Python code-completion problem is a novel technique.",
-          "implementation_details": "The paper uses a range of LLMs, including those based on transformer architectures, to evaluate their performance on LTL translation tasks. The implementation details are not disclosed.",
+          "method": "The paper evaluates the performance of several representative LLMs on translating assertive English sentences into LTL formulas using both human-generated and synthetic ground-truth data. The results reveal that LLMs perform better on syntactic aspects of LTL than on semantic ones. The authors also find that more detailed prompts and reformulating the task as a Python code-completion problem substantially improve overall performance.",
+          "architecture": "The paper uses a standard LLM architecture with no novel components or techniques.",
+          "implementation_details": "The authors use a range of LLMs as baselines, including representative models in the field. The evaluation is conducted using a combination of human-generated and synthetic data.",
           "code_complexity": "Not disclosed"
         },
         "relevance_tags": [
-          "Formal Logic Translation",
-          "Large Language Models",
-          "Linear Temporal Logic",
-          "Security and Privacy Analysis"
+          "Natural Language Processing",
+          "Formal Logic",
+          "Security and Privacy Analysis",
+          "Large Language Models"
         ],
         "confidence": "high"
       },
-      "analyzed_at": "2026-04-09T00:57:35.753255",
+      "analyzed_at": "2026-04-09T02:00:25.441864",
       "conference_info": {
         "conference": "SecDev",
         "year": "2026",
@@ -69,30 +69,30 @@
         "comment": "Conference on Computer Vision and Pattern Recognition (CVPR 2026), in the Workshop on Computer Vision for Children (CV4CHL)"
       },
       "analysis": {
-        "problem_statement": "Developing automated methods for classifying Child Sexual Abuse Imagery (CSAI) while respecting legal and ethical constraints.",
-        "bottleneck_addressed": "Data sharing and reproducibility in CSAI research due to strict legal and ethical restrictions.",
-        "executive_summary": "This paper addresses the challenge of developing computer vision methods for child safety by introducing CSA-Graphs, a privacy-preserving structural dataset. This enables broader research on CSAI classification while respecting legal and ethical constraints. This matters to the current AI landscape as it facilitates the development of more accurate and reliable CSAI classification models, which can be used to prevent child exploitation and protect vulnerable populations.",
+        "problem_statement": "Child Sexual Abuse Imagery (CSAI) classification is hindered by strict legal and ethical restrictions preventing public sharing of CSAI datasets.",
+        "bottleneck_addressed": "Lack of publicly available datasets for CSAI research due to legal and ethical constraints.",
+        "executive_summary": "This paper addresses the critical issue of limited CSAI datasets by introducing a privacy-preserving structural dataset, CSA-Graphs, which enables broader research on computer vision methods for child safety while respecting legal and ethical constraints. This matters to the current AI landscape as it facilitates the development of automated methods for CSAI classification, a crucial problem in computer vision research. The proposed dataset can be applied to various use cases, including child safety and law enforcement.",
         "key_metrics": {
           "primary_metric": "Combining scene graphs and skeleton graphs improves CSAI classification performance.",
           "metric_value": "Not disclosed",
-          "baseline": "Individual graph-based modalities (scene graphs and skeleton graphs)",
+          "baseline": "Not disclosed",
           "improvement_percentage": "Not disclosed"
         },
         "technical_breakdown": {
-          "method": "CSA-Graphs provides two complementary graph-based modalities: scene graphs describing object relationships and skeleton graphs encoding human pose. These representations remove explicit visual content while preserving contextual information, enabling the classification of CSAI without sharing explicit images.",
-          "architecture": "Graph-based modalities (scene graphs and skeleton graphs) are used to represent CSAI, with a focus on preserving contextual information.",
-          "implementation_details": "The paper does not provide specific details on the algorithms, data structures, or techniques used to create CSA-Graphs.",
+          "method": "CSA-Graphs provides two graph-based modalities: scene graphs describing object relationships and skeleton graphs encoding human pose. These representations remove explicit visual content while preserving contextual information, enabling CSAI classification without violating legal and ethical constraints.",
+          "architecture": "The proposed dataset includes two complementary graph-based modalities: scene graphs and skeleton graphs.",
+          "implementation_details": "The scene graphs are likely constructed using object detection and relationship extraction techniques, while skeleton graphs are generated using human pose estimation methods.",
           "code_complexity": "Not disclosed"
         },
         "relevance_tags": [
-          "Computer Vision",
           "Child Safety",
+          "Computer Vision",
           "Privacy-Preserving",
-          "Graph-Based Representations"
+          "Structural Datasets"
         ],
         "confidence": "medium"
       },
-      "analyzed_at": "2026-04-09T00:57:37.758569",
+      "analyzed_at": "2026-04-09T02:00:27.403062",
       "conference_info": {
         "conference": "CVPR",
         "year": "2026",
@@ -118,31 +118,30 @@
         "comment": "Accepted by ACL 2026"
       },
       "analysis": {
-        "problem_statement": "Empathetic dialogue systems struggle to effectively model complex, multi-stage cognitive and decision-making processes due to the lack of comprehensive empathy strategy frameworks, explicit task-aligned multi-stage reasoning, and high-quality strategy-aware data.",
-        "bottleneck_addressed": "Training efficiency and effectiveness in empathetic dialogue systems",
-        "executive_summary": "This paper addresses a critical bottleneck in empathetic dialogue systems by proposing a novel strategy-grounded framework that models complex decision-making processes. This matters to the current AI landscape as empathetic dialogue systems are increasingly used in applications such as customer service, mental health support, and social robots. By improving the effectiveness of these systems, STRIDE-ED can lead to better user experiences and more accurate emotional understanding.",
+        "problem_statement": "Empathetic dialogue systems struggle to effectively model complex, multi-stage cognitive and decision-making processes due to the lack of a comprehensive empathy strategy framework and high-quality strategy-aware data.",
+        "bottleneck_addressed": "Training efficiency and data quality in empathetic dialogue systems",
+        "executive_summary": "This paper addresses a significant challenge in AI research by proposing a novel framework for empathetic dialogue systems. STRIDE-ED improves upon existing methods by providing a comprehensive empathy strategy framework and high-quality strategy-aware data, enabling more effective modeling of complex decision-making processes. This matters to the current AI landscape as empathetic dialogue systems are increasingly being used in applications such as customer service and mental health support.",
         "key_metrics": {
           "primary_metric": "Consistent outperformance of existing methods on both automatic metrics and human evaluations",
           "metric_value": "Not disclosed",
-          "baseline": "Existing empathetic dialogue systems",
-          "improvement_percentage": "Not disclosed"
+          "baseline": "Existing methods in empathetic dialogue systems",
+          "improvement_percentage": "Not quantifiable"
         },
         "technical_breakdown": {
-          "method": "STRIDE-ED proposes a two-stage training paradigm that combines supervised fine-tuning with multi-objective reinforcement learning to align model behaviors with target emotions, empathetic strategies, and response formats. The framework also incorporates a strategy-aware data refinement pipeline to construct high-quality training data. This pipeline includes LLM-based annotation, multi-model consistency-weighted evaluation, and dynamic sampling. The framework is grounded in a structured, strategy-conditioned reasoning approach.",
-          "architecture": "Two-stage training paradigm, strategy-aware data refinement pipeline, and structured, strategy-conditioned reasoning approach",
-          "implementation_details": "LLM-based annotation, multi-model consistency-weighted evaluation, dynamic sampling, supervised fine-tuning, and multi-objective reinforcement learning",
-          "code_complexity": "High computational complexity due to the use of multi-objective reinforcement learning and LLM-based annotation, but the exact training time implications are not disclosed"
+          "method": "STRIDE-ED uses a two-stage training paradigm that combines supervised fine-tuning with multi-objective reinforcement learning to align model behaviors with target emotions, empathetic strategies, and response formats. The framework also employs a strategy-aware data refinement pipeline to construct high-quality training data. This pipeline integrates LLM-based annotation, multi-model consistency-weighted evaluation, and dynamic sampling. STRIDE-ED models empathetic dialogue through structured, strategy-conditioned reasoning.",
+          "architecture": "Two-stage training paradigm, strategy-aware data refinement pipeline, and structured, strategy-conditioned reasoning framework",
+          "implementation_details": "LLM-based annotation, multi-model consistency-weighted evaluation, dynamic sampling, and multi-objective reinforcement learning",
+          "code_complexity": "Not disclosed"
         },
         "relevance_tags": [
           "empathetic dialogue systems",
-          "strategy-grounded frameworks",
-          "multi-stage reasoning",
-          "reinforcement learning",
-          "LLM-based annotation"
+          "strategy-aware data refinement",
+          "multi-objective reinforcement learning",
+          "structured reasoning"
         ],
-        "confidence": "medium"
+        "confidence": "high"
       },
-      "analyzed_at": "2026-04-09T00:57:48.536174",
+      "analyzed_at": "2026-04-09T02:00:37.535288",
       "conference_info": {
         "conference": "ACL",
         "year": "2026",
@@ -165,30 +164,30 @@
         "comment": "ICRA 2026; Project page: https://m80hz.github.io/kite/"
       },
       "analysis": {
-        "problem_statement": "The paper addresses the challenge of analyzing robot failure using vision-language models (VLMs) with long robot-execution videos.",
-        "bottleneck_addressed": "Context length and interpretability of VLMs for robot failure analysis.",
-        "executive_summary": "This paper presents KITE, a training-free front-end that converts long robot-execution videos into compact, interpretable tokenized evidence for VLMs. This matters to the current AI landscape as it enables efficient and interpretable robot failure analysis, which is crucial for robotics and autonomous systems. The proposed method can be applied to various use cases, such as failure detection, identification, localization, explanation, and correction.",
+        "problem_statement": "The paper addresses the problem of robot failure analysis in long robot-execution videos, where existing methods are often computationally expensive and lack interpretability.",
+        "bottleneck_addressed": "Context length and interpretability of visual-language models (VLMs) for robot failure analysis.",
+        "executive_summary": "This paper presents KITE, a training-free front-end that converts long robot-execution videos into compact, interpretable tokenized evidence for VLMs. KITE improves the efficiency and interpretability of VLMs for robot failure analysis, enabling applications such as failure detection, identification, localization, explanation, and correction. This matters to the current AI landscape as it addresses the challenge of analyzing long videos and provides a structured and interpretable front-end for robot failure analysis.",
         "key_metrics": {
-          "primary_metric": "Substantial improvement over vanilla Qwen2.5-VL in the training-free setting",
+          "primary_metric": "Substantial improvement over vanilla Qwen2.5-VL in the training-free setting on the RoboFAC benchmark",
           "metric_value": "Not disclosed",
           "baseline": "Vanilla Qwen2.5-VL",
-          "improvement_percentage": "Not disclosed"
+          "improvement_percentage": "Not quantifiable"
         },
         "technical_breakdown": {
           "method": "KITE distills each trajectory into a small set of motion-salient keyframes with open-vocabulary detections and pairs each keyframe with a schematic bird's-eye-view (BEV) representation. These visual cues are serialized with robot-profile and scene-context tokens into a unified prompt.",
-          "architecture": "Keyframe-anchored, layout-grounded front-end with open-vocabulary detections and bird's-eye-view representations.",
-          "implementation_details": "KITE uses open-vocabulary detections and bird's-eye-view representations, which are serialized with robot-profile and scene-context tokens.",
+          "architecture": "Keyframe-Indexed Tokenized Evidence (KITE) architecture, which includes keyframe anchoring, layout grounding, and open-vocabulary detections.",
+          "implementation_details": "KITE uses a combination of computer vision and natural language processing techniques, including open-vocabulary detections and bird's-eye-view (BEV) representations.",
           "code_complexity": "Not disclosed"
         },
         "relevance_tags": [
-          "robotics",
-          "vision-language models",
-          "robot failure analysis",
-          "interpretable AI"
+          "Robotics",
+          "Computer Vision",
+          "Natural Language Processing",
+          "Vision-Language Models"
         ],
-        "confidence": "medium"
+        "confidence": "high"
       },
-      "analyzed_at": "2026-04-09T00:58:00.489395",
+      "analyzed_at": "2026-04-09T02:01:01.116414",
       "conference_info": {
         "conference": "ICRA",
         "year": "2026",
@@ -216,19 +215,19 @@
         "comment": "ACL 2026 Findings"
       },
       "analysis": {
-        "problem_statement": "Existing GUI reasoning tasks lack interpretability and comprehensive UI understanding, leading to task failure.",
-        "bottleneck_addressed": "Interpretability and comprehensive UI understanding in GUI reasoning tasks",
-        "executive_summary": "This paper addresses a critical pain point in AI, where existing GUI reasoning methods struggle with interpretability and UI understanding. This limitation affects various applications, such as chatbots, virtual assistants, and human-computer interaction systems. By introducing the UI-in-the-Loop paradigm, the authors aim to enhance UI understanding and interaction.",
+        "problem_statement": "The paper addresses the challenge of GUI reasoning tasks, particularly in UI understanding, by proposing a novel paradigm called UI-in-the-Loop (UILoop) that enhances the understanding and interaction with UIs.",
+        "bottleneck_addressed": "Lack of interpretability and comprehensive understanding of UI elements in direct screen-based decision-making.",
+        "executive_summary": "This paper matters to the current AI landscape as it tackles the challenge of GUI reasoning tasks, which is crucial for developing more effective and user-friendly interfaces. The proposed UI-in-the-Loop paradigm has the potential to improve the performance of multimodal GUI reasoning tasks, leading to better user experience and more efficient interaction with UIs. This is particularly relevant in applications such as virtual assistants, chatbots, and human-computer interaction systems.",
         "key_metrics": {
           "primary_metric": "State-of-the-art UI understanding performance",
           "metric_value": "Not disclosed",
-          "baseline": "Existing GUI reasoning methods",
-          "improvement_percentage": "Not quantifiable"
+          "baseline": "Existing methods",
+          "improvement_percentage": "Not disclosed"
         },
         "technical_breakdown": {
-          "method": "The UI-in-the-Loop paradigm treats GUI reasoning as a cyclic process of screen, UI elements, and action. It enables Multimodal Large Language Models (MLLMs) to learn the localization, semantic functions, and practical usage of key UI elements.",
-          "architecture": "The proposed approach involves a cyclic process, where MLLMs learn from UI elements, and the learned knowledge is used to improve UI understanding.",
-          "implementation_details": "The authors use Multimodal Large Language Models (MLLMs) and introduce a UI Comprehension task with three evaluation metrics.",
+          "method": "The proposed UI-in-the-Loop paradigm treats the GUI reasoning task as a cyclic process of Screen-UI elements-Action, enabling Multimodal Large Language Models (MLLMs) to learn the localization, semantic functions, and practical usage of key UI elements. This approach achieves precise element discovery and performs interpretable reasoning.",
+          "architecture": "The paper introduces a novel paradigm called UI-in-the-Loop (UILoop), which consists of a cyclic process of Screen-UI elements-Action. The architecture also involves Multimodal Large Language Models (MLLMs) to learn the localization, semantic functions, and practical usage of key UI elements.",
+          "implementation_details": "The paper uses Multimodal Large Language Models (MLLMs) to learn the localization, semantic functions, and practical usage of key UI elements. The implementation details also involve a more challenging UI Comprehension task centered on UI elements with three evaluation metrics.",
           "code_complexity": "Not disclosed"
         },
         "relevance_tags": [
@@ -239,7 +238,7 @@
         ],
         "confidence": "high"
       },
-      "analyzed_at": "2026-04-09T00:58:23.325390",
+      "analyzed_at": "2026-04-09T02:01:11.049146",
       "conference_info": {
         "conference": "ACL",
         "year": "2026",
@@ -263,31 +262,29 @@
         "comment": "Accepted to ACL 2026 (Findings)"
       },
       "analysis": {
-        "problem_statement": "The paper addresses the issue of high inference costs in Large Speech Language Models (LSLMs) due to sequence lengths exceeding semantic content, leading to prohibitive memory usage and inference latency.",
-        "bottleneck_addressed": "memory usage and inference latency",
-        "executive_summary": "This paper challenges the necessity of fully distinct token representations in LSLMs, providing a new perspective on efficiency. By exploiting redundancy in deep layers, the authors propose a training-free method to compress speech representations without compromising semantic information. This has significant implications for practical deployment of LSLMs in applications with limited resources.",
+        "problem_statement": "The high token rates in Large Speech Language Models (LSLMs) result in sequence lengths that far exceed the underlying semantic content, incurring prohibitive inference costs.",
+        "bottleneck_addressed": "Inference latency and memory usage",
+        "executive_summary": "This paper addresses the efficiency bottleneck in LSLMs by introducing a novel token merging mechanism, Affinity Pooling, which reduces prefilling FLOPs by 27.48% and achieves significant memory savings and faster time-to-first-token on long utterances. This matters to the current AI landscape as it enables more efficient deployment of speech recognition systems, particularly in resource-constrained environments. The proposed approach challenges the necessity of fully distinct token representations, providing new perspectives on LSLM efficiency.",
         "key_metrics": {
-          "primary_metric": "prefilling FLOPs reduction",
+          "primary_metric": "Prefilling FLOPs reduction",
           "metric_value": "27.48%",
-          "baseline": "not specified",
+          "baseline": "Not disclosed",
           "improvement_percentage": "27.48%"
         },
         "technical_breakdown": {
-          "method": "The authors use layer-wise oracle interventions to unveil a structured redundancy hierarchy in LSLMs. They find that shallow layers encode essential acoustic details, while deep layers exhibit extreme redundancy. Based on this, they introduce Affinity Pooling, a training-free, similarity-based token merging mechanism that strategically applies token merging at both input and deep layers to compress speech representations.",
-          "architecture": "The proposed approach involves a redundancy hierarchy and Affinity Pooling, which is a similarity-based token merging mechanism.",
-          "implementation_details": "The authors use oracle interventions to analyze the redundancy hierarchy, and implement Affinity Pooling using a similarity-based token merging algorithm.",
+          "method": "The authors introduce Affinity Pooling, a training-free, similarity-based token merging mechanism that strategically applies token merging at both input and deep layers of LSLMs. This approach leverages a structured redundancy hierarchy, where shallow layers encode essential acoustic details and deep layers exhibit extreme redundancy. By exploiting this redundancy, Affinity Pooling effectively compresses speech representations without compromising semantic information.",
+          "architecture": "Affinity Pooling is a novel technique that leverages a structured redundancy hierarchy in LSLMs.",
+          "implementation_details": "The authors use layer-wise oracle interventions to unveil the redundancy hierarchy and develop Affinity Pooling as a similarity-based token merging mechanism.",
           "code_complexity": "Not disclosed"
         },
         "relevance_tags": [
-          "speech recognition",
-          "natural language processing",
-          "large language models",
-          "efficiency",
-          "redundancy"
+          "Speech Recognition",
+          "Efficient Neural Networks",
+          "Large Language Models"
         ],
         "confidence": "high"
       },
-      "analyzed_at": "2026-04-09T00:58:25.270819",
+      "analyzed_at": "2026-04-09T02:01:34.043046",
       "conference_info": {
         "conference": "ACL",
         "year": "2026",
@@ -315,9 +312,9 @@
         "comment": "Accepted at WWW'26"
       },
       "analysis": {
-        "problem_statement": "The paper addresses the issue of tone-based biases in Large Language Models (LLMs) and emoji embeddings, which can perpetuate societal biases in online communication.",
-        "bottleneck_addressed": "Representational bias and inconsistent meanings associated with emojis across different skin tones.",
-        "executive_summary": "This paper highlights the urgent need for developers and platforms to audit and mitigate representational harms in AI models, ensuring equity rather than reinforcing societal biases. This matters to the current AI landscape as AI increasingly mediates interactions on web platforms, and biased models can have significant consequences. The findings have implications for the development of more inclusive and equitable AI systems.",
+        "problem_statement": "This paper addresses the issue of latent biases in Large Language Models (LLMs) and emoji embedding models that perpetuate societal biases through their representation of skin-toned emojis.",
+        "bottleneck_addressed": "Contextual understanding and representational consistency in AI models",
+        "executive_summary": "This paper highlights the need for developers and platforms to audit and mitigate biases in AI models that mediate online interactions, ensuring genuine equity rather than reinforcing societal biases. This is particularly relevant in the context of web platforms where AI models are increasingly used to facilitate communication. The findings underscore the importance of addressing biases in AI models to promote inclusive online interactions.",
         "key_metrics": {
           "primary_metric": "Systemic disparities in semantic consistency, representational similarity, sentiment polarity, and core biases",
           "metric_value": "Not disclosed",
@@ -325,20 +322,20 @@
           "improvement_percentage": "Not applicable"
         },
         "technical_breakdown": {
-          "method": "The authors conducted a large-scale comparative study of bias in skin-toned emoji representations across two distinct model classes: specialized emoji models and modern LLMs. They systematically evaluated the performance of these models using metrics such as semantic consistency, representational similarity, sentiment polarity, and core biases.",
-          "architecture": "The study used a combination of existing models (emoji2vec, emoji-sw2v, Llama, Gemma, Qwen, and Mistral) and evaluated their performance using a range of metrics.",
-          "implementation_details": "The authors used a multi-faceted investigation approach, including semantic consistency, representational similarity, sentiment polarity, and core biases to uncover systemic disparities in the models.",
+          "method": "The authors conducted a large-scale comparative study of bias in skin-toned emoji representations across two distinct model classes: dedicated emoji embedding models and modern LLMs. They systematically evaluated the performance of these models using metrics such as semantic consistency, representational similarity, sentiment polarity, and core biases.",
+          "architecture": "The study employed a multi-faceted investigation into the biases in AI models, leveraging techniques such as emoji embeddings and sentiment analysis.",
+          "implementation_details": "The authors used specialized emoji models (emoji2vec, emoji-sw2v) and four modern LLMs (Llama, Gemma, Qwen, and Mistral) as part of their investigation.",
           "code_complexity": "Not disclosed"
         },
         "relevance_tags": [
-          "bias mitigation",
-          "representational harms",
-          "inclusive AI",
-          "equitable AI"
+          "bias detection",
+          "fairness in AI",
+          "emoji embeddings",
+          "large language models"
         ],
         "confidence": "high"
       },
-      "analyzed_at": "2026-04-09T00:58:33.167323",
+      "analyzed_at": "2026-04-09T02:01:35.875512",
       "conference_info": {
         "conference": "WWW",
         "year": "Unknown",
@@ -368,30 +365,31 @@
         "comment": "Accepted by Findings of ACL 2026. 15 pages, 9 figures. Code: https://github.com/wangbing1416/ASLEC"
       },
       "analysis": {
-        "problem_statement": "The paper addresses the issue of 'step length confounding' in Large Language Model (LLM) reasoning data selection, where naturalness-based methods prefer samples with longer reasoning steps over higher-quality ones.",
+        "problem_statement": "The naturalness-based data selection method used in LLM reasoning datasets systematically prefers samples with longer reasoning steps rather than higher-quality ones, a phenomenon known as step length confounding.",
         "bottleneck_addressed": "Context length and data quality in LLM reasoning datasets",
-        "executive_summary": "The paper highlights a critical issue in LLM reasoning data selection, where longer reasoning steps are favored over higher-quality samples. This problem can lead to biased datasets and affect the performance of downstream models. The proposed solution, ASLEC, aims to mitigate this issue and improve the quality of LLM reasoning datasets.",
+        "executive_summary": "This paper addresses a critical issue in LLM reasoning datasets, where the naturalness-based selection method favors longer reasoning steps over higher-quality samples. This problem is particularly relevant in the current AI landscape, where LLMs are being used for complex tasks that require long chain-of-thought reasoning. The proposed solution has implications for the development of more accurate and reliable LLMs, which can be applied to various use cases such as question answering, text summarization, and dialogue systems.",
         "key_metrics": {
           "primary_metric": "Not disclosed",
           "metric_value": "Not disclosed",
-          "baseline": "Naturalness-based data selection methods",
+          "baseline": "Naturalness-based data selection method",
           "improvement_percentage": "Not disclosed"
         },
         "technical_breakdown": {
-          "method": "The proposed solution, ASLEC, uses two variant methods to address step length confounding: ASLEC-DROP, which drops first-token probabilities when computing average log probability, and ASLEC-CASL, which applies a causal debiasing regression to remove the first tokens' confounding effect.",
-          "architecture": "ASLEC uses a combination of naturalness-based data selection and causal debiasing regression to mitigate step length confounding.",
-          "implementation_details": "The authors propose using a causal debiasing regression, which is a type of machine learning algorithm that can remove confounding effects from data.",
+          "method": "The proposed solution, ASLEC, addresses the step length confounding problem by introducing two variant methods: ASLEC-DROP, which drops first-token probabilities when computing average log probability, and ASLEC-CASL, which applies a causal debiasing regression to remove the first tokens' confounding effect.",
+          "architecture": "The proposed methods are based on the use of causal debiasing regression and the dropping of first-token probabilities, which are novel techniques in the context of LLM reasoning datasets.",
+          "implementation_details": "The implementation details of the proposed methods are not disclosed in the summary, but it is likely that they involve the use of machine learning algorithms and statistical techniques to analyze the LLM reasoning datasets.",
           "code_complexity": "Not disclosed"
         },
         "relevance_tags": [
-          "Large Language Models",
-          "Reasoning Data Selection",
-          "Data Quality",
-          "Causal Debiasing Regression"
+          "LLM reasoning datasets",
+          "naturalness-based data selection",
+          "step length confounding",
+          "causal debiasing regression",
+          "context length"
         ],
         "confidence": "medium"
       },
-      "analyzed_at": "2026-04-09T00:58:43.930598",
+      "analyzed_at": "2026-04-09T02:01:56.184739",
       "conference_info": {
         "conference": "ACL",
         "year": "2026",
@@ -415,30 +413,31 @@
         "comment": "Accepted at ACL 2026 Findings"
       },
       "analysis": {
-        "problem_statement": "Efficient inference of Mixture of Binary Experts (MoE) based large language models (LLMs) under post-training quantization.",
-        "bottleneck_addressed": "Inference latency and memory usage due to high computation costs and cross-expert redundancy in MoE-based LLMs.",
-        "executive_summary": "MoBiE addresses the pressing need for efficient inference in MoE-based LLMs, which are crucial for natural language processing tasks. By reducing cross-expert redundancy and mitigating routing distortion, MoBiE enables faster and more memory-efficient inference, making it a significant contribution to the current AI landscape. This is particularly relevant for applications requiring real-time language processing, such as chatbots and virtual assistants.",
+        "problem_statement": "Mixture-of-Experts (MoE) based large language models suffer from high memory and computation costs due to weight binarization issues.",
+        "bottleneck_addressed": "memory usage, inference latency",
+        "executive_summary": "MoBiE addresses the pressing need for efficient MoE-based large language models by proposing a novel binarization framework that reduces cross-expert redundancy, improves weight importance estimation, and mitigates routing distortion. This matters to the current AI landscape as it enables faster and more memory-efficient inference for MoE-based LLMs, which are crucial for applications such as natural language processing and conversational AI. MoBiE's improvements can lead to significant reductions in inference latency and memory usage, making it a valuable contribution to the field.",
         "key_metrics": {
-          "primary_metric": "2x inference speedup and 52.2% perplexity reduction",
+          "primary_metric": "52.2% perplexity reduction",
           "metric_value": "Not disclosed",
-          "baseline": "State-of-the-art binary methods",
-          "improvement_percentage": "Not quantifiable"
+          "baseline": "state-of-the-art binary methods",
+          "improvement_percentage": "52.2%"
         },
         "technical_breakdown": {
-          "method": "MoBiE uses joint SVD decomposition to reduce cross-expert redundancy, integrates global loss gradients into local Hessian metrics for weight importance estimation, and introduces an error constraint guided by the input null space to mitigate routing distortion.",
-          "architecture": "MoBiE is built on top of MoE-based LLMs and leverages three core innovations to optimize weight binarization.",
-          "implementation_details": "MoBiE employs SVD decomposition, Hessian metrics, and error constraints to achieve efficient inference, and does not incur additional storage overhead.",
+          "method": "MoBiE uses joint SVD decomposition to reduce cross-expert redundancy, integrates global loss gradients into local Hessian metrics to enhance weight importance estimation, and introduces an error constraint guided by the input null space to mitigate routing distortion. These innovations are designed to optimize MoE-based LLMs while incurring no additional storage overhead. MoBiE achieves this by leveraging the properties of SVD decomposition and Hessian metrics to reduce the computational complexity of the binarization process.",
+          "architecture": "MoBiE's architecture is built on three core innovations: joint SVD decomposition, global loss gradients, and error constraint guided by the input null space.",
+          "implementation_details": "MoBiE uses SVD decomposition, Hessian metrics, and input null space to optimize the binarization process. The implementation details are not disclosed in the summary.",
           "code_complexity": "Not disclosed"
         },
         "relevance_tags": [
-          "Efficient Inference",
-          "Mixture of Experts",
-          "Large Language Models",
-          "Post-Training Quantization"
+          "mixture-of-experts",
+          "large language models",
+          "binary methods",
+          "inference efficiency",
+          "memory usage"
         ],
-        "confidence": "high"
+        "confidence": "medium"
       },
-      "analyzed_at": "2026-04-09T00:58:54.850001",
+      "analyzed_at": "2026-04-09T02:02:11.058905",
       "conference_info": {
         "conference": "ACL",
         "year": "2026",
@@ -464,9 +463,9 @@
         "comment": "Accepted at CVPR 2026"
       },
       "analysis": {
-        "problem_statement": "Federated Learning (FL) suffers from domain shift and degraded global model performance due to clients holding data from distinct domains.",
-        "bottleneck_addressed": "Domain shift and its impact on global model performance in Federated Learning",
-        "executive_summary": "This paper addresses a critical challenge in Federated Learning, where clients from different domains contribute to a global model, leading to performance degradation. FedDAP proposes a novel approach to construct domain-specific global prototypes, enhancing domain-specific learning and enabling the global model to generalize across diverse domains. This matters to the current AI landscape as FL is increasingly used in privacy-sensitive applications, and domain shift can significantly impact model performance.",
+        "problem_statement": "Federated Learning (FL) under domain shift, where clients hold data from distinct domains, leading to degraded global model performance.",
+        "bottleneck_addressed": "Training efficiency and model generalization across diverse domains in Federated Learning.",
+        "executive_summary": "Federated Learning under domain shift is a significant challenge in decentralized model training. Existing methods face limitations in preserving domain information and aligning features with prototypes. This paper proposes FedDAP, a novel framework that addresses these challenges by constructing domain-specific global prototypes and aligning local features with prototypes from the same domain. This enhances domain-specific learning and enables the global model to generalize across diverse domains.",
         "key_metrics": {
           "primary_metric": "Not disclosed",
           "metric_value": "Not disclosed",
@@ -475,18 +474,19 @@
         },
         "technical_breakdown": {
           "method": "FedDAP constructs domain-specific global prototypes by aggregating local client prototypes within the same domain using a similarity-weighted fusion mechanism. These global domain-specific prototypes are then used to guide local training by aligning local features with prototypes from the same domain, while encouraging separation from prototypes of different domains.",
-          "architecture": "Domain-specific global prototypes, similarity-weighted fusion mechanism, and dual alignment of local features with domain-specific prototypes",
-          "implementation_details": "The authors use a similarity-weighted fusion mechanism to aggregate local client prototypes within the same domain. They also employ a dual alignment approach to guide local training.",
+          "architecture": "Domain-specific global prototypes, similarity-weighted fusion mechanism, and dual alignment for feature-prototype alignment.",
+          "implementation_details": "The proposed framework utilizes a similarity-weighted fusion mechanism to aggregate local client prototypes, and a dual alignment approach to guide local training.",
           "code_complexity": "Not disclosed"
         },
         "relevance_tags": [
           "Federated Learning",
-          "Domain Adaptation",
-          "Prototype Learning"
+          "Domain Shift",
+          "Prototype Learning",
+          "Decentralized Model Training"
         ],
         "confidence": "medium"
       },
-      "analyzed_at": "2026-04-09T00:59:07.734751",
+      "analyzed_at": "2026-04-09T02:02:22.066315",
       "conference_info": {
         "conference": "CVPR",
         "year": "2026",
@@ -509,9 +509,9 @@
         "comment": "ACL 2026 Findings"
       },
       "analysis": {
-        "problem_statement": "The paper addresses the issue of conversational query rewriting (CQR) in isolation, ignoring feedback from query rewrite, passage retrieval, and response generation.",
-        "bottleneck_addressed": "Training efficiency and context length in conversational search systems.",
-        "executive_summary": "This paper tackles the challenge of improving conversational search by rewriting ambiguous queries. The proposed Multi-Faceted Self-Consistent Preference Aligned CQR (MSPA-CQR) addresses the issue of ignoring feedback from query rewrite, passage retrieval, and response generation, which is crucial for developing more efficient conversational search systems. This is particularly relevant in applications such as virtual assistants, chatbots, and voice assistants, where context length and training efficiency are critical.",
+        "problem_statement": "Conversational Query Rewriting (CQR) for efficient conversational search is hindered by the lack of consideration for feedback from query rewrite, passage retrieval, and response generation.",
+        "bottleneck_addressed": "Training efficiency and context length, as the paper aims to improve conversational search by rewriting ambiguous queries.",
+        "executive_summary": "This paper addresses a critical challenge in conversational search by proposing a novel approach, Multi-Faceted Self-Consistent Preference Aligned CQR (MSPA-CQR), which improves conversational search efficiency by considering feedback from query rewrite, passage retrieval, and response generation. This matters in the current AI landscape as conversational search is increasingly used in various applications, such as customer service chatbots and voice assistants. The proposed approach can lead to more accurate and efficient conversational search, enhancing user experience and reducing the burden on human operators.",
         "key_metrics": {
           "primary_metric": "Not disclosed",
           "metric_value": "Not disclosed",
@@ -519,10 +519,10 @@
           "improvement_percentage": "Not disclosed"
         },
         "technical_breakdown": {
-          "method": "MSPA-CQR constructs self-consistent preference alignment data from three dimensions (rewriting, retrieval, and response) to generate more diverse rewritten queries. It then uses prefix guided multi-faceted direct preference optimization to learn preference information from these three dimensions.",
-          "architecture": "The proposed architecture involves a multi-faceted direct preference optimization component, which learns preference information from rewriting, retrieval, and response dimensions.",
-          "implementation_details": "The paper uses prefix guided multi-faceted direct preference optimization, which is a novel technique for learning preference information from multiple dimensions.",
-          "code_complexity": "Not disclosed"
+          "method": "MSPA-CQR constructs self-consistent preference alignment data from three dimensions (rewriting, retrieval, and response) to generate more diverse rewritten queries. Then, it proposes prefix guided multi-faceted direct preference optimization to learn preference information from these three different dimensions. This approach allows the model to consider feedback from multiple stages of the conversational search process, leading to more accurate and efficient query rewriting.",
+          "architecture": "The proposed architecture involves constructing self-consistent preference alignment data and using prefix guided multi-faceted direct preference optimization. The specific architectural components or novel techniques used are not clearly described in the summary.",
+          "implementation_details": "The implementation details, including specific algorithms, data structures, or techniques used, are not clearly described in the summary.",
+          "code_complexity": "The computational complexity or training time implications of the proposed approach are not clearly described in the summary."
         },
         "relevance_tags": [
           "Conversational Search",
@@ -532,7 +532,7 @@
         ],
         "confidence": "medium"
       },
-      "analyzed_at": "2026-04-09T00:59:16.473081",
+      "analyzed_at": "2026-04-09T02:02:41.268498",
       "conference_info": {
         "conference": "ACL",
         "year": "2026",
@@ -559,35 +559,619 @@
         "comment": "Accepted at ACL 2026"
       },
       "analysis": {
-        "problem_statement": "Large reasoning models struggle with unstable behavior and hard-to-interpret long chains of thought in multi-step tasks.",
-        "bottleneck_addressed": "Context length and interpretability in long, structured reasoning traces.",
-        "executive_summary": "This paper addresses the issue of unstable behavior and interpretability in large reasoning models (LRMs) by introducing a novel analysis tool called Step-Saliency and a test-time intervention called StepFlow. StepFlow improves accuracy on math, science, and coding tasks across multiple LRMs without retraining, indicating that repairing information flow can recover part of their missing reasoning performance. This matters to the current AI landscape as it enables more reliable and interpretable reasoning in complex tasks.",
+        "problem_statement": "Large reasoning models struggle with unstable behavior and hard-to-interpret long, structured reasoning traces.",
+        "bottleneck_addressed": "Context length and interpretability of reasoning traces in large reasoning models.",
+        "executive_summary": "This paper tackles the issue of unstable behavior and interpretability in large reasoning models by introducing a novel method called Step-Saliency. Step-Saliency reveals two recurring information-flow failures in these models, which are addressed by a proposed test-time intervention called StepFlow. StepFlow improves accuracy on math, science, and coding tasks across multiple large reasoning models without retraining, indicating that repairing information flow can recover part of their missing reasoning performance.",
         "key_metrics": {
-          "primary_metric": "Improvement in accuracy on math, science, and coding tasks",
+          "primary_metric": "Improves accuracy on math, science, and coding tasks",
           "metric_value": "Not disclosed",
-          "baseline": "Original performance of the large reasoning models",
+          "baseline": "Original large reasoning models",
           "improvement_percentage": "Not disclosed"
         },
         "technical_breakdown": {
-          "method": "Step-Saliency pools attention-gradient scores into step-to-step maps to reveal information-flow failures, and StepFlow adjusts shallow saliency patterns and adds a small step-level residual in deep layers to repair information flow.",
-          "architecture": "Step-Saliency uses a saliency-inspired approach to analyze attention patterns, and StepFlow introduces a novel test-time intervention that combines Odds-Equal Bridge and Step Momentum Injection.",
-          "implementation_details": "The Odds-Equal Bridge adjusts shallow saliency patterns, and the Step Momentum Injection adds a small step-level residual in deep layers.",
+          "method": "Step-Saliency pools attention-gradient scores into step-to-step maps along the question-thinking-summary trajectory, revealing two recurring information-flow failures: Shallow Lock-in and Deep Decay. StepFlow adjusts shallow saliency patterns via Odds-Equal Bridge and adds a small step-level residual in deep layers via Step Momentum Injection.",
+          "architecture": "Step-Saliency and StepFlow are novel methods that utilize attention-gradient scores and saliency patterns to improve the performance of large reasoning models.",
+          "implementation_details": "Step-Saliency uses attention-gradient scores, while StepFlow employs Odds-Equal Bridge and Step Momentum Injection.",
           "code_complexity": "Not disclosed"
         },
         "relevance_tags": [
           "Large Reasoning Models",
           "Attention Mechanisms",
-          "Interpretability",
+          "Saliency Patterns",
           "Test-Time Intervention"
         ],
-        "confidence": "medium"
+        "confidence": "high"
       },
-      "analyzed_at": "2026-04-09T00:59:27.292611",
+      "analyzed_at": "2026-04-09T02:02:52.436169",
       "conference_info": {
         "conference": "ACL",
         "year": "2026",
         "comment": "Accepted at ACL 2026",
         "raw_comment": "Accepted at ACL 2026"
+      }
+    },
+    {
+      "paper": {
+        "title": "ChemVLR: Prioritizing Reasoning in Perception for Chemical Vision-Language Understanding",
+        "arxiv_id": "2604.06685v1",
+        "authors": [
+          "Xuanle Zhao",
+          "Xinyuan Cai",
+          "Xiang Cheng",
+          "Xiuyi Chen",
+          "Bo Xu"
+        ],
+        "published": "2026-04-08T05:01:59Z",
+        "summary": "While Vision-Language Models (VLMs) have demonstrated significant potential in chemical visual understanding, current models are predominantly optimized for direct visual question-answering tasks. This paradigm often results in \"black-box\" systems that fail to utilize the inherent capability of Large Language Models (LLMs) to infer underlying reaction mechanisms. In this work, we introduce ChemVLR, a chemical VLM designed to prioritize reasoning within the perception process. Unlike conventional chemical VLMs, ChemVLR analyzes visual inputs in a fine-grained manner by explicitly identifying granular chemical descriptors, such as functional groups, prior to generating answers. This approach ensures the production of explicit and interpretable reasoning paths for complex visual chemical problems. To facilitate this methodology, we implement a cross-modality reverse-engineering strategy, combined with a rigorous filtering pipeline, to curate a large-scale reasoning-and-captioning dataset comprising 760k high-quality samples across molecular and reaction tasks. Furthermore, we adopt a three-stage training framework that systemically builds model perception and reasoning capacity. Experiments demonstrate that ChemVLR achieves state-of-the-art (SOTA) performance, surpassing both leading proprietary models and domain-specific open-source baselines. We also provide comprehensive ablation studies to validate our training strategy and data generation designs. Code and model weights will be available at https://github.com/xxlllz/ChemVLR.",
+        "categories": "cs.CL",
+        "comment": "Accepted by ACL 2026 Findings, Preprint Version"
+      },
+      "analysis": {
+        "problem_statement": "The paper addresses the limitation of current Vision-Language Models (VLMs) in chemical visual understanding, which often result in 'black-box' systems that fail to utilize the inherent capability of Large Language Models (LLMs) to infer underlying reaction mechanisms.",
+        "bottleneck_addressed": "Training efficiency and interpretability of VLMs for chemical visual understanding",
+        "executive_summary": "This paper presents ChemVLR, a novel chemical VLM that prioritizes reasoning within the perception process, enabling the production of explicit and interpretable reasoning paths for complex visual chemical problems. This addresses a significant pain point in the current AI landscape, particularly in the chemical and pharmaceutical industries, where accurate and transparent visual understanding is crucial. ChemVLR's ability to infer underlying reaction mechanisms can lead to improved decision-making and reduced errors.",
+        "key_metrics": {
+          "primary_metric": "State-of-the-art (SOTA) performance on chemical visual understanding tasks",
+          "metric_value": "Not disclosed",
+          "baseline": "Leading proprietary models and domain-specific open-source baselines",
+          "improvement_percentage": "Not quantifiable"
+        },
+        "technical_breakdown": {
+          "method": "ChemVLR analyzes visual inputs in a fine-grained manner by explicitly identifying granular chemical descriptors, such as functional groups, prior to generating answers. This is achieved through a cross-modality reverse-engineering strategy and a rigorous filtering pipeline. The model is trained using a three-stage framework that systemically builds model perception and reasoning capacity.",
+          "architecture": "Cross-modality reverse-engineering strategy, rigorous filtering pipeline, and a three-stage training framework",
+          "implementation_details": "The paper does not provide specific details on the algorithms, data structures, or techniques used. However, it mentions the use of a large-scale reasoning-and-captioning dataset comprising 760k high-quality samples.",
+          "code_complexity": "Not disclosed"
+        },
+        "relevance_tags": [
+          "Chemical Visual Understanding",
+          "Vision-Language Models",
+          "Large Language Models",
+          "Interpretability",
+          "Reasoning"
+        ],
+        "confidence": "medium"
+      },
+      "analyzed_at": "2026-04-09T02:03:04.662619",
+      "conference_info": {
+        "conference": "ACL",
+        "year": "2026",
+        "comment": "Accepted by ACL 2026 Findings, Preprint Version",
+        "raw_comment": "Accepted by ACL 2026 Findings, Preprint Version"
+      }
+    },
+    {
+      "paper": {
+        "title": "SHAPE: Stage-aware Hierarchical Advantage via Potential Estimation for LLM Reasoning",
+        "arxiv_id": "2604.06636v1",
+        "authors": [
+          "Zhengyang Ai",
+          "Zikang Shan",
+          "Xiaodong Ai",
+          "Jingxian Tang",
+          "Hangkai Hu",
+          "Pinyan Lu"
+        ],
+        "published": "2026-04-08T03:22:26Z",
+        "summary": "Process supervision has emerged as a promising approach for enhancing LLM reasoning, yet existing methods fail to distinguish meaningful progress from mere verbosity, leading to limited reasoning capabilities and unresolved token inefficiency. To address this, we propose Stage-aware Hierarchical Advantage via Potential Estimation (SHAPE), a framework that formalizes reasoning as a trajectory through a state space of empirical solvability. SHAPE introduces a hierarchical credit assignment mechanism: at the segment level, it employs a stage-aware advantage function to prioritize efficient breakthroughs in low-potential states; at the token level, it utilizes entropy-driven redistribution to sharpen execution signals. Extensive experiments in math reasoning across three base models and five benchmarks demonstrate that SHAPE achieves an average accuracy gain of 3% with 30% reduced token consumption.",
+        "categories": "cs.LG",
+        "comment": "ACL 2026 Main"
+      },
+      "analysis": {
+        "problem_statement": "The paper addresses the challenge of distinguishing meaningful progress from mere verbosity in Large Language Model (LLM) reasoning, leading to limited reasoning capabilities and unresolved token inefficiency.",
+        "bottleneck_addressed": "Token inefficiency and limited reasoning capabilities in LLMs",
+        "executive_summary": "This paper proposes SHAPE, a framework that enhances LLM reasoning by formalizing reasoning as a trajectory through a state space of empirical solvability. SHAPE achieves an average accuracy gain of 3% with 30% reduced token consumption, addressing a key pain point in the current AI landscape. This is particularly relevant for applications where LLMs are used for math reasoning, such as educational tools or automated problem-solving systems.",
+        "key_metrics": {
+          "primary_metric": "30% reduced token consumption",
+          "metric_value": "Not disclosed",
+          "baseline": "Not disclosed",
+          "improvement_percentage": "Not disclosed"
+        },
+        "technical_breakdown": {
+          "method": "SHAPE formalizes reasoning as a trajectory through a state space of empirical solvability, using a hierarchical credit assignment mechanism. At the segment level, it employs a stage-aware advantage function to prioritize efficient breakthroughs in low-potential states. At the token level, it utilizes entropy-driven redistribution to sharpen execution signals.",
+          "architecture": "Hierarchical credit assignment mechanism, stage-aware advantage function, entropy-driven redistribution",
+          "implementation_details": "The paper does not provide specific details on the implementation of SHAPE, but it likely involves a combination of reinforcement learning and optimization techniques.",
+          "code_complexity": "Not disclosed"
+        },
+        "relevance_tags": [
+          "LLM reasoning",
+          "token inefficiency",
+          "math reasoning",
+          "hierarchical credit assignment",
+          "reinforcement learning"
+        ],
+        "confidence": "medium"
+      },
+      "analyzed_at": "2026-04-09T02:03:14.754697",
+      "conference_info": {
+        "conference": "ACL",
+        "year": "2026",
+        "comment": "ACL 2026 Main",
+        "raw_comment": "ACL 2026 Main"
+      }
+    },
+    {
+      "paper": {
+        "title": "Beyond Loss Values: Robust Dynamic Pruning via Loss Trajectory Alignment",
+        "arxiv_id": "2604.07306v1",
+        "authors": [
+          "Huaiyuan Qin",
+          "Muli Yang",
+          "Gabriel James Goenawan",
+          "Kai Wang",
+          "Zheng Wang",
+          "Peng Hu",
+          "Xi Peng",
+          "Hongyuan Zhu"
+        ],
+        "published": "2026-04-08T17:14:50Z",
+        "summary": "Existing dynamic data pruning methods often fail under noisy-label settings, as they typically rely on per-sample loss as the ranking criterion. This could mistakenly lead to preserving noisy samples due to their high loss values, resulting in significant performance drop. To address this, we propose AlignPrune, a noise-robust module designed to enhance the reliability of dynamic pruning under label noise. Specifically, AlignPrune introduces the Dynamic Alignment Score (DAS), which is a loss-trajectory-based criterion that enables more accurate identification of noisy samples, thereby improving pruning effectiveness. As a simple yet effective plug-and-play module, AlignPrune can be seamlessly integrated into state-of-the-art dynamic pruning frameworks, consistently outperforming them without modifying either the model architecture or the training pipeline. Extensive experiments on five widely-used benchmarks across various noise types and pruning ratios demonstrate the effectiveness of AlignPrune, boosting accuracy by up to 6.3\\% over state-of-the-art baselines. Our results offer a generalizable solution for pruning under noisy data, encouraging further exploration of learning in real-world scenarios. Code is available at: https://github.com/leonqin430/AlignPrune.",
+        "categories": "cs.CV",
+        "comment": "Published in CVPR 2026 Findings"
+      },
+      "analysis": {
+        "problem_statement": "The paper addresses the issue of dynamic data pruning methods failing under noisy-label settings due to their reliance on per-sample loss as the ranking criterion.",
+        "bottleneck_addressed": "Training efficiency and pruning effectiveness under noisy data",
+        "executive_summary": "This paper matters to the current AI landscape as it provides a generalizable solution for pruning under noisy data, which is a common challenge in real-world scenarios. This is particularly relevant in applications where data quality is uncertain, such as in medical imaging or natural language processing. The proposed AlignPrune module can be seamlessly integrated into existing dynamic pruning frameworks, making it a valuable addition to the toolkit of AI practitioners.",
+        "key_metrics": {
+          "primary_metric": "Boosting accuracy by up to 6.3%",
+          "metric_value": "6.3",
+          "baseline": "State-of-the-art dynamic pruning frameworks",
+          "improvement_percentage": "6.3%"
+        },
+        "technical_breakdown": {
+          "method": "AlignPrune introduces the Dynamic Alignment Score (DAS), a loss-trajectory-based criterion that enables more accurate identification of noisy samples, thereby improving pruning effectiveness.",
+          "architecture": "The proposed module is a simple yet effective plug-and-play module that can be seamlessly integrated into existing dynamic pruning frameworks.",
+          "implementation_details": "The Dynamic Alignment Score (DAS) is a novel technique used in AlignPrune to identify noisy samples.",
+          "code_complexity": "Not disclosed"
+        },
+        "relevance_tags": [
+          "dynamic pruning",
+          "noisy data",
+          "pruning effectiveness",
+          "training efficiency"
+        ],
+        "confidence": "high"
+      },
+      "analyzed_at": "2026-04-09T02:03:26.451500",
+      "conference_info": {
+        "conference": "CVPR",
+        "year": "2026",
+        "comment": "Published in CVPR 2026 Findings",
+        "raw_comment": "Published in CVPR 2026 Findings"
+      }
+    },
+    {
+      "paper": {
+        "title": "Tracking Adaptation Time: Metrics for Temporal Distribution Shift",
+        "arxiv_id": "2604.07266v1",
+        "authors": [
+          "Lorenzo Iovine",
+          "Giacomo Ziffer",
+          "Emanuele Della Valle"
+        ],
+        "published": "2026-04-08T16:30:28Z",
+        "summary": "Evaluating robustness under temporal distribution shift remains an open challenge. Existing metrics quantify the average decline in performance, but fail to capture how models adapt to evolving data. As a result, temporal degradation is often misinterpreted: when accuracy declines, it is unclear whether the model is failing to adapt or whether the data itself has become inherently more challenging to learn. In this work, we propose three complementary metrics to distinguish adaptation from intrinsic difficulty in the data. Together, these metrics provide a dynamic and interpretable view of model behavior under temporal distribution shift. Results show that our metrics uncover adaptation patterns hidden by existing analysis, offering a richer understanding of temporal robustness in evolving environments.",
+        "categories": "cs.LG",
+        "comment": "Accepted at CEUR-WS Vol. 4183 (Streaming Continual Learning Bridge at AAAI 2026)"
+      },
+      "analysis": {
+        "problem_statement": "Evaluating robustness under temporal distribution shift in machine learning models, where existing metrics fail to capture how models adapt to evolving data.",
+        "bottleneck_addressed": "Training efficiency and interpretability of model behavior under temporal distribution shift",
+        "executive_summary": "This paper addresses a critical challenge in machine learning, where existing metrics fail to capture how models adapt to evolving data. This matters in the current AI landscape, particularly in applications like autonomous vehicles, recommender systems, and healthcare, where data distributions shift over time. By proposing three complementary metrics, the authors provide a dynamic and interpretable view of model behavior under temporal distribution shift.",
+        "key_metrics": {
+          "primary_metric": "Three complementary metrics to distinguish adaptation from intrinsic difficulty in the data",
+          "metric_value": "Not disclosed",
+          "baseline": "Existing metrics that quantify the average decline in performance",
+          "improvement_percentage": "Not quantifiable"
+        },
+        "technical_breakdown": {
+          "method": "The authors propose three complementary metrics to capture how models adapt to evolving data. These metrics provide a dynamic and interpretable view of model behavior under temporal distribution shift. The approach involves analyzing the temporal degradation of models and distinguishing adaptation from intrinsic difficulty in the data.",
+          "architecture": "The proposed metrics are based on analyzing the temporal degradation of models, which involves tracking the adaptation time of models to evolving data.",
+          "implementation_details": "The implementation details are not disclosed in the summary, but the authors mention that the proposed metrics provide a richer understanding of temporal robustness in evolving environments.",
+          "code_complexity": "Not disclosed"
+        },
+        "relevance_tags": [
+          "Temporal Distribution Shift",
+          "Model Adaptation",
+          "Interpretability",
+          "Machine Learning"
+        ],
+        "confidence": "medium"
+      },
+      "analyzed_at": "2026-04-09T02:03:34.423384",
+      "conference_info": {
+        "conference": "AAAI",
+        "year": "2026",
+        "comment": "Accepted at CEUR-WS Vol. 4183 (Streaming Continual Learning Bridge at AAAI 2026)",
+        "raw_comment": "Accepted at CEUR-WS Vol. 4183 (Streaming Continual Learning Bridge at AAAI 2026)"
+      }
+    },
+    {
+      "paper": {
+        "title": "Efficient Learned Data Compression via Dual-Stream Feature Decoupling",
+        "arxiv_id": "2604.07239v1",
+        "authors": [
+          "Huidong Ma",
+          "Xinyan Shi",
+          "Hui Sun",
+          "Xiaofei Yue",
+          "Xiaoguang Liu",
+          "Gang Wang",
+          "Wentong Cai"
+        ],
+        "published": "2026-04-08T16:05:24Z",
+        "summary": "While Learned Data Compression (LDC) has achieved superior compression ratios, balancing precise probability modeling with system efficiency remains challenging. Crucially, uniform single-stream architectures struggle to simultaneously capture micro-syntactic and macro-semantic features, necessitating deep serial stacking that exacerbates latency. Compounding this, heterogeneous systems are constrained by device speed mismatches, where throughput is capped by Amdahl's Law due to serial processing. To this end, we propose a Dual-Stream Multi-Scale Decoupler that disentangles local and global contexts to replace deep serial processing with shallow parallel streams, and incorporate a Hierarchical Gated Refiner for adaptive feature refinement and precise probability modeling. Furthermore, we design a Concurrent Stream-Parallel Pipeline, which overcomes systemic bottlenecks to achieve full-pipeline parallelism. Extensive experiments demonstrate that our method achieves state-of-the-art performance in both compression ratio and throughput, while maintaining the lowest latency and memory usage. The code is available at https://github.com/huidong-ma/FADE.",
+        "categories": "cs.CL",
+        "comment": "Accepted to ACL 2026"
+      },
+      "analysis": {
+        "problem_statement": "The paper addresses the challenge of balancing precise probability modeling with system efficiency in Learned Data Compression (LDC), particularly in heterogeneous systems with device speed mismatches.",
+        "bottleneck_addressed": "Inference latency, memory usage, and throughput limitations due to serial processing and Amdahl's Law.",
+        "executive_summary": "This paper tackles a crucial bottleneck in AI, where uniform single-stream architectures struggle to capture both micro-syntactic and macro-semantic features, leading to deep serial stacking and latency issues. The proposed method, Dual-Stream Multi-Scale Decoupler, overcomes these challenges by disentangling local and global contexts, achieving state-of-the-art performance in both compression ratio and throughput. This is particularly relevant to real-world applications where efficient data compression is critical, such as in edge computing, IoT devices, and cloud storage.",
+        "key_metrics": {
+          "primary_metric": "State-of-the-art performance in both compression ratio and throughput",
+          "metric_value": "Not disclosed",
+          "baseline": "Not specified",
+          "improvement_percentage": "Not quantifiable"
+        },
+        "technical_breakdown": {
+          "method": "The proposed method, Dual-Stream Multi-Scale Decoupler, disentangles local and global contexts using a Hierarchical Gated Refiner for adaptive feature refinement and precise probability modeling. This is achieved through a Concurrent Stream-Parallel Pipeline, which overcomes systemic bottlenecks to achieve full-pipeline parallelism.",
+          "architecture": "Dual-Stream Multi-Scale Decoupler, Hierarchical Gated Refiner, and Concurrent Stream-Parallel Pipeline",
+          "implementation_details": "The paper does not provide specific details on the implementation, but mentions the use of shallow parallel streams to replace deep serial processing.",
+          "code_complexity": "Not disclosed"
+        },
+        "relevance_tags": [
+          "Learned Data Compression",
+          "Efficient Data Compression",
+          "Heterogeneous Systems",
+          "Amdahl's Law",
+          "Inference Latency",
+          "Memory Usage",
+          "Throughput"
+        ],
+        "confidence": "medium"
+      },
+      "analyzed_at": "2026-04-09T02:03:45.563919",
+      "conference_info": {
+        "conference": "ACL",
+        "year": "2026",
+        "comment": "Accepted to ACL 2026",
+        "raw_comment": "Accepted to ACL 2026"
+      }
+    },
+    {
+      "paper": {
+        "title": "Beyond the Mean: Modelling Annotation Distributions in Continuous Affect Prediction",
+        "arxiv_id": "2604.07198v1",
+        "authors": [
+          "Kosmas Pinitas",
+          "Ilias Maglogiannis"
+        ],
+        "published": "2026-04-08T15:26:56Z",
+        "summary": "Emotion annotation is inherently subjective and cognitively demanding, producing signals that reflect diverse perceptions across annotators rather than a single ground truth. In continuous affect prediction, this variability is typically collapsed into point estimates such as the mean or median, discarding valuable information about annotator disagreement and uncertainty. In this work, we propose a distribution-aware framework that models annotation consensus using the Beta distribution. Instead of predicting a single affect value, models estimate the mean and standard deviation of the annotation distribution, which are transformed into valid Beta parameters through moment matching. This formulation enables the recovery of higher-order distributional descriptors, including skewness, kurtosis, and quantiles, in closed form. As a result, the model captures not only the central tendency of emotional perception but also variability, asymmetry, and uncertainty in annotator responses. We evaluate the proposed approach on the SEWA and RECOLA datasets using multimodal features. Experimental results show that Beta-based modelling produces predictive distributions that closely match the empirical annotator distributions while achieving competitive performance with conventional regression approaches. These findings highlight the importance of modelling annotation uncertainty in affective computing and demonstrate the potential of distribution-aware learning for subjective signal analysis.",
+        "categories": "cs.LG",
+        "comment": "This paper has been accepted at the CVPR 2026 Workshop on Affective Behavior Analysis in-the-wild (ABAW)"
+      },
+      "analysis": {
+        "problem_statement": "The paper addresses the issue of collapsing annotator variability and uncertainty into point estimates in continuous affect prediction tasks.",
+        "bottleneck_addressed": "Training efficiency and model interpretability due to the loss of valuable information about annotator disagreement and uncertainty.",
+        "executive_summary": "Modelling annotation uncertainty is crucial in affective computing, especially when dealing with subjective signals. The proposed Beta-based approach can recover higher-order distributional descriptors, enabling the capture of variability, asymmetry, and uncertainty in annotator responses. This can lead to improved model interpretability and potentially better performance in affect prediction tasks.",
+        "key_metrics": {
+          "primary_metric": "Competitive performance with conventional regression approaches",
+          "metric_value": "Not disclosed",
+          "baseline": "Conventional regression approaches",
+          "improvement_percentage": "Not quantifiable"
+        },
+        "technical_breakdown": {
+          "method": "The proposed framework models annotation consensus using the Beta distribution, estimating the mean and standard deviation of the annotation distribution. These values are then transformed into valid Beta parameters through moment matching, enabling the recovery of higher-order distributional descriptors.",
+          "architecture": "Distribution-aware framework with Beta distribution modelling and moment matching for parameter transformation",
+          "implementation_details": "Multimodal features and Beta distribution modelling with moment matching",
+          "code_complexity": "Not disclosed"
+        },
+        "relevance_tags": [
+          "Affective Computing",
+          "Subjective Signal Analysis",
+          "Distribution-aware Learning",
+          "Beta Distribution Modelling"
+        ],
+        "confidence": "high"
+      },
+      "analyzed_at": "2026-04-09T02:03:56.432019",
+      "conference_info": {
+        "conference": "CVPR",
+        "year": "2026",
+        "comment": "This paper has been accepted at the CVPR 2026 Workshop on Affective Behavior Analysis in-the-wild (ABAW)",
+        "raw_comment": "This paper has been accepted at the CVPR 2026 Workshop on Affective Behavior Analysis in-the-wild (ABAW)"
+      }
+    },
+    {
+      "paper": {
+        "title": "DINO-QPM: Adapting Visual Foundation Models for Globally Interpretable Image Classification",
+        "arxiv_id": "2604.07166v1",
+        "authors": [
+          "Robert Zimmermann",
+          "Thomas Norrenbrock",
+          "Bodo Rosenhahn"
+        ],
+        "published": "2026-04-08T14:55:36Z",
+        "summary": "Although visual foundation models like DINOv2 provide state-of-the-art performance as feature extractors, their complex, high-dimensional representations create substantial hurdles for interpretability. This work proposes DINO-QPM, which converts these powerful but entangled features into contrastive, class-independent representations that are interpretable by humans. DINO-QPM is a lightweight interpretability adapter that pursues globally interpretable image classification, adapting the Quadratic Programming Enhanced Model (QPM) to operate on strictly frozen DINO backbones. While classification with visual foundation models typically relies on the \\texttt{CLS} token, we deliberately diverge from this standard. By leveraging average-pooling, we directly connect the patch embeddings to the model's features and therefore enable spatial localisation of DINO-QPM's globally interpretable features within the input space. Furthermore, we apply a sparsity loss to minimise spatial scatter and background noise, ensuring that explanations are grounded in relevant object parts. With DINO-QPM we make the level of interpretability of QPM available as an adapter while exceeding the accuracy of DINOv2 linear probe. Evaluated through an introduced Plausibility metric and other interpretability metrics, extensive experiments demonstrate that DINO-QPM is superior to other applicable methods for frozen visual foundation models in both classification accuracy and explanation quality.",
+        "categories": "cs.CV",
+        "comment": "Accepted to the 5th Explainable AI for Computer Vision (XAI4CV) Workshop at CVPR 2026"
+      },
+      "analysis": {
+        "problem_statement": "The paper addresses the interpretability bottleneck of complex, high-dimensional representations in visual foundation models like DINOv2.",
+        "bottleneck_addressed": "Interpretability bottleneck of complex, high-dimensional representations in visual foundation models.",
+        "executive_summary": "This paper proposes DINO-QPM, a lightweight interpretability adapter that enables globally interpretable image classification by adapting the Quadratic Programming Enhanced Model (QPM) to operate on frozen DINO backbones. This addresses a significant pain point in the current AI landscape, where the complex representations of visual foundation models hinder their interpretability. This matters particularly in applications where explainability is crucial, such as medical imaging or autonomous vehicles.",
+        "key_metrics": {
+          "primary_metric": "Exceeds the accuracy of DINOv2 linear probe",
+          "metric_value": "Not disclosed",
+          "baseline": "DINOv2 linear probe",
+          "improvement_percentage": "Not quantifiable"
+        },
+        "technical_breakdown": {
+          "method": "DINO-QPM converts the complex features of DINOv2 into contrastive, class-independent representations that are interpretable by humans. This is achieved by leveraging average-pooling to directly connect patch embeddings to the model's features, enabling spatial localisation of DINO-QPM's features within the input space. A sparsity loss is applied to minimise spatial scatter and background noise, ensuring that explanations are grounded in relevant object parts.",
+          "architecture": "DINO-QPM architecture consists of a frozen DINO backbone, a Quadratic Programming Enhanced Model (QPM) adapter, and a sparsity loss component.",
+          "implementation_details": "The paper uses average-pooling and a sparsity loss component to achieve globally interpretable features. The Quadratic Programming Enhanced Model (QPM) is adapted to operate on frozen DINO backbones.",
+          "code_complexity": "The computational complexity of DINO-QPM is not explicitly stated, but it is described as a lightweight adapter. The training time implications are also not disclosed."
+        },
+        "relevance_tags": [
+          "Explainable AI",
+          "Computer Vision",
+          "Interpretability",
+          "Visual Foundation Models"
+        ],
+        "confidence": "medium"
+      },
+      "analyzed_at": "2026-04-09T02:04:06.724959",
+      "conference_info": {
+        "conference": "CVPR",
+        "year": "2026",
+        "comment": "Accepted to the 5th Explainable AI for Computer Vision (XAI4CV) Workshop at CVPR 2026",
+        "raw_comment": "Accepted to the 5th Explainable AI for Computer Vision (XAI4CV) Workshop at CVPR 2026"
+      }
+    },
+    {
+      "paper": {
+        "title": "CSA-Graphs: A Privacy-Preserving Structural Dataset for Child Sexual Abuse Research",
+        "arxiv_id": "2604.07132v1",
+        "authors": [
+          "Carlos Caetano",
+          "Camila Laranjeira",
+          "Clara Ernesto",
+          "Artur Barros",
+          "Jo\u00e3o Macedo",
+          "Leo S. F. Ribeiro",
+          "Jefersson A. dos Santos",
+          "Sandra Avila"
+        ],
+        "published": "2026-04-08T14:26:52Z",
+        "summary": "Child Sexual Abuse Imagery (CSAI) classification is an important yet challenging problem for computer vision research due to the strict legal and ethical restrictions that prevent the public sharing of CSAI datasets. This limitation hinders reproducibility and slows progress in developing automated methods. In this work, we introduce CSA-Graphs, a privacy-preserving structural dataset. Instead of releasing the original images, we provide structural representations that remove explicit visual content while preserving contextual information. CSA-Graphs includes two complementary graph-based modalities: scene graphs describing object relationships and skeleton graphs encoding human pose. Experiments show that both representations retain useful information for classifying CSAI, and that combining them further improves performance. This dataset enables broader research on computer vision methods for child safety while respecting legal and ethical constraints.",
+        "categories": "cs.CV",
+        "comment": "Conference on Computer Vision and Pattern Recognition (CVPR 2026), in the Workshop on Computer Vision for Children (CV4CHL)"
+      },
+      "analysis": {
+        "problem_statement": "The paper addresses the challenge of developing automated methods for classifying Child Sexual Abuse Imagery (CSAI) due to strict legal and ethical restrictions on sharing CSAI datasets.",
+        "bottleneck_addressed": "Data sharing and reproducibility limitations in CSAI research",
+        "executive_summary": "This paper introduces CSA-Graphs, a privacy-preserving structural dataset for CSAI research, enabling broader research on computer vision methods for child safety while respecting legal and ethical constraints. This matters to the current AI landscape as it addresses a significant bottleneck in CSAI research, allowing for more reproducible and efficient development of automated methods. This can have a positive impact on child safety by facilitating the creation of more accurate and effective CSAI detection systems.",
+        "key_metrics": {
+          "primary_metric": "Not disclosed",
+          "metric_value": "Not disclosed",
+          "baseline": "Original CSAI datasets",
+          "improvement_percentage": "Not disclosed"
+        },
+        "technical_breakdown": {
+          "method": "CSA-Graphs provides structural representations of CSAI images, removing explicit visual content while preserving contextual information through two complementary graph-based modalities: scene graphs describing object relationships and skeleton graphs encoding human pose. These representations are used to classify CSAI, and combining them further improves performance.",
+          "architecture": "Graph-based modalities (scene graphs and skeleton graphs) for representing CSAI images",
+          "implementation_details": "Not disclosed",
+          "code_complexity": "Not disclosed"
+        },
+        "relevance_tags": [
+          "Computer Vision",
+          "Child Safety",
+          "Privacy-Preserving Data",
+          "Graph-Based Representations"
+        ],
+        "confidence": "medium"
+      },
+      "analyzed_at": "2026-04-09T02:04:17.727384",
+      "conference_info": {
+        "conference": "CVPR",
+        "year": "2026",
+        "comment": "Conference on Computer Vision and Pattern Recognition (CVPR 2026), in the Workshop on Computer Vision for Children (CV4CHL)",
+        "raw_comment": "Conference on Computer Vision and Pattern Recognition (CVPR 2026), in the Workshop on Computer Vision for Children (CV4CHL)"
+      }
+    },
+    {
+      "paper": {
+        "title": "Learning to Query History: Nonstationary Classification via Learned Retrieval",
+        "arxiv_id": "2604.07027v1",
+        "authors": [
+          "Jimmy Gammell",
+          "Bishal Thapaliya",
+          "Yoon Jung",
+          "Riyasat Ohib",
+          "Bilel Fehri",
+          "Deepayan Chakrabarti"
+        ],
+        "published": "2026-04-08T12:45:50Z",
+        "summary": "Nonstationarity is ubiquitous in practical classification settings, leading deployed models to perform poorly even when they generalize well to holdout sets available at training time. We address this by reframing nonstationary classification as time series prediction: rather than predicting from the current input alone, we condition the classifier on a sequence of historical labeled examples that extends beyond the training cutoff. To scale to large sequences, we introduce a learned discrete retrieval mechanism that samples relevant historical examples via input-dependent queries, trained end-to-end with the classifier using a score-based gradient estimator. This enables the full corpus of historical data to remain on an arbitrary filesystem during training and deployment. Experiments on synthetic benchmarks and Amazon Reviews '23 (electronics category) show improved robustness to distribution shift compared to standard classifiers, with VRAM scaling predictably as the length of the historical data sequence increases.",
+        "categories": "cs.LG",
+        "comment": "Accepted to ICLR 2026 Workshop on Time Series in the Age of Large Models (TSALM). 12 pages, 6 figures"
+      },
+      "analysis": {
+        "problem_statement": "The paper addresses the issue of nonstationarity in classification settings, where deployed models perform poorly due to distribution shifts not captured during training.",
+        "bottleneck_addressed": "Context length and memory usage, as the paper aims to leverage a large sequence of historical labeled examples while scaling predictably with VRAM.",
+        "executive_summary": "This paper tackles a crucial challenge in AI, where models struggle to adapt to changing distributions. By conditioning the classifier on historical data, it enables robustness to distribution shifts. This is particularly relevant in applications like recommendation systems, where user behavior and preferences evolve over time.",
+        "key_metrics": {
+          "primary_metric": "Improved robustness to distribution shift",
+          "metric_value": "Not disclosed",
+          "baseline": "Standard classifiers",
+          "improvement_percentage": "Not quantifiable"
+        },
+        "technical_breakdown": {
+          "method": "The paper reframes nonstationary classification as time series prediction and introduces a learned discrete retrieval mechanism to sample relevant historical examples. This is trained end-to-end with the classifier using a score-based gradient estimator.",
+          "architecture": "The architecture consists of a classifier and a learned discrete retrieval mechanism, which samples historical examples based on input-dependent queries.",
+          "implementation_details": "The paper uses a score-based gradient estimator for training, which enables the full corpus of historical data to remain on an arbitrary filesystem during training and deployment.",
+          "code_complexity": "The computational complexity and training time implications are not explicitly stated, but the use of a learned retrieval mechanism and score-based gradient estimator may introduce additional complexity."
+        },
+        "relevance_tags": [
+          "nonstationarity",
+          "distribution shift",
+          "time series prediction",
+          "learned retrieval",
+          "score-based gradient estimator"
+        ],
+        "confidence": "medium"
+      },
+      "analyzed_at": "2026-04-09T02:04:27.541184",
+      "conference_info": {
+        "conference": "ICLR",
+        "year": "2026",
+        "comment": "Accepted to ICLR 2026 Workshop on Time Series in the Age of Large Models (TSALM). 12 pages, 6 figures",
+        "raw_comment": "Accepted to ICLR 2026 Workshop on Time Series in the Age of Large Models (TSALM). 12 pages, 6 figures"
+      }
+    },
+    {
+      "paper": {
+        "title": "MoBiE: Efficient Inference of Mixture of Binary Experts under Post-Training Quantization",
+        "arxiv_id": "2604.06798v1",
+        "authors": [
+          "Zhixiong Zhao",
+          "Zukang Xu",
+          "Zhixuan Chen",
+          "Dawei Yang"
+        ],
+        "published": "2026-04-08T08:12:26Z",
+        "summary": "Mixture-of-Experts (MoE) based large language models (LLMs) offer strong performance but suffer from high memory and computation costs. Weight binarization provides extreme efficiency, yet existing binary methods designed for dense LLMs struggle with MoE-specific issues, including cross-expert redundancy, task-agnostic importance estimation, and quantization-induced routing shifts. To this end, we propose MoBiE, the first binarization framework tailored for MoE-based LLMs. MoBiE is built on three core innovations: 1. using joint SVD decomposition to reduce cross-expert redundancy; 2. integrating global loss gradients into local Hessian metrics to enhance weight importance estimation; 3. introducing an error constraint guided by the input null space to mitigate routing distortion. Notably, MoBiE achieves these optimizations while incurring no additional storage overhead, striking a balance between efficiency and model performance. Extensive experiments demonstrate that MoBiE consistently outperforms state-of-the-art binary methods across multiple MoE-based LLMs and benchmarks. For example, on Qwen3-30B-A3B, MoBiE reduces perplexity by 52.2$\\%$, improves average zero-shot performance by 43.4$\\%$, achieves over 2 $\\times$ inference speedup, and further shortens quantization time. The code is available at https://github.com/Kishon-zzx/MoBiE.",
+        "categories": "cs.LG",
+        "comment": "Accepted at ACL 2026 Findings"
+      },
+      "analysis": {
+        "problem_statement": "Efficiently binarizing Mixture-of-Experts (MoE) based large language models (LLMs) to reduce memory and computation costs without sacrificing performance.",
+        "bottleneck_addressed": "memory usage, inference latency",
+        "executive_summary": "MoBiE addresses a critical bottleneck in MoE-based LLMs, which are known for their high memory and computation costs. This matters to the current AI landscape as it enables the deployment of more complex and accurate models in resource-constrained environments. The proposed method has significant implications for applications such as natural language processing, chatbots, and language translation.",
+        "key_metrics": {
+          "primary_metric": "52.2% perplexity reduction",
+          "metric_value": "Not disclosed",
+          "baseline": "state-of-the-art binary methods",
+          "improvement_percentage": "52.2%"
+        },
+        "technical_breakdown": {
+          "method": "MoBiE uses joint SVD decomposition to reduce cross-expert redundancy, integrates global loss gradients into local Hessian metrics for weight importance estimation, and introduces an error constraint guided by the input null space to mitigate routing distortion.",
+          "architecture": "Mixture-of-Experts (MoE) architecture with binarized weights",
+          "implementation_details": "Joint SVD decomposition, global loss gradients, local Hessian metrics, error constraint guided by input null space",
+          "code_complexity": "Not disclosed"
+        },
+        "relevance_tags": [
+          "Mixture-of-Experts",
+          "large language models",
+          "binarization",
+          "memory efficiency",
+          "inference latency"
+        ],
+        "confidence": "high"
+      },
+      "analyzed_at": "2026-04-09T02:04:39.370808",
+      "conference_info": {
+        "conference": "ACL",
+        "year": "2026",
+        "comment": "Accepted at ACL 2026 Findings",
+        "raw_comment": "Accepted at ACL 2026 Findings"
+      }
+    },
+    {
+      "paper": {
+        "title": "Bi-Lipschitz Autoencoder With Injectivity Guarantee",
+        "arxiv_id": "2604.06701v1",
+        "authors": [
+          "Qipeng Zhan",
+          "Zhuoping Zhou",
+          "Zexuan Wang",
+          "Qi Long",
+          "Li Shen"
+        ],
+        "published": "2026-04-08T05:40:00Z",
+        "summary": "Autoencoders are widely used for dimensionality reduction, based on the assumption that high-dimensional data lies on low-dimensional manifolds. Regularized autoencoders aim to preserve manifold geometry during dimensionality reduction, but existing approaches often suffer from non-injective mappings and overly rigid constraints that limit their effectiveness and robustness. In this work, we identify encoder non-injectivity as a core bottleneck that leads to poor convergence and distorted latent representations. To ensure robustness across data distributions, we formalize the concept of admissible regularization and provide sufficient conditions for its satisfaction. In this work, we propose the Bi-Lipschitz Autoencoder (BLAE), which introduces two key innovations: (1) an injective regularization scheme based on a separation criterion to eliminate pathological local minima, and (2) a bi-Lipschitz relaxation that preserves geometry and exhibits robustness to data distribution drift. Empirical results on diverse datasets show that BLAE consistently outperforms existing methods in preserving manifold structure while remaining resilient to sampling sparsity and distribution shifts. Code is available at https://github.com/qipengz/BLAE.",
+        "categories": "cs.LG",
+        "comment": "Accepted for publication at ICLR 2026, 27 Pages, 15 Figures"
+      },
+      "analysis": {
+        "problem_statement": "The paper addresses the problem of ensuring injective mappings in autoencoders to preserve manifold geometry during dimensionality reduction.",
+        "bottleneck_addressed": "encoder non-injectivity",
+        "executive_summary": "The proposed Bi-Lipschitz Autoencoder (BLAE) tackles a critical issue in autoencoders, which is the lack of injectivity leading to poor convergence and distorted latent representations. This matters to the current AI landscape as it enables more robust and effective dimensionality reduction, particularly in applications where data distribution shifts are common, such as in computer vision and natural language processing.",
+        "key_metrics": {
+          "primary_metric": "Preservation of manifold structure",
+          "metric_value": "Not disclosed",
+          "baseline": "Existing regularized autoencoders",
+          "improvement_percentage": "Not disclosed"
+        },
+        "technical_breakdown": {
+          "method": "The Bi-Lipschitz Autoencoder (BLAE) introduces two key innovations: (1) an injective regularization scheme based on a separation criterion to eliminate pathological local minima, and (2) a bi-Lipschitz relaxation that preserves geometry and exhibits robustness to data distribution drift. This is achieved by formalizing the concept of admissible regularization and providing sufficient conditions for its satisfaction.",
+          "architecture": "The proposed architecture includes an injective regularization scheme and a bi-Lipschitz relaxation, which are integrated into the autoencoder framework.",
+          "implementation_details": "The implementation details include the use of a separation criterion for injective regularization and a bi-Lipschitz relaxation to preserve geometry.",
+          "code_complexity": "The computational complexity and training time implications are not explicitly stated in the paper, but the introduction of additional regularization and relaxation terms may increase the complexity of the training process."
+        },
+        "relevance_tags": [
+          "dimensionality reduction",
+          "autoencoders",
+          "manifold learning",
+          "robustness to distribution shifts"
+        ],
+        "confidence": "high"
+      },
+      "analyzed_at": "2026-04-09T02:04:48.168201",
+      "conference_info": {
+        "conference": "ICLR",
+        "year": "2026",
+        "comment": "Accepted for publication at ICLR 2026, 27 Pages, 15 Figures",
+        "raw_comment": "Accepted for publication at ICLR 2026, 27 Pages, 15 Figures"
+      }
+    },
+    {
+      "paper": {
+        "title": "Towards Robust Content Watermarking Against Removal and Forgery Attacks",
+        "arxiv_id": "2604.06662v1",
+        "authors": [
+          "Yifan Zhu",
+          "Yihan Wang",
+          "Xiao-Shan Gao"
+        ],
+        "published": "2026-04-08T04:28:56Z",
+        "summary": "Generated contents have raised serious concerns about copyright protection, image provenance, and credit attribution. A potential solution for these problems is watermarking. Recently, content watermarking for text-to-image diffusion models has been studied extensively for its effective detection utility and robustness. However, these watermarking techniques are vulnerable to potential adversarial attacks, such as removal attacks and forgery attacks. In this paper, we build a novel watermarking paradigm called Instance-Specific watermarking with Two-Sided detection (ISTS) to resist removal and forgery attacks. Specifically, we introduce a strategy that dynamically controls the injection time and watermarking patterns based on the semantics of users' prompts. Furthermore, we propose a new two-sided detection approach to enhance robustness in watermark detection. Experiments have demonstrated the superiority of our watermarking against removal and forgery attacks.",
+        "categories": "cs.CV",
+        "comment": "14 pages, 5 figures, CVPR 2026 Findings"
+      },
+      "analysis": {
+        "problem_statement": "Developing a robust content watermarking technique to protect generated contents from removal and forgery attacks.",
+        "bottleneck_addressed": "Robustness of watermark detection against adversarial attacks (removal and forgery attacks)",
+        "executive_summary": "This paper addresses the pressing need for robust content watermarking in the context of generated contents. The proposed Instance-Specific watermarking with Two-Sided detection (ISTS) paradigm enhances watermark detection robustness, which is crucial for copyright protection, image provenance, and credit attribution in AI-generated content. This matters to the current AI landscape, particularly in applications where authenticity and ownership are essential, such as art, media, and educational content.",
+        "key_metrics": {
+          "primary_metric": "Not disclosed",
+          "metric_value": "Not disclosed",
+          "baseline": "Not disclosed",
+          "improvement_percentage": "Not disclosed"
+        },
+        "technical_breakdown": {
+          "method": "The ISTS paradigm dynamically controls the injection time and watermarking patterns based on the semantics of users' prompts, and employs a two-sided detection approach to enhance robustness in watermark detection.",
+          "architecture": "The paper introduces a novel watermarking paradigm, Instance-Specific watermarking with Two-Sided detection (ISTS), which includes a dynamic watermarking strategy and a two-sided detection approach.",
+          "implementation_details": "The dynamic watermarking strategy involves injecting watermarks at different times and with varying patterns based on the user's prompt semantics. The two-sided detection approach is designed to enhance the robustness of watermark detection.",
+          "code_complexity": "Not disclosed"
+        },
+        "relevance_tags": [
+          "content watermarking",
+          "adversarial attacks",
+          "robustness",
+          "AI-generated content",
+          "copyright protection"
+        ],
+        "confidence": "medium"
+      },
+      "analyzed_at": "2026-04-09T02:04:59.160979",
+      "conference_info": {
+        "conference": "CVPR",
+        "year": "2026",
+        "comment": "14 pages, 5 figures, CVPR 2026 Findings",
+        "raw_comment": "14 pages, 5 figures, CVPR 2026 Findings"
       }
     }
   ]
