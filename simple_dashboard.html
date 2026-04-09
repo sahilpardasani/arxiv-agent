@@ -177,9 +177,9 @@
                     const arxivUrl = `https://arxiv.org/abs/${arxivId}`;
                     
                     // Build conference display
-                    const conferenceName = conference_info.conference || 'Unknown';
-                    const conferenceYear = conference_info.year || '';
-                    const conferenceDisplay = conferenceYear ? `${conferenceName} ${conferenceYear}` : conferenceName;
+                    const conferenceName = conference_info?.conference || 'Unknown';
+                    const conferenceYear = conference_info?.year || 'Unknown';
+                    const conferenceDisplay = (conferenceYear && conferenceYear !== 'Unknown') ? `${conferenceName} ${conferenceYear}` : conferenceName;
                     
                     html += `
                         <div class="paper-card">
