@@ -1,0 +1,11 @@
+services:
+  arxiv-agent:
+    build: .
+    container_name: arxiv-paper-agent
+    network_mode: host
+    environment:
+      - GROQ_API_KEY=${GROQ_API_KEY}
+    volumes:
+      - ./papers.json:/app/papers.json
+      - ./data:/app/data
+    restart: unless-stopped

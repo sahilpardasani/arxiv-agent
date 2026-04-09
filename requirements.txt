@@ -1,0 +1,9 @@
+fastapi
+uvicorn
+aiohttp
+feedparser
+groq
+aiofiles
+apscheduler
+pydantic
+python-multipart
