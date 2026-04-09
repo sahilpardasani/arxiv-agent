@@ -344,7 +344,43 @@ async def run_daily_pipeline() -> list:
         await asyncio.sleep(1)
     
     print(f"\n✓ Successfully analyzed {len(analyzed_papers)} papers")
-    return analyzed_papers
+    
+    # SORT BY CATEGORY FIRST, THEN BY PUBLICATION DATE (NEWEST FIRST)
+    print("\n" + "="*60)
+    print("STEP 4: Sorting papers by category and date...")
+    print("="*60)
+    
+    # Sort by: category, then by published date (descending = newest first)
+    analyzed_papers.sort(
+        key=lambda x: (
+            x['conference_info'].get('category', 'Other') if x.get('conference_info') else 'Other',
+            x['paper'].get('published', ''),
+        ),
+        reverse=False  # Categories alphabetically, then dates newest first within category
+    )
+    
+    # Re-sort within each category by date (descending)
+    from collections import defaultdict
+    papers_by_category = defaultdict(list)
+    
+    for paper in analyzed_papers:
+        category = paper['conference_info'].get('category', 'Other') if paper.get('conference_info') else 'Other'
+        papers_by_category[category].append(paper)
+    
+    # Sort each category by published date (newest first)
+    sorted_papers = []
+    for category in sorted(papers_by_category.keys()):
+        category_papers = papers_by_category[category]
+        category_papers.sort(
+            key=lambda x: x['paper'].get('published', ''),
+            reverse=True  # Newest first
+        )
+        sorted_papers.extend(category_papers)
+    
+    print(f"✓ Sorted {len(sorted_papers)} papers by category and date")
+    print("   Paper order: Category → Latest date first")
+    
+    return sorted_papers
 
 
 def save_results(results: list, output_file: str = "papers.json"):
@@ -373,4 +409,4 @@ async def main():
 if __name__ == "__main__":
     data = asyncio.run(main())
     print("\n✅ Pipeline complete!")
-    print(f"Results: {len(data['papers'])} papers analyzed")
+    print(f"Results: {len(data['papers'])} papers analyzed (sorted by category & date)")
