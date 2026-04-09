@@ -60,7 +60,7 @@ TOP_TIER_CONFERENCES = {
     "ISMIR",
     "SecDev", "Secure Development",  # Added based on your example
     "USENIX", "USENIX Security",
-    "CCS", "ACM CCS",
+    "CCS", "ACM CCS","ICSE"
     "NDSS",
 }
 
