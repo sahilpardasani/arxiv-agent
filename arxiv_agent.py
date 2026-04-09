@@ -142,17 +142,24 @@ def extract_conference_info(paper: dict) -> Optional[dict]:
     # Look for any top-tier conference name in the comment
     for conf in TOP_TIER_CONFERENCES:
         if conf.lower() in comment_lower:
-            # Try to extract year if present (4 digits)
-            year_match = re.search(r"(?:'(\d{2})|(\d{2})(?!\d)|(20\d{2}|19\d{2}))", comment)
+            # Find the position of the conference name in the comment
+            conf_pos = comment_lower.find(conf.lower())
+            
+            # Look for year near the conference name (within 10 characters after it)
+            search_area = comment[conf_pos:conf_pos+50]
+            
+            # Try multiple year formats: '26, 2026, 26 (with boundaries)
+            year_match = re.search(r"'(\d{2})|(\d{4})", search_area)
+            
             if year_match:
-                if year_match.group(1):  # Matched '26 format (e.g., WWW'26)
+                if year_match.group(1):  # Matched '26 format
                     year = "20" + year_match.group(1)
-                elif year_match.group(2):  # Matched 26 format (e.g., WWW 26)
-                    year = "20" + year_match.group(2)
                 else:  # Matched 2026 format
-                    year = year_match.group(3)
+                    year = year_match.group(2)
             else:
-                year = "Unknown"
+                # Fallback: search entire comment for any 4-digit year
+                year_match = re.search(r"(20\d{2}|19\d{2})", comment)
+                year = year_match.group(1) if year_match else "Unknown"
             
             return {
                 "conference": conf,
