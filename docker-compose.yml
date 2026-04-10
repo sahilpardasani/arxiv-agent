@@ -1,3 +1,5 @@
+version: '3.8'
+
 services:
   arxiv-agent:
     build: .
@@ -11,9 +13,17 @@ services:
       - TZ=America/New_York
       - GIT_SSH_COMMAND=ssh -i /root/.ssh/id_ed25519 -o StrictHostKeyChecking=no
     volumes:
+      # IMPORTANT: These survive container restarts (persistent storage)
       - ./papers.json:/app/papers.json
+      - ./papers_archive.json:/app/papers_archive.json  # ← Archive persists on Render
       - ./data:/app/data
       - ./.git:/app/.git
       - ~/.ssh:/root/.ssh:ro
       - ~/.gitconfig:/root/.gitconfig:ro
     restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 5s
