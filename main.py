@@ -1,315 +1,244 @@
-"""
-FastAPI backend for Conference Paper Agent
-Handles daily scheduling, persistence, and API endpoints
-"""
-
-from fastapi import FastAPI, BackgroundTasks
-from fastapi.responses import FileResponse, JSONResponse
-from fastapi.middleware.cors import CORSMiddleware
+#!/usr/bin/env python3
 import json
 import os
 import subprocess
-from datetime import datetime
-from pathlib import Path
-import asyncio
+from datetime import datetime, timedelta
+from fastapi import FastAPI, HTTPException
+from fastapi.staticfiles import StaticFiles
+from fastapi.responses import FileResponse, HTMLResponse
 import aiofiles
-from apscheduler.schedulers.asyncio import AsyncIOScheduler
-from apscheduler.triggers.cron import CronTrigger
+from apscheduler.schedulers.background import BackgroundScheduler
 import pytz
 
-# Import the agent module
-import sys
-sys.path.insert(0, os.path.dirname(__file__))
-from arxiv_agent import run_daily_pipeline, save_results
+app = FastAPI()
 
-app = FastAPI(title="Conference Paper Agent API")
+# Serve dashboard
+app.mount("/static", StaticFiles(directory=".", html=True), name="static")
 
-# Add CORS middleware
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=["*"],
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
-
-# Data file - look in current directory first (where arxiv_agent.py saves it)
-PAPERS_FILE = Path("papers.json")
-if not PAPERS_FILE.exists():
-    # Also check in data directory as fallback
-    DATA_DIR = Path("./data")
-    DATA_DIR.mkdir(exist_ok=True)
-    PAPERS_FILE = DATA_DIR / "papers.json"
-
-# Initialize scheduler with EST timezone
-scheduler = AsyncIOScheduler()
 EST = pytz.timezone('America/New_York')
 
+# Background task for daily analysis
+def daily_paper_analysis():
+    """Run the daily arXiv paper analysis"""
+    try:
+        print("\n" + "="*60)
+        print("🚀 Running scheduled daily analysis...")
+        print("="*60)
+        result = subprocess.run(
+            ["python", "arxiv_agent.py"],
+            capture_output=True,
+            text=True,
+            timeout=600
+        )
+        print(result.stdout)
+        if result.stderr:
+            print("STDERR:", result.stderr)
+        print("✅ Daily analysis completed")
+    except Exception as e:
+        print(f"❌ Error running daily analysis: {e}")
+
+# Initialize scheduler
+scheduler = BackgroundScheduler(timezone=EST)
+scheduler.add_job(daily_paper_analysis, 'cron', hour=0, minute=30, timezone=EST)
+scheduler.start()
 
 @app.on_event("startup")
 async def startup_event():
-    """Initialize scheduler on startup"""
-    # Schedule to run daily at 12:45 AM EST
-    scheduler.add_job(
-        daily_paper_analysis, 
-        'cron', 
-        hour=0, 
-        minute=30,
-        timezone=EST
-    )
-    scheduler.start()
-    print("✅ Scheduler started - daily analysis will run at 12:45 AM EST")
-    print(f"   Current time: {datetime.now(EST).strftime('%Y-%m-%d %H:%M:%S %Z')}")
-
-
-@app.on_event("shutdown")
-async def shutdown_event():
-    """Shutdown scheduler"""
-    scheduler.shutdown()
-
-
-def push_to_github():
-    """Push papers.json changes to GitHub repository"""
-    try:
-        # Check if git is available and we're in a repo
-        result = subprocess.run(["git", "status"], cwd="/app", capture_output=True, text=True)
-        
-        if result.returncode != 0:
-            print("⚠️  Not a git repository or git not available")
-            return False
-        
-        print("📤 Pushing papers.json to GitHub...")
-        
-        # Add papers.json
-        subprocess.run(["git", "add", "papers.json"], cwd="/app", check=True)
-        
-        # Check if there are changes to commit
-        check_status = subprocess.run(
-            ["git", "diff", "--cached", "--quiet"], 
-            cwd="/app"
-        )
-        
-        if check_status.returncode == 0:
-            print("   ℹ️  No changes to commit")
-            return True
-        
-        # Commit with timestamp
-        commit_msg = f"📊 Auto-update papers.json - {datetime.now(EST).strftime('%Y-%m-%d %H:%M:%S %Z')}"
-        subprocess.run(
-            ["git", "commit", "-m", commit_msg],
-            cwd="/app",
-            check=True
-        )
-        
-        # Push to origin main/master
-        push_result = subprocess.run(
-            ["git", "push", "origin", "HEAD"],
-            cwd="/app",
-            capture_output=True,
-            text=True
-        )
-        
-        if push_result.returncode == 0:
-            print("✅ Successfully pushed papers.json to GitHub")
-            return True
-        else:
-            print(f"❌ Git push failed: {push_result.stderr}")
-            return False
-            
-    except subprocess.CalledProcessError as e:
-        print(f"❌ Git command failed: {e}")
-        return False
-    except Exception as e:
-        print(f"❌ Error pushing to GitHub: {e}")
-        return False
-
-
-async def daily_paper_analysis():
-    """Background task: run the arXiv agent daily and push to GitHub"""
-    current_time = datetime.now(EST).strftime('%Y-%m-%d %H:%M:%S %Z')
-    print(f"\n{'='*70}")
-    print(f"📡 Starting daily paper analysis at {current_time}")
-    print(f"{'='*70}\n")
-    
-    try:
-        # Run the analysis pipeline
-        results = await run_daily_pipeline()
-        
-        if results:
-            # Save results to papers.json
-            save_results(results, str(PAPERS_FILE))
-            print(f"\n✅ Daily analysis complete: {len(results)} papers analyzed")
-            
-            # Push to GitHub
-            print("\n" + "-"*70)
-            push_success = push_to_github()
-            print("-"*70)
-            
-            if push_success:
-                print(f"✅ Full pipeline completed successfully at {datetime.now(EST).strftime('%H:%M:%S %Z')}")
-            else:
-                print(f"⚠️  Analysis done but GitHub push failed at {datetime.now(EST).strftime('%H:%M:%S %Z')}")
-        else:
-            print("⚠️  No papers were analyzed - check arXiv API and rate limits")
-            
-    except Exception as e:
-        print(f"❌ Error in daily analysis: {e}")
-        import traceback
-        traceback.print_exc()
-    
-    print(f"{'='*70}\n")
-
-
-@app.get("/")
-async def root():
-    """Serve the dashboard HTML"""
-    try:
-        # Try simple_dashboard.html first
-        return FileResponse("simple_dashboard.html")
-    except FileNotFoundError:
-        try:
-            # Fall back to dashboard.html
-            return FileResponse("dashboard.html")
-        except FileNotFoundError:
-            # If neither exists, return error
-            return JSONResponse(
-                status_code=500,
-                content={"error": "Dashboard HTML file not found"}
-            )
-
-
-@app.get("/api/papers")
-async def get_papers():
-    """Get all analyzed papers"""
-    print(f"[DEBUG] Looking for papers at: {PAPERS_FILE}")
-    print(f"[DEBUG] File exists: {PAPERS_FILE.exists()}")
-    
-    if PAPERS_FILE.exists():
-        async with aiofiles.open(PAPERS_FILE, 'r') as f:
-            content = await f.read()
-            data = json.loads(content)
-            print(f"[DEBUG] Found {len(data.get('papers', []))} papers")
-            return JSONResponse(data)
-    else:
-        print(f"[DEBUG] File not found at {PAPERS_FILE}")
-        print(f"[DEBUG] Current directory: {os.getcwd()}")
-        print(f"[DEBUG] Files in current dir: {os.listdir('.')}")
-    
-    return {"papers": [], "last_updated": datetime.now().isoformat()}
-
-
-@app.get("/api/papers/filter")
-async def filter_papers(bottleneck: str = None, tag: str = None):
-    """Filter papers by bottleneck or tag"""
-    if not PAPERS_FILE.exists():
-        return {"papers": []}
-    
-    async with aiofiles.open(PAPERS_FILE, 'r') as f:
-        data = json.loads(await f.read())
-    
-    papers = data.get("papers", [])
-    
-    if bottleneck:
-        papers = [p for p in papers if p["analysis"]["bottleneck_addressed"].lower() == bottleneck.lower()]
-    
-    if tag:
-        papers = [p for p in papers if tag.lower() in [t.lower() for t in p["analysis"]["relevance_tags"]]]
-    
-    return {"papers": papers, "total": len(papers)}
-
-
-@app.get("/api/bottlenecks")
-async def get_bottlenecks():
-    """Get list of all bottleneck types"""
-    if not PAPERS_FILE.exists():
-        return {"bottlenecks": []}
-    
-    async with aiofiles.open(PAPERS_FILE, 'r') as f:
-        data = json.loads(await f.read())
-    
-    bottlenecks = list(set(p["analysis"]["bottleneck_addressed"] for p in data.get("papers", [])))
-    return {"bottlenecks": sorted(bottlenecks)}
-
-
-@app.post("/api/trigger-analysis")
-async def trigger_analysis(background_tasks: BackgroundTasks):
-    """Manually trigger paper analysis (admin endpoint)"""
-    background_tasks.add_task(daily_paper_analysis)
-    return {"status": "Analysis triggered", "message": "Check back in a few minutes"}
-
-
-@app.get("/api/stats")
-async def get_stats():
-    """Get dashboard statistics"""
-    if not PAPERS_FILE.exists():
-        return {
-            "total_papers": 0,
-            "bottlenecks": {},
-            "last_updated": None,
-            "confidence_distribution": {}
-        }
-    
-    async with aiofiles.open(PAPERS_FILE, 'r') as f:
-        data = json.loads(await f.read())
-    
-    papers = data.get("papers", [])
-    
-    # Count by bottleneck
-    bottlenecks = {}
-    confidence_dist = {"high": 0, "medium": 0, "low": 0}
-    
-    for paper in papers:
-        analysis = paper.get("analysis", {})
-        bottleneck = analysis.get("bottleneck_addressed", "Unknown")
-        bottlenecks[bottleneck] = bottlenecks.get(bottleneck, 0) + 1
-        
-        confidence = analysis.get("confidence", "medium")
-        confidence_dist[confidence] = confidence_dist.get(confidence, 0) + 1
-    
-    return {
-        "total_papers": len(papers),
-        "bottlenecks": bottlenecks,
-        "confidence_distribution": confidence_dist,
-        "last_updated": data.get("last_updated")
-    }
-
-
-@app.get("/debug")
-async def debug_info():
-    """Debug endpoint - shows papers file location and content preview"""
-    files_in_dir = os.listdir(".")
-    papers_info = {
-        "papers_file_path": str(PAPERS_FILE),
-        "papers_file_exists": PAPERS_FILE.exists(),
-        "files_in_directory": files_in_dir,
-        "current_time_est": datetime.now(EST).strftime('%Y-%m-%d %H:%M:%S %Z'),
-        "next_scheduled_run": "12:45 AM EST daily"
-    }
-    
-    if PAPERS_FILE.exists():
-        with open(PAPERS_FILE, 'r') as f:
-            data = json.load(f)
-            papers_info["papers_count"] = len(data.get("papers", []))
-            papers_info["last_updated"] = data.get("last_updated")
-            if data.get("papers"):
-                papers_info["first_paper_title"] = data["papers"][0].get("paper", {}).get("title", "N/A")
-    
-    return papers_info
-
+    print(f"[{datetime.now().isoformat()}] Server started")
+    print(f"Scheduler running: {scheduler.running}")
 
 @app.get("/health")
 async def health_check():
     """Health check endpoint"""
-    return {
-        "status": "healthy",
-        "timestamp": datetime.now(EST).isoformat(),
-        "current_time_est": datetime.now(EST).strftime('%Y-%m-%d %H:%M:%S %Z'),
-        "papers_file_exists": PAPERS_FILE.exists(),
-        "papers_file_path": str(PAPERS_FILE),
-        "current_directory": os.getcwd(),
-        "next_scheduled_run": "12:45 AM EST daily",
-    }
+    return {"status": "healthy", "timestamp": datetime.now().isoformat()}
 
+@app.get("/api/papers")
+async def get_papers(date: str = None):
+    """
+    Get papers by date
+    
+    Query parameters:
+    - date: YYYY-MM-DD format (optional, defaults to yesterday)
+    
+    Examples:
+    - /api/papers (gets yesterday's papers)
+    - /api/papers?date=2026-04-09 (gets April 9's papers)
+    """
+    try:
+        # Load papers.json (current/today's data)
+        if os.path.exists("papers.json"):
+            async with aiofiles.open("papers.json", "r") as f:
+                content = await f.read()
+                data = json.loads(content)
+        else:
+            return {"error": "No papers available yet", "total_papers": 0}
+        
+        # If no date specified, return today's papers
+        if not date:
+            return data
+        
+        # Load archive for historical data
+        if os.path.exists("papers_archive.json"):
+            async with aiofiles.open("papers_archive.json", "r") as f:
+                content = await f.read()
+                archive = json.loads(content)
+            
+            if date in archive.get("dates", {}):
+                archive_data = archive["dates"][date]
+                return {
+                    "last_updated": archive_data.get("updated_at"),
+                    "total_papers": archive_data.get("count", 0),
+                    "papers": archive_data.get("papers", []),
+                    "categories": data.get("categories", []),
+                    "filter_date": date,
+                    "metrics": {
+                        "dashboard": {
+                            "date": date,
+                            "total_papers": archive_data.get("count", 0),
+                            "note": "Historical data from archive"
+                        }
+                    }
+                }
+            else:
+                return {
+                    "error": f"No papers found for date {date}",
+                    "available_dates": list(archive.get("dates", {}).keys()),
+                    "total_papers": 0
+                }
+        else:
+            return {
+                "error": "Archive not available",
+                "total_papers": 0
+            }
+        
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/dates")
+async def get_available_dates():
+    """Get all available dates with paper counts"""
+    try:
+        dates_info = {}
+        
+        # Add current date (from papers.json)
+        if os.path.exists("papers.json"):
+            async with aiofiles.open("papers.json", "r") as f:
+                content = await f.read()
+                data = json.loads(content)
+                filter_date = data.get("filter_date")
+                if filter_date:
+                    dates_info[filter_date] = {
+                        "count": data.get("total_papers", 0),
+                        "status": "current"
+                    }
+        
+        # Add historical dates from archive
+        if os.path.exists("papers_archive.json"):
+            async with aiofiles.open("papers_archive.json", "r") as f:
+                content = await f.read()
+                archive = json.loads(content)
+            
+            for date_key, date_data in archive.get("dates", {}).items():
+                if date_key not in dates_info:
+                    dates_info[date_key] = {}
+                dates_info[date_key]["count"] = date_data.get("count", 0)
+                dates_info[date_key]["status"] = "archived"
+        
+        # Sort dates in descending order (newest first)
+        sorted_dates = sorted(dates_info.items(), key=lambda x: x[0], reverse=True)
+        
+        return {
+            "total_dates": len(dates_info),
+            "dates": dict(sorted_dates),
+            "last_updated": datetime.now().isoformat()
+        }
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.post("/api/trigger-analysis")
+async def trigger_analysis():
+    """Manually trigger analysis (for cron jobs)"""
+    try:
+        print("\n" + "="*60)
+        print("📤 Manual trigger received - running analysis...")
+        print("="*60)
+        
+        result = subprocess.run(
+            ["python", "arxiv_agent.py"],
+            capture_output=True,
+            text=True,
+            timeout=600
+        )
+        
+        print(result.stdout)
+        if result.stderr:
+            print("STDERR:", result.stderr)
+        
+        # Push to GitHub
+        print("\n" + "-"*60)
+        print("📤 Pushing to GitHub...")
+        git_result = subprocess.run(
+            ["git", "add", "papers.json", "papers_archive.json"],
+            capture_output=True,
+            text=True
+        )
+        
+        commit_result = subprocess.run(
+            ["git", "commit", "-m", f"📊 Auto-update papers and archive - {datetime.now().isoformat()}"],
+            capture_output=True,
+            text=True
+        )
+        
+        push_result = subprocess.run(
+            ["git", "push", "origin", "main"],
+            capture_output=True,
+            text=True,
+            env={**os.environ, "GIT_SSH_COMMAND": "ssh -i /root/.ssh/id_ed25519 -o StrictHostKeyChecking=no"}
+        )
+        
+        if push_result.returncode == 0:
+            print("✅ Successfully pushed to GitHub")
+        else:
+            print(f"❌ Git push failed: {push_result.stderr}")
+        
+        print("-"*60)
+        
+        return {
+            "status": "success",
+            "message": "Analysis completed and pushed to GitHub",
+            "timestamp": datetime.now().isoformat()
+        }
+    
+    except subprocess.TimeoutExpired:
+        raise HTTPException(status_code=500, detail="Analysis timed out")
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/")
+async def root():
+    """Serve the dashboard"""
+    if os.path.exists("simple_dashboard.html"):
+        return FileResponse("simple_dashboard.html")
+    else:
+        return HTMLResponse("""
+        <html>
+            <head>
+                <title>arXiv Conference Paper Agent</title>
+                <style>
+                    body { font-family: Arial; margin: 40px; }
+                    .info { background: #f0f0f0; padding: 20px; border-radius: 5px; }
+                </style>
+            </head>
+            <body>
+                <h1>arXiv Conference Paper Agent</h1>
+                <div class="info">
+                    <p>Dashboard coming soon...</p>
+                    <p><a href="/api/papers">View today's papers</a></p>
+                    <p><a href="/api/dates">View all available dates</a></p>
+                </div>
+            </body>
+        </html>
+        """)
 
 if __name__ == "__main__":
     import uvicorn

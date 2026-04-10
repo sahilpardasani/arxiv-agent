@@ -13,7 +13,7 @@ from groq import Groq
 # Initialize Groq client
 client = Groq(api_key=os.getenv("GROQ_API_KEY"))
 
-# Conference categories by field - UPDATED WITH NEW CONFERENCES
+# Conference categories by field
 CONFERENCE_CATEGORIES = {
     "General ML/AI": {
         "NeurIPS", "NEURIPS", "ICML", "ICLR", "AAAI", "IJCAI", "UAI",
@@ -127,18 +127,30 @@ def is_paper_from_yesterday(paper: dict) -> bool:
     
     return paper_date == yesterday_date
 
-def load_previous_metrics(output_file: str = "papers.json") -> dict:
-    """Load metrics from previous day's papers.json to compare"""
+def load_archive(archive_file: str = "papers_archive.json") -> dict:
+    """Load historical archive of papers by date"""
     try:
-        if os.path.exists(output_file):
-            with open(output_file, 'r') as f:
-                data = json.load(f)
-                return {
-                    "total_papers": data.get("total_papers", 0),
-                    "date": data.get("filter_date", "unknown")
-                }
+        if os.path.exists(archive_file):
+            with open(archive_file, 'r') as f:
+                return json.load(f)
     except Exception as e:
-        print(f"Could not load previous metrics: {e}")
+        print(f"Could not load archive: {e}")
+    
+    return {
+        "last_updated": datetime.now().isoformat(),
+        "dates": {}
+    }
+
+def load_previous_metrics(archive: dict, date_str: str) -> dict:
+    """Load metrics from previous day in archive"""
+    yesterday = (datetime.fromisoformat(date_str) - timedelta(days=1)).date().isoformat()
+    
+    if yesterday in archive.get("dates", {}):
+        prev_data = archive["dates"][yesterday]
+        return {
+            "total_papers": len(prev_data.get("papers", [])),
+            "date": yesterday
+        }
     
     return {"total_papers": 0, "date": "unknown"}
 
@@ -238,13 +250,7 @@ async def fetch_arxiv_papers_single_session(max_results: int = 100) -> list:
 
 
 def extract_conference_info(paper: dict) -> Optional[dict]:
-    """
-    Extract conference information from paper's comment field.
-    Matches patterns like:
-    - "Accepted to X workshop at CONFERENCE_NAME"
-    - "Conference: CONFERENCE_NAME"
-    - Direct conference mentions
-    """
+    """Extract conference information from paper's comment field."""
     comment = paper.get('comment', '').strip()
     
     if not comment:
@@ -258,12 +264,12 @@ def extract_conference_info(paper: dict) -> Optional[dict]:
     for conf in sorted_conferences:
         conf_lower = conf.lower()
         
-        # Look for the conference name (handles workshop format too)
+        # Look for the conference name
         if conf_lower in comment_lower:
             conf_pos = comment_lower.find(conf_lower)
-            search_area = comment[conf_pos:conf_pos+100]  # Extended search area for year
+            search_area = comment[conf_pos:conf_pos+100]
             
-            # Try to extract year from near the conference name
+            # Try to extract year
             year_match = re.search(r"'(\d{2})|(\d{4})", search_area)
             
             if year_match:
@@ -272,7 +278,6 @@ def extract_conference_info(paper: dict) -> Optional[dict]:
                 else:
                     year = year_match.group(2)
             else:
-                # Fallback: search entire comment for year
                 year_match = re.search(r"(20\d{2}|19\d{2})", comment)
                 year = year_match.group(1) if year_match else "Unknown"
             
@@ -300,7 +305,6 @@ def is_conference_paper(paper: dict) -> bool:
     
     # Exclude papers that are only submitted/under review (not accepted)
     if comment:
-        # If it says "submitted to" or "under review" without "accepted to", skip it
         if ("submitted to" in comment or "under review" in comment) and "accepted to" not in comment:
             return False
     
@@ -322,25 +326,25 @@ Summary: {paper['summary']}
 Provide a JSON response with these fields:
 {{
   "problem_statement": "One sentence describing the core problem this paper solves",
-  "bottleneck_addressed": "Which AI bottleneck does this address? (e.g., memory usage, inference latency, training efficiency, context length, etc.)",
-  "executive_summary": "2-3 sentences on why this matters to the current AI landscape. Reference specific use cases or pain points.",
+  "bottleneck_addressed": "Which AI bottleneck does this address?",
+  "executive_summary": "2-3 sentences on why this matters to the current AI landscape.",
   "key_metrics": {{
-    "primary_metric": "The main improvement claim (e.g., '6-7x memory reduction')",
+    "primary_metric": "The main improvement claim",
     "metric_value": "Numerical value if available",
     "baseline": "What it's compared against",
     "improvement_percentage": "Percentage improvement if quantifiable"
   }},
   "technical_breakdown": {{
-    "method": "How the solution works at a technical level (3-4 sentences)",
-    "architecture": "Key architectural components or novel techniques",
-    "implementation_details": "Specific algorithms, data structures, or techniques used",
+    "method": "How the solution works at a technical level",
+    "architecture": "Key architectural components",
+    "implementation_details": "Specific algorithms or techniques used",
     "code_complexity": "Computational complexity or training time implications"
   }},
   "relevance_tags": ["tag1", "tag2", "tag3"],
-  "confidence": "high/medium/low - how confident this analysis is based on available info"
+  "confidence": "high/medium/low"
 }}
 
-Be precise and technical. If the paper doesn't provide specific numbers, say 'Not disclosed'. If details are unclear from the summary, mark confidence as 'medium'."""
+Be precise and technical."""
 
     try:
         message = client.chat.completions.create(
@@ -361,49 +365,48 @@ Be precise and technical. If the paper doesn't provide specific numbers, say 'No
     return None
 
 
-async def run_daily_pipeline() -> list:
+async def run_daily_pipeline() -> tuple:
     """Main pipeline: fetch papers → filter for conference papers → analyze"""
     print(f"[{datetime.now().isoformat()}] Starting arXiv paper analysis pipeline...")
-    print(f"📅 Filtering for papers from YESTERDAY: {get_yesterday_date_str()}")
+    yesterday_date = get_yesterday_date_str()
+    print(f"📅 Filtering for papers from YESTERDAY: {yesterday_date}")
     
-    # Load previous metrics for comparison
-    previous_metrics = load_previous_metrics()
+    # Load archive for historical data
+    archive = load_archive()
+    previous_metrics = load_previous_metrics(archive, yesterday_date)
     
     # Step 1: Fetch papers
     print("\n" + "="*60)
-    print("STEP 1: Fetching papers from arXiv (respecting rate limits)...")
+    print("STEP 1: Fetching papers from arXiv...")
     print("="*60)
     papers = await fetch_arxiv_papers_single_session(max_results=100)
     print(f"\n✓ Total fetched: {len(papers)} papers\n")
     
     if len(papers) == 0:
         print("⚠️  WARNING: No papers fetched from arXiv!")
-        print("Try running again in a few minutes.")
-        return []
+        return [], archive
     
     # Step 2: Filter for papers from YESTERDAY
     print("="*60)
-    print(f"STEP 2: Filtering for papers from YESTERDAY ({get_yesterday_date_str()})...")
+    print(f"STEP 2: Filtering for papers from YESTERDAY ({yesterday_date})...")
     print("="*60)
     yesterday_papers = [p for p in papers if is_paper_from_yesterday(p)]
     print(f"✓ Found {len(yesterday_papers)} papers published yesterday\n")
     
     if len(yesterday_papers) == 0:
         print("⚠️  No papers published yesterday")
-        return []
+        return [], archive
     
-    # Step 3: Filter for conference papers and DEDUPLICATE by arxiv_id
+    # Step 3: Filter for conference papers and DEDUPLICATE
     print("="*60)
-    print("STEP 3: Filtering for ACCEPTED conference papers (excluding submitted/under review) and removing duplicates...")
+    print("STEP 3: Filtering for ACCEPTED conference papers...")
     print("="*60)
     
-    # Track seen arxiv IDs to remove duplicates
     seen_arxiv_ids = set()
     conference_papers = []
     
     for p in yesterday_papers:
         arxiv_id = p.get('arxiv_id', '')
-        # Only process if we haven't seen this arxiv_id before AND it's a conference paper
         if arxiv_id and arxiv_id not in seen_arxiv_ids and is_conference_paper(p):
             seen_arxiv_ids.add(arxiv_id)
             conference_papers.append(p)
@@ -415,24 +418,22 @@ async def run_daily_pipeline() -> list:
             conf_name = conf_data["conference"]
             conference_info[conf_name] = conference_info.get(conf_name, 0) + 1
     
-    print(f"✓ Found {len(conference_papers)} unique ACCEPTED conference papers from yesterday")
+    print(f"✓ Found {len(conference_papers)} unique ACCEPTED conference papers")
     print("   Exhaustive conference check:")
     
-    # Create a complete conference count including all conferences with 0 papers
     all_conferences_count = {}
     for conf in TOP_TIER_CONFERENCES:
         all_conferences_count[conf] = conference_info.get(conf, 0)
     
-    # Sort by count (descending), then by name
     for conf, count in sorted(all_conferences_count.items(), key=lambda x: (-x[1], x[0])):
         status = "✓" if count > 0 else "○"
         print(f"     {status} {conf}: {count} paper(s)")
     
     if len(conference_papers) == 0:
         print("\n⚠ No ACCEPTED conference papers from yesterday")
-        return []
+        return [], archive
     
-    # Step 4: Analyze ALL papers found yesterday (dynamic count)
+    # Step 4: Analyze papers
     print("\n" + "="*60)
     print(f"STEP 4: Analyzing all {len(conference_papers)} papers with Groq...")
     print("="*60)
@@ -459,7 +460,7 @@ async def run_daily_pipeline() -> list:
     
     print(f"\n✓ Successfully analyzed {len(analyzed_papers)} papers")
     
-    # SORT BY CATEGORY FIRST, THEN BY PUBLICATION DATE (NEWEST FIRST)
+    # Step 5: Sort by category and date
     print("\n" + "="*60)
     print("STEP 5: Sorting papers by category and date...")
     print("="*60)
@@ -471,20 +472,18 @@ async def run_daily_pipeline() -> list:
         category = paper['conference_info'].get('category', 'Other') if paper.get('conference_info') else 'Other'
         papers_by_category[category].append(paper)
     
-    # Sort each category by published date (newest first)
     sorted_papers = []
     for category in sorted(papers_by_category.keys()):
         category_papers = papers_by_category[category]
         category_papers.sort(
             key=lambda x: x['paper'].get('published', ''),
-            reverse=True  # Newest first
+            reverse=True
         )
         sorted_papers.extend(category_papers)
     
     print(f"✓ Sorted {len(sorted_papers)} papers by category and date")
-    print("   Paper order: Category → Latest date first")
     
-    # Calculate day-over-day change
+    # Calculate metrics
     current_count = len(sorted_papers)
     previous_count = previous_metrics.get("total_papers", 0)
     day_change = current_count - previous_count
@@ -493,7 +492,7 @@ async def run_daily_pipeline() -> list:
     print("METRICS DASHBOARD")
     print("="*60)
     print(f"Previous day ({previous_metrics.get('date', 'unknown')}): {previous_count} papers")
-    print(f"Today ({get_yesterday_date_str()}): {current_count} papers")
+    print(f"Today ({yesterday_date}): {current_count} papers")
     if day_change > 0:
         print(f"📈 Change: +{day_change} papers (UP)")
     elif day_change < 0:
@@ -504,32 +503,25 @@ async def run_daily_pipeline() -> list:
     return sorted_papers, {
         "previous_date": previous_metrics.get('date', 'unknown'),
         "previous_count": previous_count,
-        "current_date": get_yesterday_date_str(),
+        "current_date": yesterday_date,
         "current_count": current_count,
-        "day_change": day_change
+        "day_change": day_change,
+        "archive": archive
     }
 
 
-def save_results(results: tuple, output_file: str = "papers.json"):
-    """Save analyzed papers to JSON for web delivery."""
-    if isinstance(results, tuple):
-        papers, metrics = results
-    else:
-        papers = results
-        metrics = {
-            "previous_date": "unknown",
-            "previous_count": 0,
-            "current_date": get_yesterday_date_str(),
-            "current_count": len(papers),
-            "day_change": 0
-        }
+def save_results(results: tuple, output_file: str = "papers.json", archive_file: str = "papers_archive.json"):
+    """Save current papers and update archive."""
+    papers, metrics = results
+    yesterday_date = get_yesterday_date_str()
     
-    output = {
+    # Current papers (for today's view)
+    current_output = {
         "last_updated": datetime.now().isoformat(),
         "total_papers": len(papers),
         "papers": papers,
         "categories": list(CONFERENCE_CATEGORIES.keys()),
-        "filter_date": get_yesterday_date_str(),
+        "filter_date": yesterday_date,
         "metrics": {
             "dashboard": {
                 "previous_date": metrics.get("previous_date"),
@@ -543,21 +535,36 @@ def save_results(results: tuple, output_file: str = "papers.json"):
     }
     
     with open(output_file, "w") as f:
-        json.dump(output, f, indent=2)
+        json.dump(current_output, f, indent=2)
+    print(f"✓ Current papers saved to {output_file}")
     
-    print(f"✓ Results saved to {output_file}")
-    return output
+    # Archive (historical data with date index)
+    archive = metrics.get("archive", {"last_updated": datetime.now().isoformat(), "dates": {}})
+    
+    # Add today's papers to archive
+    archive["dates"][yesterday_date] = {
+        "count": len(papers),
+        "papers": papers,
+        "updated_at": datetime.now().isoformat()
+    }
+    archive["last_updated"] = datetime.now().isoformat()
+    
+    with open(archive_file, "w") as f:
+        json.dump(archive, f, indent=2)
+    print(f"✓ Archive updated: {archive_file} (total dates: {len(archive['dates'])})")
+    
+    return current_output, archive
 
 
 async def main():
     """Run the complete pipeline."""
     results = await run_daily_pipeline()
-    data = save_results(results)
-    return data
+    current_data, archive_data = save_results(results)
+    return current_data
 
 
 if __name__ == "__main__":
     data = asyncio.run(main())
     print("\n✅ Pipeline complete!")
     if isinstance(data, dict) and "papers" in data:
-        print(f"Results: {len(data['papers'])} papers analyzed (sorted by category & date)")
+        print(f"Results: {len(data['papers'])} papers analyzed")
