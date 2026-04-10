@@ -17,7 +17,7 @@ client = Groq(api_key=os.getenv("GROQ_API_KEY"))
 CONFERENCE_CATEGORIES = {
     "General ML/AI": {
         "NeurIPS", "NEURIPS", "ICML", "ICLR", "AAAI", "IJCAI", "UAI",
-        "COLM", "AISTATS"
+        "COLM", "AISTATS", "AMLDS", "International Conference on Advanced Machine Learning and Data Science"
     },
     "Computer Vision": {
         "CVPR", "IEEE/CVF Conference on Computer Vision",
@@ -295,7 +295,15 @@ def extract_conference_info(paper: dict) -> Optional[dict]:
 
 
 def is_conference_paper(paper: dict) -> bool:
-    """Check if paper is from a top-tier conference."""
+    """Check if paper is from a top-tier conference (must be ACCEPTED, not just submitted)."""
+    comment = paper.get('comment', '').lower()
+    
+    # Exclude papers that are only submitted/under review (not accepted)
+    if comment:
+        # If it says "submitted to" or "under review" without "accepted to", skip it
+        if ("submitted to" in comment or "under review" in comment) and "accepted to" not in comment:
+            return False
+    
     conf_info = extract_conference_info(paper)
     return conf_info is not None
 
@@ -386,7 +394,7 @@ async def run_daily_pipeline() -> list:
     
     # Step 3: Filter for conference papers and DEDUPLICATE by arxiv_id
     print("="*60)
-    print("STEP 3: Filtering for top-tier conference papers and removing duplicates...")
+    print("STEP 3: Filtering for ACCEPTED conference papers (excluding submitted/under review) and removing duplicates...")
     print("="*60)
     
     # Track seen arxiv IDs to remove duplicates
@@ -407,7 +415,7 @@ async def run_daily_pipeline() -> list:
             conf_name = conf_data["conference"]
             conference_info[conf_name] = conference_info.get(conf_name, 0) + 1
     
-    print(f"✓ Found {len(conference_papers)} unique conference papers from yesterday")
+    print(f"✓ Found {len(conference_papers)} unique ACCEPTED conference papers from yesterday")
     print("   Exhaustive conference check:")
     
     # Create a complete conference count including all conferences with 0 papers
@@ -421,7 +429,7 @@ async def run_daily_pipeline() -> list:
         print(f"     {status} {conf}: {count} paper(s)")
     
     if len(conference_papers) == 0:
-        print("\n⚠ No conference papers from yesterday")
+        print("\n⚠ No ACCEPTED conference papers from yesterday")
         return []
     
     # Step 4: Analyze ALL papers found yesterday (dynamic count)
