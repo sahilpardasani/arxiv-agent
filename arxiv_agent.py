@@ -108,7 +108,9 @@ ARXIV_CATEGORIES = [
     "cs.CL",      # Computation and Language (NLP)
     "cs.CV",      # Computer Vision
     "cs.SE",      # Software Engineering
-    "stat.ML",    # Machine Learning (Statistics)
+    "stat.ML",
+    "cs.CY",
+    "cs.HC"    # Machine Learning (Statistics)
 ]
 
 # ===== RETENTION POLICY =====
