@@ -49,7 +49,7 @@ EST = pytz.timezone('America/New_York')
 @app.on_event("startup")
 async def startup_event():
     """Initialize scheduler on startup"""
-    # Schedule to run daily at 12:30 AM EST
+    # Schedule to run daily at 12:45 AM EST
     scheduler.add_job(
         daily_paper_analysis, 
         'cron', 
@@ -58,7 +58,7 @@ async def startup_event():
         timezone=EST
     )
     scheduler.start()
-    print("✅ Scheduler started - daily analysis will run at 12:30 AM EST")
+    print("✅ Scheduler started - daily analysis will run at 12:45 AM EST")
     print(f"   Current time: {datetime.now(EST).strftime('%Y-%m-%d %H:%M:%S %Z')}")
 
 
@@ -283,7 +283,7 @@ async def debug_info():
         "papers_file_exists": PAPERS_FILE.exists(),
         "files_in_directory": files_in_dir,
         "current_time_est": datetime.now(EST).strftime('%Y-%m-%d %H:%M:%S %Z'),
-        "next_scheduled_run": "12:30 AM EST daily"
+        "next_scheduled_run": "12:45 AM EST daily"
     }
     
     if PAPERS_FILE.exists():
@@ -307,7 +307,7 @@ async def health_check():
         "papers_file_exists": PAPERS_FILE.exists(),
         "papers_file_path": str(PAPERS_FILE),
         "current_directory": os.getcwd(),
-        "next_scheduled_run": "12:30 AM EST daily",
+        "next_scheduled_run": "12:45 AM EST daily",
     }
 
 
