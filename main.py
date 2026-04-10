@@ -10,6 +10,7 @@ import aiofiles
 from apscheduler.schedulers.background import BackgroundScheduler
 import pytz
 
+
 app = FastAPI()
 
 # Serve dashboard
@@ -28,7 +29,8 @@ def daily_paper_analysis():
             ["python", "arxiv_agent.py"],
             capture_output=True,
             text=True,
-            timeout=600
+            timeout=600,
+            env={**os.environ}
         )
         print(result.stdout)
         if result.stderr:
@@ -167,7 +169,8 @@ async def trigger_analysis():
             ["python", "arxiv_agent.py"],
             capture_output=True,
             text=True,
-            timeout=600
+            timeout=600,
+            env={**os.environ}
         )
         
         print(result.stdout)
@@ -186,7 +189,8 @@ async def trigger_analysis():
         commit_result = subprocess.run(
             ["git", "commit", "-m", f"📊 Auto-update papers and archive - {datetime.now().isoformat()}"],
             capture_output=True,
-            text=True
+            text=True,
+            env={**os.environ, "GIT_SSH_COMMAND": "ssh -i /root/.ssh/id_ed25519 -o StrictHostKeyChecking=no"}
         )
         
         push_result = subprocess.run(

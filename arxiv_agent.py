@@ -111,6 +111,9 @@ ARXIV_CATEGORIES = [
     "stat.ML",    # Machine Learning (Statistics)
 ]
 
+# ===== RETENTION POLICY =====
+DAYS_TO_KEEP = 7  # Only keep last 7 days of data
+
 def get_yesterday_date_str() -> str:
     """Get yesterday's date in ISO format (YYYY-MM-DD)"""
     return (date.today() - timedelta(days=1)).isoformat()
@@ -121,7 +124,6 @@ def is_paper_from_yesterday(paper: dict) -> bool:
     if not published:
         return False
     
-    # Extract date from ISO format (2026-04-10T...)
     paper_date = published.split('T')[0]
     yesterday_date = get_yesterday_date_str()
     
@@ -141,6 +143,31 @@ def load_archive(archive_file: str = "papers_archive.json") -> dict:
         "dates": {}
     }
 
+def cleanup_old_data(archive: dict, days_to_keep: int = DAYS_TO_KEEP) -> dict:
+    """
+    Remove papers older than days_to_keep days
+    Keeps only recent data to save storage
+    """
+    cutoff_date = (date.today() - timedelta(days=days_to_keep)).isoformat()
+    
+    original_count = len(archive.get("dates", {}))
+    
+    # Filter dates to keep only recent ones
+    archive["dates"] = {
+        date_str: data 
+        for date_str, data in archive.get("dates", {}).items() 
+        if date_str >= cutoff_date
+    }
+    
+    removed_count = original_count - len(archive.get("dates", {}))
+    
+    if removed_count > 0:
+        print(f"\n🧹 Cleanup: Removed {removed_count} date(s) older than {days_to_keep} days")
+        print(f"   Cutoff date: {cutoff_date}")
+        print(f"   Keeping: {len(archive['dates'])} date(s)")
+    
+    return archive
+
 def load_previous_metrics(archive: dict, date_str: str) -> dict:
     """Load metrics from previous day in archive"""
     yesterday = (datetime.fromisoformat(date_str) - timedelta(days=1)).date().isoformat()
@@ -155,13 +182,9 @@ def load_previous_metrics(archive: dict, date_str: str) -> dict:
     return {"total_papers": 0, "date": "unknown"}
 
 async def fetch_arxiv_papers_single_session(max_results: int = 100) -> list:
-    """
-    Fetch recent arXiv papers using a SINGLE persistent session.
-    This respects arXiv rate limits: 1 request per 3 seconds.
-    """
+    """Fetch recent arXiv papers"""
     papers = []
     
-    # Create ONE session for all requests
     async with aiohttp.ClientSession() as session:
         for index, category in enumerate(ARXIV_CATEGORIES):
             query = f"cat:{category}"
@@ -178,7 +201,6 @@ async def fetch_arxiv_papers_single_session(max_results: int = 100) -> list:
             try:
                 print(f"  Fetching {category}...", end=" ", flush=True)
                 
-                # Wait 3 seconds between requests (arXiv rate limit)
                 if index > 0:
                     print(f"⏳ waiting...", end=" ", flush=True)
                     await asyncio.sleep(3)
@@ -211,7 +233,6 @@ async def fetch_arxiv_papers_single_session(max_results: int = 100) -> list:
                         print(f"\n    arXiv: Rate limit exceeded. Waiting 30 seconds...\n")
                         await asyncio.sleep(30)
                         
-                        # Retry after wait
                         print(f"  Retrying {category}...", end=" ", flush=True)
                         async with session.get(url, params=params, timeout=aiohttp.ClientTimeout(total=30)) as resp2:
                             if resp2.status == 200:
@@ -257,19 +278,15 @@ def extract_conference_info(paper: dict) -> Optional[dict]:
         return None
     
     comment_lower = comment.lower()
-    
-    # Sort conferences by length (longest first) to match longer names first
     sorted_conferences = sorted(TOP_TIER_CONFERENCES, key=len, reverse=True)
     
     for conf in sorted_conferences:
         conf_lower = conf.lower()
         
-        # Look for the conference name
         if conf_lower in comment_lower:
             conf_pos = comment_lower.find(conf_lower)
             search_area = comment[conf_pos:conf_pos+100]
             
-            # Try to extract year
             year_match = re.search(r"'(\d{2})|(\d{4})", search_area)
             
             if year_match:
@@ -281,7 +298,6 @@ def extract_conference_info(paper: dict) -> Optional[dict]:
                 year_match = re.search(r"(20\d{2}|19\d{2})", comment)
                 year = year_match.group(1) if year_match else "Unknown"
             
-            # Find which category this conference belongs to
             category = "Other"
             for cat, confs in CONFERENCE_CATEGORIES.items():
                 if conf in confs:
@@ -300,10 +316,9 @@ def extract_conference_info(paper: dict) -> Optional[dict]:
 
 
 def is_conference_paper(paper: dict) -> bool:
-    """Check if paper is from a top-tier conference (must be ACCEPTED, not just submitted)."""
+    """Check if paper is from a top-tier conference (must be ACCEPTED)."""
     comment = paper.get('comment', '').lower()
     
-    # Exclude papers that are only submitted/under review (not accepted)
     if comment:
         if ("submitted to" in comment or "under review" in comment) and "accepted to" not in comment:
             return False
@@ -366,13 +381,14 @@ Be precise and technical."""
 
 
 async def run_daily_pipeline() -> tuple:
-    """Main pipeline: fetch papers → filter for conference papers → analyze"""
+    """Main pipeline: fetch papers → filter → analyze"""
     print(f"[{datetime.now().isoformat()}] Starting arXiv paper analysis pipeline...")
     yesterday_date = get_yesterday_date_str()
     print(f"📅 Filtering for papers from YESTERDAY: {yesterday_date}")
     
-    # Load archive for historical data
+    # Load archive and cleanup old data
     archive = load_archive()
+    archive = cleanup_old_data(archive, days_to_keep=DAYS_TO_KEEP)
     previous_metrics = load_previous_metrics(archive, yesterday_date)
     
     # Step 1: Fetch papers
@@ -511,7 +527,7 @@ async def run_daily_pipeline() -> tuple:
 
 
 def save_results(results: tuple, output_file: str = "papers.json", archive_file: str = "papers_archive.json"):
-    """Save current papers and update archive."""
+    """Save current papers and update archive with cleanup."""
     papers, metrics = results
     yesterday_date = get_yesterday_date_str()
     
@@ -538,7 +554,7 @@ def save_results(results: tuple, output_file: str = "papers.json", archive_file:
         json.dump(current_output, f, indent=2)
     print(f"✓ Current papers saved to {output_file}")
     
-    # Archive (historical data with date index)
+    # Archive (historical data with cleanup)
     archive = metrics.get("archive", {"last_updated": datetime.now().isoformat(), "dates": {}})
     
     # Add today's papers to archive
@@ -549,9 +565,12 @@ def save_results(results: tuple, output_file: str = "papers.json", archive_file:
     }
     archive["last_updated"] = datetime.now().isoformat()
     
+    # Cleanup old data before saving
+    archive = cleanup_old_data(archive, days_to_keep=DAYS_TO_KEEP)
+    
     with open(archive_file, "w") as f:
         json.dump(archive, f, indent=2)
-    print(f"✓ Archive updated: {archive_file} (total dates: {len(archive['dates'])})")
+    print(f"✓ Archive updated: {archive_file} (keeping last {DAYS_TO_KEEP} days, total dates: {len(archive['dates'])})")
     
     return current_output, archive
 
@@ -559,12 +578,12 @@ def save_results(results: tuple, output_file: str = "papers.json", archive_file:
 async def main():
     """Run the complete pipeline."""
     results = await run_daily_pipeline()
-    current_data, archive_data = save_results(results)
-    return current_data
+    data = save_results(results)
+    return data
 
 
 if __name__ == "__main__":
     data = asyncio.run(main())
     print("\n✅ Pipeline complete!")
     if isinstance(data, dict) and "papers" in data:
-        print(f"Results: {len(data['papers'])} papers analyzed")
+        print(f"Results: {len(data[0]['papers'])} papers analyzed")
