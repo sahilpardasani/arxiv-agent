@@ -43,7 +43,7 @@ if not PAPERS_FILE.exists():
 
 # Initialize scheduler with EST timezone
 scheduler = AsyncIOScheduler()
-EST = pytz.timezone('US/Eastern')
+EST = pytz.timezone('America/New_York')
 
 
 @app.on_event("startup")
