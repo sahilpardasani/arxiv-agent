@@ -14,7 +14,7 @@ from groq import Groq
 client = Groq(api_key=os.getenv("GROQ_API_KEY"))
 
 # Conference categories by field
-ONFERENCE_CATEGORIES = {
+CONFERENCE_CATEGORIES = {
     "General ML/AI": {
         "NeurIPS", "NEURIPS", "ICML", "ICLR", "AAAI", "IJCAI", "UAI",
         "COLM", "AISTATS"
