@@ -2,6 +2,9 @@
 import json
 import os
 import subprocess
+import base64
+import urllib.request
+import urllib.error
 from datetime import datetime, timedelta
 from fastapi import FastAPI, HTTPException
 from fastapi.staticfiles import StaticFiles
@@ -17,6 +20,59 @@ app = FastAPI()
 app.mount("/static", StaticFiles(directory=".", html=True), name="static")
 
 EST = pytz.timezone('America/New_York')
+
+
+def push_file_to_github(filepath: str):
+    """Push a single file to GitHub via REST API."""
+    token = os.environ.get("GITHUB_TOKEN")
+    repo = os.environ.get("GITHUB_REPO")  # e.g. sahilpardasani/arxiv-agent
+
+    if not token or not repo:
+        print(f"⚠️  GITHUB_TOKEN or GITHUB_REPO not set — skipping GitHub push for {filepath}")
+        return False
+
+    try:
+        with open(filepath, 'r') as f:
+            content = f.read()
+        encoded = base64.b64encode(content.encode()).decode()
+
+        api_url = f"https://api.github.com/repos/{repo}/contents/{filepath}"
+        headers = {
+            "Authorization": f"token {token}",
+            "Accept": "application/vnd.github.v3+json",
+            "Content-Type": "application/json"
+        }
+
+        # Get current SHA (required for updates)
+        req = urllib.request.Request(api_url, headers=headers)
+        try:
+            with urllib.request.urlopen(req) as resp:
+                sha = json.loads(resp.read())["sha"]
+        except urllib.error.HTTPError as e:
+            if e.code == 404:
+                sha = None  # File doesn't exist yet, will create it
+            else:
+                raise
+
+        payload = {
+            "message": f"📊 Auto-update {filepath} - {datetime.now().isoformat()}",
+            "content": encoded,
+        }
+        if sha:
+            payload["sha"] = sha
+
+        data = json.dumps(payload).encode()
+        req = urllib.request.Request(api_url, data=data, method="PUT", headers=headers)
+        with urllib.request.urlopen(req) as resp:
+            resp.read()
+
+        print(f"✅ Pushed {filepath} to GitHub")
+        return True
+
+    except Exception as e:
+        print(f"❌ Failed to push {filepath} to GitHub: {e}")
+        return False
+
 
 # Background task for daily analysis
 def daily_paper_analysis():
@@ -36,6 +92,10 @@ def daily_paper_analysis():
         if result.stderr:
             print("STDERR:", result.stderr)
         print("✅ Daily analysis completed")
+
+        # Push updated data to GitHub so it persists across deploys
+        push_file_to_github("papers.json")
+        push_file_to_github("papers_archive.json")
     except Exception as e:
         print(f"❌ Error running daily analysis: {e}")
 
@@ -176,40 +236,14 @@ async def trigger_analysis():
         print(result.stdout)
         if result.stderr:
             print("STDERR:", result.stderr)
-        
-        # Push to GitHub
-        print("\n" + "-"*60)
-        print("📤 Pushing to GitHub...")
-        git_result = subprocess.run(
-            ["git", "add", "papers.json", "papers_archive.json"],
-            capture_output=True,
-            text=True
-        )
-        
-        commit_result = subprocess.run(
-            ["git", "commit", "-m", f"📊 Auto-update papers and archive - {datetime.now().isoformat()}"],
-            capture_output=True,
-            text=True,
-            env={**os.environ, "GIT_SSH_COMMAND": "ssh -i /root/.ssh/id_ed25519 -o StrictHostKeyChecking=no"}
-        )
-        
-        push_result = subprocess.run(
-            ["git", "push", "origin", "main"],
-            capture_output=True,
-            text=True,
-            env={**os.environ, "GIT_SSH_COMMAND": "ssh -i /root/.ssh/id_ed25519 -o StrictHostKeyChecking=no"}
-        )
-        
-        if push_result.returncode == 0:
-            print("✅ Successfully pushed to GitHub")
-        else:
-            print(f"❌ Git push failed: {push_result.stderr}")
-        
-        print("-"*60)
-        
+
+        # Push updated data to GitHub so it persists across deploys
+        push_file_to_github("papers.json")
+        push_file_to_github("papers_archive.json")
+
         return {
             "status": "success",
-            "message": "Analysis completed and pushed to GitHub",
+            "message": "Analysis completed",
             "timestamp": datetime.now().isoformat()
         }
     
