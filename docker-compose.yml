@@ -9,6 +9,7 @@ services:
       - GIT_AUTHOR_NAME=${GIT_AUTHOR_NAME:-Paper Agent}
       - GIT_AUTHOR_EMAIL=${GIT_AUTHOR_EMAIL:-agent@paperbot.local}
       - TZ=America/New_York
+      - GIT_SSH_COMMAND=ssh -i /root/.ssh/id_ed25519 -o StrictHostKeyChecking=no
     volumes:
       - ./papers.json:/app/papers.json
       - ./data:/app/data
