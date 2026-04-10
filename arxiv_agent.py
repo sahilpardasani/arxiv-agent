@@ -114,6 +114,27 @@ ARXIV_CATEGORIES = [
 # ===== RETENTION POLICY =====
 DAYS_TO_KEEP = 7  # Only keep last 7 days of data
 
+# ===== ACCEPTANCE / REJECTION PHRASES =====
+ACCEPTANCE_PHRASES = [
+    "accepted to",
+    "accepted at",
+    "accepted by",
+    "accepted for",
+    "to appear at",
+    "to appear in",
+    "published at",
+    "published in",
+    "camera ready",
+    "camera-ready",
+]
+
+REJECTION_PHRASES = [
+    "submitted to",
+    "under review",
+    "preprint",
+]
+
+
 def get_yesterday_date_str() -> str:
     """Get yesterday's date in ISO format (YYYY-MM-DD)"""
     return (date.today() - timedelta(days=1)).isoformat()
@@ -273,56 +294,77 @@ async def fetch_arxiv_papers_single_session(max_results: int = 100) -> list:
 def extract_conference_info(paper: dict) -> Optional[dict]:
     """Extract conference information from paper's comment field."""
     comment = paper.get('comment', '').strip()
-    
     if not comment:
         return None
-    
+
     comment_lower = comment.lower()
+
+    # Sort by length (longest first) to match full names before abbreviations
+    # e.g., "International Conference on Advanced Machine Learning and Data Science" before "AMLDS" before "CHI"
     sorted_conferences = sorted(TOP_TIER_CONFERENCES, key=len, reverse=True)
-    
+
+    best_match = None
+    best_match_length = 0
+
     for conf in sorted_conferences:
         conf_lower = conf.lower()
-        
-        if conf_lower in comment_lower:
-            conf_pos = comment_lower.find(conf_lower)
-            search_area = comment[conf_pos:conf_pos+100]
-            
-            year_match = re.search(r"'(\d{2})|(\d{4})", search_area)
-            
-            if year_match:
-                if year_match.group(1):
-                    year = "20" + year_match.group(1)
-                else:
-                    year = year_match.group(2)
-            else:
-                year_match = re.search(r"(20\d{2}|19\d{2})", comment)
-                year = year_match.group(1) if year_match else "Unknown"
-            
-            category = "Other"
-            for cat, confs in CONFERENCE_CATEGORIES.items():
-                if conf in confs:
-                    category = cat
-                    break
-            
-            return {
-                "conference": conf,
-                "year": year,
-                "comment": comment,
-                "raw_comment": paper.get('comment', ''),
-                "category": category
-            }
-    
-    return None
+        # Use word boundary matching to avoid substring false positives
+        # e.g., "chi" inside "machine", "acl" inside "local"
+        pattern = r'\b' + re.escape(conf_lower) + r'\b'
+        if re.search(pattern, comment_lower):
+            if len(conf) > best_match_length:
+                best_match = conf
+                best_match_length = len(conf)
+
+    if not best_match:
+        return None
+
+    conf = best_match
+    conf_lower = conf.lower()
+    conf_pos = comment_lower.find(conf_lower)
+    search_area = comment[conf_pos:conf_pos + 100]
+
+    year_match = re.search(r"'(\d{2})|(\d{4})", search_area)
+
+    if year_match:
+        if year_match.group(1):
+            year = "20" + year_match.group(1)
+        else:
+            year = year_match.group(2)
+    else:
+        year_match = re.search(r"(20\d{2}|19\d{2})", comment)
+        year = year_match.group(1) if year_match else "Unknown"
+
+    category = "Other"
+    for cat, confs in CONFERENCE_CATEGORIES.items():
+        if conf in confs:
+            category = cat
+            break
+
+    return {
+        "conference": conf,
+        "year": year,
+        "comment": comment,
+        "raw_comment": paper.get('comment', ''),
+        "category": category
+    }
 
 
 def is_conference_paper(paper: dict) -> bool:
-    """Check if paper is from a top-tier conference (must be ACCEPTED)."""
+    """Check if paper is accepted to a known conference or workshop."""
     comment = paper.get('comment', '').lower()
-    
-    if comment:
-        if ("submitted to" in comment or "under review" in comment) and "accepted to" not in comment:
-            return False
-    
+
+    # No comment means we can't confirm acceptance — skip
+    if not comment:
+        return False
+
+    is_accepted = any(phrase in comment for phrase in ACCEPTANCE_PHRASES)
+    is_rejected = any(phrase in comment for phrase in REJECTION_PHRASES)
+
+    # Reject if only rejection signals present, no acceptance signal overrides
+    if is_rejected and not is_accepted:
+        return False
+
     conf_info = extract_conference_info(paper)
     return conf_info is not None
 
