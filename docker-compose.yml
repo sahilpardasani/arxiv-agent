@@ -5,7 +5,18 @@ services:
     network_mode: host
     environment:
       - GROQ_API_KEY=${GROQ_API_KEY}
+      - GIT_AUTHOR_NAME=${GIT_AUTHOR_NAME:-Paper Agent}
+      - GIT_AUTHOR_EMAIL=${GIT_AUTHOR_EMAIL:-agent@paperbot.local}
+      - GIT_COMMITTER_NAME=${GIT_AUTHOR_NAME:-Paper Agent}
+      - GIT_COMMITTER_EMAIL=${GIT_AUTHOR_EMAIL:-agent@paperbot.local}
     volumes:
       - ./papers.json:/app/papers.json
       - ./data:/app/data
+      - ~/.ssh:/root/.ssh:ro
+      - ~/.gitconfig:/root/.gitconfig:ro
     restart: unless-stopped
+    # Optional: add credentials for HTTPS if using token-based auth
+    # volumes:
+    #   - ./papers.json:/app/papers.json
+    #   - ./data:/app/data
+    #   - ~/.netrc:/root/.netrc:ro
