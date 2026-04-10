@@ -316,18 +316,18 @@ async def run_daily_pipeline() -> list:
         print("⚠ No conference papers found")
         return []
     
-    # Step 3: Analyze TOP 36 PAPERS
+    # Step 3: Analyze TOP 60 PAPERS
     print("\n" + "="*60)
-    print("STEP 3: Analyzing top 36 papers with Groq...")
+    print("STEP 3: Analyzing top 60 papers with Groq...")
     print("="*60)
     analyzed_papers = []
     
-    top_36_papers = conference_papers[:36]
+    top_60_papers = conference_papers[:60]
     
-    for i, paper in enumerate(top_36_papers):
+    for i, paper in enumerate(top_60_papers):
         conf_info = extract_conference_info(paper)
         conf_display = f"{conf_info['conference']} {conf_info['year']}" if conf_info else "Unknown"
-        print(f"  [{i+1:2d}/{len(top_36_papers)}] {paper['arxiv_id']:12s} ({conf_display:30s})...", end=" ", flush=True)
+        print(f"  [{i+1:2d}/{len(top_60_papers)}] {paper['arxiv_id']:12s} ({conf_display:30s})...", end=" ", flush=True)
         
         analysis = generate_paper_analysis(paper)
         if analysis:
