@@ -4,7 +4,7 @@ import json
 import re
 import asyncio
 import time
-from datetime import datetime, date
+from datetime import datetime, date, timedelta
 from typing import Optional
 import feedparser
 import aiohttp
@@ -13,7 +13,7 @@ from groq import Groq
 # Initialize Groq client
 client = Groq(api_key=os.getenv("GROQ_API_KEY"))
 
-# Conference categories by field
+# Conference categories by field - UPDATED WITH NEW CONFERENCES
 CONFERENCE_CATEGORIES = {
     "General ML/AI": {
         "NeurIPS", "NEURIPS", "ICML", "ICLR", "AAAI", "IJCAI", "UAI",
@@ -22,13 +22,13 @@ CONFERENCE_CATEGORIES = {
     "Computer Vision": {
         "CVPR", "IEEE/CVF Conference on Computer Vision",
         "ICCV", "IEEE International Conference on Computer Vision",
-        "ECCV", "European Conference on Computer Vision", "WACV"
+        "ECCV", "European Conference on Computer Vision", "WACV", "BMVC"
     },
     "Natural Language Processing": {
         "ACL", "Association for Computational Linguistics",
         "EMNLP", "Empirical Methods in Natural Language Processing",
         "NAACL", "North American Chapter of the Association for Computational Linguistics",
-        "COLING", "EACL"
+        "COLING", "EACL", "SIGIR"
     },
     "Robotics": {
         "ICRA", "International Conference on Robotics and Automation",
@@ -36,7 +36,7 @@ CONFERENCE_CATEGORIES = {
         "CoRL", "Conference on Robot Learning", "RSS"
     },
     "Data Mining & Applied ML": {
-        "KDD", "WWW", "ICDM"
+        "KDD", "WWW", "ICDM", "WSDM"
     },
     "Theory & Foundations": {
         "STOC", "FOCS", "SODA"
@@ -48,11 +48,13 @@ CONFERENCE_CATEGORIES = {
         "EuroSys", "ASPLOS", "SIGCOMM"
     },
     "Human-Computer Interaction": {
-        "CHI", "ACM Conference on Human Factors in Computing Systems"
+        "CHI", "ACM Conference on Human Factors in Computing Systems",
+        "FAccT", "ACM Conference on Fairness, Accountability, and Transparency"
     },
     "Security": {
         "SecDev", "Secure Development",
-        "USENIX", "USENIX Security", "CCS", "ACM CCS", "NDSS"
+        "USENIX", "USENIX Security", "CCS", "ACM CCS", "NDSS", "JNIC",
+        "X National Cybersecurity Research Conference"
     },
     "Databases": {
         "VLDB", "SIGMOD", "PODS", "ICDE"
@@ -63,7 +65,9 @@ CONFERENCE_CATEGORIES = {
     },
     "AI/NLP/Multimedia": {
         "ACMMM", "ACM Multimedia",
-        "LREC", "Language Resources and Evaluation"
+        "LREC", "Language Resources and Evaluation",
+        "ICASSP", "IEEE International Conference on Acoustics, Speech and Signal Processing",
+        "Interspeech"
     },
     "High Performance Computing": {
         "ISC", "ISC High Performance",
@@ -72,11 +76,24 @@ CONFERENCE_CATEGORIES = {
     "Quantum Computing": {
         "QCNC", "Quantum Computing and Networks"
     },
+    "Medical Image & Signal Processing": {
+        "MICCAI", "International Conference on Medical Image Computing and Computer Assisted Intervention",
+        "TIP", "IEEE Transactions on Image Processing"
+    },
+    "Hardware & Design Automation": {
+        "ICCAD", "IEEE/ACM International Conference On Computer Aided Design"
+    },
+    "Computer Vision & Multimedia": {
+        "IEEE Conference on Multimedia Expo"
+    },
+    "AI Applications & Data Science": {
+        "ACDSA", "International Conference on Artificial Intelligence, Computer, Data Sciences and Applications"
+    },
     "General Computer Science": {
         "CSA", "Computer Science Applications"
     },
     "Other": {
-        "ISMIR"
+        "ISMIR", "IEEE TCOM"
     }
 }
 
@@ -94,22 +111,36 @@ ARXIV_CATEGORIES = [
     "stat.ML",    # Machine Learning (Statistics)
 ]
 
-def get_today_date_str() -> str:
+def get_yesterday_date_str() -> str:
     """Get yesterday's date in ISO format (YYYY-MM-DD)"""
-    from datetime import timedelta
     return (date.today() - timedelta(days=1)).isoformat()
 
-def is_paper_from_today(paper: dict) -> bool:
-    """Check if paper was published today"""
+def is_paper_from_yesterday(paper: dict) -> bool:
+    """Check if paper was published yesterday"""
     published = paper.get('published', '')
     if not published:
         return False
     
     # Extract date from ISO format (2026-04-10T...)
     paper_date = published.split('T')[0]
-    today_date = get_today_date_str()
+    yesterday_date = get_yesterday_date_str()
     
-    return paper_date == today_date
+    return paper_date == yesterday_date
+
+def load_previous_metrics(output_file: str = "papers.json") -> dict:
+    """Load metrics from previous day's papers.json to compare"""
+    try:
+        if os.path.exists(output_file):
+            with open(output_file, 'r') as f:
+                data = json.load(f)
+                return {
+                    "total_papers": data.get("total_papers", 0),
+                    "date": data.get("filter_date", "unknown")
+                }
+    except Exception as e:
+        print(f"Could not load previous metrics: {e}")
+    
+    return {"total_papers": 0, "date": "unknown"}
 
 async def fetch_arxiv_papers_single_session(max_results: int = 100) -> list:
     """
@@ -209,6 +240,10 @@ async def fetch_arxiv_papers_single_session(max_results: int = 100) -> list:
 def extract_conference_info(paper: dict) -> Optional[dict]:
     """
     Extract conference information from paper's comment field.
+    Matches patterns like:
+    - "Accepted to X workshop at CONFERENCE_NAME"
+    - "Conference: CONFERENCE_NAME"
+    - Direct conference mentions
     """
     comment = paper.get('comment', '').strip()
     
@@ -217,11 +252,18 @@ def extract_conference_info(paper: dict) -> Optional[dict]:
     
     comment_lower = comment.lower()
     
-    for conf in TOP_TIER_CONFERENCES:
-        if conf.lower() in comment_lower:
-            conf_pos = comment_lower.find(conf.lower())
-            search_area = comment[conf_pos:conf_pos+50]
+    # Sort conferences by length (longest first) to match longer names first
+    sorted_conferences = sorted(TOP_TIER_CONFERENCES, key=len, reverse=True)
+    
+    for conf in sorted_conferences:
+        conf_lower = conf.lower()
+        
+        # Look for the conference name (handles workshop format too)
+        if conf_lower in comment_lower:
+            conf_pos = comment_lower.find(conf_lower)
+            search_area = comment[conf_pos:conf_pos+100]  # Extended search area for year
             
+            # Try to extract year from near the conference name
             year_match = re.search(r"'(\d{2})|(\d{4})", search_area)
             
             if year_match:
@@ -230,9 +272,11 @@ def extract_conference_info(paper: dict) -> Optional[dict]:
                 else:
                     year = year_match.group(2)
             else:
+                # Fallback: search entire comment for year
                 year_match = re.search(r"(20\d{2}|19\d{2})", comment)
                 year = year_match.group(1) if year_match else "Unknown"
             
+            # Find which category this conference belongs to
             category = "Other"
             for cat, confs in CONFERENCE_CATEGORIES.items():
                 if conf in confs:
@@ -312,7 +356,10 @@ Be precise and technical. If the paper doesn't provide specific numbers, say 'No
 async def run_daily_pipeline() -> list:
     """Main pipeline: fetch papers → filter for conference papers → analyze"""
     print(f"[{datetime.now().isoformat()}] Starting arXiv paper analysis pipeline...")
-    print(f"📅 Filtering for papers from TODAY: {get_today_date_str()}")
+    print(f"📅 Filtering for papers from YESTERDAY: {get_yesterday_date_str()}")
+    
+    # Load previous metrics for comparison
+    previous_metrics = load_previous_metrics()
     
     # Step 1: Fetch papers
     print("\n" + "="*60)
@@ -326,22 +373,32 @@ async def run_daily_pipeline() -> list:
         print("Try running again in a few minutes.")
         return []
     
-    # Step 2: Filter for papers from TODAY
+    # Step 2: Filter for papers from YESTERDAY
     print("="*60)
-    print(f"STEP 2: Filtering for papers from TODAY ({get_today_date_str()})...")
+    print(f"STEP 2: Filtering for papers from YESTERDAY ({get_yesterday_date_str()})...")
     print("="*60)
-    today_papers = [p for p in papers if is_paper_from_today(p)]
-    print(f"✓ Found {len(today_papers)} papers published today\n")
+    yesterday_papers = [p for p in papers if is_paper_from_yesterday(p)]
+    print(f"✓ Found {len(yesterday_papers)} papers published yesterday\n")
     
-    if len(today_papers) == 0:
-        print("⚠️  No papers published today")
+    if len(yesterday_papers) == 0:
+        print("⚠️  No papers published yesterday")
         return []
     
-    # Step 3: Filter for conference papers
+    # Step 3: Filter for conference papers and DEDUPLICATE by arxiv_id
     print("="*60)
-    print("STEP 3: Filtering for top-tier conference papers...")
+    print("STEP 3: Filtering for top-tier conference papers and removing duplicates...")
     print("="*60)
-    conference_papers = [p for p in today_papers if is_conference_paper(p)]
+    
+    # Track seen arxiv IDs to remove duplicates
+    seen_arxiv_ids = set()
+    conference_papers = []
+    
+    for p in yesterday_papers:
+        arxiv_id = p.get('arxiv_id', '')
+        # Only process if we haven't seen this arxiv_id before AND it's a conference paper
+        if arxiv_id and arxiv_id not in seen_arxiv_ids and is_conference_paper(p):
+            seen_arxiv_ids.add(arxiv_id)
+            conference_papers.append(p)
     
     conference_info = {}
     for p in conference_papers:
@@ -350,17 +407,24 @@ async def run_daily_pipeline() -> list:
             conf_name = conf_data["conference"]
             conference_info[conf_name] = conference_info.get(conf_name, 0) + 1
     
-    print(f"✓ Found {len(conference_papers)} conference papers from today")
-    if conference_info:
-        print("   Conferences found:")
-        for conf, count in sorted(conference_info.items(), key=lambda x: x[1], reverse=True):
-            print(f"     - {conf}: {count} paper(s)")
+    print(f"✓ Found {len(conference_papers)} unique conference papers from yesterday")
+    print("   Exhaustive conference check:")
+    
+    # Create a complete conference count including all conferences with 0 papers
+    all_conferences_count = {}
+    for conf in TOP_TIER_CONFERENCES:
+        all_conferences_count[conf] = conference_info.get(conf, 0)
+    
+    # Sort by count (descending), then by name
+    for conf, count in sorted(all_conferences_count.items(), key=lambda x: (-x[1], x[0])):
+        status = "✓" if count > 0 else "○"
+        print(f"     {status} {conf}: {count} paper(s)")
     
     if len(conference_papers) == 0:
-        print("⚠ No conference papers from today")
+        print("\n⚠ No conference papers from yesterday")
         return []
     
-    # Step 4: Analyze ALL papers found today (dynamic count)
+    # Step 4: Analyze ALL papers found yesterday (dynamic count)
     print("\n" + "="*60)
     print(f"STEP 4: Analyzing all {len(conference_papers)} papers with Groq...")
     print("="*60)
@@ -392,16 +456,6 @@ async def run_daily_pipeline() -> list:
     print("STEP 5: Sorting papers by category and date...")
     print("="*60)
     
-    # Sort by: category, then by published date (descending = newest first)
-    analyzed_papers.sort(
-        key=lambda x: (
-            x['conference_info'].get('category', 'Other') if x.get('conference_info') else 'Other',
-            x['paper'].get('published', ''),
-        ),
-        reverse=False  # Categories alphabetically, then dates newest first within category
-    )
-    
-    # Re-sort within each category by date (descending)
     from collections import defaultdict
     papers_by_category = defaultdict(list)
     
@@ -422,17 +476,62 @@ async def run_daily_pipeline() -> list:
     print(f"✓ Sorted {len(sorted_papers)} papers by category and date")
     print("   Paper order: Category → Latest date first")
     
-    return sorted_papers
+    # Calculate day-over-day change
+    current_count = len(sorted_papers)
+    previous_count = previous_metrics.get("total_papers", 0)
+    day_change = current_count - previous_count
+    
+    print("\n" + "="*60)
+    print("METRICS DASHBOARD")
+    print("="*60)
+    print(f"Previous day ({previous_metrics.get('date', 'unknown')}): {previous_count} papers")
+    print(f"Today ({get_yesterday_date_str()}): {current_count} papers")
+    if day_change > 0:
+        print(f"📈 Change: +{day_change} papers (UP)")
+    elif day_change < 0:
+        print(f"📉 Change: {day_change} papers (DOWN)")
+    else:
+        print(f"➡️  Change: No change")
+    
+    return sorted_papers, {
+        "previous_date": previous_metrics.get('date', 'unknown'),
+        "previous_count": previous_count,
+        "current_date": get_yesterday_date_str(),
+        "current_count": current_count,
+        "day_change": day_change
+    }
 
 
-def save_results(results: list, output_file: str = "papers.json"):
+def save_results(results: tuple, output_file: str = "papers.json"):
     """Save analyzed papers to JSON for web delivery."""
+    if isinstance(results, tuple):
+        papers, metrics = results
+    else:
+        papers = results
+        metrics = {
+            "previous_date": "unknown",
+            "previous_count": 0,
+            "current_date": get_yesterday_date_str(),
+            "current_count": len(papers),
+            "day_change": 0
+        }
+    
     output = {
         "last_updated": datetime.now().isoformat(),
-        "total_papers": len(results),
-        "papers": results,
+        "total_papers": len(papers),
+        "papers": papers,
         "categories": list(CONFERENCE_CATEGORIES.keys()),
-        "filter_date": get_today_date_str()
+        "filter_date": get_yesterday_date_str(),
+        "metrics": {
+            "dashboard": {
+                "previous_date": metrics.get("previous_date"),
+                "previous_count": metrics.get("previous_count"),
+                "current_date": metrics.get("current_date"),
+                "current_count": metrics.get("current_count"),
+                "day_change": metrics.get("day_change"),
+                "trend": "📈 UP" if metrics.get("day_change", 0) > 0 else ("📉 DOWN" if metrics.get("day_change", 0) < 0 else "➡️  STABLE")
+            }
+        }
     }
     
     with open(output_file, "w") as f:
@@ -452,4 +551,5 @@ async def main():
 if __name__ == "__main__":
     data = asyncio.run(main())
     print("\n✅ Pipeline complete!")
-    print(f"Results: {len(data['papers'])} papers analyzed (sorted by category & date)")
+    if isinstance(data, dict) and "papers" in data:
+        print(f"Results: {len(data['papers'])} papers analyzed (sorted by category & date)")
