@@ -385,6 +385,13 @@
         <p class="subtitle">Daily digest of papers from NeurIPS, ICML, CVPR, ACL, and more — sorted by category & latest date</p>
         
         <div class="filters">
+            <label class="filter-label">📅 Filter by Date:</label>
+            <div class="glass-dropdown-wrapper">
+                <select id="dateSelect" class="glass-dropdown" onchange="loadPapersByDate()">
+                    <option value="">Loading dates...</option>
+                </select>
+            </div>
+
             <label class="filter-label">📚 Filter by Category:</label>
             <div class="glass-dropdown-wrapper">
                 <select id="categorySelect" class="glass-dropdown">
@@ -424,13 +431,54 @@
 
         initTheme();
 
-        // ============ LOAD & FILTER PAPERS ============
+        // ============ LOAD DATES & PAPERS ============
         let allPapers = [];
         let categories = [];
+        let currentDate = null;
 
-        async function loadPapers() {
+        async function loadDates() {
             try {
-                const response = await fetch('/api/papers');
+                const response = await fetch('/api/dates');
+                const data = await response.json();
+                
+                const dateSelect = document.getElementById('dateSelect');
+                dateSelect.innerHTML = '';
+                
+                if (data.dates && Object.keys(data.dates).length > 0) {
+                    Object.keys(data.dates).sort().reverse().forEach(date => {
+                        const count = data.dates[date].count;
+                        const option = document.createElement('option');
+                        option.value = date;
+                        option.textContent = `${date} (${count} papers)`;
+                        dateSelect.appendChild(option);
+                    });
+                    
+                    // Load first date by default
+                    currentDate = dateSelect.value;
+                    loadPapersByDate();
+                } else {
+                    dateSelect.innerHTML = '<option>No dates available yet</option>';
+                    document.getElementById('status').className = 'status error';
+                    document.getElementById('status').innerHTML = '❌ No data available yet. Run the analysis first.';
+                }
+            } catch (error) {
+                console.error('Error loading dates:', error);
+                document.getElementById('status').className = 'status error';
+                document.getElementById('status').innerHTML = `❌ Error loading dates: ${error.message}`;
+            }
+        }
+
+        async function loadPapersByDate() {
+            const dateSelect = document.getElementById('dateSelect');
+            const selectedDate = dateSelect.value;
+            
+            if (!selectedDate) return;
+            
+            currentDate = selectedDate;
+            
+            try {
+                const url = selectedDate ? `/api/papers?date=${selectedDate}` : '/api/papers';
+                const response = await fetch(url);
                 
                 if (!response.ok) {
                     throw new Error(`HTTP ${response.status}`);
@@ -442,7 +490,8 @@
                 
                 if (allPapers.length === 0) {
                     document.getElementById('status').className = 'status error';
-                    document.getElementById('status').innerHTML = '❌ No papers found<br>Make sure papers.json has data and run: python3 arxiv_agent.py';
+                    document.getElementById('status').innerHTML = '❌ No papers found for selected date';
+                    document.getElementById('papers').innerHTML = '';
                     return;
                 }
                 
@@ -452,18 +501,27 @@
             } catch (error) {
                 console.error('Error:', error);
                 document.getElementById('status').className = 'status error';
-                document.getElementById('status').innerHTML = `❌ Error: ${error.message}<br>Check browser console (F12) for details`;
+                document.getElementById('status').innerHTML = `❌ Error: ${error.message}`;
             }
         }
 
         function populateCategories() {
             const select = document.getElementById('categorySelect');
+            
+            // Clear existing options except the first one
+            while (select.options.length > 1) {
+                select.remove(1);
+            }
+            
             categories.forEach(category => {
                 const option = document.createElement('option');
                 option.value = category;
                 option.textContent = category;
                 select.appendChild(option);
             });
+
+            // Reset to "All Categories" when date changes
+            select.value = '';
 
             select.addEventListener('change', (e) => {
                 const selectedCategory = e.target.value;
@@ -497,7 +555,7 @@
             
             if (papers.length === 0) {
                 statusEl.className = 'status error';
-                statusEl.innerHTML = '❌ No papers found in selected category';
+                statusEl.textContent = '❌ No papers found in selected category';
                 papersEl.innerHTML = '';
                 return;
             }
@@ -562,7 +620,8 @@
             papersEl.innerHTML = html ? `<div class="papers-grid">${html}</div>` : '<div class="no-results">No papers to display</div>';
         }
 
-        loadPapers();
+        // Load dates on page load
+        window.addEventListener('load', loadDates);
     </script>
 </body>
 </html>
