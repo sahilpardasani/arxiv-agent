@@ -14,7 +14,7 @@ from groq import Groq
 client = Groq(api_key=os.getenv("GROQ_API_KEY"))
 
 # Conference categories by field
-CONFERENCE_CATEGORIES = {
+ONFERENCE_CATEGORIES = {
     "General ML/AI": {
         "NeurIPS", "NEURIPS", "ICML", "ICLR", "AAAI", "IJCAI", "UAI",
         "COLM", "AISTATS"
@@ -58,7 +58,22 @@ CONFERENCE_CATEGORIES = {
         "VLDB", "SIGMOD", "PODS", "ICDE"
     },
     "Software Engineering": {
-        "ICSE"
+        "ICSE", "International Conference on Software Engineering",
+        "EASE", "Empirical Assessment of Software Engineering"
+    },
+    "AI/NLP/Multimedia": {
+        "ACMMM", "ACM Multimedia",
+        "LREC", "Language Resources and Evaluation"
+    },
+    "High Performance Computing": {
+        "ISC", "ISC High Performance",
+        "SC", "International Conference for High Performance Computing"
+    },
+    "Quantum Computing": {
+        "QCNC", "Quantum Computing and Networks"
+    },
+    "General Computer Science": {
+        "CSA", "Computer Science Applications"
     },
     "Other": {
         "ISMIR"
