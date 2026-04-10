@@ -1,6 +1,6 @@
 {
-  "last_updated": "2026-04-10T01:33:15.131028",
-  "total_papers": 24,
+  "last_updated": "2026-04-10T02:01:42.338936",
+  "total_papers": 34,
   "papers": [
     {
       "paper": {
@@ -29,30 +29,31 @@
         "comment": "Accepted to CVPR 2026, website: https://github.com/ezacngm/brainCodec"
       },
       "analysis": {
-        "problem_statement": "Developing generalizable, cross-subject models for visual decoding from brain signals without requiring bespoke models or fine-tuning for each subject.",
-        "bottleneck_addressed": "Training efficiency and cross-subject generalization in brain decoding models.",
-        "executive_summary": "This paper addresses a critical bottleneck in brain decoding by introducing a meta-optimized approach that enables training-free cross-subject visual decoding from fMRI signals. This breakthrough has significant implications for developing generalizable foundation models for non-invasive brain decoding, which can be applied to various neurological disorders and applications. The proposed approach eliminates the need for fine-tuning or retraining, making it a crucial step towards achieving cross-subject generalization.",
+        "problem_statement": "Developing a generalizable, cross-subject model for visual decoding from brain signals that can adapt to novel subjects without fine-tuning or retraining.",
+        "bottleneck_addressed": "Training efficiency and context length, as the approach enables rapid inference of a new subject's neural encoding patterns using a small set of image-brain activation examples.",
+        "executive_summary": "This paper addresses a critical challenge in brain-computer interfaces by introducing a meta-optimized approach for semantic visual decoding from fMRI that generalizes across diverse visual backbones, subjects, and scanners without retraining or fine-tuning. This has significant implications for developing a generalizable foundation model for non-invasive brain decoding, which can be applied to various use cases such as neuroprosthetics, neurofeedback, and brain-machine interfaces.",
         "key_metrics": {
-          "primary_metric": "Cross-subject generalization without fine-tuning",
+          "primary_metric": "Cross-subject and cross-scanner generalization without retraining or fine-tuning",
           "metric_value": "Not disclosed",
-          "baseline": "Fine-tuning or retraining for each subject",
+          "baseline": "Training bespoke models or fine-tuning separately for each subject",
           "improvement_percentage": "Not quantifiable"
         },
         "technical_breakdown": {
-          "method": "The proposed approach involves constructing a context over multiple stimuli and responses to estimate per-voxel visual response encoder parameters. This context is then used to perform aggregated functional inversion, inverting the encoder to facilitate visual decoding. The approach is optimized for in-context learning of the new subject's encoding model, allowing for rapid inference of their unique neural encoding patterns.",
-          "architecture": "Hierarchical inference architecture with two stages: (1) estimating per-voxel visual response encoder parameters, and (2) performing aggregated functional inversion.",
-          "implementation_details": "The approach uses a context-based learning strategy, where a small set of image-brain activation examples from the new individual is used to construct the context. This context is then used to infer the new subject's encoding model.",
-          "code_complexity": "Not disclosed, but the approach likely involves complex neural network architectures and optimization techniques."
+          "method": "The approach involves constructing a context over multiple stimuli and responses to estimate per-voxel visual response encoder parameters, followed by hierarchical inference and aggregated functional inversion to perform decoding.",
+          "architecture": "The model uses a hierarchical inference architecture that inverts the encoder, and employs meta-optimization for in-context learning of the new subject's encoding model.",
+          "implementation_details": "The approach utilizes fMRI data and image-brain activation examples to construct contexts for encoder parameter estimation and functional inversion.",
+          "code_complexity": "Not disclosed, but the implementation is available on GitHub"
         },
         "relevance_tags": [
-          "brain decoding",
-          "cross-subject generalization",
+          "brain-computer interfaces",
+          "neuroscience",
+          "computer vision",
           "meta-learning",
           "fMRI"
         ],
-        "confidence": "high"
+        "confidence": "medium"
       },
-      "analyzed_at": "2026-04-10T01:32:30.282805",
+      "analyzed_at": "2026-04-10T01:58:46.954227",
       "conference_info": {
         "conference": "CVPR",
         "year": "2026",
@@ -83,9 +84,9 @@
         "comment": "CVPR 2026. Project page: https://plan-lab.github.io/rewardflow"
       },
       "analysis": {
-        "problem_statement": "The paper addresses the problem of generating images by optimizing multiple rewards for different aspects such as semantic alignment, perceptual fidelity, and human preference.",
-        "bottleneck_addressed": "Inference latency and context length, as the paper introduces a prompt-aware adaptive policy that dynamically modulates reward weights and step sizes throughout sampling.",
-        "executive_summary": "This paper matters to the current AI landscape as it presents a unified framework for image generation that can handle multiple objectives and adapt to different prompts. This is particularly relevant for applications such as image editing, compositional generation, and human-AI collaboration. The proposed framework can potentially improve the efficiency and effectiveness of image generation models.",
+        "problem_statement": "The paper addresses the problem of generating images by optimizing a set of complementary rewards for various aspects of image quality, such as semantic alignment, perceptual fidelity, and human preference.",
+        "bottleneck_addressed": "Training efficiency and inference latency in image generation tasks, particularly in tasks that require fine-grained semantic supervision.",
+        "executive_summary": "RewardFlow addresses a critical bottleneck in image generation tasks by introducing a unified framework that can optimize multiple rewards simultaneously, enabling more efficient and effective image editing and compositional generation. This matters to the current AI landscape as it has the potential to improve the quality and diversity of generated images, particularly in applications such as image editing, content creation, and human-computer interaction.",
         "key_metrics": {
           "primary_metric": "State-of-the-art edit fidelity and compositional alignment",
           "metric_value": "Not disclosed",
@@ -93,21 +94,21 @@
           "improvement_percentage": "Not disclosed"
         },
         "technical_breakdown": {
-          "method": "RewardFlow uses a multi-reward Langevin dynamics approach to steer pretrained diffusion and flow-matching models at inference time. The framework unifies differentiable rewards for various objectives and introduces a differentiable VQA-based reward for fine-grained semantic supervision. A prompt-aware adaptive policy is designed to extract semantic primitives from the instruction, infer edit intent, and dynamically modulate reward weights and step sizes throughout sampling.",
-          "architecture": "The architecture consists of a pretrained diffusion and flow-matching model, a multi-reward Langevin dynamics module, and a prompt-aware adaptive policy module.",
-          "implementation_details": "The paper uses a combination of differentiable rewards, Langevin dynamics, and a prompt-aware adaptive policy to coordinate heterogeneous objectives. The implementation details are not fully disclosed, but it is likely that the authors use a combination of deep learning frameworks such as PyTorch or TensorFlow.",
-          "code_complexity": "The code complexity is likely high due to the use of multiple rewards, Langevin dynamics, and a prompt-aware adaptive policy. The computational complexity and training time implications are not fully disclosed, but it is likely that the authors use a combination of parallel processing and optimization techniques to improve efficiency."
+          "method": "RewardFlow uses a multi-reward Langevin dynamics framework to steer pretrained diffusion and flow-matching models at inference time, unifying differentiable rewards for various aspects of image quality. The framework also introduces a differentiable VQA-based reward for fine-grained semantic supervision. A prompt-aware adaptive policy is designed to extract semantic primitives from the instruction, infer edit intent, and dynamically modulate reward weights and step sizes throughout sampling.",
+          "architecture": "The architecture consists of a pretrained diffusion and flow-matching model, a multi-reward Langevin dynamics framework, and a prompt-aware adaptive policy.",
+          "implementation_details": "The implementation uses a combination of differentiable rewards, Langevin dynamics, and adaptive policy optimization. The VQA-based reward is implemented using a language-vision reasoning module.",
+          "code_complexity": "The code complexity is likely high due to the use of complex neural networks, Langevin dynamics, and adaptive policy optimization. However, the exact computational complexity or training time implications are not disclosed."
         },
         "relevance_tags": [
           "image generation",
           "diffusion models",
           "flow-matching models",
-          "Langevin dynamics",
-          "prompt-aware adaptive policy"
+          "multi-reward optimization",
+          "adaptive policy optimization"
         ],
         "confidence": "medium"
       },
-      "analyzed_at": "2026-04-10T01:29:22.759804",
+      "analyzed_at": "2026-04-10T01:55:24.039382",
       "conference_info": {
         "conference": "CVPR",
         "year": "2026",
@@ -130,30 +131,31 @@
         "comment": "CVPR 2026 Findings"
       },
       "analysis": {
-        "problem_statement": "The paper addresses the vulnerability of Vision-Language Models (VLMs) to backdoor attacks, which can compromise their security and trustworthiness.",
-        "bottleneck_addressed": "Stealthiness and adaptability of backdoor attacks in VLMs",
-        "executive_summary": "This paper matters to the current AI landscape because VLMs are increasingly used in critical applications such as image classification, object detection, and visual question answering. The stealthy backdoor attack, Phantasia, poses a significant threat to the security of these models, which can lead to malicious outcomes. The authors' contribution addresses this gap by introducing a context-adaptive backdoor attack that improves stealth and adaptability.",
+        "problem_statement": "The paper addresses the vulnerability of Vision-Language Models (VLMs) to backdoor attacks, specifically the ease with which existing defense techniques can detect these attacks.",
+        "bottleneck_addressed": "Contextual adaptability and stealthiness of backdoor attacks in VLMs",
+        "executive_summary": "This paper matters to the current AI landscape as it highlights the limitations of existing backdoor attacks on VLMs and introduces a novel, context-adaptive attack that can evade detection. This has implications for the security and trustworthiness of VLMs in applications such as image classification, object detection, and multimodal understanding. The Phantasia attack can be used to compromise the integrity of VLMs, potentially leading to malicious behavior.",
         "key_metrics": {
           "primary_metric": "State-of-the-art attack success rates",
           "metric_value": "Not disclosed",
-          "baseline": "Existing backdoor attacks",
-          "improvement_percentage": "Not quantifiable"
+          "baseline": "Existing backdoor attacks on VLMs",
+          "improvement_percentage": "Not disclosed"
         },
         "technical_breakdown": {
-          "method": "Phantasia works by dynamically aligning its poisoned outputs with the semantics of each input, encouraging models to generate contextually coherent yet malicious responses that remain plausible. This is achieved through a context-adaptive approach that adapts to the input context, making it challenging to detect. The authors demonstrate that Phantasia can be used to attack various VLM architectures, including state-of-the-art models. The approach is designed to evade detection by defense techniques originally designed for other domains.",
-          "architecture": "Phantasia uses a context-adaptive approach that aligns poisoned outputs with the semantics of each input, making it a novel technique in the field of backdoor attacks.",
-          "implementation_details": "The authors do not provide specific details on the implementation of Phantasia, but it is likely that they use a combination of natural language processing (NLP) and computer vision techniques to achieve the context-adaptive behavior.",
-          "code_complexity": "The computational complexity of Phantasia is not disclosed, but it is likely that it requires significant computational resources to train and evaluate the model."
+          "method": "Phantasia is a context-adaptive backdoor attack that generates poisoned outputs that align with the semantics of each input, making it more stealthy and adaptable than existing attacks. This is achieved by dynamically adjusting the poisoned outputs to be contextually coherent and plausible. The attack is designed to evade detection by defense techniques originally designed for other domains. Phantasia uses a combination of natural language processing and computer vision techniques to generate the poisoned outputs.",
+          "architecture": "Phantasia uses a VLM architecture as a base, with modifications to the output layer to generate poisoned outputs. The architecture is not explicitly described in the paper, but it is likely based on a transformer-based VLM.",
+          "implementation_details": "The implementation details of Phantasia are not provided in the paper, but it is likely based on a combination of natural language processing and computer vision techniques. The paper mentions the use of defense techniques originally designed for other domains, but the specific algorithms and data structures used are not disclosed.",
+          "code_complexity": "The code complexity of Phantasia is not explicitly described in the paper, but it is likely to be high due to the use of complex natural language processing and computer vision techniques."
         },
         "relevance_tags": [
-          "Vision-Language Models",
-          "Backdoor Attacks",
-          "Security",
-          "Trustworthiness"
+          "vision-language models",
+          "backdoor attacks",
+          "security",
+          "trustworthiness",
+          "multimodal understanding"
         ],
         "confidence": "medium"
       },
-      "analyzed_at": "2026-04-10T01:29:55.157515",
+      "analyzed_at": "2026-04-10T01:56:01.877629",
       "conference_info": {
         "conference": "CVPR",
         "year": "2026",
@@ -179,31 +181,30 @@
         "comment": "Accepted to CVPR 2026, 8 pages of main body and 10 pages of appendix"
       },
       "analysis": {
-        "problem_statement": "The paper addresses the problem of selecting diverse training data for large-scale deep learning models in physical AI applications, such as autonomous driving, while considering the ambiguity in how data points affect different evaluation metrics.",
-        "bottleneck_addressed": "Training efficiency",
-        "executive_summary": "This paper proposes a novel data selection framework, MOSAIC, which improves the efficiency of training large-scale deep learning models for physical AI applications by selecting a diverse set of data points that maximize the change in evaluation metrics. This matters to the current AI landscape as it enables the development of more accurate and deployable models in real-world environments. The proposed framework is particularly relevant to autonomous driving systems, where accurate and efficient training is crucial for ensuring safety and reliability.",
+        "problem_statement": "The paper addresses the challenge of selecting diverse training data for large-scale deep learning models in physical AI applications, such as autonomous driving, while considering different evaluation criteria.",
+        "bottleneck_addressed": "Training efficiency and data selection",
+        "executive_summary": "This paper proposes a novel data selection framework, MOSAIC, which improves the efficiency of training large-scale deep learning models for autonomous driving by up to 80% less data. This matters to the current AI landscape as it enables more scalable and deployable models in real-world environments. The proposed framework can be applied to various physical AI applications beyond autonomous driving.",
         "key_metrics": {
-          "primary_metric": "Up to 80% less data required for training",
+          "primary_metric": "80% less data",
           "metric_value": "Not disclosed",
           "baseline": "Diverse set of baselines",
           "improvement_percentage": "80%"
         },
         "technical_breakdown": {
-          "method": "MOSAIC operates by partitioning the dataset into domains, fitting neural scaling laws from each data domain to the evaluation metrics, and optimizing a data mixture by iteratively adding data from domains that maximize the change in metrics.",
-          "architecture": "The proposed framework uses a mixture optimization approach, which involves fitting neural scaling laws to each data domain and optimizing a data mixture.",
-          "implementation_details": "The paper uses a neural scaling law approach, which involves fitting a neural network to the evaluation metrics of each data domain. The mixture optimization approach is implemented using an iterative algorithm that adds data from domains that maximize the change in metrics.",
-          "code_complexity": "Not disclosed"
+          "method": "MOSAIC operates by partitioning the dataset into domains, fitting neural scaling laws from each data domain to evaluation metrics, and optimizing a data mixture by iteratively adding data from domains that maximize the change in metrics.",
+          "architecture": "Neural scaling laws, data partitioning, and iterative optimization",
+          "implementation_details": "The paper uses a combination of neural networks and optimization algorithms to fit scaling laws and select data points.",
+          "code_complexity": "Medium to high computational complexity due to iterative optimization and neural network training"
         },
         "relevance_tags": [
           "Autonomous driving",
           "Deep learning",
           "Data selection",
-          "Mixture optimization",
-          "Neural scaling laws"
+          "Training efficiency"
         ],
         "confidence": "high"
       },
-      "analyzed_at": "2026-04-10T01:29:56.936124",
+      "analyzed_at": "2026-04-10T01:56:13.882875",
       "conference_info": {
         "conference": "CVPR",
         "year": "2026",
@@ -229,35 +230,83 @@
         "comment": "Accepted to CVPR 2026, 8 pages of main body and 10 pages of appendix"
       },
       "analysis": {
-        "problem_statement": "The paper addresses the issue of selecting diverse and effective training data for large-scale deep learning models in physical AI applications, such as autonomous driving, without considering the ambiguity in how data points affect different evaluation metrics.",
-        "bottleneck_addressed": "Training efficiency and data selection",
-        "executive_summary": "The paper proposes a novel data selection framework, MOSAIC, which addresses the challenge of selecting effective training data for large-scale deep learning models in physical AI applications. This matters to the current AI landscape as it enables the development of more efficient and effective models for real-world applications, such as autonomous driving. The proposed framework outperforms a diverse set of baselines on the Extended Predictive Driver Model Score (EPDMS) with up to 80% less data.",
+        "problem_statement": "The paper addresses the problem of selecting diverse training data for large-scale deep learning models in physical AI applications, such as autonomous driving, while considering the ambiguity in how data points affect different evaluation metrics.",
+        "bottleneck_addressed": "Training efficiency and data collection efforts",
+        "executive_summary": "This paper proposes a novel data selection framework, MOSAIC, which can significantly improve the efficiency of training large-scale deep learning models for physical AI applications. By optimizing a data mixture based on neural scaling laws, MOSAIC can outperform existing baselines with up to 80% less data, making it a crucial contribution to the field of autonomous driving and beyond. This matters to the current AI landscape as it can help reduce the burden of data collection and improve the deployability of AI models in real-world environments.",
         "key_metrics": {
-          "primary_metric": "EPDMS improvement with up to 80% less data",
+          "primary_metric": "up to 80% less data",
           "metric_value": "Not disclosed",
           "baseline": "Diverse set of baselines",
           "improvement_percentage": "80%"
         },
         "technical_breakdown": {
-          "method": "MOSAIC operates by partitioning the dataset into domains, fitting neural scaling laws from each data domain to the evaluation metrics, and optimizing a data mixture by iteratively adding data from domains that maximize the change in metrics. This approach allows for the selection of diverse and effective training data without considering the ambiguity in how data points affect different evaluation metrics.",
-          "architecture": "Neural scaling laws and mixture optimization",
-          "implementation_details": "The paper uses a combination of neural networks and optimization algorithms to fit the scaling laws and optimize the data mixture.",
-          "code_complexity": "Medium to high computational complexity due to the iterative optimization process and the use of neural networks"
+          "method": "MOSAIC operates by partitioning the dataset into domains, fitting neural scaling laws from each data domain to the evaluation metrics, and optimizing a data mixture by iteratively adding data from domains that maximize the change in metrics.",
+          "architecture": "The framework utilizes a mixture optimization approach, which combines multiple data domains to achieve optimal performance.",
+          "implementation_details": "The paper uses a neural scaling law to model the relationship between data points and evaluation metrics, and employs an iterative collection approach to optimize the data mixture.",
+          "code_complexity": "Not disclosed"
         },
         "relevance_tags": [
-          "autonomous driving",
-          "deep learning",
-          "data selection",
-          "training efficiency"
+          "Autonomous Driving",
+          "Deep Learning",
+          "Data Selection",
+          "Mixture Optimization"
         ],
         "confidence": "high"
       },
-      "analyzed_at": "2026-04-10T01:33:14.115381",
+      "analyzed_at": "2026-04-10T01:59:29.760521",
       "conference_info": {
         "conference": "CVPR",
         "year": "2026",
         "comment": "Accepted to CVPR 2026, 8 pages of main body and 10 pages of appendix",
         "raw_comment": "Accepted to CVPR 2026, 8 pages of main body and 10 pages of appendix",
+        "category": "Computer Vision"
+      }
+    },
+    {
+      "paper": {
+        "title": "Inside-Out: Measuring Generalization in Vision Transformers Through Inner Workings",
+        "arxiv_id": "2604.08192v1",
+        "authors": [
+          "Yunxiang Peng",
+          "Mengmeng Ma",
+          "Ziyu Yao",
+          "Xi Peng"
+        ],
+        "published": "2026-04-09T12:44:19Z",
+        "summary": "Reliable generalization metrics are fundamental to the evaluation of machine learning models. Especially in high-stakes applications where labeled target data are scarce, evaluation of models' generalization performance under distribution shift is a pressing need. We focus on two practical scenarios: (1) Before deployment, how to select the best model for unlabeled target data? (2) After deployment, how to monitor model performance under distribution shift? The central need in both cases is a reliable and label-free proxy metric. Yet existing proxy metrics, such as model confidence or accuracy-on-the-line, are often unreliable as they only assess model output while ignoring the internal mechanisms that produce them. We address this limitation by introducing a new perspective: using the inner workings of a model, i.e., circuits, as a predictive metric of generalization performance. Leveraging circuit discovery, we extract the causal interactions between internal representations as a circuit, from which we derive two metrics tailored to the two practical scenarios. (1) Before deployment, we introduce Dependency Depth Bias, which measures different models' generalization capability on target data. (2) After deployment, we propose Circuit Shift Score, which predicts a model's generalization under different distribution shifts. Across various tasks, both metrics demonstrate significantly improved correlation with generalization performance, outperforming existing proxies by an average of 13.4\\% and 34.1\\%, respectively. Our code is available at https://github.com/deep-real/GenCircuit.",
+        "categories": "cs.LG",
+        "comment": "CVPR 2026(Highlight)"
+      },
+      "analysis": {
+        "problem_statement": "Developing reliable label-free proxy metrics to evaluate machine learning models' generalization performance under distribution shift.",
+        "bottleneck_addressed": "Evaluation of model generalization performance under distribution shift, particularly in high-stakes applications with scarce labeled target data.",
+        "executive_summary": "This paper addresses the pressing need for reliable generalization metrics in machine learning, particularly in scenarios where labeled target data are scarce. The proposed solution, GenCircuit, leverages circuit discovery to extract causal interactions between internal representations, enabling the development of two novel metrics: Dependency Depth Bias and Circuit Shift Score. These metrics demonstrate improved correlation with generalization performance, outperforming existing proxies in various tasks.",
+        "key_metrics": {
+          "primary_metric": "Improved correlation with generalization performance",
+          "metric_value": "Not disclosed",
+          "baseline": "Existing proxy metrics (e.g., model confidence, accuracy-on-the-line)",
+          "improvement_percentage": "13.4% and 34.1% for Dependency Depth Bias and Circuit Shift Score, respectively"
+        },
+        "technical_breakdown": {
+          "method": "GenCircuit uses circuit discovery to extract causal interactions between internal representations, which are then used to derive two novel metrics: Dependency Depth Bias and Circuit Shift Score. These metrics are designed to evaluate model generalization performance under distribution shift. The proposed approach leverages the inner workings of a model to predict its generalization performance, rather than relying solely on model output.",
+          "architecture": "Circuit discovery, a novel technique for extracting causal interactions between internal representations, is a key architectural component of GenCircuit.",
+          "implementation_details": "The paper does not provide specific details on the implementation of circuit discovery or the algorithms used to derive the novel metrics.",
+          "code_complexity": "Not disclosed"
+        },
+        "relevance_tags": [
+          "generalization performance",
+          "distribution shift",
+          "circuit discovery",
+          "proxy metrics"
+        ],
+        "confidence": "high"
+      },
+      "analyzed_at": "2026-04-10T02:00:01.806821",
+      "conference_info": {
+        "conference": "CVPR",
+        "year": "2026",
+        "comment": "CVPR 2026(Highlight)",
+        "raw_comment": "CVPR 2026(Highlight)",
         "category": "Computer Vision"
       }
     },
@@ -278,30 +327,30 @@
         "comment": "CVPR 2026 Highlight"
       },
       "analysis": {
-        "problem_statement": "Generating 3D sketches from natural language input remains a significant challenge in the field of computer vision.",
-        "bottleneck_addressed": "Training efficiency and context length in 3D sketch generation using large language models (LLMs).",
-        "executive_summary": "This paper addresses the bottleneck of training-free 3D sketch generation using LLMs, enabling the creation of complex and coherent 3D Bezier sketches from textual prompts without explicit ground-truth supervision. This matters to the current AI landscape as it opens up new possibilities for training-free 3D sketch intelligence, which can be applied in various fields such as architecture, product design, and game development. The proposed method, 3DrawAgent, can self-improve its spatial understanding and drawing quality without parameter updates, making it an efficient solution.",
+        "problem_statement": "Generating 3D sketches from natural language input remains a significant challenge.",
+        "bottleneck_addressed": "Training efficiency and context length in 3D sketch generation tasks",
+        "executive_summary": "This paper addresses a crucial bottleneck in 3D sketch generation by introducing a training-free, language-driven framework that leverages large language models (LLMs) to sequentially draw 3D Bezier curves. This method enables black-box reinforcement of the model's 3D awareness without parameter updates, allowing it to self-improve its spatial understanding and drawing quality. This advancement has significant implications for various applications, including architecture, product design, and computer-aided design (CAD).",
         "key_metrics": {
           "primary_metric": "Not disclosed",
           "metric_value": "Not disclosed",
-          "baseline": "Not disclosed",
+          "baseline": "Prior 2D sketch agents",
           "improvement_percentage": "Not disclosed"
         },
         "technical_breakdown": {
-          "method": "3DrawAgent uses a relative experience optimization strategy that adapts the Group Reward Policy Optimization (GRPO) paradigm to iteratively refine the prior knowledge of 3D drawing. The method constructs pairwise comparisons among generated sketches, with each pair consisting of a relatively better and a worse result based on CLIP-based perceptual rewards and LLM-based fine-grained qualitative assessment. These experiences are then used to self-improve the model's 3D awareness without parameter updates. The model sequentially draws 3D Bezier curves under geometric feedback.",
-          "architecture": "3DrawAgent leverages large language models (LLMs) and uses a relative experience optimization strategy with Group Reward Policy Optimization (GRPO).",
-          "implementation_details": "The paper uses CLIP-based perceptual rewards and LLM-based fine-grained qualitative assessment for pairwise comparisons among generated sketches.",
+          "method": "The 3DrawAgent framework leverages large language models (LLMs) to sequentially draw 3D Bezier curves under geometric feedback. It introduces a relative experience optimization strategy that adapts the Group Reward Policy Optimization (GRPO) paradigm. This involves constructing pairwise comparisons among generated sketches, with each pair consisting of a relatively better and a worse result based on CLIP-based perceptual rewards and LLM-based fine-grained qualitative assessment. These experiences are then used to iteratively refine the prior knowledge of 3D drawing.",
+          "architecture": "The framework utilizes a combination of CLIP-based perceptual rewards and LLM-based fine-grained qualitative assessment for pairwise comparisons among generated sketches.",
+          "implementation_details": "The paper employs the Group Reward Policy Optimization (GRPO) paradigm and CLIP-based perceptual rewards for experience optimization.",
           "code_complexity": "Not disclosed"
         },
         "relevance_tags": [
           "3D sketch generation",
           "large language models",
-          "training-free",
-          "computer vision"
+          "training-free framework",
+          "reinforcement learning"
         ],
-        "confidence": "high"
+        "confidence": "medium"
       },
-      "analyzed_at": "2026-04-10T01:32:16.569140",
+      "analyzed_at": "2026-04-10T01:58:24.578357",
       "conference_info": {
         "conference": "CVPR",
         "year": "2026",
@@ -326,35 +375,182 @@
         "comment": "To be published in CVPR 2026"
       },
       "analysis": {
-        "problem_statement": "Retrieving rare and safety-critical driving scenarios from large-scale datasets for building robust autonomous driving systems.",
+        "problem_statement": "Retrieving rare and safety-critical driving scenarios from large-scale datasets for autonomous driving systems.",
         "bottleneck_addressed": "Efficient identification of relevant samples in large-scale datasets, specifically addressing the 'needle-in-a-haystack' problem of locating extremely rare classes.",
-        "executive_summary": "This paper addresses the challenge of retrieving rare driving scenarios from large-scale datasets, which is crucial for building robust autonomous driving systems. The proposed SearchAD dataset enables text-to-image and image-to-image retrieval, few-shot learning, and fine-tuning of multi-modal retrieval models, which is essential for long-tail perception research in AD.",
+        "executive_summary": "This paper addresses a critical challenge in autonomous driving by introducing SearchAD, a large-scale rare image retrieval dataset. This dataset enables the development of robust AD systems by providing high-quality annotations of rare categories. The paper's findings show that text-based methods outperform image-based ones, highlighting the importance of semantic grounding in AD research.",
         "key_metrics": {
           "primary_metric": "Not disclosed",
           "metric_value": "Not disclosed",
           "baseline": "Existing benchmarks and instance-level retrieval methods",
-          "improvement_percentage": "Not disclosed"
+          "improvement_percentage": "Not quantifiable"
         },
         "technical_breakdown": {
-          "method": "SearchAD introduces a large-scale rare image retrieval dataset for AD containing over 423k frames drawn from 11 established datasets, with manual annotations of more than 513k bounding boxes covering 90 rare categories. The dataset enables text-to-image and image-to-image retrieval, few-shot learning, and fine-tuning of multi-modal retrieval models.",
-          "architecture": "The dataset is designed to emphasize semantic image retrieval with a well-defined data split, enabling the use of text-based methods, which outperform image-based ones due to stronger inherent semantic grounding.",
-          "implementation_details": "The dataset is implemented using a combination of existing datasets and manual annotations, with a focus on creating a large-scale and diverse dataset for AD research.",
+          "method": "SearchAD introduces a large-scale rare image retrieval dataset with manual annotations of over 513k bounding boxes covering 90 rare categories. The dataset is designed to enable text-to-image and image-to-image retrieval, few-shot learning, and fine-tuning of multi-modal retrieval models.",
+          "architecture": "The dataset is built on top of 11 established datasets, with a well-defined data split for semantic image retrieval.",
+          "implementation_details": "The dataset is implemented using a combination of manual annotations and existing datasets, with a focus on semantic image retrieval.",
           "code_complexity": "Not disclosed"
         },
         "relevance_tags": [
           "Autonomous Driving",
           "Rare Image Retrieval",
-          "Long-tail Perception",
-          "Multi-modal Retrieval"
+          "Semantic Image Retrieval",
+          "Few-Shot Learning",
+          "Multi-Modal Retrieval"
         ],
         "confidence": "high"
       },
-      "analyzed_at": "2026-04-10T01:32:18.263277",
+      "analyzed_at": "2026-04-10T01:58:35.793049",
       "conference_info": {
         "conference": "CVPR",
         "year": "2026",
         "comment": "To be published in CVPR 2026",
         "raw_comment": "To be published in CVPR 2026",
+        "category": "Computer Vision"
+      }
+    },
+    {
+      "paper": {
+        "title": "SearchAD: Large-Scale Rare Image Retrieval Dataset for Autonomous Driving",
+        "arxiv_id": "2604.08008v1",
+        "authors": [
+          "Felix Embacher",
+          "Jonas Uhrig",
+          "Marius Cordts",
+          "Markus Enzweiler"
+        ],
+        "published": "2026-04-09T09:10:41Z",
+        "summary": "Retrieving rare and safety-critical driving scenarios from large-scale datasets is essential for building robust autonomous driving (AD) systems. As dataset sizes continue to grow, the key challenge shifts from collecting more data to efficiently identifying the most relevant samples. We introduce SearchAD, a large-scale rare image retrieval dataset for AD containing over 423k frames drawn from 11 established datasets. SearchAD provides high-quality manual annotations of more than 513k bounding boxes covering 90 rare categories. It specifically targets the needle-in-a-haystack problem of locating extremely rare classes, with some appearing fewer than 50 times across the entire dataset. Unlike existing benchmarks, which focused on instance-level retrieval, SearchAD emphasizes semantic image retrieval with a well-defined data split, enabling text-to-image and image-to-image retrieval, few-shot learning, and fine-tuning of multi-modal retrieval models. Comprehensive evaluations show that text-based methods outperform image-based ones due to stronger inherent semantic grounding. While models directly aligning spatial visual features with language achieve the best zero-shot results, and our fine-tuning baseline significantly improves performance, absolute retrieval capabilities remain unsatisfactory. With a held-out test set on a public benchmark server, SearchAD establishes the first large-scale dataset for retrieval-driven data curation and long-tail perception research in AD: https://iis-esslingen.github.io/searchad/",
+        "categories": "cs.CV",
+        "comment": "To be published in CVPR 2026"
+      },
+      "analysis": {
+        "problem_statement": "Developing robust autonomous driving systems requires efficiently retrieving rare and safety-critical driving scenarios from large-scale datasets.",
+        "bottleneck_addressed": "Efficiently identifying the most relevant samples in large-scale datasets for autonomous driving.",
+        "executive_summary": "This paper addresses the pressing need for large-scale datasets in autonomous driving research, enabling the development of robust systems that can handle rare and safety-critical scenarios. The proposed SearchAD dataset is a significant contribution to the field, providing a comprehensive evaluation framework for retrieval-driven data curation and long-tail perception research. This matters to the current AI landscape as autonomous driving systems require large-scale datasets to learn from, and SearchAD provides a much-needed solution to this problem.",
+        "key_metrics": {
+          "primary_metric": "Absolute retrieval capabilities remain unsatisfactory",
+          "metric_value": "Not disclosed",
+          "baseline": "Text-based methods outperform image-based ones",
+          "improvement_percentage": "Not quantifiable"
+        },
+        "technical_breakdown": {
+          "method": "SearchAD introduces a large-scale rare image retrieval dataset for autonomous driving, containing over 423k frames drawn from 11 established datasets, with high-quality manual annotations of more than 513k bounding boxes covering 90 rare categories. The dataset is designed to emphasize semantic image retrieval, enabling text-to-image and image-to-image retrieval, few-shot learning, and fine-tuning of multi-modal retrieval models.",
+          "architecture": "The SearchAD dataset is built on top of 11 established datasets, with a well-defined data split for semantic image retrieval.",
+          "implementation_details": "The dataset is annotated with over 513k bounding boxes covering 90 rare categories, and provides a comprehensive evaluation framework for retrieval-driven data curation and long-tail perception research.",
+          "code_complexity": "Not disclosed"
+        },
+        "relevance_tags": [
+          "autonomous driving",
+          "large-scale datasets",
+          "semantic image retrieval",
+          "text-to-image retrieval",
+          "image-to-image retrieval",
+          "few-shot learning",
+          "multi-modal retrieval models"
+        ],
+        "confidence": "high"
+      },
+      "analyzed_at": "2026-04-10T02:00:36.323988",
+      "conference_info": {
+        "conference": "CVPR",
+        "year": "2026",
+        "comment": "To be published in CVPR 2026",
+        "raw_comment": "To be published in CVPR 2026",
+        "category": "Computer Vision"
+      }
+    },
+    {
+      "paper": {
+        "title": "DSCA: Dynamic Subspace Concept Alignment for Lifelong VLM Editing",
+        "arxiv_id": "2604.07965v1",
+        "authors": [
+          "Gyanendra Das",
+          "Sai Satyam Jena"
+        ],
+        "published": "2026-04-09T08:25:54Z",
+        "summary": "Model editing aims to update knowledge to add new concepts and change relevant information without retraining. Lifelong editing is a challenging task, prone to disrupting previously learned concepts, especially for Vision Language Models (VLMs), because sequential edits can lead to degraded reasoning and cross modal misalignment. Existing VLM knowledge editing methods based on gated adapters, activation edits, and parameter merging techniques address catastrophic forgetting seen in full fine tuning; however, they still operate in the shared representation space of the VLM, where concepts are entangled, so edits interfere with other non relevant concepts. We hypothesize that this instability persists because current methods algorithmically control edits via optimization rather than structurally separating knowledge. We introduce Dynamic Subspace Concept Alignment (DSCA) which by design mitigates this limitation by decomposing the representation space into a set of orthogonal semantic subspaces and proposing edits only in those transformed spaces. These subspaces are obtained through incremental clustering and PCA on joint vision language representations. This process structurally isolates concepts, enabling precise, non interfering edits by turning isolation from a soft training objective into an architectural property. The surgical edits are guided by a multi term loss function for maintaining task fidelity, edit locality, and cross modal alignment. With the base model frozen, our method achieves 98 percent single edit success, remains over 95 percent after 1000 sequential edits, lowers hallucination by 3 to 5 percent, and achieves the best backward transfer (BWT) scores on continual instruction tuning benchmarks. Extensive experiments demonstrate DSCA state of the art stability and knowledge retention capability in continual lifelong editing across various datasets and benchmarks.",
+        "categories": "cs.CV",
+        "comment": "Accepted at CVPR 2026"
+      },
+      "analysis": {
+        "problem_statement": "Lifelong editing of Vision Language Models (VLMs) is challenging due to catastrophic forgetting and cross-modal misalignment.",
+        "bottleneck_addressed": "Training efficiency and knowledge retention in VLMs during sequential edits",
+        "executive_summary": "This paper addresses a critical challenge in Vision Language Models (VLMs): lifelong editing. The proposed method, DSCA, enables precise and non-interfering edits by structurally isolating concepts in the representation space. This is crucial for applications where VLMs need to be updated continuously, such as in autonomous vehicles or intelligent assistants. The method achieves state-of-the-art stability and knowledge retention capability in continual lifelong editing across various datasets and benchmarks.",
+        "key_metrics": {
+          "primary_metric": "98 percent single edit success and over 95 percent after 1000 sequential edits",
+          "metric_value": "Not disclosed",
+          "baseline": "Not disclosed",
+          "improvement_percentage": "Not quantifiable"
+        },
+        "technical_breakdown": {
+          "method": "DSCA decomposes the representation space into orthogonal semantic subspaces using incremental clustering and PCA, enabling precise and non-interfering edits. The method is guided by a multi-term loss function for maintaining task fidelity, edit locality, and cross-modal alignment.",
+          "architecture": "The proposed architecture involves decomposing the representation space into a set of orthogonal semantic subspaces, which are obtained through incremental clustering and PCA on joint vision-language representations.",
+          "implementation_details": "The method uses incremental clustering and PCA on joint vision-language representations to obtain the orthogonal semantic subspaces. The multi-term loss function is used to guide the edits.",
+          "code_complexity": "The computational complexity of the method is not explicitly stated, but it involves calculating the joint vision-language representations and applying PCA, which can be computationally expensive. The training time implications are also not disclosed."
+        },
+        "relevance_tags": [
+          "Vision Language Models",
+          "Lifelong Learning",
+          "Knowledge Retention",
+          "Catastrophic Forgetting"
+        ],
+        "confidence": "high"
+      },
+      "analyzed_at": "2026-04-10T02:00:47.648140",
+      "conference_info": {
+        "conference": "CVPR",
+        "year": "2026",
+        "comment": "Accepted at CVPR 2026",
+        "raw_comment": "Accepted at CVPR 2026",
+        "category": "Computer Vision"
+      }
+    },
+    {
+      "paper": {
+        "title": "Cross-Modal Emotion Transfer for Emotion Editing in Talking Face Video",
+        "arxiv_id": "2604.07786v1",
+        "authors": [
+          "Chanhyuk Choi",
+          "Taesoo Kim",
+          "Donggyu Lee",
+          "Siyeol Jung",
+          "Taehwan Kim"
+        ],
+        "published": "2026-04-09T04:28:03Z",
+        "summary": "Talking face generation has gained significant attention as a core application of generative models. To enhance the expressiveness and realism of synthesized videos, emotion editing in talking face video plays a crucial role. However, existing approaches often limit expressive flexibility and struggle to generate extended emotions. Label-based methods represent emotions with discrete categories, which fail to capture a wide range of emotions. Audio-based methods can leverage emotionally rich speech signals - and even benefit from expressive text-to-speech (TTS) synthesis - but they fail to express the target emotions because emotions and linguistic contents are entangled in emotional speeches. Images-based methods, on the other hand, rely on target reference images to guide emotion transfer, yet they require high-quality frontal views and face challenges in acquiring reference data for extended emotions (e.g., sarcasm). To address these limitations, we propose Cross-Modal Emotion Transfer (C-MET), a novel approach that generates facial expressions based on speeches by modeling emotion semantic vectors between speech and visual feature spaces. C-MET leverages a large-scale pretrained audio encoder and a disentangled facial expression encoder to learn emotion semantic vectors that represent the difference between two different emotional embeddings across modalities. Extensive experiments on the MEAD and CREMA-D datasets demonstrate that our method improves emotion accuracy by 14% over state-of-the-art methods, while generating expressive talking face videos - even for unseen extended emotions. Code, checkpoint, and demo are available at https://chanhyeok-choi.github.io/C-MET/",
+        "categories": "cs.CV",
+        "comment": "Accepted to CVPR 2026. Project Page: https://chanhyeok-choi.github.io/C-MET/"
+      },
+      "analysis": {
+        "problem_statement": "The paper addresses the challenge of emotion editing in talking face video generation, where existing approaches often limit expressive flexibility and struggle to generate extended emotions.",
+        "bottleneck_addressed": "The paper addresses the bottleneck of limited expressiveness in emotion editing, particularly for extended emotions.",
+        "executive_summary": "This paper proposes a novel approach, Cross-Modal Emotion Transfer (C-MET), to enhance the expressiveness and realism of synthesized talking face videos. C-MET addresses the limitations of existing methods by modeling emotion semantic vectors between speech and visual feature spaces. This matters to the current AI landscape as it enables the generation of more realistic and expressive talking face videos, which has significant applications in areas such as virtual influencers, video conferencing, and emotional intelligence.",
+        "key_metrics": {
+          "primary_metric": "Improvement in emotion accuracy",
+          "metric_value": "14%",
+          "baseline": "State-of-the-art methods",
+          "improvement_percentage": "14%"
+        },
+        "technical_breakdown": {
+          "method": "C-MET generates facial expressions based on speeches by modeling emotion semantic vectors between speech and visual feature spaces. It leverages a large-scale pretrained audio encoder and a disentangled facial expression encoder to learn emotion semantic vectors. The method uses these vectors to transfer emotions from one modality to another, enabling the generation of expressive talking face videos.",
+          "architecture": "The architecture consists of a large-scale pretrained audio encoder, a disentangled facial expression encoder, and a cross-modal emotion transfer module.",
+          "implementation_details": "The implementation uses a combination of convolutional neural networks (CNNs) and recurrent neural networks (RNNs) to model the emotion semantic vectors. The method also employs a disentanglement technique to separate the emotional content from the linguistic content in speech signals.",
+          "code_complexity": "Not disclosed"
+        },
+        "relevance_tags": [
+          "Generative Models",
+          "Emotion Recognition",
+          "Cross-Modal Learning",
+          "Talking Face Generation"
+        ],
+        "confidence": "high"
+      },
+      "analyzed_at": "2026-04-10T02:01:41.335644",
+      "conference_info": {
+        "conference": "CVPR",
+        "year": "2026",
+        "comment": "Accepted to CVPR 2026. Project Page: https://chanhyeok-choi.github.io/C-MET/",
+        "raw_comment": "Accepted to CVPR 2026. Project Page: https://chanhyeok-choi.github.io/C-MET/",
         "category": "Computer Vision"
       }
     },
@@ -376,29 +572,29 @@
       },
       "analysis": {
         "problem_statement": "Estimating the health state of turbofan engines from operational sensor data under realistic degradation and maintenance patterns.",
-        "bottleneck_addressed": "Training efficiency and interpretability in solving ill-posed inverse problems with sparse sensing and complex nonlinear thermodynamics.",
-        "executive_summary": "This paper addresses a critical challenge in the field of turbofan engine health estimation, which is essential for predictive maintenance and reducing downtime. The proposed self-supervised learning (SSL) approaches and benchmarking of traditional filters provide valuable insights into the complexity of this problem. This work has implications for the development of more efficient and interpretable inference strategies in various domains.",
+        "bottleneck_addressed": "Training efficiency and interpretability of inference strategies for ill-posed inverse problems.",
+        "executive_summary": "This paper addresses a critical challenge in the field of predictive maintenance by developing a machine learning framework for turbofan health estimation. The proposed approach tackles the complexity of nonlinear thermodynamics and sparse sensing, providing a practical lower bound on the difficulty of solving this inverse problem. This work has significant implications for the aerospace industry, enabling more accurate and efficient maintenance strategies.",
         "key_metrics": {
           "primary_metric": "Not disclosed",
           "metric_value": "Not disclosed",
-          "baseline": "Traditional filters and Bayesian filters",
+          "baseline": "Steady-state and nonstationary data-driven models, and Bayesian filters",
           "improvement_percentage": "Not disclosed"
         },
         "technical_breakdown": {
-          "method": "The authors introduce a new dataset that incorporates industry-oriented complexities and use self-supervised learning (SSL) approaches to learn latent representations without access to true health labels. They compare the downstream estimation performance of these unsupervised representations against direct prediction baselines and traditional filters.",
-          "architecture": "The proposed architecture involves a combination of SSL methods, such as autoencoders and contrastive learning, and traditional filters, such as Bayesian filters.",
-          "implementation_details": "The authors use a dataset that incorporates maintenance events and usage changes, and implement SSL methods using popular deep learning frameworks.",
+          "method": "The proposed framework uses a self-supervised learning (SSL) approach to learn latent representations from operational sensor data without access to true health labels. This is achieved by introducing a new dataset that incorporates industry-oriented complexities such as maintenance events and usage changes. The SSL methods are compared against traditional filters and direct prediction baselines to establish a practical lower bound on the difficulty of solving this inverse problem.",
+          "architecture": "The framework employs a combination of SSL approaches, including autoencoders and generative models, to learn compact and informative representations of the sensor data.",
+          "implementation_details": "The implementation details are not explicitly mentioned in the summary, but the authors mention that the generated dataset and the implementation used in this work are made accessible for reproducibility.",
           "code_complexity": "Not disclosed"
         },
         "relevance_tags": [
-          "Turbofan Engine Health Estimation",
+          "Predictive Maintenance",
           "Inverse Problems",
           "Self-Supervised Learning",
-          "Predictive Maintenance"
+          "Aerospace Engineering"
         ],
         "confidence": "medium"
       },
-      "analyzed_at": "2026-04-10T01:29:35.292737",
+      "analyzed_at": "2026-04-10T01:55:37.753637",
       "conference_info": {
         "conference": "KDD",
         "year": "2026",
@@ -424,31 +620,31 @@
         "comment": "Submitted at ECML PKDD 2026"
       },
       "analysis": {
-        "problem_statement": "Estimating the health state of turbofan engines from operational sensor data under realistic degradation and maintenance patterns.",
-        "bottleneck_addressed": "Context length and interpretability in health estimation",
-        "executive_summary": "This paper addresses the challenge of health estimation in turbofan engines, a critical problem in the aerospace industry. The proposed machine learning framework provides a benchmark for comparing traditional filters and self-supervised learning approaches. This work has implications for the development of more accurate and interpretable health estimation models, which can improve maintenance scheduling and reduce downtime.",
+        "problem_statement": "Estimating the health state of turbofan engines from operational sensor data under realistic degradation and maintenance patterns is a challenging ill-posed inverse problem.",
+        "bottleneck_addressed": "Training efficiency and context length",
+        "executive_summary": "This paper addresses the need for more advanced and interpretable inference strategies in health estimation for turbofan engines, a critical problem in the aviation industry. The current AI landscape lacks robust methods for handling sparse sensing and complex nonlinear thermodynamics. This paper provides a benchmark for evaluating the performance of different approaches and highlights the potential of self-supervised learning methods.",
         "key_metrics": {
           "primary_metric": "Not disclosed",
           "metric_value": "Not disclosed",
-          "baseline": "Traditional filters and Bayesian filters",
+          "baseline": "Steady-state and nonstationary data-driven models, Bayesian filters, and classic families of methods",
           "improvement_percentage": "Not disclosed"
         },
         "technical_breakdown": {
-          "method": "The proposed framework uses a self-supervised learning approach to learn latent representations from operational sensor data without access to true health labels. This allows for the estimation of component-level health indicators under realistic degradation and maintenance patterns. The framework is compared to traditional filters and Bayesian filters using a new dataset that incorporates industry-oriented complexities.",
-          "architecture": "The architecture involves a self-supervised learning component that learns latent representations, and a downstream estimation component that uses these representations to estimate health indicators.",
-          "implementation_details": "The implementation used in this work involves the use of a new dataset, a self-supervised learning approach, and a comparison to traditional filters and Bayesian filters.",
+          "method": "The paper introduces a new dataset that incorporates industry-oriented complexities such as maintenance events and usage changes. A self-supervised learning (SSL) approach is used to learn latent representations without access to true health labels. The performance of SSL methods is compared against direct prediction baselines and traditional filters.",
+          "architecture": "The proposed framework uses a combination of data-driven models, Bayesian filters, and SSL methods. The architecture is designed to handle nonstationary data and incorporates temporal information.",
+          "implementation_details": "The paper uses a Python implementation and makes the generated dataset and implementation accessible for reproducibility. The specific algorithms and data structures used are not disclosed.",
           "code_complexity": "Not disclosed"
         },
         "relevance_tags": [
-          "Machine Learning",
-          "Health Estimation",
-          "Turbofan Engines",
-          "Self-Supervised Learning",
-          "Inverse Problems"
+          "health estimation",
+          "turbofan engines",
+          "self-supervised learning",
+          "inverse problems",
+          "aviation industry"
         ],
         "confidence": "medium"
       },
-      "analyzed_at": "2026-04-10T01:32:53.307670",
+      "analyzed_at": "2026-04-10T01:59:07.742281",
       "conference_info": {
         "conference": "KDD",
         "year": "2026",
@@ -473,9 +669,9 @@
         "comment": "21 pages, 3 figures, accepted at ICML SCIS 2023"
       },
       "analysis": {
-        "problem_statement": "The paper addresses the problem of out-of-distribution (OoD) generalization under covariate shift, where the input data distribution changes but the concept distribution remains invariant.",
-        "bottleneck_addressed": "Training efficiency and robustness to distribution shifts",
-        "executive_summary": "This paper proposes a novel method, RIA (Regularization for Invariance with Adversarial training), to improve OoD generalization under covariate shift. This is crucial for real-world applications where training and testing data come from different environments. The proposed method can be used in conjunction with existing OoD generalization methods, making it a valuable addition to the field.",
+        "problem_statement": "The paper addresses the problem of out-of-distribution (OoD) generalization under covariate shift, where the input data distribution shifts between training and testing environments.",
+        "bottleneck_addressed": "Training efficiency and robustness",
+        "executive_summary": "This paper tackles a critical issue in representation learning, where models struggle to generalize to unseen environments. The proposed method, RIA, enables OoD generalization under covariate shift, which is crucial for many real-world applications, such as medical diagnosis, autonomous driving, and recommendation systems. By preventing a collapse to in-distribution trained learners, RIA improves the robustness and reliability of models.",
         "key_metrics": {
           "primary_metric": "Achieving high accuracy compared to OoD baselines",
           "metric_value": "Not disclosed",
@@ -483,25 +679,74 @@
           "improvement_percentage": "Not quantifiable"
         },
         "technical_breakdown": {
-          "method": "The RIA method performs adversarial exploration for training data environments using adversarial label invariant data augmentations. This prevents a collapse to an in-distribution trained learner and enables the model to generalize better to out-of-distribution data. The method is motivated by an analogy to Q-learning and works with many existing OoD generalization methods that can be formulated as constrained optimization problems.",
-          "architecture": "The proposed method uses an alternating gradient descent-ascent algorithm to solve the problem, which involves alternating between updating the model parameters and the adversarial augmentations.",
-          "implementation_details": "The authors develop an alternating gradient descent-ascent algorithm to solve the problem, which involves alternating between updating the model parameters and the adversarial augmentations. The method uses existing OoD generalization methods that can be formulated as constrained optimization problems.",
-          "code_complexity": "The computational complexity of the proposed method is not explicitly stated, but it is likely to be higher than existing OoD generalization methods due to the additional adversarial augmentation step."
+          "method": "RIA performs adversarial exploration for training data environments using adversarial label invariant data augmentations. This prevents a collapse to in-distribution trained learners and enables OoD generalization. The method works with many existing OoD generalization methods for covariate shift that can be formulated as constrained optimization problems.",
+          "architecture": "Alternating gradient descent-ascent algorithm",
+          "implementation_details": "Adversarial training, constrained optimization problems, and gradient descent-ascent algorithm",
+          "code_complexity": "Not disclosed"
         },
         "relevance_tags": [
+          "representation learning",
           "out-of-distribution generalization",
           "covariate shift",
           "adversarial training",
-          "graph classification"
+          "constrained optimization"
         ],
         "confidence": "medium"
       },
-      "analyzed_at": "2026-04-10T01:33:03.221439",
+      "analyzed_at": "2026-04-10T01:59:18.776029",
       "conference_info": {
         "conference": "ICML",
         "year": "2023",
         "comment": "21 pages, 3 figures, accepted at ICML SCIS 2023",
         "raw_comment": "21 pages, 3 figures, accepted at ICML SCIS 2023",
+        "category": "General ML/AI"
+      }
+    },
+    {
+      "paper": {
+        "title": "An Illusion of Unlearning? Assessing Machine Unlearning Through Internal Representations",
+        "arxiv_id": "2604.08271v1",
+        "authors": [
+          "Yichen Gao",
+          "Altay Unal",
+          "Akshay Rangamani",
+          "Zhihui Zhu"
+        ],
+        "published": "2026-04-09T14:02:23Z",
+        "summary": "While numerous machine unlearning (MU) methods have recently been developed with promising results in erasing the influence of forgotten data, classes, or concepts, they are also highly vulnerable-for example, simple fine-tuning can inadvertently reintroduce erased concepts. In this paper, we address this contradiction by examining the internal representations of unlearned models, in contrast to prior work that focuses primarily on output-level behavior. Our analysis shows that many state-of-the-art MU methods appear successful mainly due to a misalignment between last-layer features and the classifier, a phenomenon we call feature-classifier misalignment. In fact, hidden features remain highly discriminative, and simple linear probing can recover near-original accuracy. Assuming neural collapse in the original model, we further demonstrate that adjusting only the classifier can achieve negligible forget accuracy while preserving retain accuracy, and we corroborate this with experiments using classifier-only fine-tuning. Motivated by these findings, we propose MU methods based on a class-mean features (CMF) classifier, which explicitly enforces alignment between features and classifiers. Experiments on standard benchmarks show that CMF-based unlearning reduces forgotten information in representations while maintaining high retain accuracy, highlighting the need for faithful representation-level evaluation of MU.",
+        "categories": "cs.LG",
+        "comment": "9 pages main text, 21 pages total, 6 figures. Accepted at AISTATS 2026"
+      },
+      "analysis": {
+        "problem_statement": "The paper addresses the issue of machine unlearning methods being vulnerable to inadvertently reintroducing erased concepts through fine-tuning.",
+        "bottleneck_addressed": "Representation-level evaluation of machine unlearning methods",
+        "executive_summary": "This paper highlights the limitations of current machine unlearning methods, which can be easily bypassed by fine-tuning. The authors propose a new approach based on class-mean features (CMF) classifiers, which enforces alignment between features and classifiers. This is crucial for faithful representation-level evaluation of machine unlearning methods, particularly in applications where data privacy is a concern.",
+        "key_metrics": {
+          "primary_metric": "Negligible forget accuracy while preserving retain accuracy",
+          "metric_value": "Not disclosed",
+          "baseline": "State-of-the-art machine unlearning methods",
+          "improvement_percentage": "Not quantifiable"
+        },
+        "technical_breakdown": {
+          "method": "The authors propose a new approach to machine unlearning based on class-mean features (CMF) classifiers, which explicitly enforces alignment between features and classifiers. This is achieved by adjusting only the classifier, assuming neural collapse in the original model. The authors demonstrate that this approach can achieve negligible forget accuracy while preserving retain accuracy. They also corroborate this with experiments using classifier-only fine-tuning.",
+          "architecture": "Class-mean features (CMF) classifiers",
+          "implementation_details": "Classifier-only fine-tuning, neural collapse assumption",
+          "code_complexity": "Not disclosed"
+        },
+        "relevance_tags": [
+          "machine learning",
+          "unlearning",
+          "representation learning",
+          "data privacy"
+        ],
+        "confidence": "high"
+      },
+      "analyzed_at": "2026-04-10T01:59:39.693181",
+      "conference_info": {
+        "conference": "AISTATS",
+        "year": "2026",
+        "comment": "9 pages main text, 21 pages total, 6 figures. Accepted at AISTATS 2026",
+        "raw_comment": "9 pages main text, 21 pages total, 6 figures. Accepted at AISTATS 2026",
         "category": "General ML/AI"
       }
     },
@@ -524,30 +769,30 @@
         "comment": "Accepted by ICLR 2026"
       },
       "analysis": {
-        "problem_statement": "Medical Vision-Language Models (VLMs) lack robust visual reasoning capabilities due to text-only paradigms, hindering performance on fine-grained visual analysis tasks and introducing risks of visual hallucination in safety-critical applications.",
-        "bottleneck_addressed": "Visual reasoning capabilities and robustness of Medical VLMs",
-        "executive_summary": "This paper addresses a critical bottleneck in medical AI by introducing MedVR, a novel reinforcement learning framework that enables annotation-free visual reasoning for medical VLMs. This breakthrough promotes the robustness and transparency essential for accelerating the clinical deployment of medical AI, particularly in safety-critical applications. By learning to reason directly with visual evidence, MedVR outperforms existing models on diverse public medical VQA benchmarks.",
+        "problem_statement": "The paper addresses the limitation of Medical Vision-Language Models (VLMs) in grounding inferences in visual evidence, leading to performance degradation and risks of visual hallucination in safety-critical applications.",
+        "bottleneck_addressed": "Training efficiency and robustness in medical VLMs due to the lack of visual evidence-based reasoning.",
+        "executive_summary": "This paper introduces MedVR, a novel reinforcement learning framework that enables annotation-free visual reasoning for medical VLMs, promoting robustness and transparency essential for clinical deployment. This addresses a critical pain point in medical AI, where existing models rely on text-only paradigms, leading to performance degradation and safety risks. By leveraging visual evidence, MedVR achieves state-of-the-art performance on diverse public medical VQA benchmarks.",
         "key_metrics": {
           "primary_metric": "State-of-the-art performance on diverse public medical VQA benchmarks",
           "metric_value": "Not disclosed",
-          "baseline": "Existing models",
-          "improvement_percentage": "Not disclosed"
+          "baseline": "Existing models relying on text-only paradigms",
+          "improvement_percentage": "Not quantifiable"
         },
         "technical_breakdown": {
-          "method": "MedVR uses two synergistic mechanisms: Entropy-guided Visual Regrounding (EVR) and Consensus-based Credit Assignment (CCA) to enable annotation-free visual reasoning. EVR directs exploration using model uncertainty, while CCA distills pseudo-supervision from rollout agreement. This approach allows MedVR to learn to reason directly with visual evidence.",
-          "architecture": "MedVR employs a reinforcement learning framework with EVR and CCA as core innovations",
-          "implementation_details": "EVR uses model uncertainty to guide exploration, while CCA distills pseudo-supervision from rollout agreement. The specific algorithms and data structures used are not disclosed.",
-          "code_complexity": "Not disclosed"
+          "method": "MedVR uses two synergistic mechanisms: Entropy-guided Visual Regrounding (EVR) and Consensus-based Credit Assignment (CCA) to enable annotation-free visual reasoning for medical VLMs. EVR uses model uncertainty to direct exploration, while CCA distills pseudo-supervision from rollout agreement. This allows MedVR to learn to reason directly with visual evidence.",
+          "architecture": "The paper introduces a novel reinforcement learning framework, MedVR, which combines EVR and CCA mechanisms.",
+          "implementation_details": "The paper uses reinforcement learning and does not provide specific details on algorithms, data structures, or techniques used.",
+          "code_complexity": "Not disclosed, but the paper suggests that MedVR promotes robustness and transparency, implying that it may require more computational resources or training time compared to existing models."
         },
         "relevance_tags": [
           "Medical AI",
           "Visual Reasoning",
           "Reinforcement Learning",
-          "Safety-Critical Applications"
+          "Annotation-Free Learning"
         ],
-        "confidence": "high"
+        "confidence": "medium"
       },
-      "analyzed_at": "2026-04-10T01:31:03.197889",
+      "analyzed_at": "2026-04-10T01:57:19.516512",
       "conference_info": {
         "conference": "ICLR",
         "year": "2026",
@@ -558,50 +803,99 @@
     },
     {
       "paper": {
-        "title": "CIAO - Code In Architecture Out - Automated Software Architecture Documentation with Large Language Models",
-        "arxiv_id": "2604.08293v1",
+        "title": "Rethinking Residual Errors in Compensation-based LLM Quantization",
+        "arxiv_id": "2604.07955v1",
         "authors": [
-          "Marco De Luca",
-          "Tiziano Santilli",
-          "Domenico Amalfitano",
-          "Anna Rita Fasolino",
-          "Patrizio Pelliccione"
+          "Shuaiting Li",
+          "Juncan Deng",
+          "Kedong Xu",
+          "Rongtao Deng",
+          "Hong Gu",
+          "Minghan Jiang",
+          "Haibin Shen",
+          "Kejie Huang"
         ],
-        "published": "2026-04-09T14:29:17Z",
-        "summary": "Software architecture documentation is essential for system comprehension, yet it is often unavailable or incomplete. While recent LLM-based techniques can generate documentation from code, they typically address local artifacts rather than producing coherent, system-level architectural descriptions. This paper presents a structured process for automatically generating system-level architectural documentation directly from GitHub repositories using Large Language Models. The process, called CIAO (Code In Architecture Out), defines an LLM-based workflow that takes a repository as input and produces system-level architectural documentation following a template derived from ISO/IEC/IEEE 42010, SEI Views \\& Beyond, and the C4 model. The resulting documentation can be directly added to the target repository. We evaluated the process through a study with 22 developers, each reviewing the documentation generated for a repository they had contributed to. The evaluation shows that developers generally perceive the produced documentation as valuable, comprehensible, and broadly accurate with respect to the source code, while also highlighting limitations in diagram quality, high-level context modeling, and deployment views. We also assessed the operational cost of the process, finding that generating a complete architectural document requires only a few minutes and is inexpensive to run. Overall, the results indicate that a structured, standards-oriented approach can effectively guide LLMs in producing system-level architectural documentation that is both usable and cost-effective.",
-        "categories": "cs.SE",
-        "comment": "Manuscript accepted for the 23rd International Conference on Software Architecture (ICSA 2026)"
+        "published": "2026-04-09T08:20:59Z",
+        "summary": "Methods based on weight compensation, which iteratively apply quantization and weight compensation to minimize the output error, have recently demonstrated remarkable success in quantizing Large Language Models (LLMs). The representative work, GPTQ, introduces several key techniques that make such iterative methods practical for LLMs with billions of parameters. GPTAQ extends this approach by introducing an asymmetric calibration process that aligns the output of each quantized layer with its full-precision counterpart, incorporating a residual error into the weight compensation framework. In this work, we revisit the formulation of the residual error. We identify a sub-optimal calibration objective in existing methods: during the intra-layer calibration process, they align the quantized output with the output from compensated weights, rather than the true output from the original full-precision model. Therefore, we redefine the objective to precisely align the quantized model's output with the original output of the full-precision model at each step. We then reveal that the residual error originates not only from the output difference of the preceding layer but also from the discrepancy between the compensated and original weights within each layer, which we name the 'compensation-aware error'. By inheriting the neuron decomposition technique from GPTAQ, we can efficiently incorporate this compensation-aware error into the weight update process. Extensive experiments on various LLMs and quantization settings demonstrate that our proposed enhancements integrate seamlessly with both GPTQ and GPTAQ, significantly improving their quantization performance. Our code is publicly available at https://github.com/list0830/ResComp.",
+        "categories": "cs.LG",
+        "comment": "ICLR'26 camera ready"
       },
       "analysis": {
-        "problem_statement": "Generating system-level architectural documentation directly from GitHub repositories is a challenging task, often resulting in unavailable or incomplete documentation.",
-        "bottleneck_addressed": "Context length and high-level context modeling",
-        "executive_summary": "This paper presents CIAO, a structured process for automatically generating system-level architectural documentation from GitHub repositories using Large Language Models (LLMs). This is crucial for the current AI landscape, where software architecture documentation is essential for system comprehension, and recent LLM-based techniques often fail to produce coherent, system-level architectural descriptions. The use cases for this paper are in software development and maintenance, where accurate and comprehensive documentation can save significant time and resources.",
+        "problem_statement": "Rethinking the formulation of residual errors in compensation-based Large Language Model (LLM) quantization to improve quantization performance.",
+        "bottleneck_addressed": "Inference latency and memory usage due to the large number of parameters in LLMs.",
+        "executive_summary": "This paper addresses the limitations of existing compensation-based LLM quantization methods by redefining the residual error formulation, leading to improved quantization performance. This matters to the current AI landscape as it enables more efficient deployment of LLMs in resource-constrained environments, such as edge devices or mobile applications.",
         "key_metrics": {
-          "primary_metric": "Generating a complete architectural document requires only a few minutes",
+          "primary_metric": "Significantly improved quantization performance",
           "metric_value": "Not disclosed",
-          "baseline": "Manual documentation process",
+          "baseline": "GPTQ and GPTAQ",
           "improvement_percentage": "Not quantifiable"
         },
         "technical_breakdown": {
-          "method": "CIAO defines an LLM-based workflow that takes a repository as input and produces system-level architectural documentation following a template derived from ISO/IEC/IEEE 42010, SEI Views & Beyond, and the C4 model. The process involves using Large Language Models to analyze the code and generate documentation, which is then added to the target repository.",
-          "architecture": "The architecture of CIAO involves using LLMs to analyze the code and generate documentation, which is then structured using a template derived from industry standards.",
-          "implementation_details": "The implementation details of CIAO involve using Large Language Models to analyze the code and generate documentation, which is then added to the target repository. The specific algorithms, data structures, or techniques used are not disclosed.",
-          "code_complexity": "Not disclosed"
+          "method": "The proposed method redefines the residual error formulation by aligning the quantized model's output with the original output of the full-precision model at each step, rather than the output from compensated weights. This involves incorporating the 'compensation-aware error' into the weight update process using neuron decomposition. The method inherits the neuron decomposition technique from GPTAQ and efficiently updates the weights to minimize the residual error.",
+          "architecture": "The proposed method builds upon existing compensation-based LLM quantization architectures, such as GPTQ and GPTAQ, and introduces a novel residual error formulation.",
+          "implementation_details": "The method uses neuron decomposition, a technique inherited from GPTAQ, to efficiently incorporate the compensation-aware error into the weight update process.",
+          "code_complexity": "The computational complexity and training time implications of the proposed method are not explicitly stated in the paper, but it is likely to be comparable to existing compensation-based LLM quantization methods."
         },
         "relevance_tags": [
-          "software architecture",
-          "documentation",
-          "large language models",
-          "github repositories"
+          "LLM quantization",
+          "compensation-based quantization",
+          "neuron decomposition",
+          "residual error formulation"
         ],
-        "confidence": "high"
+        "confidence": "medium"
       },
-      "analyzed_at": "2026-04-10T01:30:40.669132",
+      "analyzed_at": "2026-04-10T02:00:59.549560",
+      "conference_info": {
+        "conference": "ICLR",
+        "year": "2026",
+        "comment": "ICLR'26 camera ready",
+        "raw_comment": "ICLR'26 camera ready",
+        "category": "General ML/AI"
+      }
+    },
+    {
+      "paper": {
+        "title": "Introducing Echo Networks for Computational Neuroevolution",
+        "arxiv_id": "2604.08204v1",
+        "authors": [
+          "Christian Kroos",
+          "Fabian K\u00fcch"
+        ],
+        "published": "2026-04-09T13:06:25Z",
+        "summary": "For applications on the extreme edge, minimal networks of only a few dozen artificial neurons for event detection and classification in discrete time signals would be highly desirable. Feed-forward networks, RNNs, and CNNs evolved through evolutionary algorithms can all be successful in this respect but pose the problem of allowing little systematicity in mutation and recombination if the standard direct genetic encoding of the weights is used (as for instance in the classic NEAT algorithm). We therefore introduce Echo Networks, a type of recurrent network that consists of the connection matrix only, with the source neurons of the synapses represented as rows, destination neurons as columns and weights as entries. There are no layers, and connections between neurons can be bidirectional but are technically all recurrent. Input and output can be arbitrarily assigned to any of the neurons and only use an additional (optional) function in their computational path, e.g., a sigmoid to obtain a binary classification output. We evaluated Echo Networks successfully on the classification of electrocardiography signals but see the most promising potential in their genome representation as a single matrix, allowing matrix computations and factorisations as mutation and recombination operators.",
+        "categories": "cs.LG",
+        "comment": "Accepted for AMLDS 2026 (International Conference on Advanced Machine Learning and Data Science)"
+      },
+      "analysis": {
+        "problem_statement": "Developing compact, efficient neural networks for event detection and classification in discrete time signals, particularly on the extreme edge.",
+        "bottleneck_addressed": "Inference latency and memory usage due to the complexity of traditional neural networks.",
+        "executive_summary": "This paper introduces Echo Networks, a novel recurrent neural network architecture that addresses the limitations of traditional neural networks in edge applications. By representing the connection matrix as a single matrix, Echo Networks enable efficient matrix computations and factorizations, making them suitable for event detection and classification tasks. This matters to the current AI landscape as edge applications require low-latency and low-memory models, and Echo Networks offer a promising solution.",
+        "key_metrics": {
+          "primary_metric": "Not disclosed",
+          "metric_value": "Not disclosed",
+          "baseline": "Traditional neural networks (e.g., feed-forward networks, RNNs, CNNs)",
+          "improvement_percentage": "Not disclosed"
+        },
+        "technical_breakdown": {
+          "method": "Echo Networks represent the connection matrix as a single matrix, allowing for efficient matrix computations and factorizations. This is achieved by removing the need for explicit weights and layers, and instead using the connection matrix as the primary representation. The source neurons of the synapses are represented as rows, destination neurons as columns, and weights as entries. This representation enables the use of matrix operations as mutation and recombination operators.",
+          "architecture": "Echo Networks are a type of recurrent network with no explicit layers, and connections between neurons can be bidirectional. Input and output can be arbitrarily assigned to any of the neurons, and only use an additional (optional) function in their computational path.",
+          "implementation_details": "The paper does not provide specific implementation details, but mentions the use of matrix operations and factorizations as mutation and recombination operators.",
+          "code_complexity": "The computational complexity of Echo Networks is not explicitly stated, but the use of matrix operations and factorizations may reduce the computational requirements compared to traditional neural networks."
+        },
+        "relevance_tags": [
+          "neural networks",
+          "edge computing",
+          "recurrent networks",
+          "matrix factorizations"
+        ],
+        "confidence": "medium"
+      },
+      "analyzed_at": "2026-04-10T01:59:50.709717",
       "conference_info": {
         "conference": "CHI",
         "year": "2026",
-        "comment": "Manuscript accepted for the 23rd International Conference on Software Architecture (ICSA 2026)",
-        "raw_comment": "Manuscript accepted for the 23rd International Conference on Software Architecture (ICSA 2026)",
+        "comment": "Accepted for AMLDS 2026 (International Conference on Advanced Machine Learning and Data Science)",
+        "raw_comment": "Accepted for AMLDS 2026 (International Conference on Advanced Machine Learning and Data Science)",
         "category": "Human-Computer Interaction"
       }
     },
@@ -622,29 +916,30 @@
         "comment": "To appear in ACL 2026. The code is available at https://github.com/sleeepeer/PIArena"
       },
       "analysis": {
-        "problem_statement": "The paper addresses the lack of a unified platform for evaluating prompt injection attacks, making it challenging to compare defenses and understand their robustness.",
-        "bottleneck_addressed": "Robustness against prompt injection attacks",
-        "executive_summary": "Prompt injection attacks pose a significant security risk in various real-world applications. The lack of a unified evaluation platform hinders the reliable comparison of defenses and their generalizability across tasks and benchmarks. PIArena addresses this gap by providing a unified and extensible platform for prompt injection evaluation.",
+        "problem_statement": "The paper addresses the lack of a unified platform for evaluating prompt injection attacks in natural language processing (NLP) applications.",
+        "bottleneck_addressed": "Limited generalizability and robustness of defenses against prompt injection attacks.",
+        "executive_summary": "Prompt injection attacks pose significant security risks in NLP applications, including chatbots, language translation, and text summarization. The lack of a unified platform for evaluating defenses has hindered the development of robust and generalizable solutions. PIArena addresses this gap by providing a unified platform for prompt injection evaluation, enabling users to easily integrate state-of-the-art attacks and defenses and evaluate them across various benchmarks.",
         "key_metrics": {
-          "primary_metric": "Limited generalizability of state-of-the-art defenses across tasks",
+          "primary_metric": "Not disclosed",
           "metric_value": "Not disclosed",
           "baseline": "State-of-the-art defenses",
-          "improvement_percentage": "Not quantifiable"
+          "improvement_percentage": "Not disclosed"
         },
         "technical_breakdown": {
-          "method": "PIArena introduces a dynamic strategy-based attack that adaptively optimizes injected prompts based on defense feedback, enabling users to easily integrate state-of-the-art attacks and defenses and evaluate them across various benchmarks.",
-          "architecture": "Unified and extensible platform for prompt injection evaluation",
-          "implementation_details": "Design of a dynamic strategy-based attack and integration of state-of-the-art attacks and defenses",
-          "code_complexity": "Not disclosed"
+          "method": "PIArena introduces a unified and extensible platform for prompt injection evaluation, enabling users to easily integrate state-of-the-art attacks and defenses. The platform also includes a dynamic strategy-based attack that adaptively optimizes injected prompts based on defense feedback. This allows for more effective evaluation of defenses and identification of their limitations.",
+          "architecture": "The platform is designed to be extensible and modular, allowing users to easily integrate new attacks and defenses. It also includes a dynamic strategy-based attack, which is a novel technique for adapting to defense feedback.",
+          "implementation_details": "The implementation details are not explicitly mentioned in the summary, but the platform is built on top of existing NLP frameworks and libraries. The dynamic strategy-based attack is likely implemented using reinforcement learning or other adaptive optimization techniques.",
+          "code_complexity": "The code complexity is not explicitly mentioned in the summary, but the platform is designed to be extensible and modular, which may imply a higher code complexity due to the need for additional modules and integrations."
         },
         "relevance_tags": [
-          "prompt injection attacks",
-          "security risks",
-          "AI robustness"
+          "NLP",
+          "Prompt Injection Attacks",
+          "Defense Evaluation",
+          "Adaptive Optimization"
         ],
         "confidence": "medium"
       },
-      "analyzed_at": "2026-04-10T01:29:24.479620",
+      "analyzed_at": "2026-04-10T01:55:25.895180",
       "conference_info": {
         "conference": "ACL",
         "year": "2026",
@@ -670,9 +965,9 @@
         "comment": "To appear in ACL 2026. The code is available at https://github.com/sleeepeer/PIArena"
       },
       "analysis": {
-        "problem_statement": "The paper addresses the lack of a unified platform for evaluating prompt injection attacks in natural language processing (NLP) applications.",
-        "bottleneck_addressed": "Limited generalizability and robustness of defenses against prompt injection attacks.",
-        "executive_summary": "Prompt injection attacks pose significant security risks in NLP applications, and the lack of a unified evaluation platform hinders reliable comparison and assessment of defenses. PIArena addresses this gap by providing a unified and extensible platform for prompt injection evaluation, enabling users to easily integrate attacks and defenses and evaluate their robustness across various benchmarks. This matters to the current AI landscape as it highlights critical limitations of state-of-the-art defenses and underscores the need for more robust and generalizable solutions.",
+        "problem_statement": "The paper addresses the lack of a unified platform for prompt injection evaluation, making it challenging to compare defenses, understand their robustness, and assess their generalizability across tasks and benchmarks.",
+        "bottleneck_addressed": "Robustness against prompt injection attacks",
+        "executive_summary": "This paper matters to the current AI landscape as prompt injection attacks pose serious security risks across various applications. The lack of a unified evaluation platform has hindered the development of effective defenses. PIArena addresses this gap by providing a platform for evaluating defenses across diverse attacks and tasks, uncovering critical limitations of state-of-the-art defenses.",
         "key_metrics": {
           "primary_metric": "Not disclosed",
           "metric_value": "Not disclosed",
@@ -680,21 +975,19 @@
           "improvement_percentage": "Not disclosed"
         },
         "technical_breakdown": {
-          "method": "PIArena introduces a unified and extensible platform for prompt injection evaluation, enabling users to easily integrate state-of-the-art attacks and defenses. The platform includes a dynamic strategy-based attack that adaptively optimizes injected prompts based on defense feedback. This allows for comprehensive evaluation of defenses across various benchmarks and tasks.",
-          "architecture": "PIArena's architecture is designed to be extensible and modular, enabling users to easily integrate new attacks and defenses.",
-          "implementation_details": "The platform uses a dynamic strategy-based attack that employs reinforcement learning to adaptively optimize injected prompts based on defense feedback.",
+          "method": "PIArena introduces a unified and extensible platform for prompt injection evaluation, enabling users to integrate state-of-the-art attacks and defenses and evaluate them across various benchmarks. The platform includes a dynamic strategy-based attack that adaptively optimizes injected prompts based on defense feedback.",
+          "architecture": "The platform's architecture is not explicitly described, but it is mentioned to be extensible and unified.",
+          "implementation_details": "The implementation details are not provided, but the paper mentions that the code and datasets are available at https://github.com/sleeepeer/PIArena.",
           "code_complexity": "Not disclosed"
         },
         "relevance_tags": [
-          "Natural Language Processing",
           "Prompt Injection Attacks",
-          "Defense Evaluation",
-          "Robustness",
-          "Generalizability"
+          "Natural Language Processing",
+          "Security"
         ],
-        "confidence": "high"
+        "confidence": "medium"
       },
-      "analyzed_at": "2026-04-10T01:32:51.418791",
+      "analyzed_at": "2026-04-10T01:58:57.809645",
       "conference_info": {
         "conference": "ACL",
         "year": "2026",
@@ -721,9 +1014,9 @@
         "comment": "Accepted by ACL2026 Main Conference"
       },
       "analysis": {
-        "problem_statement": "The paper addresses the issue of unfaithful reasoning trajectories in large language model (LLM) agents, where internal beliefs may violate logical or evidential constraints, leading to systematic behavioral drift.",
-        "bottleneck_addressed": "Reasoning faithfulness in LLM agents",
-        "executive_summary": "This paper tackles a critical issue in LLM agents, where internal beliefs may not be reliable, leading to behavioral drift. This is particularly relevant in long-horizon agentic systems, where repeated propagation of unsupported beliefs can have severe consequences. The proposed solution, SAVeR, aims to enforce verification over internal belief states, ensuring faithful reasoning.",
+        "problem_statement": "The paper addresses the issue of systematic behavioral drift in long-horizon agentic systems due to unfaithful intermediate reasoning trajectories in large language model (LLM) agents.",
+        "bottleneck_addressed": "Contextual reasoning faithfulness in LLM agents",
+        "executive_summary": "This paper tackles a critical challenge in LLM agents, where unfaithful intermediate reasoning can lead to systematic behavioral drift. The proposed approach, SAVeR, ensures faithful reasoning by verifying internal belief states before action commitment, which is crucial for reliable decision-making in long-horizon agentic systems. This matters in applications where LLM agents interact with humans, such as customer service chatbots or autonomous vehicles.",
         "key_metrics": {
           "primary_metric": "Improvement in reasoning faithfulness",
           "metric_value": "Not disclosed",
@@ -731,20 +1024,21 @@
           "improvement_percentage": "Not disclosed"
         },
         "technical_breakdown": {
-          "method": "SAVeR generates diverse candidate beliefs under a faithfulness-relevant structure space, performs adversarial auditing to localize violations, and repairs through constraint-guided minimal interventions.",
-          "architecture": "The proposed framework involves a self-auditing mechanism, adversarial auditing, and constraint-guided minimal interventions.",
-          "implementation_details": "The paper uses a persona-based approach to generate diverse candidate beliefs and employs adversarial auditing to identify violations.",
+          "method": "SAVeR generates persona-based diverse candidate beliefs for selection under a faithfulness-relevant structure space, performs adversarial auditing to localize violations, and repairs through constraint-guided minimal interventions under verifiable acceptance criteria.",
+          "architecture": "The proposed framework involves a self-auditing mechanism that enforces verification over internal belief states within the agent before action commitment.",
+          "implementation_details": "The paper mentions the use of adversarial auditing and constraint-guided minimal interventions, but specific algorithms or data structures are not disclosed.",
           "code_complexity": "Not disclosed"
         },
         "relevance_tags": [
           "Large Language Models",
           "Reasoning Faithfulness",
+          "Agentic Systems",
           "Adversarial Auditing",
-          "Self-Auditing"
+          "Constraint-Guided Minimal Interventions"
         ],
-        "confidence": "high"
+        "confidence": "medium"
       },
-      "analyzed_at": "2026-04-10T01:29:36.972997",
+      "analyzed_at": "2026-04-10T01:55:50.594984",
       "conference_info": {
         "conference": "ACL",
         "year": "2026",
@@ -773,31 +1067,30 @@
         "comment": "ACL 2026"
       },
       "analysis": {
-        "problem_statement": "Aligning Large Language Models (LLMs) with high-stakes medical standards, particularly addressing the dissonance between coarse-grained preference signals and the complex, multi-dimensional nature of clinical protocols.",
+        "problem_statement": "Aligning Large Language Models (LLMs) with high-stakes medical standards remains a significant challenge due to the dissonance between coarse-grained preference signals and the complex, multi-dimensional nature of clinical protocols.",
         "bottleneck_addressed": "Training efficiency and alignment with high-stakes medical standards",
-        "executive_summary": "This paper tackles the challenge of aligning LLMs with medical standards by introducing ProMedical, a unified alignment framework that leverages fine-grained clinical criteria. This matters to the current AI landscape as it enables the development of safer and more accurate medical language models, which can have a significant impact on healthcare outcomes. The proposed framework has the potential to improve the performance of medical language models, particularly in high-stakes applications such as diagnosis and treatment recommendations.",
+        "executive_summary": "This paper addresses the challenge of aligning LLMs with medical standards by introducing a unified alignment framework, ProMedical, which leverages fine-grained clinical criteria to improve the accuracy and safety compliance of medical language models. This matters to the current AI landscape as it has significant implications for healthcare applications, where accurate and safe decision-making is crucial. The proposed framework has the potential to improve the performance of medical language models, rivaling proprietary frontier models.",
         "key_metrics": {
           "primary_metric": "Improving overall accuracy by 22.3% and safety compliance by 21.7%",
-          "metric_value": "Not disclosed",
+          "metric_value": "22.3% and 21.7%",
           "baseline": "Proprietary frontier models",
-          "improvement_percentage": "22.3% (accuracy), 21.7% (safety compliance)"
+          "improvement_percentage": "22.3% and 21.7%"
         },
         "technical_breakdown": {
-          "method": "ProMedical introduces a unified alignment framework that leverages fine-grained clinical criteria to train a multi-dimensional reward model. The Explicit Criteria Injection paradigm is used to train the reward model, which explicitly disentangles safety constraints from general proficiency. This approach enables precise guidance during reinforcement learning.",
-          "architecture": "ProMedical-Preference-50k dataset, multi-dimensional reward model, Explicit Criteria Injection paradigm, ProMedical-Bench evaluation suite",
-          "implementation_details": "Human-in-the-loop pipeline for dataset generation, physician-derived rubrics, double-blind expert adjudication for evaluation",
+          "method": "ProMedical introduces a unified alignment framework that leverages fine-grained clinical criteria to train a multi-dimensional reward model. The Explicit Criteria Injection paradigm explicitly disentangles safety constraints from general proficiency, enabling precise guidance during reinforcement learning. The framework is grounded in a dataset generated via a human-in-the-loop pipeline that augments medical instructions with rigorous, physician-derived rubrics.",
+          "architecture": "The proposed framework consists of a multi-dimensional reward model, a human-in-the-loop pipeline for dataset generation, and a reinforcement learning algorithm (GRPO) for training the language model.",
+          "implementation_details": "The paper uses the Qwen3-8B base model as the underlying language model and employs the GRPO algorithm for training. The Explicit Criteria Injection paradigm is used to train the multi-dimensional reward model.",
           "code_complexity": "Not disclosed"
         },
         "relevance_tags": [
-          "medical language models",
-          "alignment",
-          "fine-grained clinical criteria",
-          "reward models",
-          "reinforcement learning"
+          "Medical NLP",
+          "Language Model Alignment",
+          "Reinforcement Learning",
+          "Clinical Decision Support"
         ],
         "confidence": "high"
       },
-      "analyzed_at": "2026-04-10T01:30:08.801518",
+      "analyzed_at": "2026-04-10T01:56:25.039826",
       "conference_info": {
         "conference": "ACL",
         "year": "2026",
@@ -820,9 +1113,9 @@
         "comment": "Camera-ready for ACL 2026 (main conference)"
       },
       "analysis": {
-        "problem_statement": "The paper addresses the limitations of Chain-of-Thought (CoT) in large language models due to the limited expressiveness of discrete token sampling.",
-        "bottleneck_addressed": "Inference stability and exploration of alternative reasoning paths in large language models.",
-        "executive_summary": "SeLaR tackles the challenges of CoT by introducing an entropy-gated mechanism and entropy-aware contrastive regularization, enabling sustained exploration of multiple latent reasoning paths. This matters to the current AI landscape as it improves the robustness and generalizability of large language models. This can be particularly beneficial in applications where reasoning under uncertainty is crucial, such as in natural language processing and decision-making systems.",
+        "problem_statement": "The paper addresses the limitations of Chain-of-Thought (CoT) reasoning in large language models due to discrete token sampling's limited expressiveness.",
+        "bottleneck_addressed": "Training efficiency and context length limitations due to discrete token sampling.",
+        "executive_summary": "SeLaR addresses the challenges of CoT reasoning by introducing an entropy-gated mechanism and entropy-aware contrastive regularization, enabling sustained exploration of multiple latent reasoning paths. This matters in the current AI landscape as it can improve the performance of large language models in various reasoning tasks. The proposed method can be applied to various applications, such as question-answering and natural language inference.",
         "key_metrics": {
           "primary_metric": "Consistent outperformance of standard CoT and state-of-the-art training-free methods on five reasoning benchmarks.",
           "metric_value": "Not disclosed",
@@ -830,21 +1123,20 @@
           "improvement_percentage": "Not quantifiable"
         },
         "technical_breakdown": {
-          "method": "SeLaR introduces an entropy-gated mechanism that activates soft embeddings only at low-confidence steps, while preserving discrete decoding at high-confidence steps. Additionally, it proposes an entropy-aware contrastive regularization that pushes soft embeddings away from the dominant token's direction, encouraging sustained exploration of multiple latent reasoning paths.",
-          "architecture": "The proposed framework consists of an entropy-gated mechanism and entropy-aware contrastive regularization, which can be integrated into existing large language models.",
+          "method": "SeLaR introduces an entropy-gated mechanism that activates soft embeddings only at low-confidence steps, while preserving discrete decoding at high-confidence steps. Additionally, it proposes an entropy-aware contrastive regularization that pushes soft embeddings away from the dominant token's direction, encouraging exploration of multiple latent reasoning paths.",
+          "architecture": "The proposed framework is a lightweight and training-free architecture that leverages soft embeddings and entropy-aware contrastive regularization.",
           "implementation_details": "The entropy-gated mechanism and entropy-aware contrastive regularization are implemented using probability-weighted mixtures of token embeddings and hidden states.",
           "code_complexity": "Not disclosed"
         },
         "relevance_tags": [
-          "large_language_models",
-          "chain_of_thought",
-          "reasoning_under_uncertainty",
-          "inference_stability",
-          "exploration_of_alternative_reasoning_paths"
+          "Large Language Models",
+          "Chain-of-Thought Reasoning",
+          "Entropy-Aware Contrastive Regularization",
+          "Training-Free Methods"
         ],
-        "confidence": "high"
+        "confidence": "medium"
       },
-      "analyzed_at": "2026-04-10T01:30:19.550973",
+      "analyzed_at": "2026-04-10T01:56:36.039274",
       "conference_info": {
         "conference": "ACL",
         "year": "2026",
@@ -870,30 +1162,30 @@
         "comment": "ACL Findings 2026"
       },
       "analysis": {
-        "problem_statement": "Knowledge Tracing (KT) approaches overlook the procedural dynamics of problem solving, leading to suboptimal item representations.",
-        "bottleneck_addressed": "Context length and learner heterogeneity in Knowledge Tracing models",
-        "executive_summary": "This paper addresses a critical limitation in Knowledge Tracing models by incorporating dynamic procedural solution information, enabling more accurate predictions of learners' future performance. This matters to the current AI landscape as it has significant implications for adaptive learning systems and personalized education. The proposed Behavior-Aware Item Modeling (BAIM) framework can be applied to various domains where procedural knowledge is essential, such as math problem-solving or programming.",
+        "problem_statement": "Knowledge Tracing (KT) approaches overlook the procedural dynamics of problem solving, limiting their ability to accurately predict learners' future performance.",
+        "bottleneck_addressed": "Context length and learner heterogeneity in KT models.",
+        "executive_summary": "This paper addresses a critical limitation in Knowledge Tracing by incorporating dynamic procedural solution information, enabling more accurate predictions of learners' future performance. This matters to the current AI landscape as it has significant implications for personalized education and adaptive learning systems. The proposed framework, BAIM, can be applied to various domains where procedural knowledge is essential, such as math, science, and programming.",
         "key_metrics": {
           "primary_metric": "Consistently outperforms strong pretraining-based baselines",
           "metric_value": "Not disclosed",
           "baseline": "Strong pretraining-based baselines",
-          "improvement_percentage": "Not disclosed"
+          "improvement_percentage": "Not quantifiable"
         },
         "technical_breakdown": {
           "method": "BAIM leverages a reasoning language model to decompose each item's solution into four problem-solving stages, capturing latent signals beyond surface features. It derives stage-level representations from per-stage embedding trajectories and adaptively routes these stage-wise representations to reflect learner heterogeneity.",
-          "architecture": "The proposed framework consists of a reasoning language model, a procedural stage decomposition module, and a context-conditioned KT backbone.",
-          "implementation_details": "The paper employs a transformer-based architecture for the reasoning language model and utilizes a context-conditioned mechanism within the KT backbone.",
-          "code_complexity": "The computational complexity of the proposed framework is not explicitly discussed in the paper, but it is likely to be high due to the use of transformer-based architectures and context-conditioned mechanisms."
+          "architecture": "The proposed framework consists of a reasoning language model, a stage-level representation module, and a context-conditioned mechanism within a KT backbone.",
+          "implementation_details": "The paper uses a reasoning language model, such as a transformer-based architecture, to decompose each item's solution into four problem-solving stages. The stage-level representations are derived from per-stage embedding trajectories, which are captured using techniques such as attention mechanisms or graph neural networks.",
+          "code_complexity": "The computational complexity of the proposed framework is not explicitly discussed in the paper. However, it is likely to be high due to the use of complex neural network architectures and the need to process large amounts of procedural knowledge data."
         },
         "relevance_tags": [
           "Knowledge Tracing",
+          "Procedural Knowledge",
           "Adaptive Learning",
-          "Personalized Education",
-          "Procedural Knowledge"
+          "Personalized Education"
         ],
-        "confidence": "medium"
+        "confidence": "high"
       },
-      "analyzed_at": "2026-04-10T01:30:51.565940",
+      "analyzed_at": "2026-04-10T01:56:57.053909",
       "conference_info": {
         "conference": "ACL",
         "year": "2026",
@@ -922,9 +1214,9 @@
         "comment": "ACL 2026 Main"
       },
       "analysis": {
-        "problem_statement": "Long-term conversational agents struggle to maintain coherence and track persistent tasks due to limitations in capturing high-order associations among multiple elements.",
-        "bottleneck_addressed": "Context length and fragmented retrieval in conversational memory",
-        "executive_summary": "This paper addresses a critical pain point in conversational AI by proposing a hypergraph-based memory architecture that effectively captures high-order associations, enabling more coherent and personalized long-term conversations. This is particularly relevant for applications like customer service chatbots and virtual assistants that require extended dialogues. By improving the ability to track persistent tasks and maintain context, HyperMem has the potential to enhance user experience and improve task completion rates.",
+        "problem_statement": "The paper addresses the problem of maintaining coherence and tracking persistent tasks in conversational agents across extended dialogues.",
+        "bottleneck_addressed": "Context length and fragmented retrieval due to pairwise relations in existing approaches.",
+        "executive_summary": "This paper proposes a novel hypergraph-based memory architecture, HyperMem, to address the limitations of existing conversational memory models. By explicitly modeling high-order associations using hyperedges, HyperMem enables accurate and efficient retrieval of coherent units in long-term conversations. This matters to the current AI landscape as conversational agents are increasingly being used in applications such as customer service and virtual assistants, where maintaining coherence and tracking persistent tasks is crucial.",
         "key_metrics": {
           "primary_metric": "State-of-the-art performance on the LoCoMo benchmark",
           "metric_value": "92.73% LLM-as-a-judge accuracy",
@@ -932,20 +1224,20 @@
           "improvement_percentage": "Not quantifiable"
         },
         "technical_breakdown": {
-          "method": "HyperMem structures memory into three levels: topics, episodes, and facts, and groups related episodes and their facts via hyperedges, allowing for the explicit modeling of high-order associations. A hybrid lexical-semantic index and a coarse-to-fine retrieval strategy are designed to support accurate and efficient retrieval of these associations.",
-          "architecture": "Hypergraph-based hierarchical memory architecture with three levels: topics, episodes, and facts",
-          "implementation_details": "Hybrid lexical-semantic index, coarse-to-fine retrieval strategy, and hyperedges for modeling high-order associations",
+          "method": "HyperMem structures memory into three levels: topics, episodes, and facts, and groups related episodes and their facts via hyperedges. A hybrid lexical-semantic index and a coarse-to-fine retrieval strategy are designed to support accurate and efficient retrieval of high-order associations.",
+          "architecture": "Hypergraph-based hierarchical memory architecture with three levels: topics, episodes, and facts, and hyperedges to group related episodes and facts.",
+          "implementation_details": "Hybrid lexical-semantic index and coarse-to-fine retrieval strategy",
           "code_complexity": "Not disclosed"
         },
         "relevance_tags": [
           "Conversational AI",
-          "Memory architectures",
-          "Hypergraphs",
-          "Long-term conversations"
+          "Memory Models",
+          "Hypergraph-based Architecture",
+          "Long-term Conversations"
         ],
         "confidence": "high"
       },
-      "analyzed_at": "2026-04-10T01:31:01.459028",
+      "analyzed_at": "2026-04-10T01:57:07.455831",
       "conference_info": {
         "conference": "ACL",
         "year": "2026",
@@ -972,30 +1264,30 @@
         "comment": "13 pages, 5 figures, accepted to ACL 2026 main conference"
       },
       "analysis": {
-        "problem_statement": "The paper addresses the lack of benchmarks for evaluating Reward Models (RMs) in complex tool-using scenarios, particularly in agentic systems.",
-        "bottleneck_addressed": "Training efficiency and context length in agentic, trajectory-level reward modeling.",
-        "executive_summary": "This paper presents Plan-RewardBench, a trajectory-level preference benchmark for evaluating Reward Models in complex tool-using scenarios. This matters to the current AI landscape as it addresses the need for specialized training in agentic, trajectory-level reward modeling, which is crucial for Large Language Models evolving into agentic systems. This can be particularly useful in applications such as autonomous tool invocation and complex reasoning.",
+        "problem_statement": "The paper addresses the lack of benchmarks for evaluating Reward Models (RMs) in complex tool-using scenarios, where Large Language Models (LLMs) serve as agentic systems.",
+        "bottleneck_addressed": "Training efficiency and effectiveness of Reward Models in agentic, trajectory-level reward modeling",
+        "executive_summary": "This paper presents Plan-RewardBench, a benchmark designed to evaluate Reward Models in complex tool-using scenarios. This is crucial for the development of LLMs as agentic systems, as it addresses the need for specialized training in trajectory-level reward modeling. The benchmark can help improve the performance and robustness of RMs in various task categories.",
         "key_metrics": {
-          "primary_metric": "Not disclosed",
+          "primary_metric": "Accuracy trends across varying trajectory lengths and task categories",
           "metric_value": "Not disclosed",
-          "baseline": "Not disclosed",
+          "baseline": "Representative RMs (generative, discriminative, and LLM-as-Judge)",
           "improvement_percentage": "Not disclosed"
         },
         "technical_breakdown": {
-          "method": "Plan-RewardBench is a trajectory-level preference benchmark that evaluates Reward Models by distinguishing preferred versus distractor agent trajectories in complex tool-using scenarios. It covers four representative task families and uses multi-model natural rollouts, rule-based perturbations, and minimal-edit LLM perturbations to construct validated positive trajectories and confusable hard negatives.",
-          "architecture": "The benchmark uses a unified pairwise protocol to evaluate representative Reward Models (generative, discriminative, and LLM-as-Judge).",
+          "method": "Plan-RewardBench is a trajectory-level preference benchmark that evaluates how well judges distinguish preferred versus distractor agent trajectories in complex tool-using scenarios. It covers four representative task families and uses multi-model natural rollouts, rule-based perturbations, and minimal-edit LLM perturbations to construct validated positive trajectories and confusable hard negatives.",
+          "architecture": "The benchmark uses a unified pairwise protocol to evaluate representative RMs, including generative, discriminative, and LLM-as-Judge models.",
           "implementation_details": "The paper uses multi-model natural rollouts, rule-based perturbations, and minimal-edit LLM perturbations to construct validated positive trajectories and confusable hard negatives.",
           "code_complexity": "Not disclosed"
         },
         "relevance_tags": [
           "Reward Models",
+          "Large Language Models",
           "Agentic Systems",
-          "Trajectory-Level Reward Modeling",
-          "Benchmarking"
+          "Trajectory-Level Reward Modeling"
         ],
-        "confidence": "high"
+        "confidence": "medium"
       },
-      "analyzed_at": "2026-04-10T01:31:23.065572",
+      "analyzed_at": "2026-04-10T01:57:31.482555",
       "conference_info": {
         "conference": "ACL",
         "year": "2026",
@@ -1024,7 +1316,7 @@
       "analysis": {
         "problem_statement": "The paper addresses the latency bottleneck caused by the substantial number of expert activations in Mixture-of-Experts (MoE) models during inference.",
         "bottleneck_addressed": "Inference latency",
-        "executive_summary": "This paper tackles the critical latency bottleneck in MoE models, which is a significant pain point in resource-constrained deployment scenarios. Alloc-MoE offers a unified framework to optimize budget allocation, maintaining model performance under a constrained activation budget. This is particularly important for large language models that require efficient inference.",
+        "executive_summary": "This paper is crucial for the current AI landscape as it tackles the latency bottleneck in MoE models, which are widely used for scaling large language models. This is particularly important for resource-constrained deployment scenarios, such as mobile devices or edge computing. The proposed Alloc-MoE framework maintains model performance under a constrained activation budget, enabling faster inference speeds.",
         "key_metrics": {
           "primary_metric": "1.15x prefill and 1.34x decode speedups",
           "metric_value": "1.15 and 1.34",
@@ -1033,8 +1325,8 @@
         },
         "technical_breakdown": {
           "method": "Alloc-MoE optimizes budget allocation coordinately at both the layer and token levels using sensitivity profiling, dynamic programming, and dynamic redistribution of activations based on routing scores.",
-          "architecture": "The proposed framework consists of Alloc-L (layer-level allocation) and Alloc-T (token-level allocation), which are key architectural components.",
-          "implementation_details": "Sensitivity profiling, dynamic programming, and dynamic redistribution of activations are specific algorithms used in Alloc-MoE.",
+          "architecture": "The proposed framework consists of Alloc-L (layer-level allocation) and Alloc-T (token-level allocation), which are unified under the Alloc-MoE framework.",
+          "implementation_details": "The paper leverages sensitivity profiling and dynamic programming to determine optimal expert activation allocation across layers, and dynamic redistribution of activations based on routing scores.",
           "code_complexity": "Not disclosed"
         },
         "relevance_tags": [
@@ -1045,7 +1337,57 @@
         ],
         "confidence": "high"
       },
-      "analyzed_at": "2026-04-10T01:31:24.771301",
+      "analyzed_at": "2026-04-10T01:57:42.439584",
+      "conference_info": {
+        "conference": "ACL",
+        "year": "2026",
+        "comment": "ACL 2026 main",
+        "raw_comment": "ACL 2026 main",
+        "category": "Natural Language Processing"
+      }
+    },
+    {
+      "paper": {
+        "title": "Alloc-MoE: Budget-Aware Expert Activation Allocation for Efficient Mixture-of-Experts Inference",
+        "arxiv_id": "2604.08133v1",
+        "authors": [
+          "Baihui Liu",
+          "Kaiyuan Tian",
+          "Wei Wang",
+          "Zhaoning Zhang",
+          "Linbo Qiao",
+          "Dongsheng Li"
+        ],
+        "published": "2026-04-09T11:50:21Z",
+        "summary": "Mixture-of-Experts (MoE) has become a dominant architecture for scaling large language models due to their sparse activation mechanism. However, the substantial number of expert activations creates a critical latency bottleneck during inference, especially in resource-constrained deployment scenarios. Existing approaches that reduce expert activations potentially lead to severe model performance degradation. In this work, we introduce the concept of \\emph{activation budget} as a constraint on the number of expert activations and propose Alloc-MoE, a unified framework that optimizes budget allocation coordinately at both the layer and token levels to minimize performance degradation. At the layer level, we introduce Alloc-L, which leverages sensitivity profiling and dynamic programming to determine the optimal allocation of expert activations across layers. At the token level, we propose Alloc-T, which dynamically redistributes activations based on routing scores, optimizing budget allocation without increasing latency. Extensive experiments across multiple MoE models demonstrate that Alloc-MoE maintains model performance under a constrained activation budget. Especially, Alloc-MoE achieves $1.15\\times$ prefill and $1.34\\times$ decode speedups on DeepSeek-V2-Lite at half of the original budget.",
+        "categories": "cs.LG",
+        "comment": "ACL 2026 main"
+      },
+      "analysis": {
+        "problem_statement": "The paper addresses the latency bottleneck caused by substantial expert activations in Mixture-of-Experts (MoE) inference, particularly in resource-constrained deployment scenarios.",
+        "bottleneck_addressed": "inference latency",
+        "executive_summary": "This paper tackles a critical issue in large language models, where the sparse activation mechanism of MoE architectures leads to significant latency bottlenecks during inference. Alloc-MoE proposes a unified framework to optimize expert activation allocation, maintaining model performance under a constrained activation budget. This matters to the current AI landscape, as it enables efficient deployment of MoE models in resource-constrained environments, such as edge devices or real-time applications.",
+        "key_metrics": {
+          "primary_metric": "1.15x prefill and 1.34x decode speedups",
+          "metric_value": "1.15 and 1.34",
+          "baseline": "original budget",
+          "improvement_percentage": "Not disclosed"
+        },
+        "technical_breakdown": {
+          "method": "Alloc-MoE optimizes budget allocation coordinately at both the layer and token levels using sensitivity profiling, dynamic programming, and dynamic redistribution based on routing scores. Alloc-L determines the optimal allocation of expert activations across layers, while Alloc-T dynamically redistributes activations without increasing latency.",
+          "architecture": "Mixture-of-Experts (MoE) architecture with Alloc-MoE framework",
+          "implementation_details": "sensitivity profiling, dynamic programming, dynamic redistribution based on routing scores",
+          "code_complexity": "Not disclosed"
+        },
+        "relevance_tags": [
+          "Mixture-of-Experts",
+          "inference latency",
+          "large language models",
+          "resource-constrained deployment"
+        ],
+        "confidence": "high"
+      },
+      "analyzed_at": "2026-04-10T02:00:12.840586",
       "conference_info": {
         "conference": "ACL",
         "year": "2026",
@@ -1072,36 +1414,83 @@
         "comment": "15 pages, ACL2026 Findings Accepted"
       },
       "analysis": {
-        "problem_statement": "The paper addresses the issue of inefficient reasoning trajectories and unstable training in reinforcement learning (RL) based search agents.",
-        "bottleneck_addressed": "Training efficiency and stability in RL-based search agents",
-        "executive_summary": "This paper tackles a critical challenge in AI research, where RL-based search agents often rely on stochastic exploration, leading to inefficient reasoning trajectories and unstable training. The proposed Hierarchical Experience (HiExp) framework enhances the performance and training stability of search agents by leveraging experience-aligned training and transforming raw reasoning trajectories into hierarchical experience knowledge. This matters to the current AI landscape as it has the potential to improve the efficiency and effectiveness of RL-based search agents in various applications, such as question-answering and mathematical reasoning.",
+        "problem_statement": "Improving the performance and training stability of reinforcement learning-based search agents in large language models.",
+        "bottleneck_addressed": "Training efficiency and unstable training due to stochastic exploration.",
+        "executive_summary": "This paper addresses a significant pain point in the current AI landscape by proposing a novel framework, Hierarchical Experience (HiExp), to enhance the performance and training stability of search agents. This is particularly relevant for complex agentic search and mathematical reasoning tasks, where current RL-based search agents often rely on inefficient reasoning trajectories and unstable training. By leveraging experience-aligned training, HiExp evolves stochastic exploration into a strategic and experience-driven search process, leading to substantial performance gains and strong cross-task and cross-algorithm generalization.",
         "key_metrics": {
-          "primary_metric": "Substantial performance gains",
+          "primary_metric": "Substantial performance gains on complex agentic search and mathematical reasoning benchmarks",
           "metric_value": "Not disclosed",
-          "baseline": "Stochastic exploration guided by carefully crafted outcome rewards",
-          "improvement_percentage": "Not quantifiable"
+          "baseline": "Current RL-based search agents",
+          "improvement_percentage": "Not disclosed"
         },
         "technical_breakdown": {
-          "method": "The HiExp framework extracts empirical knowledge through contrastive analysis and a multi-level clustering mechanism, transforming raw reasoning trajectories into hierarchical experience knowledge. This knowledge is then used to regularize stochastic exploration, evolving it into a strategic and experience-driven search process.",
-          "architecture": "The proposed framework consists of a hierarchical experience representation, which is built using a multi-level clustering mechanism and contrastive analysis.",
-          "implementation_details": "The paper uses a combination of contrastive analysis and multi-level clustering to extract empirical knowledge from raw reasoning trajectories.",
+          "method": "The proposed framework, Hierarchical Experience (HiExp), extracts empirical knowledge through contrastive analysis and a multi-level clustering mechanism, transforming raw reasoning trajectories into hierarchical experience knowledge. This knowledge is then leveraged to regularize stochastic exploration, evolving it into a strategic and experience-driven search process.",
+          "architecture": "HiExp framework, which includes contrastive analysis and multi-level clustering mechanisms",
+          "implementation_details": "The paper does not provide specific details on the implementation, but mentions that it uses a combination of contrastive analysis and multi-level clustering to extract empirical knowledge.",
           "code_complexity": "Not disclosed"
         },
         "relevance_tags": [
           "Reinforcement Learning",
           "Large Language Models",
-          "Search Engines",
-          "Agentic Search",
-          "Mathematical Reasoning"
+          "Search Agents",
+          "Training Efficiency",
+          "Stability"
         ],
         "confidence": "medium"
       },
-      "analyzed_at": "2026-04-10T01:31:42.849347",
+      "analyzed_at": "2026-04-10T01:57:52.289922",
       "conference_info": {
         "conference": "ACL",
         "year": "2026",
         "comment": "15 pages, ACL2026 Findings Accepted",
         "raw_comment": "15 pages, ACL2026 Findings Accepted",
+        "category": "Natural Language Processing"
+      }
+    },
+    {
+      "paper": {
+        "title": "Initialisation Determines the Basin: Efficient Codebook Optimisation for Extreme LLM Quantization",
+        "arxiv_id": "2604.08118v1",
+        "authors": [
+          "Ian W. Kennedy",
+          "Nafise Sadat Moosavi"
+        ],
+        "published": "2026-04-09T11:38:24Z",
+        "summary": "Additive quantization enables extreme LLM compression with O(1) lookup-table dequantization, making it attractive for edge deployment. Yet at 2-bit precision, it often fails catastrophically, even with extensive search and finetuning. We show that the dominant bottleneck is codebook initialisation. Greedy sequential initialisation frequently places the model in poor optimisation regions that subsequent beam search and PV-tuning struggle to overcome. We analyse this behaviour through the representational ratio \\r{ho} = N/KM, which characterises the relationship between weight groups and codebook capacity, and propose OA-EM, an output-aware EM initialisation method using Hessian-weighted Mahalanobis distance. Across compression rates, search budgets, and three architectures (Llama 3.2 3B, Llama 3.1 8B, Qwen 2.5 3B), OA-EM consistently produces better solutions after PV-tuning and dominates the quality-compute frontier. The severity of the bottleneck scales with \\r{ho}: moderate at 3 bpp but extreme at 2 bpp, where poor initialisation can degrade perplexity by orders of magnitude. More broadly, our results highlight the importance of optimisation geometry in compressed model spaces, where initialisation can dominate subsequent search and fine-tuning.",
+        "categories": "cs.CL",
+        "comment": "9 pages (+ references and appendix). Under review at ACL Rolling Review"
+      },
+      "analysis": {
+        "problem_statement": "The paper addresses the issue of catastrophic failure in extreme Large Language Model (LLM) compression at 2-bit precision due to poor codebook initialisation.",
+        "bottleneck_addressed": "Inference efficiency and model quality degradation due to poor quantization and codebook initialisation.",
+        "executive_summary": "This paper highlights the importance of optimisation geometry in compressed model spaces, where initialisation can dominate subsequent search and fine-tuning. The authors propose a novel initialisation method, OA-EM, which consistently produces better solutions after PV-tuning and dominates the quality-compute frontier. This matters to the current AI landscape as it enables efficient compression of LLMs for edge deployment, which is crucial for applications such as voice assistants, language translation, and text summarization.",
+        "key_metrics": {
+          "primary_metric": "Improved perplexity by orders of magnitude at 2 bpp",
+          "metric_value": "Not disclosed",
+          "baseline": "Greedy sequential initialisation",
+          "improvement_percentage": "Not quantifiable"
+        },
+        "technical_breakdown": {
+          "method": "The authors propose an output-aware EM initialisation method, OA-EM, which uses Hessian-weighted Mahalanobis distance to initialise the codebook. This method aims to place the model in better optimisation regions, allowing subsequent beam search and PV-tuning to produce better solutions.",
+          "architecture": "The paper uses three architectures: Llama 3.2 3B, Llama 3.1 8B, and Qwen 2.5 3B.",
+          "implementation_details": "The authors use the representational ratio \r{ho} = N/KM to characterise the relationship between weight groups and codebook capacity.",
+          "code_complexity": "The computational complexity of OA-EM is not explicitly stated, but it is likely to be higher than greedy sequential initialisation due to the use of Hessian-weighted Mahalanobis distance."
+        },
+        "relevance_tags": [
+          "LLM compression",
+          "quantization",
+          "codebook initialisation",
+          "optimisation geometry",
+          "edge deployment"
+        ],
+        "confidence": "high"
+      },
+      "analyzed_at": "2026-04-10T02:00:24.161371",
+      "conference_info": {
+        "conference": "ACL",
+        "year": "Unknown",
+        "comment": "9 pages (+ references and appendix). Under review at ACL Rolling Review",
+        "raw_comment": "9 pages (+ references and appendix). Under review at ACL Rolling Review",
         "category": "Natural Language Processing"
       }
     },
@@ -1120,31 +1509,30 @@
         "comment": "Accepted to ACL 2025 Industry-Oral"
       },
       "analysis": {
-        "problem_statement": "The paper addresses the limitation of existing Document AI frameworks in structurally organizing and managing document information, particularly in the presence of errors introduced by Optical Character Recognition (OCR).",
-        "bottleneck_addressed": "Contextual understanding and downstream task performance due to structural management limitations of existing Document AI frameworks.",
-        "executive_summary": "This paper tackles a crucial challenge in Document AI, where existing frameworks struggle to manage document information due to OCR errors. By proposing a framework called Revise, the authors aim to improve downstream performance in tasks like document retrieval and question answering. This matters to the current AI landscape as it has significant implications for applications relying on accurate document understanding, such as information retrieval systems, document management software, and knowledge graphs.",
+        "problem_statement": "The paper addresses the limitation of existing Document AI frameworks in structurally organizing and managing document information, primarily due to errors introduced by Optical Character Recognition (OCR) technology.",
+        "bottleneck_addressed": "Contextual understanding and downstream performance in document retrieval and question answering tasks, due to structural management limitations.",
+        "executive_summary": "This paper proposes Revise, a framework that systematically corrects OCR errors to enable more structured representation and systematic management of document contents. This is crucial in the current AI landscape, where document understanding tasks such as question answering are becoming increasingly important. The proposed method has the potential to overcome the limitations of existing Document AI frameworks, particularly in applications where accurate document information is critical, such as in legal, medical, or financial domains.",
         "key_metrics": {
-          "primary_metric": "Not disclosed",
+          "primary_metric": "Effective correction of OCR outputs, enabling more structured representation and systematic management of document contents.",
           "metric_value": "Not disclosed",
           "baseline": "Existing Document AI frameworks",
           "improvement_percentage": "Not disclosed"
         },
         "technical_breakdown": {
-          "method": "Revise employs a comprehensive hierarchical taxonomy of common OCR errors and a synthetic data generation strategy to train an effective correction model. The framework systematically corrects errors introduced by OCR at the character, word, and structural levels. This is achieved through a hierarchical approach, where the correction model is trained to address errors at different levels of granularity. The framework's effectiveness is demonstrated through experimental results showing improved downstream performance in document retrieval and question answering tasks.",
-          "architecture": "Hierarchical taxonomy of OCR errors, synthetic data generation strategy, and a correction model trained using this data.",
-          "implementation_details": "The paper does not provide specific details on the implementation of the hierarchical taxonomy, synthetic data generation strategy, or the correction model. However, it is likely that the authors employed a combination of natural language processing (NLP) and machine learning techniques to develop these components.",
+          "method": "Revise employs a comprehensive hierarchical taxonomy of common OCR errors and a synthetic data generation strategy to train an effective correction model. This approach systematically corrects errors introduced by OCR at the character, word, and structural levels. The framework uses a hierarchical taxonomy to categorize and address OCR errors, allowing for more accurate and efficient correction. The synthetic data generation strategy realistically simulates OCR errors, enabling the model to learn from a diverse range of error types.",
+          "architecture": "The proposed framework is based on a hierarchical taxonomy of OCR errors and a synthetic data generation strategy, which are key architectural components. The use of a hierarchical taxonomy allows for more accurate and efficient correction of OCR errors.",
+          "implementation_details": "The implementation details include the use of a comprehensive hierarchical taxonomy of common OCR errors and a synthetic data generation strategy to train an effective correction model. The taxonomy is used to categorize and address OCR errors at the character, word, and structural levels.",
           "code_complexity": "Not disclosed"
         },
         "relevance_tags": [
           "Document AI",
-          "OCR errors",
+          "OCR correction",
           "Synthetic data generation",
-          "Hierarchical taxonomy",
-          "Correction model"
+          "Hierarchical taxonomy"
         ],
-        "confidence": "medium"
+        "confidence": "high"
       },
-      "analyzed_at": "2026-04-10T01:31:54.805879",
+      "analyzed_at": "2026-04-10T01:58:02.631334",
       "conference_info": {
         "conference": "ACL",
         "year": "2025",
@@ -1171,8 +1559,8 @@
       },
       "analysis": {
         "problem_statement": "Existing memory benchmarks for LLM agents overlook implicit memory, where experience becomes automated behavior without conscious retrieval, hindering effective assistants.",
-        "bottleneck_addressed": "Implicit memory evaluation in LLM agents",
-        "executive_summary": "ImplicitMemBench addresses a critical gap in LLM evaluation by introducing a systematic benchmark for implicit memory, which is essential for effective assistants to automatically apply learned procedures or avoid failed actions without explicit reminders. This is particularly relevant for applications where LLMs need to adapt to new situations or recall procedures without conscious recall. The current AI landscape lacks a comprehensive evaluation framework for implicit memory, making ImplicitMemBench a crucial contribution.",
+        "bottleneck_addressed": "Implicit memory evaluation and automation in LLMs",
+        "executive_summary": "ImplicitMemBench addresses a critical gap in LLM evaluation, where current benchmarks focus on explicit recall. This matters to the current AI landscape as effective assistants require automatic application of learned procedures. The paper highlights severe limitations in existing models, emphasizing the need for architectural innovations beyond parameter scaling.",
         "key_metrics": {
           "primary_metric": "No model exceeds 66% overall in implicit memory evaluation",
           "metric_value": "66%",
@@ -1180,25 +1568,128 @@
           "improvement_percentage": "Not disclosed"
         },
         "technical_breakdown": {
-          "method": "ImplicitMemBench employs a unified Learning/Priming-Interfere-Test protocol with first-attempt scoring to evaluate implicit memory through three cognitively grounded constructs: Procedural Memory, Priming, and Classical Conditioning.",
-          "architecture": "The benchmark suite consists of 300 items, and the evaluation framework is designed to assess the ability of LLMs to automatically enact learned procedures or avoid failed actions without explicit reminders.",
-          "implementation_details": "The authors use a first-attempt scoring protocol, which implies that the LLM's response is evaluated based on its initial output, without considering subsequent attempts or corrections.",
+          "method": "ImplicitMemBench employs a unified Learning/Priming-Interfere-Test protocol with first-attempt scoring, evaluating three cognitively grounded constructs: Procedural Memory, Priming, and Classical Conditioning.",
+          "architecture": "The benchmark suite consists of 300 items, with a unified protocol and cognitively grounded constructs.",
+          "implementation_details": "The paper does not provide specific details on algorithms, data structures, or techniques used.",
           "code_complexity": "Not disclosed"
         },
         "relevance_tags": [
-          "Large Language Models",
-          "Implicit Memory",
+          "Language Models",
+          "Memory Evaluation",
           "Cognitive Science",
-          "Memory Benchmarks"
+          "LLM Evaluation"
         ],
         "confidence": "high"
       },
-      "analyzed_at": "2026-04-10T01:31:56.640707",
+      "analyzed_at": "2026-04-10T01:58:14.698793",
       "conference_info": {
         "conference": "ACL",
         "year": "2026",
         "comment": "Accepted to ACL 2026 Main Conference",
         "raw_comment": "Accepted to ACL 2026 Main Conference",
+        "category": "Natural Language Processing"
+      }
+    },
+    {
+      "paper": {
+        "title": "GRASS: Gradient-based Adaptive Layer-wise Importance Sampling for Memory-efficient Large Language Model Fine-tuning",
+        "arxiv_id": "2604.07808v1",
+        "authors": [
+          "Kaiyuan Tian",
+          "Yu Tang",
+          "Gongqingjian Jiang",
+          "Baihui Liu",
+          "Yifu Gao",
+          "Xialin Su",
+          "Linbo Qiao",
+          "Dongsheng Li"
+        ],
+        "published": "2026-04-09T05:04:37Z",
+        "summary": "Full-parameter fine-tuning of large language models is constrained by substantial GPU memory requirements. Low-rank adaptation methods mitigate this challenge by updating only a subset of parameters. However, these approaches often limit model expressiveness and yield lower performance than full-parameter fine-tuning. Layer-wise fine-tuning methods have emerged as an alternative, enabling memory-efficient training through static layer importance sampling strategies. However, these methods overlook variations in layer importance across tasks and training stages, resulting in suboptimal performance on downstream tasks. To address these limitations, we propose GRASS, a gradient-based adaptive layer-wise importance sampling framework. GRASS utilizes mean gradient norms as a task-aware and training-stage-aware metric for estimating layer importance. Furthermore, GRASS adaptively adjusts layer sampling probabilities through an adaptive training strategy. We also introduce a layer-wise optimizer state offloading mechanism that overlaps computation and communication to further reduce memory usage while maintaining comparable training throughput. Extensive experiments across multiple models and benchmarks demonstrate that GRASS consistently outperforms state-of-the-art methods, achieving an average accuracy improvement of up to 4.38 points and reducing memory usage by up to 19.97\\%.",
+        "categories": "cs.CL",
+        "comment": "Accepted by ACL 2026 Findings"
+      },
+      "analysis": {
+        "problem_statement": "Fine-tuning large language models is constrained by substantial GPU memory requirements.",
+        "bottleneck_addressed": "memory usage",
+        "executive_summary": "GRASS addresses the memory bottleneck in fine-tuning large language models, enabling efficient training on resource-constrained devices. This matters to the current AI landscape as it enables the widespread adoption of large language models in various applications, such as natural language processing and conversational AI. The proposed method outperforms state-of-the-art methods, achieving an average accuracy improvement of up to 4.38 points.",
+        "key_metrics": {
+          "primary_metric": "memory usage reduction",
+          "metric_value": "up to 19.97%",
+          "baseline": "state-of-the-art methods",
+          "improvement_percentage": "Not disclosed"
+        },
+        "technical_breakdown": {
+          "method": "GRASS utilizes mean gradient norms as a task-aware and training-stage-aware metric for estimating layer importance, and adaptively adjusts layer sampling probabilities through an adaptive training strategy. It also introduces a layer-wise optimizer state offloading mechanism to reduce memory usage.",
+          "architecture": "Layer-wise importance sampling, adaptive training strategy, and layer-wise optimizer state offloading mechanism",
+          "implementation_details": "Gradient-based adaptive layer-wise importance sampling, mean gradient norms, and adaptive training strategy",
+          "code_complexity": "Not disclosed"
+        },
+        "relevance_tags": [
+          "large language models",
+          "memory-efficient training",
+          "fine-tuning",
+          "natural language processing"
+        ],
+        "confidence": "high"
+      },
+      "analyzed_at": "2026-04-10T02:01:20.250180",
+      "conference_info": {
+        "conference": "ACL",
+        "year": "2026",
+        "comment": "Accepted by ACL 2026 Findings",
+        "raw_comment": "Accepted by ACL 2026 Findings",
+        "category": "Natural Language Processing"
+      }
+    },
+    {
+      "paper": {
+        "title": "SEARL: Joint Optimization of Policy and Tool Graph Memory for Self-Evolving Agents",
+        "arxiv_id": "2604.07791v1",
+        "authors": [
+          "Xinshun Feng",
+          "Xinhao Song",
+          "Lijun Li",
+          "Gongshen Liu",
+          "Jing Shao"
+        ],
+        "published": "2026-04-09T04:38:47Z",
+        "summary": "Recent advances in Reinforcement Learning with Verifiable Rewards (RLVR) have demonstrated significant potential in single-turn reasoning tasks. With the paradigm shift toward self-evolving agentic learning, models are increasingly expected to learn from trajectories by synthesizing tools or accumulating explicit experiences. However, prevailing methods typically rely on large-scale LLMs or multi-agent frameworks, which hinder their deployment in resource-constrained environments. The inherent sparsity of outcome-based rewards also poses a substantial challenge, as agents typically receive feedback only upon completion of tasks. To address these limitations, we introduce a Tool-Memory based self-evolving agentic framework SEARL. Unlike approaches that directly utilize interaction experiences, our method constructs a structured experience memory that integrates planning with execution. This provides a novel state abstraction that facilitates generalization across analogous contexts, such as tool reuse. Consequently, agents extract explicit knowledge from historical data while leveraging inter-trajectory correlations to densify reward signals. We evaluate our framework on knowledge reasoning and mathematics tasks, demonstrating its effectiveness in achieving more practical and efficient learning.",
+        "categories": "cs.AI",
+        "comment": "ACL 2026"
+      },
+      "analysis": {
+        "problem_statement": "Developing self-evolving agents that can learn from trajectories in resource-constrained environments with sparse outcome-based rewards.",
+        "bottleneck_addressed": "Training efficiency and context length",
+        "executive_summary": "This paper addresses the limitations of existing self-evolving agentic learning methods by introducing a novel framework that constructs a structured experience memory, facilitating generalization across analogous contexts and densifying reward signals. This matters to the current AI landscape as it enables more practical and efficient learning in resource-constrained environments, such as robotics or edge computing. The proposed framework has the potential to improve the performance of self-evolving agents in various applications, including knowledge reasoning and mathematics tasks.",
+        "key_metrics": {
+          "primary_metric": "Achieving more practical and efficient learning",
+          "metric_value": "Not disclosed",
+          "baseline": "Prevailing methods relying on large-scale LLMs or multi-agent frameworks",
+          "improvement_percentage": "Not quantifiable"
+        },
+        "technical_breakdown": {
+          "method": "SEARL constructs a structured experience memory that integrates planning with execution, providing a novel state abstraction that facilitates generalization across analogous contexts. This is achieved by extracting explicit knowledge from historical data and leveraging inter-trajectory correlations to densify reward signals.",
+          "architecture": "Tool-Memory based self-evolving agentic framework with a structured experience memory",
+          "implementation_details": "The paper does not provide specific details on the algorithms, data structures, or techniques used in SEARL.",
+          "code_complexity": "Not disclosed"
+        },
+        "relevance_tags": [
+          "Reinforcement Learning",
+          "Self-Evolving Agents",
+          "Tool-Memory",
+          "Structured Experience Memory",
+          "Knowledge Reasoning",
+          "Mathematics Tasks"
+        ],
+        "confidence": "medium"
+      },
+      "analyzed_at": "2026-04-10T02:01:30.143098",
+      "conference_info": {
+        "conference": "ACL",
+        "year": "2026",
+        "comment": "ACL 2026",
+        "raw_comment": "ACL 2026",
         "category": "Natural Language Processing"
       }
     }
