@@ -479,12 +479,19 @@
 
     bar.style.display = 'grid';
 
-    document.getElementById('m-date').textContent = dashboard.current_date || data.filter_date || '—';
-    document.getElementById('m-current').textContent = dashboard.current_count ?? data.total_papers ?? '—';
-    document.getElementById('m-previous').textContent = dashboard.previous_count ?? '—';
-    document.getElementById('m-previous-date').textContent = dashboard.previous_date || '';
+    // Works for both current and archive data
+    const currentDate = dashboard.current_date || dashboard.date || data.filter_date || '—';
+    const currentCount = dashboard.current_count ?? dashboard.total_papers ?? data.total_papers ?? '—';
+    const previousCount = dashboard.previous_count ?? '—';
+    const previousDate = dashboard.previous_date || '';
+    const change = dashboard.day_change ?? null;
+    const trend = dashboard.trend || (dashboard.note ? '📦 Archive' : '—');
 
-    const change = dashboard.day_change;
+    document.getElementById('m-date').textContent = currentDate;
+    document.getElementById('m-current').textContent = currentCount;
+    document.getElementById('m-previous').textContent = previousCount;
+    document.getElementById('m-previous-date').textContent = previousDate;
+
     const changeEl = document.getElementById('m-change');
     if (change == null) {
         changeEl.textContent = '—';
@@ -500,7 +507,8 @@
         changeEl.className = 'metric-value same';
     }
 
-    document.getElementById('m-trend').textContent = dashboard.trend || '—';
+    document.getElementById('m-trend').textContent = trend;
+}
 }
         // ============ LOAD DATES & PAPERS ============
         let allPapers = [];
