@@ -74,6 +74,15 @@ def push_file_to_github(filepath: str):
         return False
 
 
+def safe_push_to_github(stdout: str):
+    """Only push to GitHub if the pipeline actually saved data (safety guard check)."""
+    if "SAFETY GUARD" in stdout:
+        print("⚠️  Skipping GitHub push — pipeline returned 0 papers (safety guard triggered)")
+        return
+    push_file_to_github("papers.json")
+    push_file_to_github("papers_archive.json")
+
+
 # Background task for daily analysis
 def daily_paper_analysis():
     """Run the daily arXiv paper analysis"""
@@ -93,11 +102,12 @@ def daily_paper_analysis():
             print("STDERR:", result.stderr)
         print("✅ Daily analysis completed")
 
-        # Push updated data to GitHub so it persists across deploys
-        push_file_to_github("papers.json")
-        push_file_to_github("papers_archive.json")
+        # Only push to GitHub if pipeline produced data
+        safe_push_to_github(result.stdout)
+
     except Exception as e:
         print(f"❌ Error running daily analysis: {e}")
+
 
 # Initialize scheduler
 scheduler = BackgroundScheduler(timezone=EST)
@@ -118,10 +128,10 @@ async def health_check():
 async def get_papers(date: str = None):
     """
     Get papers by date
-    
+
     Query parameters:
     - date: YYYY-MM-DD format (optional, defaults to yesterday)
-    
+
     Examples:
     - /api/papers (gets yesterday's papers)
     - /api/papers?date=2026-04-09 (gets April 9's papers)
@@ -134,17 +144,17 @@ async def get_papers(date: str = None):
                 data = json.loads(content)
         else:
             return {"error": "No papers available yet", "total_papers": 0}
-        
+
         # If no date specified, return today's papers
         if not date:
             return data
-        
+
         # Load archive for historical data
         if os.path.exists("papers_archive.json"):
             async with aiofiles.open("papers_archive.json", "r") as f:
                 content = await f.read()
                 archive = json.loads(content)
-            
+
             if date in archive.get("dates", {}):
                 archive_data = archive["dates"][date]
                 return {
@@ -172,7 +182,7 @@ async def get_papers(date: str = None):
                 "error": "Archive not available",
                 "total_papers": 0
             }
-        
+
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
@@ -181,7 +191,7 @@ async def get_available_dates():
     """Get all available dates with paper counts"""
     try:
         dates_info = {}
-        
+
         # Add current date (from papers.json)
         if os.path.exists("papers.json"):
             async with aiofiles.open("papers.json", "r") as f:
@@ -193,22 +203,22 @@ async def get_available_dates():
                         "count": data.get("total_papers", 0),
                         "status": "current"
                     }
-        
+
         # Add historical dates from archive
         if os.path.exists("papers_archive.json"):
             async with aiofiles.open("papers_archive.json", "r") as f:
                 content = await f.read()
                 archive = json.loads(content)
-            
+
             for date_key, date_data in archive.get("dates", {}).items():
                 if date_key not in dates_info:
                     dates_info[date_key] = {}
                 dates_info[date_key]["count"] = date_data.get("count", 0)
                 dates_info[date_key]["status"] = "archived"
-        
+
         # Sort dates in descending order (newest first)
         sorted_dates = sorted(dates_info.items(), key=lambda x: x[0], reverse=True)
-        
+
         return {
             "total_dates": len(dates_info),
             "dates": dict(sorted_dates),
@@ -224,7 +234,7 @@ async def trigger_analysis():
         print("\n" + "="*60)
         print("📤 Manual trigger received - running analysis...")
         print("="*60)
-        
+
         result = subprocess.run(
             ["python", "arxiv_agent.py"],
             capture_output=True,
@@ -232,21 +242,20 @@ async def trigger_analysis():
             timeout=600,
             env={**os.environ}
         )
-        
+
         print(result.stdout)
         if result.stderr:
             print("STDERR:", result.stderr)
 
-        # Push updated data to GitHub so it persists across deploys
-        push_file_to_github("papers.json")
-        push_file_to_github("papers_archive.json")
+        # Only push to GitHub if pipeline produced data
+        safe_push_to_github(result.stdout)
 
         return {
             "status": "success",
             "message": "Analysis completed",
             "timestamp": datetime.now().isoformat()
         }
-    
+
     except subprocess.TimeoutExpired:
         raise HTTPException(status_code=500, detail="Analysis timed out")
     except Exception as e:
