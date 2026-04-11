@@ -211,7 +211,7 @@ async def fetch_arxiv_papers_single_session(max_results: int = 100) -> list:
         for index, category in enumerate(ARXIV_CATEGORIES):
             url = "http://export.arxiv.org/api/query"
             params = {
-                "search_query": f"cat:{category} AND submittedDate:[{yesterday}000000 TO {yesterday}235959]",
+                "search_query": f"cat:{category}",
                 "start": 0,
                 "max_results": 300,
                 "sortBy": "submittedDate",
@@ -398,12 +398,13 @@ Be precise and technical."""
 
 
 async def run_daily_pipeline() -> tuple:
-    print(f"[{datetime.now().isoformat()}] Starting arXiv paper analysis pipeline...")
-    if not is_arxiv_publishing_day():
-        return [], None       # ← None signals "skip" to save_results
-    yesterday_date = get_yesterday_date_str()
     """Main pipeline: fetch papers → filter → analyze"""
     print(f"[{datetime.now().isoformat()}] Starting arXiv paper analysis pipeline...")
+
+    # Skip on weekends — arXiv doesn't publish Fri/Sat
+    if not is_arxiv_publishing_day():
+        return [], None
+
     yesterday_date = get_yesterday_date_str()
     print(f"📅 Filtering for papers from YESTERDAY: {yesterday_date}")
     archive = load_archive()
