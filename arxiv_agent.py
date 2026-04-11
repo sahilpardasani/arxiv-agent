@@ -136,6 +136,20 @@ REJECTION_PHRASES = [
     "preprint",
 ]
 
+def is_arxiv_publishing_day() -> bool:
+    """
+    arXiv announces new papers Sunday through Thursday only.
+    Friday and Saturday submissions are held until the next Sunday announcement.
+    So if yesterday was Friday (weekday=4) or Saturday (weekday=5), skip.
+    """
+    yesterday = date.today() - timedelta(days=1)
+    if yesterday.weekday() in (4, 5):  # 4=Friday, 5=Saturday
+        day_name = yesterday.strftime("%A %Y-%m-%d")
+        print(f"📅 Yesterday was {day_name} — arXiv does not publish on Fridays or weekends.")
+        print("   Skipping pipeline. Next papers will be available Monday morning.")
+        return False
+    return True
+
 
 def get_yesterday_date_str() -> str:
     """Get yesterday's date in ISO format (YYYY-MM-DD)"""
@@ -384,6 +398,10 @@ Be precise and technical."""
 
 
 async def run_daily_pipeline() -> tuple:
+    print(f"[{datetime.now().isoformat()}] Starting arXiv paper analysis pipeline...")
+    if not is_arxiv_publishing_day():
+        return [], None       # ← None signals "skip" to save_results
+    yesterday_date = get_yesterday_date_str()
     """Main pipeline: fetch papers → filter → analyze"""
     print(f"[{datetime.now().isoformat()}] Starting arXiv paper analysis pipeline...")
     yesterday_date = get_yesterday_date_str()
