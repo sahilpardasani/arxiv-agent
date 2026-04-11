@@ -157,17 +157,29 @@ async def get_papers(date: str = None):
 
             if date in archive.get("dates", {}):
                 archive_data = archive["dates"][date]
+                current_count = archive_data.get("count", 0)
+
+                # Calculate previous day metrics from archive
+                from datetime import datetime, timedelta
+                prev_date = (datetime.fromisoformat(date) - timedelta(days=1)).date().isoformat()
+                prev_data = archive.get("dates", {}).get(prev_date)
+                previous_count = len(prev_data.get("papers", [])) if prev_data else 0
+                day_change = current_count - previous_count
+
                 return {
                     "last_updated": archive_data.get("updated_at"),
-                    "total_papers": archive_data.get("count", 0),
+                    "total_papers": current_count,
                     "papers": archive_data.get("papers", []),
                     "categories": data.get("categories", []),
                     "filter_date": date,
                     "metrics": {
                         "dashboard": {
-                            "date": date,
-                            "total_papers": archive_data.get("count", 0),
-                            "note": "Historical data from archive"
+                            "current_date": date,
+                            "current_count": current_count,
+                            "previous_date": prev_date if prev_data else "unavailable",
+                            "previous_count": previous_count,
+                            "day_change": day_change,
+                            "trend": "📈 UP" if day_change > 0 else ("📉 DOWN" if day_change < 0 else "➡️  STABLE")
                         }
                     }
                 }
