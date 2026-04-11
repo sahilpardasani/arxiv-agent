@@ -195,12 +195,11 @@ async def fetch_arxiv_papers_single_session(max_results: int = 100) -> list:
     papers = []
     async with aiohttp.ClientSession() as session:
         for index, category in enumerate(ARXIV_CATEGORIES):
-            yesterday = (date.today() - timedelta(days=1)).strftime("%Y%m%d")
             url = "http://export.arxiv.org/api/query"
             params = {
                 "search_query": f"cat:{category} AND submittedDate:[{yesterday}000000 TO {yesterday}235959]",
                 "start": 0,
-                "max_results": max_results,
+                "max_results": 300,
                 "sortBy": "submittedDate",
                 "sortOrder": "descending",
             }
