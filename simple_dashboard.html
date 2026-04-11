@@ -227,6 +227,8 @@
             text-align: center;
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
+            white-space: normal;        /* ← add this */
+            word-break: break-word; 
         }
 
         .status.loading {
@@ -423,10 +425,6 @@
             <div class="metric-card">
                 <div class="metric-label">📊 Trend</div>
                 <div class="metric-value" id="m-trend">—</div>
-            </div>
-            <div class="metric-card">
-                <div class="metric-label">🕒 Last Updated</div>
-                <div class="metric-value" id="m-updated" style="font-size:0.85em;">—</div>
             </div>
         </div>
 
