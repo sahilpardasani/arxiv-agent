@@ -473,45 +473,35 @@
 
         // ============ METRICS ============
         function renderMetrics(data) {
-            const bar = document.getElementById('metricsBar');
-            const dashboard = data?.metrics?.dashboard;
-            if (!dashboard) { bar.style.display = 'none'; return; }
+    const bar = document.getElementById('metricsBar');
+    const dashboard = data?.metrics?.dashboard;
+    if (!dashboard) { bar.style.display = 'none'; return; }
 
-            bar.style.display = 'grid';
+    bar.style.display = 'grid';
 
-            document.getElementById('m-date').textContent = dashboard.current_date || data.filter_date || '—';
+    document.getElementById('m-date').textContent = dashboard.current_date || data.filter_date || '—';
+    document.getElementById('m-current').textContent = dashboard.current_count ?? data.total_papers ?? '—';
+    document.getElementById('m-previous').textContent = dashboard.previous_count ?? '—';
+    document.getElementById('m-previous-date').textContent = dashboard.previous_date || '';
 
-            document.getElementById('m-current').textContent = dashboard.current_count ?? data.total_papers ?? '—';
+    const change = dashboard.day_change;
+    const changeEl = document.getElementById('m-change');
+    if (change == null) {
+        changeEl.textContent = '—';
+        changeEl.className = 'metric-value';
+    } else if (change > 0) {
+        changeEl.textContent = `+${change}`;
+        changeEl.className = 'metric-value up';
+    } else if (change < 0) {
+        changeEl.textContent = `${change}`;
+        changeEl.className = 'metric-value down';
+    } else {
+        changeEl.textContent = '0';
+        changeEl.className = 'metric-value same';
+    }
 
-            document.getElementById('m-previous').textContent = dashboard.previous_count ?? '—';
-            document.getElementById('m-previous-date').textContent = dashboard.previous_date || '';
-
-            const change = dashboard.day_change;
-            const changeEl = document.getElementById('m-change');
-            if (change == null) {
-                changeEl.textContent = '—';
-                changeEl.className = 'metric-value';
-            } else if (change > 0) {
-                changeEl.textContent = `+${change}`;
-                changeEl.className = 'metric-value up';
-            } else if (change < 0) {
-                changeEl.textContent = `${change}`;
-                changeEl.className = 'metric-value down';
-            } else {
-                changeEl.textContent = '0';
-                changeEl.className = 'metric-value same';
-            }
-
-            document.getElementById('m-trend').textContent = dashboard.trend || '—';
-
-            const updated = data.last_updated;
-            if (updated) {
-                const d = new Date(updated);
-                document.getElementById('m-updated').textContent =
-                    d.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
-            }
-        }
-
+    document.getElementById('m-trend').textContent = dashboard.trend || '—';
+}
         // ============ LOAD DATES & PAPERS ============
         let allPapers = [];
         let categories = [];
