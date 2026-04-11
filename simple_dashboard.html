@@ -444,7 +444,7 @@
             </div>
         </div>
 
-        <div class="status loading" id="status">Loading papers...</div>
+        
         <div id="papers"></div>
     </div>
 
@@ -591,18 +591,16 @@
         }
 
         function renderPapers(papers) {
-            const statusEl = document.getElementById('status');
+            
             const papersEl = document.getElementById('papers');
 
             if (papers.length === 0) {
-                statusEl.className = 'status error';
-                statusEl.textContent = '❌ No papers found in selected category';
+                
                 papersEl.innerHTML = '';
                 return;
             }
 
-            statusEl.className = 'status loading';
-            statusEl.textContent = `✅ Showing ${papers.length} papers`;
+            
 
             const html = papers.map(item => {
                 const analysis = item.analysis || {};
