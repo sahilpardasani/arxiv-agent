@@ -38,7 +38,7 @@
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        
+
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', sans-serif;
             background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 50%, var(--bg-tertiary) 100%);
@@ -90,19 +90,67 @@
         }
 
         .theme-toggle:hover {
-            background: var(--glass-bg);
             background: rgba(255, 255, 255, 0.15);
             border-color: var(--accent-light);
             transform: scale(1.02);
         }
 
-        .subtitle { 
-            text-align: center; 
-            color: var(--text-secondary); 
+        .subtitle {
+            text-align: center;
+            color: var(--text-secondary);
             margin-bottom: 20px;
             font-size: 1.05em;
         }
 
+        /* ===== METRICS BAR ===== */
+        .metrics-bar {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+
+        .metric-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 14px 18px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            transition: all 0.3s;
+        }
+
+        .metric-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        .metric-label {
+            font-size: 0.75em;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 6px;
+        }
+
+        .metric-value {
+            font-size: 1.6em;
+            font-weight: 700;
+            color: var(--accent-light);
+        }
+
+        .metric-value.up   { color: var(--success-light); }
+        .metric-value.down { color: #ff6464; }
+        .metric-value.same { color: var(--text-secondary); }
+
+        .metric-sub {
+            font-size: 0.75em;
+            color: var(--text-secondary);
+            margin-top: 4px;
+        }
+
+        /* ===== FILTERS ===== */
         .filters {
             display: flex;
             gap: 15px;
@@ -117,7 +165,6 @@
             font-size: 0.95em;
         }
 
-        /* APPLE STYLE GLASS DROPDOWN */
         .glass-dropdown-wrapper {
             position: relative;
             width: 280px;
@@ -146,12 +193,6 @@
         .glass-dropdown:hover {
             background: rgba(255, 255, 255, 0.15);
             border-color: rgba(255, 255, 255, 0.3);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
-        }
-
-        .glass-dropdown:active {
-            background: rgba(255, 255, 255, 0.2);
-            border-color: rgba(255, 255, 255, 0.4);
         }
 
         .glass-dropdown:focus {
@@ -160,7 +201,6 @@
             box-shadow: 0 8px 32px rgba(0, 153, 255, 0.2);
         }
 
-        /* Apple-style dropdown arrow */
         .glass-dropdown-wrapper::after {
             content: '∨';
             position: absolute;
@@ -174,24 +214,12 @@
             font-weight: bold;
         }
 
-        /* Dropdown options styling */
         .glass-dropdown option {
-            background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+            background: var(--bg-primary);
             color: var(--text-primary);
-            padding: 12px;
-            border: none;
-            margin: 2px 0;
         }
 
-        .glass-dropdown option:hover {
-            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%);
-        }
-
-        .glass-dropdown option:checked {
-            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%);
-            color: #ffffff;
-        }
-
+        /* ===== STATUS ===== */
         .status {
             padding: 15px;
             margin-bottom: 20px;
@@ -213,6 +241,7 @@
             border: 1px solid rgba(255, 100, 100, 0.3);
         }
 
+        /* ===== PAPER CARDS ===== */
         .papers-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
@@ -305,7 +334,6 @@
             border-radius: 6px;
             font-size: 0.85em;
             font-weight: 600;
-            margin-bottom: 12px;
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
         }
@@ -319,20 +347,18 @@
             border-radius: 5px;
             font-size: 0.75em;
             font-weight: 600;
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
         }
 
-        .bottleneck { 
+        .bottleneck {
             color: var(--accent-light);
-            font-weight: 600; 
+            font-weight: 600;
             margin-bottom: 12px;
             font-size: 0.95em;
         }
 
-        .problem { 
-            margin: 12px 0; 
-            font-size: 0.95em; 
+        .problem {
+            margin: 12px 0;
+            font-size: 0.95em;
             line-height: 1.6;
             color: var(--text-primary);
         }
@@ -346,8 +372,6 @@
             line-height: 1.6;
             color: var(--text-primary);
             border-radius: 6px;
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
         }
 
         .paper-meta {
@@ -364,13 +388,6 @@
             color: var(--text-secondary);
             font-size: 1.1em;
         }
-
-        /* Apple-style smooth animations */
-        @media (prefers-reduced-motion: no-preference) {
-            * {
-                transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-            }
-        }
     </style>
 </head>
 <body>
@@ -383,7 +400,36 @@
         </div>
 
         <p class="subtitle">Daily digest of papers from NeurIPS, ICML, CVPR, ACL, and more — sorted by category & latest date</p>
-        
+
+        <!-- METRICS BAR -->
+        <div class="metrics-bar" id="metricsBar" style="display:none;">
+            <div class="metric-card">
+                <div class="metric-label">📅 Date</div>
+                <div class="metric-value" id="m-date" style="font-size:1.1em;">—</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-label">📄 Papers Today</div>
+                <div class="metric-value" id="m-current">—</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-label">📆 Previous Day</div>
+                <div class="metric-value" id="m-previous">—</div>
+                <div class="metric-sub" id="m-previous-date">—</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-label">📈 Change</div>
+                <div class="metric-value" id="m-change">—</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-label">📊 Trend</div>
+                <div class="metric-value" id="m-trend">—</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-label">🕒 Last Updated</div>
+                <div class="metric-value" id="m-updated" style="font-size:0.85em;">—</div>
+            </div>
+        </div>
+
         <div class="filters">
             <label class="filter-label">📅 Filter by Date:</label>
             <div class="glass-dropdown-wrapper">
@@ -410,40 +456,75 @@
             const savedTheme = localStorage.getItem('theme');
             const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
             const isDark = savedTheme === null ? systemDark : savedTheme === 'dark';
-            
             document.documentElement.classList.toggle('light-mode', !isDark);
             updateThemeButton(isDark);
         }
 
         function updateThemeButton(isDark) {
-            const btn = document.getElementById('themeToggle');
-            btn.textContent = isDark ? '☀️ Light Mode' : '🌙 Dark Mode';
+            document.getElementById('themeToggle').textContent = isDark ? '☀️ Light Mode' : '🌙 Dark Mode';
         }
 
         document.getElementById('themeToggle').addEventListener('click', () => {
-            const html = document.documentElement;
-            const isLight = html.classList.contains('light-mode');
-            
-            html.classList.toggle('light-mode', !isLight);
+            const isLight = document.documentElement.classList.contains('light-mode');
+            document.documentElement.classList.toggle('light-mode', !isLight);
             localStorage.setItem('theme', isLight ? 'dark' : 'light');
             updateThemeButton(isLight);
         });
 
         initTheme();
 
+        // ============ METRICS ============
+        function renderMetrics(data) {
+            const bar = document.getElementById('metricsBar');
+            const dashboard = data?.metrics?.dashboard;
+            if (!dashboard) { bar.style.display = 'none'; return; }
+
+            bar.style.display = 'grid';
+
+            document.getElementById('m-date').textContent = dashboard.current_date || data.filter_date || '—';
+
+            document.getElementById('m-current').textContent = dashboard.current_count ?? data.total_papers ?? '—';
+
+            document.getElementById('m-previous').textContent = dashboard.previous_count ?? '—';
+            document.getElementById('m-previous-date').textContent = dashboard.previous_date || '';
+
+            const change = dashboard.day_change;
+            const changeEl = document.getElementById('m-change');
+            if (change == null) {
+                changeEl.textContent = '—';
+                changeEl.className = 'metric-value';
+            } else if (change > 0) {
+                changeEl.textContent = `+${change}`;
+                changeEl.className = 'metric-value up';
+            } else if (change < 0) {
+                changeEl.textContent = `${change}`;
+                changeEl.className = 'metric-value down';
+            } else {
+                changeEl.textContent = '0';
+                changeEl.className = 'metric-value same';
+            }
+
+            document.getElementById('m-trend').textContent = dashboard.trend || '—';
+
+            const updated = data.last_updated;
+            if (updated) {
+                const d = new Date(updated);
+                document.getElementById('m-updated').textContent =
+                    d.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
+            }
+        }
+
         // ============ LOAD DATES & PAPERS ============
         let allPapers = [];
         let categories = [];
-        let currentDate = null;
 
         async function loadDates() {
             try {
                 const response = await fetch('/api/dates');
                 const data = await response.json();
-                
                 const dateSelect = document.getElementById('dateSelect');
                 dateSelect.innerHTML = '';
-                
+
                 if (data.dates && Object.keys(data.dates).length > 0) {
                     Object.keys(data.dates).sort().reverse().forEach(date => {
                         const count = data.dates[date].count;
@@ -452,9 +533,6 @@
                         option.textContent = `${date} (${count} papers)`;
                         dateSelect.appendChild(option);
                     });
-                    
-                    // Load first date by default
-                    currentDate = dateSelect.value;
                     loadPapersByDate();
                 } else {
                     dateSelect.innerHTML = '<option>No dates available yet</option>';
@@ -462,7 +540,6 @@
                     document.getElementById('status').innerHTML = '❌ No data available yet. Run the analysis first.';
                 }
             } catch (error) {
-                console.error('Error loading dates:', error);
                 document.getElementById('status').className = 'status error';
                 document.getElementById('status').innerHTML = `❌ Error loading dates: ${error.message}`;
             }
@@ -471,35 +548,29 @@
         async function loadPapersByDate() {
             const dateSelect = document.getElementById('dateSelect');
             const selectedDate = dateSelect.value;
-            
             if (!selectedDate) return;
-            
-            currentDate = selectedDate;
-            
+
             try {
-                const url = selectedDate ? `/api/papers?date=${selectedDate}` : '/api/papers';
-                const response = await fetch(url);
-                
-                if (!response.ok) {
-                    throw new Error(`HTTP ${response.status}`);
-                }
-                
+                const response = await fetch(`/api/papers?date=${selectedDate}`);
+                if (!response.ok) throw new Error(`HTTP ${response.status}`);
                 const data = await response.json();
+
                 allPapers = data.papers || [];
                 categories = data.categories || [];
-                
+
+                renderMetrics(data);
+
                 if (allPapers.length === 0) {
                     document.getElementById('status').className = 'status error';
                     document.getElementById('status').innerHTML = '❌ No papers found for selected date';
                     document.getElementById('papers').innerHTML = '';
                     return;
                 }
-                
+
                 populateCategories();
                 renderPapers(allPapers);
-                
+
             } catch (error) {
-                console.error('Error:', error);
                 document.getElementById('status').className = 'status error';
                 document.getElementById('status').innerHTML = `❌ Error: ${error.message}`;
             }
@@ -507,12 +578,8 @@
 
         function populateCategories() {
             const select = document.getElementById('categorySelect');
-            
-            // Clear existing options except the first one
-            while (select.options.length > 1) {
-                select.remove(1);
-            }
-            
+            while (select.options.length > 1) select.remove(1);
+
             categories.forEach(category => {
                 const option = document.createElement('option');
                 option.value = category;
@@ -520,39 +587,25 @@
                 select.appendChild(option);
             });
 
-            // Reset to "All Categories" when date changes
             select.value = '';
-
-            select.addEventListener('change', (e) => {
-                const selectedCategory = e.target.value;
-                if (selectedCategory === '') {
-                    renderPapers(allPapers);
-                } else {
-                    const filtered = allPapers.filter(item => 
-                        item.conference_info?.category === selectedCategory
-                    );
-                    renderPapers(filtered);
-                }
-            });
+            select.onchange = (e) => {
+                const cat = e.target.value;
+                renderPapers(cat ? allPapers.filter(i => i.conference_info?.category === cat) : allPapers);
+            };
         }
 
         function formatDate(dateString) {
             try {
-                const date = new Date(dateString);
-                return date.toLocaleDateString('en-US', { 
-                    month: 'short', 
-                    day: 'numeric',
-                    year: 'numeric'
+                return new Date(dateString).toLocaleDateString('en-US', {
+                    month: 'short', day: 'numeric', year: 'numeric'
                 });
-            } catch {
-                return dateString;
-            }
+            } catch { return dateString; }
         }
 
         function renderPapers(papers) {
             const statusEl = document.getElementById('status');
             const papersEl = document.getElementById('papers');
-            
+
             if (papers.length === 0) {
                 statusEl.className = 'status error';
                 statusEl.textContent = '❌ No papers found in selected category';
@@ -561,66 +614,42 @@
             }
 
             statusEl.className = 'status loading';
-            statusEl.textContent = `✅ Found ${papers.length} papers (sorted by category & latest date)`;
-            
-            let html = '';
-            papers.forEach((item) => {
+            statusEl.textContent = `✅ Showing ${papers.length} papers`;
+
+            const html = papers.map(item => {
                 const analysis = item.analysis || {};
                 const paper = item.paper || {};
-                const conference_info = item.conference_info || {};
-                
+                const ci = item.conference_info || {};
                 const arxivId = paper.arxiv_id || '';
                 const arxivUrl = `https://arxiv.org/abs/${arxivId}`;
-                
-                const conferenceName = conference_info?.conference || 'Unknown';
-                const conferenceYear = conference_info?.year || 'Unknown';
-                const conferenceDisplay = (conferenceYear && conferenceYear !== 'Unknown') 
-                    ? `${conferenceName} ${conferenceYear}` 
-                    : conferenceName;
-                
-                const category = conference_info?.category || 'Other';
+                const confDisplay = ci.year && ci.year !== 'Unknown'
+                    ? `${ci.conference} ${ci.year}` : ci.conference || 'Unknown';
                 const published = paper.published ? formatDate(paper.published) : 'Unknown date';
-                
-                html += `
-                    <div class="paper-card">
-                        <div class="paper-header">
-                            <div class="paper-title">${paper.title || 'Untitled'}</div>
-                            <a href="${arxivUrl}" target="_blank" class="arxiv-link">📄 arXiv</a>
-                        </div>
-                        
-                        <div class="paper-meta-top">
-                            <div class="paper-id">ID: ${arxivId}</div>
-                            <div class="paper-date">📅 ${published}</div>
-                        </div>
-                        
-                        <div style="display: flex; gap: 8px; margin-bottom: 12px; flex-wrap: wrap;">
-                            <div class="conference-badge">🏆 ${conferenceDisplay}</div>
-                            <div class="category-tag">${category}</div>
-                        </div>
-                        
-                        ${analysis.bottleneck_addressed ? `
-                            <div class="bottleneck">🎯 ${analysis.bottleneck_addressed}</div>
-                        ` : ''}
-                        
-                        ${analysis.problem_statement ? `
-                            <div class="problem"><strong>Problem:</strong> ${analysis.problem_statement}</div>
-                        ` : ''}
-                        
-                        ${analysis.executive_summary ? `
-                            <div class="summary">${analysis.executive_summary}</div>
-                        ` : ''}
-                        
-                        ${analysis.key_metrics?.primary_metric ? `
-                            <div class="paper-meta"><strong>Key Metric:</strong> ${analysis.key_metrics.primary_metric}</div>
-                        ` : ''}
+
+                return `
+                <div class="paper-card">
+                    <div class="paper-header">
+                        <div class="paper-title">${paper.title || 'Untitled'}</div>
+                        <a href="${arxivUrl}" target="_blank" class="arxiv-link">📄 arXiv</a>
                     </div>
-                `;
-            });
-            
-            papersEl.innerHTML = html ? `<div class="papers-grid">${html}</div>` : '<div class="no-results">No papers to display</div>';
+                    <div class="paper-meta-top">
+                        <div class="paper-id">ID: ${arxivId}</div>
+                        <div class="paper-date">📅 ${published}</div>
+                    </div>
+                    <div style="display:flex;gap:8px;margin-bottom:12px;flex-wrap:wrap;">
+                        <div class="conference-badge">🏆 ${confDisplay}</div>
+                        <div class="category-tag">${ci.category || 'Other'}</div>
+                    </div>
+                    ${analysis.bottleneck_addressed ? `<div class="bottleneck">🎯 ${analysis.bottleneck_addressed}</div>` : ''}
+                    ${analysis.problem_statement ? `<div class="problem"><strong>Problem:</strong> ${analysis.problem_statement}</div>` : ''}
+                    ${analysis.executive_summary ? `<div class="summary">${analysis.executive_summary}</div>` : ''}
+                    ${analysis.key_metrics?.primary_metric ? `<div class="paper-meta"><strong>Key Metric:</strong> ${analysis.key_metrics.primary_metric}</div>` : ''}
+                </div>`;
+            }).join('');
+
+            papersEl.innerHTML = `<div class="papers-grid">${html}</div>`;
         }
 
-        // Load dates on page load
         window.addEventListener('load', loadDates);
     </script>
 </body>
