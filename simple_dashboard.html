@@ -102,6 +102,19 @@
             font-size: 1.05em;
         }
 
+        /* ===== ERROR BANNER ===== */
+        .error-banner {
+            display: none;
+            padding: 14px 18px;
+            margin-bottom: 16px;
+            border-radius: 10px;
+            background: rgba(255, 100, 100, 0.15);
+            color: #ff6464;
+            border: 1px solid rgba(255, 100, 100, 0.3);
+            text-align: center;
+            font-size: 0.95em;
+        }
+
         /* ===== METRICS BAR ===== */
         .metrics-bar {
             display: grid;
@@ -217,30 +230,6 @@
         .glass-dropdown option {
             background: var(--bg-primary);
             color: var(--text-primary);
-        }
-
-        /* ===== STATUS ===== */
-        .status {
-            padding: 15px;
-            margin-bottom: 20px;
-            border-radius: 10px;
-            text-align: center;
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            white-space: normal;        /* ← add this */
-            word-break: break-word; 
-        }
-
-        .status.loading {
-            background: rgba(0, 150, 200, 0.15);
-            color: var(--accent-light);
-            border: 1px solid rgba(0, 150, 200, 0.3);
-        }
-
-        .status.error {
-            background: rgba(255, 100, 100, 0.15);
-            color: #ff6464;
-            border: 1px solid rgba(255, 100, 100, 0.3);
         }
 
         /* ===== PAPER CARDS ===== */
@@ -390,6 +379,53 @@
             color: var(--text-secondary);
             font-size: 1.1em;
         }
+
+        /* ===== MOBILE RESPONSIVE ===== */
+        @media (max-width: 640px) {
+            body { padding: 12px; }
+
+            h1 { font-size: 1.6em; min-width: unset; }
+
+            .header { gap: 10px; margin-bottom: 14px; }
+
+            .subtitle { font-size: 0.9em; margin-bottom: 14px; }
+
+            .metrics-bar {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 8px;
+                margin-bottom: 14px;
+            }
+
+            .metric-card { padding: 10px 12px; }
+            .metric-value { font-size: 1.3em; }
+            .metric-label { font-size: 0.7em; }
+
+            .filters {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 8px;
+            }
+
+            .glass-dropdown-wrapper { width: 100%; }
+
+            .papers-grid {
+                grid-template-columns: 1fr;
+                gap: 14px;
+            }
+
+            .paper-card { padding: 16px; }
+
+            .paper-title { font-size: 1em; }
+
+            .paper-header {
+                flex-direction: column;
+                gap: 8px;
+            }
+
+            .arxiv-link { align-self: flex-start; }
+
+            .conference-badge { font-size: 0.8em; padding: 5px 10px; }
+        }
     </style>
 </head>
 <body>
@@ -428,6 +464,9 @@
             </div>
         </div>
 
+        <!-- ERROR BANNER (replaces old status div) -->
+        <div class="error-banner" id="errorBanner"></div>
+
         <div class="filters">
             <label class="filter-label">📅 Filter by Date:</label>
             <div class="glass-dropdown-wrapper">
@@ -444,7 +483,6 @@
             </div>
         </div>
 
-        
         <div id="papers"></div>
     </div>
 
@@ -471,44 +509,55 @@
 
         initTheme();
 
+        // ============ ERROR BANNER ============
+        function showError(msg) {
+            const banner = document.getElementById('errorBanner');
+            banner.textContent = msg;
+            banner.style.display = 'block';
+        }
+
+        function hideError() {
+            const banner = document.getElementById('errorBanner');
+            banner.style.display = 'none';
+        }
+
         // ============ METRICS ============
         function renderMetrics(data) {
-    const bar = document.getElementById('metricsBar');
-    const dashboard = data?.metrics?.dashboard;
-    if (!dashboard) { bar.style.display = 'none'; return; }
+            const bar = document.getElementById('metricsBar');
+            const dashboard = data?.metrics?.dashboard;
+            if (!dashboard) { bar.style.display = 'none'; return; }
 
-    bar.style.display = 'grid';
+            bar.style.display = 'grid';
 
-    // Works for both current and archive data
-    const currentDate = dashboard.current_date || dashboard.date || data.filter_date || '—';
-    const currentCount = dashboard.current_count ?? dashboard.total_papers ?? data.total_papers ?? '—';
-    const previousCount = dashboard.previous_count ?? '—';
-    const previousDate = dashboard.previous_date || '';
-    const change = dashboard.day_change ?? null;
-    const trend = dashboard.trend || (dashboard.note ? '📦 Archive' : '—');
+            const currentDate = dashboard.current_date || dashboard.date || data.filter_date || '—';
+            const currentCount = dashboard.current_count ?? dashboard.total_papers ?? data.total_papers ?? '—';
+            const previousCount = dashboard.previous_count ?? '—';
+            const previousDate = dashboard.previous_date || '';
+            const change = dashboard.day_change ?? null;
+            const trend = dashboard.trend || (dashboard.note ? '📦 Archive' : '—');
 
-    document.getElementById('m-date').textContent = currentDate;
-    document.getElementById('m-current').textContent = currentCount;
-    document.getElementById('m-previous').textContent = previousCount;
-    document.getElementById('m-previous-date').textContent = previousDate;
+            document.getElementById('m-date').textContent = currentDate;
+            document.getElementById('m-current').textContent = currentCount;
+            document.getElementById('m-previous').textContent = previousCount;
+            document.getElementById('m-previous-date').textContent = previousDate;
 
-    const changeEl = document.getElementById('m-change');
-    if (change == null) {
-        changeEl.textContent = '—';
-        changeEl.className = 'metric-value';
-    } else if (change > 0) {
-        changeEl.textContent = `+${change}`;
-        changeEl.className = 'metric-value up';
-    } else if (change < 0) {
-        changeEl.textContent = `${change}`;
-        changeEl.className = 'metric-value down';
-    } else {
-        changeEl.textContent = '0';
-        changeEl.className = 'metric-value same';
-    }
+            const changeEl = document.getElementById('m-change');
+            if (change == null) {
+                changeEl.textContent = '—';
+                changeEl.className = 'metric-value';
+            } else if (change > 0) {
+                changeEl.textContent = `+${change}`;
+                changeEl.className = 'metric-value up';
+            } else if (change < 0) {
+                changeEl.textContent = `${change}`;
+                changeEl.className = 'metric-value down';
+            } else {
+                changeEl.textContent = '0';
+                changeEl.className = 'metric-value same';
+            }
 
-    document.getElementById('m-trend').textContent = trend;
-}
+            document.getElementById('m-trend').textContent = trend;
+        }
 
         // ============ LOAD DATES & PAPERS ============
         let allPapers = [];
@@ -522,22 +571,20 @@
                 dateSelect.innerHTML = '';
 
                 if (data.dates && Object.keys(data.dates).length > 0) {
-                    Object.keys(data.dates).sort().reverse().forEach(date => {
-                        const count = data.dates[date].count;
+                    Object.keys(data.dates).sort().reverse().forEach(d => {
+                        const count = data.dates[d].count;
                         const option = document.createElement('option');
-                        option.value = date;
-                        option.textContent = `${date} (${count} papers)`;
+                        option.value = d;
+                        option.textContent = `${d} (${count} papers)`;
                         dateSelect.appendChild(option);
                     });
                     loadPapersByDate();
                 } else {
                     dateSelect.innerHTML = '<option>No dates available yet</option>';
-                    document.getElementById('status').className = 'status error';
-                    document.getElementById('status').innerHTML = '❌ No data available yet. Run the analysis first.';
+                    showError('❌ No data available yet. Run the analysis first.');
                 }
             } catch (error) {
-                document.getElementById('status').className = 'status error';
-                document.getElementById('status').innerHTML = `❌ Error loading dates: ${error.message}`;
+                showError(`❌ Error loading dates: ${error.message}`);
             }
         }
 
@@ -545,6 +592,8 @@
             const dateSelect = document.getElementById('dateSelect');
             const selectedDate = dateSelect.value;
             if (!selectedDate) return;
+
+            hideError();
 
             try {
                 const response = await fetch(`/api/papers?date=${selectedDate}`);
@@ -557,8 +606,7 @@
                 renderMetrics(data);
 
                 if (allPapers.length === 0) {
-                    document.getElementById('status').className = 'status error';
-                    document.getElementById('status').innerHTML = '❌ No papers found for selected date';
+                    showError('❌ No papers found for selected date');
                     document.getElementById('papers').innerHTML = '';
                     return;
                 }
@@ -567,8 +615,7 @@
                 renderPapers(allPapers);
 
             } catch (error) {
-                document.getElementById('status').className = 'status error';
-                document.getElementById('status').innerHTML = `❌ Error: ${error.message}`;
+                showError(`❌ Error: ${error.message}`);
             }
         }
 
@@ -599,16 +646,12 @@
         }
 
         function renderPapers(papers) {
-            
             const papersEl = document.getElementById('papers');
 
             if (papers.length === 0) {
-                
-                papersEl.innerHTML = '';
+                papersEl.innerHTML = '<div class="no-results">No papers found in selected category</div>';
                 return;
             }
-
-            
 
             const html = papers.map(item => {
                 const analysis = item.analysis || {};
