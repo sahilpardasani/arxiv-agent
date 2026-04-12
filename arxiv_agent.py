@@ -136,33 +136,44 @@ REJECTION_PHRASES = [
     "preprint",
 ]
 
+
 def is_arxiv_publishing_day() -> bool:
     """
-    arXiv announces new papers Sunday through Thursday only.
-    Friday and Saturday submissions are held until the next Sunday announcement.
-    So if yesterday was Friday (weekday=4) or Saturday (weekday=5), skip.
+    arXiv announces papers at 20:00 ET on: Tue, Wed, Thu, Sun, Mon.
+    NO announcement on Friday evening or Saturday evening.
+    Pipeline runs at 20:30 ET so we check today's day.
+      Fri = weekday 4 → skip
+      Sat = weekday 5 → skip
     """
-    yesterday = date.today() - timedelta(days=1)
-    if yesterday.weekday() in (4, 5):  # 4=Friday, 5=Saturday
-        day_name = yesterday.strftime("%A %Y-%m-%d")
-        print(f"📅 Yesterday was {day_name} — arXiv does not publish on Fridays or weekends.")
-        print("   Skipping pipeline. Next papers will be available Monday morning.")
+    today = date.today()
+    if today.weekday() in (4, 5):  # 4=Friday, 5=Saturday
+        day_name = today.strftime("%A")
+        print(f"📅 Today is {day_name} — arXiv does not announce papers tonight.")
+        print("   Skipping pipeline. Next announcement is Sunday at 20:00 ET.")
         return False
     return True
 
 
-def get_yesterday_date_str() -> str:
-    """Get yesterday's date in ISO format (YYYY-MM-DD)"""
-    return (date.today() - timedelta(days=1)).isoformat()
+def get_target_date_str() -> str:
+    """
+    Get the date of papers being announced today.
+    Pipeline runs at 20:30 ET right after arXiv's 20:00 ET announcement,
+    so we target today's date.
+    Special case: Sunday's announcement includes papers published on Friday
+    (Thu 14:00 – Fri 14:00 window), so we still use today's date since
+    arXiv sets published date to the announcement date.
+    """
+    return date.today().isoformat()
 
-def is_paper_from_yesterday(paper: dict) -> bool:
-    """Check if paper was published yesterday"""
+
+def is_paper_from_target_date(paper: dict) -> bool:
+    """Check if paper was published on today's target date."""
     published = paper.get('published', '')
     if not published:
         return False
     paper_date = published.split('T')[0]
-    yesterday_date = get_yesterday_date_str()
-    return paper_date == yesterday_date
+    return paper_date == get_target_date_str()
+
 
 def load_archive(archive_file: str = "papers_archive.json") -> dict:
     """Load historical archive of papers by date"""
@@ -195,17 +206,18 @@ def cleanup_old_data(archive: dict, days_to_keep: int = DAYS_TO_KEEP) -> dict:
 
 def load_previous_metrics(archive: dict, date_str: str) -> dict:
     """Load metrics from previous day in archive"""
-    yesterday = (datetime.fromisoformat(date_str) - timedelta(days=1)).date().isoformat()
-    if yesterday in archive.get("dates", {}):
-        prev_data = archive["dates"][yesterday]
+    prev_date = (datetime.fromisoformat(date_str) - timedelta(days=1)).date().isoformat()
+    if prev_date in archive.get("dates", {}):
+        prev_data = archive["dates"][prev_date]
         return {
             "total_papers": len(prev_data.get("papers", [])),
-            "date": yesterday
+            "date": prev_date
         }
     return {"total_papers": 0, "date": "unknown"}
 
-async def fetch_arxiv_papers_single_session(max_results: int = 100) -> list:
-    """Fetch recent arXiv papers using date-range query for consistency"""
+async def fetch_arxiv_papers_single_session(max_results: int = 300) -> list:
+    """Fetch recent arXiv papers — simple query with high max_results,
+    date filtering handled in code by is_paper_from_target_date()"""
     papers = []
     async with aiohttp.ClientSession() as session:
         for index, category in enumerate(ARXIV_CATEGORIES):
@@ -213,7 +225,7 @@ async def fetch_arxiv_papers_single_session(max_results: int = 100) -> list:
             params = {
                 "search_query": f"cat:{category}",
                 "start": 0,
-                "max_results": 300,
+                "max_results": max_results,
                 "sortBy": "submittedDate",
                 "sortOrder": "descending",
             }
@@ -240,7 +252,7 @@ async def fetch_arxiv_papers_single_session(max_results: int = 100) -> list:
                                         "comment": entry.get("arxiv_comment", ""),
                                     }
                                     papers.append(paper)
-                                except Exception as e:
+                                except Exception:
                                     pass
                         else:
                             print(f"⚠ No entries found")
@@ -267,7 +279,7 @@ async def fetch_arxiv_papers_single_session(max_results: int = 100) -> list:
                                                 "comment": entry.get("arxiv_comment", ""),
                                             }
                                             papers.append(paper)
-                                        except Exception as e:
+                                        except Exception:
                                             pass
                             else:
                                 print(f"❌ Retry failed: HTTP {resp2.status}")
@@ -401,47 +413,53 @@ async def run_daily_pipeline() -> tuple:
     """Main pipeline: fetch papers → filter → analyze"""
     print(f"[{datetime.now().isoformat()}] Starting arXiv paper analysis pipeline...")
 
-    # Skip on weekends — arXiv doesn't publish Fri/Sat
+    # Skip Saturday — only day with no arXiv announcement
     if not is_arxiv_publishing_day():
         return [], None
 
-    yesterday_date = get_yesterday_date_str()
-    print(f"📅 Filtering for papers from YESTERDAY: {yesterday_date}")
+    target_date = get_target_date_str()
+    print(f"📅 Targeting papers announced TODAY: {target_date}")
+
     archive = load_archive()
     archive = cleanup_old_data(archive, days_to_keep=DAYS_TO_KEEP)
-    previous_metrics = load_previous_metrics(archive, yesterday_date)
+    previous_metrics = load_previous_metrics(archive, target_date)
+
     print("\n" + "="*60)
     print("STEP 1: Fetching papers from arXiv...")
     print("="*60)
-    papers = await fetch_arxiv_papers_single_session(max_results=100)
+    papers = await fetch_arxiv_papers_single_session()
     print(f"\n✓ Total fetched: {len(papers)} papers\n")
     if len(papers) == 0:
         print("⚠️  WARNING: No papers fetched from arXiv!")
         return [], archive
+
     print("="*60)
-    print(f"STEP 2: Filtering for papers from YESTERDAY ({yesterday_date})...")
+    print(f"STEP 2: Filtering for papers announced TODAY ({target_date})...")
     print("="*60)
-    yesterday_papers = [p for p in papers if is_paper_from_yesterday(p)]
-    print(f"✓ Found {len(yesterday_papers)} papers published yesterday\n")
-    if len(yesterday_papers) == 0:
-        print("⚠️  No papers published yesterday")
+    target_papers = [p for p in papers if is_paper_from_target_date(p)]
+    print(f"✓ Found {len(target_papers)} papers published today\n")
+    if len(target_papers) == 0:
+        print("⚠️  No papers found for today's date")
         return [], archive
+
     print("="*60)
     print("STEP 3: Filtering for ACCEPTED conference papers...")
     print("="*60)
     seen_arxiv_ids = set()
     conference_papers = []
-    for p in yesterday_papers:
+    for p in target_papers:
         arxiv_id = p.get('arxiv_id', '')
         if arxiv_id and arxiv_id not in seen_arxiv_ids and is_conference_paper(p):
             seen_arxiv_ids.add(arxiv_id)
             conference_papers.append(p)
+
     conference_info = {}
     for p in conference_papers:
         conf_data = extract_conference_info(p)
         if conf_data:
             conf_name = conf_data["conference"]
             conference_info[conf_name] = conference_info.get(conf_name, 0) + 1
+
     print(f"✓ Found {len(conference_papers)} unique ACCEPTED conference papers")
     print("   Exhaustive conference check:")
     all_conferences_count = {}
@@ -450,9 +468,11 @@ async def run_daily_pipeline() -> tuple:
     for conf, count in sorted(all_conferences_count.items(), key=lambda x: (-x[1], x[0])):
         status = "✓" if count > 0 else "○"
         print(f"     {status} {conf}: {count} paper(s)")
+
     if len(conference_papers) == 0:
-        print("\n⚠ No ACCEPTED conference papers from yesterday")
+        print("\n⚠ No ACCEPTED conference papers for today")
         return [], archive
+
     print("\n" + "="*60)
     print(f"STEP 4: Analyzing all {len(conference_papers)} papers with Groq...")
     print("="*60)
@@ -473,7 +493,9 @@ async def run_daily_pipeline() -> tuple:
         else:
             print("⚠")
         await asyncio.sleep(1)
+
     print(f"\n✓ Successfully analyzed {len(analyzed_papers)} papers")
+
     print("\n" + "="*60)
     print("STEP 5: Sorting papers by category and date...")
     print("="*60)
@@ -488,24 +510,27 @@ async def run_daily_pipeline() -> tuple:
         category_papers.sort(key=lambda x: x['paper'].get('published', ''), reverse=True)
         sorted_papers.extend(category_papers)
     print(f"✓ Sorted {len(sorted_papers)} papers by category and date")
+
     current_count = len(sorted_papers)
     previous_count = previous_metrics.get("total_papers", 0)
     day_change = current_count - previous_count
+
     print("\n" + "="*60)
     print("METRICS DASHBOARD")
     print("="*60)
     print(f"Previous day ({previous_metrics.get('date', 'unknown')}): {previous_count} papers")
-    print(f"Today ({yesterday_date}): {current_count} papers")
+    print(f"Today ({target_date}): {current_count} papers")
     if day_change > 0:
         print(f"📈 Change: +{day_change} papers (UP)")
     elif day_change < 0:
         print(f"📉 Change: {day_change} papers (DOWN)")
     else:
         print(f"➡️  Change: No change")
+
     return sorted_papers, {
         "previous_date": previous_metrics.get('date', 'unknown'),
         "previous_count": previous_count,
-        "current_date": yesterday_date,
+        "current_date": target_date,
         "current_count": current_count,
         "day_change": day_change,
         "archive": archive
@@ -515,7 +540,7 @@ async def run_daily_pipeline() -> tuple:
 def save_results(results: tuple, output_file: str = "papers.json", archive_file: str = "papers_archive.json"):
     """Save current papers and update archive with cleanup."""
     papers, metrics = results
-    yesterday_date = get_yesterday_date_str()
+    target_date = get_target_date_str()
 
     # ===== SAFETY GUARD =====
     # Never overwrite good existing data with empty results.
@@ -530,7 +555,7 @@ def save_results(results: tuple, output_file: str = "papers.json", archive_file:
         "total_papers": len(papers),
         "papers": papers,
         "categories": list(CONFERENCE_CATEGORIES.keys()),
-        "filter_date": yesterday_date,
+        "filter_date": target_date,
         "metrics": {
             "dashboard": {
                 "previous_date": metrics.get("previous_date"),
@@ -545,8 +570,9 @@ def save_results(results: tuple, output_file: str = "papers.json", archive_file:
     with open(output_file, "w") as f:
         json.dump(current_output, f, indent=2)
     print(f"✓ Current papers saved to {output_file}")
+
     archive = metrics.get("archive", {"last_updated": datetime.now().isoformat(), "dates": {}})
-    archive["dates"][yesterday_date] = {
+    archive["dates"][target_date] = {
         "count": len(papers),
         "papers": papers,
         "updated_at": datetime.now().isoformat()
