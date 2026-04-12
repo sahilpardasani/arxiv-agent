@@ -111,7 +111,7 @@ def daily_paper_analysis():
 
 # Initialize scheduler
 scheduler = BackgroundScheduler(timezone=EST)
-scheduler.add_job(daily_paper_analysis, 'cron', hour=20, minute=30, timezone=EST)
+scheduler.add_job(daily_paper_analysis, 'cron', hour=0, minute=30, timezone=EST)
 scheduler.start()
 
 @app.on_event("startup")
@@ -270,6 +270,102 @@ async def trigger_analysis():
 
     except subprocess.TimeoutExpired:
         raise HTTPException(status_code=500, detail="Analysis timed out")
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/alexa/paper")
+async def get_alexa_paper(category: str = None):
+    """
+    Returns a random paper for Alexa, rotating so the same paper
+    is never returned twice in a row for the same category.
+    Query param: category (e.g. "Natural Language Processing")
+    """
+    import random
+    ROTATION_FILE = "alexa_rotation.json"
+    try:
+        if not os.path.exists("papers.json"):
+            return {
+                "error": "No papers available yet",
+                "speech": "Sorry, I don't have any papers available right now."
+            }
+        async with aiofiles.open("papers.json", "r") as f:
+            raw = await f.read()
+            data = json.loads(raw)
+        all_papers = data.get("papers", [])
+        if not all_papers:
+            return {"error": "No papers found", "speech": "Sorry, there are no papers available right now."}
+        if category:
+            filtered = [
+                p for p in all_papers
+                if category.lower() in (p.get("conference_info", {}).get("category", "") or "").lower()
+            ]
+            if not filtered:
+                available = list(set(
+                    p.get("conference_info", {}).get("category", "Other") for p in all_papers
+                ))
+                cats = ", ".join(available[:3])
+                return {
+                    "error": "No papers found for category " + category,
+                    "available_categories": available,
+                    "speech": "Sorry, I could not find papers in " + category + ". Available categories today include " + cats + " and more."
+                }
+        else:
+            filtered = all_papers
+        rotation = {}
+        if os.path.exists(ROTATION_FILE):
+            try:
+                with open(ROTATION_FILE, "r") as f:
+                    rotation = json.load(f)
+            except Exception:
+                rotation = {}
+        rotation_key = (category or "all").lower().replace(" ", "_")
+        last_index = rotation.get(rotation_key, -1)
+        indices = list(range(len(filtered)))
+        random.shuffle(indices)
+        chosen_index = indices[0]
+        if len(indices) > 1 and chosen_index == last_index:
+            chosen_index = indices[1]
+        paper_item = filtered[chosen_index]
+        rotation[rotation_key] = chosen_index
+        with open(ROTATION_FILE, "w") as f:
+            json.dump(rotation, f)
+        paper = paper_item.get("paper", {})
+        analysis = paper_item.get("analysis", {})
+        conf_info = paper_item.get("conference_info", {})
+        title = paper.get("title", "Untitled")
+        conference = conf_info.get("conference", "a top conference")
+        year = conf_info.get("year", "")
+        conf_display = (conference + " " + year).strip()
+        problem = analysis.get("problem_statement", "")
+        summary = analysis.get("executive_summary", "")
+        arxiv_id = paper.get("arxiv_id", "")
+        arxiv_url = "https://arxiv.org/abs/" + arxiv_id if arxiv_id else ""
+        speech_parts = ["Here's a recent research finding"]
+        if category:
+            speech_parts.append("in " + category)
+        speech_parts.append("from " + conf_display + ".")
+        speech_parts.append("The paper is titled: " + title + ".")
+        if problem:
+            speech_parts.append("It addresses: " + problem)
+        if summary:
+            sentences = summary.split(". ")
+            short_summary = ". ".join(sentences[:2]) + "."
+            speech_parts.append(short_summary)
+        speech_parts.append("You can find this paper on arXiv.")
+        speech = " ".join(speech_parts)
+        return {
+            "title": title,
+            "conference": conf_display,
+            "category": conf_info.get("category", "Other"),
+            "arxiv_id": arxiv_id,
+            "arxiv_url": arxiv_url,
+            "problem_statement": problem,
+            "executive_summary": summary,
+            "speech": speech,
+            "total_available": len(filtered),
+            "filter_date": data.get("filter_date")
+        }
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
