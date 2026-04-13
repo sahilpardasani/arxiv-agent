@@ -18,6 +18,7 @@ CONFERENCE_CATEGORIES = {
     "General ML/AI": {
         "NeurIPS", "NEURIPS", "ICML", "ICLR", "AAAI", "IJCAI", "UAI",
         "COLM", "AISTATS", "AMLDS", "Neurocomputing",
+        "AAMAS", "International Conference on Autonomous Agents and Multiagent Systems",
         "International Conference on Advanced Machine Learning and Data Science"
     },
     "Computer Vision": {
@@ -51,7 +52,9 @@ CONFERENCE_CATEGORIES = {
         "SOSP", "Symposium on Operating Systems Principles",
         "ATC", "USENIX Annual Technical Conference",
         "EuroSys", "ASPLOS", "SIGCOMM",
-        "DAIS", "Distributed Applications and Interoperable Systems"
+        "DAIS", "Distributed Applications and Interoperable Systems",
+        "TCNS", "IEEE Transactions on Control of Network Systems",
+        "IEEE Transactions on Control of Network Systems"
     },
     "Human-Computer Interaction": {
         "CHI", "ACM Conference on Human Factors in Computing Systems",
@@ -76,6 +79,14 @@ CONFERENCE_CATEGORIES = {
         "ICASSP", "IEEE International Conference on Acoustics, Speech and Signal Processing",
         "Interspeech"
     },
+    "Neural Networks & Computational Intelligence": {
+        "IJCNN", "IEEE IJCNN",
+        "International Joint Conference on Neural Networks",
+        "WCCI", "IEEE World Congress on Computational Intelligence",
+        "WCCI CEC", "CEC",
+        "IEEE Congress on Evolutionary Computation",
+        "FUZZ-IEEE", "IEEE International Conference on Fuzzy Systems"
+    },
     "High Performance Computing": {
         "ISC", "ISC High Performance",
         "SC", "International Conference for High Performance Computing"
@@ -85,7 +96,8 @@ CONFERENCE_CATEGORIES = {
     },
     "Medical Image & Signal Processing": {
         "MICCAI", "International Conference on Medical Image Computing and Computer Assisted Intervention",
-        "TIP", "IEEE Transactions on Image Processing"
+        "TIP", "IEEE Transactions on Image Processing",
+        "Brain Informatics", "International Conference on Brain Informatics"
     },
     "Hardware & Design Automation": {
         "ICCAD", "IEEE/ACM International Conference On Computer Aided Design"
@@ -96,11 +108,18 @@ CONFERENCE_CATEGORIES = {
     "AI Applications & Data Science": {
         "ACDSA", "International Conference on Artificial Intelligence, Computer, Data Sciences and Applications"
     },
+    "Artificial Life & Complex Systems": {
+        "ALIFE", "ECAL",
+        "International Conference on Artificial Life",
+        "GECCO", "Genetic and Evolutionary Computation Conference"
+    },
     "General Computer Science": {
         "CSA", "Computer Science Applications"
     },
     "Other": {
-        "ISMIR", "IEEE TCOM"
+        "ISMIR", "IEEE TCOM",
+        "NOLTA", "NOLTA, IEICE",
+        "Nonlinear Theory and Its Applications"
     }
 }
 
@@ -118,6 +137,8 @@ ARXIV_CATEGORIES = [
     "cs.HC",      # Human-Computer Interaction
     "cs.CY",      # Computers and Society
     "cs.IR",      # Information Retrieval
+    "cs.NE",      # Neural and Evolutionary Computing (catches Neurocomputing, ALIFE, GECCO)
+    "cs.MA",      # Multiagent Systems (catches AAMAS)
     "stat.ML",    # Machine Learning (Statistics)
 ]
 
@@ -151,8 +172,8 @@ def is_arxiv_publishing_day() -> bool:
     arXiv announces papers at 20:00 ET on: Tue, Wed, Thu, Sun, Mon.
     NO announcement on Friday evening or Saturday evening.
     Pipeline runs at 23:30 ET so we check today's day.
-      Fri = weekday 4 → skip
-      Sat = weekday 5 → skip
+      Fri = weekday 4 -> skip
+      Sat = weekday 5 -> skip
     """
     today = date.today()
     if today.weekday() in (4, 5):  # 4=Friday, 5=Saturday
@@ -163,16 +184,99 @@ def is_arxiv_publishing_day() -> bool:
     return True
 
 
+def get_effective_date(paper: dict) -> str:
+    """
+    Get the effective date of a paper for filtering.
+    Uses 'updated' field first (catches revisions),
+    falls back to 'published' field.
+    """
+    updated = paper.get('updated', '')[:10]
+    published = paper.get('published', '')[:10]
+    return updated if updated else published
+
+
 def get_most_recent_date(papers: list) -> str:
     """
-    Dynamically find the most recent publication date from fetched papers.
-    arXiv's 'published' field reflects submission date, not announcement date.
-    We find the latest date in the feed — that's the batch just announced.
+    Dynamically find the most recent effective date from fetched papers.
+    Uses 'updated' field to catch both new submissions and revisions.
     """
-    dates = [p.get('published', '')[:10] for p in papers if p.get('published', '')[:10]]
+    dates = [get_effective_date(p) for p in papers if get_effective_date(p)]
     if not dates:
         return date.today().isoformat()
     return max(dates)
+
+
+def extract_conference_info(paper: dict) -> Optional[dict]:
+    """Extract conference information from paper's comment field."""
+    comment = paper.get('comment', '').strip()
+    if not comment:
+        return None
+    comment_lower = comment.lower()
+
+    # Sort longest first — "NOLTA, IEICE" (13) before "NOLTA" (5),
+    # "WCCI CEC" before "CEC", "IEEE IJCNN" before "IJCNN", etc.
+    sorted_conferences = sorted(TOP_TIER_CONFERENCES, key=len, reverse=True)
+    best_match = None
+    best_match_length = 0
+
+    for conf in sorted_conferences:
+        conf_lower = conf.lower()
+        # Names with punctuation (commas, periods) use direct substring match
+        if re.search(r'[,.]', conf_lower):
+            if conf_lower in comment_lower:
+                if len(conf) > best_match_length:
+                    best_match = conf
+                    best_match_length = len(conf)
+        else:
+            pattern = r'\b' + re.escape(conf_lower) + r'\b'
+            if re.search(pattern, comment_lower):
+                if len(conf) > best_match_length:
+                    best_match = conf
+                    best_match_length = len(conf)
+
+    if not best_match:
+        return None
+
+    conf = best_match
+    conf_lower = conf.lower()
+    conf_pos = comment_lower.find(conf_lower)
+    search_area = comment[conf_pos:conf_pos + 100]
+    year_match = re.search(r"'(\d{2})|(\d{4})", search_area)
+    if year_match:
+        if year_match.group(1):
+            year = "20" + year_match.group(1)
+        else:
+            year = year_match.group(2)
+    else:
+        year_match = re.search(r"(20\d{2}|19\d{2})", comment)
+        year = year_match.group(1) if year_match else "Unknown"
+
+    category = "Other"
+    for cat, confs in CONFERENCE_CATEGORIES.items():
+        if conf in confs:
+            category = cat
+            break
+
+    return {
+        "conference": conf,
+        "year": year,
+        "comment": comment,
+        "raw_comment": paper.get('comment', ''),
+        "category": category
+    }
+
+
+def is_conference_paper(paper: dict) -> bool:
+    """Check if paper is accepted to a known conference or workshop."""
+    comment = paper.get('comment', '').lower()
+    if not comment:
+        return False
+    is_accepted = any(phrase in comment for phrase in ACCEPTANCE_PHRASES)
+    is_rejected = any(phrase in comment for phrase in REJECTION_PHRASES)
+    if is_rejected and not is_accepted:
+        return False
+    conf_info = extract_conference_info(paper)
+    return conf_info is not None
 
 
 def load_archive(archive_file: str = "papers_archive.json") -> dict:
@@ -187,6 +291,7 @@ def load_archive(archive_file: str = "papers_archive.json") -> dict:
         "last_updated": datetime.now().isoformat(),
         "dates": {}
     }
+
 
 def cleanup_old_data(archive: dict, days_to_keep: int = DAYS_TO_KEEP) -> dict:
     """Remove papers older than days_to_keep days"""
@@ -204,6 +309,7 @@ def cleanup_old_data(archive: dict, days_to_keep: int = DAYS_TO_KEEP) -> dict:
         print(f"   Keeping: {len(archive['dates'])} date(s)")
     return archive
 
+
 def load_previous_metrics(archive: dict, date_str: str) -> dict:
     """Load metrics from previous day in archive"""
     prev_date = (datetime.fromisoformat(date_str) - timedelta(days=1)).date().isoformat()
@@ -214,6 +320,7 @@ def load_previous_metrics(archive: dict, date_str: str) -> dict:
             "date": prev_date
         }
     return {"total_papers": 0, "date": "unknown"}
+
 
 async def fetch_arxiv_papers_single_session(max_results: int = 300) -> list:
     """Fetch recent arXiv papers — simple query with high max_results."""
@@ -246,6 +353,7 @@ async def fetch_arxiv_papers_single_session(max_results: int = 300) -> list:
                                         "arxiv_id": entry.get("id", "").split("/abs/")[-1],
                                         "authors": [author.get("name", "") for author in entry.get("authors", [])],
                                         "published": entry.get("published", ""),
+                                        "updated": entry.get("updated", ""),
                                         "summary": entry.get("summary", "").replace("\n", " "),
                                         "categories": entry.get("arxiv_primary_category", {}).get("term", category) if hasattr(entry, 'arxiv_primary_category') else category,
                                         "comment": entry.get("arxiv_comment", ""),
@@ -273,6 +381,7 @@ async def fetch_arxiv_papers_single_session(max_results: int = 300) -> list:
                                                 "arxiv_id": entry.get("id", "").split("/abs/")[-1],
                                                 "authors": [author.get("name", "") for author in entry.get("authors", [])],
                                                 "published": entry.get("published", ""),
+                                                "updated": entry.get("updated", ""),
                                                 "summary": entry.get("summary", "").replace("\n", " "),
                                                 "categories": entry.get("arxiv_primary_category", {}).get("term", category) if hasattr(entry, 'arxiv_primary_category') else category,
                                                 "comment": entry.get("arxiv_comment", ""),
@@ -292,64 +401,6 @@ async def fetch_arxiv_papers_single_session(max_results: int = 300) -> list:
             except Exception as e:
                 print(f"❌ ERROR: {str(e)}")
     return papers
-
-
-def extract_conference_info(paper: dict) -> Optional[dict]:
-    """Extract conference information from paper's comment field."""
-    comment = paper.get('comment', '').strip()
-    if not comment:
-        return None
-    comment_lower = comment.lower()
-    sorted_conferences = sorted(TOP_TIER_CONFERENCES, key=len, reverse=True)
-    best_match = None
-    best_match_length = 0
-    for conf in sorted_conferences:
-        conf_lower = conf.lower()
-        pattern = r'\b' + re.escape(conf_lower) + r'\b'
-        if re.search(pattern, comment_lower):
-            if len(conf) > best_match_length:
-                best_match = conf
-                best_match_length = len(conf)
-    if not best_match:
-        return None
-    conf = best_match
-    conf_lower = conf.lower()
-    conf_pos = comment_lower.find(conf_lower)
-    search_area = comment[conf_pos:conf_pos + 100]
-    year_match = re.search(r"'(\d{2})|(\d{4})", search_area)
-    if year_match:
-        if year_match.group(1):
-            year = "20" + year_match.group(1)
-        else:
-            year = year_match.group(2)
-    else:
-        year_match = re.search(r"(20\d{2}|19\d{2})", comment)
-        year = year_match.group(1) if year_match else "Unknown"
-    category = "Other"
-    for cat, confs in CONFERENCE_CATEGORIES.items():
-        if conf in confs:
-            category = cat
-            break
-    return {
-        "conference": conf,
-        "year": year,
-        "comment": comment,
-        "raw_comment": paper.get('comment', ''),
-        "category": category
-    }
-
-
-def is_conference_paper(paper: dict) -> bool:
-    """Check if paper is accepted to a known conference or workshop."""
-    comment = paper.get('comment', '').lower()
-    if not comment:
-        return False
-    is_accepted = any(phrase in comment for phrase in ACCEPTANCE_PHRASES)
-    is_rejected = any(phrase in comment for phrase in REJECTION_PHRASES)
-    if is_rejected and not is_accepted:
-        return False
-    conf_info = extract_conference_info(paper)
-    return conf_info is not None
 
 
 def generate_paper_analysis(paper: dict) -> dict:
@@ -409,7 +460,7 @@ Be precise and technical."""
 
 
 async def run_daily_pipeline() -> tuple:
-    """Main pipeline: fetch papers → filter → analyze"""
+    """Main pipeline: fetch papers -> filter -> analyze"""
     print(f"[{datetime.now().isoformat()}] Starting arXiv paper analysis pipeline...")
 
     # Skip Friday and Saturday — no arXiv announcement those evenings
@@ -429,15 +480,14 @@ async def run_daily_pipeline() -> tuple:
         return [], archive
 
     # ===== DYNAMIC DATE DETECTION =====
-    # arXiv's 'published' field reflects submission date, not announcement date.
-    # We detect the most recent date in the feed — that's the latest batch.
+    # Uses 'updated' field to catch both new submissions AND revisions.
     target_date = get_most_recent_date(papers)
     print("="*60)
-    print(f"STEP 2: Filtering for most recent papers (date: {target_date})...")
+    print(f"STEP 2: Filtering for most recent papers (effective date: {target_date})...")
     print("="*60)
 
-    target_papers = [p for p in papers if p.get('published', '')[:10] == target_date]
-    print(f"✓ Found {len(target_papers)} papers from {target_date}\n")
+    target_papers = [p for p in papers if get_effective_date(p) == target_date]
+    print(f"✓ Found {len(target_papers)} papers with effective date {target_date}\n")
     if len(target_papers) == 0:
         print("⚠️  No papers found for target date")
         return [], archive
@@ -519,7 +569,10 @@ async def run_daily_pipeline() -> tuple:
     sorted_papers = []
     for category in sorted(papers_by_category.keys()):
         category_papers = papers_by_category[category]
-        category_papers.sort(key=lambda x: x['paper'].get('published', ''), reverse=True)
+        category_papers.sort(
+            key=lambda x: x['paper'].get('updated', x['paper'].get('published', '')),
+            reverse=True
+        )
         sorted_papers.extend(category_papers)
     print(f"✓ Sorted {len(sorted_papers)} papers by category and date")
 
