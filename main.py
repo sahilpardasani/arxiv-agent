@@ -6,7 +6,7 @@ import base64
 import urllib.request
 import urllib.error
 from datetime import datetime, timedelta
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, HTTPException, BackgroundTasks
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import FileResponse, HTMLResponse
 import aiofiles
@@ -111,7 +111,7 @@ def daily_paper_analysis():
 
 # Initialize scheduler
 scheduler = BackgroundScheduler(timezone=EST)
-scheduler.add_job(daily_paper_analysis, 'cron', hour=20, minute=30, timezone=EST)
+scheduler.add_job(daily_paper_analysis, 'cron', hour=0, minute=30, timezone=EST)
 scheduler.start()
 
 @app.on_event("startup")
@@ -240,38 +240,18 @@ async def get_available_dates():
         raise HTTPException(status_code=500, detail=str(e))
 
 @app.post("/api/trigger-analysis")
-async def trigger_analysis():
-    """Manually trigger analysis (for cron jobs)"""
-    try:
-        print("\n" + "="*60)
-        print("📤 Manual trigger received - running analysis...")
-        print("="*60)
-
-        result = subprocess.run(
-            ["python", "arxiv_agent.py"],
-            capture_output=True,
-            text=True,
-            timeout=600,
-            env={**os.environ}
-        )
-
-        print(result.stdout)
-        if result.stderr:
-            print("STDERR:", result.stderr)
-
-        # Only push to GitHub if pipeline produced data
-        safe_push_to_github(result.stdout)
-
-        return {
-            "status": "success",
-            "message": "Analysis completed",
-            "timestamp": datetime.now().isoformat()
-        }
-
-    except subprocess.TimeoutExpired:
-        raise HTTPException(status_code=500, detail="Analysis timed out")
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
+async def trigger_analysis(background_tasks: BackgroundTasks):
+    """Manually trigger analysis — returns immediately, runs in background.
+    This prevents cron-job.org from timing out while waiting for the pipeline."""
+    background_tasks.add_task(daily_paper_analysis)
+    print("\n" + "="*60)
+    print("📤 Manual trigger received - running in background...")
+    print("="*60)
+    return {
+        "status": "started",
+        "message": "Analysis running in background",
+        "timestamp": datetime.now().isoformat()
+    }
 
 
 @app.get("/api/alexa/paper")
