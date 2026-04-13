@@ -153,9 +153,6 @@ ARXIV_CATEGORIES = [
 # ===== RETENTION POLICY =====
 DAYS_TO_KEEP = 7  # Only keep last 7 days of data
 
-# Window of days to include — catches recent revisions not just today's papers
-RECENCY_WINDOW_DAYS = 3
-
 # Max results per arXiv category fetch
 MAX_RESULTS_PER_CATEGORY = 200
 
@@ -499,28 +496,23 @@ async def run_daily_pipeline() -> tuple:
         print("⚠️  WARNING: No papers fetched from arXiv!")
         return [], archive
 
-    # ===== DYNAMIC DATE DETECTION WITH RECENCY WINDOW =====
-    # Find the most recent date in the feed, then include papers
-    # from the last RECENCY_WINDOW_DAYS days before that.
-    # This catches:
-    #   - New submissions (effective date = today)
-    #   - Recent revisions (updated in last 3 days, originally older)
-    #   - Papers like NOLTA updated Mon when pipeline runs Wed
+    # ===== DYNAMIC DATE DETECTION =====
+    # Find the most recent effective date in the feed and use that as the target.
+    # Uses 'updated' field to catch both new submissions AND revisions
+    # (e.g. a Dec 2024 paper accepted by Neurocomputing, updated April 2026).
     most_recent = get_most_recent_date(papers)
-    most_recent_dt = datetime.fromisoformat(most_recent)
-    window_cutoff = (most_recent_dt - timedelta(days=RECENCY_WINDOW_DAYS)).date().isoformat()
 
     print("="*60)
-    print(f"STEP 2: Filtering papers from {window_cutoff} to {most_recent} ({RECENCY_WINDOW_DAYS}-day window)...")
+    print(f"STEP 2: Filtering for papers with effective date: {most_recent}...")
     print("="*60)
 
     target_papers = [
         p for p in papers
-        if get_effective_date(p) >= window_cutoff
+        if get_effective_date(p) == most_recent
     ]
-    print(f"✓ Found {len(target_papers)} papers in recency window\n")
+    print(f"✓ Found {len(target_papers)} papers from {most_recent}\n")
     if len(target_papers) == 0:
-        print("⚠️  No papers found in recency window")
+        print("⚠️  No papers found for target date")
         return [], archive
 
     # Deduplicate by arxiv_id across all categories
