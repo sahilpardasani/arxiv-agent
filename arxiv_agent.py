@@ -18,6 +18,7 @@ CONFERENCE_CATEGORIES = {
     "General ML/AI": {
         "NeurIPS", "NEURIPS", "ICML", "ICLR", "AAAI", "IJCAI", "UAI",
         "COLM", "AISTATS", "AMLDS", "Neurocomputing",
+        "Neural Networks",
         "AAMAS", "International Conference on Autonomous Agents and Multiagent Systems",
         "International Conference on Advanced Machine Learning and Data Science"
     },
@@ -39,6 +40,7 @@ CONFERENCE_CATEGORIES = {
     "Robotics": {
         "ICRA", "International Conference on Robotics and Automation",
         "IROS", "Intelligent Robots and Systems",
+        "IEEE SoutheastCon",
         "CoRL", "Conference on Robot Learning", "RSS"
     },
     "Data Mining & Applied ML": {
@@ -100,7 +102,9 @@ CONFERENCE_CATEGORIES = {
         "Brain Informatics", "International Conference on Brain Informatics"
     },
     "Hardware & Design Automation": {
-        "ICCAD", "IEEE/ACM International Conference On Computer Aided Design"
+        "ICCAD", "IEEE/ACM International Conference On Computer Aided Design",
+        "DAC", "DAC26", "Design Automation Conference",
+        "ACM/IEEE Design Automation Conference"
     },
     "Computer Vision & Multimedia": {
         "IEEE Conference on Multimedia Expo"
@@ -137,13 +141,23 @@ ARXIV_CATEGORIES = [
     "cs.HC",      # Human-Computer Interaction
     "cs.CY",      # Computers and Society
     "cs.IR",      # Information Retrieval
-    "cs.NE",      # Neural and Evolutionary Computing (catches Neurocomputing, ALIFE, GECCO)
+    "cs.NE",      # Neural and Evolutionary Computing
     "cs.MA",      # Multiagent Systems (catches AAMAS)
+    "cs.RO",      # Robotics (catches IROS, ICRA, CoRL, IEEE SoutheastCon)
+    "cs.DC",      # Distributed/Parallel Computing (catches DAC, systems papers)
+    "cs.SI",      # Social and Information Networks (catches social recommendation papers)
+    "q-bio.NC",   # Neurons and Cognition (catches brain-inspired AI)
     "stat.ML",    # Machine Learning (Statistics)
 ]
 
 # ===== RETENTION POLICY =====
 DAYS_TO_KEEP = 7  # Only keep last 7 days of data
+
+# Window of days to include — catches recent revisions not just today's papers
+RECENCY_WINDOW_DAYS = 3
+
+# Max results per arXiv category fetch
+MAX_RESULTS_PER_CATEGORY = 200
 
 # ===== ACCEPTANCE / REJECTION PHRASES =====
 ACCEPTANCE_PHRASES = [
@@ -158,6 +172,12 @@ ACCEPTANCE_PHRASES = [
     "published in",
     "camera ready",
     "camera-ready",
+    "selected as highlight",
+    "selected as oral",
+    "selected as spotlight",
+    "highlight paper",
+    "oral paper",
+    "spotlight paper",
 ]
 
 REJECTION_PHRASES = [
@@ -213,7 +233,7 @@ def extract_conference_info(paper: dict) -> Optional[dict]:
         return None
     comment_lower = comment.lower()
 
-    # Sort longest first — "NOLTA, IEICE" (13) before "NOLTA" (5),
+    # Sort longest first — "NOLTA, IEICE" before "NOLTA",
     # "WCCI CEC" before "CEC", "IEEE IJCNN" before "IJCNN", etc.
     sorted_conferences = sorted(TOP_TIER_CONFERENCES, key=len, reverse=True)
     best_match = None
@@ -322,7 +342,7 @@ def load_previous_metrics(archive: dict, date_str: str) -> dict:
     return {"total_papers": 0, "date": "unknown"}
 
 
-async def fetch_arxiv_papers_single_session(max_results: int = 300) -> list:
+async def fetch_arxiv_papers_single_session(max_results: int = MAX_RESULTS_PER_CATEGORY) -> list:
     """Fetch recent arXiv papers — simple query with high max_results."""
     papers = []
     async with aiohttp.ClientSession() as session:
@@ -471,7 +491,7 @@ async def run_daily_pipeline() -> tuple:
     archive = cleanup_old_data(archive, days_to_keep=DAYS_TO_KEEP)
 
     print("\n" + "="*60)
-    print("STEP 1: Fetching papers from arXiv...")
+    print(f"STEP 1: Fetching papers from arXiv ({MAX_RESULTS_PER_CATEGORY} per category)...")
     print("="*60)
     papers = await fetch_arxiv_papers_single_session()
     print(f"\n✓ Total fetched: {len(papers)} papers\n")
@@ -479,17 +499,28 @@ async def run_daily_pipeline() -> tuple:
         print("⚠️  WARNING: No papers fetched from arXiv!")
         return [], archive
 
-    # ===== DYNAMIC DATE DETECTION =====
-    # Uses 'updated' field to catch both new submissions AND revisions.
-    target_date = get_most_recent_date(papers)
+    # ===== DYNAMIC DATE DETECTION WITH RECENCY WINDOW =====
+    # Find the most recent date in the feed, then include papers
+    # from the last RECENCY_WINDOW_DAYS days before that.
+    # This catches:
+    #   - New submissions (effective date = today)
+    #   - Recent revisions (updated in last 3 days, originally older)
+    #   - Papers like NOLTA updated Mon when pipeline runs Wed
+    most_recent = get_most_recent_date(papers)
+    most_recent_dt = datetime.fromisoformat(most_recent)
+    window_cutoff = (most_recent_dt - timedelta(days=RECENCY_WINDOW_DAYS)).date().isoformat()
+
     print("="*60)
-    print(f"STEP 2: Filtering for most recent papers (effective date: {target_date})...")
+    print(f"STEP 2: Filtering papers from {window_cutoff} to {most_recent} ({RECENCY_WINDOW_DAYS}-day window)...")
     print("="*60)
 
-    target_papers = [p for p in papers if get_effective_date(p) == target_date]
-    print(f"✓ Found {len(target_papers)} papers with effective date {target_date}\n")
+    target_papers = [
+        p for p in papers
+        if get_effective_date(p) >= window_cutoff
+    ]
+    print(f"✓ Found {len(target_papers)} papers in recency window\n")
     if len(target_papers) == 0:
-        print("⚠️  No papers found for target date")
+        print("⚠️  No papers found in recency window")
         return [], archive
 
     # Deduplicate by arxiv_id across all categories
@@ -502,7 +533,7 @@ async def run_daily_pipeline() -> tuple:
             unique_target_papers.append(p)
     print(f"✓ After deduplication: {len(unique_target_papers)} unique papers\n")
 
-    previous_metrics = load_previous_metrics(archive, target_date)
+    previous_metrics = load_previous_metrics(archive, most_recent)
 
     print("="*60)
     print("STEP 3: Filtering for ACCEPTED conference papers...")
@@ -532,7 +563,7 @@ async def run_daily_pipeline() -> tuple:
         print(f"     {status} {conf}: {count} paper(s)")
 
     if len(conference_papers) == 0:
-        print("\n⚠ No ACCEPTED conference papers for today")
+        print("\n⚠ No ACCEPTED conference papers in recency window")
         return [], archive
 
     print("\n" + "="*60)
@@ -584,7 +615,7 @@ async def run_daily_pipeline() -> tuple:
     print("METRICS DASHBOARD")
     print("="*60)
     print(f"Previous day ({previous_metrics.get('date', 'unknown')}): {previous_count} papers")
-    print(f"Today ({target_date}): {current_count} papers")
+    print(f"Today ({most_recent}): {current_count} papers")
     if day_change > 0:
         print(f"📈 Change: +{day_change} papers (UP)")
     elif day_change < 0:
@@ -595,7 +626,7 @@ async def run_daily_pipeline() -> tuple:
     return sorted_papers, {
         "previous_date": previous_metrics.get('date', 'unknown'),
         "previous_count": previous_count,
-        "current_date": target_date,
+        "current_date": most_recent,
         "current_count": current_count,
         "day_change": day_change,
         "archive": archive
