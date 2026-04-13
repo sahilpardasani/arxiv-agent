@@ -17,7 +17,8 @@ client = Groq(api_key=os.getenv("GROQ_API_KEY"))
 CONFERENCE_CATEGORIES = {
     "General ML/AI": {
         "NeurIPS", "NEURIPS", "ICML", "ICLR", "AAAI", "IJCAI", "UAI",
-        "COLM", "AISTATS", "AMLDS", "International Conference on Advanced Machine Learning and Data Science"
+        "COLM", "AISTATS", "AMLDS", "Neurocomputing",
+        "International Conference on Advanced Machine Learning and Data Science"
     },
     "Computer Vision": {
         "CVPR", "IEEE/CVF Conference on Computer Vision",
@@ -28,7 +29,11 @@ CONFERENCE_CATEGORIES = {
         "ACL", "Association for Computational Linguistics",
         "EMNLP", "Empirical Methods in Natural Language Processing",
         "NAACL", "North American Chapter of the Association for Computational Linguistics",
-        "COLING", "EACL", "SIGIR"
+        "COLING", "EACL"
+    },
+    "Information Retrieval": {
+        "SIGIR", "CHIIR", "ECIR",
+        "ACM SIGIR Conference on Human Information Interaction and Retrieval"
     },
     "Robotics": {
         "ICRA", "International Conference on Robotics and Automation",
@@ -45,7 +50,8 @@ CONFERENCE_CATEGORIES = {
         "OSDI", "Operating Systems Design and Implementation",
         "SOSP", "Symposium on Operating Systems Principles",
         "ATC", "USENIX Annual Technical Conference",
-        "EuroSys", "ASPLOS", "SIGCOMM"
+        "EuroSys", "ASPLOS", "SIGCOMM",
+        "DAIS", "Distributed Applications and Interoperable Systems"
     },
     "Human-Computer Interaction": {
         "CHI", "ACM Conference on Human Factors in Computing Systems",
@@ -57,7 +63,8 @@ CONFERENCE_CATEGORIES = {
         "X National Cybersecurity Research Conference"
     },
     "Databases": {
-        "VLDB", "SIGMOD", "PODS", "ICDE"
+        "VLDB", "SIGMOD", "PODS", "ICDE",
+        "DASFAA", "Database Systems for Advanced Applications"
     },
     "Software Engineering": {
         "ICSE", "International Conference on Software Engineering",
@@ -110,6 +117,7 @@ ARXIV_CATEGORIES = [
     "cs.SE",      # Software Engineering
     "cs.HC",      # Human-Computer Interaction
     "cs.CY",      # Computers and Society
+    "cs.IR",      # Information Retrieval
     "stat.ML",    # Machine Learning (Statistics)
 ]
 
@@ -124,6 +132,7 @@ ACCEPTANCE_PHRASES = [
     "accepted for",
     "to appear at",
     "to appear in",
+    "to appear in proceedings",
     "published at",
     "published in",
     "camera ready",
@@ -158,7 +167,7 @@ def get_most_recent_date(papers: list) -> str:
     """
     Dynamically find the most recent publication date from fetched papers.
     arXiv's 'published' field reflects submission date, not announcement date.
-    So we find the latest date in the feed — that's the batch just announced.
+    We find the latest date in the feed — that's the batch just announced.
     """
     dates = [p.get('published', '')[:10] for p in papers if p.get('published', '')[:10]]
     if not dates:
@@ -433,6 +442,16 @@ async def run_daily_pipeline() -> tuple:
         print("⚠️  No papers found for target date")
         return [], archive
 
+    # Deduplicate by arxiv_id across all categories
+    seen_ids = set()
+    unique_target_papers = []
+    for p in target_papers:
+        aid = p.get('arxiv_id', '')
+        if aid and aid not in seen_ids:
+            seen_ids.add(aid)
+            unique_target_papers.append(p)
+    print(f"✓ After deduplication: {len(unique_target_papers)} unique papers\n")
+
     previous_metrics = load_previous_metrics(archive, target_date)
 
     print("="*60)
@@ -440,7 +459,7 @@ async def run_daily_pipeline() -> tuple:
     print("="*60)
     seen_arxiv_ids = set()
     conference_papers = []
-    for p in target_papers:
+    for p in unique_target_papers:
         arxiv_id = p.get('arxiv_id', '')
         if arxiv_id and arxiv_id not in seen_arxiv_ids and is_conference_paper(p):
             seen_arxiv_ids.add(arxiv_id)
