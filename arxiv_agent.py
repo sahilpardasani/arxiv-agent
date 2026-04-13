@@ -141,7 +141,7 @@ def is_arxiv_publishing_day() -> bool:
     """
     arXiv announces papers at 20:00 ET on: Tue, Wed, Thu, Sun, Mon.
     NO announcement on Friday evening or Saturday evening.
-    Pipeline runs at 20:30 ET so we check today's day.
+    Pipeline runs at 23:30 ET so we check today's day.
       Fri = weekday 4 → skip
       Sat = weekday 5 → skip
     """
@@ -154,25 +154,16 @@ def is_arxiv_publishing_day() -> bool:
     return True
 
 
-def get_target_date_str() -> str:
+def get_most_recent_date(papers: list) -> str:
     """
-    Get the date of papers being announced today.
-    Pipeline runs at 20:30 ET right after arXiv's 20:00 ET announcement,
-    so we target today's date.
-    Special case: Sunday's announcement includes papers published on Friday
-    (Thu 14:00 – Fri 14:00 window), so we still use today's date since
-    arXiv sets published date to the announcement date.
+    Dynamically find the most recent publication date from fetched papers.
+    arXiv's 'published' field reflects submission date, not announcement date.
+    So we find the latest date in the feed — that's the batch just announced.
     """
-    return date.today().isoformat()
-
-
-def is_paper_from_target_date(paper: dict) -> bool:
-    """Check if paper was published on today's target date."""
-    published = paper.get('published', '')
-    if not published:
-        return False
-    paper_date = published.split('T')[0]
-    return paper_date == get_target_date_str()
+    dates = [p.get('published', '')[:10] for p in papers if p.get('published', '')[:10]]
+    if not dates:
+        return date.today().isoformat()
+    return max(dates)
 
 
 def load_archive(archive_file: str = "papers_archive.json") -> dict:
@@ -216,8 +207,7 @@ def load_previous_metrics(archive: dict, date_str: str) -> dict:
     return {"total_papers": 0, "date": "unknown"}
 
 async def fetch_arxiv_papers_single_session(max_results: int = 300) -> list:
-    """Fetch recent arXiv papers — simple query with high max_results,
-    date filtering handled in code by is_paper_from_target_date()"""
+    """Fetch recent arXiv papers — simple query with high max_results."""
     papers = []
     async with aiohttp.ClientSession() as session:
         for index, category in enumerate(ARXIV_CATEGORIES):
@@ -400,7 +390,7 @@ Be precise and technical."""
                 return json.loads(json_match.group())
         except Exception as e:
             if '429' in str(e) and attempt < 2:
-                wait = 60 * (attempt + 1)  # 60s then 120s
+                wait = 60 * (attempt + 1)
                 print(f"\n⏳ Groq rate limited, waiting {wait}s before retry {attempt + 2}/3...")
                 time.sleep(wait)
             else:
@@ -413,16 +403,12 @@ async def run_daily_pipeline() -> tuple:
     """Main pipeline: fetch papers → filter → analyze"""
     print(f"[{datetime.now().isoformat()}] Starting arXiv paper analysis pipeline...")
 
-    # Skip Saturday — only day with no arXiv announcement
+    # Skip Friday and Saturday — no arXiv announcement those evenings
     if not is_arxiv_publishing_day():
         return [], None
 
-    target_date = get_target_date_str()
-    print(f"📅 Targeting papers announced TODAY: {target_date}")
-
     archive = load_archive()
     archive = cleanup_old_data(archive, days_to_keep=DAYS_TO_KEEP)
-    previous_metrics = load_previous_metrics(archive, target_date)
 
     print("\n" + "="*60)
     print("STEP 1: Fetching papers from arXiv...")
@@ -433,14 +419,21 @@ async def run_daily_pipeline() -> tuple:
         print("⚠️  WARNING: No papers fetched from arXiv!")
         return [], archive
 
+    # ===== DYNAMIC DATE DETECTION =====
+    # arXiv's 'published' field reflects submission date, not announcement date.
+    # We detect the most recent date in the feed — that's the latest batch.
+    target_date = get_most_recent_date(papers)
     print("="*60)
-    print(f"STEP 2: Filtering for papers announced TODAY ({target_date})...")
+    print(f"STEP 2: Filtering for most recent papers (date: {target_date})...")
     print("="*60)
-    target_papers = [p for p in papers if is_paper_from_target_date(p)]
-    print(f"✓ Found {len(target_papers)} papers published today\n")
+
+    target_papers = [p for p in papers if p.get('published', '')[:10] == target_date]
+    print(f"✓ Found {len(target_papers)} papers from {target_date}\n")
     if len(target_papers) == 0:
-        print("⚠️  No papers found for today's date")
+        print("⚠️  No papers found for target date")
         return [], archive
+
+    previous_metrics = load_previous_metrics(archive, target_date)
 
     print("="*60)
     print("STEP 3: Filtering for ACCEPTED conference papers...")
@@ -540,15 +533,14 @@ async def run_daily_pipeline() -> tuple:
 def save_results(results: tuple, output_file: str = "papers.json", archive_file: str = "papers_archive.json"):
     """Save current papers and update archive with cleanup."""
     papers, metrics = results
-    target_date = get_target_date_str()
 
     # ===== SAFETY GUARD =====
-    # Never overwrite good existing data with empty results.
-    # Protects against Groq rate limits, arXiv outages, or any pipeline failure.
     if len(papers) == 0:
         print("\n⚠️  SAFETY GUARD: 0 papers returned — skipping save to protect existing data")
         print("   Existing papers.json and papers_archive.json are unchanged")
         return None, None
+
+    target_date = metrics.get("current_date", date.today().isoformat())
 
     current_output = {
         "last_updated": datetime.now().isoformat(),
