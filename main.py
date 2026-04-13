@@ -111,7 +111,7 @@ def daily_paper_analysis():
 
 # Initialize scheduler
 scheduler = BackgroundScheduler(timezone=EST)
-scheduler.add_job(daily_paper_analysis, 'cron', hour=0, minute=30, timezone=EST)
+scheduler.add_job(daily_paper_analysis, 'cron', hour=23, minute=30, timezone=EST)
 scheduler.start()
 
 @app.on_event("startup")
