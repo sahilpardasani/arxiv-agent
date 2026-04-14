@@ -5,8 +5,9 @@ import subprocess
 import base64
 import urllib.request
 import urllib.error
+import threading
 from datetime import datetime, timedelta
-from fastapi import FastAPI, HTTPException, BackgroundTasks
+from fastapi import FastAPI, HTTPException
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import FileResponse, HTMLResponse
 import aiofiles
@@ -21,11 +22,15 @@ app.mount("/static", StaticFiles(directory=".", html=True), name="static")
 
 EST = pytz.timezone('America/New_York')
 
+# Global lock to prevent concurrent pipeline runs
+_pipeline_lock = threading.Lock()
+_pipeline_running = False
+
 
 def push_file_to_github(filepath: str):
     """Push a single file to GitHub via REST API."""
     token = os.environ.get("GITHUB_TOKEN")
-    repo = os.environ.get("GITHUB_REPO")  # e.g. sahilpardasani/arxiv-agent
+    repo = os.environ.get("GITHUB_REPO")
 
     if not token or not repo:
         print(f"⚠️  GITHUB_TOKEN or GITHUB_REPO not set — skipping GitHub push for {filepath}")
@@ -50,7 +55,7 @@ def push_file_to_github(filepath: str):
                 sha = json.loads(resp.read())["sha"]
         except urllib.error.HTTPError as e:
             if e.code == 404:
-                sha = None  # File doesn't exist yet, will create it
+                sha = None
             else:
                 raise
 
@@ -75,7 +80,7 @@ def push_file_to_github(filepath: str):
 
 
 def safe_push_to_github(stdout: str):
-    """Only push to GitHub if the pipeline actually saved data (safety guard check)."""
+    """Only push to GitHub if the pipeline actually saved data."""
     if "SAFETY GUARD" in stdout:
         print("⚠️  Skipping GitHub push — pipeline returned 0 papers (safety guard triggered)")
         return
@@ -83,30 +88,53 @@ def safe_push_to_github(stdout: str):
     push_file_to_github("papers_archive.json")
 
 
-# Background task for daily analysis
-def daily_paper_analysis():
-    """Run the daily arXiv paper analysis"""
+def run_pipeline_thread():
+    """
+    Run the pipeline in a proper daemon thread.
+    Uses threading.Lock to prevent concurrent runs.
+    Unlike FastAPI BackgroundTasks, daemon threads persist after
+    the HTTP response is sent on Render.
+    """
+    global _pipeline_running
+
+    if not _pipeline_lock.acquire(blocking=False):
+        print("⚠️  Pipeline already running — skipping duplicate trigger")
+        return
+
+    _pipeline_running = True
     try:
         print("\n" + "="*60)
-        print("🚀 Running scheduled daily analysis...")
+        print("🚀 Running pipeline in background thread...")
         print("="*60)
+
         result = subprocess.run(
             ["python", "arxiv_agent.py"],
             capture_output=True,
             text=True,
-            timeout=600,
+            timeout=1200,  # 20 minute timeout
             env={**os.environ}
         )
+
         print(result.stdout)
         if result.stderr:
             print("STDERR:", result.stderr)
-        print("✅ Daily analysis completed")
 
-        # Only push to GitHub if pipeline produced data
+        print("✅ Pipeline completed")
         safe_push_to_github(result.stdout)
 
+    except subprocess.TimeoutExpired:
+        print("❌ Pipeline timed out after 20 minutes")
     except Exception as e:
-        print(f"❌ Error running daily analysis: {e}")
+        print(f"❌ Pipeline error: {e}")
+    finally:
+        _pipeline_running = False
+        _pipeline_lock.release()
+
+
+def daily_paper_analysis():
+    """Scheduled daily analysis — spawns a daemon thread."""
+    t = threading.Thread(target=run_pipeline_thread, daemon=True)
+    t.start()
 
 
 # Initialize scheduler
@@ -114,30 +142,56 @@ scheduler = BackgroundScheduler(timezone=EST)
 scheduler.add_job(daily_paper_analysis, 'cron', hour=23, minute=30, timezone=EST)
 scheduler.start()
 
+
 @app.on_event("startup")
 async def startup_event():
     print(f"[{datetime.now().isoformat()}] Server started")
     print(f"Scheduler running: {scheduler.running}")
 
+
 @app.get("/health")
 async def health_check():
-    """Health check endpoint"""
-    return {"status": "healthy", "timestamp": datetime.now().isoformat()}
+    """Health check endpoint — also used by cron-job.org to keep Render awake."""
+    return {
+        "status": "healthy",
+        "timestamp": datetime.now().isoformat(),
+        "pipeline_running": _pipeline_running
+    }
+
+
+@app.post("/api/trigger-analysis")
+async def trigger_analysis():
+    """
+    Trigger analysis — spawns a daemon thread and returns immediately.
+    Uses threading.Thread instead of FastAPI BackgroundTasks to ensure
+    the thread survives after the HTTP response is sent on Render.
+    """
+    global _pipeline_running
+
+    if _pipeline_running:
+        return {
+            "status": "already_running",
+            "message": "Pipeline is already running",
+            "timestamp": datetime.now().isoformat()
+        }
+
+    t = threading.Thread(target=run_pipeline_thread, daemon=True)
+    t.start()
+
+    print("\n" + "="*60)
+    print("📤 Manual trigger received - thread started")
+    print("="*60)
+
+    return {
+        "status": "started",
+        "message": "Analysis thread started",
+        "timestamp": datetime.now().isoformat()
+    }
+
 
 @app.get("/api/papers")
 async def get_papers(date: str = None):
-    """
-    Get papers by date
-
-    Query parameters:
-    - date: YYYY-MM-DD format (optional, defaults to yesterday)
-
-    Examples:
-    - /api/papers (gets yesterday's papers)
-    - /api/papers?date=2026-04-09 (gets April 9's papers)
-    """
     try:
-        # Load papers.json (current/today's data)
         if os.path.exists("papers.json"):
             async with aiofiles.open("papers.json", "r") as f:
                 content = await f.read()
@@ -145,11 +199,9 @@ async def get_papers(date: str = None):
         else:
             return {"error": "No papers available yet", "total_papers": 0}
 
-        # If no date specified, return today's papers
         if not date:
             return data
 
-        # Load archive for historical data
         if os.path.exists("papers_archive.json"):
             async with aiofiles.open("papers_archive.json", "r") as f:
                 content = await f.read()
@@ -159,8 +211,6 @@ async def get_papers(date: str = None):
                 archive_data = archive["dates"][date]
                 current_count = archive_data.get("count", 0)
 
-                # Calculate previous day metrics from archive
-                from datetime import datetime, timedelta
                 prev_date = (datetime.fromisoformat(date) - timedelta(days=1)).date().isoformat()
                 prev_data = archive.get("dates", {}).get(prev_date)
                 previous_count = len(prev_data.get("papers", [])) if prev_data else 0
@@ -190,21 +240,17 @@ async def get_papers(date: str = None):
                     "total_papers": 0
                 }
         else:
-            return {
-                "error": "Archive not available",
-                "total_papers": 0
-            }
+            return {"error": "Archive not available", "total_papers": 0}
 
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
+
 @app.get("/api/dates")
 async def get_available_dates():
-    """Get all available dates with paper counts"""
     try:
         dates_info = {}
 
-        # Add current date (from papers.json)
         if os.path.exists("papers.json"):
             async with aiofiles.open("papers.json", "r") as f:
                 content = await f.read()
@@ -216,7 +262,6 @@ async def get_available_dates():
                         "status": "current"
                     }
 
-        # Add historical dates from archive
         if os.path.exists("papers_archive.json"):
             async with aiofiles.open("papers_archive.json", "r") as f:
                 content = await f.read()
@@ -228,7 +273,6 @@ async def get_available_dates():
                 dates_info[date_key]["count"] = date_data.get("count", 0)
                 dates_info[date_key]["status"] = "archived"
 
-        # Sort dates in descending order (newest first)
         sorted_dates = sorted(dates_info.items(), key=lambda x: x[0], reverse=True)
 
         return {
@@ -239,27 +283,13 @@ async def get_available_dates():
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
-@app.post("/api/trigger-analysis")
-async def trigger_analysis(background_tasks: BackgroundTasks):
-    """Manually trigger analysis — returns immediately, runs in background.
-    This prevents cron-job.org from timing out while waiting for the pipeline."""
-    background_tasks.add_task(daily_paper_analysis)
-    print("\n" + "="*60)
-    print("📤 Manual trigger received - running in background...")
-    print("="*60)
-    return {
-        "status": "started",
-        "message": "Analysis running in background",
-        "timestamp": datetime.now().isoformat()
-    }
-
 
 @app.get("/api/alexa/paper")
 async def get_alexa_paper(category: str = None):
     """
-    Returns a random paper for Alexa, rotating so the same paper
-    is never returned twice in a row for the same category.
-    Query param: category (e.g. "Natural Language Processing")
+    Returns papers in rotation — cycles through all papers before repeating.
+    For general queries: rotates through all papers.
+    For category queries: rotates through papers in that category only.
     """
     import random
     ROTATION_FILE = "alexa_rotation.json"
@@ -275,6 +305,7 @@ async def get_alexa_paper(category: str = None):
         all_papers = data.get("papers", [])
         if not all_papers:
             return {"error": "No papers found", "speech": "Sorry, there are no papers available right now."}
+
         if category:
             filtered = [
                 p for p in all_papers
@@ -292,6 +323,8 @@ async def get_alexa_paper(category: str = None):
                 }
         else:
             filtered = all_papers
+
+        # Load rotation state
         rotation = {}
         if os.path.exists(ROTATION_FILE):
             try:
@@ -299,17 +332,32 @@ async def get_alexa_paper(category: str = None):
                     rotation = json.load(f)
             except Exception:
                 rotation = {}
+
         rotation_key = (category or "all").lower().replace(" ", "_")
-        last_index = rotation.get(rotation_key, -1)
-        indices = list(range(len(filtered)))
-        random.shuffle(indices)
-        chosen_index = indices[0]
-        if len(indices) > 1 and chosen_index == last_index:
-            chosen_index = indices[1]
-        paper_item = filtered[chosen_index]
-        rotation[rotation_key] = chosen_index
+        queue_key = rotation_key + "_queue"
+        current_queue = rotation.get(queue_key, [])
+
+        # If queue is empty or exhausted, rebuild it shuffled
+        if not current_queue:
+            indices = list(range(len(filtered)))
+            random.shuffle(indices)
+            current_queue = indices
+
+        # Pop next index from front of queue
+        chosen_index = current_queue.pop(0)
+
+        # Guard against stale index if paper count changed
+        if chosen_index >= len(filtered):
+            indices = list(range(len(filtered)))
+            random.shuffle(indices)
+            current_queue = indices
+            chosen_index = current_queue.pop(0)
+
+        rotation[queue_key] = current_queue
         with open(ROTATION_FILE, "w") as f:
             json.dump(rotation, f)
+
+        paper_item = filtered[chosen_index]
         paper = paper_item.get("paper", {})
         analysis = paper_item.get("analysis", {})
         conf_info = paper_item.get("conference_info", {})
@@ -321,6 +369,7 @@ async def get_alexa_paper(category: str = None):
         summary = analysis.get("executive_summary", "")
         arxiv_id = paper.get("arxiv_id", "")
         arxiv_url = "https://arxiv.org/abs/" + arxiv_id if arxiv_id else ""
+
         speech_parts = ["Here's a recent research finding"]
         if category:
             speech_parts.append("in " + category)
@@ -334,6 +383,7 @@ async def get_alexa_paper(category: str = None):
             speech_parts.append(short_summary)
         speech_parts.append("You can find this paper on arXiv.")
         speech = " ".join(speech_parts)
+
         return {
             "title": title,
             "conference": conf_display,
@@ -344,10 +394,12 @@ async def get_alexa_paper(category: str = None):
             "executive_summary": summary,
             "speech": speech,
             "total_available": len(filtered),
+            "papers_remaining_in_queue": len(current_queue),
             "filter_date": data.get("filter_date")
         }
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
+
 
 @app.get("/")
 async def root():
@@ -357,23 +409,15 @@ async def root():
     else:
         return HTMLResponse("""
         <html>
-            <head>
-                <title>arXiv Conference Paper Agent</title>
-                <style>
-                    body { font-family: Arial; margin: 40px; }
-                    .info { background: #f0f0f0; padding: 20px; border-radius: 5px; }
-                </style>
-            </head>
+            <head><title>arXiv Conference Paper Agent</title></head>
             <body>
                 <h1>arXiv Conference Paper Agent</h1>
-                <div class="info">
-                    <p>Dashboard coming soon...</p>
-                    <p><a href="/api/papers">View today's papers</a></p>
-                    <p><a href="/api/dates">View all available dates</a></p>
-                </div>
+                <p><a href="/api/papers">View today's papers</a></p>
+                <p><a href="/api/dates">View all available dates</a></p>
             </body>
         </html>
         """)
+
 
 if __name__ == "__main__":
     import uvicorn
