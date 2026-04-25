@@ -570,6 +570,83 @@
             document.getElementById('m-trend').textContent = trend;
         }
 
+        // ============ RANK LOOKUP TABLE ============
+        // Mirrors CONFERENCE_RANKS in arxiv_agent.py exactly.
+        // Used to backfill rank on papers that were saved before rank was added.
+        const CONFERENCE_RANKS = {
+            "NeurIPS":"A+","NEURIPS":"A+","ICML":"A+","ICLR":"A+","AAAI":"A+","IJCAI":"A+","UAI":"A+",
+            "AAMAS":"A+","International Conference on Autonomous Agents and Multiagent Systems":"A+",
+            "ACL":"A+","Association for Computational Linguistics":"A+",
+            "SIGIR":"A+","KDD":"A+","WWW":"A+","ICDM":"A+","SIGMOD":"A+","VLDB":"A+","ICDE":"A+",
+            "OSDI":"A+","Operating Systems Design and Implementation":"A+",
+            "SOSP":"A+","Symposium on Operating Systems Principles":"A+",
+            "ASPLOS":"A+","SIGCOMM":"A+","STOC":"A+","FOCS":"A+","SODA":"A+",
+            "CHI":"A+","ACM Conference on Human Factors in Computing Systems":"A+",
+            "CCS":"A+","ACM CCS":"A+","NDSS":"A+","PODS":"A+",
+            "ICSE":"A+","International Conference on Software Engineering":"A+",
+            "RSS":"A+","ACMMM":"A+","ACM Multimedia":"A+",
+            "ICCAD":"A+","IEEE/ACM International Conference On Computer Aided Design":"A+",
+            "CVPR":"A+","IEEE/CVF Conference on Computer Vision":"A+",
+            "ICCV":"A+","IEEE International Conference on Computer Vision":"A+",
+
+            "COLM":"A","AISTATS":"A","AMLDS":"A","Neurocomputing":"A","Neural Networks":"A",
+            "ECCV":"A","European Conference on Computer Vision":"A","WACV":"A","BMVC":"A",
+            "EMNLP":"A","Empirical Methods in Natural Language Processing":"A",
+            "NAACL":"A","North American Chapter of the Association for Computational Linguistics":"A",
+            "COLING":"A","EACL":"A",
+            "CHIIR":"A","ACM SIGIR Conference on Human Information Interaction and Retrieval":"A","ECIR":"A",
+            "ICRA":"A","International Conference on Robotics and Automation":"A",
+            "IROS":"A","Intelligent Robots and Systems":"A",
+            "CoRL":"A","Conference on Robot Learning":"A",
+            "WSDM":"A","CIKM":"A",
+            "ATC":"A","USENIX Annual Technical Conference":"A","EuroSys":"A",
+            "DAIS":"A","Distributed Applications and Interoperable Systems":"A",
+            "USENIX":"A","USENIX Security":"A",
+            "FAccT":"A","ACM Conference on Fairness, Accountability, and Transparency":"A",
+            "DASFAA":"A","Database Systems for Advanced Applications":"A",
+            "EASE":"A","Empirical Assessment of Software Engineering":"A",
+            "ICASSP":"A","IEEE International Conference on Acoustics, Speech and Signal Processing":"A",
+            "Interspeech":"A",
+            "IJCNN":"A","IEEE IJCNN":"A","International Joint Conference on Neural Networks":"A",
+            "WCCI":"A","IEEE World Congress on Computational Intelligence":"A",
+            "WCCI CEC":"A","CEC":"A","IEEE Congress on Evolutionary Computation":"A",
+            "FUZZ-IEEE":"A","IEEE International Conference on Fuzzy Systems":"A",
+            "MICCAI":"A","International Conference on Medical Image Computing and Computer Assisted Intervention":"A",
+            "TIP":"A","IEEE Transactions on Image Processing":"A",
+            "DAC":"A","DAC26":"A","Design Automation Conference":"A","ACM/IEEE Design Automation Conference":"A",
+            "IEEE Conference on Multimedia Expo":"A",
+            "FSE":"A","Financial Cryptography":"A","Financial Cryptography and Data Security":"A",
+
+            "International Conference on Advanced Machine Learning and Data Science":"B",
+            "IEEE SoutheastCon":"B",
+            "TCNS":"B","IEEE Transactions on Control of Network Systems":"B",
+            "SecDev":"B","Secure Development":"B","JNIC":"B","X National Cybersecurity Research Conference":"B",
+            "LREC":"B","Language Resources and Evaluation":"B",
+            "ISC":"B","ISC High Performance":"B","SC":"B","International Conference for High Performance Computing":"B",
+            "QCNC":"B","Quantum Computing and Networks":"B",
+            "Brain Informatics":"B","International Conference on Brain Informatics":"B",
+            "ACDSA":"B","International Conference on Artificial Intelligence, Computer, Data Sciences and Applications":"B",
+            "ALIFE":"B","ECAL":"B","International Conference on Artificial Life":"B",
+            "GECCO":"B","Genetic and Evolutionary Computation Conference":"B",
+            "CSA":"B","Computer Science Applications":"B",
+            "ISMIR":"B","IEEE TCOM":"B",
+            "ICBC":"B","IEEE International Conference on Blockchain and Cryptocurrency":"B",
+            "ISBCom":"B","International Conference on Intelligent Systems, Blockchain, and Communication Technologies":"B",
+            "IEEE Conference on ICT in Business Industry & Government":"B",
+
+            "NOLTA":"C","NOLTA, IEICE":"C","Nonlinear Theory and Its Applications":"C",
+        };
+
+        function backfillRank(papers) {
+            return papers.map(item => {
+                const ci = item.conference_info;
+                if (ci && !ci.rank) {
+                    ci.rank = CONFERENCE_RANKS[ci.conference] || "";
+                }
+                return item;
+            });
+        }
+
         // ============ LOAD DATES & PAPERS ============
         let allPapers = [];
         let categories = [];
@@ -611,7 +688,7 @@
                 if (!response.ok) throw new Error(`HTTP ${response.status}`);
                 const data = await response.json();
 
-                allPapers = data.papers || [];
+                allPapers = backfillRank(data.papers || []);
                 categories = data.categories || [];
 
                 renderMetrics(data);
