@@ -124,7 +124,55 @@ CONFERENCE_CATEGORIES = {
         "ISMIR", "IEEE TCOM",
         "NOLTA", "NOLTA, IEICE",
         "Nonlinear Theory and Its Applications"
+    },
+    "Blockchain & Cryptography": {
+        "ICBC", "IEEE International Conference on Blockchain and Cryptocurrency",
+        "FSE", "Financial Cryptography", "Financial Cryptography and Data Security",
+        "IEEE Conference on ICT in Business Industry & Government",
+        "ISBCom", "International Conference on Intelligent Systems, Blockchain, and Communication Technologies",
     }
+}
+
+# Conference rank mapping (CORE ranking / tier)
+# A+ = top-tier flagship, A = strong, B = solid, C = workshop/regional
+CONFERENCE_RANKS = {
+    # A+ tier
+    "NeurIPS": "A+", "NEURIPS": "A+", "ICML": "A+", "ICLR": "A+",
+    "CVPR": "A+", "ICCV": "A+", "AAAI": "A+", "IJCAI": "A+",
+    "ACL": "A+", "SIGIR": "A+", "KDD": "A+", "WWW": "A+",
+    "SIGMOD": "A+", "VLDB": "A+", "ICDE": "A+", "ICDM": "A+",
+    "OSDI": "A+", "SOSP": "A+", "ASPLOS": "A+", "SIGCOMM": "A+",
+    "STOC": "A+", "FOCS": "A+", "SODA": "A+", "UAI": "A+",
+    "AAMAS": "A+", "CHI": "A+", "CCS": "A+", "NDSS": "A+",
+    "PODS": "A+", "ICSE": "A+", "RSS": "A+",
+    "ACMMM": "A+", "HPCA": "A+", "ISCA": "A+",
+    # A tier
+    "ECCV": "A", "WACV": "A", "BMVC": "A",
+    "EMNLP": "A", "NAACL": "A", "COLING": "A", "EACL": "A",
+    "ECAI": "A", "AISTATS": "A", "COLM": "A",
+    "ICRA": "A", "IROS": "A", "CoRL": "A",
+    "WSDM": "A", "CIKM": "A", "ECIR": "A",
+    "USENIX": "A", "EuroSys": "A", "NSDI": "A",
+    "VLSI": "A", "DAC": "A", "ICCAD": "A",
+    "MICCAI": "A",
+    "ICASSP": "A", "Interspeech": "A",
+    "IJCNN": "A", "GECCO": "A",
+    "FSE": "A", "ESEC": "A",
+    "DASFAA": "A",
+    "Financial Cryptography": "A", "Financial Cryptography and Data Security": "A",
+    # B tier
+    "ICBC": "B", "IEEE International Conference on Blockchain and Cryptocurrency": "B",
+    "ISBCom": "B", "International Conference on Intelligent Systems, Blockchain, and Communication Technologies": "B",
+    "IEEE Conference on ICT in Business Industry & Government": "B",
+    "PAKDD": "B", "SDM": "B", "AAIM": "B",
+    "ICPR": "B", "ACCV": "B",
+    "LREC": "B",
+    "ICSOC": "B",
+    "HICSS": "B",
+    "GECCO": "B",
+    "SC": "B", "ISC": "B",
+    # C tier / workshops
+    "ALIFE": "C", "ECAL": "C",
 }
 
 # Flatten for backward compatibility
@@ -148,6 +196,10 @@ ARXIV_CATEGORIES = [
     "cs.SI",      # Social and Information Networks (catches social recommendation papers)
     "q-bio.NC",   # Neurons and Cognition (catches brain-inspired AI)
     "stat.ML",    # Machine Learning (Statistics)
+    "cs.CR",      # Cryptography and Security (catches ICBC, Financial Cryptography, CCS)
+    "cs.IT",      # Information Theory (catches ISBCom, IEEE ICT conferences)
+    "cs.NI",      # Networking and Internet Architecture (catches blockchain networking papers)
+    "quant-ph",   # Quantum Physics (catches quantum computing & blockchain papers)
 ]
 
 # ===== RETENTION POLICY =====
@@ -274,12 +326,21 @@ def extract_conference_info(paper: dict) -> Optional[dict]:
             category = cat
             break
 
+    rank = CONFERENCE_RANKS.get(conf, "")
+    # If not found by short name, try full name lookup
+    if not rank:
+        for name, r in CONFERENCE_RANKS.items():
+            if name.lower() in conf.lower() or conf.lower() in name.lower():
+                rank = r
+                break
+
     return {
         "conference": conf,
         "year": year,
         "comment": comment,
         "raw_comment": paper.get('comment', ''),
-        "category": category
+        "category": category,
+        "rank": rank  # e.g. "A+", "A", "B", "C", or ""
     }
 
 
@@ -652,7 +713,8 @@ def save_results(results: tuple, output_file: str = "papers.json", archive_file:
                 "day_change": metrics.get("day_change"),
                 "trend": "📈 UP" if metrics.get("day_change", 0) > 0 else ("📉 DOWN" if metrics.get("day_change", 0) < 0 else "➡️  STABLE")
             }
-        }
+        },
+        "ranks": ["A+", "A", "B", "C"]
     }
     with open(output_file, "w") as f:
         json.dump(current_output, f, indent=2)

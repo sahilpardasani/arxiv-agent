@@ -481,6 +481,17 @@
                     <option value="">All Categories</option>
                 </select>
             </div>
+
+            <label class="filter-label">🏅 Filter by Rank:</label>
+            <div class="glass-dropdown-wrapper" style="width:200px;">
+                <select id="rankSelect" class="glass-dropdown">
+                    <option value="">All Ranks</option>
+                    <option value="A+">A+ — Flagship</option>
+                    <option value="A">A — Top Conference</option>
+                    <option value="B">B — Strong Conference</option>
+                    <option value="C">C — Workshop / Regional</option>
+                </select>
+            </div>
         </div>
 
         <div id="papers"></div>
@@ -611,6 +622,9 @@
                     return;
                 }
 
+                // Reset both filters
+                document.getElementById('categorySelect').value = '';
+                document.getElementById('rankSelect').value = '';
                 populateCategories();
                 renderPapers(allPapers);
 
@@ -631,10 +645,24 @@
             });
 
             select.value = '';
-            select.onchange = (e) => {
-                const cat = e.target.value;
-                renderPapers(cat ? allPapers.filter(i => i.conference_info?.category === cat) : allPapers);
-            };
+            select.onchange = applyFilters;
+
+            // Wire up rank filter too
+            document.getElementById('rankSelect').onchange = applyFilters;
+        }
+
+        function applyFilters() {
+            const cat = document.getElementById('categorySelect').value;
+            const rank = document.getElementById('rankSelect').value;
+
+            let filtered = allPapers;
+            if (cat) {
+                filtered = filtered.filter(i => i.conference_info?.category === cat);
+            }
+            if (rank) {
+                filtered = filtered.filter(i => (i.conference_info?.rank || '') === rank);
+            }
+            renderPapers(filtered);
         }
 
         function formatDate(dateString) {
@@ -643,6 +671,32 @@
                     month: 'short', day: 'numeric', year: 'numeric'
                 });
             } catch { return dateString; }
+        }
+
+        function rankBadgeHtml(rank) {
+            if (!rank) return '';
+            const colors = {
+                'A+': 'rgba(255, 200, 0, 0.18)',
+                'A':  'rgba(0, 200, 100, 0.15)',
+                'B':  'rgba(100, 150, 255, 0.15)',
+                'C':  'rgba(180, 180, 180, 0.15)',
+            };
+            const borders = {
+                'A+': 'rgba(255, 200, 0, 0.5)',
+                'A':  'rgba(0, 200, 100, 0.4)',
+                'B':  'rgba(100, 150, 255, 0.4)',
+                'C':  'rgba(180, 180, 180, 0.4)',
+            };
+            const textColors = {
+                'A+': '#ffd700',
+                'A':  '#00c864',
+                'B':  '#6699ff',
+                'C':  '#aaaaaa',
+            };
+            const bg = colors[rank] || 'rgba(150,150,150,0.1)';
+            const br = borders[rank] || 'rgba(150,150,150,0.3)';
+            const tc = textColors[rank] || '#aaaaaa';
+            return `<span style="display:inline-block;background:${bg};border:1px solid ${br};color:${tc};padding:3px 9px;border-radius:5px;font-size:0.75em;font-weight:700;letter-spacing:0.05em;">${rank}</span>`;
         }
 
         function renderPapers(papers) {
@@ -662,6 +716,7 @@
                 const confDisplay = ci.year && ci.year !== 'Unknown'
                     ? `${ci.conference} ${ci.year}` : ci.conference || 'Unknown';
                 const published = paper.published ? formatDate(paper.published) : 'Unknown date';
+                const rank = ci.rank || '';
 
                 return `
                 <div class="paper-card">
@@ -673,9 +728,10 @@
                         <div class="paper-id">ID: ${arxivId}</div>
                         <div class="paper-date">📅 ${published}</div>
                     </div>
-                    <div style="display:flex;gap:8px;margin-bottom:12px;flex-wrap:wrap;">
+                    <div style="display:flex;gap:8px;margin-bottom:12px;flex-wrap:wrap;align-items:center;">
                         <div class="conference-badge">🏆 ${confDisplay}</div>
                         <div class="category-tag">${ci.category || 'Other'}</div>
+                        ${rankBadgeHtml(rank)}
                     </div>
                     ${analysis.bottleneck_addressed ? `<div class="bottleneck">🎯 ${analysis.bottleneck_addressed}</div>` : ''}
                     ${analysis.problem_statement ? `<div class="problem"><strong>Problem:</strong> ${analysis.problem_statement}</div>` : ''}
