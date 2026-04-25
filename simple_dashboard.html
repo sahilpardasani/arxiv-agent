@@ -166,21 +166,33 @@
         /* ===== FILTERS ===== */
         .filters {
             display: flex;
-            gap: 15px;
+            gap: 12px;
             margin-bottom: 20px;
-            flex-wrap: wrap;
+            flex-wrap: nowrap;
             align-items: center;
+        }
+
+        .filter-group {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-shrink: 0;
         }
 
         .filter-label {
             font-weight: 500;
             color: var(--text-secondary);
-            font-size: 0.95em;
+            font-size: 0.9em;
+            white-space: nowrap;
         }
 
         .glass-dropdown-wrapper {
             position: relative;
-            width: 280px;
+            width: 195px;
+        }
+
+        .glass-dropdown-wrapper.narrow {
+            width: 120px;
         }
 
         .glass-dropdown {
@@ -401,12 +413,16 @@
             .metric-label { font-size: 0.7em; }
 
             .filters {
-                flex-direction: column;
-                align-items: flex-start;
+                flex-wrap: wrap;
                 gap: 8px;
             }
 
-            .glass-dropdown-wrapper { width: 100%; }
+            .filter-group {
+                width: 100%;
+            }
+
+            .glass-dropdown-wrapper,
+            .glass-dropdown-wrapper.narrow { width: 100%; }
 
             .papers-grid {
                 grid-template-columns: 1fr;
@@ -468,29 +484,35 @@
         <div class="error-banner" id="errorBanner"></div>
 
         <div class="filters">
-            <label class="filter-label">📅 Filter by Date:</label>
-            <div class="glass-dropdown-wrapper">
-                <select id="dateSelect" class="glass-dropdown" onchange="loadPapersByDate()">
-                    <option value="">Loading dates...</option>
-                </select>
+            <div class="filter-group">
+                <label class="filter-label">📅 Date:</label>
+                <div class="glass-dropdown-wrapper">
+                    <select id="dateSelect" class="glass-dropdown" onchange="loadPapersByDate()">
+                        <option value="">Loading dates...</option>
+                    </select>
+                </div>
             </div>
 
-            <label class="filter-label">📚 Filter by Category:</label>
-            <div class="glass-dropdown-wrapper">
-                <select id="categorySelect" class="glass-dropdown">
-                    <option value="">All Categories</option>
-                </select>
+            <div class="filter-group">
+                <label class="filter-label">📚 Category:</label>
+                <div class="glass-dropdown-wrapper">
+                    <select id="categorySelect" class="glass-dropdown">
+                        <option value="">All Categories</option>
+                    </select>
+                </div>
             </div>
 
-            <label class="filter-label">🏅 Filter by Rank:</label>
-            <div class="glass-dropdown-wrapper" style="width:160px;">
-                <select id="rankSelect" class="glass-dropdown">
-                    <option value="">All Ranks</option>
-                    <option value="A+">A+</option>
-                    <option value="A">A</option>
-                    <option value="B">B</option>
-                    <option value="C">C</option>
-                </select>
+            <div class="filter-group">
+                <label class="filter-label">🏅 Rank:</label>
+                <div class="glass-dropdown-wrapper narrow">
+                    <select id="rankSelect" class="glass-dropdown">
+                        <option value="">All</option>
+                        <option value="A+">A+</option>
+                        <option value="A">A</option>
+                        <option value="B">B</option>
+                        <option value="C">C</option>
+                    </select>
+                </div>
             </div>
         </div>
 
