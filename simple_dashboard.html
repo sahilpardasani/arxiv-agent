@@ -483,13 +483,13 @@
             </div>
 
             <label class="filter-label">🏅 Filter by Rank:</label>
-            <div class="glass-dropdown-wrapper" style="width:200px;">
+            <div class="glass-dropdown-wrapper" style="width:160px;">
                 <select id="rankSelect" class="glass-dropdown">
                     <option value="">All Ranks</option>
-                    <option value="A+">A+ — Flagship</option>
-                    <option value="A">A — Top Conference</option>
-                    <option value="B">B — Strong Conference</option>
-                    <option value="C">C — Workshop / Regional</option>
+                    <option value="A+">A+</option>
+                    <option value="A">A</option>
+                    <option value="B">B</option>
+                    <option value="C">C</option>
                 </select>
             </div>
         </div>
@@ -645,10 +645,6 @@
             });
 
             select.value = '';
-            select.onchange = applyFilters;
-
-            // Wire up rank filter too
-            document.getElementById('rankSelect').onchange = applyFilters;
         }
 
         function applyFilters() {
@@ -657,13 +653,17 @@
 
             let filtered = allPapers;
             if (cat) {
-                filtered = filtered.filter(i => i.conference_info?.category === cat);
+                filtered = filtered.filter(i => (i.conference_info?.category || '') === cat);
             }
             if (rank) {
                 filtered = filtered.filter(i => (i.conference_info?.rank || '') === rank);
             }
             renderPapers(filtered);
         }
+
+        // Wire up filters once at startup — not inside populateCategories
+        document.getElementById('categorySelect').addEventListener('change', applyFilters);
+        document.getElementById('rankSelect').addEventListener('change', applyFilters);
 
         function formatDate(dateString) {
             try {

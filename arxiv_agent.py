@@ -133,46 +133,201 @@ CONFERENCE_CATEGORIES = {
     }
 }
 
-# Conference rank mapping (CORE ranking / tier)
-# A+ = top-tier flagship, A = strong, B = solid, C = workshop/regional
+# Conference rank mapping — every alias from CONFERENCE_CATEGORIES is listed here
+# so CONFERENCE_RANKS.get(matched_conf_name) always returns the right tier.
+# Tiers follow CORE ranking: A+ = flagship, A = strong, B = solid, C = workshop/regional
 CONFERENCE_RANKS = {
-    # A+ tier
-    "NeurIPS": "A+", "NEURIPS": "A+", "ICML": "A+", "ICLR": "A+",
-    "CVPR": "A+", "ICCV": "A+", "AAAI": "A+", "IJCAI": "A+",
-    "ACL": "A+", "SIGIR": "A+", "KDD": "A+", "WWW": "A+",
-    "SIGMOD": "A+", "VLDB": "A+", "ICDE": "A+", "ICDM": "A+",
-    "OSDI": "A+", "SOSP": "A+", "ASPLOS": "A+", "SIGCOMM": "A+",
-    "STOC": "A+", "FOCS": "A+", "SODA": "A+", "UAI": "A+",
-    "AAMAS": "A+", "CHI": "A+", "CCS": "A+", "NDSS": "A+",
-    "PODS": "A+", "ICSE": "A+", "RSS": "A+",
-    "ACMMM": "A+", "HPCA": "A+", "ISCA": "A+",
-    # A tier
-    "ECCV": "A", "WACV": "A", "BMVC": "A",
-    "EMNLP": "A", "NAACL": "A", "COLING": "A", "EACL": "A",
-    "ECAI": "A", "AISTATS": "A", "COLM": "A",
-    "ICRA": "A", "IROS": "A", "CoRL": "A",
-    "WSDM": "A", "CIKM": "A", "ECIR": "A",
-    "USENIX": "A", "EuroSys": "A", "NSDI": "A",
-    "VLSI": "A", "DAC": "A", "ICCAD": "A",
-    "MICCAI": "A",
-    "ICASSP": "A", "Interspeech": "A",
-    "IJCNN": "A", "GECCO": "A",
-    "FSE": "A", "ESEC": "A",
+    # ── General ML/AI ──────────────────────────────────────────── A+ ──
+    "NeurIPS": "A+",
+    "NEURIPS": "A+",
+    "ICML": "A+",
+    "ICLR": "A+",
+    "AAAI": "A+",
+    "IJCAI": "A+",
+    "UAI": "A+",
+    "AAMAS": "A+",
+    "International Conference on Autonomous Agents and Multiagent Systems": "A+",
+    "COLM": "A",
+    "AISTATS": "A",
+    "AMLDS": "A",
+    "Neurocomputing": "A",
+    "Neural Networks": "A",
+    "International Conference on Advanced Machine Learning and Data Science": "B",
+
+    # ── Computer Vision ─────────────────────────────────────────── A+ ──
+    "CVPR": "A+",
+    "IEEE/CVF Conference on Computer Vision": "A+",
+    "ICCV": "A+",
+    "IEEE International Conference on Computer Vision": "A+",
+    "ECCV": "A",
+    "European Conference on Computer Vision": "A",
+    "WACV": "A",
+    "BMVC": "A",
+
+    # ── NLP ─────────────────────────────────────────────────────── A+ ──
+    "ACL": "A+",
+    "Association for Computational Linguistics": "A+",
+    "EMNLP": "A",
+    "Empirical Methods in Natural Language Processing": "A",
+    "NAACL": "A",
+    "North American Chapter of the Association for Computational Linguistics": "A",
+    "COLING": "A",
+    "EACL": "A",
+
+    # ── Information Retrieval ────────────────────────────────────── A+ ──
+    "SIGIR": "A+",
+    "CHIIR": "A",
+    "ACM SIGIR Conference on Human Information Interaction and Retrieval": "A",
+    "ECIR": "A",
+
+    # ── Robotics ─────────────────────────────────────────────────── A+ ──
+    "RSS": "A+",
+    "ICRA": "A",
+    "International Conference on Robotics and Automation": "A",
+    "IROS": "A",
+    "Intelligent Robots and Systems": "A",
+    "CoRL": "A",
+    "Conference on Robot Learning": "A",
+    "IEEE SoutheastCon": "B",
+
+    # ── Data Mining & Applied ML ─────────────────────────────────── A+ ──
+    "KDD": "A+",
+    "WWW": "A+",
+    "ICDM": "A+",
+    "WSDM": "A",
+
+    # ── Theory & Foundations ─────────────────────────────────────── A+ ──
+    "STOC": "A+",
+    "FOCS": "A+",
+    "SODA": "A+",
+
+    # ── Systems & Architecture ───────────────────────────────────── A+ ──
+    "OSDI": "A+",
+    "Operating Systems Design and Implementation": "A+",
+    "SOSP": "A+",
+    "Symposium on Operating Systems Principles": "A+",
+    "ASPLOS": "A+",
+    "SIGCOMM": "A+",
+    "ATC": "A",
+    "USENIX Annual Technical Conference": "A",
+    "EuroSys": "A",
+    "DAIS": "A",
+    "Distributed Applications and Interoperable Systems": "A",
+    "TCNS": "B",
+    "IEEE Transactions on Control of Network Systems": "B",
+
+    # ── HCI ─────────────────────────────────────────────────────── A+ ──
+    "CHI": "A+",
+    "ACM Conference on Human Factors in Computing Systems": "A+",
+    "FAccT": "A",
+    "ACM Conference on Fairness, Accountability, and Transparency": "A",
+
+    # ── Security ─────────────────────────────────────────────────── A+ ──
+    "CCS": "A+",
+    "ACM CCS": "A+",
+    "NDSS": "A+",
+    "USENIX": "A",
+    "USENIX Security": "A",
+    "SecDev": "B",
+    "Secure Development": "B",
+    "JNIC": "B",
+    "X National Cybersecurity Research Conference": "B",
+
+    # ── Databases ────────────────────────────────────────────────── A+ ──
+    "VLDB": "A+",
+    "SIGMOD": "A+",
+    "PODS": "A+",
+    "ICDE": "A+",
     "DASFAA": "A",
-    "Financial Cryptography": "A", "Financial Cryptography and Data Security": "A",
-    # B tier
-    "ICBC": "B", "IEEE International Conference on Blockchain and Cryptocurrency": "B",
-    "ISBCom": "B", "International Conference on Intelligent Systems, Blockchain, and Communication Technologies": "B",
-    "IEEE Conference on ICT in Business Industry & Government": "B",
-    "PAKDD": "B", "SDM": "B", "AAIM": "B",
-    "ICPR": "B", "ACCV": "B",
+    "Database Systems for Advanced Applications": "A",
+
+    # ── Software Engineering ─────────────────────────────────────── A+ ──
+    "ICSE": "A+",
+    "International Conference on Software Engineering": "A+",
+    "EASE": "A",
+    "Empirical Assessment of Software Engineering": "A",
+
+    # ── AI/NLP/Multimedia ────────────────────────────────────────── A+ ──
+    "ACMMM": "A+",
+    "ACM Multimedia": "A+",
+    "ICASSP": "A",
+    "IEEE International Conference on Acoustics, Speech and Signal Processing": "A",
+    "Interspeech": "A",
     "LREC": "B",
-    "ICSOC": "B",
-    "HICSS": "B",
+    "Language Resources and Evaluation": "B",
+
+    # ── Neural Networks & Computational Intelligence ─────────────── A ──
+    "IJCNN": "A",
+    "IEEE IJCNN": "A",
+    "International Joint Conference on Neural Networks": "A",
+    "WCCI": "A",
+    "IEEE World Congress on Computational Intelligence": "A",
+    "WCCI CEC": "A",
+    "CEC": "A",
+    "IEEE Congress on Evolutionary Computation": "A",
+    "FUZZ-IEEE": "A",
+    "IEEE International Conference on Fuzzy Systems": "A",
+
+    # ── High Performance Computing ───────────────────────────────── B ──
+    "ISC": "B",
+    "ISC High Performance": "B",
+    "SC": "B",
+    "International Conference for High Performance Computing": "B",
+
+    # ── Quantum Computing ────────────────────────────────────────── B ──
+    "QCNC": "B",
+    "Quantum Computing and Networks": "B",
+
+    # ── Medical Image & Signal Processing ───────────────────────── A ──
+    "MICCAI": "A",
+    "International Conference on Medical Image Computing and Computer Assisted Intervention": "A",
+    "TIP": "A",
+    "IEEE Transactions on Image Processing": "A",
+    "Brain Informatics": "B",
+    "International Conference on Brain Informatics": "B",
+
+    # ── Hardware & Design Automation ─────────────────────────────── A+ ──
+    "ICCAD": "A+",
+    "IEEE/ACM International Conference On Computer Aided Design": "A+",
+    "DAC": "A",
+    "DAC26": "A",
+    "Design Automation Conference": "A",
+    "ACM/IEEE Design Automation Conference": "A",
+
+    # ── Computer Vision & Multimedia ─────────────────────────────── A ──
+    "IEEE Conference on Multimedia Expo": "A",
+
+    # ── AI Applications & Data Science ──────────────────────────── B ──
+    "ACDSA": "B",
+    "International Conference on Artificial Intelligence, Computer, Data Sciences and Applications": "B",
+
+    # ── Artificial Life & Complex Systems ───────────────────────── B ──
+    "ALIFE": "B",
+    "ECAL": "B",
+    "International Conference on Artificial Life": "B",
     "GECCO": "B",
-    "SC": "B", "ISC": "B",
-    # C tier / workshops
-    "ALIFE": "C", "ECAL": "C",
+    "Genetic and Evolutionary Computation Conference": "B",
+
+    # ── General Computer Science ─────────────────────────────────── B ──
+    "CSA": "B",
+    "Computer Science Applications": "B",
+
+    # ── Other ────────────────────────────────────────────────────── B ──
+    "ISMIR": "B",
+    "IEEE TCOM": "B",
+    "NOLTA": "C",
+    "NOLTA, IEICE": "C",
+    "Nonlinear Theory and Its Applications": "C",
+
+    # ── Blockchain & Cryptography ────────────────────────────────── A/B ──
+    "ICBC": "B",
+    "IEEE International Conference on Blockchain and Cryptocurrency": "B",
+    "FSE": "A",
+    "Financial Cryptography": "A",
+    "Financial Cryptography and Data Security": "A",
+    "IEEE Conference on ICT in Business Industry & Government": "B",
+    "ISBCom": "B",
+    "International Conference on Intelligent Systems, Blockchain, and Communication Technologies": "B",
 }
 
 # Flatten for backward compatibility
@@ -327,12 +482,6 @@ def extract_conference_info(paper: dict) -> Optional[dict]:
             break
 
     rank = CONFERENCE_RANKS.get(conf, "")
-    # If not found by short name, try full name lookup
-    if not rank:
-        for name, r in CONFERENCE_RANKS.items():
-            if name.lower() in conf.lower() or conf.lower() in name.lower():
-                rank = r
-                break
 
     return {
         "conference": conf,
@@ -340,7 +489,7 @@ def extract_conference_info(paper: dict) -> Optional[dict]:
         "comment": comment,
         "raw_comment": paper.get('comment', ''),
         "category": category,
-        "rank": rank  # e.g. "A+", "A", "B", "C", or ""
+        "rank": rank
     }
 
 
