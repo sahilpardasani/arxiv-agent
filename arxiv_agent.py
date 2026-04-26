@@ -21,14 +21,21 @@ CONFERENCE_CATEGORIES = {
         "COLM", "AISTATS", "AMLDS", "Neurocomputing", "Neural Networks",
         "AAMAS", "International Conference on Autonomous Agents and Multiagent Systems",
         "International Conference on Advanced Machine Learning and Data Science",
+        # ML Systems
+        "MLSys", "Conference on Machine Learning and Systems",
         # Neural Networks & Computational Intelligence (merged)
         "IJCNN", "IEEE IJCNN", "International Joint Conference on Neural Networks",
+        "TNNLS", "IEEE Transactions on Neural Networks and Learning Systems",
         "WCCI", "IEEE World Congress on Computational Intelligence",
         "WCCI CEC", "CEC", "IEEE Congress on Evolutionary Computation",
         "FUZZ-IEEE", "IEEE International Conference on Fuzzy Systems",
         # Artificial Life & Evolutionary (merged)
         "ALIFE", "ECAL", "International Conference on Artificial Life",
-        "GECCO", "Genetic and Evolutionary Computation Conference"
+        "GECCO", "Genetic and Evolutionary Computation Conference",
+        # Unconventional Computing
+        "UCNC", "International Conference on Unconventional Computing and Natural Computing",
+        # Canadian AI
+        "CAAI", "Canadian Conference on Artificial Intelligence"
     },
     "Computer Vision": {
         "CVPR", "IEEE/CVF Conference on Computer Vision",
@@ -71,9 +78,17 @@ CONFERENCE_CATEGORIES = {
         "EuroSys", "ASPLOS", "SIGCOMM",
         "DAIS", "Distributed Applications and Interoperable Systems",
         "TCNS", "IEEE Transactions on Control of Network Systems",
+        # Microarchitecture
+        "MICRO", "IEEE/ACM International Symposium on Microarchitecture",
+        # High Performance Computer Architecture
+        "HPCA", "IEEE International Symposium on High-Performance Computer Architecture",
         # HPC (merged)
         "ISC", "ISC High Performance",
-        "SC", "International Conference for High Performance Computing"
+        "SC", "International Conference for High Performance Computing",
+        # Electrical & Energy Systems
+        "ICECET", "International Conference on Electrical, Computer and Energy Technologies",
+        # Networking
+        "GLOBECOM", "IEEE Global Communications Conference"
     },
     "Human-Computer Interaction": {
         "CHI", "ACM Conference on Human Factors in Computing Systems",
@@ -82,7 +97,9 @@ CONFERENCE_CATEGORIES = {
     "Security": {
         "SecDev", "Secure Development",
         "USENIX", "USENIX Security", "CCS", "ACM CCS", "NDSS", "JNIC",
-        "X National Cybersecurity Research Conference"
+        "X National Cybersecurity Research Conference",
+        "IEEE Transactions on Information Forensics and Security",
+        "IEEE Transactions on Dependable and Secure Computing"
     },
     "Databases": {
         "VLDB", "SIGMOD", "PODS", "ICDE",
@@ -110,7 +127,8 @@ CONFERENCE_CATEGORIES = {
         "ICBC", "IEEE International Conference on Blockchain and Cryptocurrency",
         "Financial Cryptography", "Financial Cryptography and Data Security",
         "IEEE Conference on ICT in Business Industry & Government",
-        "ISBCom", "International Conference on Intelligent Systems, Blockchain, and Communication Technologies"
+        "ISBCom", "International Conference on Intelligent Systems, Blockchain, and Communication Technologies",
+        "EthCC", "Ethereum Community Conference"
     },
     "Other": {
         "ISMIR", "IEEE TCOM",
@@ -152,6 +170,7 @@ CONFERENCE_RANKS = {
     "SOSP": "A+",   "Symposium on Operating Systems Principles": "A+",
     "STOC": "A+",
     "UAI": "A+",
+    "HPCA": "A+",   "IEEE International Symposium on High-Performance Computer Architecture": "A+",
     "VLDB": "A+",
     "WWW": "A+",
 
@@ -180,10 +199,13 @@ CONFERENCE_RANKS = {
     "USENIX": "A",  "USENIX Annual Technical Conference": "A",
     "USENIX-Security": "A", "USENIX Security": "A",
     "WACV": "A",
+    "MICRO": "A",   "IEEE/ACM International Symposium on Microarchitecture": "A",
 
     # B — official list confirmed
     "DAC": "B",     "Design Automation Conference": "B",  "ACM/IEEE Design Automation Conference": "B",
     "GECCO": "B",   "Genetic and Evolutionary Computation Conference": "B",
+    "GLOBECOM": "B", "IEEE Global Communications Conference": "B",
+    "CAAI": "B",    "Canadian Conference on Artificial Intelligence": "B",
     "ICASSP": "B",  "IEEE International Conference on Acoustics, Speech and Signal Processing": "B",
     "ICRA": "B",    "International Conference on Robotics and Automation": "B",
 
@@ -225,6 +247,10 @@ ARXIV_CATEGORIES = [
     "quant-ph",   # Quantum Physics (catches quantum computing & blockchain papers)
     "q-fin.GN",   # General Finance (catches fintech, financial AI papers)
     "econ.GN",    # General Economics (catches economic AI/ML papers)
+    "econ.EM",    # Econometrics (catches ML applied to economics)
+    "cs.PL",      # Programming Languages (catches POPL, PLDI papers)
+    "cs.AR",      # Hardware Architecture (catches MICRO, HPCA, ISCA papers)
+    "cs.PF",      # Performance (catches systems performance papers)
 ]
 
 # ===== RETENTION POLICY =====
@@ -252,6 +278,8 @@ ACCEPTANCE_PHRASES = [
     "highlight paper",
     "oral paper",
     "spotlight paper",
+    "presented at",
+    "presentation at",
 ]
 
 REJECTION_PHRASES = [
