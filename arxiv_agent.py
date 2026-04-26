@@ -73,6 +73,8 @@ CONFERENCE_CATEGORIES = {
     },
     "Software Engineering": {
         "ICSE", "International Conference on Software Engineering",
+        "FSE", "ESEC-FSE", "ESEC/FSE",
+        "ACM International Conference on the Foundations of Software Engineering",
         "EASE", "Empirical Assessment of Software Engineering"
     },
     "AI/NLP/Multimedia": {
@@ -127,7 +129,7 @@ CONFERENCE_CATEGORIES = {
     },
     "Blockchain & Cryptography": {
         "ICBC", "IEEE International Conference on Blockchain and Cryptocurrency",
-        "FSE", "Financial Cryptography", "Financial Cryptography and Data Security",
+        "Financial Cryptography", "Financial Cryptography and Data Security",
         "IEEE Conference on ICT in Business Industry & Government",
         "ISBCom", "International Conference on Intelligent Systems, Blockchain, and Communication Technologies",
     }
@@ -179,7 +181,8 @@ CONFERENCE_RANKS = {
     "ECCV": "A",    "European Conference on Computer Vision": "A",
     "EMNLP": "A",   "Empirical Methods in Natural Language Processing": "A",
     "EuroSys": "A",
-    "FSE": "A",
+    "FSE": "A",  "ESEC-FSE": "A",  "ESEC/FSE": "A",
+    "ACM International Conference on the Foundations of Software Engineering": "A",
     "FUZZ-IEEE": "A", "IEEE International Conference on Fuzzy Systems": "A",
     "ICCAD": "A",   "International Conference on Computer-Aided Design": "A",  "IEEE/ACM International Conference On Computer Aided Design": "A",
     "IJCNN": "A",   "IEEE IJCNN": "A",  "International Joint Conference on Neural Networks": "A",
