@@ -16,26 +16,37 @@ client = Groq(api_key=os.getenv("GROQ_API_KEY"))
 # Conference categories by field
 CONFERENCE_CATEGORIES = {
     "General ML/AI": {
+        # Core ML/AI venues
         "NeurIPS", "NEURIPS", "ICML", "ICLR", "AAAI", "IJCAI", "UAI",
-        "COLM", "AISTATS", "AMLDS", "Neurocomputing",
-        "Neural Networks",
+        "COLM", "AISTATS", "AMLDS", "Neurocomputing", "Neural Networks",
         "AAMAS", "International Conference on Autonomous Agents and Multiagent Systems",
-        "International Conference on Advanced Machine Learning and Data Science"
+        "International Conference on Advanced Machine Learning and Data Science",
+        # Neural Networks & Computational Intelligence (merged)
+        "IJCNN", "IEEE IJCNN", "International Joint Conference on Neural Networks",
+        "WCCI", "IEEE World Congress on Computational Intelligence",
+        "WCCI CEC", "CEC", "IEEE Congress on Evolutionary Computation",
+        "FUZZ-IEEE", "IEEE International Conference on Fuzzy Systems",
+        # Artificial Life & Evolutionary (merged)
+        "ALIFE", "ECAL", "International Conference on Artificial Life",
+        "GECCO", "Genetic and Evolutionary Computation Conference"
     },
     "Computer Vision": {
         "CVPR", "IEEE/CVF Conference on Computer Vision",
         "ICCV", "IEEE International Conference on Computer Vision",
-        "ECCV", "European Conference on Computer Vision", "WACV", "BMVC"
+        "ECCV", "European Conference on Computer Vision", "WACV", "BMVC",
+        # Multimedia (merged from "Computer Vision & Multimedia" and "AI/NLP/Multimedia")
+        "ACMMM", "ACM Multimedia",
+        "IEEE Conference on Multimedia Expo"
     },
     "Natural Language Processing": {
         "ACL", "Association for Computational Linguistics",
         "EMNLP", "Empirical Methods in Natural Language Processing",
         "NAACL", "North American Chapter of the Association for Computational Linguistics",
-        "COLING", "EACL"
-    },
-    "Information Retrieval": {
-        "SIGIR", "CHIIR", "ECIR",
-        "ACM SIGIR Conference on Human Information Interaction and Retrieval"
+        "COLING", "EACL",
+        # Speech & audio resources (merged from "AI/NLP/Multimedia")
+        "LREC", "Language Resources and Evaluation",
+        "ICASSP", "IEEE International Conference on Acoustics, Speech and Signal Processing",
+        "Interspeech"
     },
     "Robotics": {
         "ICRA", "International Conference on Robotics and Automation",
@@ -43,8 +54,12 @@ CONFERENCE_CATEGORIES = {
         "IEEE SoutheastCon",
         "CoRL", "Conference on Robot Learning", "RSS"
     },
-    "Data Mining & Applied ML": {
-        "KDD", "WWW", "ICDM", "WSDM"
+    "Data Mining & IR": {
+        # Data mining, web, applied ML (merged "Information Retrieval" + "AI Applications & Data Science")
+        "KDD", "WWW", "ICDM", "WSDM",
+        "SIGIR", "CHIIR", "ECIR",
+        "ACM SIGIR Conference on Human Information Interaction and Retrieval",
+        "ACDSA", "International Conference on Artificial Intelligence, Computer, Data Sciences and Applications"
     },
     "Theory & Foundations": {
         "STOC", "FOCS", "SODA"
@@ -56,7 +71,9 @@ CONFERENCE_CATEGORIES = {
         "EuroSys", "ASPLOS", "SIGCOMM",
         "DAIS", "Distributed Applications and Interoperable Systems",
         "TCNS", "IEEE Transactions on Control of Network Systems",
-        "IEEE Transactions on Control of Network Systems"
+        # HPC (merged)
+        "ISC", "ISC High Performance",
+        "SC", "International Conference for High Performance Computing"
     },
     "Human-Computer Interaction": {
         "CHI", "ACM Conference on Human Factors in Computing Systems",
@@ -77,61 +94,30 @@ CONFERENCE_CATEGORIES = {
         "ACM International Conference on the Foundations of Software Engineering",
         "EASE", "Empirical Assessment of Software Engineering"
     },
-    "AI/NLP/Multimedia": {
-        "ACMMM", "ACM Multimedia",
-        "LREC", "Language Resources and Evaluation",
-        "ICASSP", "IEEE International Conference on Acoustics, Speech and Signal Processing",
-        "Interspeech"
-    },
-    "Neural Networks & Computational Intelligence": {
-        "IJCNN", "IEEE IJCNN",
-        "International Joint Conference on Neural Networks",
-        "WCCI", "IEEE World Congress on Computational Intelligence",
-        "WCCI CEC", "CEC",
-        "IEEE Congress on Evolutionary Computation",
-        "FUZZ-IEEE", "IEEE International Conference on Fuzzy Systems"
-    },
-    "High Performance Computing": {
-        "ISC", "ISC High Performance",
-        "SC", "International Conference for High Performance Computing"
-    },
-    "Quantum Computing": {
-        "QCNC", "Quantum Computing and Networks"
-    },
-    "Medical Image & Signal Processing": {
+    "Medical & Biomedical AI": {
         "MICCAI", "International Conference on Medical Image Computing and Computer Assisted Intervention",
         "TIP", "IEEE Transactions on Image Processing",
         "Brain Informatics", "International Conference on Brain Informatics"
     },
-    "Hardware & Design Automation": {
+    "Hardware & EDA": {
         "ICCAD", "IEEE/ACM International Conference On Computer Aided Design",
         "DAC", "DAC26", "Design Automation Conference",
-        "ACM/IEEE Design Automation Conference"
-    },
-    "Computer Vision & Multimedia": {
-        "IEEE Conference on Multimedia Expo"
-    },
-    "AI Applications & Data Science": {
-        "ACDSA", "International Conference on Artificial Intelligence, Computer, Data Sciences and Applications"
-    },
-    "Artificial Life & Complex Systems": {
-        "ALIFE", "ECAL",
-        "International Conference on Artificial Life",
-        "GECCO", "Genetic and Evolutionary Computation Conference"
-    },
-    "General Computer Science": {
-        "CSA", "Computer Science Applications"
-    },
-    "Other": {
-        "ISMIR", "IEEE TCOM",
-        "NOLTA", "NOLTA, IEICE",
-        "Nonlinear Theory and Its Applications"
+        "ACM/IEEE Design Automation Conference",
+        # Quantum (merged)
+        "QCNC", "Quantum Computing and Networks"
     },
     "Blockchain & Cryptography": {
         "ICBC", "IEEE International Conference on Blockchain and Cryptocurrency",
         "Financial Cryptography", "Financial Cryptography and Data Security",
         "IEEE Conference on ICT in Business Industry & Government",
-        "ISBCom", "International Conference on Intelligent Systems, Blockchain, and Communication Technologies",
+        "ISBCom", "International Conference on Intelligent Systems, Blockchain, and Communication Technologies"
+    },
+    "Other": {
+        "ISMIR", "IEEE TCOM",
+        "NOLTA", "NOLTA, IEICE",
+        "Nonlinear Theory and Its Applications",
+        # General CS (merged)
+        "CSA", "Computer Science Applications"
     }
 }
 
