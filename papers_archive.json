@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-05-17T03:40:44.309998",
+  "last_updated": "2026-05-18T03:49:17.819504",
   "dates": {
     "2026-05-12": {
       "count": 51,
@@ -8209,6 +8209,164 @@
         }
       ],
       "updated_at": "2026-05-17T03:40:44.309995"
+    },
+    "2026-05-15": {
+      "count": 3,
+      "papers": [
+        {
+          "paper": {
+            "title": "ParamSpMM: Adaptive and Efficient Sparse Matrix-Matrix Multiplication on GPUs for GNNs",
+            "arxiv_id": "2605.15695v1",
+            "authors": [
+              "Lixing Zhang",
+              "Guanhua Ye",
+              "Hongzheng Li",
+              "Shigang Li",
+              "Yingxia Shao"
+            ],
+            "published": "2026-05-15T07:38:04Z",
+            "updated": "2026-05-15T07:38:04Z",
+            "summary": "Fueled by the ability to mine real-world graph data, GNN applications have experienced phenomenal growth. Sparse Matrix-Matrix Multiplication (SpMM) is a critical operator in GNNs. However, existing SpMM designs for GNNs struggle to adapt to diverse input characteristics. In this paper, we first conduct a comprehensive analysis of existing SpMM optimizations, revealing their limitations through statistical and empirical evidence. Based on this analysis, we introduce ParamSpMM, a parametric approach for highly adaptive and efficient SpMM computation in GNNs. It incorporates a new data structure, the Parameterized Compressed Sparse Row (PCSR), to flexibly integrate existing optimization techniques. ParamSpMM enables the configuration of these optimization techniques according to various input characteristics. Furthermore, we complement ParamSpMM with an ML-based SpMM-decider that predicts optimal configurations based on carefully crafted input features. Our evaluations demonstrate that ParamSpMM outperforms Nvidia cuSPARSE with an average speedup of 1.92x, significantly enhancing GNN training efficiency.",
+            "categories": "cs.DC",
+            "comment": "Accepted by the 9th International Workshop on Graph Data Management and Analysis (GDMA 2025), held in conjunction with the 30th International Conference on Database Systems for Advanced Applications (DASFAA 2025). 15 pages, 6 figures"
+          },
+          "analysis": {
+            "problem_statement": "Existing Sparse Matrix-Matrix Multiplication (SpMM) designs for Graph Neural Networks (GNNs) struggle to adapt to diverse input characteristics, leading to inefficiencies in GNN training.",
+            "bottleneck_addressed": "Memory access and computation efficiency in SpMM operations, a critical bottleneck in GNN training.",
+            "executive_summary": "This paper introduces ParamSpMM, a parametric approach for highly adaptive and efficient SpMM computation in GNNs, which outperforms Nvidia cuSPARSE with an average speedup of 1.92x, significantly enhancing GNN training efficiency.",
+            "key_metrics": {
+              "primary_metric": "Average speedup over Nvidia cuSPARSE",
+              "metric_value": 1.92,
+              "baseline": "Nvidia cuSPARSE",
+              "improvement_percentage": "92%"
+            },
+            "technical_breakdown": {
+              "method": "ParamSpMM uses a Parameterized Compressed Sparse Row (PCSR) data structure to flexibly integrate existing optimization techniques, and an ML-based SpMM-decider to predict optimal configurations based on input features.",
+              "architecture": "The PCSR data structure and the ML-based SpMM-decider are key architectural components of ParamSpMM.",
+              "implementation_details": "ParamSpMM uses a combination of existing optimization techniques, including sparse matrix storage formats, matrix multiplication algorithms, and data compression methods.",
+              "code_complexity": "The computational complexity of ParamSpMM is O(n) for matrix multiplication, where n is the number of non-zero elements in the sparse matrix, and the training time for the ML-based SpMM-decider is O(m) for m input features."
+            },
+            "relevance_tags": [
+              "Graph Neural Networks",
+              "Sparse Matrix-Matrix Multiplication",
+              "GPU Acceleration",
+              "Machine Learning"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-05-18T03:49:16.788730",
+          "conference_info": {
+            "conference": "Database Systems for Advanced Applications",
+            "year": "2025",
+            "comment": "Accepted by the 9th International Workshop on Graph Data Management and Analysis (GDMA 2025), held in conjunction with the 30th International Conference on Database Systems for Advanced Applications (DASFAA 2025). 15 pages, 6 figures",
+            "raw_comment": "Accepted by the 9th International Workshop on Graph Data Management and Analysis (GDMA 2025), held in conjunction with the 30th International Conference on Database Systems for Advanced Applications (DASFAA 2025). 15 pages, 6 figures",
+            "category": "Databases",
+            "rank": "A"
+          }
+        },
+        {
+          "paper": {
+            "title": "Synchronized Realities: Towards Magic Mobile Experiences through Aligned AR",
+            "arxiv_id": "2605.15924v1",
+            "authors": [
+              "Jan Henry Belz"
+            ],
+            "published": "2026-05-15T13:07:13Z",
+            "updated": "2026-05-15T13:07:13Z",
+            "summary": "In virtual reality environments, the alignment of perceptual modalities is crucial for immersion and presence. In the AR domain, it is difficult to create such alignments because elements in the physical world are often beyond the user's control. However, recent advances in generative AI enable on-demand content creation, enabling highly reactive AR experiences. Combined with contextual information about the physical world, it has become possible to design experiences that seamlessly align with the user's environment. In this reflection paper, I emphasize the importance of \"synchronized\" realities for context-aware AR experiences, particularly in mobility scenarios. I present several examples of existing synchronized experiences and examine their commonalities and distinctions. Finally, I discuss opportunities and pitfalls of synchronizing AR experiences with the physical world.",
+            "categories": "cs.HC",
+            "comment": "Part of the CHI 2026 Workshop on Next Steps for Augmented Reality On-the-Move: Challenges and Opportunities"
+          },
+          "analysis": {
+            "problem_statement": "The paper addresses the challenge of aligning augmented reality (AR) experiences with the physical environment, particularly in mobility scenarios.",
+            "bottleneck_addressed": "The AI bottleneck addressed is the lack of contextual information and adaptability in AR experiences.",
+            "executive_summary": "This paper highlights the importance of synchronized realities for context-aware AR experiences and explores opportunities and pitfalls in aligning AR with the physical world. By leveraging generative AI and contextual information, the paper presents a framework for designing highly reactive AR experiences. This matters to the current AI landscape as it enables more immersive and interactive AR experiences.",
+            "key_metrics": {
+              "primary_metric": "Improved AR experience alignment with the physical environment",
+              "metric_value": "N/A (qualitative improvement)",
+              "baseline": "Traditional AR experiences without contextual information",
+              "improvement_percentage": "N/A (qualitative improvement)"
+            },
+            "technical_breakdown": {
+              "method": "The solution uses generative AI to create on-demand content that adapts to the user's environment, leveraging contextual information about the physical world.",
+              "architecture": "The architecture involves a combination of generative AI models, computer vision, and sensor data processing.",
+              "implementation_details": "The paper mentions the use of techniques such as object detection, tracking, and scene understanding to gather contextual information.",
+              "code_complexity": "The computational complexity is moderate to high due to the use of generative AI models and sensor data processing."
+            },
+            "relevance_tags": [
+              "Augmented Reality",
+              "Generative AI",
+              "Context-Aware Systems",
+              "Human-Computer Interaction"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-05-18T03:49:02.419130",
+          "conference_info": {
+            "conference": "CHI",
+            "year": "2026",
+            "comment": "Part of the CHI 2026 Workshop on Next Steps for Augmented Reality On-the-Move: Challenges and Opportunities",
+            "raw_comment": "Part of the CHI 2026 Workshop on Next Steps for Augmented Reality On-the-Move: Challenges and Opportunities",
+            "category": "Human-Computer Interaction",
+            "rank": "A+"
+          }
+        },
+        {
+          "paper": {
+            "title": "Toward Natural and Companionable Virtual Agents via Cross-Temporal Emotional Modeling",
+            "arxiv_id": "2605.15812v1",
+            "authors": [
+              "Feier Qin",
+              "Xiao Li",
+              "Yi Zheng",
+              "Haibin Huang",
+              "Hanyao Wang",
+              "Xiaoyu Wang",
+              "Yan Lu",
+              "Yuan Zhang"
+            ],
+            "published": "2026-05-15T10:06:57Z",
+            "updated": "2026-05-15T10:06:57Z",
+            "summary": "Recent advances in foundation models have enabled conversational agents that aim for sustained companionship rather than mere task completion. Yet most still remain unable to support natural, long-term companion-like interactions, resulting in experiences that feel episodic and inauthentic. We argue that current agents overlooked cross-temporal modeling of agents' social behaviors and internal emotions: generated behaviors rarely influence an agent's emotional state, and emotional states seldom shape subsequent behaviors. We present Cross-Temporal Emotion Modeling (CTEM), a framework that links long-term behavioral history to moment-to-moment emotional expression. CTEM establishes a closed loop where past experiences update an evolving emotional state; this state conditions immediate interactions; and user feedback continually revises both memory and emotional state, enabling reflection and anticipation. We instantiate CTEM as Auri, a companion agent on an instant-messaging platform, and report a 21-day in-the-wild study showing that CTEM shows improvements in perceived naturalness, coherence, and emotional harmony.",
+            "categories": "cs.HC",
+            "comment": "21 pages, published in CHI '26"
+          },
+          "analysis": {
+            "problem_statement": "Current conversational agents lack natural, long-term companion-like interactions due to the absence of cross-temporal modeling of agents' social behaviors and internal emotions.",
+            "bottleneck_addressed": "The paper addresses the bottleneck of episodic and inauthentic interactions in conversational agents by introducing cross-temporal emotional modeling.",
+            "executive_summary": "This paper presents a novel framework, Cross-Temporal Emotion Modeling (CTEM), that enables conversational agents to engage in sustained, natural, and companionable interactions by linking long-term behavioral history to moment-to-moment emotional expression. This addresses a critical gap in current AI research, enabling agents to reflect, anticipate, and adapt to user feedback. The proposed framework has significant implications for the development of more human-like conversational agents.",
+            "key_metrics": {
+              "primary_metric": "Perceived naturalness, coherence, and emotional harmony",
+              "metric_value": "Not explicitly stated",
+              "baseline": "No baseline mentioned",
+              "improvement_percentage": "Not quantifiable"
+            },
+            "technical_breakdown": {
+              "method": "CTEM establishes a closed loop where past experiences update an evolving emotional state, which conditions immediate interactions, and user feedback continually revises both memory and emotional state.",
+              "architecture": "The proposed framework consists of three main components: (1) a memory module that stores user interactions and agent responses, (2) an emotional state module that updates the agent's emotional state based on past experiences, and (3) an interaction module that generates responses based on the current emotional state.",
+              "implementation_details": "The authors instantiate CTEM as Auri, a companion agent on an instant-messaging platform, using a combination of natural language processing (NLP) and machine learning (ML) techniques.",
+              "code_complexity": "The paper does not provide specific details on code complexity or training time implications, but it is likely that the implementation of CTEM requires significant computational resources and expertise in NLP and ML."
+            },
+            "relevance_tags": [
+              "Conversational AI",
+              "Emotional Intelligence",
+              "Natural Language Processing",
+              "Machine Learning"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-05-18T03:49:04.504307",
+          "conference_info": {
+            "conference": "CHI",
+            "year": "2026",
+            "comment": "21 pages, published in CHI '26",
+            "raw_comment": "21 pages, published in CHI '26",
+            "category": "Human-Computer Interaction",
+            "rank": "A+"
+          }
+        }
+      ],
+      "updated_at": "2026-05-18T03:49:17.819501"
     }
   }
 }
