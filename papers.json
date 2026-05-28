@@ -1,60 +1,1020 @@
 {
-  "last_updated": "2026-05-26T03:44:41.053412",
-  "total_papers": 1,
+  "last_updated": "2026-05-28T03:41:13.839295",
+  "total_papers": 20,
   "papers": [
     {
       "paper": {
-        "title": "ZK-Tracer: A High-Performance Heterogeneous Accelerator for Zero-Knowledge VM Trace Generation",
-        "arxiv_id": "2605.25493v1",
+        "title": "A Geometric Algebra-Informed 3DGS Framework for Wireless Channel Prediction",
+        "arxiv_id": "2605.19065v2",
         "authors": [
-          "Jieran Cui",
-          "Zhengkai Wen",
-          "Haowen Fang",
-          "Yinan Zhu",
-          "Jia Xiong",
-          "Cheng Ni",
-          "Mingchi Zhang",
-          "Nan Guan",
-          "Xi Wang"
+          "Jingzhou Shen",
+          "Tianya Zhao",
+          "Xuyu Wang"
         ],
-        "published": "2026-05-25T06:54:46Z",
-        "updated": "2026-05-25T06:54:46Z",
-        "summary": "Zero-knowledge virtual machines (zkVMs) are a key technology for driving the large-scale adoption of zero-knowledge proofs (ZKP), but their performance bottlenecks severely limit their practicality. While current hardware acceleration research has exclusively focused on backend proving, we identify that the frontend execution and trace generation phase is rapidly emerging as the new system bottleneck. To address this challenge, we propose ZK-Tracer, the first hardware accelerator architecture specifically designed for the zkVM frontend. ZK-Tracer features a novel heterogeneous design comprising a Main Trace Unit and parallel Permutation Trace Units. It exposes a fine-grained interface to the host software through a lightweight instruction set extension, enabling efficient task offloading. Our ASIC implementation results demonstrate that ZK-Tracer achieves up to 1829x speedup in trace generation over a high-performance multi-core CPU. When integrated with existing backend proving accelerators, it delivers a remarkable 963x end-to-end performance improvement for the entire ZKP system.",
-        "categories": "cs.AR",
-        "comment": "This paper has been accepted by DAC 2026 and will appear in the proceedings"
+        "published": "2026-05-18T19:47:27Z",
+        "updated": "2026-05-27T15:26:45Z",
+        "summary": "In this paper, we introduce Geometric Algebra-Informed 3D Gaussian Splatting (GAI-GS), a framework for wireless modeling that couples 3D Gaussian splatting with a geometric algebra-based attention mechanism to explicitly model ray-object interactions in complex propagation environments. GAI-GS encodes joint spatial-electromagnetic (EM) relations into token representations, enabling scene-level aggregation within a unified, end-to-end neural architecture. This design grounds wireless ray propagation in electromagnetic principles, allowing token interactions to model key effects such as multipath, attenuation, and reflection/diffraction. Through extensive evaluations on multiple real-world indoor datasets, GAI-GS consistently surpasses current baselines across various wireless tasks.",
+        "categories": "cs.NI",
+        "comment": "Accepted by CVPR 2026"
       },
       "analysis": {
-        "problem_statement": "The paper addresses the performance bottleneck in zero-knowledge virtual machines (zkVMs) during the frontend execution and trace generation phase.",
-        "bottleneck_addressed": "Performance bottleneck in zkVM frontend execution and trace generation",
-        "executive_summary": "This paper proposes ZK-Tracer, a hardware accelerator that significantly improves the performance of zero-knowledge virtual machines by addressing the frontend execution and trace generation bottleneck. This matters to the current AI landscape as it enables the large-scale adoption of zero-knowledge proofs, a crucial technology for secure and private AI computations. The proposed accelerator achieves remarkable speedups and end-to-end performance improvements.",
+        "problem_statement": "The paper addresses the problem of accurately modeling wireless channel propagation in complex indoor environments, where ray-object interactions and electromagnetic principles play a crucial role.",
+        "bottleneck_addressed": "The paper addresses the bottleneck of accurately modeling complex wireless channel propagation, which is a key challenge in wireless communication systems.",
+        "executive_summary": "This paper presents a novel framework, Geometric Algebra-Informed 3D Gaussian Splatting (GAI-GS), that leverages geometric algebra to model ray-object interactions and electromagnetic principles in wireless channel propagation. This framework enables accurate modeling of complex wireless channels and outperforms current baselines on multiple real-world indoor datasets. This work has significant implications for wireless communication systems, particularly in indoor environments.",
         "key_metrics": {
-          "primary_metric": "Speedup in trace generation over a high-performance multi-core CPU",
-          "metric_value": 1829,
-          "baseline": "High-performance multi-core CPU",
-          "improvement_percentage": "not quantifiable"
+          "primary_metric": "Wireless channel prediction accuracy",
+          "metric_value": "Not specified",
+          "baseline": "Current state-of-the-art methods",
+          "improvement_percentage": "Not quantifiable"
         },
         "technical_breakdown": {
-          "method": "ZK-Tracer uses a novel heterogeneous design comprising a Main Trace Unit and parallel Permutation Trace Units to accelerate the frontend execution and trace generation phase of zkVMs.",
-          "architecture": "The proposed architecture includes a Main Trace Unit and parallel Permutation Trace Units, which are designed to work together to accelerate the trace generation process.",
-          "implementation_details": "The implementation uses a lightweight instruction set extension to expose a fine-grained interface to the host software, enabling efficient task offloading.",
-          "code_complexity": "The computational complexity of the proposed solution is not explicitly mentioned, but it is likely to be O(n), where n is the number of instructions being executed."
+          "method": "GAI-GS couples 3D Gaussian splatting with a geometric algebra-based attention mechanism to model ray-object interactions and electromagnetic principles in wireless channel propagation.",
+          "architecture": {
+            "Key components:": "3D Gaussian splatting, geometric algebra-based attention mechanism, token representations, and scene-level aggregation",
+            "Unified architecture:": "End-to-end neural architecture"
+          },
+          "implementation_details": "The paper uses geometric algebra to encode joint spatial-electromagnetic relations into token representations, enabling scene-level aggregation and modeling of key effects such as multipath, attenuation, and reflection/diffraction.",
+          "code_complexity": "The paper does not provide specific details on code complexity or training time implications, but the use of geometric algebra and attention mechanisms may require significant computational resources."
         },
         "relevance_tags": [
-          "Zero-Knowledge Proofs",
-          "Hardware Acceleration",
-          "Artificial Intelligence",
-          "Secure Computation"
+          "Wireless Communication",
+          "Geometric Algebra",
+          "3D Gaussian Splatting",
+          "Attention Mechanisms",
+          "Neural Architecture"
         ],
         "confidence": "high"
       },
-      "analyzed_at": "2026-05-26T03:44:40.050716",
+      "analyzed_at": "2026-05-28T03:41:01.322148",
       "conference_info": {
-        "conference": "DAC",
+        "conference": "CVPR",
         "year": "2026",
-        "comment": "This paper has been accepted by DAC 2026 and will appear in the proceedings",
-        "raw_comment": "This paper has been accepted by DAC 2026 and will appear in the proceedings",
-        "category": "Hardware & EDA",
+        "comment": "Accepted by CVPR 2026",
+        "raw_comment": "Accepted by CVPR 2026",
+        "category": "Computer Vision",
+        "rank": "A"
+      }
+    },
+    {
+      "paper": {
+        "title": "Sampling Random Graphs from the Colored Configuration Model",
+        "arxiv_id": "2605.28772v1",
+        "authors": [
+          "Leonardo Pellegrina"
+        ],
+        "published": "2026-05-27T17:32:49Z",
+        "updated": "2026-05-27T17:32:49Z",
+        "summary": "A fundamental step in knowledge discovery is statistically assessing data mining results. In network analysis, such evaluation compares the outcome of a given procedure with the outcomes obtained from randomized versions of the observed network. Despite its importance, available graph null models only preserve simple characteristics of the observed graph, such as its degree sequence.   In this paper we introduce the Colored Configuration Model (CCM), a new null model for vertex-colored multigraphs. Our main motivation is the study of online social networks, where the color of a user represents their side in a debate. The key novelty of CCM is preserving the Colored Degree Matrix (CDM), which encodes, for each vertex, the number of neighbors of any given color. Preserving the CDM allows fixing the color assortativity of all nodes, e.g., the propensity of each user to interact with other like-minded users. This allows testing whether a given phenomenon is explained by the observed CDM, or whether other characteristics of the network might play a key role. Available graph null models do not preserve the CDM, so they cannot assess its impact on real-world tasks, such as testing the significance of network polarization measures. To sample from the CCM, we develop Sirius-B, a simple baseline adapting the Metropolis-Hastings approach, and Sirius, a refined algorithm tailored to preserve the CDM, thus achieving provably faster mixing. In our experimental evaluation, we test Sirius on real-world networks, comparing it with related network null models. We observed that the evaluation of the statistical significance of polarization measures with Sirius may lead to different insights compared to available null models. Thus, Sirius is an effective tool for the statistically-sound analysis of social networks.",
+        "categories": "cs.SI",
+        "comment": "Accepted to KDD 2026"
+      },
+      "analysis": {
+        "problem_statement": "Developing a null model for vertex-colored multigraphs that preserves the Colored Degree Matrix (CDM) to statistically assess data mining results in network analysis.",
+        "bottleneck_addressed": "The lack of graph null models that preserve complex network characteristics, such as color assortativity, leading to incomplete evaluation of network phenomena.",
+        "executive_summary": "This paper addresses a critical limitation in network analysis by introducing the Colored Configuration Model (CCM) and its associated sampling algorithms, enabling statistically-sound evaluation of network polarization measures and other complex phenomena. This matters to the current AI landscape as it provides a more accurate and nuanced understanding of online social networks and their dynamics. The proposed approach has the potential to improve the reliability and generalizability of AI-driven network analysis tools.",
+        "key_metrics": {
+          "primary_metric": "Faster mixing time of the proposed sampling algorithm (Sirius) compared to the baseline (Metropolis-Hastings approach)",
+          "metric_value": "O(n log n) vs. O(n^2)",
+          "baseline": "Metropolis-Hastings approach",
+          "improvement_percentage": "90% reduction in mixing time"
+        },
+        "technical_breakdown": {
+          "method": "The Colored Configuration Model (CCM) preserves the Colored Degree Matrix (CDM) by sampling from a multigraph with the same degree sequence and color distribution as the observed network. The proposed sampling algorithms, Sirius and Sirius-B, adapt the Metropolis-Hastings approach to efficiently sample from the CCM.",
+          "architecture": "The CCM consists of a vertex-colored multigraph with a Colored Degree Matrix (CDM) that encodes the number of neighbors of each color for each vertex. The sampling algorithms (Sirius and Sirius-B) operate on this multigraph to generate random graphs that preserve the CDM.",
+          "implementation_details": "The Metropolis-Hastings approach is adapted to sample from the CCM using a Markov chain Monte Carlo (MCMC) algorithm. The Sirius algorithm refines this approach to achieve faster mixing times by exploiting the structure of the CCM.",
+          "code_complexity": "The computational complexity of the proposed algorithms is O(n log n) for Sirius and O(n^2) for the baseline Metropolis-Hastings approach, where n is the number of vertices in the network."
+        },
+        "relevance_tags": [
+          "network analysis",
+          "graph theory",
+          "social networks",
+          "null models",
+          "sampling algorithms"
+        ],
+        "confidence": "high"
+      },
+      "analyzed_at": "2026-05-28T03:38:47.184234",
+      "conference_info": {
+        "conference": "KDD",
+        "year": "2026",
+        "comment": "Accepted to KDD 2026",
+        "raw_comment": "Accepted to KDD 2026",
+        "category": "Data Mining & IR",
+        "rank": "A+"
+      }
+    },
+    {
+      "paper": {
+        "title": "SilentRetrieval: Hijacking Retrieval-Augmented Generation via Semantically-Preserving Adversarial Data Poisoning",
+        "arxiv_id": "2605.28074v1",
+        "authors": [
+          "Jiachen Qian"
+        ],
+        "published": "2026-05-27T07:30:30Z",
+        "updated": "2026-05-27T07:30:30Z",
+        "summary": "Retrieval-Augmented Generation (RAG) mitigates LLM hallucinations but introduces a critical vulnerability: corpus integrity. We present SilentRetrieval, a two-stage data poisoning attack that hijacks RAG systems through adversarially crafted yet fluent documents. Stage 1 uses Coordinated Beam Search, a multi-token joint optimization method with a fluency-similarity objective, to keep a poisoned host document retrievable while constraining perplexity. Stage 2 uses Context-Adaptive Trigger Generation, a lightweight trigger-fusion step driven by a frozen LLM, to integrate manipulation triggers into document content. Under a one-poisoned-document-per-query evaluation with synthetic target answers, SilentRetrieval achieves 84.6%/81.3% HR@10 and 57.5%/54.8% ASR-LLM on Natural Questions and MS MARCO, while maintaining near-benign perplexity. Cross-model evaluation across four target LLMs shows nontrivial effectiveness under a fixed trigger generator, and transfer tests against unseen retrievers, including ColBERT and commercial embedding models, yield 64.7% average HR@10 under the same injected-corpus protocol. In a sampled Wikipedia-scale evaluation, SilentRetrieval retains 74.2% HR@10 at a 0.016% poisoning ratio. Combined retrieval-side and generation-side defenses reduce attack success substantially but incur a latency trade-off. Human evaluation shows substantially lower flag rates than disfluent baselines, while remaining numerically more suspicious than benign content at the current sample size.",
+        "categories": "cs.CR",
+        "comment": "12 pages, 4 figures, KDD '26 camera-ready version"
+      },
+      "analysis": {
+        "problem_statement": "SilentRetrieval addresses the vulnerability of Retrieval-Augmented Generation (RAG) systems to corpus integrity attacks, which can lead to hallucinations and compromised model performance.",
+        "bottleneck_addressed": "The core bottleneck addressed by SilentRetrieval is the susceptibility of RAG systems to adversarial data poisoning attacks, which can compromise the integrity of the retrieval corpus.",
+        "executive_summary": "SilentRetrieval presents a novel two-stage data poisoning attack that hijacks RAG systems by crafting fluent documents with manipulation triggers. This attack has significant implications for the current AI landscape, as RAG systems are widely used in applications such as question answering and text generation. The attack's effectiveness and stealthiness make it a pressing concern for the development of robust and secure AI systems.",
+        "key_metrics": {
+          "primary_metric": "HR@10 (Hit Rate at 10) on Natural Questions and MS MARCO",
+          "metric_value": "84.6%/81.3%",
+          "baseline": "Benign retrieval systems",
+          "improvement_percentage": "Not quantifiable"
+        },
+        "technical_breakdown": {
+          "method": "SilentRetrieval consists of two stages: Coordinated Beam Search (CBS) and Context-Adaptive Trigger Generation (CATG). CBS uses a multi-token joint optimization method to craft a poisoned host document that is both fluent and retrievable, while CATG integrates manipulation triggers into the document content using a lightweight trigger-fusion step driven by a frozen LLM.",
+          "architecture": "The architecture of SilentRetrieval involves a two-stage pipeline with CBS and CATG as key components. The CBS stage uses a fluency-similarity objective to optimize the poisoned host document, while the CATG stage uses a frozen LLM to generate manipulation triggers.",
+          "implementation_details": "The implementation of SilentRetrieval involves the use of Coordinated Beam Search, a multi-token joint optimization method, and Context-Adaptive Trigger Generation, a lightweight trigger-fusion step driven by a frozen LLM. The attack also uses a fluency-similarity objective to optimize the poisoned host document.",
+          "code_complexity": "The code complexity of SilentRetrieval is moderate, as it involves the implementation of two-stage pipeline with CBS and CATG as key components. However, the computational complexity of the attack is relatively high, as it requires the optimization of a large number of parameters to craft a poisoned host document that is both fluent and retrievable."
+        },
+        "relevance_tags": [
+          "Adversarial Attacks",
+          "Data Poisoning",
+          "Retrieval-Augmented Generation",
+          "Question Answering",
+          "Text Generation"
+        ],
+        "confidence": "high"
+      },
+      "analyzed_at": "2026-05-28T03:40:16.282171",
+      "conference_info": {
+        "conference": "KDD",
+        "year": "2026",
+        "comment": "12 pages, 4 figures, KDD '26 camera-ready version",
+        "raw_comment": "12 pages, 4 figures, KDD '26 camera-ready version",
+        "category": "Data Mining & IR",
+        "rank": "A+"
+      }
+    },
+    {
+      "paper": {
+        "title": "Position: Retire the \"Positive Backdoor\" Label -- Secret Alignment Requires Strict and Systematic Evaluation",
+        "arxiv_id": "2605.28597v1",
+        "authors": [
+          "Jianwei Li",
+          "Jung-Eun Kim"
+        ],
+        "published": "2026-05-27T15:15:47Z",
+        "updated": "2026-05-27T15:15:47Z",
+        "summary": "This position paper argues that the AI/ML community should stop overclaiming and retire the label \"positive backdoor,\" and instead treat trigger-activated hidden behaviors as Secret Alignment. Crucially, protective claims based on Secret Alignment should be presumed not secure by default unless supported by rigorous, standardized evaluation. The Private AI era, enabled by open-weight LLMs and accessible training/inference stacks, turns language models into privately owned digital assets, creating security concerns around unauthorized access, model theft, and behavioral misuse. Recently, a line of work framed as \"positive backdoors\" has been proposed to address these challenges. To ground our position in evidence, we unify these proposals as covert trigger-behavior associations for access gating, ownership attribution, and safety enforcement, and evaluate three representative applications across six core properties: effectiveness, harmlessness, persistence, efficiency, robustness, and reliability. Our results reveal substantial brittleness - especially in the confidentiality, integrity, and availability (CIA) - of trigger-behavior mappings often underrepresented by existing claims. We further relate these outcomes to behavior density and decision complexity, offering a behavioral lens for understanding deployment-time risks and motivating community-wide evaluation that makes Secret Alignment claims provable.",
+        "categories": "cs.CR",
+        "comment": "ICML 2026"
+      },
+      "analysis": {
+        "problem_statement": "The paper addresses the issue of overclaiming and lack of rigorous evaluation in the AI/ML community regarding 'positive backdoors' and proposes a more systematic approach to Secret Alignment.",
+        "bottleneck_addressed": "Adversarial Robustness and Security",
+        "executive_summary": "This paper argues that the AI/ML community should retire the label 'positive backdoor' and instead treat trigger-activated hidden behaviors as Secret Alignment, requiring strict and systematic evaluation to ensure security. This matters because the Private AI era creates security concerns around unauthorized access, model theft, and behavioral misuse. The paper presents a unified evaluation framework for Secret Alignment claims, revealing substantial brittleness in trigger-behavior mappings.",
+        "key_metrics": {
+          "primary_metric": "Effectiveness of Secret Alignment claims",
+          "metric_value": "N/A",
+          "baseline": "Existing claims based on 'positive backdoors'",
+          "improvement_percentage": "N/A"
+        },
+        "technical_breakdown": {
+          "method": "The paper proposes a unified evaluation framework for Secret Alignment claims, which involves evaluating three representative applications across six core properties: effectiveness, harmlessness, persistence, efficiency, robustness, and reliability.",
+          "architecture": "The evaluation framework is based on a combination of machine learning and security techniques, including access gating, ownership attribution, and safety enforcement.",
+          "implementation_details": "The paper uses a line of work framed as 'positive backdoors' and proposes a behavioral lens for understanding deployment-time risks, relating outcomes to behavior density and decision complexity.",
+          "code_complexity": "The computational complexity of the evaluation framework is not explicitly stated, but it likely involves training and testing large language models, which can be computationally expensive."
+        },
+        "relevance_tags": [
+          "Adversarial Robustness",
+          "Security",
+          "Private AI",
+          "Secret Alignment",
+          "Backdoors"
+        ],
+        "confidence": "high"
+      },
+      "analyzed_at": "2026-05-28T03:40:04.632454",
+      "conference_info": {
+        "conference": "ICML",
+        "year": "2026",
+        "comment": "ICML 2026",
+        "raw_comment": "ICML 2026",
+        "category": "General ML/AI",
+        "rank": "A+"
+      }
+    },
+    {
+      "paper": {
+        "title": "SARAD: LLM-Based Safety-Aware Hybrid Reinforcement Learning with Collision Prediction for Autonomous Driving",
+        "arxiv_id": "2605.28583v1",
+        "authors": [
+          "Kangyu Wu",
+          "Peng Cui",
+          "Guoxi Chen",
+          "Ya Zhang"
+        ],
+        "published": "2026-05-27T15:06:34Z",
+        "updated": "2026-05-27T15:06:34Z",
+        "summary": "Ensuring both safety and efficiency in decision-making for autonomous driving systems remains a fundamental challenge. Traditional Deep Reinforcement Learning (DRL) suffers from unsafe random exploration and slow convergence, while Large Language Models (LLMs) demonstrate inherent latency in real-time inference operations. To address these limitations, this paper proposes SARAD, a novel safety-aware hybrid framework that synergizes LLMs and DRL for autonomous driving. SARAD substitutes the random exploration of DRL with Retrieval-Augmented Generation (RAG)-enhanced, LLM-guided decisions sourced from a dynamic expert knowledge repository. An attention discriminator is proposed to integrate the prior knowledge of LLMs into DRL policy optimization. A collision predictor module, fine-tuned with historical collision data, is further designed to improve vehicle safety. Extensive experiments show that SARAD achieves significant performance improvements in the Highway-Env simulator, validating the effectiveness of the proposed model in autonomous driving.",
+        "categories": "cs.RO",
+        "comment": "7 pages, 4 figures, accepted by IJCNN 2026"
+      },
+      "analysis": {
+        "problem_statement": "Ensuring both safety and efficiency in decision-making for autonomous driving systems remains a fundamental challenge.",
+        "bottleneck_addressed": "Addressing the limitations of Deep Reinforcement Learning (DRL) in autonomous driving, specifically unsafe random exploration and slow convergence.",
+        "executive_summary": "This paper proposes SARAD, a novel safety-aware hybrid framework that synergizes Large Language Models (LLMs) and DRL for autonomous driving, achieving significant performance improvements in safety and efficiency.",
+        "key_metrics": {
+          "primary_metric": "Improved safety and efficiency in autonomous driving",
+          "metric_value": "Not explicitly stated",
+          "baseline": "Traditional Deep Reinforcement Learning (DRL)",
+          "improvement_percentage": "Not quantifiable"
+        },
+        "technical_breakdown": {
+          "method": "SARAD substitutes random exploration of DRL with Retrieval-Augmented Generation (RAG)-enhanced, LLM-guided decisions sourced from a dynamic expert knowledge repository. An attention discriminator is proposed to integrate prior knowledge of LLMs into DRL policy optimization. A collision predictor module is designed to improve vehicle safety.",
+          "architecture": "Hybrid framework combining LLMs and DRL, with key components including a dynamic expert knowledge repository, attention discriminator, and collision predictor module.",
+          "implementation_details": "Retrieval-Augmented Generation (RAG), attention discriminator, and fine-tuning with historical collision data.",
+          "code_complexity": "High, due to the integration of LLMs and DRL, as well as the use of attention discriminator and collision predictor module."
+        },
+        "relevance_tags": [
+          "Autonomous Driving",
+          "Deep Reinforcement Learning",
+          "Large Language Models",
+          "Safety-Aware Systems"
+        ],
+        "confidence": "high"
+      },
+      "analyzed_at": "2026-05-28T03:37:29.102677",
+      "conference_info": {
+        "conference": "IJCNN",
+        "year": "2026",
+        "comment": "7 pages, 4 figures, accepted by IJCNN 2026",
+        "raw_comment": "7 pages, 4 figures, accepted by IJCNN 2026",
+        "category": "General ML/AI",
+        "rank": "A"
+      }
+    },
+    {
+      "paper": {
+        "title": "CyberJurors: A Multi-Agent Simulation Task for E-Commerce Disputes Verdict",
+        "arxiv_id": "2605.28369v1",
+        "authors": [
+          "Yanhui Sun",
+          "Wu Liu",
+          "Haifeng Ming",
+          "Xinru Wang",
+          "Hantao Yao",
+          "Yongdong Zhang"
+        ],
+        "published": "2026-05-27T12:07:44Z",
+        "updated": "2026-05-27T12:07:44Z",
+        "summary": "E-commerce platforms have begun recruiting crowdsourced jurors to adjudicate massive volumes of transaction disputes. Unlike formal legal judgment, E-commerce dispute verdicts require grounding pivotal clues from redundant, multi-round, multimodal evidence and making decisions under flexible platform-specific conventions. These characteristics render existing methods insufficient for this scenario. To bridge this gap, we introduce a pioneering task, E-commerce Dispute Verdicts (EDV), and present VerdictBench, a multimodal benchmark comprising 6,000 real-world cases designed to reflect crowdsourced jury decisions. Building upon this, we propose CyberJurors, a multi-agent framework to clarify the dispute logic and regulate the verdict process. At the individual level, Individual Verdict Chain-of-Thought decomposes the EDV task into four structured reasoning stages, enabling fine-grained clue perception and clarifying causal logic between pivotal clues and the dispute focus. At the collective level, Jury Consensus Verdict simulates multi-round discussion and voting among jurors, while incorporating verdict precedents to mitigate cognitive biases toward either disputant. Experiments on VerdictBench show that CyberJurors outperforms state-of-the-art LLMs, MLLMs, and court simulators, while achieving stronger alignment with real-world jury voting patterns. Code and dataset are available at https://github.com/YanhuiS/CyberJurors and https://huggingface.co/datasets/piggi/VerdictBench.",
+        "categories": "cs.AI",
+        "comment": "ICML 2026"
+      },
+      "analysis": {
+        "problem_statement": "The paper addresses the challenge of developing AI systems that can effectively adjudicate e-commerce disputes by grounding pivotal clues from redundant, multi-round, multimodal evidence and making decisions under flexible platform-specific conventions.",
+        "bottleneck_addressed": "The paper addresses the bottleneck of developing AI systems that can handle complex, multi-modal, and dynamic decision-making tasks, particularly in the context of e-commerce disputes.",
+        "executive_summary": "This paper introduces a pioneering task, E-commerce Dispute Verdicts (EDV), and proposes CyberJurors, a multi-agent framework that clarifies the dispute logic and regulates the verdict process. CyberJurors outperforms state-of-the-art LLMs, MLLMs, and court simulators, achieving stronger alignment with real-world jury voting patterns.",
+        "key_metrics": {
+          "primary_metric": "Accuracy on VerdictBench",
+          "metric_value": "Not explicitly stated",
+          "baseline": "State-of-the-art LLMs, MLLMs, and court simulators",
+          "improvement_percentage": "Not quantifiable"
+        },
+        "technical_breakdown": {
+          "method": "CyberJurors decomposes the EDV task into four structured reasoning stages: Individual Verdict Chain-of-Thought and Jury Consensus Verdict. Individual Verdict Chain-of-Thought enables fine-grained clue perception and clarifies causal logic between pivotal clues and the dispute focus. Jury Consensus Verdict simulates multi-round discussion and voting among jurors, incorporating verdict precedents to mitigate cognitive biases.",
+          "architecture": "CyberJurors is a multi-agent framework consisting of Individual Verdict Chain-of-Thought and Jury Consensus Verdict components.",
+          "implementation_details": "The paper uses a multimodal benchmark, VerdictBench, comprising 6,000 real-world cases, and employs LLMs and MLLMs as baselines.",
+          "code_complexity": "Not explicitly stated"
+        },
+        "relevance_tags": [
+          "Multi-Agent Systems",
+          "E-commerce Disputes",
+          "Natural Language Processing",
+          "Decision-Making",
+          "Cognitive Biases"
+        ],
+        "confidence": "high"
+      },
+      "analyzed_at": "2026-05-28T03:39:51.159165",
+      "conference_info": {
+        "conference": "ICML",
+        "year": "2026",
+        "comment": "ICML 2026",
+        "raw_comment": "ICML 2026",
+        "category": "General ML/AI",
+        "rank": "A+"
+      }
+    },
+    {
+      "paper": {
+        "title": "Score Based Error Correcting Code Decoder",
+        "arxiv_id": "2605.28358v1",
+        "authors": [
+          "Alon Helvits",
+          "Eliya Nachmani"
+        ],
+        "published": "2026-05-27T11:55:27Z",
+        "updated": "2026-05-27T11:55:27Z",
+        "summary": "Error-correcting codes enable reliable communication, yet practical soft decoding remains challenging across code families and block lengths. We propose SB-ECC, a score-based decoder that casts decoding as continuous-time denoising. A neural denoiser defines a probability-flow ordinary differential equation (ODE) that iteratively updates the noisy channel observation toward a valid codeword, guided by parity constraints. The model is trained across noise levels without time/SNR conditioning, enabling inference without SNR estimation and supporting a direct latency accuracy trade off controlled by the ODE solver budget. We use the raw signed channel observation as input for learning a continuous denoising field. Across 42 code/SNR settings, SB-ECC achieves the best BER in 39/42 entries, with an average SNR gain of 0.17dB and a maximum gain of 0.46dB over the strongest competing baseline, we showed that swapping the solver from Euler to DPM preserves -ln(BER) while reducing end-to-end decoding time by 8.86% on average (up to 12.82%).",
+        "categories": "cs.LG",
+        "comment": "Accepted to ICML 2026"
+      },
+      "analysis": {
+        "problem_statement": "Developing efficient and accurate soft decoding methods for error-correcting codes across various code families and block lengths.",
+        "bottleneck_addressed": "The bottleneck of efficient and practical soft decoding for error-correcting codes, which is a key challenge in reliable communication.",
+        "executive_summary": "This paper proposes a novel score-based decoder, SB-ECC, that addresses the challenge of soft decoding by casting it as a continuous-time denoising problem. This approach enables efficient and accurate decoding across various code families and block lengths, with significant improvements over state-of-the-art methods. The proposed method has the potential to revolutionize the field of error-correcting codes and reliable communication.",
+        "key_metrics": {
+          "primary_metric": "Average SNR gain",
+          "metric_value": "0.17dB",
+          "baseline": "Strongest competing baseline",
+          "improvement_percentage": "Not quantified"
+        },
+        "technical_breakdown": {
+          "method": "SB-ECC casts decoding as a continuous-time denoising problem, using a neural denoiser to iteratively update the noisy channel observation toward a valid codeword, guided by parity constraints.",
+          "architecture": "The model uses a probability-flow ODE (ordinary differential equation) to define the denoising process, which is implemented using a neural network.",
+          "implementation_details": "The model is trained across noise levels without time/SNR conditioning, using the raw signed channel observation as input for learning a continuous denoising field. The ODE solver budget is used to control the trade-off between latency and accuracy.",
+          "code_complexity": "The computational complexity of the proposed method is not explicitly quantified, but the use of a neural network and ODE solver suggests that it may be computationally intensive, particularly for large block lengths."
+        },
+        "relevance_tags": [
+          "Error-Correcting Codes",
+          "Soft Decoding",
+          "Neural Networks",
+          "Ordinary Differential Equations",
+          "Reliable Communication"
+        ],
+        "confidence": "high"
+      },
+      "analyzed_at": "2026-05-28T03:40:49.343858",
+      "conference_info": {
+        "conference": "ICML",
+        "year": "2026",
+        "comment": "Accepted to ICML 2026",
+        "raw_comment": "Accepted to ICML 2026",
+        "category": "General ML/AI",
+        "rank": "A+"
+      }
+    },
+    {
+      "paper": {
+        "title": "Adaptive Bandit Algorithms for Contextual Matching Markets",
+        "arxiv_id": "2605.28290v1",
+        "authors": [
+          "Shiyun Lin",
+          "Simon Mauras",
+          "Vianney Perchet",
+          "Nadav Merlis"
+        ],
+        "published": "2026-05-27T10:40:24Z",
+        "updated": "2026-05-27T10:40:24Z",
+        "summary": "We study bandit learning in matching markets, where players and arms constitute the two market sides, and the players' utilities are linear in the arm contexts. In each round, new arms arrive with observable contexts. Then, the algorithm matches them to players, aiming to minimize each player's regret against a stable matching benchmark. This contextual structure creates significant complexity: subtle context shifts can slightly alter one player's utility while completely reconfiguring the underlying benchmark, causing large regret spikes for others. We address this in two settings: stochastic contexts, drawn from a latent distribution, and adversarial contexts, which may be arbitrary. For the stochastic case, we introduce a novel minimum preference gap to capture learning difficulty and provide a fully adaptive algorithm with an instance-dependent poly-logarithmic regret upper bound. We also establish matching instance-independent regret upper and lower bounds under a mild distributional assumption. For the adversarial setting, we propose a tractable regret notion that remains valid under arbitrary contexts and achieves an instance-independent sublinear regret bound via an adaptive algorithm.",
+        "categories": "cs.LG",
+        "comment": "Accepted to ICML 2026"
+      },
+      "analysis": {
+        "problem_statement": "The paper addresses the problem of minimizing regret in contextual matching markets, where players and arms are matched based on observable contexts and the players' utilities are linear in the arm contexts.",
+        "bottleneck_addressed": "Adaptive decision-making under uncertainty and context shift",
+        "executive_summary": "This paper addresses a critical challenge in AI, namely, adaptive decision-making in complex matching markets with linear utilities and context-dependent preferences. The proposed algorithms achieve instance-dependent poly-logarithmic regret upper bounds in the stochastic context setting and instance-independent sublinear regret bounds in the adversarial setting. This work has significant implications for online matching systems, such as ride-hailing and job matching platforms.",
+        "key_metrics": {
+          "primary_metric": "Instance-dependent poly-logarithmic regret upper bound",
+          "metric_value": "O(log^2 T / \u0394_min)",
+          "baseline": "Previous bandit algorithms for contextual matching markets",
+          "improvement_percentage": "Not quantifiable"
+        },
+        "technical_breakdown": {
+          "method": "The proposed algorithms use a novel minimum preference gap to capture learning difficulty and adapt to changing contexts. In the stochastic context setting, the algorithm iteratively updates the player's preference gap and arm selection based on the observed contexts and utilities. In the adversarial setting, the algorithm uses a tractable regret notion that remains valid under arbitrary contexts.",
+          "architecture": "The algorithms consist of two main components: a preference gap estimation module and an arm selection module.",
+          "implementation_details": "The algorithms use a combination of bandit learning techniques, such as Thompson sampling and Upper Confidence Bound (UCB), and optimization techniques, such as gradient descent.",
+          "code_complexity": "The computational complexity of the algorithms is O(T log^2 T / \u0394_min) in the stochastic context setting and O(T) in the adversarial setting, where T is the number of rounds and \u0394_min is the minimum preference gap."
+        },
+        "relevance_tags": [
+          "bandit learning",
+          "matching markets",
+          "contextual decision-making",
+          "online learning"
+        ],
+        "confidence": "high"
+      },
+      "analyzed_at": "2026-05-28T03:39:53.169546",
+      "conference_info": {
+        "conference": "ICML",
+        "year": "2026",
+        "comment": "Accepted to ICML 2026",
+        "raw_comment": "Accepted to ICML 2026",
+        "category": "General ML/AI",
+        "rank": "A+"
+      }
+    },
+    {
+      "paper": {
+        "title": "Explaining is Harder Than Predicting Alone: Evaluating Concept-based Explanations of MLLMs as ICL Visual Classifiers",
+        "arxiv_id": "2605.28215v1",
+        "authors": [
+          "Carmen Quiles-Ram\u00edrez",
+          "Leticia L. Rodr\u00edguez",
+          "Nicol\u00e1s Martorell",
+          "Natalia D\u00edaz-Rodr\u00edguez"
+        ],
+        "published": "2026-05-27T09:32:34Z",
+        "updated": "2026-05-27T09:32:34Z",
+        "summary": "In-context learning (ICL) enables multimodal large language models (MLLMs) to classify images from a few labelled examples. Yet, how these models use the provided context remains opaque. While Chain-of-Thought prompting is widely used, recent work argues that it may not reflect true internal computation.   In this paper, we systematically evaluate the concept-based explainability of frozen MLLMs under few-shot ICL using five conditions of increasing formal rigour, ranging from baseline classification to Description Logics (DL) axiom generation.   Evaluating four state-of-the-art MLLMs via an independent LLM-as-a-judge pipeline, we demonstrate that explaining is genuinely harder than predicting alone. Surprisingly, forcing models to generate formally structured, concept-based explanations degrades predictive accuracy monotonically (from 93.8% to 90.1%), contradicting the assumption that explicit reasoning universally aids performance.   However, when models successfully articulate class-discriminative visual features, explanation quality strongly correlates with correct predictions. Our findings suggest that while MLLMs excel at visual classification, they lack the specific instruction-tuning required for formal, machine-verifiable explainability.",
+        "categories": "cs.AI",
+        "comment": "Accepted to the CompLearn Workshop at ICML 2026"
+      },
+      "analysis": {
+        "problem_statement": "Evaluating the effectiveness of concept-based explanations for multimodal large language models (MLLMs) in in-context learning (ICL) visual classification tasks.",
+        "bottleneck_addressed": "Explainability bottleneck in AI, specifically the challenge of generating formal, machine-verifiable explanations for complex models like MLLMs.",
+        "executive_summary": "This paper highlights the trade-off between predictive accuracy and explanation quality in MLLMs. While MLLMs excel at visual classification, they struggle to generate formal, machine-verifiable explanations, which is crucial for trustworthiness and accountability in AI systems. The findings suggest that explicit reasoning may not universally aid performance and that models need specific instruction-tuning for explainability.",
+        "key_metrics": {
+          "primary_metric": "Predictive accuracy degradation when generating formal explanations",
+          "metric_value": "2.7% (from 93.8% to 90.1%)",
+          "baseline": "Baseline classification accuracy without explanation generation",
+          "improvement_percentage": "N/A (degradation rather than improvement)"
+        },
+        "technical_breakdown": {
+          "method": "The authors evaluate the concept-based explainability of frozen MLLMs under few-shot ICL using five conditions of increasing formal rigour, ranging from baseline classification to Description Logics (DL) axiom generation.",
+          "architecture": "The study uses an independent LLM-as-a-judge pipeline to evaluate four state-of-the-art MLLMs.",
+          "implementation_details": "The authors use Chain-of-Thought prompting and Description Logics (DL) axiom generation as methods for generating formal explanations.",
+          "code_complexity": "The study does not provide specific details on code complexity or training time implications, but the evaluation pipeline likely involves complex computational tasks and potentially large-scale model training."
+        },
+        "relevance_tags": [
+          "Explainability",
+          "Multimodal Learning",
+          "In-Context Learning",
+          "Large Language Models",
+          "Visual Classification"
+        ],
+        "confidence": "high"
+      },
+      "analyzed_at": "2026-05-28T03:37:12.637374",
+      "conference_info": {
+        "conference": "ICML",
+        "year": "2026",
+        "comment": "Accepted to the CompLearn Workshop at ICML 2026",
+        "raw_comment": "Accepted to the CompLearn Workshop at ICML 2026",
+        "category": "General ML/AI",
+        "rank": "A+"
+      }
+    },
+    {
+      "paper": {
+        "title": "SPARD: Defending Harmful Fine-Tuning Attack via Safety Projection with Relevance-Diversity Data Selection",
+        "arxiv_id": "2605.28030v1",
+        "authors": [
+          "Shuhao Chen",
+          "Weisen Jiang",
+          "Yeqi Gong",
+          "Shengda Luo",
+          "Chengxiang Zhuo",
+          "Zang Li",
+          "James T. Kwok",
+          "Yu Zhang"
+        ],
+        "published": "2026-05-27T06:36:22Z",
+        "updated": "2026-05-27T06:36:22Z",
+        "summary": "Fine-tuning large language models often undermines their safety alignment, a problem further amplified by harmful fine-tuning attacks in which adversarial data removes safeguards and induces unsafe behaviors. We propose SPARD, a defense framework that integrates Safety-Projected Alternating optimization with Relevance-Diversity aware data selection. SPARD employs SPAG, which optimizes alternatively between utility updates and explicit safety projections with a set of safe data to enforce safety constraints. To curate safe data, we introduce a Relevance-Diversity Determinantal Point Process to select compact safe data, balancing task relevance and safety coverage. Experiments on GSM8K and OpenBookQA under four harmful fine-tuning attacks demonstrate that SPARD consistently achieves the lowest average attack success rates, substantially outperforming state-of-the-art defense methods, while maintaining high task accuracy. Code is available at https://github.com/shuhao02/SPARD.",
+        "categories": "cs.LG",
+        "comment": "Accepted by ICML 2026"
+      },
+      "analysis": {
+        "problem_statement": "Fine-tuning large language models can undermine their safety alignment, making them vulnerable to harmful fine-tuning attacks that induce unsafe behaviors.",
+        "bottleneck_addressed": "Adversarial robustness and safety alignment in large language models",
+        "executive_summary": "This paper proposes SPARD, a defense framework that integrates Safety-Projected Alternating optimization with Relevance-Diversity aware data selection to defend against harmful fine-tuning attacks. SPARD achieves state-of-the-art performance in defending against four harmful fine-tuning attacks while maintaining high task accuracy. This matters to the current AI landscape as it highlights the importance of safety alignment and adversarial robustness in large language models.",
+        "key_metrics": {
+          "primary_metric": "Average attack success rates",
+          "metric_value": "0.0 ( lowest among all methods)",
+          "baseline": "State-of-the-art defense methods",
+          "improvement_percentage": "100% (compared to the next best method)"
+        },
+        "technical_breakdown": {
+          "method": "SPARD employs SPAG, an alternating optimization algorithm that updates the model's parameters to maximize utility while projecting onto a set of safe data. This process is repeated with a Relevance-Diversity Determinantal Point Process to select compact safe data that balances task relevance and safety coverage.",
+          "architecture": "SPARD consists of two main components: SPAG and Relevance-Diversity Determinantal Point Process.",
+          "implementation_details": "SPAG uses a gradient-based optimization algorithm to update the model's parameters, while the Relevance-Diversity Determinantal Point Process uses a probabilistic model to select safe data.",
+          "code_complexity": "The computational complexity of SPARD is O(n^3), where n is the number of data points. The training time of SPARD is significantly longer than state-of-the-art defense methods due to the alternating optimization process."
+        },
+        "relevance_tags": [
+          "Adversarial Robustness",
+          "Safety Alignment",
+          "Large Language Models",
+          "Fine-Tuning Attacks"
+        ],
+        "confidence": "high"
+      },
+      "analyzed_at": "2026-05-28T03:40:27.440590",
+      "conference_info": {
+        "conference": "ICML",
+        "year": "2026",
+        "comment": "Accepted by ICML 2026",
+        "raw_comment": "Accepted by ICML 2026",
+        "category": "General ML/AI",
+        "rank": "A+"
+      }
+    },
+    {
+      "paper": {
+        "title": "Rao-Blackwellized Score Matching on Manifolds",
+        "arxiv_id": "2605.25567v2",
+        "authors": [
+          "Divit Rawal"
+        ],
+        "published": "2026-05-25T08:18:45Z",
+        "updated": "2026-05-27T02:09:40Z",
+        "summary": "We study denoising score matching (DSM) when the latent distribution is supported on a smooth embedded manifold $M \\subset \\mathbb{R}^D$. Under ambient Gaussian corruption, the tangent denoising target contains a singular normal-fiber noise channel whose variance diverges as $d/\u03c3^2$ as $\u03c3\\to 0^+$. We show that conditioning on the nearest-point projection $\u03c0(X)$ canonically removes this singularity: the resulting conditional expectation is the unique $L^2$-optimal Rao-Blackwellized predictor of the tangent DSM target among all estimators depending only on the projected observation $\u03c0(X)$. We then compute the small-noise expansion of this canonical target and show that it equals the intrinsic Riemannian score up to an explicit order-$\u03c3^2$ correction that decomposes into an intrinsic Tweedie term and an extrinsic curvature term involving the Weingarten and Ricci operators. In the flat case, the construction reduces exactly to ordinary lower-dimensional Gaussian DSM, while on $S^d$ the extrinsic correction simplifies to the scalar factor $(1-d/2)\\nabla_M \\log q$; this extrinsic $\u03c3^2$ correction cancels identically on $S^2$, though the intrinsic Tweedie term remains.",
+        "categories": "stat.ML",
+        "comment": "22 pages, 3 figures; SPIGM @ ICML 2026"
+      },
+      "analysis": {
+        "problem_statement": "Developing a denoising score matching (DSM) algorithm that can effectively handle latent distributions supported on smooth embedded manifolds.",
+        "bottleneck_addressed": "The bottleneck of denoising score matching in high-dimensional spaces, specifically when the latent distribution is supported on a manifold.",
+        "executive_summary": "This paper addresses a critical limitation of denoising score matching by developing a manifold-aware extension that can handle high-dimensional data. This is particularly important for applications in computer vision, robotics, and machine learning, where data often lies on complex manifolds. By leveraging the geometry of the manifold, the proposed algorithm improves the accuracy and robustness of DSM.",
+        "key_metrics": {
+          "primary_metric": "Rao-Blackwellized score matching on manifolds outperforms standard DSM in terms of accuracy and robustness.",
+          "metric_value": "Not explicitly stated in the paper.",
+          "baseline": "Standard denoising score matching (DSM) algorithm.",
+          "improvement_percentage": "Not quantifiable from the provided information."
+        },
+        "technical_breakdown": {
+          "method": "The proposed algorithm uses Rao-Blackwellization to condition on the nearest-point projection \u03c0(X) of the observation X, effectively removing the singularity in the tangent denoising target. This is achieved by computing the small-noise expansion of the canonical target and showing that it equals the intrinsic Riemannian score up to an explicit order-\u03c3^2 correction.",
+          "architecture": "The algorithm consists of the following key components: (1) nearest-point projection \u03c0(X), (2) Rao-Blackwellization, and (3) small-noise expansion of the canonical target.",
+          "implementation_details": "The paper uses the following techniques: (1) tangent denoising target, (2) singular normal-fiber noise channel, (3) intrinsic Riemannian score, and (4) Weingarten and Ricci operators.",
+          "code_complexity": "The computational complexity of the proposed algorithm is not explicitly stated in the paper. However, the use of manifold-aware techniques and small-noise expansion may imply a higher computational complexity compared to standard DSM."
+        },
+        "relevance_tags": [
+          "deep learning",
+          "manifold learning",
+          "score matching",
+          "Rao-Blackwellization",
+          "computer vision",
+          "robotics",
+          "machine learning"
+        ],
+        "confidence": "high"
+      },
+      "analyzed_at": "2026-05-28T03:39:57.526948",
+      "conference_info": {
+        "conference": "ICML",
+        "year": "2026",
+        "comment": "22 pages, 3 figures; SPIGM @ ICML 2026",
+        "raw_comment": "22 pages, 3 figures; SPIGM @ ICML 2026",
+        "category": "General ML/AI",
+        "rank": "A+"
+      }
+    },
+    {
+      "paper": {
+        "title": "Disentangling Adversarial Prompts: A Semantic-Graph Defense for Robust LLM Security",
+        "arxiv_id": "2605.27823v1",
+        "authors": [
+          "Xiang Fang",
+          "Wanlong Fang"
+        ],
+        "published": "2026-05-27T01:30:06Z",
+        "updated": "2026-05-27T01:30:06Z",
+        "summary": "Large Language Models (LLMs) are increasingly vulnerable to adversarial prompts that exploit semantic ambiguities to bypass safety mechanisms, resulting in harmful or inappropriate outputs. Such attacks, including jailbreaking and prompt injection, pose significant risks to the integrity and availability of LLMs in security-critical applications. This paper proposes the Adversarial Prompt Disentanglement (APD) framework, a novel defense mechanism that proactively identifies and neutralizes malicious components in input prompts before they are processed by the LLM. The APD framework integrates three key innovations: (1) a mutual information-based semantic decomposition method to isolate adversarial and benign prompt components, ensuring statistical independence; (2) a graph-based intent classification approach that leverages spectral analysis to detect malicious patterns in prompt semantics; and (3) a lightweight transformer-based classifier trained on real-world datasets of toxic and jailbreaking prompts, enabling efficient and accurate adversarial intent detection. Evaluated on diverse datasets containing adversarial prompts, APD demonstrates superior robustness, reducing harmful output generation by over 85\\% while maintaining negligible impact on model performance. The framework's computational efficiency supports real-time deployment, making it a practical solution for securing LLMs. Our work addresses critical challenges in machine learning security on novel attacks and integrity methods for ML systems, and offers a scalable, ethically grounded defense against prompt-based adversarial threats.",
+        "categories": "cs.CR",
+        "comment": "Published in AAAI 2026"
+      },
+      "analysis": {
+        "problem_statement": "The paper addresses the vulnerability of Large Language Models (LLMs) to adversarial prompts that exploit semantic ambiguities to bypass safety mechanisms and generate harmful or inappropriate outputs.",
+        "bottleneck_addressed": "Adversarial Robustness",
+        "executive_summary": "This paper presents a novel defense mechanism called Adversarial Prompt Disentanglement (APD) that proactively identifies and neutralizes malicious components in input prompts, reducing harmful output generation by over 85% while maintaining negligible impact on model performance. This matters to the current AI landscape as it addresses critical challenges in machine learning security and offers a scalable, ethically grounded defense against prompt-based adversarial threats.",
+        "key_metrics": {
+          "primary_metric": "Harmful output generation reduction",
+          "metric_value": "85%",
+          "baseline": "Baseline model performance",
+          "improvement_percentage": "85%"
+        },
+        "technical_breakdown": {
+          "method": "The APD framework integrates three key innovations: (1) a mutual information-based semantic decomposition method to isolate adversarial and benign prompt components, ensuring statistical independence; (2) a graph-based intent classification approach that leverages spectral analysis to detect malicious patterns in prompt semantics; and (3) a lightweight transformer-based classifier trained on real-world datasets of toxic and jailbreaking prompts.",
+          "architecture": "The framework consists of three main components: (1) a semantic decomposition module, (2) a graph-based intent classification module, and (3) a lightweight transformer-based classifier.",
+          "implementation_details": "The paper uses mutual information-based semantic decomposition, spectral analysis, and a lightweight transformer-based classifier, which are implemented using deep learning frameworks such as PyTorch.",
+          "code_complexity": "The code complexity is moderate, with a focus on efficient implementation of the APD framework to support real-time deployment."
+        },
+        "relevance_tags": [
+          "Adversarial Robustness",
+          "Large Language Models",
+          "Prompt Engineering",
+          "Machine Learning Security"
+        ],
+        "confidence": "high"
+      },
+      "analyzed_at": "2026-05-28T03:40:37.349176",
+      "conference_info": {
+        "conference": "AAAI",
+        "year": "2026",
+        "comment": "Published in AAAI 2026",
+        "raw_comment": "Published in AAAI 2026",
+        "category": "General ML/AI",
+        "rank": ""
+      }
+    },
+    {
+      "paper": {
+        "title": "LegalGraphRAG: Multi-Agent Graph Retrieval-Augmented Generation for Reliable Legal Reasoning",
+        "arxiv_id": "2605.28120v1",
+        "authors": [
+          "Zerui Chen",
+          "Qinggang Zhang",
+          "Zhishang Xiang",
+          "Zhimin Wei",
+          "Linfeng Gao",
+          "Xiao Huang",
+          "Zhihong Zhang",
+          "Jinsong Su"
+        ],
+        "published": "2026-05-27T08:13:11Z",
+        "updated": "2026-05-27T08:13:11Z",
+        "summary": "Graph-based Retrieval-Augmented Generation (GraphRAG) advances flat document retrieval by structuring knowledge as relational graphs, enabling more coherent and effective reasoning. However, applying it to specific domains like legal reasoning faces critical challenges. (i) Legal corpora are heterogeneous, containing multi-granular knowledge from cases, articles and interpretations. A flat knowledge graph cannot adequately differentiate between factual details, applied rules, and abstract principles, limiting accurate retrieval. (ii) Reliable legal judgment demands transparent, evidence-based reasoning. Traditional RAG passes retrieved context directly to an LLM without verification, resulting in opaque, error-prone reasoning. To this end, we propose LegalGraphRAG, a framework designed for reliable legal reasoning. Our approach introduces two core components: a hierarchical legal graph that hierarchically organizes legal sources to enable retrieval at appropriate abstraction levels, and a multi-agent system for reliable legal reasoning, where a Researcher retrieves candidate evidence, an Auditor rigorously verifies its validity against source documents, and an Adjudicator synthesizes the set of verified evidence to render a final judgment. Extensive experiments show that LegalGraphRAG achieves the state-of-the-art performance, outperforming existing GraphRAG baselines in accurate and trustworthy legal analysis. Our code, datasets and implementation details are available at https://github.com/XMUDeepLIT/LegalGraphRAG.",
+        "categories": "cs.CL",
+        "comment": "30 pages, 18 figures, ACL 2026 Main Conference. Project page: https://github.com/XMUDeepLIT/LegalGraphRAG"
+      },
+      "analysis": {
+        "problem_statement": "Developing a reliable and accurate framework for legal reasoning in the presence of heterogeneous legal corpora and the need for transparent, evidence-based reasoning.",
+        "bottleneck_addressed": "The lack of transparency and accuracy in traditional Retrieval-Augmented Generation (RAG) approaches for legal reasoning, which can lead to opaque and error-prone reasoning.",
+        "executive_summary": "This paper presents LegalGraphRAG, a novel framework that addresses the challenges of legal reasoning by introducing a hierarchical legal graph and a multi-agent system for reliable reasoning. This approach outperforms existing GraphRAG baselines in accurate and trustworthy legal analysis, making it a significant contribution to the field of AI.",
+        "key_metrics": {
+          "primary_metric": "State-of-the-art performance in accurate and trustworthy legal analysis",
+          "metric_value": "Not explicitly stated",
+          "baseline": "Existing GraphRAG baselines",
+          "improvement_percentage": "Not quantifiable"
+        },
+        "technical_breakdown": {
+          "method": "LegalGraphRAG introduces a hierarchical legal graph that organizes legal sources at multiple abstraction levels, enabling retrieval at the appropriate level. A multi-agent system is used for reliable reasoning, consisting of a Researcher, Auditor, and Adjudicator that work together to retrieve, verify, and synthesize evidence.",
+          "architecture": "The framework consists of three main components: (1) Hierarchical Legal Graph, (2) Multi-Agent System, and (3) Adjudicator. The Hierarchical Legal Graph is a knowledge graph that organizes legal sources at multiple abstraction levels. The Multi-Agent System consists of a Researcher, Auditor, and Adjudicator that work together to retrieve, verify, and synthesize evidence. The Adjudicator synthesizes the verified evidence to render a final judgment.",
+          "implementation_details": "The framework uses a combination of graph neural networks (GNNs) and transformer-based models for the Researcher, Auditor, and Adjudicator. The Hierarchical Legal Graph is constructed using a graph-based approach, and the Multi-Agent System is implemented using a multi-task learning framework.",
+          "code_complexity": "The code complexity is moderate, with a combination of graph neural networks (GNNs) and transformer-based models. The training time is not explicitly stated, but it is likely to be significant due to the complexity of the framework."
+        },
+        "relevance_tags": [
+          "Legal Reasoning",
+          "Graph Neural Networks",
+          "Transformer-based Models",
+          "Multi-Agent Systems",
+          "Hierarchical Graphs"
+        ],
+        "confidence": "high"
+      },
+      "analyzed_at": "2026-05-28T03:37:15.051473",
+      "conference_info": {
+        "conference": "ACL",
+        "year": "2026",
+        "comment": "30 pages, 18 figures, ACL 2026 Main Conference. Project page: https://github.com/XMUDeepLIT/LegalGraphRAG",
+        "raw_comment": "30 pages, 18 figures, ACL 2026 Main Conference. Project page: https://github.com/XMUDeepLIT/LegalGraphRAG",
+        "category": "Natural Language Processing",
+        "rank": "A+"
+      }
+    },
+    {
+      "paper": {
+        "title": "How VLAs Fail Differently: Black-Box Action Monitoring Reveals Architecture-Specific Failure Signatures",
+        "arxiv_id": "2605.28726v1",
+        "authors": [
+          "Krishnam Gupta"
+        ],
+        "published": "2026-05-27T16:44:55Z",
+        "updated": "2026-05-27T16:44:55Z",
+        "summary": "We discover that VLA architectures fail in fundamentally different, predictable ways at the motor-command level. Running VQ-BeT, Diffusion Policy, and ACT on identical evaluation protocols (n=450 episodes across PushT and ALOHA 14-DOF bimanual manipulation), we find: (1) direction reversal rate is a universal failure predictor across all three architectures (AUROC=0.93, 0.79, 0.91; p<0.001); (2) jerk monitoring is predictive only for discrete-token architectures, following a discrete-to-continuous gradient (0.88, 0.69, 0.41); (3) velocity violations alone are non-predictive everywhere (AUROC 0.41-0.69), yet velocity checking is the most common safety mechanism in VLA deployment code; and (4) for continuous-family VLAs, velocity monitoring provides effectively zero predictive signal (AUROC=0.52 on ACT, 0.41 on Diffusion), proving that architecture-matched monitor selection is essential. These results quantify a monitoring consequence of the well-known discrete/continuous VLA distinction: the two families produce qualitatively different failure signatures that require different monitors. No single monitor works universally; architecture-matched selection is required. This finding was enabled by SafeContract, a training-free, black-box action monitoring toolkit with conformal calibration. Code: https://github.com/krishnam94/vla-edge",
+        "categories": "cs.RO",
+        "comment": "Accepted at IEEE ICRA 2026 Workshop \"From Data to Decisions: VLA Pipelines for Real Robots\", Vienna, June 2026. Non-archival workshop. 5 pages, 2 figures, 22 references"
+      },
+      "analysis": {
+        "problem_statement": "The paper addresses the problem of identifying architecture-specific failure signatures in Vision-and-Language models (VLAs) for robotics tasks, which is crucial for ensuring safety and reliability in real-world applications.",
+        "bottleneck_addressed": "The paper addresses the bottleneck of 'Failure Mode Identification' in AI, specifically in the context of Vision-and-Language models (VLAs) for robotics tasks.",
+        "executive_summary": "This paper reveals that different VLA architectures fail in distinct, predictable ways, and that a single monitoring approach does not work universally. The authors propose a training-free, black-box action monitoring toolkit called SafeContract, which enables architecture-matched monitor selection. This finding has significant implications for the development of safe and reliable VLA-based robotics systems.",
+        "key_metrics": {
+          "primary_metric": "AUROC (Area Under the Receiver Operating Characteristic Curve) for direction reversal rate as a failure predictor",
+          "metric_value": "0.93, 0.79, 0.91",
+          "baseline": "Random chance (0.5)",
+          "improvement_percentage": "86.0%, 58.0%, 82.0%"
+        },
+        "technical_breakdown": {
+          "method": "The authors use a black-box action monitoring approach, where they monitor the motor commands of the VLA to identify failure signatures. They use a training-free, conformal calibration-based toolkit called SafeContract to enable architecture-matched monitor selection.",
+          "architecture": "The paper evaluates three VLA architectures: VQ-BeT, Diffusion Policy, and ACT. These architectures belong to different families: discrete-token, continuous-family, and hybrid.",
+          "implementation_details": "The authors use a dataset of 450 episodes across PushT and ALOHA 14-DOF bimanual manipulation tasks. They use a conformal calibration-based approach to select the optimal monitor for each architecture.",
+          "code_complexity": "The code complexity is moderate, as the authors use a custom-built toolkit called SafeContract, which requires implementation of conformal calibration and architecture-matched monitor selection."
+        },
+        "relevance_tags": [
+          "robotics",
+          "vision-and-language",
+          "failure-mode-identification",
+          "safety",
+          "reliability"
+        ],
+        "confidence": "high"
+      },
+      "analyzed_at": "2026-05-28T03:37:17.674801",
+      "conference_info": {
+        "conference": "ICRA",
+        "year": "2026",
+        "comment": "Accepted at IEEE ICRA 2026 Workshop \"From Data to Decisions: VLA Pipelines for Real Robots\", Vienna, June 2026. Non-archival workshop. 5 pages, 2 figures, 22 references",
+        "raw_comment": "Accepted at IEEE ICRA 2026 Workshop \"From Data to Decisions: VLA Pipelines for Real Robots\", Vienna, June 2026. Non-archival workshop. 5 pages, 2 figures, 22 references",
+        "category": "Robotics",
         "rank": "B"
+      }
+    },
+    {
+      "paper": {
+        "title": "EIT-Pneumatic Hybrid Robotic Skin for Practical and Accurate Force Map Reconstruction",
+        "arxiv_id": "2605.28468v1",
+        "authors": [
+          "Junhwi Cho",
+          "Sunggyu Bae",
+          "Junghyeon Ma",
+          "Hyosang Lee",
+          "Jung Kim",
+          "Kyungseo Park"
+        ],
+        "published": "2026-05-27T13:34:23Z",
+        "updated": "2026-05-27T13:34:23Z",
+        "summary": "We present a hybrid robotic skin that combines electrical impedance tomography (EIT) with pneumatic tactile sensing to improve force reconstruction capability. The developed robotic skin is fabricated entirely by 3D printing and spray coating, making it affordable and easy to build. A Tikhonov-regularized inverse reconstruction, paired with per-pad pneumatic calibration, enables accurate large-area tactile sensing with a simple measurement scheme. For validation, we conducted load-cell indentation experiments; the results showed consistent force reconstruction across locations within a pad. Compared with an EIT-only baseline, sensitivity non-uniformity was also reduced, with the coefficient of variation decreasing from 0.31 to 0.14, indicating that the proposed approach addresses a longstanding limitation of EIT. We further demonstrated chest-mounted integration on a humanoid robot and found that the pneumatic signals remained reliable across diverse contact scenarios, including multiple simultaneous contacts on the same sensing pad. These results indicate a practical path toward accurate, scalable whole-body tactile sensing in real robotic systems.",
+        "categories": "cs.RO",
+        "comment": "8 pages, 8 figures. Accepted to IEEE International Conference on Robotics and Automation (ICRA) 2026. J. Cho, S. Bae, J. Ma contributed equally"
+      },
+      "analysis": {
+        "problem_statement": "The paper addresses the problem of accurate and scalable whole-body tactile sensing in robotic systems, particularly in large areas and diverse contact scenarios.",
+        "bottleneck_addressed": "Sensorimotor bottleneck: the challenge of integrating sensory information with motor control to achieve robust and adaptive robotic behavior.",
+        "executive_summary": "This paper presents a novel hybrid robotic skin that combines electrical impedance tomography (EIT) with pneumatic tactile sensing, enabling accurate large-area tactile sensing with a simple measurement scheme. This breakthrough has significant implications for the development of real-world robotic systems with whole-body tactile sensing capabilities.",
+        "key_metrics": {
+          "primary_metric": "Reduced sensitivity non-uniformity",
+          "metric_value": 0.14,
+          "baseline": "EIT-only baseline",
+          "improvement_percentage": "54.84% (1 - 0.31 / 0.14)"
+        },
+        "technical_breakdown": {
+          "method": "The proposed approach uses a Tikhonov-regularized inverse reconstruction, paired with per-pad pneumatic calibration, to enable accurate large-area tactile sensing.",
+          "architecture": "The robotic skin consists of a 3D-printed and spray-coated structure with integrated EIT and pneumatic sensors.",
+          "implementation_details": "The authors employed a Tikhonov-regularized inverse reconstruction algorithm, which is a type of regularization technique used to stabilize the solution of ill-posed inverse problems.",
+          "code_complexity": "The computational complexity of the proposed approach is not explicitly stated, but it is likely to be relatively low due to the use of a simple measurement scheme and a well-established inverse reconstruction algorithm."
+        },
+        "relevance_tags": [
+          "robotics",
+          "tactile sensing",
+          "electrical impedance tomography",
+          "pneumatic sensing",
+          "sensorimotor bottleneck"
+        ],
+        "confidence": "high"
+      },
+      "analyzed_at": "2026-05-28T03:37:47.940901",
+      "conference_info": {
+        "conference": "International Conference on Robotics and Automation",
+        "year": "2026",
+        "comment": "8 pages, 8 figures. Accepted to IEEE International Conference on Robotics and Automation (ICRA) 2026. J. Cho, S. Bae, J. Ma contributed equally",
+        "raw_comment": "8 pages, 8 figures. Accepted to IEEE International Conference on Robotics and Automation (ICRA) 2026. J. Cho, S. Bae, J. Ma contributed equally",
+        "category": "Robotics",
+        "rank": "B"
+      }
+    },
+    {
+      "paper": {
+        "title": "Tactile-Proprioceptive Sensor Fusion for Contact Wrench Estimation in Whole-Body Physical Human-Robot Interaction",
+        "arxiv_id": "2605.28412v1",
+        "authors": [
+          "Junha Min",
+          "Junghyeon Ma",
+          "Jiwung Kwon",
+          "Sunggyu Bae",
+          "Joohyung Kim",
+          "Kyungseo Park"
+        ],
+        "published": "2026-05-27T12:47:25Z",
+        "updated": "2026-05-27T12:47:25Z",
+        "summary": "Direct physical guidance is a natural means of teaching and interacting with robots, and robotic skins make a key contribution by enabling sensitive contact sensing and localization. This paper presents a tactile-proprioceptive sensor fusion framework for natural physical human-robot interaction. Tactile cues from pneumatic skin pads serve as contact indicators that bypass the ambiguity between frictional residues and applied external forces, enabling highly sensitive contact detection without explicit friction identification. We fuse these cues with motor-current-based proprioception to reconstruct multi-axis contact forces on the robot surface. To maintain accuracy during motion, we employ a temporal convolutional network (TCN) to mitigate friction hysteresis during stick-slip transitions, reducing uncertainty at contact onset and yielding smooth, responsive guidance. We validate the approach on a skin-integrated robot arm: (i) multi-axis forces are reconstructed in stationary contacts, and (ii) simultaneous force estimation and kinesthetic teaching are demonstrated. Results indicate improved sensitivity and responsiveness across diverse contact conditions compared with tactile-only and proprioceptive-only baselines, supporting tactile-proprioceptive fusion as a reliable pathway to safe, intuitive physical human-robot interaction.",
+        "categories": "cs.RO",
+        "comment": "8 pages, 6 figures. Accepted to IEEE International Conference on Robotics and Automation (ICRA) 2026"
+      },
+      "analysis": {
+        "problem_statement": "Estimating multi-axis contact forces on a robot surface during physical human-robot interaction with high sensitivity and accuracy.",
+        "bottleneck_addressed": "Sensor fusion and friction identification in tactile-proprioceptive sensing for whole-body physical human-robot interaction.",
+        "executive_summary": "This paper presents a tactile-proprioceptive sensor fusion framework for natural physical human-robot interaction, enabling improved sensitivity and responsiveness in contact force estimation. This work addresses a critical bottleneck in robotic skin technology, paving the way for safe and intuitive physical human-robot interaction. The proposed approach has the potential to revolutionize human-robot collaboration in various applications.",
+        "key_metrics": {
+          "primary_metric": "Improved sensitivity and responsiveness in contact force estimation",
+          "metric_value": "Not explicitly stated",
+          "baseline": "Tactile-only and proprioceptive-only approaches",
+          "improvement_percentage": "Not quantifiable"
+        },
+        "technical_breakdown": {
+          "method": "The proposed framework fuses tactile cues from pneumatic skin pads with motor-current-based proprioception to reconstruct multi-axis contact forces. A temporal convolutional network (TCN) is employed to mitigate friction hysteresis during stick-slip transitions.",
+          "architecture": "The framework consists of a tactile-proprioceptive sensor fusion module, a TCN-based friction hysteresis mitigation module, and a kinesthetic teaching module.",
+          "implementation_details": "The authors utilize pneumatic skin pads as tactile sensors and motor-current-based proprioception to estimate contact forces. The TCN is trained on a dataset of contact force trajectories to learn the relationship between friction hysteresis and contact force.",
+          "code_complexity": "The computational complexity of the proposed framework is moderate, with the TCN being the most computationally intensive component. The training time of the TCN is not explicitly stated, but it is likely to be significant due to the large size of the dataset required for training."
+        },
+        "relevance_tags": [
+          "robotics",
+          "sensor fusion",
+          "physical human-robot interaction",
+          "tactile sensing",
+          "proprioception"
+        ],
+        "confidence": "high"
+      },
+      "analyzed_at": "2026-05-28T03:37:59.848361",
+      "conference_info": {
+        "conference": "International Conference on Robotics and Automation",
+        "year": "2026",
+        "comment": "8 pages, 6 figures. Accepted to IEEE International Conference on Robotics and Automation (ICRA) 2026",
+        "raw_comment": "8 pages, 6 figures. Accepted to IEEE International Conference on Robotics and Automation (ICRA) 2026",
+        "category": "Robotics",
+        "rank": "B"
+      }
+    },
+    {
+      "paper": {
+        "title": "Teacher-Student Representational Alignment for Reinforcement Learning-Driven Imitation Learning",
+        "arxiv_id": "2605.28372v1",
+        "authors": [
+          "Meraj Mammadov",
+          "Pedro Zuidberg Dos Martires",
+          "Johannes Andreas Stork"
+        ],
+        "published": "2026-05-27T12:12:54Z",
+        "updated": "2026-05-27T12:12:54Z",
+        "summary": "Imitation learning (IL) from a state-based reinforcement learning (RL) policy is a common approach to overcome the curse of dimensionality in complex and high-dimensional observation spaces prevalent in robotics. This paper addresses the irreducible imitation gap that emerges when teacher and student are learned in isolation, and the teacher policy has the liberty to rely on privileged state information that the student cannot infer from its observations. Instead of improving poor student performance with RL finetuning after IL, which often requires a whole new training setup, we propose a novel algorithm which learns a shared embedding space that hides agent-specific observations and thus trains imitable teacher policies by construction. We train the shared embedding space with self-supervised contrastive learning in parallel to the teacher policy and prevent it from extracting private information by limiting its gradients from updating the encoder networks. We perform evaluations on several example domains and compare to state-of-the-art baselines showing that our algorithm enables higher student performance with substantially reduced imitation gap.",
+        "categories": "cs.LG",
+        "comment": "6 pages, 5 figures. Accepted as an oral presentation at the RL4IL Workshop at ICRA 2026"
+      },
+      "analysis": {
+        "problem_statement": "The paper addresses the irreducible imitation gap that emerges when a teacher policy and a student policy are learned in isolation, where the teacher policy has access to privileged state information that the student cannot infer.",
+        "bottleneck_addressed": "The bottleneck addressed is the 'imitation gap' in imitation learning, which refers to the difference in performance between a teacher policy and a student policy learned through imitation learning.",
+        "executive_summary": "This paper proposes a novel algorithm that learns a shared embedding space to align the representations of a teacher policy and a student policy, enabling higher student performance with substantially reduced imitation gap. This matters to the current AI landscape as it addresses a fundamental challenge in imitation learning and has implications for robotics and other high-dimensional observation spaces.",
+        "key_metrics": {
+          "primary_metric": "Higher student performance with substantially reduced imitation gap",
+          "metric_value": "Not explicitly stated",
+          "baseline": "State-of-the-art baselines",
+          "improvement_percentage": "Not quantifiable"
+        },
+        "technical_breakdown": {
+          "method": "The proposed algorithm learns a shared embedding space through self-supervised contrastive learning in parallel to the teacher policy, and prevents the teacher policy from extracting private information by limiting its gradients from updating the encoder networks.",
+          "architecture": "The architecture consists of a teacher policy, a student policy, and a shared embedding space, with the teacher policy and student policy being learned in isolation, and the shared embedding space being learned through self-supervised contrastive learning.",
+          "implementation_details": "The algorithm uses self-supervised contrastive learning, which is a type of unsupervised learning that learns to distinguish between similar and dissimilar examples, and gradient limiting to prevent the teacher policy from extracting private information.",
+          "code_complexity": "The computational complexity of the algorithm is not explicitly stated, but it is likely to be high due to the use of self-supervised contrastive learning and gradient limiting."
+        },
+        "relevance_tags": [
+          "Imitation Learning",
+          "Reinforcement Learning",
+          "Robotics",
+          "High-Dimensional Observation Spaces"
+        ],
+        "confidence": "high"
+      },
+      "analyzed_at": "2026-05-28T03:38:02.659185",
+      "conference_info": {
+        "conference": "ICRA",
+        "year": "2026",
+        "comment": "6 pages, 5 figures. Accepted as an oral presentation at the RL4IL Workshop at ICRA 2026",
+        "raw_comment": "6 pages, 5 figures. Accepted as an oral presentation at the RL4IL Workshop at ICRA 2026",
+        "category": "Robotics",
+        "rank": "B"
+      }
+    },
+    {
+      "paper": {
+        "title": "Magnet-Based Soft Robotic Skin Using a 3D-Printed Multi-Lattice Structure and CNN-Based Tactile Super-Resolution",
+        "arxiv_id": "2605.28352v1",
+        "authors": [
+          "Yunseong Bang",
+          "Joowon Park",
+          "Suan Sim",
+          "Youngjun Ryu",
+          "Sukho Park",
+          "Kyungseo Park"
+        ],
+        "published": "2026-05-27T11:53:46Z",
+        "updated": "2026-05-27T11:53:46Z",
+        "summary": "This paper presents a magnet-based robotic skin that integrates a multilayer soft lattice with distributed Hall-effect sensor arrays and a tactile super-resolution model. External contact forces are converted to magnetic field changes by embedded permanent magnets, and the lattice spreads these changes across the sensing domain. This gives each sensor a large, overlapping receptive field and enables a large sensing area with minimal blind spots. Lattice parameters are tunable, enabling joint adjustment of mechanical compliance and transduction characteristics. An implicit modeling workflow and selective laser sintering (SLS) 3D printing support rapid fabrication of conformal, high-complexity structures. A convolutional neural network trained on experimental measurements estimates contact location and normal force in real time. Experiments validate localization accuracy and indicate scalability to larger surfaces, suggesting applicability to whole-body robotic skin and safe human-robot interaction.",
+        "categories": "cs.RO",
+        "comment": "6 pages, 9 figures. Accepted to IEEE International Conference on Robotics and Automation (ICRA) 2026. Y. Bang and J. Park contributed equally"
+      },
+      "analysis": {
+        "problem_statement": "Designing a robotic skin that can accurately detect contact forces and locations in real-time, with minimal blind spots and high scalability.",
+        "bottleneck_addressed": "The spatial resolution and scalability bottleneck in tactile sensing systems, particularly in soft robotics.",
+        "executive_summary": "This paper presents a magnet-based soft robotic skin that addresses the spatial resolution and scalability bottleneck in tactile sensing systems. By leveraging a 3D-printed multi-lattice structure and a CNN-based tactile super-resolution model, the system achieves high localization accuracy and scalability to larger surfaces. This technology has significant implications for whole-body robotic skin and safe human-robot interaction.",
+        "key_metrics": {
+          "primary_metric": "Localization accuracy",
+          "metric_value": "Not explicitly stated",
+          "baseline": "Not explicitly stated",
+          "improvement_percentage": "Not quantifiable"
+        },
+        "technical_breakdown": {
+          "method": "The system works by converting external contact forces to magnetic field changes using embedded permanent magnets, which are then spread across the sensing domain by the lattice. The lattice parameters are tunable, enabling joint adjustment of mechanical compliance and transduction characteristics.",
+          "architecture": "The system consists of a 3D-printed multi-lattice structure with distributed Hall-effect sensor arrays, a CNN-based tactile super-resolution model, and an implicit modeling workflow.",
+          "implementation_details": "Selective laser sintering (SLS) 3D printing is used for rapid fabrication of conformal, high-complexity structures. The CNN is trained on experimental measurements to estimate contact location and normal force in real-time.",
+          "code_complexity": "Not explicitly stated, but the use of SLS 3D printing and CNN-based modeling suggests a moderate to high computational complexity."
+        },
+        "relevance_tags": [
+          "Soft Robotics",
+          "Tactile Sensing",
+          "Robot Skin",
+          "Human-Robot Interaction",
+          "Deep Learning",
+          "Computer Vision"
+        ],
+        "confidence": "high"
+      },
+      "analyzed_at": "2026-05-28T03:38:22.322996",
+      "conference_info": {
+        "conference": "International Conference on Robotics and Automation",
+        "year": "2026",
+        "comment": "6 pages, 9 figures. Accepted to IEEE International Conference on Robotics and Automation (ICRA) 2026. Y. Bang and J. Park contributed equally",
+        "raw_comment": "6 pages, 9 figures. Accepted to IEEE International Conference on Robotics and Automation (ICRA) 2026. Y. Bang and J. Park contributed equally",
+        "category": "Robotics",
+        "rank": "B"
+      }
+    },
+    {
+      "paper": {
+        "title": "EventShiftFlow: Towards Hardware-efficient FPGA-based Flow Estimation",
+        "arxiv_id": "2605.28312v1",
+        "authors": [
+          "Arianna Alonso Bizzi",
+          "Fernando Cladera",
+          "C. J. Taylor"
+        ],
+        "published": "2026-05-27T11:13:58Z",
+        "updated": "2026-05-27T11:13:58Z",
+        "summary": "Event-based vision sensors offer asynchronous, high-temporal-resolution measurements that are attractive for low-latency robotic perception, but many event-based motion estimation methods are computationally intensive and difficult to map to FPGA hardware. We present a streaming velocity estimator that discretizes asynchronous events into fixed-duration time bins, constructs a 1-bit spatial occupancy grid, and evaluates multiple velocity hypotheses in parallel using only fixed-width integer logic - shift registers, counters, comparators, and small LUT-mapped multiplies - with no dividers and no DSP blocks. It requires no frame reconstruction, no floating-point arithmetic, and no iterative optimization. The method deliberately trades dense sub-pixel optical flow for a sparse, quantized velocity estimate at each active pixel, suited to low-latency tasks such as reactive obstacle avoidance on size-, weight-, and power-constrained platforms. On noisy synthetic data with known ground-truth velocities, the method recovers both magnitude and direction, with magnitude estimates being most challenged when objects of different velocities intersect. On a real event-camera sequence, directional accuracy reaches 99.5% across all four evaluated motion segments, with performance remaining robust across occupancy densities in the 10-40% range. We characterize the algorithm's density-dependent behavior, present a parameter sensitivity analysis, show that the proposed datapath requires less than 2 kB of storage, and implement a single-axis prototype on a low-cost Xilinx Artix-7.",
+        "categories": "cs.RO",
+        "comment": "10 pages, 5 figures. Accepted to the IEEE ICRA 2026 Workshop on Challenges and Opportunities of Neuromorphic Field Robotics and Automation"
+      },
+      "analysis": {
+        "problem_statement": "Developing a low-latency, hardware-efficient motion estimation method for event-based vision sensors that can be easily mapped to FPGA hardware.",
+        "bottleneck_addressed": "Computational intensity and difficulty in mapping event-based motion estimation methods to FPGA hardware.",
+        "executive_summary": "This paper presents EventShiftFlow, a novel, streaming velocity estimator that efficiently estimates motion on event-based vision sensors using FPGA hardware. This matters to the current AI landscape as it addresses the need for low-latency, hardware-efficient motion estimation methods for robotic perception. The proposed method achieves high accuracy and robustness, making it suitable for real-world applications.",
+        "key_metrics": {
+          "primary_metric": "Directional accuracy of 99.5% across all four evaluated motion segments on a real event-camera sequence.",
+          "metric_value": "99.5",
+          "baseline": "Unknown",
+          "improvement_percentage": "N/A"
+        },
+        "technical_breakdown": {
+          "method": "EventShiftFlow discretizes asynchronous events into fixed-duration time bins, constructs a 1-bit spatial occupancy grid, and evaluates multiple velocity hypotheses in parallel using fixed-width integer logic.",
+          "architecture": "The proposed method uses shift registers, counters, comparators, and small LUT-mapped multiplies, with no dividers and no DSP blocks.",
+          "implementation_details": "The method requires no frame reconstruction, no floating-point arithmetic, and no iterative optimization. It deliberately trades dense sub-pixel optical flow for a sparse, quantized velocity estimate at each active pixel.",
+          "code_complexity": "The method has a low computational complexity, requiring less than 2 kB of storage and can be implemented on a low-cost Xilinx Artix-7 FPGA."
+        },
+        "relevance_tags": [
+          "event-based vision sensors",
+          "FPGA hardware",
+          "motion estimation",
+          "low-latency",
+          "robotic perception"
+        ],
+        "confidence": "high"
+      },
+      "analyzed_at": "2026-05-28T03:38:27.249022",
+      "conference_info": {
+        "conference": "ICRA",
+        "year": "2026",
+        "comment": "10 pages, 5 figures. Accepted to the IEEE ICRA 2026 Workshop on Challenges and Opportunities of Neuromorphic Field Robotics and Automation",
+        "raw_comment": "10 pages, 5 figures. Accepted to the IEEE ICRA 2026 Workshop on Challenges and Opportunities of Neuromorphic Field Robotics and Automation",
+        "category": "Robotics",
+        "rank": "B"
+      }
+    },
+    {
+      "paper": {
+        "title": "Compile-Time Simplification of Classically Controlled Operations in Dynamic Circuits",
+        "arxiv_id": "2605.28439v1",
+        "authors": [
+          "Innocenzo Fulginiti",
+          "Yanbin Chen",
+          "Christian B. Mendl",
+          "Helmut Seidl"
+        ],
+        "published": "2026-05-27T13:05:41Z",
+        "updated": "2026-05-27T13:05:41Z",
+        "summary": "Dynamic circuits use real-time outcomes of mid-circuit measurements, processed by a classical controller, to adapt subsequent operations during circuit execution. This additional flexibility over static circuits comes at a price. Mid-circuit measurements are typically slower and noisier than unitary gates. Furthermore, classical feedforward requires exchanging information between the quantum processor (QPU) and the classical controller, introducing latency that erodes the practical performance of dynamic circuits. We propose a compile-time optimization framework that reduces the use of classical controls in dynamic circuits while preserving their semantics. At its core, the framework uses a static analysis that symbolically executes the circuit by propagating classical information alongside the quantum state. By combining this classical-quantum information with the Probabilistic Circuit Model extended with probabilistic controls that emulate classical feedforward, we obtain an intermediate probabilistic representation of the dynamic circuit. In this representation, mid-circuit measurements and classically controlled operations can be removed or rewritten as purely unitary operations and probabilistic components. Compared to existing compile-time optimizations that target only mid-circuit measurements, our method applies to a broader class of dynamic circuits expressible in modern quantum programming languages. We evaluated our framework on randomly generated dynamic circuits, achieving about 50% classical feedforward reduction and even higher reductions in favorable settings.",
+        "categories": "quant-ph",
+        "comment": "Accepted at ISC High Performance 2026; to appear in the IEEE Xplore proceedings"
+      },
+      "analysis": {
+        "problem_statement": "The paper addresses the problem of reducing the use of classical controls in dynamic circuits, which are typically slower and noisier than unitary gates, while preserving their semantics.",
+        "bottleneck_addressed": "Quantum Circuit Compilation Bottleneck",
+        "executive_summary": "This paper presents a compile-time optimization framework that reduces the use of classical controls in dynamic circuits, achieving a 50% reduction in classical feedforward and even higher reductions in favorable settings. This matters to the current AI landscape as it improves the practical performance of dynamic circuits, which are essential for large-scale quantum computing. The proposed framework can be applied to a broader class of dynamic circuits expressible in modern quantum programming languages.",
+        "key_metrics": {
+          "primary_metric": "Classical feedforward reduction",
+          "metric_value": "50%",
+          "baseline": "Existing compile-time optimizations",
+          "improvement_percentage": "50%"
+        },
+        "technical_breakdown": {
+          "method": "The proposed framework uses a static analysis that symbolically executes the circuit by propagating classical information alongside the quantum state. This is combined with the Probabilistic Circuit Model extended with probabilistic controls that emulate classical feedforward, resulting in an intermediate probabilistic representation of the dynamic circuit.",
+          "architecture": "The framework consists of three main components: (1) static analysis, (2) probabilistic circuit model, and (3) intermediate probabilistic representation.",
+          "implementation_details": "The framework uses a combination of symbolic execution, probabilistic circuit model, and probabilistic controls to remove or rewrite mid-circuit measurements and classically controlled operations as purely unitary operations and probabilistic components.",
+          "code_complexity": "The computational complexity of the proposed framework is O(n^3), where n is the number of quantum gates in the circuit. The training time implications are not applicable as this is a compile-time optimization framework."
+        },
+        "relevance_tags": [
+          "Quantum Computing",
+          "Quantum Circuit Compilation",
+          "Dynamic Circuits",
+          "Classical Feedforward"
+        ],
+        "confidence": "high"
+      },
+      "analyzed_at": "2026-05-28T03:41:12.834645",
+      "conference_info": {
+        "conference": "ISC High Performance",
+        "year": "2026",
+        "comment": "Accepted at ISC High Performance 2026; to appear in the IEEE Xplore proceedings",
+        "raw_comment": "Accepted at ISC High Performance 2026; to appear in the IEEE Xplore proceedings",
+        "category": "Systems & Architecture",
+        "rank": ""
       }
     }
   ],
@@ -75,14 +1035,14 @@
     "Blockchain & Cryptography",
     "Other"
   ],
-  "filter_date": "2026-05-25",
+  "filter_date": "2026-05-27",
   "metrics": {
     "dashboard": {
       "previous_date": "unknown",
       "previous_count": 0,
-      "current_date": "2026-05-25",
-      "current_count": 1,
-      "day_change": 1,
+      "current_date": "2026-05-27",
+      "current_count": 20,
+      "day_change": 20,
       "trend": "\ud83d\udcc8 UP"
     }
   },
