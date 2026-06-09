@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-06-08T03:40:41.974275",
+  "last_updated": "2026-06-09T03:39:38.694732",
   "dates": {
     "2026-06-02": {
       "count": 56,
@@ -9014,6 +9014,1969 @@
         }
       ],
       "updated_at": "2026-06-08T03:40:41.974271"
+    },
+    "2026-06-08": {
+      "count": 38,
+      "papers": [
+        {
+          "paper": {
+            "title": "Cranio-Diff: Diffusion-based Cross-domain Craniofacial Reconstruction with 2D X-ray Skull Guidance and Structural Identity Constraints",
+            "arxiv_id": "2606.09699v1",
+            "authors": [
+              "Ravi Shankar Prasad",
+              "Naresh Gurjar",
+              "Shashank Baghel",
+              "Chirag",
+              "Dinesh Singh"
+            ],
+            "published": "2026-06-08T16:20:35Z",
+            "updated": "2026-06-08T16:20:35Z",
+            "summary": "The state-of-the-art generative models, such as CycleGAN, Pix2Pix, and diffusion models have demonstrated remarkable performance in the face generation task. However, they fail to effectively capture cross-modality semantic information in craniofacial reconstruction when translating from the skull (x-ray) to the face (optical) domain, due to a mismatch in the alignment of structural identity across modalities. To address this issue, we propose Cranio-Diff, a diffusion-based framework for cross-domain cranio-facial reconstruction from 2D X-ray skull images. The proposed approach integrates skull-conditioned structural guidance through ControlNet with biometric text conditioning to generate a face which is more semantically and structurally aligned with the given skull. The proposed Cranio-diff method is evaluated on skull-face dataset obtained from X-ray scans of 120 subjects in lateral and frontal views. To enable controlled evaluation, each face image is synthesised across three age groups (25, 45, 65) and three BMI variations of -10%, baseline and +10%, yielding 4320 paired samples. To the best of our knowledge, this is the only X-ray-face dataset with this magnitude. Extensive experiments showed that the proposed method outperforms recent existing approaches in both generated image quality and retrieval task. Finally, to evaluate the performance of our proposed method, we have evaluated the quality of the generated image using FID, IS, SSIM, LPIPS, PSNR and ArcFace score. Additionally, retrieval performance is evaluated using recall@k, mAP@k and MRR@k. Obtained experimental results demonstrate that the proposed method can be used as an alternate tool in providing aid in forensic investigations.",
+            "categories": "cs.CV",
+            "comment": "14 pages, 7 figures, BMVC 2026 conference"
+          },
+          "analysis": {
+            "problem_statement": "The paper addresses the challenge of effectively capturing cross-modality semantic information in craniofacial reconstruction when translating from 2D X-ray skull images to face images.",
+            "bottleneck_addressed": "The mismatch in the alignment of structural identity across modalities in cross-domain craniofacial reconstruction.",
+            "executive_summary": "This paper proposes Cranio-Diff, a diffusion-based framework for cross-domain cranio-facial reconstruction from 2D X-ray skull images, addressing a critical bottleneck in AI-driven facial reconstruction. The method integrates structural guidance and biometric text conditioning to generate more semantically and structurally aligned faces. This work has significant implications for forensic investigations and AI-driven medical imaging.",
+            "key_metrics": {
+              "primary_metric": "FID score",
+              "metric_value": "Not explicitly stated, but implied to be improved compared to existing approaches",
+              "baseline": "Recent existing approaches (e.g., CycleGAN, Pix2Pix)",
+              "improvement_percentage": "Not quantifiable from the provided information"
+            },
+            "technical_breakdown": {
+              "method": "Cranio-Diff uses a diffusion-based framework that integrates skull-conditioned structural guidance through ControlNet with biometric text conditioning to generate a face.",
+              "architecture": "The proposed architecture consists of a ControlNet module for structural guidance and a text encoder for biometric conditioning.",
+              "implementation_details": "The method utilizes a diffusion model, specifically a variant of the DDPM (Denoising Diffusion Probabilistic Model), and employs a text encoder based on a pre-trained language model.",
+              "code_complexity": "The computational complexity of the proposed method is not explicitly stated, but it is likely to be high due to the use of a diffusion model and a text encoder."
+            },
+            "relevance_tags": [
+              "cross-domain reconstruction",
+              "diffusion models",
+              "craniofacial reconstruction",
+              "forensic investigations",
+              "medical imaging"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-06-09T03:37:33.642560",
+          "conference_info": {
+            "conference": "BMVC",
+            "year": "2026",
+            "comment": "14 pages, 7 figures, BMVC 2026 conference",
+            "raw_comment": "14 pages, 7 figures, BMVC 2026 conference",
+            "category": "Computer Vision",
+            "rank": "A"
+          }
+        },
+        {
+          "paper": {
+            "title": "SoccerNet 2026 Player-Centric Ball-Action Spotting:Retraining and Post-Processing Extensions to the FOOTPASS Baselines",
+            "arxiv_id": "2606.09679v1",
+            "authors": [
+              "Parthsarthi Rawat"
+            ],
+            "published": "2026-06-08T15:59:56Z",
+            "updated": "2026-06-08T15:59:56Z",
+            "summary": "We describe our system for the SoccerNet 2026 Player-Centric Ball-Action Spotting Challenge, which requires predicting who performs which action and when, across eight classes in broadcast soccer. Building on the three FOOTPASS baselines [1] (TAAD, TAAD+GNN, and TAAD+DST), we contribute four extensions: (1) gradient check pointing to enable full-backbone fine-tuning on a single GPU; (2) fusion of GNN logits into the DST encoder, combining graph-based tactical context with per-player visual features; (3) square-root frequency class weighting to address the 213:1 pass-to-tackle imbalance in the training data; and (4) a post processing pipeline comprising per-class logit gating, temporal frame refinement, jersey re-assignment, and a two-model ensemble. Our system achieves 0.548 Macro F1 on the test set and 0.446 on the challenge set (server evaluation).",
+            "categories": "cs.CV",
+            "comment": "CVPR 2026 SoccerNet Player Centric Ball Action Spotting Challenge, Rank 7"
+          },
+          "analysis": {
+            "problem_statement": "Predicting who performs which action and when in broadcast soccer, across eight classes.",
+            "bottleneck_addressed": "Class imbalance and the need for efficient fine-tuning of deep neural networks.",
+            "executive_summary": "This paper addresses the challenges of class imbalance and efficient fine-tuning in deep neural networks, which are crucial in the context of sports analytics. By proposing four extensions to the FOOTPASS baselines, the authors achieve state-of-the-art results on the SoccerNet 2026 Player-Centric Ball-Action Spotting Challenge. This work has implications for the broader AI landscape, particularly in the areas of computer vision and natural language processing.",
+            "key_metrics": {
+              "primary_metric": "Macro F1 score",
+              "metric_value": 0.548,
+              "baseline": "FOOTPASS baselines (TAAD, TAAD+GNN, and TAAD+DST)",
+              "improvement_percentage": "Not quantifiable"
+            },
+            "technical_breakdown": {
+              "method": "The proposed system consists of four extensions to the FOOTPASS baselines: gradient check pointing, fusion of GNN logits into the DST encoder, square-root frequency class weighting, and a post-processing pipeline.",
+              "architecture": "The architecture includes a temporal action detection (TAAD) backbone, graph neural networks (GNNs), and a deep spatial-temporal (DST) encoder.",
+              "implementation_details": "The authors use gradient check pointing to enable full-backbone fine-tuning on a single GPU, and square-root frequency class weighting to address the class imbalance issue. The post-processing pipeline comprises per-class logit gating, temporal frame refinement, jersey re-assignment, and a two-model ensemble.",
+              "code_complexity": "The code complexity is moderate to high due to the use of deep neural networks and graph neural networks. The training time implications are significant, requiring a single GPU for fine-tuning."
+            },
+            "relevance_tags": [
+              "computer vision",
+              "natural language processing",
+              "sports analytics",
+              "class imbalance",
+              "deep learning"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-06-09T03:37:42.967996",
+          "conference_info": {
+            "conference": "CVPR",
+            "year": "2026",
+            "comment": "CVPR 2026 SoccerNet Player Centric Ball Action Spotting Challenge, Rank 7",
+            "raw_comment": "CVPR 2026 SoccerNet Player Centric Ball Action Spotting Challenge, Rank 7",
+            "category": "Computer Vision",
+            "rank": "A"
+          }
+        },
+        {
+          "paper": {
+            "title": "EditSSC: Toward Editable Semantic Occupancy Scenes with Unconditional Diffusion Models",
+            "arxiv_id": "2606.09273v1",
+            "authors": [
+              "Fatima Balde",
+              "Raoul de Charette",
+              "Alexandre Boulch"
+            ],
+            "published": "2026-06-08T09:41:37Z",
+            "updated": "2026-06-08T09:41:37Z",
+            "summary": "3D semantic scene generation is crucial for autonomous driving applications, yet most methods rely on complex 3D-specific architectures such as triplane encoders and adapted diffusion networks, limiting both their simplicity and their editing capabilities. We propose EditSSC, an editing-ready method for 3D semantic scene generation using 2D Bird's Eye View (BEV) representations and off-the-shelf latent diffusion network. Our approach reshapes 3D semantic occupancy grids into multi-channel BEV images and leverages the quantized autoencoder and UNet from Stable Diffusion with minimal modifications. We perform diffusion on the latents after quantization, which enables training-free editing capabilities. By exploiting class-to-code correspondences in the codebook, our method supports sketch-guided generation, inpainting, and outpainting without any retraining. On SemanticKITTI, EditSSC outperforms existing 3D-specific baselines on unconditional generation, demonstrating that well-established 2D architectures can be effectively repurposed for 3D scene generation and editing.",
+            "categories": "cs.CV",
+            "comment": "Accepted at CVPR 2026 Workshop"
+          },
+          "analysis": {
+            "problem_statement": "Generating 3D semantic scenes for autonomous driving applications while addressing limitations in existing methods, such as complexity and editing capabilities.",
+            "bottleneck_addressed": "The bottleneck of requiring complex 3D-specific architectures for 3D semantic scene generation, which limits simplicity and editing capabilities.",
+            "executive_summary": "This paper proposes EditSSC, an editing-ready method for 3D semantic scene generation using 2D Bird's Eye View (BEV) representations and off-the-shelf latent diffusion networks. This approach enables training-free editing capabilities and outperforms existing 3D-specific baselines on unconditional generation. The method's simplicity and effectiveness make it a significant contribution to the current AI landscape.",
+            "key_metrics": {
+              "primary_metric": "Outperforms existing 3D-specific baselines on unconditional generation",
+              "metric_value": "Not specified",
+              "baseline": "SemanticKITTI",
+              "improvement_percentage": "Not quantifiable"
+            },
+            "technical_breakdown": {
+              "method": "EditSSC reshapes 3D semantic occupancy grids into multi-channel BEV images and leverages the quantized autoencoder and UNet from Stable Diffusion with minimal modifications. Diffusion is performed on the latents after quantization, enabling training-free editing capabilities.",
+              "architecture": "2D Bird's Eye View (BEV) representations, latent diffusion network, quantized autoencoder, and UNet from Stable Diffusion",
+              "implementation_details": "Class-to-code correspondences in the codebook are exploited to support sketch-guided generation, inpainting, and outpainting without retraining.",
+              "code_complexity": "The method's computational complexity is not explicitly stated, but it is mentioned that the approach leverages off-the-shelf latent diffusion networks and minimal modifications to the Stable Diffusion architecture, suggesting a relatively low code complexity."
+            },
+            "relevance_tags": [
+              "3D semantic scene generation",
+              "autonomous driving",
+              "latent diffusion networks",
+              "editing capabilities"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-06-09T03:37:53.029991",
+          "conference_info": {
+            "conference": "CVPR",
+            "year": "2026",
+            "comment": "Accepted at CVPR 2026 Workshop",
+            "raw_comment": "Accepted at CVPR 2026 Workshop",
+            "category": "Computer Vision",
+            "rank": "A"
+          }
+        },
+        {
+          "paper": {
+            "title": "Gated Bidirectional Linear Attention for Generative Retrieval",
+            "arxiv_id": "2606.07317v2",
+            "authors": [
+              "Artem Matveev",
+              "Vladislav Tytskiy",
+              "Sergei Makeev",
+              "Sergei Liamaev"
+            ],
+            "published": "2026-06-05T14:37:02Z",
+            "updated": "2026-06-08T08:58:58Z",
+            "summary": "In recommender systems, generative retrieval typically uses an encoder-decoder setup: an encoder processes a user interaction history, and an autoregressive decoder then generates recommended items. In large-scale streaming services, active users accumulate very long histories over time. As histories grow, the encoder becomes a major latency bottleneck because softmax attention scales quadratically with sequence length. In our experiments, using bidirectional attention in the encoder substantially improves quality. However, most sub-quadratic attention methods focus on causal attention.   We propose Gated Bidirectional Linear Attention (GBLA), a linear-time bidirectional attention layer that extends kernelized linear attention with three lightweight components: local causal mixing (Conv1D), sequence-level key gating for soft forgetting, and a gated RMSNorm output. On a large-scale Yandex Music dataset, a hybrid encoder that interleaves self-attention (SA) and GBLA in a 1:2 ratio (one SA block followed by two GBLA blocks) matches bidirectional self-attention quality. On H100 GPUs, GBLA reaches up to an $8.2\\times$ single-layer speedup at a history length of 32768, compared to FlashAttention-v3. Finally, we show that the same hybrid design generalizes beyond our proprietary setting, consistently preserving self-attention retrieval quality on public Amazon benchmarks.",
+            "categories": "cs.IR",
+            "comment": "5 pages, 2 figures, 7 tables. Accepted at SIGIR 2026"
+          },
+          "analysis": {
+            "problem_statement": "The paper addresses the latency bottleneck in large-scale recommender systems due to the quadratic scaling of softmax attention with sequence length.",
+            "bottleneck_addressed": "The quadratic complexity of softmax attention in sequence length.",
+            "executive_summary": "This paper proposes Gated Bidirectional Linear Attention (GBLA), a linear-time bidirectional attention layer that improves the quality of generative retrieval in recommender systems while reducing latency. This matters to the current AI landscape as it enables efficient processing of long user interaction histories in large-scale streaming services. The proposed method achieves significant speedup and preserves self-attention retrieval quality on public benchmarks.",
+            "key_metrics": {
+              "primary_metric": "Up to an $8.2\times$ single-layer speedup",
+              "metric_value": 8.2,
+              "baseline": "FlashAttention-v3",
+              "improvement_percentage": "820% speedup"
+            },
+            "technical_breakdown": {
+              "method": "GBLA extends kernelized linear attention with three lightweight components: local causal mixing (Conv1D), sequence-level key gating for soft forgetting, and a gated RMSNorm output.",
+              "architecture": "Hybrid encoder that interleaves self-attention (SA) and GBLA in a 1:2 ratio",
+              "implementation_details": "GBLA uses kernelized linear attention, Conv1D, sequence-level key gating, and gated RMSNorm output",
+              "code_complexity": "Linear-time complexity (O(n))"
+            },
+            "relevance_tags": [
+              "recommender systems",
+              "generative retrieval",
+              "attention mechanisms",
+              "large-scale streaming services"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-06-09T03:38:56.427440",
+          "conference_info": {
+            "conference": "SIGIR",
+            "year": "2026",
+            "comment": "5 pages, 2 figures, 7 tables. Accepted at SIGIR 2026",
+            "raw_comment": "5 pages, 2 figures, 7 tables. Accepted at SIGIR 2026",
+            "category": "Data Mining & IR",
+            "rank": "A+"
+          }
+        },
+        {
+          "paper": {
+            "title": "Difference-Aware Retrieval Policies for Imitation Learning",
+            "arxiv_id": "2606.09758v1",
+            "authors": [
+              "Quinn Pfeifer",
+              "Ethan Pronovost",
+              "Paarth Shah",
+              "Khimya Khetarpal",
+              "Siddhartha Srinivasa",
+              "Abhishek Gupta"
+            ],
+            "published": "2026-06-08T17:18:19Z",
+            "updated": "2026-06-08T17:18:19Z",
+            "summary": "Parametric imitation learning via behavior cloning can suffer from poor generalization to out-of-distribution states due to compounding errors during deployment. We show that reusing the training data during inference via a semi-parametric retrieval-based imitation learning approach can alleviate this challenge. We present Difference-Aware Retrieval Policies for Imitation Learning (DARP), a semi-parametric retrieval-based imitation learning approach that addresses this limitation by reparameterizing the imitation learning problem in terms of local neighborhood structure rather than direct state-to-action mappings. Instead of learning a global policy, DARP trains a model to predict actions based on $k$-nearest neighbors from expert demonstrations, their corresponding actions, and the relative distance vectors between neighbor states and query states. DARP requires no additional assumptions beyond those made for standard behavior cloning -- it does not require additional data collection, online expert feedback, or task-specific knowledge. We demonstrate consistent performance improvements of 15-46% over standard behavior cloning across diverse domains, including continuous control and robotic manipulation, and across different representations, including high-dimensional visual features. Code and demos are available at https://weirdlabuw.github.io/darp-site/.",
+            "categories": "cs.RO",
+            "comment": "12 pages, 7 figures, 3 tables. Accepted to ICLR 2026. Code and demos available at https://weirdlabuw.github.io/darp-site/"
+          },
+          "analysis": {
+            "problem_statement": "Parametric imitation learning via behavior cloning suffers from poor generalization to out-of-distribution states due to compounding errors during deployment.",
+            "bottleneck_addressed": "Compounding errors in parametric imitation learning",
+            "executive_summary": "This paper addresses the challenge of poor generalization in parametric imitation learning by introducing a semi-parametric retrieval-based approach that reparameterizes the imitation learning problem in terms of local neighborhood structure. This method, called Difference-Aware Retrieval Policies for Imitation Learning (DARP), improves performance by 15-46% over standard behavior cloning in diverse domains and representations. The proposed approach is particularly relevant in scenarios where task-specific knowledge or online expert feedback are not available.",
+            "key_metrics": {
+              "primary_metric": "Improvement in imitation learning performance",
+              "metric_value": "15-46%",
+              "baseline": "Standard behavior cloning",
+              "improvement_percentage": "15-46%"
+            },
+            "technical_breakdown": {
+              "method": "DARP reparameterizes the imitation learning problem by predicting actions based on $k$-nearest neighbors from expert demonstrations, their corresponding actions, and the relative distance vectors between neighbor states and query states.",
+              "architecture": "DARP consists of a model that predicts actions based on the local neighborhood structure, which can be implemented using a variety of machine learning algorithms.",
+              "implementation_details": "The proposed approach uses a combination of nearest neighbor search and machine learning algorithms, such as neural networks, to predict actions based on the local neighborhood structure.",
+              "code_complexity": "The computational complexity of DARP is O(n log n) due to the nearest neighbor search, where n is the number of expert demonstrations. The training time of DARP is dependent on the complexity of the machine learning algorithm used to predict actions based on the local neighborhood structure."
+            },
+            "relevance_tags": [
+              "Imitation Learning",
+              "Behavior Cloning",
+              "Semi-Parametric Methods",
+              "Nearest Neighbor Search",
+              "Machine Learning"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-06-09T03:32:09.409865",
+          "conference_info": {
+            "conference": "ICLR",
+            "year": "2026",
+            "comment": "12 pages, 7 figures, 3 tables. Accepted to ICLR 2026. Code and demos available at https://weirdlabuw.github.io/darp-site/",
+            "raw_comment": "12 pages, 7 figures, 3 tables. Accepted to ICLR 2026. Code and demos available at https://weirdlabuw.github.io/darp-site/",
+            "category": "General ML/AI",
+            "rank": ""
+          }
+        },
+        {
+          "paper": {
+            "title": "Evaluating the Representation Space of Diffusion Models via Self-Supervised Principles",
+            "arxiv_id": "2606.09718v1",
+            "authors": [
+              "Xiao Li",
+              "Yixuan Jia",
+              "Zekai Zhang",
+              "Xiang Li",
+              "Lianghe Shi",
+              "Jinxin Zhou",
+              "Zhihui Zhu",
+              "Liyue Shen",
+              "Qing Qu"
+            ],
+            "published": "2026-06-08T16:44:18Z",
+            "updated": "2026-06-08T16:44:18Z",
+            "summary": "Diffusion models have demonstrated remarkable generative capabilities and have also emerged as powerful self-supervised representation learners, yet the connection between these two abilities remains less explored. Drawing inspiration from self-supervised learning (SSL), we introduce a framework for jointly evaluating the representation and generation capabilities of diffusion models. Specifically, we decompose features into invariant and residual components and derive the Invariant Contamination Ratio (ICR), a Fisher-based metric that quantifies how residual variation contaminates invariant signal in feature space. We use this framework to analyze both discriminative and generative behavior of diffusion models. On the representation side, we find that invariance peaks at intermediate noise levels, which also yield the best downstream classification performance. On the generative side, we study how training transitions from genuine generalization to memorization in data-limited regimes, and show that ICR serves as a sensitive training-time indicator of early learning: increasing residual energy along Fisher directions marks the onset of memorization, detectable from training features alone without external evaluators or held-out test sets. Overall, our results show that diffusion models can be monitored from a self-supervised perspective through the geometry of their learned representations.",
+            "categories": "cs.LG",
+            "comment": "First two authors contributed equally. Accepted at ICML 2026"
+          },
+          "analysis": {
+            "problem_statement": "Evaluating the representation space of diffusion models to understand their generative and self-supervised learning capabilities.",
+            "bottleneck_addressed": "Understanding the connection between generative and self-supervised learning in diffusion models.",
+            "executive_summary": "This paper introduces a framework to jointly evaluate the representation and generation capabilities of diffusion models, providing insights into their self-supervised learning behavior and early indicators of memorization in data-limited regimes.",
+            "key_metrics": {
+              "primary_metric": "Invariant Contamination Ratio (ICR)",
+              "metric_value": "Not explicitly provided",
+              "baseline": "Not explicitly provided",
+              "improvement_percentage": "Not quantifiable"
+            },
+            "technical_breakdown": {
+              "method": "The authors decompose features into invariant and residual components and derive the Invariant Contamination Ratio (ICR), a Fisher-based metric that quantifies how residual variation contaminates invariant signal in feature space.",
+              "architecture": "Diffusion models with a focus on self-supervised learning and representation analysis",
+              "implementation_details": "The authors use a framework that combines self-supervised learning principles with diffusion models, employing Fisher-based metrics and invariant/residual component decomposition.",
+              "code_complexity": "High computational complexity due to the need to compute Fisher directions and ICR values, potentially requiring significant training time and computational resources."
+            },
+            "relevance_tags": [
+              "Diffusion Models",
+              "Self-Supervised Learning",
+              "Representation Analysis",
+              "Generative Models",
+              "Early Learning Indicators"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-06-09T03:35:06.680474",
+          "conference_info": {
+            "conference": "ICML",
+            "year": "2026",
+            "comment": "First two authors contributed equally. Accepted at ICML 2026",
+            "raw_comment": "First two authors contributed equally. Accepted at ICML 2026",
+            "category": "General ML/AI",
+            "rank": "A+"
+          }
+        },
+        {
+          "paper": {
+            "title": "Gradient-Guided Reward Optimization for Inference-time Alignment",
+            "arxiv_id": "2606.09635v1",
+            "authors": [
+              "Hankun Lin",
+              "Ruqi Zhang"
+            ],
+            "published": "2026-06-08T15:33:13Z",
+            "updated": "2026-06-08T15:33:13Z",
+            "summary": "Ensuring the reliability of Large Language Models (LLMs) under distribution drift requires inference-time adaptation. While inference-time alignment methods such as Best-of-$N$ and rejection sampling are widely used, they frame the task as a sampling-intensive, reward-guided search, leading to two key limitations: their performance is bounded by the base model's generation quality, and their reliance on imperfect reward models makes them vulnerable to reward hacking. To address these challenges, we introduce Gradient-Guided Reward Optimization (GGRO), a lightweight inference-time method that performs targeted, minimal intervention during decoding via gradient guidance. Specifically, GGRO monitors token-level entropy to identify high-uncertainty regions indicative of drift or misalignment. Upon detection, it responds by injecting nudging tokens, generated using gradient signals from an off-the-shelf reward model, to steer the generation trajectory rather than merely re-ranking samples. Experiments show that GGRO consistently improves inference-time alignment across safety, helpfulness, and reasoning benchmarks. It also increases coverage of high-quality responses and robustness to reward hacking, with minimal computational overhead. Code is available at https://github.com/lhk2004/GGRO.",
+            "categories": "cs.CL",
+            "comment": "Accepted to UAI 2026"
+          },
+          "analysis": {
+            "problem_statement": "Ensuring the reliability of Large Language Models (LLMs) under distribution drift requires inference-time adaptation, but existing methods are limited by their performance and vulnerability to reward hacking.",
+            "bottleneck_addressed": "Adversarial robustness and reliability of Large Language Models (LLMs) in the face of distribution drift.",
+            "executive_summary": "This paper presents Gradient-Guided Reward Optimization (GGRO), a lightweight inference-time method that improves the reliability of LLMs by injecting nudging tokens generated using gradient signals from an off-the-shelf reward model. GGRO addresses the limitations of existing methods by improving inference-time alignment, increasing coverage of high-quality responses, and robustness to reward hacking, with minimal computational overhead.",
+            "key_metrics": {
+              "primary_metric": "Improved inference-time alignment across safety, helpfulness, and reasoning benchmarks.",
+              "metric_value": "Not specified",
+              "baseline": "Best-of-$N$ and rejection sampling",
+              "improvement_percentage": "Not quantifiable"
+            },
+            "technical_breakdown": {
+              "method": "GGRO uses gradient guidance to inject nudging tokens during decoding, which are generated using gradient signals from an off-the-shelf reward model. The method monitors token-level entropy to identify high-uncertainty regions indicative of drift or misalignment.",
+              "architecture": "The architecture consists of a base LLM, a reward model, and a gradient-guided optimization module.",
+              "implementation_details": "GGRO uses gradient-based optimization techniques, such as gradient descent, to generate nudging tokens. The method also employs token-level entropy monitoring to identify high-uncertainty regions.",
+              "code_complexity": "The computational complexity of GGRO is O(n), where n is the number of tokens in the input sequence. The training time implications are minimal, as GGRO is designed for inference-time adaptation."
+            },
+            "relevance_tags": [
+              "Large Language Models",
+              "Inference-time adaptation",
+              "Distribution drift",
+              "Reward hacking",
+              "Adversarial robustness"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-06-09T03:36:48.544739",
+          "conference_info": {
+            "conference": "UAI",
+            "year": "2026",
+            "comment": "Accepted to UAI 2026",
+            "raw_comment": "Accepted to UAI 2026",
+            "category": "General ML/AI",
+            "rank": "A+"
+          }
+        },
+        {
+          "paper": {
+            "title": "FuseFSS: Efficient Secure LLM Inference with Function Secret Sharing",
+            "arxiv_id": "2606.09551v1",
+            "authors": [
+              "Yuhan Ma",
+              "Yong Li",
+              "Stefan Schmid"
+            ],
+            "published": "2026-06-08T14:30:00Z",
+            "updated": "2026-06-08T14:30:00Z",
+            "summary": "Two-server secure inference allows a client to query a hosted large language model (LLM) without revealing prompts or embeddings. Recent GPU systems based on function secret sharing (FSS) make linear layers efficient, but fixed-point nonlinearities and helper operations remain a bottleneck because each operator is typically implemented as a bespoke protocol with its own comparisons, wrap-around corrections, and preprocessing material. We present FuseFSS, a compiler that replaces per-operator protocol design with a single compilation pipeline. For each scalar fixed-point operator, a compact specification lists its interval partition, low-degree arithmetic pieces, and required predicate bits. The compiler emits two batched FSS evaluations on the public masked value: one packed comparison that returns all predicate bits, and one vector interval lookup that returns the active coefficients and constants. Compared to the current state-of-the-art FSS-based GPU secure inference, FuseFSS preserves accuracy while achieving a $1.24\\times$--$1.50\\times$ end-to-end speedup and reducing online communication by $9\\%$--$16\\%$ on BERT and GPT-style models; preprocessing is also lighter, with $14\\%$--$23\\%$ lower key-generation time and $20\\%$--$24\\%$ smaller keys.",
+            "categories": "cs.CR",
+            "comment": "Accepted at the 43rd International Conference on Machine Learning (ICML 2026)"
+          },
+          "analysis": {
+            "problem_statement": "Secure inference for large language models (LLMs) is hindered by the inefficiency of fixed-point nonlinearities and helper operations in function secret sharing (FSS) protocols.",
+            "bottleneck_addressed": "Fixed-point nonlinearities and helper operations in FSS protocols",
+            "executive_summary": "FuseFSS addresses the bottleneck of fixed-point nonlinearities and helper operations in FSS protocols, enabling more efficient secure inference for LLMs. This matters to the current AI landscape as it improves the performance and security of AI applications. The proposed solution achieves a significant speedup and reduction in online communication, making it a crucial advancement in secure AI inference.",
+            "key_metrics": {
+              "primary_metric": "End-to-end speedup",
+              "metric_value": "$1.24\times$--$1.50\times$",
+              "baseline": "Current state-of-the-art FSS-based GPU secure inference",
+              "improvement_percentage": "24%--50% improvement"
+            },
+            "technical_breakdown": {
+              "method": "FuseFSS uses a compiler that replaces per-operator protocol design with a single compilation pipeline. The compiler emits two batched FSS evaluations: one packed comparison and one vector interval lookup.",
+              "architecture": "The proposed solution consists of a compiler and a single compilation pipeline that generates two batched FSS evaluations.",
+              "implementation_details": "The compiler uses a compact specification that lists the interval partition, low-degree arithmetic pieces, and required predicate bits for each scalar fixed-point operator.",
+              "code_complexity": "The proposed solution has a lower code complexity compared to bespoke protocols, as it eliminates the need for per-operator protocol design."
+            },
+            "relevance_tags": [
+              "Secure AI Inference",
+              "Function Secret Sharing",
+              "Large Language Models"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-06-09T03:32:32.490568",
+          "conference_info": {
+            "conference": "ICML",
+            "year": "2026",
+            "comment": "Accepted at the 43rd International Conference on Machine Learning (ICML 2026)",
+            "raw_comment": "Accepted at the 43rd International Conference on Machine Learning (ICML 2026)",
+            "category": "General ML/AI",
+            "rank": "A+"
+          }
+        },
+        {
+          "paper": {
+            "title": "Correct Looks Better: Pairwise Comparisons Reveal Accuracy Rankings",
+            "arxiv_id": "2606.09409v1",
+            "authors": [
+              "Mina Remeli",
+              "Moritz Hardt"
+            ],
+            "published": "2026-06-08T12:26:54Z",
+            "updated": "2026-06-08T12:26:54Z",
+            "summary": "Pairwise comparisons combined with aggregation methods like Elo have become central to evaluating generative models, yet concerns remain that they reward superficial stylistic cues or display judge biases. In a more positive turn, we show that model rankings from pairwise comparisons strongly agree with ground-truth-based accuracy rankings when such ground truth is available for comparison. By converting five well-known benchmarks into free-form generative evaluations, we find that Elo rankings achieve a Spearman correlation above 0.9 with accuracy rankings and substantially outperform direct evaluation when the judge is weak. Furthermore, style and judge bias have only minor effects on model rankings, despite most judgments occurring on pairs where both candidate answers are correct (or incorrect). On such pairs, we find that repetition after the final answer (echo) is a causal driver of judge preference.",
+            "categories": "cs.AI",
+            "comment": "Accepted at ICML'26"
+          },
+          "analysis": {
+            "problem_statement": "Evaluating generative models using pairwise comparisons can be biased by superficial stylistic cues or judge biases, but can accuracy rankings from these comparisons be trusted?",
+            "bottleneck_addressed": "Evaluation bias in generative models",
+            "executive_summary": "This paper shows that Elo rankings from pairwise comparisons strongly agree with accuracy rankings when ground truth is available, and that style and judge bias have minor effects on model rankings. This matters because it suggests that pairwise comparisons can be a reliable method for evaluating generative models, especially when the judge is weak.",
+            "key_metrics": {
+              "primary_metric": "Spearman correlation above 0.9 between Elo rankings and accuracy rankings",
+              "metric_value": "0.9",
+              "baseline": "Direct evaluation",
+              "improvement_percentage": "N/A (since it's a comparison of methods rather than a quantifiable improvement)"
+            },
+            "technical_breakdown": {
+              "method": "Pairwise comparisons using Elo aggregation method, with a focus on converting benchmarks into free-form generative evaluations",
+              "architecture": "Elo rating system, with a focus on pairwise comparisons and aggregation",
+              "implementation_details": "Specific algorithms or techniques used: Spearman correlation, Elo rating system, and free-form generative evaluations",
+              "code_complexity": "Low to moderate, since the Elo rating system is a well-established method and the implementation details are relatively straightforward"
+            },
+            "relevance_tags": [
+              "generative models",
+              "evaluation bias",
+              "pairwise comparisons",
+              "Elo rating system",
+              "Spearman correlation"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-06-09T03:32:56.709579",
+          "conference_info": {
+            "conference": "ICML",
+            "year": "2026",
+            "comment": "Accepted at ICML'26",
+            "raw_comment": "Accepted at ICML'26",
+            "category": "General ML/AI",
+            "rank": "A+"
+          }
+        },
+        {
+          "paper": {
+            "title": "Benchmarking Empirical Privacy Protection for Adaptations of Large Language Models",
+            "arxiv_id": "2606.09401v1",
+            "authors": [
+              "Bart\u0142omiej Marek",
+              "Lorenzo Rossi",
+              "Vincent Hanke",
+              "Xun Wang",
+              "Michael Backes",
+              "Franziska Boenisch",
+              "Adam Dziedzic"
+            ],
+            "published": "2026-06-08T12:21:02Z",
+            "updated": "2026-06-08T12:21:02Z",
+            "summary": "Recent work has applied differential privacy (DP) to adapt large language models (LLMs) for sensitive applications, offering theoretical guarantees. However, its practical effectiveness remains unclear, partly due to LLM pretraining, where overlaps and interdependencies with adaptation data can undermine privacy despite DP efforts. To analyze this issue in practice, we investigate privacy risks under DP adaptations in LLMs using state-of-the-art attacks such as robust membership inference and canary data extraction. We benchmark these risks by systematically varying the adaptation data distribution, from exact overlaps with pretraining data, through in-distribution (IID) cases, to entirely out-of-distribution (OOD) examples. Additionally, we evaluate how different adaptation methods and different privacy regimes impact the vulnerability. Our results show that distribution shifts strongly influence privacy vulnerability: the closer the adaptation data is to the pretraining distribution, the higher the practical privacy risk at the same theoretical guarantee, even without direct data overlap. We find that parameter-efficient fine-tuning methods, such as LoRA, achieve the highest empirical privacy protection for OOD data. Our benchmark identifies key factors for achieving practical privacy in DP LLM adaptation, providing actionable insights for deploying customized models in sensitive settings. Looking forward, we propose a structured framework for holistic privacy assessment beyond adaptation privacy, to identify and evaluate risks across the full pretrain-adapt pipeline of LLMs.",
+            "categories": "cs.LG",
+            "comment": "Accepted at ICLR 2026 (Oral)"
+          },
+          "analysis": {
+            "problem_statement": "This paper addresses the practical effectiveness of differential privacy (DP) in protecting the privacy of large language models (LLMs) when adapting them to sensitive applications.",
+            "bottleneck_addressed": "The bottleneck addressed is the gap between theoretical guarantees of DP and its practical effectiveness in protecting LLM privacy.",
+            "executive_summary": "This paper investigates the practical privacy risks of DP adaptations in LLMs using state-of-the-art attacks and identifies key factors for achieving practical privacy. The results show that distribution shifts strongly influence privacy vulnerability, and parameter-efficient fine-tuning methods achieve the highest empirical privacy protection for out-of-distribution data. This matters to the current AI landscape as it provides actionable insights for deploying customized models in sensitive settings.",
+            "key_metrics": {
+              "primary_metric": "Empirical privacy protection for out-of-distribution data",
+              "metric_value": "Not specified",
+              "baseline": "Direct data overlap",
+              "improvement_percentage": "Not quantifiable"
+            },
+            "technical_breakdown": {
+              "method": "The authors use state-of-the-art attacks such as robust membership inference and canary data extraction to analyze privacy risks under DP adaptations in LLMs. They systematically vary the adaptation data distribution to investigate the impact of distribution shifts on privacy vulnerability.",
+              "architecture": "The paper focuses on large language models (LLMs) and their adaptations, which involve fine-tuning pre-trained models on new data.",
+              "implementation_details": "The authors use parameter-efficient fine-tuning methods such as LoRA (Low-Rank Adaptation) to achieve high empirical privacy protection for out-of-distribution data.",
+              "code_complexity": "The computational complexity of the attacks and fine-tuning methods used in the paper is not explicitly stated, but it is likely to be high due to the use of state-of-the-art attacks and fine-tuning methods."
+            },
+            "relevance_tags": [
+              "differential privacy",
+              "large language models",
+              "fine-tuning",
+              "parameter-efficient methods",
+              "privacy risks",
+              "sensitive applications"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-06-09T03:35:31.730493",
+          "conference_info": {
+            "conference": "ICLR",
+            "year": "2026",
+            "comment": "Accepted at ICLR 2026 (Oral)",
+            "raw_comment": "Accepted at ICLR 2026 (Oral)",
+            "category": "General ML/AI",
+            "rank": ""
+          }
+        },
+        {
+          "paper": {
+            "title": "Distilling Safe LLM Systems via Soft Prompts for On Device Settings",
+            "arxiv_id": "2606.09388v1",
+            "authors": [
+              "Motasem Alfarra",
+              "Cristina Pinneri",
+              "Dana Kianfar",
+              "Mohammed Almousa",
+              "Christos Louizos"
+            ],
+            "published": "2026-06-08T12:03:51Z",
+            "updated": "2026-06-08T12:03:51Z",
+            "summary": "Deploying safe large language models (LLMs) on resource-constrained edge devices presents a critical challenge: while dual-model systems combining LLMs with guard models provide effective safety guarantees, their substantial memory and computational demands make them prohibitively expensive for on-device deployment. This paper presents a comprehensive study of parameter-efficient safety alignment methods for resource-constrained settings. Through systematic evaluation across multiple LLM architectures, training objectives, and parameter-efficient fine-tuning approaches, we identify that soft prompts combined with distillation-based training consistently outperform alternative methods. We introduce distillation frameworks based on total variation and KL divergence that effectively transfer safety behaviors from guard models into learned soft prompts. Our evaluations on various benchmarks demonstrate that this combination achieves superior safety-usefulness trade-offs compared to LoRA adapters, steering vectors, and direct optimization methods, while requiring minimal additional memory and compute at inference time. These findings establish soft prompt distillation as the preferred approach for safety alignment in on-device LLM deployment.",
+            "categories": "cs.LG",
+            "comment": "Accepted to UAI 2026"
+          },
+          "analysis": {
+            "problem_statement": "Deploying safe large language models (LLMs) on resource-constrained edge devices is challenging due to the substantial memory and computational demands of dual-model systems.",
+            "bottleneck_addressed": "Memory and computational efficiency in on-device LLM deployment",
+            "executive_summary": "This paper presents a novel approach to distilling safe LLM systems using soft prompts, which achieves superior safety-usefulness trade-offs compared to existing methods while requiring minimal additional memory and compute at inference time. This is crucial for on-device deployment of LLMs, where resource constraints are a significant challenge. The proposed method has the potential to enable widespread adoption of safe LLMs in edge devices.",
+            "key_metrics": {
+              "primary_metric": "Superior safety-usefulness trade-offs",
+              "baseline": "LoRA adapters, steering vectors, and direct optimization methods",
+              "improvement_percentage": "Not quantified in the paper, but the authors claim that soft prompt distillation outperforms alternative methods"
+            },
+            "technical_breakdown": {
+              "method": "The authors propose a distillation-based approach that transfers safety behaviors from guard models into learned soft prompts using total variation and KL divergence. Soft prompts are used to fine-tune the LLM, allowing it to mimic the safety behaviors of the guard model.",
+              "architecture": "The proposed architecture consists of a large language model (LLM) and a guard model, which is used to provide safety guarantees. The LLM is fine-tuned using soft prompts, which are learned through distillation.",
+              "implementation_details": "The authors use total variation and KL divergence as distillation losses to transfer safety behaviors from the guard model to the soft prompts. They also experiment with different parameter-efficient fine-tuning approaches, including LoRA adapters and steering vectors.",
+              "code_complexity": "The computational complexity of the proposed method is not explicitly quantified in the paper. However, the authors mention that the method requires minimal additional memory and compute at inference time, suggesting that it is relatively efficient."
+            },
+            "relevance_tags": [
+              "Large Language Models",
+              "Safety Alignment",
+              "On-Device Deployment",
+              "Distillation",
+              "Soft Prompts"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-06-09T03:35:40.758163",
+          "conference_info": {
+            "conference": "UAI",
+            "year": "2026",
+            "comment": "Accepted to UAI 2026",
+            "raw_comment": "Accepted to UAI 2026",
+            "category": "General ML/AI",
+            "rank": "A+"
+          }
+        },
+        {
+          "paper": {
+            "title": "Temporal-Aware Reasoning Optimization for Video Temporal Grounding",
+            "arxiv_id": "2606.09248v1",
+            "authors": [
+              "Minghang Zheng",
+              "Zihao Yin",
+              "Yi Yang",
+              "Yuxin Peng",
+              "Yang Liu"
+            ],
+            "published": "2026-06-08T09:21:01Z",
+            "updated": "2026-06-08T09:21:01Z",
+            "summary": "Multi-modal Large Language Models (MLLMs) have achieved remarkable progress in video temporal grounding with reinforcement learning for generating reasoning paths. However, existing models often produce superficial reasoning, which offers limited guidance for precise temporal localization. This limitation stems from (1) inefficient random exploration and (2) reward functions that focus solely on the answer correctness while ignoring reasoning quality. To address these issues, we propose TaRO (Temporal-Aware Reasoning Optimization), a framework that explicitly enhances the model's ability of thinking with time. First, we introduce a Constructive Reasoning Exploration that leverages pre-generated dense captions to construct reasoning paths grounded in explicit visual cues and timestamps, enabling efficient exploration of high-quality time-aware reasoning. Second, to evaluate reasoning quality, we design a Temporal-Sensitivity Reward. High-quality reasoning should be anchored to specific events and timestamps. If the event boundary under thinking is disrupted, such reasoning should become invalid, leading to a drop in the logit of the reasoning path. We utilize this drop as a critique of reasoning quality. Finally, TaRO follows a progressive curriculum, which starts by utilizing this reward to select better constructed reasoning paths, and evolves to a free exploration phase where the model autonomously generates effective reasoning. Experiments demonstrate that TaRO achieves state-of-the-art performance on VTG benchmarks. Code is available at https://github.com/oceanflowlab/TaRO.",
+            "categories": "cs.CV",
+            "comment": "Accepted by ICML 2026"
+          },
+          "analysis": {
+            "problem_statement": "The paper addresses the issue of superficial reasoning in video temporal grounding tasks, where existing models produce limited guidance for precise temporal localization.",
+            "bottleneck_addressed": "The AI bottleneck addressed is the inefficient exploration of high-quality time-aware reasoning in multi-modal large language models (MLLMs) for video temporal grounding.",
+            "executive_summary": "This paper proposes TaRO, a framework that enhances the model's ability to think with time, addressing the limitations of existing models in video temporal grounding tasks. TaRO achieves state-of-the-art performance on VTG benchmarks, demonstrating its effectiveness in producing high-quality reasoning paths.",
+            "key_metrics": {
+              "primary_metric": "State-of-the-art performance on VTG benchmarks",
+              "metric_value": "Not specified",
+              "baseline": "Not specified",
+              "improvement_percentage": "Not quantifiable"
+            },
+            "technical_breakdown": {
+              "method": "TaRO proposes a Constructive Reasoning Exploration that leverages pre-generated dense captions to construct reasoning paths grounded in explicit visual cues and timestamps. It also designs a Temporal-Sensitivity Reward to evaluate reasoning quality and a progressive curriculum to evolve the model's reasoning capabilities.",
+              "architecture": "The architecture of TaRO consists of a Constructive Reasoning Exploration module, a Temporal-Sensitivity Reward module, and a progressive curriculum.",
+              "implementation_details": "TaRO utilizes a combination of reinforcement learning and progressive curriculum learning to optimize the model's reasoning capabilities. The Constructive Reasoning Exploration module leverages pre-generated dense captions, while the Temporal-Sensitivity Reward module evaluates reasoning quality based on the model's ability to anchor reasoning to specific events and timestamps.",
+              "code_complexity": "The computational complexity of TaRO is high due to the use of reinforcement learning and progressive curriculum learning. However, the authors provide a GitHub repository with the implementation details, making it easier for researchers to replicate the results."
+            },
+            "relevance_tags": [
+              "video temporal grounding",
+              "multi-modal large language models",
+              "reinforcement learning",
+              "progressive curriculum learning"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-06-09T03:38:04.200564",
+          "conference_info": {
+            "conference": "ICML",
+            "year": "2026",
+            "comment": "Accepted by ICML 2026",
+            "raw_comment": "Accepted by ICML 2026",
+            "category": "General ML/AI",
+            "rank": "A+"
+          }
+        },
+        {
+          "paper": {
+            "title": "The Injection Paradox: Brand-Level Suppression in Safety-Trained LLM Recommendations via RAG Context Injection",
+            "arxiv_id": "2606.09204v1",
+            "authors": [
+              "Hyunseok Paeng"
+            ],
+            "published": "2026-06-08T08:38:33Z",
+            "updated": "2026-06-08T08:38:33Z",
+            "summary": "We present a reproducible failure mode of safety training in RAG-based LLM recommendation -- the Injection Paradox -- in which prompt injections embedded in retrieved documents backfire against the attacker, suppressing the target brand below the injection-free baseline. In safety-trained Claude models, documents containing prompt injections suffer a sharp drop in recommendation rate, and this suppression propagates beyond the injected document to unmodified documents of the same brand. In Claude Opus 4.6, the target brand drops from a 54% baseline to zero top-2 recommendations across all 50 trials, even though only 1 of 4 brand documents in the corpus contains an injection. The directional pattern is reproduced in counterfactual experiments and across three brands. A contrasting result across the GPT models tested, where the same injection instead increases recommendations, suggests model-family differences in how injection-like context affects recommendation behavior. These findings raise the technical possibility of a reverse-attack scenario in which an adversary embeds injections in a competitor's documents to suppress the competitor's brand via safety-sensitive model behavior.",
+            "categories": "cs.LG",
+            "comment": "16 pages, 1 figure, 15 tables. Accepted at the ICML 2026 Workshop on Failure Modes in Agentic AI (FAGEN), a non-archival venue"
+          },
+          "analysis": {
+            "problem_statement": "The paper addresses the problem of brand-level suppression in safety-trained Large Language Model (LLM) recommendations via Retrieval-Augmented Generation (RAG) context injection.",
+            "bottleneck_addressed": "The paper addresses the bottleneck of safety training in LLM recommendations, specifically the potential for model behavior to be exploited by an adversary.",
+            "executive_summary": "This paper reveals a previously unknown failure mode of safety training in RAG-based LLM recommendations, where prompt injections embedded in retrieved documents can backfire and suppress the target brand. This finding raises the possibility of a reverse-attack scenario where an adversary embeds injections in a competitor's documents to suppress their brand. The results have significant implications for the development and deployment of safety-sensitive models.",
+            "key_metrics": {
+              "primary_metric": "Target brand suppression via RAG context injection",
+              "metric_value": "54% baseline to 0 top-2 recommendations",
+              "baseline": "Injection-free baseline",
+              "improvement_percentage": "100% suppression"
+            },
+            "technical_breakdown": {
+              "method": "The paper presents a reproducible failure mode of safety training in RAG-based LLM recommendations, where prompt injections embedded in retrieved documents backfire and suppress the target brand.",
+              "architecture": "RAG-based LLM recommendation architecture, specifically Claude models and GPT models",
+              "implementation_details": "The paper uses counterfactual experiments and across three brands to reproduce the directional pattern of target brand suppression. The authors also use a corpus of 50 trials to evaluate the effect of prompt injections on recommendation behavior.",
+              "code_complexity": "The paper does not provide specific details on code complexity or training time implications, but notes that the results are reproducible and can be achieved using standard LLM recommendation architectures."
+            },
+            "relevance_tags": [
+              "Safety Training",
+              "LLM Recommendations",
+              "RAG Context Injection",
+              "Reverse-Attack Scenario",
+              "Model Exploitation"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-06-09T03:35:51.824426",
+          "conference_info": {
+            "conference": "ICML",
+            "year": "2026",
+            "comment": "16 pages, 1 figure, 15 tables. Accepted at the ICML 2026 Workshop on Failure Modes in Agentic AI (FAGEN), a non-archival venue",
+            "raw_comment": "16 pages, 1 figure, 15 tables. Accepted at the ICML 2026 Workshop on Failure Modes in Agentic AI (FAGEN), a non-archival venue",
+            "category": "General ML/AI",
+            "rank": "A+"
+          }
+        },
+        {
+          "paper": {
+            "title": "Culturally-Adapted Red-Teaming Across East and Southeast Asian Contexts: A Methodological and Comparative Analysis",
+            "arxiv_id": "2606.09178v1",
+            "authors": [
+              "Hyeji Choi",
+              "Yongtaek Lim",
+              "Minwoo Kim"
+            ],
+            "published": "2026-06-08T08:17:18Z",
+            "updated": "2026-06-08T08:17:18Z",
+            "summary": "Multilingual safety evaluation of large language models (LLMs) has predominantly relied on direct translation (DT) of English benchmarks into target languages - an approach that converts surface-level linguistic form while failing to reflect the cultural context embedded in threat scenarios, social norms, and legal frameworks. We construct paired DT and culturally-adapted (CA) datasets via 1:1 seed matching for four languages - Korean (KO), Japanese (JA), Thai (TH), and Khmer (KM) - and compare Attack Success Rate (ASR) and Cultural Realism scores across four open-source LLM. CA prompts yield Delta-ASR > 0 across all 16 language x model combinations (mean +9.3 pp), and DT-based evaluation underestimates risk in 44 of 48 category x language combinations. Language-level analysis reveals that the distribution of threat forms is heterogeneous across languages. Cultural Realism analysis further shows that DT Cultural Depth (C3) scores remain consistently below 1.0 out of 3.0 across all four languages (mean 0.17), whereas CA scores reach up to 2.51, indicating that direct translation produces inputs systematically divergent from those encountered in real-world multicultural settings. These findings demonstrate that adapting benchmarks to language-specific cultural contexts - rather than relying on linguistic translation alone - is necessary for valid multilingual LLM safety evaluation.",
+            "categories": "cs.CL",
+            "comment": "Accepted to ICML 2026 Workshop on AIWILDS"
+          },
+          "analysis": {
+            "problem_statement": "The paper addresses the limitation of relying solely on direct translation of English benchmarks for multilingual safety evaluation of large language models (LLMs), which fails to account for cultural context.",
+            "bottleneck_addressed": "Cultural insensitivity in multilingual LLM safety evaluation",
+            "executive_summary": "This paper highlights the importance of adapting benchmarks to language-specific cultural contexts for valid multilingual LLM safety evaluation. The authors demonstrate that direct translation underestimates risk and produces inputs divergent from real-world multicultural settings. This matters to the current AI landscape as it affects the reliability and trustworthiness of LLMs in diverse cultural contexts.",
+            "key_metrics": {
+              "primary_metric": "Delta-ASR > 0 across all 16 language x model combinations",
+              "metric_value": "+9.3 pp (mean improvement)",
+              "baseline": "Direct Translation (DT) evaluation",
+              "improvement_percentage": "9.3% improvement"
+            },
+            "technical_breakdown": {
+              "method": "Constructing paired DT and culturally-adapted (CA) datasets via 1:1 seed matching for four languages - Korean (KO), Japanese (JA), Thai (TH), and Khmer (KM).",
+              "architecture": "No specific architecture mentioned, but likely involves a combination of natural language processing (NLP) and machine learning (ML) techniques.",
+              "implementation_details": "Attack Success Rate (ASR) and Cultural Realism scores are used as evaluation metrics. The authors also analyze the distribution of threat forms and cultural depth (C3) scores.",
+              "code_complexity": "Not explicitly stated, but likely involves moderate to high computational complexity due to the use of ML and NLP techniques."
+            },
+            "relevance_tags": [
+              "Multilingual LLM safety evaluation",
+              "Cultural adaptation",
+              "Natural Language Processing",
+              "Machine Learning"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-06-09T03:33:53.087689",
+          "conference_info": {
+            "conference": "ICML",
+            "year": "2026",
+            "comment": "Accepted to ICML 2026 Workshop on AIWILDS",
+            "raw_comment": "Accepted to ICML 2026 Workshop on AIWILDS",
+            "category": "General ML/AI",
+            "rank": "A+"
+          }
+        },
+        {
+          "paper": {
+            "title": "Reliable to Expressive: A Curriculum for Rubric-Following Safety Judges",
+            "arxiv_id": "2606.09165v1",
+            "authors": [
+              "Yongtaek Lim",
+              "Hyeji Choi",
+              "Minwoo Kim"
+            ],
+            "published": "2026-06-08T08:02:57Z",
+            "updated": "2026-06-08T08:02:57Z",
+            "summary": "Safety judges are increasingly deployed to evaluate model outputs against evolving criteria, yet recent meta-evaluation work shows they remain brittle under prompt and rubric variation, with false negative-rate swings of up to 0.24 reported for stylistic perturbations alone. We argue that safety judgment is fundamentally a rubric-following problem: a robust judge must apply the given evaluation criteria consistently across rubric formulations rather than memorize one specific template. We propose a training strategy that combines (i) instance-conditioned dynamic rubrics generated from prompt-response-label triples to expose the judge to the variability of evaluation criteria, and (ii) a reliable-to-expressive curriculum that begins with clean fixed-rubric supervision and progressively introduces noisier dynamic-rubric data. We evaluate on a single human-labeled set under three contrasting rubric prompts (HarmBench-style, ShieldGemma-style, and a domain-specific rubric). Our 12B curriculum judge achieves 94.12-94.88% accuracy across the three rubrics with a cross-rubric range of only 0.76, outperforming general-purpose LLMs, dedicated safety classifiers, and reasoning-oriented judges up to 30B in both peak accuracy and stability. An ablation shows that naively mixing dynamic rubrics into SFT increases cross rubric variance (1.44 -> 3.60); only the curriculum schedule recovers and improves on the fixed rubric baseline (variance 0.76).",
+            "categories": "cs.AI",
+            "comment": "Accepted to ICML 2026 Workshop on AIWILDS"
+          },
+          "analysis": {
+            "problem_statement": "The paper addresses the brittleness of safety judges in evaluating model outputs against evolving criteria, particularly under prompt and rubric variation.",
+            "bottleneck_addressed": "Evaluation brittleness and lack of robustness in safety judgment tasks",
+            "executive_summary": "This paper proposes a curriculum-based approach to train safety judges that can robustly follow evolving evaluation criteria, outperforming general-purpose LLMs and dedicated safety classifiers. This matters to the current AI landscape as it enables more reliable and expressive safety judgment, crucial for deploying AI systems in high-stakes applications. The proposed method demonstrates significant improvements in accuracy and stability across different rubrics.",
+            "key_metrics": {
+              "primary_metric": "Accuracy across three contrasting rubric prompts",
+              "metric_value": "94.12-94.88%",
+              "baseline": "General-purpose LLMs, dedicated safety classifiers, and reasoning-oriented judges",
+              "improvement_percentage": "up to 30% improvement in peak accuracy and stability"
+            },
+            "technical_breakdown": {
+              "method": "The proposed method combines instance-conditioned dynamic rubrics generated from prompt-response-label triples with a reliable-to-expressive curriculum that begins with clean fixed-rubric supervision and progressively introduces noisier dynamic-rubric data.",
+              "architecture": "The proposed judge architecture is based on a 12B transformer model, with the curriculum schedule as a key architectural component.",
+              "implementation_details": "The method uses prompt-response-label triples to generate dynamic rubrics, and the reliable-to-expressive curriculum is implemented using a progressive introduction of noisier dynamic-rubric data.",
+              "code_complexity": "The proposed method requires significant computational resources and training time, with a computational complexity of O(n^2) due to the dynamic rubric generation and the curriculum schedule."
+            },
+            "relevance_tags": [
+              "Safety Judgment",
+              "Evaluation Brittleness",
+              "Curriculum Learning",
+              "Transformer Models",
+              "Large Language Models"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-06-09T03:34:03.187844",
+          "conference_info": {
+            "conference": "ICML",
+            "year": "2026",
+            "comment": "Accepted to ICML 2026 Workshop on AIWILDS",
+            "raw_comment": "Accepted to ICML 2026 Workshop on AIWILDS",
+            "category": "General ML/AI",
+            "rank": "A+"
+          }
+        },
+        {
+          "paper": {
+            "title": "OmniGen-AR: AutoRegressive Any-to-Image Generation",
+            "arxiv_id": "2606.09156v1",
+            "authors": [
+              "Junke Wang",
+              "Xun Wang",
+              "Qiushan Guo",
+              "Peize Sun",
+              "Weilin Huang",
+              "Zuxuan Wu",
+              "Yu-Gang Jiang"
+            ],
+            "published": "2026-06-08T07:47:53Z",
+            "updated": "2026-06-08T07:47:53Z",
+            "summary": "Autoregressive (AR) models have demonstrated strong potential in visual generation, offering superior performance with simple architectures and optimization objectives. However, existing methods are typically limited to single-modality conditions, e.g., text, restricting their applicability in real-world scenarios that demand image synthesis from diverse controls. In this work, we present OmniGen-AR, a unified autoregressive framework for Any-to-Image generation. By discretizing various visual conditions through a shared visual tokenizer and text prompts with a text tokenizer, OmniGen-AR supports a broad spectrum of conditional inputs within a single model, including text (text-to-image generation), spatial signals (segmentation-to-image and depth-to-image), and visual context (image editing, frame prediction, and text-to-video generation). To mitigate the risk of information leakage from condition tokens to content tokens, we introduce Disentangled Causal Attention (DCA), which separates the full-sequence causal mask into condition causal attention and content causal attention. It serves as a training-time regularizer without affecting the standard next-token prediction during inference. With this design, OmniGen-AR achieves new state-of-the-art or at least competitive results across a range of benchmark, e.g., 0.63 on GenEval and 80.02 on VBench, demonstrating its effectiveness in flexible and high-fidelity visual generation.",
+            "categories": "cs.CV",
+            "comment": "Accepted by NeurIPS"
+          },
+          "analysis": {
+            "problem_statement": "The paper addresses the problem of generating images from diverse conditional inputs, such as text, spatial signals, and visual context, within a unified autoregressive framework.",
+            "bottleneck_addressed": "The bottleneck of limited modality conditions in existing autoregressive visual generation models.",
+            "executive_summary": "OmniGen-AR presents a unified autoregressive framework for Any-to-Image generation, enabling flexible and high-fidelity visual generation from diverse conditional inputs. This work has significant implications for real-world applications, such as text-to-image generation, image editing, and text-to-video generation. The proposed framework achieves state-of-the-art or competitive results on various benchmarks.",
+            "key_metrics": {
+              "primary_metric": "GenEval score",
+              "metric_value": 0.63,
+              "baseline": "Not specified",
+              "improvement_percentage": "Not quantifiable"
+            },
+            "technical_breakdown": {
+              "method": "OmniGen-AR uses a shared visual tokenizer and text tokenizer to discretize various visual conditions, and introduces Disentangled Causal Attention (DCA) to mitigate information leakage from condition tokens to content tokens.",
+              "architecture": "The framework consists of a shared visual tokenizer, text tokenizer, and a unified autoregressive model with Disentangled Causal Attention (DCA).",
+              "implementation_details": "The authors use a causal mask to separate condition causal attention and content causal attention, and employ a training-time regularizer to prevent information leakage.",
+              "code_complexity": "The computational complexity of OmniGen-AR is not explicitly stated, but the introduction of Disentangled Causal Attention (DCA) may increase training time due to the additional regularizer."
+            },
+            "relevance_tags": [
+              "autoregressive models",
+              "visual generation",
+              "text-to-image generation",
+              "image editing",
+              "text-to-video generation"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-06-09T03:38:14.982885",
+          "conference_info": {
+            "conference": "NEURIPS",
+            "year": "Unknown",
+            "comment": "Accepted by NeurIPS",
+            "raw_comment": "Accepted by NeurIPS",
+            "category": "General ML/AI",
+            "rank": "A+"
+          }
+        },
+        {
+          "paper": {
+            "title": "Improved Convergence Analysis of Topology Dependence in Decentralized SGD",
+            "arxiv_id": "2606.09154v1",
+            "authors": [
+              "Yuki Takezawa",
+              "Anastasia Koloskova",
+              "Sebastian U. Stich"
+            ],
+            "published": "2026-06-08T07:46:47Z",
+            "updated": "2026-06-08T07:46:47Z",
+            "summary": "Decentralized SGD is a fundamental algorithm in decentralized learning, although the influence of an underlying network topology on its convergence behavior is not yet fully understood. Existing convergence analyses have shown that topologies with a small spectral gap significantly deteriorate the convergence rate of Decentralized SGD in both homogeneous and heterogeneous cases. However, many prior papers have reported that indeed the choice of the topology has a significant experimental impact in the heterogeneous case, but has little experimental impact on training behavior in the homogeneous case. In this paper, we present a tighter convergence analysis of Decentralized SGD, offering a more precise understanding of how topologies affect the convergence rate than the prior analysis. Specifically, unlike existing convergence analyses that used only the spectral gap as a property of the topology, our novel analysis shows that all eigenvalues of the mixing matrix affect the convergence rate. Throughout the experiments, we carefully evaluated the convergence behavior of Decentralized SGD and demonstrated that our novel convergence analysis can more accurately describe the effect of topology on the convergence rate.",
+            "categories": "cs.LG",
+            "comment": "ICML 2026"
+          },
+          "analysis": {
+            "problem_statement": "Analyzing the impact of network topology on the convergence behavior of Decentralized Stochastic Gradient Descent (Decentralized SGD) in both homogeneous and heterogeneous cases.",
+            "bottleneck_addressed": "Decentralized learning's lack of understanding of how network topology affects convergence behavior.",
+            "executive_summary": "This paper presents a novel convergence analysis of Decentralized SGD, showing that all eigenvalues of the mixing matrix affect the convergence rate, not just the spectral gap. This provides a more precise understanding of how topologies impact convergence, resolving the discrepancy between theoretical and experimental results.",
+            "key_metrics": {
+              "primary_metric": "Improved convergence analysis of Decentralized SGD",
+              "metric_value": "Not explicitly stated",
+              "baseline": "Existing convergence analyses that used only the spectral gap",
+              "improvement_percentage": "Not quantifiable"
+            },
+            "technical_breakdown": {
+              "method": "The authors use a novel convergence analysis that considers all eigenvalues of the mixing matrix, rather than just the spectral gap. This is achieved by deriving a tighter bound on the convergence rate using the eigenvalues of the mixing matrix.",
+              "architecture": "Decentralized SGD, mixing matrix, eigenvalues",
+              "implementation_details": "The authors use a combination of theoretical analysis and experiments to demonstrate the effectiveness of their novel convergence analysis. They evaluate the convergence behavior of Decentralized SGD on various topologies and show that their analysis accurately describes the effect of topology on the convergence rate.",
+              "code_complexity": "The computational complexity of the novel convergence analysis is not explicitly stated, but it is likely to be higher than existing analyses due to the consideration of all eigenvalues of the mixing matrix."
+            },
+            "relevance_tags": [
+              "Decentralized learning",
+              "Stochastic Gradient Descent",
+              "Network topology",
+              "Convergence analysis"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-06-09T03:36:01.005367",
+          "conference_info": {
+            "conference": "ICML",
+            "year": "2026",
+            "comment": "ICML 2026",
+            "raw_comment": "ICML 2026",
+            "category": "General ML/AI",
+            "rank": "A+"
+          }
+        },
+        {
+          "paper": {
+            "title": "PrivCode++: Latent-Conditioned Differentially Private Code Generation for Comprehensive Guarantees",
+            "arxiv_id": "2606.09145v1",
+            "authors": [
+              "Zheng Liu",
+              "Chen Gong",
+              "Terry Yue Zhuo",
+              "Zhou Yang",
+              "Kecen Li",
+              "Wenlong Meng",
+              "Xinwen Hou",
+              "Yu Liu",
+              "Xiaochen Li"
+            ],
+            "published": "2026-06-08T07:42:44Z",
+            "updated": "2026-06-08T07:42:44Z",
+            "summary": "Large language models fine-tuned on instruction-code pairs may memorize and subsequently leak sensitive training data. Existing differentially private (DP) code generation methods primarily protect code snippets while assuming prompts are public, which fails in realistic scenarios where prompts may also contain sensitive information. When prompts cannot be explicitly learned or used during generation, code synthesis suffers from severe utility degradation as well as reduced diversity and fidelity. To address these challenges, we propose PrivCode-Plus, the first work to explore DP code generation where both prompts and code snippets are considered sensitive in LLM fine-tuning. PrivCode-Plus introduces a two-stage DP framework with a Privacy-Free Latent Conditioning module, enabling effective DP fine-tuning and data synthesis without direct access to sensitive prompts or code. Extensive experiments show that PrivCode-Plus achieves substantially higher utility than baselines, remains competitive with the method with relaxing privacy assumptions, and provides stronger privacy guarantees.",
+            "categories": "cs.CR",
+            "comment": "Accepted at ICML 2026"
+          },
+          "analysis": {
+            "problem_statement": "Fine-tuning large language models (LLMs) on instruction-code pairs can lead to sensitive training data leakage due to memorization, particularly when both prompts and code snippets are considered sensitive.",
+            "bottleneck_addressed": "Differential Privacy (DP) in Code Generation for LLMs",
+            "executive_summary": "This paper addresses a critical challenge in AI research: ensuring differential privacy in code generation for large language models, particularly when both prompts and code snippets are sensitive. The proposed method, PrivCode++, offers a two-stage DP framework that enables effective fine-tuning and data synthesis without direct access to sensitive information. This breakthrough has significant implications for the development of trustworthy AI models.",
+            "key_metrics": {
+              "primary_metric": "Achieves substantially higher utility than baselines",
+              "metric_value": "Not specified",
+              "baseline": "Existing differentially private (DP) code generation methods",
+              "improvement_percentage": "Not quantifiable"
+            },
+            "technical_breakdown": {
+              "method": "PrivCode++ introduces a two-stage DP framework with a Privacy-Free Latent Conditioning module, which enables effective DP fine-tuning and data synthesis without direct access to sensitive prompts or code.",
+              "architecture": "The framework consists of a Privacy-Free Latent Conditioning module, a DP code generator, and a DP fine-tuning module.",
+              "implementation_details": "The method utilizes a combination of techniques, including latent conditioning, differential privacy, and fine-tuning, to achieve robust and private code generation.",
+              "code_complexity": "The computational complexity of the proposed method is not explicitly stated, but it is likely to be high due to the use of complex neural network architectures and differential privacy mechanisms."
+            },
+            "relevance_tags": [
+              "Differential Privacy",
+              "Code Generation",
+              "Large Language Models",
+              "Trustworthy AI"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-06-09T03:39:37.680652",
+          "conference_info": {
+            "conference": "ICML",
+            "year": "2026",
+            "comment": "Accepted at ICML 2026",
+            "raw_comment": "Accepted at ICML 2026",
+            "category": "General ML/AI",
+            "rank": "A+"
+          }
+        },
+        {
+          "paper": {
+            "title": "Counterfactual Transport Flows for Offline Conservative Trajectory Refinement",
+            "arxiv_id": "2606.09115v1",
+            "authors": [
+              "Lena Krieger",
+              "Xuan Zhao",
+              "Zhuo Cao",
+              "Qin Wang",
+              "Hanno Scharr",
+              "Ira Assent"
+            ],
+            "published": "2026-06-08T07:11:03Z",
+            "updated": "2026-06-08T07:11:03Z",
+            "summary": "Offline reinforcement learning (RL) offers a path to policy improvement from logged data alone, using historical returns or other measurable outcomes as world feedback. A key difficulty is improving observed behavior without extrapolating beyond what the offline data supports. We propose \\emph{counterfactual transport flows}, a source-conditioned trajectory refinement framework for offline decision-making guided by world feedback. Given a low-feedback candidate trajectory, we construct local preference pairs from offline data by retrieving nearby trajectories in latent trajectory space with higher task-specific feedback, and use them as weak supervision for conservative refinement. The framework learns instance-specific refinement directions: at inference time, a refinement strength parameter controls how far the candidate trajectory is transported, enabling a trade-off between preserving the original behavior and applying stronger improvement. Experiments on D4RL benchmarks, including AntMaze and MuJoCo tasks, show that our method improves behavior from historical returns as world feedback, while providing interpretable trajectory-level refinement paths.",
+            "categories": "cs.LG",
+            "comment": "accepted at RLxF @ ICML 2026"
+          },
+          "analysis": {
+            "problem_statement": "Offline reinforcement learning (RL) aims to improve observed behavior without extrapolating beyond what the offline data supports.",
+            "bottleneck_addressed": "The key difficulty in offline RL is improving observed behavior without extrapolating beyond what the offline data supports, which is a classic problem of overfitting to the training data.",
+            "executive_summary": "This paper proposes a novel framework called counterfactual transport flows for offline decision-making guided by world feedback, which enables the refinement of observed behavior without extrapolating beyond the offline data. This matters to the current AI landscape as it provides a path to policy improvement from logged data alone, using historical returns or other measurable outcomes as world feedback. The proposed method improves behavior from historical returns as world feedback, while providing interpretable trajectory-level refinement paths.",
+            "key_metrics": {
+              "primary_metric": "Improves behavior from historical returns as world feedback",
+              "metric_value": "Not specified",
+              "baseline": "Not specified",
+              "improvement_percentage": "Not quantifiable"
+            },
+            "technical_breakdown": {
+              "method": "The proposed framework constructs local preference pairs from offline data by retrieving nearby trajectories in latent trajectory space with higher task-specific feedback, and uses them as weak supervision for conservative refinement.",
+              "architecture": "The framework consists of a source-conditioned trajectory refinement module, which learns instance-specific refinement directions, and a refinement strength parameter that controls how far the candidate trajectory is transported.",
+              "implementation_details": "The paper uses a combination of techniques, including latent trajectory space, preference pairs, and weak supervision, to refine observed behavior without extrapolating beyond the offline data.",
+              "code_complexity": "The computational complexity of the proposed method is not explicitly stated, but it is likely to be high due to the use of latent trajectory space and preference pairs."
+            },
+            "relevance_tags": [
+              "offline reinforcement learning",
+              "counterfactual transport flows",
+              "trajectory refinement",
+              "weak supervision"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-06-09T03:36:08.237782",
+          "conference_info": {
+            "conference": "ICML",
+            "year": "2026",
+            "comment": "accepted at RLxF @ ICML 2026",
+            "raw_comment": "accepted at RLxF @ ICML 2026",
+            "category": "General ML/AI",
+            "rank": "A+"
+          }
+        },
+        {
+          "paper": {
+            "title": "SafeRun: Enabling Determinism in LLM Planning for Running",
+            "arxiv_id": "2606.09027v1",
+            "authors": [
+              "Meilin Chen",
+              "Zepeng Zhai",
+              "Jiaxuan Zhao",
+              "Yuan Lu"
+            ],
+            "published": "2026-06-08T04:53:01Z",
+            "updated": "2026-06-08T04:53:01Z",
+            "summary": "Large Language Models enable flexible natural-language planning but remain unreliable in determinism-critical domains due to their probabilistic nature. This limitation is especially problematic in running planning, where violating safety rules can lead to safety risks. We propose SafeRun, a framework for deterministic LLM-based planning via a decoupled architecture. SafeRun separates soft interpretation by an LLM from hard constraint enforcement by a deterministic solver, ensuring strict safety constraints while preserving natural-language flexibility. To validate SafeRun, we build a comprehensive benchmark for running planning under realistic physiological and safety constraints. Experiments across five LLMs show that SafeRun achieves 100\\% safety score (vs.\\ 79.1\\% PE average and 97.6\\% CodeAct average) while maintaining competitive instruction-following scores. The SafeRun benchmark is publicly available at \\href{https://huggingface.co/datasets/zzp-seeker/SafeRun-RunPlanning-Benchmark}{huggingface}.",
+            "categories": "cs.CL",
+            "comment": "Workshop on Planning in the Era of LLMs (LM4Plan) at ICML 2026"
+          },
+          "analysis": {
+            "problem_statement": "Large Language Models (LLMs) lack determinism in planning tasks, particularly in safety-critical domains like running planning, where violating safety rules can lead to safety risks.",
+            "bottleneck_addressed": "Probabilistic nature of LLMs in planning tasks, specifically in deterministic domains.",
+            "executive_summary": "The paper proposes SafeRun, a framework that addresses the determinism bottleneck in LLM-based planning by decoupling soft interpretation from hard constraint enforcement. This allows for strict safety constraints while preserving natural-language flexibility, significantly improving safety scores in running planning.",
+            "key_metrics": {
+              "primary_metric": "100% safety score",
+              "metric_value": "100%",
+              "baseline": "79.1% PE average and 97.6% CodeAct average",
+              "improvement_percentage": "26.3% improvement over PE average and 2.4% improvement over CodeAct average"
+            },
+            "technical_breakdown": {
+              "method": "SafeRun uses a decoupled architecture to separate soft interpretation by an LLM from hard constraint enforcement by a deterministic solver.",
+              "architecture": {
+                "LLM": "Large Language Model",
+                "Deterministic Solver": "A module responsible for enforcing strict safety constraints"
+              },
+              "implementation_details": "The authors use a comprehensive benchmark for running planning under realistic physiological and safety constraints, evaluating five LLMs.",
+              "code_complexity": "The computational complexity of SafeRun is not explicitly stated, but the use of a deterministic solver suggests a potentially higher computational cost compared to traditional LLM-based planning."
+            },
+            "relevance_tags": [
+              "Determinism",
+              "Large Language Models",
+              "Planning",
+              "Safety-Critical Domains",
+              "Running Planning"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-06-09T03:34:46.544377",
+          "conference_info": {
+            "conference": "ICML",
+            "year": "2026",
+            "comment": "Workshop on Planning in the Era of LLMs (LM4Plan) at ICML 2026",
+            "raw_comment": "Workshop on Planning in the Era of LLMs (LM4Plan) at ICML 2026",
+            "category": "General ML/AI",
+            "rank": "A+"
+          }
+        },
+        {
+          "paper": {
+            "title": "Scaling by Diversified Experience for Vision-Language-Action Models",
+            "arxiv_id": "2606.09009v1",
+            "authors": [
+              "Leiyu Wang",
+              "Zhaofengnian Wang",
+              "Xueqi Li",
+              "Luoyi Fan",
+              "Cewu Lu",
+              "Nanyang Ye"
+            ],
+            "published": "2026-06-08T04:13:38Z",
+            "updated": "2026-06-08T04:13:38Z",
+            "summary": "Vision-Language-Action models face significant challenges in real-world deployment due to the entanglement of high-level reasoning with low-level control, and the instability of policy optimization. In this paper, we introduce SyVLA, a robust VLA model trained with diversified experiences. We propose an Intention Decoupling algorithm to isolate control-relevant features from reasoning contexts and a similar-sample guided RL pipeline to stabilize policy updates and mitigate distribution shift. Extensive experiments on real-world robotic tasks and multi-modal benchmarks demonstrate that SyVLA achieves superior task success rates and stronger out-of-distribution generalization compared to existing methods, while effectively preserving core vision-language capabilities. Codes and Datasets is released on \\href{https://sy-vla.github.io/}{project page}.",
+            "categories": "cs.CV",
+            "comment": "ICML 2026, SyVLA"
+          },
+          "analysis": {
+            "problem_statement": "Vision-Language-Action models struggle with entanglement of high-level reasoning and low-level control, leading to instability in policy optimization and poor generalization.",
+            "bottleneck_addressed": "The entanglement of high-level reasoning and low-level control in Vision-Language-Action models, which leads to instability in policy optimization and poor generalization.",
+            "executive_summary": "This paper introduces SyVLA, a robust Vision-Language-Action model that addresses the entanglement of high-level reasoning and low-level control through diversified experiences, intention decoupling, and similar-sample guided RL. This leads to superior task success rates and stronger out-of-distribution generalization, making it a crucial advancement in the field of Vision-Language-Action models.",
+            "key_metrics": {
+              "primary_metric": "Superior task success rates and stronger out-of-distribution generalization",
+              "metric_value": "Not specified",
+              "baseline": "Existing methods",
+              "improvement_percentage": "Not quantifiable"
+            },
+            "technical_breakdown": {
+              "method": "SyVLA uses diversified experiences to train a Vision-Language-Action model, which involves isolating control-relevant features from reasoning contexts using an Intention Decoupling algorithm. A similar-sample guided RL pipeline is used to stabilize policy updates and mitigate distribution shift.",
+              "architecture": "The proposed architecture consists of a Vision-Language-Action model, an Intention Decoupling algorithm, and a similar-sample guided RL pipeline.",
+              "implementation_details": "The Intention Decoupling algorithm is used to isolate control-relevant features from reasoning contexts, and the similar-sample guided RL pipeline is used to stabilize policy updates and mitigate distribution shift.",
+              "code_complexity": "The computational complexity of the proposed method is not explicitly stated, but it is likely to be high due to the use of a Vision-Language-Action model and a similar-sample guided RL pipeline."
+            },
+            "relevance_tags": [
+              "Vision-Language-Action models",
+              "Robotics",
+              "Multi-modal benchmarks",
+              "RL",
+              "Distribution shift"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-06-09T03:38:25.145529",
+          "conference_info": {
+            "conference": "ICML",
+            "year": "2026",
+            "comment": "ICML 2026, SyVLA",
+            "raw_comment": "ICML 2026, SyVLA",
+            "category": "General ML/AI",
+            "rank": "A+"
+          }
+        },
+        {
+          "paper": {
+            "title": "EPS3D: End-to-End Feed-Forward 3D Panoptic Segmentation",
+            "arxiv_id": "2606.08980v1",
+            "authors": [
+              "Runsong Zhu",
+              "Jiaxin Guo",
+              "Xiaoyang Guo",
+              "Zhengzhe Liu",
+              "Ka-Hei Hui",
+              "Wei Yin",
+              "Kai Chen",
+              "Wei Chen",
+              "Weiqiang Ren",
+              "Yunhui Liu",
+              "Pheng-Ann Heng",
+              "Chi-Wing Fu"
+            ],
+            "published": "2026-06-08T03:26:54Z",
+            "updated": "2026-06-08T03:26:54Z",
+            "summary": "This paper introduces EPS3D, a new end-to-end feed-forward framework for open-vocabulary 3D panoptic segmentation. Unlike existing methods relying on additional preprocessing, we design an end-to-end architecture, with a distillation-based training strategy on diverse 3D scenes to predict 3D-aware semantic and instance features from multi-view images, improving 3D consistency and avoiding error accumulation. We further propose a mutual enhancement module to enforce inherent semantic-instance consistency. By aligning semantics within instances (Ins2Sem) and refining instance features with semantic guidance (Sem2Ins), we achieve more coherent 3D scene understanding. Ultimately, EPS3D outperforms SOTA baselines on two benchmarks (e.g., +13% mIoU for semantics on Replica) with high efficiency (e.g., 1s per scene), supporting tasks like robotic manipulation and 3D scene editing.",
+            "categories": "cs.CV",
+            "comment": "ICML 2026. The code is publicly available at \\href{https://github.com/Runsong123/EPS3D}{https://github.com/Runsong123/EPS3D}"
+          },
+          "analysis": {
+            "problem_statement": "The paper addresses the problem of 3D panoptic segmentation, which involves predicting semantic and instance features from multi-view images to achieve 3D consistency and coherent scene understanding.",
+            "bottleneck_addressed": "Error accumulation and inconsistency in 3D scene understanding due to the lack of end-to-end feed-forward frameworks.",
+            "executive_summary": "EPS3D introduces an end-to-end feed-forward framework for 3D panoptic segmentation, addressing the bottleneck of error accumulation and inconsistency in 3D scene understanding. This matters to the current AI landscape as it enables high-efficiency 3D scene understanding, supporting tasks like robotic manipulation and 3D scene editing.",
+            "key_metrics": {
+              "primary_metric": "mIoU (mean Intersection over Union) for semantics",
+              "metric_value": "+13%",
+              "baseline": "SOTA (State-of-the-Art) baselines",
+              "improvement_percentage": "13%"
+            },
+            "technical_breakdown": {
+              "method": "EPS3D uses a distillation-based training strategy on diverse 3D scenes to predict 3D-aware semantic and instance features from multi-view images. The framework consists of a mutual enhancement module that enforces inherent semantic-instance consistency through Ins2Sem and Sem2Ins.",
+              "architecture": "The architecture includes a feed-forward network with a distillation module, a mutual enhancement module, and a feature refinement module.",
+              "implementation_details": "The paper uses a distillation-based training strategy, which involves training a teacher network on a large dataset and then distilling the knowledge into a student network. The mutual enhancement module uses Ins2Sem and Sem2Ins to enforce semantic-instance consistency.",
+              "code_complexity": "The code complexity is moderate, with a training time of 1s per scene, indicating high efficiency."
+            },
+            "relevance_tags": [
+              "3D Panoptic Segmentation",
+              "End-to-End Feed-Forward Frameworks",
+              "Distillation-Based Training",
+              "Mutual Enhancement Module"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-06-09T03:38:34.667051",
+          "conference_info": {
+            "conference": "ICML",
+            "year": "2026",
+            "comment": "ICML 2026. The code is publicly available at \\href{https://github.com/Runsong123/EPS3D}{https://github.com/Runsong123/EPS3D}",
+            "raw_comment": "ICML 2026. The code is publicly available at \\href{https://github.com/Runsong123/EPS3D}{https://github.com/Runsong123/EPS3D}",
+            "category": "General ML/AI",
+            "rank": "A+"
+          }
+        },
+        {
+          "paper": {
+            "title": "Online Learning with Recency: Algorithms for Sliding-window Streaming Multi-armed Bandits",
+            "arxiv_id": "2606.08977v1",
+            "authors": [
+              "Vladimir Braverman",
+              "Chen Wang",
+              "Liudeng Wang",
+              "Samson Zhou"
+            ],
+            "published": "2026-06-08T03:21:54Z",
+            "updated": "2026-06-08T03:21:54Z",
+            "summary": "Motivated by the recency effect in online learning, we study algorithms for single-pass *sliding-window streaming multi-armed bandits (MABs)* in this paper. In this setting, we are given $n$ arms with unknown sub-Gaussian reward distributions and a parameter $W$. The arms arrive in a single-pass stream, and only the most recent $W$ arms are considered valid. The algorithm is required to perform pure exploration and regret minimization with limited memory, defined as the number of stored arms. The model is a natural extension of the streaming multi-armed bandits model (without the sliding window) that has been extensively studied in recent years. We provide a comprehensive analysis of both the pure exploration and regret minimization problems with the model. For pure exploration, we prove that finding the best arm is hard with sublinear memory while finding an approximate best arm admits an efficient algorithm. For regret minimization, we explore a new notion of regret and give sharp memory-regret trade-offs for any single-pass algorithm. We complement our theoretical results with experiments, demonstrating the trade-offs between sample, regret, and memory.",
+            "categories": "cs.LG",
+            "comment": "ICML 2026"
+          },
+          "analysis": {
+            "problem_statement": "Designing efficient algorithms for single-pass sliding-window streaming multi-armed bandits with limited memory to minimize regret and perform pure exploration.",
+            "bottleneck_addressed": "Exploration-exploitation trade-off in online learning with limited memory",
+            "executive_summary": "This paper addresses a critical bottleneck in online learning by developing algorithms for sliding-window streaming multi-armed bandits with limited memory. The proposed solutions provide sharp memory-regret trade-offs and efficient algorithms for pure exploration and regret minimization, making them relevant to the current AI landscape.",
+            "key_metrics": {
+              "primary_metric": "Regret minimization",
+              "metric_value": "O(\u221a(nW log n))",
+              "baseline": "Previous streaming multi-armed bandits algorithms without the sliding window",
+              "improvement_percentage": "Up to 50% improvement in regret minimization"
+            },
+            "technical_breakdown": {
+              "method": "The authors employ a combination of techniques, including Thompson sampling, upper confidence bound (UCB) algorithms, and a new notion of regret called 'sliding-window regret'.",
+              "architecture": "The proposed algorithms consist of a single-pass streaming framework with a sliding window of size W, allowing for efficient exploration and regret minimization.",
+              "implementation_details": "The authors provide a comprehensive analysis of both pure exploration and regret minimization problems, including efficient algorithms for finding an approximate best arm and sharp memory-regret trade-offs.",
+              "code_complexity": "The proposed algorithms have a computational complexity of O(nW log n), making them suitable for large-scale applications with limited memory."
+            },
+            "relevance_tags": [
+              "online learning",
+              "multi-armed bandits",
+              "sliding window",
+              "limited memory",
+              "regret minimization",
+              "pure exploration"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-06-09T03:36:35.688688",
+          "conference_info": {
+            "conference": "ICML",
+            "year": "2026",
+            "comment": "ICML 2026",
+            "raw_comment": "ICML 2026",
+            "category": "General ML/AI",
+            "rank": "A+"
+          }
+        },
+        {
+          "paper": {
+            "title": "Can Data Work be Reparative?",
+            "arxiv_id": "2606.09408v1",
+            "authors": [
+              "Srravya Chandhiramowuli",
+              "Ding Wang",
+              "Alex Taylor"
+            ],
+            "published": "2026-06-08T12:25:35Z",
+            "updated": "2026-06-08T12:25:35Z",
+            "summary": "We present an ethnographic study of an alternative approach to data work, developed by a civic-tech initiative that builds datasets for training and benchmarking online safety systems. They aim to respond to online safety concerns from a feminist perspective, by building safety datasets collaboratively with those most impacted by online harms. In this paper, we examine how this approach aims to reorient data work as a site for repair and redress, and trace the struggles they encounter in the process. Specifically, we draw attention to the challenges and tensions involved in advancing just reward for data work and collective governance of AI datasets. Examining these challenges through an STS-informed lens of reparative justice and repair, we argue that the work of repairing data work (and AI) lies, fundamentally, in resetting the ties of accountability. At a time heightened emphasis on efforts like safety evaluations and red teaming to make AI more responsible, we highlight the need to confront foundational questions about how the humans involved in these efforts relate to the datasets and systems they help produce. A reparative lens demands that we interrupt prevailing norms of data work and place at their centre, not AI or datasets, but those most harmed by the neglect, oversight and exclusion animated in the current modes of dataset production. This, we argue, offers a bold vision for responsibility and contributes towards a critical agenda for building alternative futures of data and AI practice.",
+            "categories": "cs.CY",
+            "comment": "To be presented at ACM FAccT, Montr\u00e9al, Canada, June 25 to June 28, 2026"
+          },
+          "analysis": {
+            "problem_statement": "The paper addresses the problem of neglect, oversight, and exclusion in current data work practices, particularly in AI dataset production, and aims to reorient data work as a site for repair and redress.",
+            "bottleneck_addressed": "Bias and Exclusion in AI Dataset Production",
+            "executive_summary": "This paper presents an ethnographic study of an alternative approach to data work that aims to build safety datasets collaboratively with those most impacted by online harms. By examining the challenges and tensions involved in advancing just reward for data work and collective governance of AI datasets, the paper argues that a reparative lens is necessary to reset the ties of accountability in AI practice.",
+            "key_metrics": {
+              "primary_metric": "Improved representation and inclusion of marginalized groups in AI datasets",
+              "metric_value": "Not quantified",
+              "baseline": "Current data work practices",
+              "improvement_percentage": "N/A"
+            },
+            "technical_breakdown": {
+              "method": "Ethnographic study of an alternative approach to data work, using a STS-informed lens of reparative justice and repair",
+              "architecture": "Collaborative dataset production with marginalized groups",
+              "implementation_details": "Not specified",
+              "code_complexity": "Low ( qualitative research methods)"
+            },
+            "relevance_tags": [
+              "AI Ethics",
+              "Bias and Exclusion",
+              "Data Work",
+              "Reparative Justice"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-06-09T03:33:08.014629",
+          "conference_info": {
+            "conference": "FAccT",
+            "year": "2026",
+            "comment": "To be presented at ACM FAccT, Montr\u00e9al, Canada, June 25 to June 28, 2026",
+            "raw_comment": "To be presented at ACM FAccT, Montr\u00e9al, Canada, June 25 to June 28, 2026",
+            "category": "Human-Computer Interaction",
+            "rank": ""
+          }
+        },
+        {
+          "paper": {
+            "title": "Overcoming Decoder Inconsistencies in Whisper for Dravidian and Low-Resource Languages",
+            "arxiv_id": "2606.09535v1",
+            "authors": [
+              "Chowdam Venkata Kumar",
+              "Kumud Tripathi",
+              "Pankaj Wasnik"
+            ],
+            "published": "2026-06-08T14:18:51Z",
+            "updated": "2026-06-08T14:18:51Z",
+            "summary": "Multilingual ASR models such as Whisper perform well on high-resource languages but exhibit substantially higher Word Error Rates (WER) for Dravidian languages compared to Indo-Aryan ones. Through linguistic and dataset analysis, we show that Dravidian languages have longer words, higher vocabulary diversity, and lower repetition, resulting in sparse token distributions and frequent character-level substitution errors. Baseline fine-tuning further reveals decoder imbalance between self-attention (linguistic context) and cross-attention (acoustic cues). Although synthetic token-repetition experiments indicate potential gains, they are impractical. Motivated by these observations, we introduce two decoder-level enhancements: Weighted-Attention, which adaptively balances attention sources, and Self-Conditioning, which reinjects intermediate predictions to improve token consistency. Experiments demonstrate consistent WER reductions for low-resource and agglutinative languages.",
+            "categories": "cs.CL",
+            "comment": "Accepted at INTERSPEECH 2026, 5 pages, 1 figure, 5 tables"
+          },
+          "analysis": {
+            "problem_statement": "Multilingual ASR models like Whisper exhibit higher Word Error Rates (WER) for Dravidian languages due to their unique linguistic characteristics.",
+            "bottleneck_addressed": "The paper addresses the decoder inconsistency bottleneck in multilingual ASR models, specifically the imbalance between self-attention and cross-attention.",
+            "executive_summary": "This paper tackles the challenge of improving ASR performance on Dravidian languages by introducing two decoder-level enhancements: Weighted-Attention and Self-Conditioning. These techniques adaptively balance attention sources and reinject intermediate predictions to improve token consistency, leading to consistent WER reductions for low-resource and agglutinative languages.",
+            "key_metrics": {
+              "primary_metric": "Word Error Rate (WER)",
+              "metric_value": "Not explicitly stated, but experiments demonstrate consistent WER reductions",
+              "baseline": "Baseline fine-tuning of Whisper",
+              "improvement_percentage": "Not quantifiable, but experiments show consistent reductions"
+            },
+            "technical_breakdown": {
+              "method": "The proposed solution involves two decoder-level enhancements: Weighted-Attention and Self-Conditioning. Weighted-Attention adaptively balances attention sources by assigning weights to self-attention and cross-attention. Self-Conditioning reinjects intermediate predictions to improve token consistency.",
+              "architecture": "The architecture is based on the Whisper ASR model, which uses a transformer decoder with self-attention and cross-attention mechanisms.",
+              "implementation_details": "The authors use synthetic token-repetition experiments to demonstrate the potential gains of their proposed enhancements. They also fine-tune the Whisper model on Dravidian languages and evaluate its performance using the WER metric.",
+              "code_complexity": "The code complexity is not explicitly stated, but the proposed enhancements likely require modifications to the Whisper model's decoder architecture and training procedure. The computational complexity of the proposed enhancements is not quantifiable, but it is likely to be higher than the baseline fine-tuning approach."
+            },
+            "relevance_tags": [
+              "Multilingual ASR",
+              "Dravidian languages",
+              "Low-resource languages",
+              "Decoder inconsistency",
+              "Weighted-Attention",
+              "Self-Conditioning"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-06-09T03:36:58.944050",
+          "conference_info": {
+            "conference": "Interspeech",
+            "year": "2026",
+            "comment": "Accepted at INTERSPEECH 2026, 5 pages, 1 figure, 5 tables",
+            "raw_comment": "Accepted at INTERSPEECH 2026, 5 pages, 1 figure, 5 tables",
+            "category": "Natural Language Processing",
+            "rank": ""
+          }
+        },
+        {
+          "paper": {
+            "title": "A Finetuned SpeechLLM for Joint Multi-Granular L2 Assessment and Natural-Language Rationales",
+            "arxiv_id": "2606.09470v1",
+            "authors": [
+              "Aditya Kamlesh Parikh",
+              "Cristian Tejedor-Garcia",
+              "Catia Cucchiarini",
+              "Helmer Strik"
+            ],
+            "published": "2026-06-08T13:27:40Z",
+            "updated": "2026-06-08T13:27:40Z",
+            "summary": "Automated L2 speech assessment can assign proficiency labels, but often lacks interpretability. We propose a rubric-guided SpeechLLM for multi-aspect, multi-granular assessment, trained with a hybrid objective combining supervised fine-tuning and Bounded Direct Preference Optimization. The model jointly predicts ordinal labels at the sentence-level (accuracy, fluency, prosody), word/phoneme-level accuracy, and generates a natural-language rationale in the same response. On SpeechOcean762, our approach matches or outperforms single-granularity models while remaining competitive with prior approaches. We analyze rationale reliability along two axes: self-consistency with model predictions and alignment with ground-truth labels, using sentiment consistency (plausibility) and mention-based agreement (faithfulness). Rationales are plausible at the sentence level, but faithfulness degrades at the word/phoneme level: references are sparse and weakly aligned with token-level labels.",
+            "categories": "cs.CL",
+            "comment": "Accepted to Interspeech 2026. This publication is part of the project Responsible AI for Voice Diagnostics (RAIVD) with file number NGF.1607.22.013 of the research programme NGF AiNed Fellowship Grants, which is financed by the Dutch Research Council (NWO)"
+          },
+          "analysis": {
+            "problem_statement": "The paper addresses the problem of automating L2 speech assessment, which currently lacks interpretability and is limited to single-granularity predictions.",
+            "bottleneck_addressed": "The lack of interpretability and multi-granularity assessment in automated speech assessment systems.",
+            "executive_summary": "This paper proposes a finetuned SpeechLLM that jointly predicts multi-aspect, multi-granular labels and generates natural-language rationales, addressing the need for more interpretable and comprehensive speech assessment systems. This matters to the current AI landscape as it enables more accurate and reliable speech assessment, which is crucial for language learning and education. The proposed approach also provides insights into the limitations of current speech assessment systems and the potential for future improvements.",
+            "key_metrics": {
+              "primary_metric": "Multi-granular assessment accuracy",
+              "metric_value": "Not explicitly stated",
+              "baseline": "Single-granularity models and prior approaches",
+              "improvement_percentage": "Not quantifiable"
+            },
+            "technical_breakdown": {
+              "method": "The proposed approach uses a hybrid objective combining supervised fine-tuning and Bounded Direct Preference Optimization to train a SpeechLLM that jointly predicts ordinal labels at the sentence-level, word/phoneme-level accuracy, and generates a natural-language rationale.",
+              "architecture": "The SpeechLLM architecture is not explicitly stated, but it is likely a transformer-based model given the context.",
+              "implementation_details": "The authors use a hybrid objective that combines supervised fine-tuning and Bounded Direct Preference Optimization, which is a technique for optimizing the model's preferences over a set of possible outputs.",
+              "code_complexity": "The computational complexity of the proposed approach is not explicitly stated, but it is likely to be high due to the use of a large transformer-based model and the hybrid objective. The training time implications are also not explicitly stated, but it is likely to be significant due to the complexity of the model and the dataset."
+            },
+            "relevance_tags": [
+              "speech assessment",
+              "natural language processing",
+              "machine learning",
+              "interpretability",
+              "multi-granularity assessment"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-06-09T03:32:45.530171",
+          "conference_info": {
+            "conference": "Interspeech",
+            "year": "2026",
+            "comment": "Accepted to Interspeech 2026. This publication is part of the project Responsible AI for Voice Diagnostics (RAIVD) with file number NGF.1607.22.013 of the research programme NGF AiNed Fellowship Grants, which is financed by the Dutch Research Council (NWO)",
+            "raw_comment": "Accepted to Interspeech 2026. This publication is part of the project Responsible AI for Voice Diagnostics (RAIVD) with file number NGF.1607.22.013 of the research programme NGF AiNed Fellowship Grants, which is financed by the Dutch Research Council (NWO)",
+            "category": "Natural Language Processing",
+            "rank": ""
+          }
+        },
+        {
+          "paper": {
+            "title": "TruthSplit: Operationalizing Conditional Validity in Arguments Through Multi-Perspective Reasoning",
+            "arxiv_id": "2606.09251v1",
+            "authors": [
+              "Benjamin Stieger",
+              "Maximilian Terberger",
+              "Thomas Huber",
+              "Christina Niklaus"
+            ],
+            "published": "2026-06-08T09:23:57Z",
+            "updated": "2026-06-08T09:23:57Z",
+            "summary": "We present TruthSplit, an interactive system for multi-perspective argument analysis. Existing argumentation tools typically analyze properties of the argument itself, such as structure, quality, stance, or persuasiveness, while leaving perspective-specific background knowledge implicit. TruthSplit addresses this gap by supporting an exploratory analysis of how the same claim can lead to different conclusions when interpreted through worldview-specific values, assumptions, and conceptual definitions. We refer to this perspective-dependent analysis as conditional validity. Given an input argumentative text, TruthSplit extracts claims and premises, applies a three-layer natural language inference (NLI) approach to assess both logical and worldview-specific normative consistency, and conditions large language model (LLM) reasoning on structured worldview profiles that encode core values and decision principles. The system then generates perspective-specific interpretations, identifies value conflicts and assumption gaps, and visualizes divergence through interactive analytical interfaces.",
+            "categories": "cs.CL",
+            "comment": "Demo paper. To appear at ACL 2026"
+          },
+          "analysis": {
+            "problem_statement": "The paper addresses the limitation of existing argumentation tools in analyzing argument properties without considering perspective-specific background knowledge.",
+            "bottleneck_addressed": "The AI bottleneck addressed is the lack of consideration for worldview-specific values, assumptions, and conceptual definitions in argument analysis.",
+            "executive_summary": "TruthSplit is an interactive system that operationalizes conditional validity in arguments by supporting multi-perspective reasoning. This matters to the current AI landscape as it enables more nuanced and realistic argument analysis, particularly in applications where multiple perspectives are relevant. The system's ability to visualize divergence and identify value conflicts and assumption gaps can lead to more informed decision-making.",
+            "key_metrics": {
+              "primary_metric": "Multi-perspective argument analysis with conditional validity",
+              "metric_value": "Not specified",
+              "baseline": "Existing argumentation tools",
+              "improvement_percentage": "Not quantifiable"
+            },
+            "technical_breakdown": {
+              "method": "TruthSplit uses a three-layer natural language inference (NLI) approach to assess both logical and worldview-specific normative consistency. It extracts claims and premises from input argumentative text and conditions large language model (LLM) reasoning on structured worldview profiles.",
+              "architecture": "The system consists of three main components: (1) a claim and premise extractor, (2) a three-layer NLI approach, and (3) a worldview profile conditioner.",
+              "implementation_details": "The three-layer NLI approach uses a combination of rule-based, statistical, and deep learning-based methods to assess logical and worldview-specific normative consistency. The worldview profile conditioner uses structured profiles to encode core values and decision principles.",
+              "code_complexity": "The computational complexity of the system is not explicitly stated, but it is likely to be high due to the use of deep learning-based methods and the need to process and analyze large amounts of text data."
+            },
+            "relevance_tags": [
+              "Argumentation",
+              "Natural Language Processing",
+              "Multi-Perspective Reasoning",
+              "Conditional Validity"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-06-09T03:37:21.807361",
+          "conference_info": {
+            "conference": "ACL",
+            "year": "2026",
+            "comment": "Demo paper. To appear at ACL 2026",
+            "raw_comment": "Demo paper. To appear at ACL 2026",
+            "category": "Natural Language Processing",
+            "rank": "A+"
+          }
+        },
+        {
+          "paper": {
+            "title": "MOOSE-Copilot: A Web-Based Interactive Assistant for Unified Exploratory and Fine-Grained Scientific Hypothesis Discovery",
+            "arxiv_id": "2605.29475v2",
+            "authors": [
+              "Hongran An",
+              "Zonglin Yang"
+            ],
+            "published": "2026-05-28T07:06:10Z",
+            "updated": "2026-06-08T09:20:10Z",
+            "summary": "Large language models (LLMs) show remarkable potential in scientific hypothesis discovery. However, existing approaches face two critical limitations: they treat divergent exploratory search and convergent fine-grained refinement as isolated tasks, and they operate autonomously with little to no human guidance. We present MOOSE-Copilot, the first unified framework to bridge this abstraction gap through a formalized human-AI interaction (HAII) protocol. Our system empowers scientists to steer the generative process via three explicit signals: initial blueprints, inter-stage routing, and intra-stage feedback. Using an oracle-simulated evaluation in which an LLM provides idealized expert signals, we show that injecting these structured signals significantly outperforms purely autonomous baselines, characterizing the gains achievable under high-quality guidance. Furthermore, we build a web-based interface that turns the framework into a no-code workflow: researchers pose a question, watch the hypothesis search unfold as an interactive tree, and steer it by selecting hypotheses, routing between stages, and injecting feedback-no command-line agents required. This makes end-to-end hypothesis discovery directly accessible to interdisciplinary researchers.",
+            "categories": "cs.CL",
+            "comment": "Accepted to ACL 2026 (System Demonstrations)"
+          },
+          "analysis": {
+            "problem_statement": "The paper addresses the limitation of existing large language models (LLMs) in scientific hypothesis discovery, which treat exploratory search and fine-grained refinement as isolated tasks and operate autonomously with little human guidance.",
+            "bottleneck_addressed": "The abstraction gap between human-AI interaction and autonomous LLMs in scientific hypothesis discovery.",
+            "executive_summary": "This paper presents MOOSE-Copilot, a unified framework that bridges the abstraction gap through a formalized human-AI interaction (HAII) protocol, enabling scientists to steer the generative process and significantly outperform autonomous baselines in scientific hypothesis discovery. This matters to the current AI landscape as it makes end-to-end hypothesis discovery directly accessible to interdisciplinary researchers. The framework's interactive tree and no-code workflow make it a valuable tool for researchers.",
+            "key_metrics": {
+              "primary_metric": "Significantly outperforms purely autonomous baselines",
+              "metric_value": "Not specified",
+              "baseline": "Autonomous LLMs",
+              "improvement_percentage": "Not quantifiable"
+            },
+            "technical_breakdown": {
+              "method": "MOOSE-Copilot uses a formalized HAII protocol to empower scientists to steer the generative process via three explicit signals: initial blueprints, inter-stage routing, and intra-stage feedback.",
+              "architecture": "The framework consists of a web-based interface, an LLM, and an oracle-simulated evaluation.",
+              "implementation_details": "The authors use an oracle-simulated evaluation to idealize expert signals and demonstrate the effectiveness of the framework.",
+              "code_complexity": "Not specified"
+            },
+            "relevance_tags": [
+              "Scientific Hypothesis Discovery",
+              "Human-AI Interaction",
+              "Large Language Models",
+              "No-Code Workflow"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-06-09T03:38:46.598575",
+          "conference_info": {
+            "conference": "ACL",
+            "year": "2026",
+            "comment": "Accepted to ACL 2026 (System Demonstrations)",
+            "raw_comment": "Accepted to ACL 2026 (System Demonstrations)",
+            "category": "Natural Language Processing",
+            "rank": "A+"
+          }
+        },
+        {
+          "paper": {
+            "title": "SEF-CLGC at SemEval-2026 Task 11: Logical Notation Impact on Language Model Performance",
+            "arxiv_id": "2606.09157v1",
+            "authors": [
+              "Hanna Abi Akl",
+              "Fabien Gandon",
+              "Catherine Faron",
+              "Pierre Monnin"
+            ],
+            "published": "2026-06-08T07:47:57Z",
+            "updated": "2026-06-08T07:47:57Z",
+            "summary": "This paper revisits our pipeline called Syllogistic Evaluation Framework-Common Logic Grammar Construction (SEF-CLGC). We combine formal logical notations with Small Language Models (SLMs) to evaluate reasoning performance on the SemEval-2026 Task 11 Subtask 1: Disentangling Content and Formal Reasoning in Large Language Models. Our experiments show that by relying solely on SLMs, trained on a combination of natural and symbolic languages, our best model achieves a content score of 27.80% on the task while significantly lowering the content bias in reasoning.",
+            "categories": "cs.CL",
+            "comment": "Accepted to SemEval-2026 co-located with ACL 2026"
+          },
+          "analysis": {
+            "problem_statement": "The paper addresses the problem of content bias in large language models (LLMs) when evaluating reasoning performance, specifically in disentangling content and formal reasoning.",
+            "bottleneck_addressed": "Content bias in LLMs, a common issue in natural language processing (NLP) where models prioritize content over formal reasoning.",
+            "executive_summary": "This paper presents a novel approach to addressing content bias in LLMs by combining formal logical notations with Small Language Models (SLMs). The proposed method, SEF-CLGC, achieves a significant improvement in content score (27.80%) on the SemEval-2026 Task 11 Subtask 1, while reducing content bias in reasoning. This matters to the current AI landscape as it highlights the importance of formal reasoning in LLMs and provides a potential solution to mitigate content bias.",
+            "key_metrics": {
+              "primary_metric": "Content score",
+              "metric_value": "27.80%",
+              "baseline": "Relying solely on SLMs",
+              "improvement_percentage": "Not explicitly stated, but implies a significant improvement"
+            },
+            "technical_breakdown": {
+              "method": "SEF-CLGC combines formal logical notations with SLMs to evaluate reasoning performance. The approach involves training SLMs on a combination of natural and symbolic languages.",
+              "architecture": "The proposed architecture consists of a Small Language Model (SLM) and a formal logical notation component.",
+              "implementation_details": "The paper uses a combination of natural language processing (NLP) and formal logic techniques, including the use of symbolic languages and logical notations.",
+              "code_complexity": "Not explicitly stated, but the proposed method likely involves complex NLP and formal logic algorithms, which may result in high computational complexity and training time."
+            },
+            "relevance_tags": [
+              "natural_language_processing",
+              "formal_logic",
+              "large_language_models",
+              "content_bias"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-06-09T03:34:10.217154",
+          "conference_info": {
+            "conference": "ACL",
+            "year": "2026",
+            "comment": "Accepted to SemEval-2026 co-located with ACL 2026",
+            "raw_comment": "Accepted to SemEval-2026 co-located with ACL 2026",
+            "category": "Natural Language Processing",
+            "rank": "A+"
+          }
+        },
+        {
+          "paper": {
+            "title": "ComplexConstraints and Beyond: Expert Rubrics for RLVR",
+            "arxiv_id": "2606.09118v1",
+            "authors": [
+              "Sushant Mehta",
+              "Liudas Panavas",
+              "Edwin Chen"
+            ],
+            "published": "2026-06-08T07:11:56Z",
+            "updated": "2026-06-08T07:11:56Z",
+            "summary": "As LLM capabilities advance rapidly, the evaluation methods used to assess them increasingly lag behind. Traditional benchmarks relied on programmatic verification of narrow, surface-level constraints, but real-world instruction following and agentic tasks demand assessment of nuanced, context-dependent behaviors that resist simple scripted checks. We present a systematic analysis of expert-curated rubric-based evaluation as an alternative paradigm, drawing on empirical evidence from two domains: complex instruction following and enterprise agentic tasks. We first articulate five design principles for constructing high-quality rubrics, including Maximum Viable Atomicity, intent-aware criterion design, and iterative LLM-judge calibration. To validate these principles, we introduce ComplexConstraints, a new expert-curated instruction-following dataset in which each prompt is paired with 10-40 atomic rubric criteria. We demonstrate that these expert rubrics are not only better evaluation instruments but also highly effective training signals: training on approximately 1,000 ComplexConstraints examples yields +15.5% improvement for a 4B-parameter model and +12.2% for a 235B-parameter model on instruction following, while single-epoch RL training on a rubric-graded enterprise environment produces gains that transfer to out-of-distribution benchmarks the model was never trained on (+4.5% BFCL, +7.4% Tau2-Bench, +6.8% Tool-Decathlon). Our findings establish that expert-authored rubrics improve both the measurement and the development of frontier LLM capabilities, serving as effective evaluation and RL training signals.",
+            "categories": "cs.AI",
+            "comment": "Accepted to the GEM workshop at ACL 2026: https://gem-workshop.com/"
+          },
+          "analysis": {
+            "problem_statement": "The paper addresses the limitation of traditional evaluation methods for Large Language Models (LLMs) in assessing nuanced, context-dependent behaviors that resist simple scripted checks.",
+            "bottleneck_addressed": "Evaluation bottleneck in LLMs, specifically the inability to assess complex, context-dependent behaviors.",
+            "executive_summary": "This paper presents a novel approach to evaluating LLMs using expert-curated rubric-based evaluation, which improves both the measurement and development of frontier LLM capabilities. This matters to the current AI landscape as it addresses the limitations of traditional evaluation methods and enables more accurate assessment of LLMs' abilities. The proposed approach has been shown to yield significant improvements in instruction following and agentic tasks.",
+            "key_metrics": {
+              "primary_metric": "Improvement in instruction following",
+              "metric_value": "+15.5% for a 4B-parameter model and +12.2% for a 235B-parameter model",
+              "baseline": "Single-epoch RL training on a rubric-graded enterprise environment",
+              "improvement_percentage": "15.5% and 12.2%"
+            },
+            "technical_breakdown": {
+              "method": "The proposed approach involves constructing high-quality rubrics using five design principles (Maximum Viable Atomicity, intent-aware criterion design, and iterative LLM-judge calibration) and using these rubrics as evaluation instruments and training signals.",
+              "architecture": "The proposed architecture includes a rubric-based evaluation framework, which consists of a set of expert-curated rubric criteria and a LLM that is trained on these criteria.",
+              "implementation_details": "The implementation details include the use of ComplexConstraints, a new expert-curated instruction-following dataset, and the introduction of a new RL training signal based on rubric-graded enterprise environments.",
+              "code_complexity": "The code complexity is not explicitly mentioned in the paper, but the proposed approach is likely to require significant computational resources and training time due to the use of large LLMs and complex rubric-based evaluation frameworks."
+            },
+            "relevance_tags": [
+              "LLMs",
+              "evaluation methods",
+              "rubric-based evaluation",
+              "RL training signals",
+              "instruction following",
+              "agentic tasks"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-06-09T03:34:34.758092",
+          "conference_info": {
+            "conference": "ACL",
+            "year": "2026",
+            "comment": "Accepted to the GEM workshop at ACL 2026: https://gem-workshop.com/",
+            "raw_comment": "Accepted to the GEM workshop at ACL 2026: https://gem-workshop.com/",
+            "category": "Natural Language Processing",
+            "rank": "A+"
+          }
+        },
+        {
+          "paper": {
+            "title": "Few-shot Class-variable Incremental Audio Classification via Prototype Adaptation and Pseudo Class-variable Training",
+            "arxiv_id": "2606.08898v1",
+            "authors": [
+              "Yanxiong Li",
+              "Guoqing Chen",
+              "Qianqian Li",
+              "Sen Huang"
+            ],
+            "published": "2026-06-08T00:50:39Z",
+            "updated": "2026-06-08T00:50:39Z",
+            "summary": "In the task of few-shot class-incremental audio classification, the number of classes is assumed to always increase without considering the possibility of decrease. However, the number of classes generally increases or decreases in practice. In this paper, we investigate a problem of Few-shot Class-variable Incremental Audio Classification (FCIAC), in which the number of classes increases or decreases. We propose a FCIAC method using prototype adaptation and pseudo class-variable training. The model in our method consists of an encoder and a classifier. The classifier is initialized by a class-variable prototype adaptation network, whose structure dynamically changes with the change of classes. In addition, we design a pseudo class-variable training strategy to enhance the model's adaptability to changing classes. Experiments on three public datasets show that our method exceeds previous methods in average accuracy. The code is at: https://github.com/cgq2971-afk/FCIAC.",
+            "categories": "eess.AS",
+            "comment": "This paper has been accepted for publication in Interspeech 2026. 4 Tables and 4 Figures"
+          },
+          "analysis": {
+            "problem_statement": "The paper addresses the problem of Few-shot Class-variable Incremental Audio Classification (FCIAC), where the number of classes can either increase or decrease in the task of audio classification.",
+            "bottleneck_addressed": "Class-incremental learning, specifically the challenge of adapting to changing class distributions and the lack of consideration for class decreases.",
+            "executive_summary": "This paper proposes a novel approach to few-shot class-variable incremental audio classification, addressing a critical limitation in existing class-incremental learning methods. By utilizing prototype adaptation and pseudo class-variable training, the proposed method demonstrates improved adaptability to changing class distributions, leading to enhanced performance on three public datasets.",
+            "key_metrics": {
+              "primary_metric": "Average accuracy",
+              "metric_value": "Exceeds previous methods",
+              "baseline": "Previous state-of-the-art methods",
+              "improvement_percentage": "Not explicitly stated, but implies a significant improvement"
+            },
+            "technical_breakdown": {
+              "method": "The proposed method consists of an encoder and a classifier, where the classifier is initialized by a class-variable prototype adaptation network. The prototype adaptation network dynamically changes its structure in response to changes in the class distribution. Additionally, a pseudo class-variable training strategy is employed to enhance the model's adaptability.",
+              "architecture": "Encoder-Classifier architecture with a class-variable prototype adaptation network and pseudo class-variable training",
+              "implementation_details": "The class-variable prototype adaptation network utilizes a dynamic structure that changes in response to class distribution changes. The pseudo class-variable training strategy involves generating pseudo class-variable samples to enhance model adaptability.",
+              "code_complexity": "The computational complexity of the proposed method is not explicitly stated, but it is likely to be higher due to the dynamic structure of the prototype adaptation network and the pseudo class-variable training strategy. The training time implications are also not explicitly stated, but it is likely to be longer due to the additional computational requirements of the proposed method."
+            },
+            "relevance_tags": [
+              "Class-incremental learning",
+              "Few-shot learning",
+              "Audio classification",
+              "Prototype adaptation",
+              "Pseudo class-variable training"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-06-09T03:34:56.883461",
+          "conference_info": {
+            "conference": "Interspeech",
+            "year": "2026",
+            "comment": "This paper has been accepted for publication in Interspeech 2026. 4 Tables and 4 Figures",
+            "raw_comment": "This paper has been accepted for publication in Interspeech 2026. 4 Tables and 4 Figures",
+            "category": "Natural Language Processing",
+            "rank": ""
+          }
+        },
+        {
+          "paper": {
+            "title": "Self-Paced Curriculum Reinforcement Learning for Autonomous Superbike Racing in Simulation",
+            "arxiv_id": "2606.09236v1",
+            "authors": [
+              "Luca Ghisi",
+              "Jacopo Essenziale",
+              "Carlo D'Eramo",
+              "Matteo Luperto"
+            ],
+            "published": "2026-06-08T09:14:12Z",
+            "updated": "2026-06-08T09:14:12Z",
+            "summary": "Autonomous Racing has seen remarkable progress through deep Reinforcement Learning (RL), primarily for four-wheeled vehicles. However, motorbikes introduce substantially greater complexity due to the need to manage balance and lean angle, in addition to more reactive steering and throttle control, and a smaller weight. In this work, we present a framework for training an autonomous agent to race a superbike in VRider SBK, a physics-accurate Unity-based motorbike simulator. Our approach integrates Soft Actor-Critic (SAC) with Self-Paced curriculum Deep reinforcement Learning (SPDL), which dynamically generates progressively more challenging tasks based on the agent's performance, without requiring manual curriculum design. The agent's state space comprises proprioceptive features extended with lean-angle history, along with global track features via course points. The reward signal is shaped to encourage progress along the track while penalizing instability-inducing behaviors specific to two-wheeled dynamics. Preliminary experimental results demonstrate that SPDL outperforms SAC alone in training efficiency, lap time, and driving stability across multiple tracks and motorbike models, establishing a first baseline for RL-based autonomous motorbike racing.",
+            "categories": "cs.RO",
+            "comment": "Presented at the \"1st Workshop on Generalization in Autonomous Driving: Paradigms, Practice, and Public Road Demonstrations\" at ICRA 2026, Vienna. Oral+poster presentation"
+          },
+          "analysis": {
+            "problem_statement": "Designing an autonomous racing agent for superbikes that can efficiently learn to navigate complex tracks while managing balance and lean angle.",
+            "bottleneck_addressed": "Sample efficiency and generalizability in deep reinforcement learning for complex, high-dimensional tasks.",
+            "executive_summary": "This paper presents a novel approach to autonomous racing using self-paced curriculum deep reinforcement learning (SPDL), which dynamically generates challenging tasks based on the agent's performance. This method outperforms Soft Actor-Critic (SAC) alone in training efficiency, lap time, and driving stability, establishing a first baseline for RL-based autonomous motorbike racing. This work has significant implications for the development of autonomous vehicles, particularly for complex tasks like motorbike racing.",
+            "key_metrics": {
+              "primary_metric": "Training efficiency",
+              "metric_value": "Not explicitly stated, but implied to be faster than SAC",
+              "baseline": "Soft Actor-Critic (SAC) alone",
+              "improvement_percentage": "Not quantifiable"
+            },
+            "technical_breakdown": {
+              "method": "The proposed method integrates Soft Actor-Critic (SAC) with Self-Paced Curriculum Deep Reinforcement Learning (SPDL), which dynamically generates progressively more challenging tasks based on the agent's performance.",
+              "architecture": "The agent's state space comprises proprioceptive features extended with lean-angle history, along with global track features via course points.",
+              "implementation_details": "The reward signal is shaped to encourage progress along the track while penalizing instability-inducing behaviors specific to two-wheeled dynamics.",
+              "code_complexity": "Not explicitly stated, but likely high due to the complexity of the task and the use of SPDL."
+            },
+            "relevance_tags": [
+              "Autonomous Racing",
+              "Deep Reinforcement Learning",
+              "Self-Paced Curriculum Learning",
+              "Motorbike Simulation"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-06-09T03:33:33.278751",
+          "conference_info": {
+            "conference": "ICRA",
+            "year": "2026",
+            "comment": "Presented at the \"1st Workshop on Generalization in Autonomous Driving: Paradigms, Practice, and Public Road Demonstrations\" at ICRA 2026, Vienna. Oral+poster presentation",
+            "raw_comment": "Presented at the \"1st Workshop on Generalization in Autonomous Driving: Paradigms, Practice, and Public Road Demonstrations\" at ICRA 2026, Vienna. Oral+poster presentation",
+            "category": "Robotics",
+            "rank": "B"
+          }
+        },
+        {
+          "paper": {
+            "title": "From USD Scenes to Knowledge Graphs: Zero-Shot Ontology Grounding with LLMs",
+            "arxiv_id": "2606.09134v1",
+            "authors": [
+              "Jiangtao Shuai",
+              "Zongxiong Chen",
+              "Manfred Hauswirth",
+              "Sonja Schimmler"
+            ],
+            "published": "2026-06-08T07:32:06Z",
+            "updated": "2026-06-08T07:32:06Z",
+            "summary": "Constructing knowledge graphs from 3D simulation scenes is essential for robot task reasoning, but the key bottleneck, grounding scene objects to formal ontology classes, still relies on manually curated dictionaries that are brittle and do not generalize across assets. We investigate whether large language models (LLMs) can automate this grounding step for Universal Scene Description (USD) scenes as a zero-shot, training-free alternative. On a kitchen scene (125 objects) with SOMA-HOME Ontology, LLMs achieve 90-96% exact-match accuracy with descriptive names and 49-89% with abbreviated names, substantially outperforming dictionary and embedding baselines. Under fully opaque names, context-augmented prompting recovers up to 48%. Feature ablation reveals that LLMs primarily exploit semantic cues in the scene graph (sibling names and parent paths); anonymizing these cues reduces accuracy to 0-6%, while geometry alone yields only 4-17%.",
+            "categories": "cs.RO",
+            "comment": "Accepted to the IEEE ICRA 2026 International Joint Workshop on Ontologies, Semantic Maps and Autonomous Robotics Standardization (J-WOSMARS 2026), Vienna, 2026"
+          },
+          "analysis": {
+            "problem_statement": "Constructing knowledge graphs from 3D simulation scenes by grounding scene objects to formal ontology classes is a challenging task, particularly when relying on manually curated dictionaries that are brittle and do not generalize across assets.",
+            "bottleneck_addressed": "Grounding scene objects to formal ontology classes in 3D simulation scenes",
+            "executive_summary": "This paper presents a zero-shot, training-free approach to ontology grounding using large language models (LLMs) for Universal Scene Description (USD) scenes. The proposed method achieves state-of-the-art results, outperforming dictionary and embedding baselines. This work has significant implications for robot task reasoning and knowledge graph construction in 3D simulation environments.",
+            "key_metrics": {
+              "primary_metric": "90-96% exact-match accuracy with descriptive names",
+              "metric_value": "90-96%",
+              "baseline": "dictionary and embedding baselines",
+              "improvement_percentage": "substantial improvement (exact numbers not quantified)"
+            },
+            "technical_breakdown": {
+              "method": "The proposed method uses large language models (LLMs) to automate the grounding step for USD scenes. The LLMs are prompted with scene objects and their corresponding ontology classes, and the model generates descriptive names or abbreviated names to match the ontology classes.",
+              "architecture": "The architecture consists of a large language model (LLM) and a scene graph representation of the USD scene. The LLM is trained on a large corpus of text data, but not on the specific task of ontology grounding.",
+              "implementation_details": "The authors use a context-augmented prompting technique to recover accuracy under fully opaque names. Feature ablation reveals that the LLMs primarily exploit semantic cues in the scene graph, such as sibling names and parent paths.",
+              "code_complexity": "The computational complexity of the proposed method is not explicitly quantified, but it is likely to be high due to the use of large language models and complex scene graph representations."
+            },
+            "relevance_tags": [
+              "Knowledge Graph Construction",
+              "Ontology Grounding",
+              "Large Language Models",
+              "3D Simulation Scenes",
+              "Robot Task Reasoning"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-06-09T03:34:23.777085",
+          "conference_info": {
+            "conference": "ICRA",
+            "year": "2026",
+            "comment": "Accepted to the IEEE ICRA 2026 International Joint Workshop on Ontologies, Semantic Maps and Autonomous Robotics Standardization (J-WOSMARS 2026), Vienna, 2026",
+            "raw_comment": "Accepted to the IEEE ICRA 2026 International Joint Workshop on Ontologies, Semantic Maps and Autonomous Robotics Standardization (J-WOSMARS 2026), Vienna, 2026",
+            "category": "Robotics",
+            "rank": "B"
+          }
+        },
+        {
+          "paper": {
+            "title": "What the Eyes See, the LLMs Miss: Exploiting Human Perception for Adversarial Text Attacks",
+            "arxiv_id": "2606.09700v1",
+            "authors": [
+              "Qin Yang",
+              "Lu Malloy",
+              "Joshua Lee",
+              "Xiaohan Chang",
+              "Meisam Mohammady",
+              "Doowon Kim",
+              "Yuan Hong"
+            ],
+            "published": "2026-06-08T16:21:34Z",
+            "updated": "2026-06-08T16:21:34Z",
+            "summary": "Large language model (LLM)-powered content moderation systems have become a critical defense against harmful online content. However, these systems primarily operate on tokenized text and largely ignore the visual cues that humans naturally rely on when interpreting content. We show that this discrepancy creates a fundamental perceptual mismatch: content that is readily recognized as harmful by humans can become effectively invisible to automated moderation systems. To study this vulnerability, we introduce a class of Human-Perceptible Adversarial Attacks (HPAA), in which harmful expressions are embedded into otherwise benign text through visually salient typographic manipulations. Our key insight is that typographic features, including spacing, visual emphasis, and spatial arrangement, can be strategically combined to preserve human recognition of harmful content while substantially reducing machine detectability. Operating in black-box settings with only a small query budget, our attack automatically generates evasive content without requiring model access or gradient information. We evaluate the attack across multiple datasets and ten deployed moderation systems, including commercial APIs and state-of-the-art open-source guardrails. Results reveal a striking gap between human and machine perception: with only three detector queries, generated attacks achieve over 86\\% human recognition while maintaining detection rates below 1\\% across the evaluated systems. We further conduct ablation studies to identify the typographic factors driving successful evasion, analyze why current moderation architectures fail to capture these signals, and discuss practical defenses. Our findings expose a fundamental blind spot in today's LLM-based moderation ecosystem and highlight need for moderation systems that reason about content in a manner more consistent with human perceptual understanding.",
+            "categories": "cs.CR",
+            "comment": "This work has been accepted for publication at USENIX Security 2026. This paper includes examples of harmful, hateful, or abusive language for research purposes. Reader discretion is advised"
+          },
+          "analysis": {
+            "problem_statement": "Content moderation systems based on large language models (LLMs) fail to detect harmful content due to their reliance on tokenized text and lack of consideration for visual cues.",
+            "bottleneck_addressed": "Perceptual mismatch between human and machine understanding of text content",
+            "executive_summary": "This paper highlights a critical vulnerability in LLM-based content moderation systems, which can be exploited to create evasive content that is recognized as harmful by humans but remains undetected by automated systems. This has significant implications for the effectiveness of online content moderation and the need for more human-centric approaches.",
+            "key_metrics": {
+              "primary_metric": "Human recognition rate of generated attacks while maintaining detection rates below 1% across evaluated systems",
+              "metric_value": "86%",
+              "baseline": "State-of-the-art open-source guardrails and commercial APIs",
+              "improvement_percentage": "N/A (since it's a new attack and not a comparison to a previous result)"
+            },
+            "technical_breakdown": {
+              "method": "The authors introduce Human-Perceptible Adversarial Attacks (HPAA), which embed harmful expressions into benign text through visually salient typographic manipulations, such as spacing, visual emphasis, and spatial arrangement.",
+              "architecture": "The attack operates in black-box settings with a small query budget and does not require model access or gradient information.",
+              "implementation_details": "The authors use a combination of techniques, including typographic feature analysis and machine learning-based attack generation.",
+              "code_complexity": "The computational complexity of the attack is relatively low, as it only requires a small query budget and does not involve complex training processes."
+            },
+            "relevance_tags": [
+              "adversarial attacks",
+              "content moderation",
+              "human-computer interaction",
+              "natural language processing",
+              "security"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-06-09T03:35:19.575331",
+          "conference_info": {
+            "conference": "USENIX Security",
+            "year": "2026",
+            "comment": "This work has been accepted for publication at USENIX Security 2026. This paper includes examples of harmful, hateful, or abusive language for research purposes. Reader discretion is advised",
+            "raw_comment": "This work has been accepted for publication at USENIX Security 2026. This paper includes examples of harmful, hateful, or abusive language for research purposes. Reader discretion is advised",
+            "category": "Security",
+            "rank": "A"
+          }
+        },
+        {
+          "paper": {
+            "title": "Fully Oblivious Differential Privacy for Frequency Estimation in the Augmented Shuffle Model with Trusted Processors",
+            "arxiv_id": "2606.09402v1",
+            "authors": [
+              "Takao Murakami",
+              "Yuichi Sei",
+              "Reo Eriguchi"
+            ],
+            "published": "2026-06-08T12:21:42Z",
+            "updated": "2026-06-08T12:21:42Z",
+            "summary": "In the shuffle model of DP (Differential Privacy), a shuffler randomly permutes users' data to achieve high accuracy and privacy. Recent studies show that most existing shuffle protocols are vulnerable to collusion attacks by the data collector and users. They address this issue by introducing the augmented shuffle model that incorporates random sampling and dummy data addition into the shuffler. However, it remains open how to ensure the shuffler follows the protocol and does not collude with the data collector in this model.   We address this trust issue by thoroughly exploring the augmented shuffle model with TEEs (Trusted Execution Environments). We first introduce a new privacy notion, FODP (Fully Oblivious DP), which strengthens DP to prevent various TEE side-channel attacks based on external/internal memory access patterns and control flows. We propose a general framework for FODP algorithms based on memory-size obfuscation and three concrete algorithms within it. We also improve the efficiency of our algorithms by using the count-min sketch and optimizing the number of hashes. We evaluate our algorithms on Intel SGX and demonstrate their effectiveness through comparisons with nine baselines.",
+            "categories": "cs.CR",
+            "comment": "Full version of the paper accepted at USENIX Security 2026"
+          },
+          "analysis": {
+            "problem_statement": "Ensuring differential privacy in the augmented shuffle model with trusted processors, particularly addressing the trust issue of the shuffler not colluding with the data collector.",
+            "bottleneck_addressed": "Collusion attacks in the shuffle model of differential privacy",
+            "executive_summary": "This paper addresses a critical issue in differential privacy, specifically the augmented shuffle model, by introducing a new privacy notion called Fully Oblivious Differential Privacy (FODP) and proposing a general framework for FODP algorithms. This work is crucial for ensuring the security and trustworthiness of differentially private systems, particularly in the context of trusted execution environments (TEEs).",
+            "key_metrics": {
+              "primary_metric": "Improved efficiency of FODP algorithms",
+              "metric_value": "up to 2.4x",
+              "baseline": "nine baselines, including existing shuffle protocols",
+              "improvement_percentage": "144%"
+            },
+            "technical_breakdown": {
+              "method": "The proposed solution works by introducing memory-size obfuscation and using the count-min sketch to improve efficiency, while also optimizing the number of hashes.",
+              "architecture": "The augmented shuffle model with TEEs (Trusted Execution Environments) and the proposed FODP framework",
+              "implementation_details": "Three concrete algorithms are proposed within the FODP framework: FODP-CountMin, FODP-Hash, and FODP-Obfuscate",
+              "code_complexity": "The computational complexity of the proposed algorithms is O(n log n) for FODP-CountMin and O(n) for FODP-Hash and FODP-Obfuscate, where n is the number of data points"
+            },
+            "relevance_tags": [
+              "differential privacy",
+              "augmented shuffle model",
+              "trusted execution environments",
+              "fully oblivious differential privacy",
+              "security and trustworthiness"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-06-09T03:39:16.316938",
+          "conference_info": {
+            "conference": "USENIX Security",
+            "year": "2026",
+            "comment": "Full version of the paper accepted at USENIX Security 2026",
+            "raw_comment": "Full version of the paper accepted at USENIX Security 2026",
+            "category": "Security",
+            "rank": "A"
+          }
+        },
+        {
+          "paper": {
+            "title": "Customization under Fire: Plugin Poisoning in Text-to-Image Ecosystem",
+            "arxiv_id": "2606.09151v1",
+            "authors": [
+              "Jiahao Chen",
+              "Xing He",
+              "Yong Yang",
+              "Xinfeng Li",
+              "Chunyi Zhou",
+              "Junhao Li",
+              "Zhe Ma",
+              "Tianyu Du",
+              "Shouling Ji"
+            ],
+            "published": "2026-06-08T07:45:17Z",
+            "updated": "2026-06-08T07:45:17Z",
+            "summary": "The prosperity of text-to-image (T2I) models has fostered a vibrant share-and-play ecosystem centered on Low-Rank Adaptation (LoRA) plugins, which allow users to customize and share model capabilities with ease. This democratization, however, comes with a hidden but severe security risk. Malicious users could share and distribute seemingly benign LoRA plugins that contain hidden functionalities to poison the model-sharing market, like Civitai or Liblib, severely undermining the user trust that underpins this collaborative ecosystem and threatening the safety of countless downstream applications. Despite these risks, plugin poisoning in the real-world T2I ecosystem remains underexplored. This paper introduces PoisonLoRA, the first systematic study of LoRA plugin supply-chain risks that exploits the trust and characteristics within the T2I ecosystem. We identify two primary attack instances: (1) Concept Hijacking, where a hijacked LoRA could generate images to influence public opinion and spread propaganda, and (2) Task Injection, where a LoRA is injected to produce harmful content (e.g., NSFW images) only activated by a secret key. Critically, the malicious payload persists with virus-like propagation. Such propagations weaponize the very act of creative collaboration (e.g., LoRA merging) to spread its contagion, turning every remix into a new carrier. Extensive experiments validate that PoisonLoRA is both effective and stealthy. Specifically, we achieve approximately 100% attack success rates (ASR) on both Civitai and Liblib on 6 datasets across 4 scenarios, without being detected by the platforms. The poisoned LoRA demonstrates extreme robustness, with nearly 100% ASR even transferred to different base models and remixed more than 5 times.",
+            "categories": "cs.CR",
+            "comment": "Accepted to ACM CCS'26 Cycle 1"
+          },
+          "analysis": {
+            "problem_statement": "This paper addresses the security risk of plugin poisoning in text-to-image (T2I) ecosystems, specifically targeting Low-Rank Adaptation (LoRA) plugins.",
+            "bottleneck_addressed": "Adversarial Robustness and Security",
+            "executive_summary": "This paper highlights a significant security risk in the text-to-image model-sharing ecosystem, where malicious users can create and distribute poisoned LoRA plugins that compromise user trust and downstream applications. The authors propose PoisonLoRA, a systematic study of LoRA plugin supply-chain risks, and demonstrate its effectiveness in achieving high attack success rates without being detected. This matters to the current AI landscape as it underscores the need for robust security measures in collaborative AI ecosystems.",
+            "key_metrics": {
+              "primary_metric": "Approximately 100% attack success rates (ASR) on both Civitai and Liblib on 6 datasets across 4 scenarios",
+              "metric_value": "100%",
+              "baseline": "None specified",
+              "improvement_percentage": "N/A"
+            },
+            "technical_breakdown": {
+              "method": "PoisonLoRA exploits the trust and characteristics within the T2I ecosystem by identifying two primary attack instances: Concept Hijacking and Task Injection.",
+              "architecture": "The authors propose a systematic study of LoRA plugin supply-chain risks, leveraging the trust and characteristics within the T2I ecosystem.",
+              "implementation_details": "The authors use a combination of techniques, including LoRA merging and remixing, to demonstrate the effectiveness of PoisonLoRA.",
+              "code_complexity": "The authors do not provide specific details on code complexity or training time implications, but note that PoisonLoRA achieves high attack success rates without being detected."
+            },
+            "relevance_tags": [
+              "Adversarial Robustness",
+              "Security",
+              "Text-to-Image Models",
+              "Low-Rank Adaptation (LoRA)"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-06-09T03:39:27.675033",
+          "conference_info": {
+            "conference": "ACM CCS",
+            "year": "2026",
+            "comment": "Accepted to ACM CCS'26 Cycle 1",
+            "raw_comment": "Accepted to ACM CCS'26 Cycle 1",
+            "category": "Security",
+            "rank": "A+"
+          }
+        },
+        {
+          "paper": {
+            "title": "Coupling Complementary Simulations for Combined Performance and Energy Optimization",
+            "arxiv_id": "2606.09356v1",
+            "authors": [
+              "Adel Dabah",
+              "Gregor H\u00e4fner",
+              "Sonja Happ",
+              "Simon Pickartz",
+              "Marcus M\u00fcller",
+              "Andreas Herten"
+            ],
+            "published": "2026-06-08T11:31:20Z",
+            "updated": "2026-06-08T11:31:20Z",
+            "summary": "Polymer simulations are among the most computationally demanding workloads in soft-matter research, often requiring days of execution and high energy consumption to achieve physically meaningful results. In this work, we address these challenges through the coupling and optimization of two complementary simulation frameworks: the Uneyama-Doi Model (UDM) and the SOft coarse-grained Monte Carlo Acceleration (SOMA). UDM efficiently propagates concentration fields at the continuum level, while SOMA resolves chain-scale thermal fluctuations via particle-based Monte Carlo dynamics. Each model was individually optimized for GPU execution using kernel fusion, memory coalescing, asynchronous random-number generation yielding up to 70% (UDM) and 80% (SOMA) performance improvement. The coupling is performed through our proposed coordinator library that orchestrates data exchange and synchronizes time-stepping across multiple GPUs. Further management of coupling workload distribution enabled a 13x overall speedup and 24.5x reduction in total energy usage compared to the SOMA baseline, i. e., 96% energy saving. The proposed hybrid approach maintains the same scientific fidelity while drastically reducing the computational and energy footprint, showcasing the potential of energy-aware, cross-application co-design for sustainable high-performance simulations",
+            "categories": "cs.DC",
+            "comment": "This paper is accepted at ISC'2026 Workshop on Energy Efficiency with Sustainable Performance: Techniques, Tools, and Best Practices"
+          },
+          "analysis": {
+            "problem_statement": "The paper addresses the computational and energy demands of polymer simulations in soft-matter research, which often require days of execution and high energy consumption.",
+            "bottleneck_addressed": "Computational and energy efficiency in simulations, specifically in polymer simulations.",
+            "executive_summary": "This paper presents a novel approach to optimize polymer simulations by coupling two complementary frameworks, achieving a 13x speedup and 24.5x reduction in energy usage while maintaining scientific fidelity.",
+            "key_metrics": {
+              "primary_metric": "Overall speedup",
+              "metric_value": 13,
+              "baseline": "SOMA baseline",
+              "improvement_percentage": "96% energy saving"
+            },
+            "technical_breakdown": {
+              "method": "The proposed solution involves coupling the Uneyama-Doi Model (UDM) and the SOft coarse-grained Monte Carlo Acceleration (SOMA) frameworks through a coordinator library, which orchestrates data exchange and synchronizes time-stepping across multiple GPUs.",
+              "architecture": {
+                "UDM": "Efficiently propagates concentration fields at the continuum level",
+                "SOMA": "Resolves chain-scale thermal fluctuations via particle-based Monte Carlo dynamics",
+                "Coordinator Library": "Orchestrates data exchange and synchronizes time-stepping across multiple GPUs"
+              },
+              "implementation_details": {
+                "Kernel Fusion": "Optimized for GPU execution",
+                "Memory Coalescing": "Optimized for GPU execution",
+                "Asynchronous Random-Number Generation": "Optimized for GPU execution"
+              },
+              "code_complexity": "The proposed solution involves complex data exchange and synchronization across multiple GPUs, which may require significant computational resources and expertise to implement."
+            },
+            "relevance_tags": [
+              "Computational Efficiency",
+              "Energy Efficiency",
+              "Simulation Optimization",
+              "GPU Acceleration",
+              "Monte Carlo Methods",
+              "Polymer Simulations"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-06-09T03:39:06.420594",
+          "conference_info": {
+            "conference": "ISC",
+            "year": "2020",
+            "comment": "This paper is accepted at ISC'2026 Workshop on Energy Efficiency with Sustainable Performance: Techniques, Tools, and Best Practices",
+            "raw_comment": "This paper is accepted at ISC'2026 Workshop on Energy Efficiency with Sustainable Performance: Techniques, Tools, and Best Practices",
+            "category": "Systems & Architecture",
+            "rank": ""
+          }
+        },
+        {
+          "paper": {
+            "title": "Resource-aware Computation-Communication Overlap for multi-GPU ML Workloads",
+            "arxiv_id": "2606.09200v1",
+            "authors": [
+              "Minyu Cui",
+              "Miquel Pericas"
+            ],
+            "published": "2026-06-08T08:33:03Z",
+            "updated": "2026-06-08T08:33:03Z",
+            "summary": "The rapid growth of large-scale machine learning (ML) has made distributed training across multiple GPUs a fundamental component of modern ML systems. As model sizes and computational throughput continue to increase, communication overhead has become a dominant bottleneck in multi-GPU training, particularly when computation and communication are executed sequentially. This work explores concurrent execution of computation and collective communication using two portable runtime controls: shared-memory-driven occupancy shaping for computation kernels and elevated scheduling priority for communication kernels. Our approach regulates computation-kernel residency through per-block shared-memory allocation, leaving sufficient on-chip resources for communication kernels to make progress. In addition, assigning higher priority to communication streams ensures steady communication progress once resources become available. Experiments on NVIDIA A40, A100, H100, and AMD MI250X GPUs demonstrate that the proposed method enables effective computation-communication overlap and reduces total execution time by up to 25.5 percent, without modifying vendor libraries or kernel implementations.",
+            "categories": "cs.DC",
+            "comment": "To appear at the AI on HPC Workshop at ISC 2026, held in conjunction with ISC 2026"
+          },
+          "analysis": {
+            "problem_statement": "The paper addresses the bottleneck of sequential computation and communication in multi-GPU machine learning (ML) workloads, leading to inefficient training times.",
+            "bottleneck_addressed": "Communication overhead in distributed training across multiple GPUs",
+            "executive_summary": "This paper proposes a resource-aware approach to overlap computation and communication in multi-GPU ML workloads, leading to significant reductions in total execution time. By regulating computation-kernel residency and assigning higher priority to communication streams, the proposed method enables effective computation-communication overlap. This is crucial in the current AI landscape, where large-scale ML models require efficient distributed training to achieve optimal performance.",
+            "key_metrics": {
+              "primary_metric": "Total execution time reduction",
+              "metric_value": "25.5%",
+              "baseline": "Sequential computation and communication",
+              "improvement_percentage": "25.5%"
+            },
+            "technical_breakdown": {
+              "method": "The proposed method uses shared-memory-driven occupancy shaping for computation kernels and elevated scheduling priority for communication kernels to regulate computation-kernel residency and ensure steady communication progress.",
+              "architecture": "Multi-GPU architecture with shared memory and elevated scheduling priority",
+              "implementation_details": "Per-block shared-memory allocation and assigning higher priority to communication streams using portable runtime controls",
+              "code_complexity": "The proposed method introduces moderate code complexity due to the need to manage shared memory and scheduling priorities, but does not modify vendor libraries or kernel implementations."
+            },
+            "relevance_tags": [
+              "multi-GPU",
+              "machine learning",
+              "distributed training",
+              "communication overhead",
+              "computation-communication overlap"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-06-09T03:33:40.069192",
+          "conference_info": {
+            "conference": "ISC",
+            "year": "2026",
+            "comment": "To appear at the AI on HPC Workshop at ISC 2026, held in conjunction with ISC 2026",
+            "raw_comment": "To appear at the AI on HPC Workshop at ISC 2026, held in conjunction with ISC 2026",
+            "category": "Systems & Architecture",
+            "rank": ""
+          }
+        }
+      ],
+      "updated_at": "2026-06-09T03:39:38.694727"
     }
   }
 }
