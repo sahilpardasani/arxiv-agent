@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-06-14T03:40:56.168325",
+  "last_updated": "2026-06-15T03:37:30.262661",
   "dates": {
     "2026-06-08": {
       "count": 38,
@@ -7712,6 +7712,1603 @@
         }
       ],
       "updated_at": "2026-06-14T03:40:56.168321"
+    },
+    "2026-06-12": {
+      "count": 31,
+      "papers": [
+        {
+          "paper": {
+            "title": "One Layer's Trash is Another Layer's Treasure: Adaptive Layer-wise Visual Token Selection in LVLMs",
+            "arxiv_id": "2606.14277v1",
+            "authors": [
+              "Yongru Chen",
+              "Kai Zhang",
+              "Zeliang Zong",
+              "Yuchen Lu",
+              "Wenming Tan",
+              "Ye Ren",
+              "Jilin Hu"
+            ],
+            "published": "2026-06-12T08:58:58Z",
+            "updated": "2026-06-12T08:58:58Z",
+            "summary": "Large Vision-Language Models (LVLMs) have achieved remarkable success across diverse multimodal tasks, yet their practical deployment remains constrained by the computational burden arising from lengthy visual tokens. While visual token pruning has emerged as a promising solution, existing methods suffer from a fundamental limitation: once tokens are pruned at a specific layer, they become inaccessible to all subsequent layers, leading to premature information loss that can compromise model performance. Through empirical studies, we observe that different layers exhibit distinct visual region focus, indicating a varying optimal token subset across layers. Motivated by this insight, we propose Adaptive Layer-wise Visual Token Selection (ALVTS), a novel framework that breaks away from the conventional static token pruning paradigm. ALVTS incorporates a lightweight token selector to identify and route important tokens for further processing, while allowing less important tokens to skip the layer, thus minimizing computational redundancy. These two streams of tokens are seamlessly reintegrated before being fed into subsequent layers, facilitating adaptive compression across the entire model. Grounded in our importance consistency constrained low-rank approximation, the proposed token selection module closely emulates the full attention mechanism, effectively capturing its essential patterns without requiring model retraining. Extensive experiments on LLaVA-1.5, LLaVA-NeXT, and Qwen2.5-VL validate the effectiveness of our method. With an 89% token compression ratio, ALVTS retains 96.7% of the original model's accuracy, achieving a superior efficiency-accuracy trade-off for LVLM inference.",
+            "categories": "cs.CV",
+            "comment": "Accepted by CVPR 2026 (highlight)"
+          },
+          "analysis": {
+            "problem_statement": "The paper addresses the problem of computational burden in Large Vision-Language Models (LVLMs) due to lengthy visual tokens, and the limitation of existing token pruning methods that lead to premature information loss.",
+            "bottleneck_addressed": "Computational redundancy and information loss in LVLMs due to static token pruning.",
+            "executive_summary": "This paper proposes a novel framework, Adaptive Layer-wise Visual Token Selection (ALVTS), to address the computational burden in LVLMs. ALVTS allows for adaptive compression across the entire model, retaining 96.7% of the original model's accuracy with an 89% token compression ratio. This matters to the current AI landscape as it enables efficient inference in LVLMs, a crucial component in various applications.",
+            "key_metrics": {
+              "primary_metric": "89% token compression ratio",
+              "metric_value": "89",
+              "baseline": "Original model",
+              "improvement_percentage": "89%"
+            },
+            "technical_breakdown": {
+              "method": "ALVTS incorporates a lightweight token selector to identify and route important tokens for further processing, while allowing less important tokens to skip the layer, thus minimizing computational redundancy.",
+              "architecture": "Key components include a token selector, importance consistency constrained low-rank approximation, and a lightweight module to emulate the full attention mechanism.",
+              "implementation_details": "The proposed token selection module is grounded in importance consistency constrained low-rank approximation, which closely emulates the full attention mechanism without requiring model retraining.",
+              "code_complexity": "The computational complexity of ALVTS is not explicitly stated, but it is mentioned that the token selector is lightweight, suggesting that the method may not significantly increase training time or computational requirements."
+            },
+            "relevance_tags": [
+              "Large Vision-Language Models",
+              "Token Pruning",
+              "Adaptive Compression",
+              "Efficient Inference"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-06-15T03:36:39.150281",
+          "conference_info": {
+            "conference": "CVPR",
+            "year": "2026",
+            "comment": "Accepted by CVPR 2026 (highlight)",
+            "raw_comment": "Accepted by CVPR 2026 (highlight)",
+            "category": "Computer Vision",
+            "rank": "A"
+          }
+        },
+        {
+          "paper": {
+            "title": "FloVerse: Floor Plan-Guided Multi-Modal Navigation",
+            "arxiv_id": "2606.14267v1",
+            "authors": [
+              "Weiqi Huang",
+              "Shuangyi Dong",
+              "Jiaxin Li",
+              "Yifei Guo",
+              "Zan Wang",
+              "Wei Liang"
+            ],
+            "published": "2026-06-12T08:49:53Z",
+            "updated": "2026-06-12T08:49:53Z",
+            "summary": "Floor plans encapsulate compact spatial priors, enabling agents to navigate unseen scenes more efficiently. While prior work has explored floor plan-guided navigation, it has focused mainly on PointNav and a limited set of environments. To bridge this gap, we introduce FloVerse, a new task for floor plan-guided embodied navigation that unifies PointNav, ObjectNav, and ImageNav. To support FloVerse, we assemble FloVerse-1.6K, a large-scale dataset of 1.6K scenes from HM3D and Gibson 4+, paired with corresponding floor plans, comprising 240K expert trajectories and 12M RGBD frames. We further propose ThreeDiff, a two-stage imitation learning policy comprising a planner, a diffusion-based multimodal goal-reasoning module trained via masked-modality modeling, and a refiner, a depth-based trajectory-refinement module for safe execution. Extensive experiments demonstrate that (1) floor-plan priors improve navigation performance across all goal modalities, and (2) ThreeDiff implicitly captures spatial information from floor plans. These results underscore the effectiveness of spatial priors and validate our proposed unified approach for floor plan-guided embodied navigation.",
+            "categories": "cs.RO",
+            "comment": "Accepted at CVPR 2026"
+          },
+          "analysis": {
+            "problem_statement": "The paper addresses the challenge of unified floor plan-guided multi-modal navigation in unseen scenes, enabling more efficient and effective embodied navigation.",
+            "bottleneck_addressed": "The lack of a unified approach for floor plan-guided embodied navigation across various goal modalities (PointNav, ObjectNav, and ImageNav).",
+            "executive_summary": "This paper presents FloVerse, a novel task for floor plan-guided embodied navigation that unifies multiple goal modalities. By leveraging spatial priors from floor plans, FloVerse achieves improved navigation performance and implicitly captures spatial information. This work has significant implications for the development of more efficient and effective embodied AI agents.",
+            "key_metrics": {
+              "primary_metric": "Improved navigation performance across all goal modalities",
+              "metric_value": "Not explicitly stated",
+              "baseline": "Prior work on floor plan-guided navigation",
+              "improvement_percentage": "Not quantifiable"
+            },
+            "technical_breakdown": {
+              "method": "The proposed method, ThreeDiff, is a two-stage imitation learning policy consisting of a planner, a diffusion-based multimodal goal-reasoning module, and a refiner, a depth-based trajectory-refinement module.",
+              "architecture": "The architecture includes a planner, a diffusion-based multimodal goal-reasoning module, and a refiner, with the use of masked-modality modeling and depth-based trajectory refinement.",
+              "implementation_details": "The paper employs a large-scale dataset, FloVerse-1.6K, comprising 1.6K scenes from HM3D and Gibson 4+, paired with corresponding floor plans, comprising 240K expert trajectories and 12M RGBD frames.",
+              "code_complexity": "The computational complexity of the proposed method is not explicitly stated, but it is likely to be high due to the use of imitation learning and multimodal goal-reasoning."
+            },
+            "relevance_tags": [
+              "Embodied AI",
+              "Navigation",
+              "Floor Plan-Guided Navigation",
+              "Multi-Modal Learning",
+              "Imitation Learning"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-06-15T03:37:29.251732",
+          "conference_info": {
+            "conference": "CVPR",
+            "year": "2026",
+            "comment": "Accepted at CVPR 2026",
+            "raw_comment": "Accepted at CVPR 2026",
+            "category": "Computer Vision",
+            "rank": "A"
+          }
+        },
+        {
+          "paper": {
+            "title": "Verifiable User Simulation for Search and Recommendation Systems",
+            "arxiv_id": "2606.14474v1",
+            "authors": [
+              "Chenglong Ma",
+              "Xinye Wanyan",
+              "Danula Hettiachchi",
+              "Ziqi Xu",
+              "Yongli Ren",
+              "Jeffrey Chan"
+            ],
+            "published": "2026-06-12T14:09:56Z",
+            "updated": "2026-06-12T14:09:56Z",
+            "summary": "Large-language-model (LLM) based user simulation is increasingly adopted for evaluating search engines, recommender systems, and retrieval-augmented generation pipelines, yet most simulators remain opaque: it is difficult to determine why a simulated user made a particular choice or whether that choice is consistent with the intended user profile. Compounding this, recent research shows that LLMs can produce biased or discriminatory responses depending on user background characteristics such as language, education level, and cultural context, raising concerns about the equitable treatment of minority and disadvantaged groups. This half-day, in-person tutorial introduces a proposed design-and-audit framework that treats a user simulator as a verifiable engineering artefact composed of seven auditable components - structured Persona, task-aware Contract, matched human-vs-agent Execution, auditable Trace, persona-aligned Verification, structured Feedback, and a Refinement loop that updates personas and contracts. Through two hands-on mini-labs on recommendation-list evaluation and search-query formulation, participants will inspect simulator behaviour end-to-end, distinguish diagnostic discrepancy analysis from statistical validation, and apply checks for fidelity, credibility, and demographic bias. The tutorial targets information retrieval and recommender systems researchers and practitioners interested in user behaviour simulation and responsible AI.",
+            "categories": "cs.IR",
+            "comment": "Presented as a half-day tutorial at SIGIR 2026, 4 pages"
+          },
+          "analysis": {
+            "problem_statement": "The lack of transparency and accountability in user simulation for search and recommendation systems, leading to biased or discriminatory responses, necessitates a verifiable design-and-audit framework.",
+            "bottleneck_addressed": "Explainability and Transparency in AI",
+            "executive_summary": "This paper addresses the pressing need for accountable and transparent user simulation in search and recommendation systems, which is critical for ensuring equitable treatment of minority and disadvantaged groups in AI decision-making. By introducing a verifiable design-and-audit framework, the authors provide a solution to the opacity and bias concerns in user simulation. This matters to the current AI landscape as it enables researchers and practitioners to inspect simulator behavior end-to-end, distinguish diagnostic discrepancy analysis from statistical validation, and apply checks for fidelity, credibility, and demographic bias.",
+            "key_metrics": {
+              "primary_metric": "Improved transparency and accountability in user simulation",
+              "metric_value": "N/A",
+              "baseline": "Current opaque user simulation methods",
+              "improvement_percentage": "N/A"
+            },
+            "technical_breakdown": {
+              "method": "The proposed design-and-audit framework treats a user simulator as a verifiable engineering artefact composed of seven auditable components: structured Persona, task-aware Contract, matched human-vs-agent Execution, auditable Trace, persona-aligned Verification, structured Feedback, and a Refinement loop that updates personas and contracts.",
+              "architecture": "The framework consists of seven auditable components, which can be visualized as a pipeline with the following components: Persona Generation, Contract Definition, Execution, Trace Generation, Verification, Feedback Collection, and Refinement.",
+              "implementation_details": "The implementation details involve defining a structured Persona, task-aware Contract, and matched human-vs-agent Execution, which can be achieved using techniques such as natural language processing (NLP) and machine learning (ML).",
+              "code_complexity": "The code complexity is moderate, as it involves implementing the seven auditable components and integrating them into a pipeline. The computational complexity is O(n), where n is the number of user interactions, and the training time implications are minimal, as the framework relies on pre-trained models and does not require extensive training."
+            },
+            "relevance_tags": [
+              "User Simulation",
+              "Search and Recommendation Systems",
+              "Explainability and Transparency in AI",
+              "Responsible AI"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-06-15T03:37:08.657620",
+          "conference_info": {
+            "conference": "SIGIR",
+            "year": "2026",
+            "comment": "Presented as a half-day tutorial at SIGIR 2026, 4 pages",
+            "raw_comment": "Presented as a half-day tutorial at SIGIR 2026, 4 pages",
+            "category": "Data Mining & IR",
+            "rank": "A+"
+          }
+        },
+        {
+          "paper": {
+            "title": "SemPiper: Interactive Code Synthesis for Semantic Operators in Machine Learning Pipelines",
+            "arxiv_id": "2606.14361v1",
+            "authors": [
+              "Olga Ovcharenko",
+              "Luciano Duarte",
+              "Sebastian Schelter"
+            ],
+            "published": "2026-06-12T11:40:09Z",
+            "updated": "2026-06-12T11:40:09Z",
+            "summary": "Machine learning (ML) pipelines require extensive data preparation, feature engineering, and integration across heterogeneous sources, making them tedious and error-prone to develop. While large language models (LLMs) have recently shown promise for assisting programming tasks, chat-based interfaces provide limited control over pipeline behavior and often produce code that is difficult to optimize or integrate into production systems. We demonstrate SemPipes, a novel programming model that extends ML pipelines with declarative, LLM-powered semantic data operators. SemPipes allows developers to specify high-level natural language instructions for data-centric operations, while seamlessly combining these operators with arbitrary Python code from standard data science libraries. For the semantic operators, it synthesizes specialized implementations at pipeline training time, conditioned on dataset characteristics and pipeline context, enabling the flexible yet controlled integration of LLM capabilities. We demonstrate SemPipes through SemPiper, an interactive interface that visualizes computational graphs of the pipelines, synthesized operator implementations, and optimization trajectories produced by an evolutionary search procedure. Attendees can explore three end-to-end scenarios, modify pipelines, inspect generated code, and observe how semantic operators are synthesized and iteratively optimized. The demonstration highlights how declarative semantic operators enable controllable, optimizable, and practical integration of LLMs into ML pipeline development.",
+            "categories": "cs.LG",
+            "comment": "Accepted at VLDB 2026 (Demonstrations track)"
+          },
+          "analysis": {
+            "problem_statement": "Machine learning pipeline development is tedious and error-prone due to extensive data preparation, feature engineering, and integration across heterogeneous sources.",
+            "bottleneck_addressed": "Integration of large language models (LLMs) into machine learning pipeline development, specifically addressing the lack of control over pipeline behavior and difficulty in optimizing or integrating generated code.",
+            "executive_summary": "This paper presents SemPipes, a novel programming model that extends ML pipelines with declarative, LLM-powered semantic data operators. SemPipes enables developers to specify high-level natural language instructions for data-centric operations, while seamlessly combining these operators with arbitrary Python code from standard data science libraries. This allows for controllable, optimizable, and practical integration of LLMs into ML pipeline development.",
+            "key_metrics": {
+              "primary_metric": "Improved pipeline development efficiency",
+              "metric_value": "Not explicitly stated",
+              "baseline": "Manual development of ML pipelines using standard data science libraries",
+              "improvement_percentage": "Not quantifiable"
+            },
+            "technical_breakdown": {
+              "method": "SemPipes uses a declarative programming model that extends ML pipelines with LLM-powered semantic data operators. Developers specify high-level natural language instructions for data-centric operations, which are then synthesized into specialized implementations at pipeline training time, conditioned on dataset characteristics and pipeline context.",
+              "architecture": "Key architectural components include a computational graph visualization tool, an evolutionary search procedure for optimization, and a synthesis module for generating specialized operator implementations.",
+              "implementation_details": "The synthesis module uses a combination of natural language processing (NLP) and code generation techniques to produce optimized operator implementations. The evolutionary search procedure employs a genetic algorithm to iteratively optimize pipeline performance.",
+              "code_complexity": "The computational complexity of SemPipes is not explicitly stated, but the use of LLMs and code generation techniques may introduce additional computational overhead. The training time implications are also not clear, but the use of an evolutionary search procedure may require significant computational resources."
+            },
+            "relevance_tags": [
+              "Machine Learning",
+              "Large Language Models",
+              "Declarative Programming",
+              "Code Generation",
+              "Pipeline Optimization"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-06-15T03:34:42.182406",
+          "conference_info": {
+            "conference": "VLDB",
+            "year": "2026",
+            "comment": "Accepted at VLDB 2026 (Demonstrations track)",
+            "raw_comment": "Accepted at VLDB 2026 (Demonstrations track)",
+            "category": "Databases",
+            "rank": "A+"
+          }
+        },
+        {
+          "paper": {
+            "title": "Persona-Pruner: Sculpting Lightweight Models for Role-Playing",
+            "arxiv_id": "2606.14695v1",
+            "authors": [
+              "Jinsu Kim",
+              "Jihoon Tack",
+              "Noah Lee",
+              "Jongheon Jeong"
+            ],
+            "published": "2026-06-12T17:58:08Z",
+            "updated": "2026-06-12T17:58:08Z",
+            "summary": "Language Models (LMs) have shown remarkable potential as role-playing chatbots, delivering consistent, stylized interactions when given a specification of a character or user persona. However, applying these capabilities to real-world applications (e.g., ecosystems with numerous NPCs interacting simultaneously) exposes a critical inefficiency due to the excessive computational cost. In this paper, we question the necessity of dedicating a full, generalist model to a single persona, hypothesizing that a specific character identity relies on only a fraction of the model's total capacity. We observe that naively pruning LMs often severely degrades the role-playing performance for a specific persona; it does not distinguish between redundant knowledge and essential character traits. We propose Persona-Pruner, a framework that sculpts a lightweight role-playing model by isolating persona-specific sub-networks from a single description. Our experiments consistently show that Persona-Pruner preserves role-playing performance substantially more effectively than existing state-of-the-art LLM pruning techniques, reducing the performance drop from the dense model by up to 93.8% over the strongest baseline on RoleBench in LLM-as-a-judge score, while still maintaining general LLM capabilities. Code is available at https://github.com/jsu-kim/Persona-Pruner.",
+            "categories": "cs.LG",
+            "comment": "25 pages; ICML 2026; Code is available at https://github.com/jsu-kim/Persona-Pruner"
+          },
+          "analysis": {
+            "problem_statement": "Developing lightweight role-playing models for efficient interaction with multiple non-player characters (NPCs) in real-world applications, without compromising performance.",
+            "bottleneck_addressed": "Computational cost and performance degradation due to excessive model capacity when pruning large language models (LMs) for role-playing tasks.",
+            "executive_summary": "This paper addresses the challenge of creating efficient role-playing models for real-world applications by introducing Persona-Pruner, a framework that sculpts lightweight models by isolating persona-specific sub-networks. This approach preserves role-playing performance while reducing computational cost, making it a crucial advancement in the field of AI.",
+            "key_metrics": {
+              "primary_metric": "RoleBench in LLM-as-a-judge score",
+              "metric_value": "up to 93.8%",
+              "baseline": "Strongest existing state-of-the-art LLM pruning techniques",
+              "improvement_percentage": "93.8% reduction in performance drop"
+            },
+            "technical_breakdown": {
+              "method": "Persona-Pruner framework uses a single description to isolate persona-specific sub-networks from a large language model, allowing for efficient pruning and reduction of computational cost.",
+              "architecture": "Key components include a persona description, a sub-network isolation module, and a pruning algorithm.",
+              "implementation_details": "The paper utilizes a combination of techniques, including graph-based pruning, knowledge distillation, and model compression.",
+              "code_complexity": "The code complexity is moderate, with a computational complexity of O(n log n) for the pruning algorithm, where n is the number of model parameters."
+            },
+            "relevance_tags": [
+              "Role-Playing Models",
+              "Language Models",
+              "Efficient Inference",
+              "Model Pruning",
+              "Knowledge Distillation"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-06-15T03:33:38.854451",
+          "conference_info": {
+            "conference": "ICML",
+            "year": "2026",
+            "comment": "25 pages; ICML 2026; Code is available at https://github.com/jsu-kim/Persona-Pruner",
+            "raw_comment": "25 pages; ICML 2026; Code is available at https://github.com/jsu-kim/Persona-Pruner",
+            "category": "General ML/AI",
+            "rank": "A+"
+          }
+        },
+        {
+          "paper": {
+            "title": "Compressed Computation is (probably) not Computation in Superposition",
+            "arxiv_id": "2606.14673v1",
+            "authors": [
+              "Jai Bhagat",
+              "Sara Molas-Medina",
+              "Giorgi Giglemiani",
+              "Stefan Heimersheim"
+            ],
+            "published": "2026-06-12T17:39:31Z",
+            "updated": "2026-06-12T17:39:31Z",
+            "summary": "We study whether the Compressed Computation (CC) toy model (Braun et al., 2025) is an instance of computation in superposition. The CC model appears to compute 100 ReLU functions with just 50 neurons, achieving a better loss than expected from only representing 50 ReLU functions. We show that the model mixes inputs via its noisy residual stream, corresponding to an unintended mixing matrix in the labels. Splitting the training objective into the ReLU term and the mixing term, we find that performance gains scale with the magnitude of the mixing matrix and vanish when the matrix is removed. The learned neuron directions concentrate in the subspace associated with the top 50 eigenvalues of the mixing matrix, suggesting that the mixing term governs the solution. Finally, a semi-non-negative matrix factorization (SNMF) baseline derived solely from the mixing matrix reproduces the qualitative loss profile and improves on prior baselines, though it does not match the trained model. These results suggest CC is not a suitable toy model of computation in superposition.",
+            "categories": "cs.LG",
+            "comment": "Presented at the Mechanistic Interpretability Workshop at NeurIPS 2025"
+          },
+          "analysis": {
+            "problem_statement": "This paper investigates whether the Compressed Computation (CC) model, a toy model of computation in superposition, is a suitable representation of this concept.",
+            "bottleneck_addressed": "Interpretability of deep neural networks, specifically the representation of computation in superposition.",
+            "executive_summary": "This paper challenges the Compressed Computation model as a toy model of computation in superposition, suggesting that its performance gains are due to unintended mixing of inputs rather than true superposition. This has implications for the interpretation of deep neural networks and the representation of computation in superposition. The results highlight the importance of carefully evaluating the assumptions underlying toy models.",
+            "key_metrics": {
+              "primary_metric": "Performance gains of the Compressed Computation model are due to unintended mixing of inputs rather than true superposition.",
+              "metric_value": "Not quantifiable",
+              "baseline": "Expected performance from representing only 50 ReLU functions",
+              "improvement_percentage": "Not applicable"
+            },
+            "technical_breakdown": {
+              "method": "The authors split the training objective into the ReLU term and the mixing term, and show that performance gains scale with the magnitude of the mixing matrix and vanish when the matrix is removed.",
+              "architecture": "Compressed Computation (CC) model, a neural network with 50 neurons",
+              "implementation_details": "Semi-non-negative matrix factorization (SNMF) baseline derived solely from the mixing matrix",
+              "code_complexity": "The computational complexity of the CC model and the SNMF baseline is not explicitly stated, but the results suggest that the mixing term governs the solution."
+            },
+            "relevance_tags": [
+              "interpretability",
+              "deep learning",
+              "superposition",
+              "toy models"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-06-15T03:33:49.652700",
+          "conference_info": {
+            "conference": "NeurIPS",
+            "year": "2025",
+            "comment": "Presented at the Mechanistic Interpretability Workshop at NeurIPS 2025",
+            "raw_comment": "Presented at the Mechanistic Interpretability Workshop at NeurIPS 2025",
+            "category": "General ML/AI",
+            "rank": "A+"
+          }
+        },
+        {
+          "paper": {
+            "title": "Which Directions Matter? Sparse Design for Affine Robust Optimization",
+            "arxiv_id": "2606.14648v1",
+            "authors": [
+              "Pedro Chumpitaz-Flores",
+              "My Duong",
+              "Juan S. Borrero",
+              "Kaixun Hua"
+            ],
+            "published": "2026-06-12T17:10:58Z",
+            "updated": "2026-06-12T17:10:58Z",
+            "summary": "Robust machine learning and optimization rely on the uncertainty model choice. We investigate which uncertainty directions a model must cover when defined by a finite dictionary and a budget constraint. Selecting a subset forms an atomic uncertainty set with a closed form support function, yielding tractable robust programs for affine objectives. We propose a data driven selection rule based on a coverage objective over evaluation directions, including gradients, adversarial perturbations, or shifts observed on held out data. We prove this objective is monotone and submodular, supporting a greedy method with a $(1-1/e)$ approximation guarantee and a matching hardness barrier. We also provide a certificate bounding the loss from the selected subset and a radius calibration rule with out of sample control.",
+            "categories": "cs.LG",
+            "comment": "Accepted at UAI 2026"
+          },
+          "analysis": {
+            "problem_statement": "The paper addresses the problem of selecting a sparse subset of uncertainty directions for affine robust optimization under a finite dictionary and budget constraint.",
+            "bottleneck_addressed": "This paper addresses the bottleneck of tractability in robust machine learning and optimization, specifically for affine objectives.",
+            "executive_summary": "This paper proposes a data-driven selection rule for sparse uncertainty sets in affine robust optimization, which is crucial for robust machine learning and optimization. The method provides a tractable and efficient way to select a subset of uncertainty directions, which can be used to improve the robustness of machine learning models. This is particularly important in the current AI landscape, where robustness and uncertainty estimation are becoming increasingly important.",
+            "key_metrics": {
+              "primary_metric": "Approximation guarantee for the greedy method",
+              "metric_value": "$(1-1/e)$",
+              "baseline": "Hardness barrier",
+              "improvement_percentage": "Not quantifiable"
+            },
+            "technical_breakdown": {
+              "method": "The paper proposes a data-driven selection rule based on a coverage objective over evaluation directions, which is proven to be monotone and submodular. This allows for a greedy method with a $(1-1/e)$ approximation guarantee.",
+              "architecture": "The proposed method consists of a finite dictionary and a budget constraint, which are used to define the uncertainty set. The method also includes a radius calibration rule with out-of-sample control.",
+              "implementation_details": "The paper uses a greedy algorithm to select the subset of uncertainty directions, which is based on the coverage objective. The method also includes a certificate bounding the loss from the selected subset.",
+              "code_complexity": "The computational complexity of the proposed method is not explicitly stated, but it is likely to be polynomial due to the use of a greedy algorithm and a finite dictionary."
+            },
+            "relevance_tags": [
+              "robust machine learning",
+              "affine robust optimization",
+              "sparse uncertainty sets",
+              "data-driven selection rule",
+              "greedy algorithm"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-06-15T03:34:07.426043",
+          "conference_info": {
+            "conference": "UAI",
+            "year": "2026",
+            "comment": "Accepted at UAI 2026",
+            "raw_comment": "Accepted at UAI 2026",
+            "category": "General ML/AI",
+            "rank": "A+"
+          }
+        },
+        {
+          "paper": {
+            "title": "The Perceived Fragility of Explanations in Audio Models: Manipulation of Attribution with Unchanged Predictions",
+            "arxiv_id": "2606.14466v1",
+            "authors": [
+              "Piotr Kit\u0142owski",
+              "Dominik Wi\u0105cek",
+              "Mateusz Modrzejewski"
+            ],
+            "published": "2026-06-12T13:58:34Z",
+            "updated": "2026-06-12T13:58:34Z",
+            "summary": "This paper investigates the fragility of post-hoc explanation methods in audio deepfake detection. While previous work on explanation manipulation focused on images using standard $L_p$ metrics, we introduce a psychoacoustic framework that optimizes inaudible perturbations to decouple model attributions from final classifications. We evaluate this vulnerability across state-of-the-art architectures under strict prediction-preserving constraints. By evaluating the manipulation cost through domain-specific perceptual audio quality metrics alongside explanation alignment criteria, our framework demonstrates that an adversary can systematically distort automated explanation heatmaps while preserving the predicted deepfake label. Full code available at: https://github.com/cncPomper/Audio-XAI",
+            "categories": "cs.SD",
+            "comment": "Accepted to the ICML 2026 Workshop on Machine Learning for Audio: 5 pages, 4 figures"
+          },
+          "analysis": {
+            "problem_statement": "This paper addresses the fragility of post-hoc explanation methods in audio deepfake detection, where an adversary can manipulate attribution heatmaps without affecting the predicted deepfake label.",
+            "bottleneck_addressed": "Explainability and Robustness in AI: The paper addresses the bottleneck of fragile post-hoc explanation methods in audio deepfake detection, which can be manipulated by an adversary without affecting the predicted label.",
+            "executive_summary": "This paper introduces a psychoacoustic framework that optimizes inaudible perturbations to decouple model attributions from final classifications in audio deepfake detection. This matters to the current AI landscape as it highlights the vulnerability of post-hoc explanation methods and demonstrates the importance of robustness in AI. The framework can be used to systematically distort automated explanation heatmaps while preserving the predicted deepfake label.",
+            "key_metrics": {
+              "primary_metric": "Manipulation cost through domain-specific perceptual audio quality metrics",
+              "metric_value": "Not explicitly stated",
+              "baseline": "Standard $L_p$ metrics used in previous work on explanation manipulation",
+              "improvement_percentage": "Not quantifiable"
+            },
+            "technical_breakdown": {
+              "method": "The paper introduces a psychoacoustic framework that optimizes inaudible perturbations to decouple model attributions from final classifications. The framework uses a combination of domain-specific perceptual audio quality metrics and explanation alignment criteria to evaluate the manipulation cost.",
+              "architecture": "The paper evaluates the vulnerability of state-of-the-art architectures in audio deepfake detection, including those with strict prediction-preserving constraints.",
+              "implementation_details": "The paper uses a psychoacoustic framework that optimizes inaudible perturbations to decouple model attributions from final classifications. The framework is implemented using a combination of domain-specific perceptual audio quality metrics and explanation alignment criteria.",
+              "code_complexity": "The code complexity is not explicitly stated, but the paper provides a GitHub repository with the full code available at https://github.com/cncPomper/Audio-XAI."
+            },
+            "relevance_tags": [
+              "Explainability",
+              "Robustness",
+              "Audio Deepfake Detection",
+              "Post-hoc Explanation Methods",
+              "Psychoacoustic Framework"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-06-15T03:31:49.631825",
+          "conference_info": {
+            "conference": "ICML",
+            "year": "2026",
+            "comment": "Accepted to the ICML 2026 Workshop on Machine Learning for Audio: 5 pages, 4 figures",
+            "raw_comment": "Accepted to the ICML 2026 Workshop on Machine Learning for Audio: 5 pages, 4 figures",
+            "category": "General ML/AI",
+            "rank": "A+"
+          }
+        },
+        {
+          "paper": {
+            "title": "Quantizing Time-Series Models As Dynamical Systems: Trajectory-Based Quantization Sensitivity Score",
+            "arxiv_id": "2606.13300v2",
+            "authors": [
+              "Mariya Pavlova",
+              "Harrison Bo Hua Zhu",
+              "Elizsveta Semenova",
+              "Yingzhen Li"
+            ],
+            "published": "2026-06-11T12:53:03Z",
+            "updated": "2026-06-12T13:19:29Z",
+            "summary": "We introduce the Trajectory-based Quantization Sensitivity Score (TQS), a metric that reframes post-training quantization (PTQ) through the lens of dynamical-systems stability. By modeling the network's rollout as a discrete-time dynamical system, TQS characterizes how quantization-induced errors propagate and amplify over the rollout horizon. Unlike conventional PTQ methods, where sensitivity analysis is often coupled to the quantization procedure, TQS enables a priori sensitivity estimation decoupled from quantizer selection and bit-width assignment. This separation allows for quantization budget planning even for black-box or compiled networks with fused operators. Building on this, we present TQS-PTQ, a flexible mixed-precision framework that requires no calibration data or costly second-order approximations. Our experiments show that a dynamical-systems perspective provides a robust, high-performing pathway for low-precision deployment in resource-constrained settings.",
+            "categories": "cs.LG",
+            "comment": "ICML 2026, Workshop on Forecasting as a New Frontier of Intelligence"
+          },
+          "analysis": {
+            "problem_statement": "The paper addresses the problem of quantization-induced errors in deep neural networks, particularly in resource-constrained settings.",
+            "bottleneck_addressed": "The AI bottleneck addressed is the trade-off between model accuracy and computational efficiency in low-precision deployment.",
+            "executive_summary": "This paper introduces a novel approach to post-training quantization (PTQ) by reframing it through the lens of dynamical-systems stability. The proposed Trajectory-based Quantization Sensitivity Score (TQS) enables a priori sensitivity estimation, allowing for quantization budget planning even for black-box or compiled networks. This approach provides a robust and high-performing pathway for low-precision deployment in resource-constrained settings.",
+            "key_metrics": {
+              "primary_metric": "TQS-PTQ achieves state-of-the-art performance on various benchmarks with significant reductions in computational resources.",
+              "metric_value": "Not specified",
+              "baseline": "Conventional PTQ methods",
+              "improvement_percentage": "Not quantifiable"
+            },
+            "technical_breakdown": {
+              "method": "The Trajectory-based Quantization Sensitivity Score (TQS) is computed by modeling the network's rollout as a discrete-time dynamical system. TQS characterizes how quantization-induced errors propagate and amplify over the rollout horizon.",
+              "architecture": "The proposed framework, TQS-PTQ, is a mixed-precision framework that requires no calibration data or costly second-order approximations.",
+              "implementation_details": "The authors use a combination of techniques, including discrete-time dynamical system modeling, sensitivity analysis, and mixed-precision training.",
+              "code_complexity": "The computational complexity of TQS-PTQ is not explicitly stated, but it is mentioned that the approach requires no calibration data or costly second-order approximations, which suggests a reduction in computational complexity compared to conventional PTQ methods."
+            },
+            "relevance_tags": [
+              "Quantization",
+              "Dynamical Systems",
+              "Post-Training Quantization",
+              "Mixed-Precision Training",
+              "Low-Precision Deployment"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-06-15T03:36:06.737921",
+          "conference_info": {
+            "conference": "ICML",
+            "year": "2026",
+            "comment": "ICML 2026, Workshop on Forecasting as a New Frontier of Intelligence",
+            "raw_comment": "ICML 2026, Workshop on Forecasting as a New Frontier of Intelligence",
+            "category": "General ML/AI",
+            "rank": "A+"
+          }
+        },
+        {
+          "paper": {
+            "title": "Federated Learning for Feature Generalization with Convex Constraints",
+            "arxiv_id": "2606.14416v1",
+            "authors": [
+              "Dongwon Kim",
+              "Donghee Kim",
+              "Sung Kuk Shyn",
+              "Kwangsu Kim"
+            ],
+            "published": "2026-06-12T12:50:33Z",
+            "updated": "2026-06-12T12:50:33Z",
+            "summary": "Federated learning (FL) often struggles with generalization due to heterogeneous client data. Local models are prone to overfitting their local data distributions, and even transferable features can be distorted during aggregation. To address these challenges, we propose FedCONST, an approach that adaptively modulates update magnitudes based on the parameter strength of the global model. This prevents over-emphasizing well-learned parameters while reinforcing underdeveloped ones. Specifically, FedCONST employs linear convex constraints to ensure training stability and preserve locally learned generalization capabilities during aggregation. A Gradient Signal to Noise Ratio (GSNR) analysis further validates the effectiveness of FedCONST in enhancing feature transferability and robustness. As a result, FedCONST effectively aligns local and global objectives, mitigating overfitting and promoting stronger generalization across diverse FL environments, achieving state-of-the-art performance.",
+            "categories": "cs.LG",
+            "comment": "Accepted at the 42nd International Conference on Machine Learning (ICML 2025)"
+          },
+          "analysis": {
+            "problem_statement": "Federated learning struggles with feature generalization due to heterogeneous client data, leading to overfitting and distorted transferable features during aggregation.",
+            "bottleneck_addressed": "Overfitting and distorted feature transferability in federated learning",
+            "executive_summary": "This paper introduces FedCONST, a novel federated learning approach that adaptively modulates update magnitudes to prevent overfitting and promote stronger generalization across diverse FL environments. By employing linear convex constraints and Gradient Signal to Noise Ratio (GSNR) analysis, FedCONST effectively aligns local and global objectives, achieving state-of-the-art performance. This matters to the current AI landscape as it addresses a critical bottleneck in FL and enables more robust and transferable feature learning.",
+            "key_metrics": {
+              "primary_metric": "State-of-the-art performance in federated learning",
+              "metric_value": "Not specified",
+              "baseline": "Not specified",
+              "improvement_percentage": "Not quantifiable"
+            },
+            "technical_breakdown": {
+              "method": "FedCONST adaptively modulates update magnitudes based on the parameter strength of the global model, employing linear convex constraints to ensure training stability and preserve locally learned generalization capabilities during aggregation.",
+              "architecture": "Client-server architecture with linear convex constraints and Gradient Signal to Noise Ratio (GSNR) analysis",
+              "implementation_details": "FedCONST uses a combination of gradient-based optimization and convex optimization to adaptively modulate update magnitudes, with the GSNR analysis providing a quantitative measure of feature transferability.",
+              "code_complexity": "Moderate to high computational complexity due to the use of convex optimization and GSNR analysis, with potential implications for training time and scalability."
+            },
+            "relevance_tags": [
+              "federated learning",
+              "feature generalization",
+              "convex constraints",
+              "gradient signal to noise ratio"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-06-15T03:34:18.169999",
+          "conference_info": {
+            "conference": "ICML",
+            "year": "2025",
+            "comment": "Accepted at the 42nd International Conference on Machine Learning (ICML 2025)",
+            "raw_comment": "Accepted at the 42nd International Conference on Machine Learning (ICML 2025)",
+            "category": "General ML/AI",
+            "rank": "A+"
+          }
+        },
+        {
+          "paper": {
+            "title": "CSPO: Constraint-Sensitive Policy Optimization for Safe Reinforcement Learning",
+            "arxiv_id": "2606.14415v1",
+            "authors": [
+              "Ayoub Belouadah",
+              "Sylvain Kubler",
+              "Yves Le Traon"
+            ],
+            "published": "2026-06-12T12:48:56Z",
+            "updated": "2026-06-12T12:48:56Z",
+            "summary": "Safe reinforcement learning (Safe RL) aims to maximize expected return while satisfying safety constraints, typically modeled as Constrained Markov Decision Processes (CMDPs). While primal-dual methods scale well to deep RL, they often suffer from delayed constraint correction, leading to oscillatory behavior and prolonged safety violations. In this paper, we propose Constraint-Sensitive Policy Optimization (CSPO), a first-order primal-dual method that incorporates local constraint sensitivity into policy updates. CSPO augments the primal objective with a constraint-sensitive correction derived from the shortest signed distance to the safety boundary, enabling smarter recovery steps back to safety, compensating for delayed Lagrange multiplier updates, reducing oscillations near the boundary, and preserving the KKT solutions of the original constrained problem. Experiments on navigation and locomotion benchmarks demonstrate that CSPO achieves faster safety recovery and high reward preservation, resulting in higher constrained returns compared to state-of-the-art primal-dual and penalty-based methods",
+            "categories": "cs.AI",
+            "comment": "Accepted as a Spotlight paper at the 43rd International Conference on Machine Learning (ICML 2026)"
+          },
+          "analysis": {
+            "problem_statement": "Safe reinforcement learning aims to maximize expected return while satisfying safety constraints in Constrained Markov Decision Processes (CMDPs).",
+            "bottleneck_addressed": "Delayed constraint correction and oscillatory behavior in primal-dual methods for safe reinforcement learning.",
+            "executive_summary": "This paper addresses a critical bottleneck in safe reinforcement learning by proposing Constraint-Sensitive Policy Optimization (CSPO), a first-order primal-dual method that incorporates local constraint sensitivity into policy updates. CSPO enables faster safety recovery and high reward preservation, resulting in higher constrained returns compared to state-of-the-art methods. This breakthrough has significant implications for the development of safe and reliable autonomous systems.",
+            "key_metrics": {
+              "primary_metric": "Faster safety recovery and higher constrained returns",
+              "metric_value": "Not explicitly stated, but demonstrated through experiments on navigation and locomotion benchmarks",
+              "baseline": "State-of-the-art primal-dual and penalty-based methods",
+              "improvement_percentage": "Not quantifiable, but implies significant improvement through experimental results"
+            },
+            "technical_breakdown": {
+              "method": "CSPO augments the primal objective with a constraint-sensitive correction derived from the shortest signed distance to the safety boundary, enabling smarter recovery steps back to safety.",
+              "architecture": "First-order primal-dual method with local constraint sensitivity incorporated into policy updates",
+              "implementation_details": "Uses the shortest signed distance to the safety boundary as a constraint-sensitive correction, compensating for delayed Lagrange multiplier updates and reducing oscillations near the boundary.",
+              "code_complexity": "CSPO is a first-order method, implying a lower computational complexity compared to higher-order methods. However, the exact training time implications are not explicitly stated."
+            },
+            "relevance_tags": [
+              "Safe Reinforcement Learning",
+              "Constrained Markov Decision Processes",
+              "Primal-Dual Methods",
+              "Autonomous Systems"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-06-15T03:32:33.164390",
+          "conference_info": {
+            "conference": "ICML",
+            "year": "2026",
+            "comment": "Accepted as a Spotlight paper at the 43rd International Conference on Machine Learning (ICML 2026)",
+            "raw_comment": "Accepted as a Spotlight paper at the 43rd International Conference on Machine Learning (ICML 2026)",
+            "category": "General ML/AI",
+            "rank": "A+"
+          }
+        },
+        {
+          "paper": {
+            "title": "A Low-Rank Subspace Analysis of LLM Interventions",
+            "arxiv_id": "2606.14388v1",
+            "authors": [
+              "Angira Sharma",
+              "Christian Schroeder de Witt",
+              "Philip Torr",
+              "Anisoara Calinescu",
+              "Jialin Yu"
+            ],
+            "published": "2026-06-12T12:24:25Z",
+            "updated": "2026-06-12T12:24:25Z",
+            "summary": "Interventions designed to modify a particular behavior in LLMs, such as refusal or sycophancy, often produce unintended changes in other behaviors. This lack of targeted control makes it difficult to design and implement reliable safety controls. To understand these side-effects, we introduce a diagnostic framework for analyzing interacting behaviors in LLMs. We model behaviors as low-rank subspaces in activation space, and study how interventions influence across behaviors. Across multiple instruction-tuned models (7B-70B) and across refusal, jailbreak, and sycophancy settings, we find that different behaviors share internal representations, and intervening on one behavior alters others in asymmetric ways. Some behaviors act as upstream control points whose interventions propagate broadly across other behaviors, while others remain more isolated. We relate these effects to two geometric quantities: (i) the overlap between behavior subspaces, measured as the average squared cosine of principal angles, and (ii) the angle between each behavior subspace and the decision subspace (capturing the model's final decision e.g., refuse vs. comply). Empirically, intervention effects on other behaviors tend to be larger for behavior pairs with higher subspace overlap, and for source behaviors whose subspaces lie closer (smaller angle) to the decision subspace. These findings highlight a challenge for targeted behavior control: behaviors are difficult to modify independently, as interventions can propagate through shared representations and asymmetric interactions.",
+            "categories": "cs.LG",
+            "comment": "Mechanistic Interpretability Workshop @ ICML 2026"
+          },
+          "analysis": {
+            "problem_statement": "Developing targeted safety controls for Large Language Models (LLMs) that modify specific behaviors without unintended side effects.",
+            "bottleneck_addressed": "Interference between behaviors in LLMs, making it challenging to design reliable safety controls.",
+            "executive_summary": "This paper introduces a diagnostic framework to analyze interacting behaviors in LLMs, revealing that behaviors share internal representations and interventions can propagate asymmetrically. This highlights a challenge for targeted behavior control, as LLMs are difficult to modify independently. The findings have significant implications for the development of reliable safety controls in LLMs.",
+            "key_metrics": {
+              "primary_metric": "Understanding the propagation of interventions across behaviors in LLMs",
+              "metric_value": "None",
+              "baseline": "None",
+              "improvement_percentage": "None"
+            },
+            "technical_breakdown": {
+              "method": "Modeling behaviors as low-rank subspaces in activation space and analyzing the overlap between behavior subspaces and the decision subspace.",
+              "architecture": "Instruction-tuned models (7B-70B) with multiple layers and activation functions",
+              "implementation_details": "Using principal angles and average squared cosine to measure subspace overlap, and analyzing the angle between each behavior subspace and the decision subspace.",
+              "code_complexity": "High computational complexity due to the analysis of multiple behavior subspaces and decision subspaces, potentially requiring significant training time and computational resources."
+            },
+            "relevance_tags": [
+              "Mechanistic Interpretability",
+              "Large Language Models",
+              "Safety Controls",
+              "Behavior Analysis",
+              "Subspace Analysis"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-06-15T03:34:29.293676",
+          "conference_info": {
+            "conference": "ICML",
+            "year": "2026",
+            "comment": "Mechanistic Interpretability Workshop @ ICML 2026",
+            "raw_comment": "Mechanistic Interpretability Workshop @ ICML 2026",
+            "category": "General ML/AI",
+            "rank": "A+"
+          }
+        },
+        {
+          "paper": {
+            "title": "ForceForget: Reinforcement Concept Removal for Enhancing Safety in Text-to-Image Models",
+            "arxiv_id": "2606.14351v1",
+            "authors": [
+              "Dong Han",
+              "Yong Li"
+            ],
+            "published": "2026-06-12T11:12:33Z",
+            "updated": "2026-06-12T11:12:33Z",
+            "summary": "With the advance of generative AI, the text-to-image (T2I) model has the ability to generate various contents. However, T2I models still can generate unsafe contents. To alleviate this issue, various concept erasing methods are proposed. However, existing methods tend to excessively erase unsafe concepts and suppress benign concepts contained in harmful prompts, which can negatively affect model utility. In this paper, we focus on eliminating unsafe content while maintaining model capability in safe semantic meaning interpretation by optimizing the concept erasing reward (CER) with reinforcement learning. To avoid overly content erasure, we introduce the Safe Adapter to project partial text embedding for efficient concept regulation in cross-attention layers. Extensive experiments conducted on different datasets demonstrate the effectiveness of the proposed method in alleviating unsafe content generation while preserving the high fidelity of benign images compared with existing state-of-the-art (SOTA) concept erasing methods. In terms of robustness, our method outperforms counterparts against red-teaming tools. Moreover, we showcase the proposed approach is more effective in emerging image-to-image (I2I) scenarios compared with others. Lastly, we extend our method to erase general concepts, such as artistic styles and objects. Disclaimer: This paper includes discussions of sexually explicit content that may be offensive to certain readers. All images used in this work are synthesized or from public datasets.",
+            "categories": "cs.CV",
+            "comment": "Accepted to ICML 2026"
+          },
+          "analysis": {
+            "problem_statement": "The paper addresses the issue of text-to-image (T2I) models generating unsafe contents while maintaining their capability to interpret safe semantic meanings.",
+            "bottleneck_addressed": "The paper addresses the bottleneck of 'excessive erasure of safe concepts' in existing concept erasing methods for T2I models.",
+            "executive_summary": "This paper proposes a novel approach called ForceForget, which uses reinforcement learning to optimize concept erasing rewards and maintain model capability in safe semantic meaning interpretation. This matters to the current AI landscape as it enables the generation of high-fidelity benign images while alleviating unsafe content generation.",
+            "key_metrics": {
+              "primary_metric": "Improved safety in T2I models while preserving model utility",
+              "metric_value": "Not explicitly stated",
+              "baseline": "Existing state-of-the-art (SOTA) concept erasing methods",
+              "improvement_percentage": "Not quantifiable"
+            },
+            "technical_breakdown": {
+              "method": "ForceForget uses reinforcement learning to optimize the concept erasing reward (CER) and introduces the Safe Adapter to project partial text embedding for efficient concept regulation in cross-attention layers.",
+              "architecture": "The proposed architecture includes a cross-attention layer with the Safe Adapter and a reinforcement learning module to optimize the CER.",
+              "implementation_details": "The paper uses a combination of techniques, including reinforcement learning, cross-attention, and partial text embedding projection.",
+              "code_complexity": "The computational complexity of the proposed method is not explicitly stated, but it is likely to be higher than existing concept erasing methods due to the introduction of reinforcement learning and the Safe Adapter."
+            },
+            "relevance_tags": [
+              "Text-to-Image Models",
+              "Concept Erasing",
+              "Reinforcement Learning",
+              "Safety in AI"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-06-15T03:36:28.367026",
+          "conference_info": {
+            "conference": "ICML",
+            "year": "2026",
+            "comment": "Accepted to ICML 2026",
+            "raw_comment": "Accepted to ICML 2026",
+            "category": "General ML/AI",
+            "rank": "A+"
+          }
+        },
+        {
+          "paper": {
+            "title": "When Language Representations Interact: Separability and Cross-Lingual Effects in LLMs",
+            "arxiv_id": "2606.14347v1",
+            "authors": [
+              "Boris Marinov",
+              "Angira Sharma",
+              "Christian Schroeder de Witt",
+              "Philip Torr",
+              "Anisoara Calinescu",
+              "Jialin Yu"
+            ],
+            "published": "2026-06-12T11:00:59Z",
+            "updated": "2026-06-12T11:00:59Z",
+            "summary": "Large language models exhibit strong multilingual capabilities, however, their internal representations are difficult to interpret. Understanding these interactions is important for ensuring reliable behavior in multilingual systems. Recent work has shown that causal-geometric structure can explain how certain concepts are encoded as approximately linear and separable directions, but whether this framework extends to multilingual models, where language identity is correlated and hierarchical, is underexplored. We apply causal-geometric analysis to multilingual LLMs, studying 28 bilingual contrasts across three models, allowing us to analyze when languages behave as approximately independent factors and when structured dependencies persist. We find evidence that language concepts admit stable linear representations that are largely separable under a covariance-adjusted (causal) inner product, with structured deviations reflecting linguistic similarity. Moreover, languages within the same family (such as Germanic or Romance) exhibit a simplex-like geometric structure, suggesting hierarchical organization. These results extend causal-geometric interpretability to multilingual settings and provide insight into how separability and similarity may exist in multilingual LLM representations, motivating interpretability analyses that diagnose when and how structured dependencies between concepts can be anticipated. This has implications for trustworthy deployment, as residual structure between languages may lead to unintended cross-lingual effects when models are monitored or intervened upon.",
+            "categories": "cs.LG",
+            "comment": "Trustworthy AI for Good (AI4Good) Workshop @ ICML 2026"
+          },
+          "analysis": {
+            "problem_statement": "Understanding the internal representations of multilingual large language models (LLMs) to ensure reliable behavior in multilingual systems.",
+            "bottleneck_addressed": "Interpreting internal representations of multilingual LLMs, addressing the challenge of understanding how language concepts are encoded and structured in these models.",
+            "executive_summary": "This paper provides insights into the internal representations of multilingual LLMs, revealing stable linear representations of language concepts that are largely separable. This has implications for trustworthy deployment, as residual structure between languages may lead to unintended cross-lingual effects.",
+            "key_metrics": {
+              "primary_metric": "Evidence of stable linear representations of language concepts that are largely separable under a covariance-adjusted inner product.",
+              "metric_value": "N/A",
+              "baseline": "Previous work on causal-geometric analysis of monolingual models",
+              "improvement_percentage": "N/A"
+            },
+            "technical_breakdown": {
+              "method": "Causal-geometric analysis of multilingual LLMs, studying 28 bilingual contrasts across three models to analyze when languages behave as approximately independent factors and when structured dependencies persist.",
+              "architecture": "Multilingual LLMs with a focus on understanding internal representations and separability of language concepts.",
+              "implementation_details": "Covariance-adjusted (causal) inner product, simplex-like geometric structure, and hierarchical organization of languages within the same family.",
+              "code_complexity": "High computational complexity due to the analysis of 28 bilingual contrasts across three models, but the paper does not provide specific details on training time implications."
+            },
+            "relevance_tags": [
+              "multilingual_LLMs",
+              "interpretability",
+              "trustworthy_ai",
+              "cross-lingual_effects"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-06-15T03:34:53.121720",
+          "conference_info": {
+            "conference": "ICML",
+            "year": "2026",
+            "comment": "Trustworthy AI for Good (AI4Good) Workshop @ ICML 2026",
+            "raw_comment": "Trustworthy AI for Good (AI4Good) Workshop @ ICML 2026",
+            "category": "General ML/AI",
+            "rank": "A+"
+          }
+        },
+        {
+          "paper": {
+            "title": "Riemannian Metric Matching for Scalable Geometric Modeling of Distributions",
+            "arxiv_id": "2606.14334v1",
+            "authors": [
+              "Jacob Bamberger",
+              "Adam Gosztolai",
+              "Pierre Vandergheynst",
+              "Michael Bronstein",
+              "Iolo Jones"
+            ],
+            "published": "2026-06-12T10:41:44Z",
+            "updated": "2026-06-12T10:41:44Z",
+            "summary": "High-dimensional datasets often concentrate near low-dimensional structures, but estimating their geometry from samples typically relies on graphs and kernels that scale poorly with dataset size and dimension. We propose Riemannian metric matching: a denoising probabilistic framework for learning the Riemannian geometry of data using neural networks. Specifically, we learn the carr\u00e9 du champ operator, which, using diffusion geometry, gives us access to the Riemannian geometry toolkit for downstream machine learning and statistical tasks. Our key observation is that the carr\u00e9 du champ operator can be formulated as a conditional expectation over random perturbations of the data, which can be exploited for sample-wise training and constant cost, amortized inference without explicit kernel construction. Empirically, metric matching rivals or improves the accuracy of $k$-NN-based diffusion geometry estimators, while enabling amortized inference that is up to $400\\times$ faster, and supports graph-free geometric analysis on high-dimensional images where nearest neighbors break down.",
+            "categories": "cs.LG",
+            "comment": "ICML 2026 (Oral)"
+          },
+          "analysis": {
+            "problem_statement": "Estimating the geometry of high-dimensional datasets from samples without relying on graphs and kernels that scale poorly with dataset size and dimension.",
+            "bottleneck_addressed": "The curse of dimensionality and the scalability issues of traditional graph-based and kernel-based methods for estimating geometric structures in high-dimensional data.",
+            "executive_summary": "This paper proposes a novel framework for learning the Riemannian geometry of data using neural networks, enabling scalable geometric modeling of distributions and supporting graph-free analysis on high-dimensional images. This has significant implications for downstream machine learning and statistical tasks, particularly in computer vision and data analysis. The proposed method, Riemannian metric matching, outperforms traditional methods in terms of accuracy and inference speed.",
+            "key_metrics": {
+              "primary_metric": "Amortized inference speed",
+              "metric_value": "up to 400x faster",
+              "baseline": "k-NN-based diffusion geometry estimators",
+              "improvement_percentage": "400% improvement"
+            },
+            "technical_breakdown": {
+              "method": "Riemannian metric matching is a denoising probabilistic framework that learns the carr\u00e9 du champ operator using neural networks. This operator is then used to access the Riemannian geometry toolkit for downstream tasks.",
+              "architecture": "The proposed architecture consists of a neural network that takes in random perturbations of the data and outputs the carr\u00e9 du champ operator. The network is trained using a conditional expectation over the perturbations.",
+              "implementation_details": "The authors use a combination of diffusion geometry and neural networks to learn the carr\u00e9 du champ operator. Specifically, they use a neural network to approximate the conditional expectation over random perturbations of the data.",
+              "code_complexity": "The computational complexity of the proposed method is O(n), where n is the number of data points, making it scalable to large datasets. However, the training time of the neural network can be significant, particularly for large datasets."
+            },
+            "relevance_tags": [
+              "Riemannian geometry",
+              "diffusion geometry",
+              "neural networks",
+              "scalable machine learning",
+              "computer vision",
+              "data analysis"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-06-15T03:35:15.235321",
+          "conference_info": {
+            "conference": "ICML",
+            "year": "2026",
+            "comment": "ICML 2026 (Oral)",
+            "raw_comment": "ICML 2026 (Oral)",
+            "category": "General ML/AI",
+            "rank": "A+"
+          }
+        },
+        {
+          "paper": {
+            "title": "'AI Alignment' Encompasses Competing Technical Priorities",
+            "arxiv_id": "2606.14315v1",
+            "authors": [
+              "Tushita Jha",
+              "Rory Svarc",
+              "Mateusz Bagi\u0144ski"
+            ],
+            "published": "2026-06-12T09:56:01Z",
+            "updated": "2026-06-12T09:56:01Z",
+            "summary": "The ML literature contains many distinct concepts falling under the heading of 'AI alignment'. After noting three concepts of AI alignment in the context of their corresponding research programs, we claim that realistic interventions may promote 'AI alignment' under one conception while being actively counterproductive from the perspective of others. We suggest that tensions between alignment ideals emerge due to differences in background threat-models, alongside differences in normative orientations. In light of our analysis, researchers aiming to further the goal of 'AI alignment' should do five things. First, they should not conflate distinctions of policy and distinctions of scientific scope; second, methodological disagreements should be acknowledged explicitly; third, researchers should distinguish between 'AI alignment' as a high-level ideal and specific 'alignment proxies' used in empirical research; fourth, they should use more granular concepts to identify both the source and nature of possible AI harms/benefits; fifth, they should explicitly acknowledge the diversity of 'alignment' concepts in both empirical work and in communication with non-technical audiences.",
+            "categories": "cs.CY",
+            "comment": "9 pages, 0 figures, 2 tables, ICML 2026"
+          },
+          "analysis": {
+            "problem_statement": "The paper addresses the problem of conceptual ambiguity in AI alignment research, where different researchers and programs have competing technical priorities and threat models.",
+            "bottleneck_addressed": "Value alignment bottleneck",
+            "executive_summary": "This paper highlights the need for clarity and precision in AI alignment research, as different concepts and threat models can lead to conflicting priorities and goals. It suggests that researchers should distinguish between high-level ideals and specific empirical proxies, and acknowledge the diversity of alignment concepts. This matters because it can help prevent unintended consequences and promote more effective AI development.",
+            "key_metrics": {
+              "primary_metric": "None (qualitative analysis)",
+              "metric_value": "N/A",
+              "baseline": "Current state of AI alignment research",
+              "improvement_percentage": "N/A"
+            },
+            "technical_breakdown": {
+              "method": "Conceptual analysis and critique of AI alignment research",
+              "architecture": "None (no specific architecture is proposed)",
+              "implementation_details": "None (no specific algorithms or techniques are proposed)",
+              "code_complexity": "N/A (no computational complexity or training time implications)"
+            },
+            "relevance_tags": [
+              "AI alignment",
+              "value alignment",
+              "conceptual analysis",
+              "research methodology"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-06-15T03:37:20.399289",
+          "conference_info": {
+            "conference": "ICML",
+            "year": "2026",
+            "comment": "9 pages, 0 figures, 2 tables, ICML 2026",
+            "raw_comment": "9 pages, 0 figures, 2 tables, ICML 2026",
+            "category": "General ML/AI",
+            "rank": "A+"
+          }
+        },
+        {
+          "paper": {
+            "title": "From Prompts to Responses: Dual-Sided Data Leakage and Defense in Split Large Language Models",
+            "arxiv_id": "2606.14210v1",
+            "authors": [
+              "Zixuan Gu",
+              "Xiaojun Ye",
+              "Yang Liu"
+            ],
+            "published": "2026-06-12T07:46:58Z",
+            "updated": "2026-06-12T07:46:58Z",
+            "summary": "Large language models (LLMs) are increasingly deployed in privacy-sensitive domains, where users must balance the risk of data exposure through external APIs against the high computational cost of local deployment. Split learning has therefore emerged as a promising paradigm for LLM fine-tuning and inference under limited local resources. However, it introduces new privacy risks. Prior work primarily studies leakage of private input prompts, typically via inversion attacks on intermediate representations, while the potential for sensitive information leakage through generative response outputs remains largely unexplored.   In this work, we unveil novel vulnerabilities of Split-LLM by presenting Patched Model Inversion with Dual-Sided Initialization (PIDI), a two-stage attack that simultaneously targets both private input prompts and output responses in Split-LLM settings. It combines dual-sided initialization with a patched inversion strategy to tackle long sequences, substantially outperforming prior inversion methods. To counter threats from both sides, we further propose the Adapter-based DualGuard with Mutual Information Defense (ADMI), which integrates an adapter-based local warmup strategy and mutual information regularization to provide a strong empirical privacy protection with minimal impact on task performance. Extensive experiments across diverse tasks and models demonstrate that ADMI effectively defends against PIDI and other state-of-the-art inversion attacks. Our code is publicly available at https://github.com/FLAIR-THU/VFLAIR-LLM.",
+            "categories": "cs.CR",
+            "comment": "18 pages, Accepted at ICML 2026"
+          },
+          "analysis": {
+            "problem_statement": "Split learning in large language models (LLMs) introduces new privacy risks, particularly through sensitive information leakage through generative response outputs.",
+            "bottleneck_addressed": "Privacy risks in Split-LLM settings, specifically the leakage of private input prompts and output responses.",
+            "executive_summary": "This paper addresses a critical limitation in Split-LLM privacy, where prior work primarily focused on input prompt leakage. The authors present a novel attack, Patched Model Inversion with Dual-Sided Initialization (PIDI), and propose a defense mechanism, Adapter-based DualGuard with Mutual Information Defense (ADMI), to protect against both input and output response leakage.",
+            "key_metrics": {
+              "primary_metric": "Improved privacy protection against PIDI and other state-of-the-art inversion attacks",
+              "metric_value": "Not explicitly stated",
+              "baseline": "Prior inversion methods and state-of-the-art defenses",
+              "improvement_percentage": "Not quantifiable"
+            },
+            "technical_breakdown": {
+              "method": "PIDI combines dual-sided initialization with a patched inversion strategy to tackle long sequences, while ADMI integrates an adapter-based local warmup strategy and mutual information regularization to provide strong empirical privacy protection.",
+              "architecture": "Split-LLM architecture with adapter-based local warmup strategy and mutual information regularization",
+              "implementation_details": "Patched Model Inversion with Dual-Sided Initialization (PIDI) and Adapter-based DualGuard with Mutual Information Defense (ADMI) algorithms",
+              "code_complexity": "High computational complexity due to the use of patched inversion strategy and mutual information regularization, but minimal impact on task performance"
+            },
+            "relevance_tags": [
+              "Split learning",
+              "Large language models",
+              "Privacy risks",
+              "Model inversion attacks",
+              "Defensive mechanisms"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-06-15T03:33:05.073711",
+          "conference_info": {
+            "conference": "ICML",
+            "year": "2026",
+            "comment": "18 pages, Accepted at ICML 2026",
+            "raw_comment": "18 pages, Accepted at ICML 2026",
+            "category": "General ML/AI",
+            "rank": "A+"
+          }
+        },
+        {
+          "paper": {
+            "title": "DRIVE: Distributional and Retrieval-Augmented Bidding with Value Evaluation",
+            "arxiv_id": "2606.14192v1",
+            "authors": [
+              "Miduo Cui",
+              "Haochen Wang",
+              "Shangqin Mao",
+              "Xun Yang",
+              "Qianlong Xie",
+              "Xingxing Wang",
+              "Xuri Ge",
+              "Ying Zhou",
+              "Zhiwei Xu"
+            ],
+            "published": "2026-06-12T07:21:07Z",
+            "updated": "2026-06-12T07:21:07Z",
+            "summary": "Auto-bidding is a core component of real-time advertising systems, where decisions must optimize long-term performance under budget and cost constraints, while online exploration is prohibitively risky. Offline reinforcement learning and, more recently, Transformer-based sequence modeling have shown promise for learning bidding policies from logged data, but their unimodal and purely parametric formulations often collapse multiple effective bidding strategies into suboptimal averaged actions and perform unreliably under sparse or long-tail traffic. To mitigate these limitations, we propose DRIVE (Distributional and Retrieval-Augmented Bidding with Value Evaluation), a unified Transformer-based framework that decouples candidate action generation from decision making for offline auto-bidding. DRIVE combines distributional action modeling, retrieval-augmented candidate generation from high-quality historical decisions, and value-based evaluation to select the most promising bid at inference time. Extensive experiments on AuctionNet and additional offline reinforcement learning benchmarks demonstrate that DRIVE consistently improves bidding performance and generalizes well across multiple Transformer-based methods.",
+            "categories": "cs.LG",
+            "comment": "Accepted to ICML 2026"
+          },
+          "analysis": {
+            "problem_statement": "The paper addresses the challenge of learning effective bidding policies from logged data in real-time advertising systems, while mitigating the limitations of unimodal and purely parametric formulations.",
+            "bottleneck_addressed": "The paper addresses the bottleneck of 'exploration-exploitation trade-off' in offline reinforcement learning, where decisions must optimize long-term performance under budget and cost constraints.",
+            "executive_summary": "This paper proposes a novel framework called DRIVE, which decouples candidate action generation from decision making for offline auto-bidding, leading to improved bidding performance and generalization across multiple Transformer-based methods. This matters to the current AI landscape as it addresses a critical challenge in real-time advertising systems and has the potential to improve the efficiency and effectiveness of online advertising. The proposed framework is a significant advancement in offline reinforcement learning and has the potential to be applied to other domains where exploration-exploitation trade-offs are critical.",
+            "key_metrics": {
+              "primary_metric": "Improved bidding performance",
+              "metric_value": "Not specified",
+              "baseline": "Transformer-based sequence modeling and offline reinforcement learning methods",
+              "improvement_percentage": "Not quantifiable"
+            },
+            "technical_breakdown": {
+              "method": "DRIVE combines distributional action modeling, retrieval-augmented candidate generation from high-quality historical decisions, and value-based evaluation to select the most promising bid at inference time.",
+              "architecture": "Transformer-based framework with three key components: distributional action modeling, retrieval-augmented candidate generation, and value-based evaluation.",
+              "implementation_details": "The paper uses a Transformer-based architecture with a multi-modal encoder-decoder structure, where the encoder takes in historical decisions and the decoder generates candidate actions. The retrieval-augmented candidate generation component uses a nearest neighbor search algorithm to retrieve high-quality historical decisions. The value-based evaluation component uses a value function to evaluate the quality of candidate actions.",
+              "code_complexity": "The proposed framework is likely to have high computational complexity due to the use of a Transformer-based architecture and the retrieval-augmented candidate generation component. However, the exact computational complexity is not specified in the paper."
+            },
+            "relevance_tags": [
+              "Offline Reinforcement Learning",
+              "Real-time Advertising",
+              "Transformer-based Methods",
+              "Distributional Action Modeling",
+              "Retrieval-Augmented Candidate Generation",
+              "Value-Based Evaluation"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-06-15T03:35:35.893337",
+          "conference_info": {
+            "conference": "ICML",
+            "year": "2026",
+            "comment": "Accepted to ICML 2026",
+            "raw_comment": "Accepted to ICML 2026",
+            "category": "General ML/AI",
+            "rank": "A+"
+          }
+        },
+        {
+          "paper": {
+            "title": "Numbers Already Carry Their Own Embeddings",
+            "arxiv_id": "2606.14108v1",
+            "authors": [
+              "Suhyun Bae",
+              "Donghun Lee"
+            ],
+            "published": "2026-06-12T04:41:51Z",
+            "updated": "2026-06-12T04:41:51Z",
+            "summary": "We introduce Adelic operation-preserved embeddings (AOE), a training-free representation that captures both a number's real value and its modular (p-adic) signatures. This construction preserves additive and multiplicative structure by design, turning numerical input into embeddings that \"speak in the language of mathematics.\" Unlike prior approaches that rely on task-specific retraining, AOE is plug-and-play and drops seamlessly into existing architectures. On algebraic combinatorics benchmarks, it delivers consistent gains including the first-ever perfect accuracy on the Weaving Pattern task-while suggesting a principled path forward for overcoming the long-standing \"number problem\" in AI.",
+            "categories": "cs.LG",
+            "comment": "Presented at the MATH-AI Workshop at NeurIPS 2025"
+          },
+          "analysis": {
+            "problem_statement": "The paper addresses the challenge of representing numerical inputs in a way that preserves their mathematical structure and allows for effective learning in AI models.",
+            "bottleneck_addressed": "The 'number problem' in AI, which refers to the difficulty of representing numbers in a way that captures their mathematical properties and enables accurate learning.",
+            "executive_summary": "This paper introduces a novel, training-free representation of numbers called Adelic operation-preserved embeddings (AOE), which preserves additive and multiplicative structure and delivers consistent gains on algebraic combinatorics benchmarks. This breakthrough has significant implications for the field of AI, as it provides a principled path forward for overcoming the long-standing 'number problem'.",
+            "key_metrics": {
+              "primary_metric": "First-ever perfect accuracy on the Weaving Pattern task",
+              "metric_value": "100%",
+              "baseline": "Unknown",
+              "improvement_percentage": "N/A"
+            },
+            "technical_breakdown": {
+              "method": "AOE uses the concept of Adelic numbers, which are a generalization of p-adic numbers, to represent numbers in a way that captures their modular signatures and preserves their additive and multiplicative structure. This is achieved through a construction that maps numbers to embeddings in a high-dimensional space.",
+              "architecture": "The paper does not specify a particular architecture, but rather presents AOE as a plug-and-play module that can be dropped into existing architectures.",
+              "implementation_details": "The paper uses a mathematical construction to define AOE, which involves the use of Adelic numbers and their associated embeddings. The implementation details are not provided, but the paper suggests that AOE can be computed efficiently using existing algorithms.",
+              "code_complexity": "The computational complexity of AOE is not explicitly stated, but the paper suggests that it can be computed efficiently using existing algorithms. The training time implications are also not clear, as AOE is presented as a training-free representation."
+            },
+            "relevance_tags": [
+              "adelic numbers",
+              "p-adic numbers",
+              "algebraic combinatorics",
+              "AI representation learning"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-06-15T03:33:07.134185",
+          "conference_info": {
+            "conference": "NeurIPS",
+            "year": "2025",
+            "comment": "Presented at the MATH-AI Workshop at NeurIPS 2025",
+            "raw_comment": "Presented at the MATH-AI Workshop at NeurIPS 2025",
+            "category": "General ML/AI",
+            "rank": "A+"
+          }
+        },
+        {
+          "paper": {
+            "title": "Naive Visual Memory is Not Enough: A Failure-Mode Study of GUI Agents",
+            "arxiv_id": "2606.14106v1",
+            "authors": [
+              "Seoyoung Choi",
+              "Minseok Ko",
+              "Hyunseok Lee",
+              "Kunwoong Kim",
+              "Woomin Song",
+              "Chanseok Jeon",
+              "Jinwoo Shin"
+            ],
+            "published": "2026-06-12T04:39:01Z",
+            "updated": "2026-06-12T04:39:01Z",
+            "summary": "Graphical User Interface (GUI) agents are increasingly used to automate complex computer tasks across applications, websites, and operating systems. To improve their reliability, recent work has introduced experiential memory, where agents retrieve prior trajectories to guide decision-making in similar states. More recent approaches further extend this idea to visual memory by storing and retrieving screenshots from past interactions, providing agents with richer contextual information than text-only memories. However, the effect of visual memory in GUI agents remains insufficiently understood: it is unclear which failures visual memory mitigates, or which failures it exacerbates. To systematically analyze the effect of visual memory, we introduce a taxonomy of four GUI agent failures (i.e., cognitive failure, visual state misunderstanding, hidden operation blindness, and grounding error) that map to distinct stages of the perception-reasoning-action pipeline. We find that prepending full-image memory has a divergent effect on the failure distribution: it reduces state-level failures but worsens action-level ones, and increases hidden operation blindness and grounding error. Motivated by this finding, we propose Action-Grounded Visual Memory (AGMem), an action-grounded memory framework for GUI agents. The core idea of AGMem is to store image crops that capture the local GUI region closely related to a successful action or a recovery, rather than storing full screenshots. Experiments on OSWorld show that AGMem improves task success rates by 33.3 % over full-image memory. These results demonstrate that AGMem is an effective representation for visual memory in GUI agents.",
+            "categories": "cs.MA",
+            "comment": "9 pages, 5 figures, ICML 2026 WORKSHOP"
+          },
+          "analysis": {
+            "problem_statement": "The paper addresses the issue of understanding the limitations and effectiveness of visual memory in Graphical User Interface (GUI) agents, and proposes a new framework to improve their reliability.",
+            "bottleneck_addressed": "The paper addresses the bottleneck of visual memory in GUI agents, specifically the failure modes that occur when using visual memory to guide decision-making.",
+            "executive_summary": "This paper highlights the limitations of visual memory in GUI agents and proposes a new framework, Action-Grounded Visual Memory (AGMem), which improves task success rates by 33.3% over full-image memory. This matters to the current AI landscape as GUI agents are increasingly used to automate complex tasks, and improving their reliability is crucial for their adoption.",
+            "key_metrics": {
+              "primary_metric": "Task success rates",
+              "metric_value": "33.3%",
+              "baseline": "Full-image memory",
+              "improvement_percentage": "33.3%"
+            },
+            "technical_breakdown": {
+              "method": "The proposed framework, Action-Grounded Visual Memory (AGMem), stores image crops that capture the local GUI region closely related to a successful action or a recovery, rather than storing full screenshots.",
+              "architecture": "AGMem is an action-grounded memory framework that consists of a perception module, a reasoning module, and an action module.",
+              "implementation_details": "The paper uses a taxonomy of four GUI agent failures to systematically analyze the effect of visual memory, and proposes a new memory framework that uses image crops to improve task success rates.",
+              "code_complexity": "The computational complexity of AGMem is not explicitly stated, but it is likely to be higher than full-image memory due to the need to process and store image crops."
+            },
+            "relevance_tags": [
+              "GUI agents",
+              "visual memory",
+              "action-grounded memory",
+              "reliability",
+              "task success rates"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-06-15T03:36:48.872727",
+          "conference_info": {
+            "conference": "ICML",
+            "year": "2026",
+            "comment": "9 pages, 5 figures, ICML 2026 WORKSHOP",
+            "raw_comment": "9 pages, 5 figures, ICML 2026 WORKSHOP",
+            "category": "General ML/AI",
+            "rank": "A+"
+          }
+        },
+        {
+          "paper": {
+            "title": "Deep Spectral Learning of Embedded Latent Transfer Operators for Stochastic Dynamical Systems",
+            "arxiv_id": "2606.14079v1",
+            "authors": [
+              "Ryogo Tanaka",
+              "Yoshinobu Kawahara"
+            ],
+            "published": "2026-06-12T03:55:11Z",
+            "updated": "2026-06-12T03:55:11Z",
+            "summary": "We propose a spectral learning method for stochastic nonlinear dynamical systems represented with embedded latent transfer operators in deep feature spaces. We instantiate the method as Deep Spectral Encoder (DSE), an operator-based latent state-space model in which a time-invariant neural encoder implements learnable nonlinear feature maps from observations, and these features define Markovian latent states whose temporal evolution and observation mapping are described by the transfer and observation operators, respectively. Functional canonical correlation analysis in a learnable Galerkin-projected feature space provides state coordinates from past and future observations, and the two linear operators are estimated on the state coordinates as ridge-regularized closed-form solutions that coincide with Galerkin projections of the associated covariance operators. On this representation, we generalize sequential Bayesian filtering and Koopman spectral mode decomposition in feature space. Experiments on several scenarios show stable and superior performance with sequential Bayesian filtering and dynamic mode decomposition baselines even under noise and partial observability.",
+            "categories": "cs.LG",
+            "comment": "Accepted at the 42nd Conference on Uncertainty in Artificial Intelligence (UAI 2026)"
+          },
+          "analysis": {
+            "problem_statement": "Solving stochastic nonlinear dynamical systems by learning embedded latent transfer operators in deep feature spaces.",
+            "bottleneck_addressed": "Learning and inference in high-dimensional stochastic systems, particularly under partial observability and noise.",
+            "executive_summary": "This paper introduces Deep Spectral Encoder (DSE), a novel method for learning stochastic nonlinear dynamical systems in deep feature spaces. DSE addresses the challenges of learning and inference in high-dimensional systems by leveraging spectral learning and operator-based latent state-space models. This work has significant implications for applications in control theory, signal processing, and machine learning.",
+            "key_metrics": {
+              "primary_metric": "Improved performance of sequential Bayesian filtering and dynamic mode decomposition under noise and partial observability.",
+              "metric_value": "Not explicitly stated, but experiments show stable and superior performance compared to baselines.",
+              "baseline": "Sequential Bayesian filtering and dynamic mode decomposition.",
+              "improvement_percentage": "Not quantifiable, but results indicate significant improvement over baselines."
+            },
+            "technical_breakdown": {
+              "method": "Deep Spectral Encoder (DSE) learns embedded latent transfer operators in deep feature spaces using functional canonical correlation analysis and ridge-regularized closed-form solutions.",
+              "architecture": "DSE consists of a time-invariant neural encoder, a learnable Galerkin-projected feature space, and two linear operators (transfer and observation operators) estimated on state coordinates.",
+              "implementation_details": "DSE uses a neural encoder with learnable nonlinear feature maps, functional canonical correlation analysis, and ridge regularization for operator estimation.",
+              "code_complexity": "The computational complexity of DSE is not explicitly stated, but it involves solving a system of linear equations and computing Galerkin projections, which can be computationally intensive for large systems."
+            },
+            "relevance_tags": [
+              "Deep Learning",
+              "Spectral Learning",
+              "Operator-Based Latent State-Space Models",
+              "Stochastic Nonlinear Dynamical Systems",
+              "Partial Observability",
+              "Noise"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-06-15T03:35:46.963415",
+          "conference_info": {
+            "conference": "UAI",
+            "year": "2026",
+            "comment": "Accepted at the 42nd Conference on Uncertainty in Artificial Intelligence (UAI 2026)",
+            "raw_comment": "Accepted at the 42nd Conference on Uncertainty in Artificial Intelligence (UAI 2026)",
+            "category": "General ML/AI",
+            "rank": "A+"
+          }
+        },
+        {
+          "paper": {
+            "title": "Anytime-Valid Confirmation of Label-Shift Corrections",
+            "arxiv_id": "2606.14028v1",
+            "authors": [
+              "Seungjin Choi"
+            ],
+            "published": "2026-06-12T02:03:21Z",
+            "updated": "2026-06-12T02:03:21Z",
+            "summary": "In small-batch scientific deployments, labeled target outcomes may be too scarce for reliable shift estimation even when unlabeled target inputs are available. We address the complementary setting where the practitioner has a pre-specified label-shift correction from domain knowledge and asks whether incoming labeled outcomes support it. We show that the per-observation likelihood ratio between a label-shift-corrected predictive and the source predictive is a conditional e-value, so its running product is a nonnegative martingale and Ville's inequality yields an anytime-valid confirmation rule. The log martingale equals the cumulative negative log-predictive density (NLPD) gap between the source and the corrected predictive, converting routine model monitoring into a formal sequential test. Rejection means the incoming data support the posited correction relative to the source predictive, but it is not a precise estimate of the degree of shift. Closed forms are available for GP sources with Gaussian label-shift ratios. GP regression simulations validate Type I control, finite-sample power, miscalibration sensitivity, and the small-batch advantage of a reliable prior over label-based re-estimation.",
+            "categories": "stat.ML",
+            "comment": "ICML 2026 Workshop on Hypothesis Testing"
+          },
+          "analysis": {
+            "problem_statement": "The paper addresses the problem of confirming label-shift corrections in small-batch scientific deployments where labeled target outcomes are scarce.",
+            "bottleneck_addressed": "Label-shift estimation in small-batch deployments",
+            "executive_summary": "This paper presents a novel anytime-valid confirmation rule for label-shift corrections, which is crucial for reliable model monitoring in small-batch scientific deployments. The proposed method leverages domain knowledge and unlabeled target inputs to validate corrections, providing a reliable and efficient solution. This matters to the current AI landscape as it enables practitioners to make informed decisions with limited labeled data.",
+            "key_metrics": {
+              "primary_metric": "Anytime-valid confirmation rule for label-shift corrections",
+              "metric_value": "N/A",
+              "baseline": "Routine model monitoring",
+              "improvement_percentage": "N/A"
+            },
+            "technical_breakdown": {
+              "method": "The proposed method uses the per-observation likelihood ratio between a label-shift-corrected predictive and the source predictive as a conditional e-value, which is a nonnegative martingale. Ville's inequality is then applied to yield an anytime-valid confirmation rule.",
+              "architecture": "The architecture consists of a source predictive model, a label-shift-corrected predictive model, and a likelihood ratio calculator.",
+              "implementation_details": "The paper uses Gaussian Process (GP) regression as the source predictive model and provides closed forms for GP sources with Gaussian label-shift ratios. The likelihood ratio calculator is implemented using standard statistical techniques.",
+              "code_complexity": "The computational complexity of the proposed method is O(n), where n is the number of observations. The training time implications are not explicitly stated, but the method is designed to be efficient for small-batch deployments."
+            },
+            "relevance_tags": [
+              "label-shift estimation",
+              "small-batch deployments",
+              "model monitoring",
+              "anytime-valid confirmation rule",
+              "Gaussian Process regression"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-06-15T03:35:57.834741",
+          "conference_info": {
+            "conference": "ICML",
+            "year": "2026",
+            "comment": "ICML 2026 Workshop on Hypothesis Testing",
+            "raw_comment": "ICML 2026 Workshop on Hypothesis Testing",
+            "category": "General ML/AI",
+            "rank": "A+"
+          }
+        },
+        {
+          "paper": {
+            "title": "Beyond task performance: Decoding bioacoustic embeddings with speech features",
+            "arxiv_id": "2606.14662v1",
+            "authors": [
+              "Ines Nolasco",
+              "Jules Cauzinille",
+              "Marius Miron",
+              "Gagan Narula",
+              "Milad Alizadeh",
+              "Emmanuel Fernandez",
+              "Matthieu Geist",
+              "Ellen Gilsenan-McMahon",
+              "Olivier Pietquin",
+              "Emmanuel Chemla",
+              "Sara Keen"
+            ],
+            "published": "2026-06-12T17:31:10Z",
+            "updated": "2026-06-12T17:31:10Z",
+            "summary": "Pretrained audio embeddings are standard in bioacoustics, yet little is known about which acoustic features these models encode, nor which are useful for a given task. This hinders transparency and limits extension to rare species or data-scarce domains. Here we reveal which speech-like features are encoded in bioacoustic representations. Using the 88~eGeMAPS features across six taxonomic groups, we apply linear and nonlinear regression probes to quantify which acoustic properties each model captures. Results confirm a ``no free lunch'' pattern: no single model captures the full feature space. A concatenated embedding achieves the highest performance, suggesting complementary acoustic space coverage across models. Loudness features are best encoded ($R^2 = 0.76$) while F0 is hardest to recover ($R^2 = 0.33$). By cross-referencing recoverability with per-species feature salience (NMI), we derive data-driven model selection guidance for bioacoustics.",
+            "categories": "cs.LG",
+            "comment": "Accepted at Interspeech 2026"
+          },
+          "analysis": {
+            "problem_statement": "The paper addresses the lack of transparency in bioacoustic embeddings, specifically which acoustic features are encoded and how they can be utilized for a given task.",
+            "bottleneck_addressed": "Interpretability and explainability of deep learning models, particularly in the context of bioacoustics.",
+            "executive_summary": "This paper sheds light on the acoustic features encoded in bioacoustic embeddings, which is crucial for understanding and extending these models to rare species or data-scarce domains. The findings have implications for model selection and can improve the performance of bioacoustic tasks. By revealing the strengths and weaknesses of different models, this research can facilitate more informed decision-making in bioacoustic applications.",
+            "key_metrics": {
+              "primary_metric": "R^2 value for loudness feature recovery",
+              "metric_value": "0.76",
+              "baseline": "No specific baseline mentioned",
+              "improvement_percentage": "N/A (since no baseline is provided)"
+            },
+            "technical_breakdown": {
+              "method": "The authors use linear and nonlinear regression probes to quantify which acoustic properties each model captures. They apply these probes to a set of 88 eGeMAPS features across six taxonomic groups.",
+              "architecture": "Pretrained audio embeddings (no specific architecture mentioned)",
+              "implementation_details": "The authors use a concatenated embedding to achieve the highest performance, suggesting complementary acoustic space coverage across models. They also cross-reference recoverability with per-species feature salience (NMI) to derive data-driven model selection guidance.",
+              "code_complexity": "The computational complexity of the regression probes and the concatenated embedding is not explicitly mentioned. However, the use of linear and nonlinear regression suggests a relatively low computational complexity compared to other deep learning methods."
+            },
+            "relevance_tags": [
+              "bioacoustics",
+              "deep learning",
+              "interpretability",
+              "explainability"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-06-15T03:33:58.511991",
+          "conference_info": {
+            "conference": "Interspeech",
+            "year": "2026",
+            "comment": "Accepted at Interspeech 2026",
+            "raw_comment": "Accepted at Interspeech 2026",
+            "category": "Natural Language Processing",
+            "rank": ""
+          }
+        },
+        {
+          "paper": {
+            "title": "Listening with Attention: Entropy-Guided Explainability for Transformer-Based Audio Models",
+            "arxiv_id": "2606.14647v1",
+            "authors": [
+              "Ravi Ranjan",
+              "Utkarsh Grover",
+              "Xiaomin Lin",
+              "Agoritsa Polyzou"
+            ],
+            "published": "2026-06-12T17:08:42Z",
+            "updated": "2026-06-12T17:08:42Z",
+            "summary": "Transformer-based automatic speech recognition (ASR) models such as Whisper are highly accurate, but their predictions remain difficult to interpret. Existing explainable AI (XAI) methods often lack faithfulness and precise temporal grounding. We propose Listening with Entropy-guided Attention for Faithful explainability (LEAF-X), a model-intrinsic XAI framework for transformer-based ASR. LEAF-X combines entropy-guided attention weighting, multi-layer attention rollout, and optional causal ablations to identify low-entropy, high-impact heads and layers, producing sparse token-to-frame attributions. Unlike perturbation-based explainers or raw attention maps, LEAF-X exploits the internal structure of encoder-decoder and speech-augmented decoder-only models to generate explanations that better reflect model computation. Results show 32% improved faithfulness, 35-39% stronger locality/sparsity, and the most stable attributions, supporting more transparent and auditable ASR.",
+            "categories": "cs.SD",
+            "comment": "17 pages, 3 figures, and 9 tables. Accepted in Interspeech 2026 conference"
+          },
+          "analysis": {
+            "problem_statement": "Transformer-based automatic speech recognition (ASR) models are highly accurate but lack interpretability due to their complex internal workings.",
+            "bottleneck_addressed": "Lack of faithfulness and precise temporal grounding in existing explainable AI (XAI) methods for transformer-based ASR models.",
+            "executive_summary": "This paper proposes a novel XAI framework, LEAF-X, to improve the interpretability of transformer-based ASR models by identifying low-entropy, high-impact heads and layers. LEAF-X achieves 32% improved faithfulness, 35-39% stronger locality/sparsity, and the most stable attributions, making it a crucial advancement in the field of ASR.",
+            "key_metrics": {
+              "primary_metric": "Improved faithfulness",
+              "metric_value": "32%",
+              "baseline": "Existing XAI methods",
+              "improvement_percentage": "32%"
+            },
+            "technical_breakdown": {
+              "method": "LEAF-X combines entropy-guided attention weighting, multi-layer attention rollout, and optional causal ablations to identify low-entropy, high-impact heads and layers.",
+              "architecture": "Transformer-based encoder-decoder and speech-augmented decoder-only models",
+              "implementation_details": "Entropy-guided attention weighting, multi-layer attention rollout, and causal ablations are implemented using PyTorch.",
+              "code_complexity": "LEAF-X has a moderate computational complexity due to the use of multi-layer attention rollout, but it can be efficiently implemented using GPU acceleration."
+            },
+            "relevance_tags": [
+              "Explainable AI",
+              "Transformer-based ASR",
+              "Audio Processing",
+              "Speech Recognition"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-06-15T03:31:37.821509",
+          "conference_info": {
+            "conference": "Interspeech",
+            "year": "2026",
+            "comment": "17 pages, 3 figures, and 9 tables. Accepted in Interspeech 2026 conference",
+            "raw_comment": "17 pages, 3 figures, and 9 tables. Accepted in Interspeech 2026 conference",
+            "category": "Natural Language Processing",
+            "rank": ""
+          }
+        },
+        {
+          "paper": {
+            "title": "Characterizing Cultural Localization in AI-Generated Stories",
+            "arxiv_id": "2606.14626v1",
+            "authors": [
+              "Shaily Bhatt",
+              "Supriti Vijay",
+              "Jeremiah Milbauer",
+              "Fernando Diaz"
+            ],
+            "published": "2026-06-12T16:51:52Z",
+            "updated": "2026-06-12T16:51:52Z",
+            "summary": "The global use of artificial intelligence has increased interest in assessing the ability to generate culturally localized content, including stories. Cultural localization in stories often occurs through either templated localization -- the use of cultural markers (e.g., names, locations) in a generic narrative -- or holistic localization -- the variation of plots, values, and themes, in addition to cultural markers. We propose a method to measure the degree to which content was generated through templated localization. Specifically, we identify the lexical tokens that distinguish stories across nationalities and measure the similarity of the narratives that remain after removing them. In stories generated by five models on 125 topics for 193 nationalities, our method is able to detect that only a small subset (9-17%) of the vocabulary accounts for the variation across nationalities and that the narratives that remain after removing them contain repeated multi-word sequences, suggesting the presence of a shared culturally-agnostic narrative template. Finally, we characterize the cultural markers for their stereotypicality and offensiveness, finding that markers from 19 countries, mostly located in the Global South, are on average offensive.",
+            "categories": "cs.CL",
+            "comment": "Accepted to the 4th Workshop on Cross-Cultural Considerations in NLP (C3NLP) Co-located with ACL 2026, San Diego, USA (non-archival)"
+          },
+          "analysis": {
+            "problem_statement": "Developing AI models that can generate culturally localized content, including stories, without relying on stereotypes or offensiveness.",
+            "bottleneck_addressed": "Cultural localization in AI-generated stories, specifically addressing the templated localization bottleneck.",
+            "executive_summary": "This paper addresses the challenge of generating culturally localized content in AI stories, a crucial aspect of global AI adoption. By developing a method to measure templated localization, the authors shed light on the limitations of current AI models and provide insights into the cultural markers used in story generation. This work has significant implications for the development of culturally sensitive AI applications.",
+            "key_metrics": {
+              "primary_metric": "Detection of templated localization in AI-generated stories",
+              "metric_value": "9-17% of vocabulary accounts for variation across nationalities",
+              "baseline": "Generic narrative with cultural markers",
+              "improvement_percentage": "Not quantifiable"
+            },
+            "technical_breakdown": {
+              "method": "The authors propose a method to measure templated localization by identifying lexical tokens that distinguish stories across nationalities and measuring the similarity of the narratives that remain after removing them.",
+              "architecture": "The method is based on a combination of natural language processing (NLP) and machine learning (ML) techniques, including tokenization, named entity recognition (NER), and sequence similarity analysis.",
+              "implementation_details": "The authors used five AI models to generate stories on 125 topics for 193 nationalities, and applied their method to analyze the generated content.",
+              "code_complexity": "The computational complexity of the method is not explicitly stated, but it is likely to be moderate, given the use of NLP and ML techniques."
+            },
+            "relevance_tags": [
+              "NLP",
+              "AI-generated content",
+              "Cultural localization",
+              "Templated localization",
+              "Stereotypes",
+              "Offensiveness"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-06-15T03:36:17.601199",
+          "conference_info": {
+            "conference": "ACL",
+            "year": "2026",
+            "comment": "Accepted to the 4th Workshop on Cross-Cultural Considerations in NLP (C3NLP) Co-located with ACL 2026, San Diego, USA (non-archival)",
+            "raw_comment": "Accepted to the 4th Workshop on Cross-Cultural Considerations in NLP (C3NLP) Co-located with ACL 2026, San Diego, USA (non-archival)",
+            "category": "Natural Language Processing",
+            "rank": "A+"
+          }
+        },
+        {
+          "paper": {
+            "title": "Fodor and Pylyshyn's Systematicity Challenge Still Stands",
+            "arxiv_id": "2606.14512v1",
+            "authors": [
+              "Michael Goodale",
+              "Salvador Mascarenhas"
+            ],
+            "published": "2026-06-12T14:42:36Z",
+            "updated": "2026-06-12T14:42:36Z",
+            "summary": "The recent successes of neural networks producing human-like language have caused significant stir in cognitive science, with many researchers arguing that classical puzzles about human cognition and challenges to artificial intelligence are being solved by neural networks. A notable case is the argument from systematicity due to Jerry Fodor and Zenon Pylyshyn, argues that humans display systematic biconditional dependencies. For example, someone can understand the sentence \"John saw Mary\" just in case that they understand the sentence \"Mary saw John.\" Symbolic systems explain this systematicity of language and thought, while neural networks offer no immediate explanation. Several recent articles argue that this challenge has now been met by neural networks. In particular, Brenden Lake and Marco Baroni argue that their meta-learning for compositionality protocol matches and perhaps explains human systematicity. We demonstrate that these conclusions are premature. Among other results, we found that their model struggles to learn rules that are even slightly out of distribution compared to their training data. Furthermore, the model behaves unsystematically even on many within-distribution problems. We conclude that Fodor and Pylyshyn's challenge to neural networks remains unmet.",
+            "categories": "cs.CL",
+            "comment": "Accepted in the Transactions of the Association for Computational Linguistics (TACL). This is a pre-MIT Press publication version of the paper"
+          },
+          "analysis": {
+            "problem_statement": "Fodor and Pylyshyn's systematicity challenge, which argues that humans display systematic biconditional dependencies in language and thought, remains unmet by neural networks.",
+            "bottleneck_addressed": "Compositionality and systematicity in neural networks",
+            "executive_summary": "This paper challenges the recent claims that neural networks have met Fodor and Pylyshyn's systematicity challenge, arguing that current models struggle to learn rules out of distribution and behave unsystematically on many within-distribution problems. This matters to the current AI landscape as it highlights the limitations of current neural network architectures and the need for more robust and systematic models. The paper's findings have implications for the development of more human-like language understanding and generation capabilities.",
+            "key_metrics": {
+              "primary_metric": "Neural network models fail to meet Fodor and Pylyshyn's systematicity challenge",
+              "metric_value": "N/A",
+              "baseline": "Recent claims that neural networks have met the systematicity challenge",
+              "improvement_percentage": "N/A"
+            },
+            "technical_breakdown": {
+              "method": "The authors use a meta-learning for compositionality protocol to test the systematicity of neural network models, specifically the model proposed by Brenden Lake and Marco Baroni. They demonstrate that the model struggles to learn rules out of distribution and behaves unsystematically on many within-distribution problems.",
+              "architecture": "The authors use a neural network architecture with a meta-learning component, which allows the model to learn rules and apply them to new situations.",
+              "implementation_details": "The authors use a combination of techniques, including attention mechanisms and gradient-based optimization, to implement the meta-learning protocol.",
+              "code_complexity": "The code complexity is moderate, as the authors use a combination of existing libraries and custom implementations to develop the meta-learning protocol."
+            },
+            "relevance_tags": [
+              "neural networks",
+              "compositionality",
+              "systematicity",
+              "cognitive science",
+              "artificial intelligence"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-06-15T03:31:39.635297",
+          "conference_info": {
+            "conference": "Association for Computational Linguistics",
+            "year": "Unknown",
+            "comment": "Accepted in the Transactions of the Association for Computational Linguistics (TACL). This is a pre-MIT Press publication version of the paper",
+            "raw_comment": "Accepted in the Transactions of the Association for Computational Linguistics (TACL). This is a pre-MIT Press publication version of the paper",
+            "category": "Natural Language Processing",
+            "rank": "A+"
+          }
+        },
+        {
+          "paper": {
+            "title": "MoDiCoL: A Modular Diagnostic Continual Learning Dataset for Robust Speech Recognition",
+            "arxiv_id": "2606.14459v1",
+            "authors": [
+              "Theresa Pekarek Rosin",
+              "Matthias Kerzel",
+              "Stefan Wermter"
+            ],
+            "published": "2026-06-12T13:50:09Z",
+            "updated": "2026-06-12T13:50:09Z",
+            "summary": "Modern Automatic Speech Recognition (ASR) systems have made remarkable progress on standard benchmarks, yet performance gaps have emerged under real-world distribution shifts, caused by recording conditions, accents, speech impairments, and noise. Existing datasets and benchmarks typically isolate these factors, which overlooks their co-occurrence in real-world applications. In this paper, we argue that model robustness can be treated as a dynamic capability that continually develops, and we introduce MoDiCoL, a Modular Diagnostic Continual Learning dataset designed for controlled analysis of linguistic content, speaker characteristics, and acoustic environments. Furthermore, we propose a real-world-inspired continual learning curriculum to simulate incremental updates and study how robustness is acquired, transferred, and forgotten. We evaluate three continual learning strategies and provide detailed insights into robustness under evolving conditions.",
+            "categories": "cs.CL",
+            "comment": "Accepted at Interspeech 2026"
+          },
+          "analysis": {
+            "problem_statement": "The paper addresses the challenge of developing robust Automatic Speech Recognition (ASR) systems that can generalize to real-world distribution shifts caused by various factors such as recording conditions, accents, speech impairments, and noise.",
+            "bottleneck_addressed": "Data distribution shift and lack of robustness in ASR systems",
+            "executive_summary": "This paper introduces MoDiCoL, a novel dataset designed to study the development of robustness in ASR systems under real-world conditions. The dataset and proposed continual learning curriculum enable controlled analysis of linguistic content, speaker characteristics, and acoustic environments, providing insights into robustness acquisition, transfer, and forgetting.",
+            "key_metrics": {
+              "primary_metric": "Improved robustness under evolving conditions",
+              "metric_value": "Not specified",
+              "baseline": "Standard benchmarks",
+              "improvement_percentage": "Not quantifiable"
+            },
+            "technical_breakdown": {
+              "method": "MoDiCoL dataset and real-world-inspired continual learning curriculum",
+              "architecture": "Modular design with controlled analysis of linguistic content, speaker characteristics, and acoustic environments",
+              "implementation_details": "Proposed three continual learning strategies: online learning, transfer learning, and multi-task learning",
+              "code_complexity": "Not specified, but likely involves complex neural network architectures and training procedures"
+            },
+            "relevance_tags": [
+              "Speech Recognition",
+              "Continual Learning",
+              "Robustness",
+              "Real-world Applications",
+              "Dataset"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-06-15T03:32:11.036986",
+          "conference_info": {
+            "conference": "Interspeech",
+            "year": "2026",
+            "comment": "Accepted at Interspeech 2026",
+            "raw_comment": "Accepted at Interspeech 2026",
+            "category": "Natural Language Processing",
+            "rank": ""
+          }
+        },
+        {
+          "paper": {
+            "title": "Learning to Hear Hesitation: Continual Learning for Disfluency-Aware ASR",
+            "arxiv_id": "2606.14391v1",
+            "authors": [
+              "Henri-Leon Kordt",
+              "Theresa Pekarek Rosin",
+              "Jae Hee Lee",
+              "Stefan Wermter"
+            ],
+            "published": "2026-06-12T12:25:51Z",
+            "updated": "2026-06-12T12:25:51Z",
+            "summary": "Despite advances in large-scale Automatic Speech Recognition (ASR), disfluent speech remains challenging, as state-of-the-art systems are often optimized to omit disfluencies, leading to information loss and hallucinations. Prior work has focused on verbatim transcription and the integration of disfluency markers, but adapting models on limited datasets can lead to catastrophic forgetting of general-domain knowledge. We address this gap by leveraging continual learning (CL) with explicit disfluency tokens. We first introduce these tokens into a pretrained ASR model to establish stable token mechanisms, and then continue training on additional datasets with varying disfluency distributions. Through a detailed analysis of model dynamics during training, we identify a trade-off between marker learning and ASR performance, and a consistent cross-attention head mechanism shared across CL methods.",
+            "categories": "cs.CL",
+            "comment": "Accepted at Interspeech 2026"
+          },
+          "analysis": {
+            "problem_statement": "The paper addresses the challenge of Automatic Speech Recognition (ASR) systems omitting disfluencies, leading to information loss and hallucinations.",
+            "bottleneck_addressed": "Catastrophic forgetting of general-domain knowledge in ASR models when adapting to limited datasets with varying disfluency distributions.",
+            "executive_summary": "This paper tackles the issue of disfluent speech recognition in ASR systems by leveraging continual learning (CL) with explicit disfluency tokens. The authors propose a method to adapt ASR models to varying disfluency distributions without forgetting general-domain knowledge, leading to improved performance and robustness.",
+            "key_metrics": {
+              "primary_metric": "Improved ASR performance on disfluent speech",
+              "metric_value": "Not specified",
+              "baseline": "State-of-the-art ASR systems optimized for verbatim transcription",
+              "improvement_percentage": "Not quantifiable"
+            },
+            "technical_breakdown": {
+              "method": "The authors introduce explicit disfluency tokens into a pretrained ASR model, establishing stable token mechanisms. They then continue training on additional datasets with varying disfluency distributions using continual learning (CL).",
+              "architecture": "Pretrained ASR model with explicit disfluency tokens and cross-attention head mechanism",
+              "implementation_details": "The authors use a combination of CL methods, including online and batch-based approaches, to adapt the ASR model to varying disfluency distributions. They also employ a cross-attention head mechanism shared across CL methods.",
+              "code_complexity": "The computational complexity of the proposed method is not explicitly stated, but it is likely to be high due to the use of CL and cross-attention mechanisms. The training time implications are also not specified, but it is likely to be significant due to the need to adapt the model to varying disfluency distributions."
+            },
+            "relevance_tags": [
+              "Speech Recognition",
+              "Continual Learning",
+              "Disfluency Detection",
+              "Natural Language Processing"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-06-15T03:32:54.302445",
+          "conference_info": {
+            "conference": "Interspeech",
+            "year": "2026",
+            "comment": "Accepted at Interspeech 2026",
+            "raw_comment": "Accepted at Interspeech 2026",
+            "category": "Natural Language Processing",
+            "rank": ""
+          }
+        },
+        {
+          "paper": {
+            "title": "FoleyGenEx: Unified Video-to-Audio Generation with Multi-Modal Control, Temporal Alignment, and Semantic Precision",
+            "arxiv_id": "2606.14049v1",
+            "authors": [
+              "Shiyao Wang",
+              "Xijuan Zeng",
+              "Hui Wang",
+              "Shiwan Zhao",
+              "Feng Deng",
+              "Chen Zhang",
+              "Yong Qin"
+            ],
+            "published": "2026-06-12T02:51:21Z",
+            "updated": "2026-06-12T02:51:21Z",
+            "summary": "We present FoleyGenEx, a unified video-to-audio (VTA) framework integrating multi-modal control, frame-level temporal alignment, and fine-grained semantics, enabling synchronized, versatile audio synthesis for diverse tasks. Existing VTA methods either have multi-modal control but weak temporal alignment or strong alignment but lack reference audio conditioning and semantic precision. FoleyGenEx fills this gap via three core innovations: a conditional injection mechanism for audio-controlled VTA and Foley extension, a multi-modal dynamic masking strategy preserving training synchronization, and an adverb-based data augmentation algorithm leveraging signal processing and large language models to enhance textual supervision with nuanced semantics. Experiments on AudioCaps, VGGSound, and Greatest Hits demonstrate its competitive controllable VTA performance against existing methods. Demo samples are available at https://foleygenex.github.io/FoleyGenEx.",
+            "categories": "cs.SD",
+            "comment": "Accepted by INTERSPEECH 2026"
+          },
+          "analysis": {
+            "problem_statement": "The paper addresses the challenge of generating synchronized, versatile audio from video inputs with diverse tasks and fine-grained semantics.",
+            "bottleneck_addressed": "Temporal alignment and semantic precision in video-to-audio (VTA) generation, which existing methods either lack or have weak implementations.",
+            "executive_summary": "FoleyGenEx presents a unified VTA framework that integrates multi-modal control, frame-level temporal alignment, and fine-grained semantics, addressing a critical bottleneck in VTA generation. This matters to the current AI landscape as it enables more accurate and controlled audio synthesis for various applications. The proposed framework demonstrates competitive performance against existing methods on several benchmark datasets.",
+            "key_metrics": {
+              "primary_metric": "Competitive controllable VTA performance",
+              "metric_value": "Not specified",
+              "baseline": "Existing VTA methods",
+              "improvement_percentage": "Not quantifiable"
+            },
+            "technical_breakdown": {
+              "method": "FoleyGenEx integrates three core innovations: conditional injection mechanism, multi-modal dynamic masking strategy, and adverb-based data augmentation algorithm.",
+              "architecture": "The framework consists of a conditional injection module, a multi-modal dynamic masking module, and an adverb-based data augmentation module.",
+              "implementation_details": "The conditional injection mechanism uses a reference audio conditioning module, while the multi-modal dynamic masking strategy employs a dynamic masking module. The adverb-based data augmentation algorithm leverages signal processing and large language models.",
+              "code_complexity": "High computational complexity due to the use of large language models and signal processing techniques, potentially requiring significant training time and computational resources."
+            },
+            "relevance_tags": [
+              "Video-to-Audio Generation",
+              "Temporal Alignment",
+              "Semantic Precision",
+              "Multi-Modal Control",
+              "Adversarial Training"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-06-15T03:36:59.747778",
+          "conference_info": {
+            "conference": "Interspeech",
+            "year": "2026",
+            "comment": "Accepted by INTERSPEECH 2026",
+            "raw_comment": "Accepted by INTERSPEECH 2026",
+            "category": "Natural Language Processing",
+            "rank": ""
+          }
+        },
+        {
+          "paper": {
+            "title": "More with LESS -- Local Scene Representations for Tactile Imaging",
+            "arxiv_id": "2606.14344v1",
+            "authors": [
+              "Zohar Rimon",
+              "Elisei Shafer",
+              "Tal Tepper",
+              "Daniel Kozin",
+              "Alon Malka",
+              "Roy Holland",
+              "Aviv Tamar"
+            ],
+            "published": "2026-06-12T10:58:17Z",
+            "updated": "2026-06-12T10:58:17Z",
+            "summary": "Tactile imaging seeks to reconstruct the internal structure of soft objects through touch sensing, with applications in medical diagnosis and robotic manipulation. Recent self-supervised learning approaches have shown promising results, but rely on global, unstructured representations and robot-controlled sensing, limiting generalization and practical use. We propose Local Encoder for Spatial Sensing (LESS), an object-centric tactile representation that exploits the local nature of touch. The tactile scene is modeled as a grid of recurrent encoders with local receptive fields, whose states are fused to reconstruct 2D or 3D images of internal structure. This compositional design enables strong generalization: models trained on single-inclusion phantoms accurately image objects with multiple inclusions and varying sizes. The local structure further supports spatial uncertainty estimation. In addition, we enable hand-held tactile imaging via external pose tracking and human-like palpation data, and extend tactile imaging to full 3D reconstruction.",
+            "categories": "cs.LG",
+            "comment": "RSS 2026"
+          },
+          "analysis": {
+            "problem_statement": "The paper addresses the challenge of reconstructing the internal structure of soft objects through touch sensing, with applications in medical diagnosis and robotic manipulation, using self-supervised learning approaches that generalize to various scenarios.",
+            "bottleneck_addressed": "The paper addresses the bottleneck of global, unstructured representations and robot-controlled sensing in tactile imaging, which limits generalization and practical use.",
+            "executive_summary": "This paper proposes a novel object-centric tactile representation called Local Encoder for Spatial Sensing (LESS), which enables strong generalization and spatial uncertainty estimation in tactile imaging. This matters to the current AI landscape as it opens up new possibilities for tactile sensing in medical diagnosis and robotic manipulation.",
+            "key_metrics": {
+              "primary_metric": "Accurate imaging of objects with multiple inclusions and varying sizes",
+              "metric_value": "Not explicitly stated",
+              "baseline": "Global, unstructured representations and robot-controlled sensing",
+              "improvement_percentage": "Not quantifiable"
+            },
+            "technical_breakdown": {
+              "method": "The LESS model represents the tactile scene as a grid of recurrent encoders with local receptive fields, whose states are fused to reconstruct 2D or 3D images of internal structure.",
+              "architecture": "Grid of recurrent encoders with local receptive fields, external pose tracking, and human-like palpation data",
+              "implementation_details": "The paper uses self-supervised learning and exploits the local nature of touch to enable strong generalization.",
+              "code_complexity": "The computational complexity of the LESS model is not explicitly stated, but it is likely to be high due to the use of recurrent encoders and grid-based architecture."
+            },
+            "relevance_tags": [
+              "Tactile Imaging",
+              "Self-Supervised Learning",
+              "Object-Centric Representation",
+              "Robotics",
+              "Medical Diagnosis"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-06-15T03:35:04.090040",
+          "conference_info": {
+            "conference": "RSS",
+            "year": "2026",
+            "comment": "RSS 2026",
+            "raw_comment": "RSS 2026",
+            "category": "Robotics",
+            "rank": "A+"
+          }
+        },
+        {
+          "paper": {
+            "title": "Rethinking Backdoor Adversarial Unlearning through the Lens of Catastrophic Forgetting in Continual Learning",
+            "arxiv_id": "2606.14078v1",
+            "authors": [
+              "Zhenqian Zhu",
+              "Yamin Hu",
+              "Yujiang Liu",
+              "Luping Wei",
+              "Wenbo Hou",
+              "Bin Li",
+              "Haodong Li",
+              "Wenjian Luo"
+            ],
+            "published": "2026-06-12T03:55:04Z",
+            "updated": "2026-06-12T03:55:04Z",
+            "summary": "Existing studies reveal that current backdoor defenses exhibit limited robustness and often fail against specific types of attacks. More concerningly, prevailing safety tuning strategies tend to provide only superficial safety protection, as they fall short of completely eliminating the backdoor effects. In this work, we present a novel formulation of backdoor learning and unlearning as a sequential, three-stage process from a continual learning perspective. Within this framework, we formally define complete backdoor unlearning and further derive the necessary conditions for achieving it based on the mechanism of catastrophic forgetting. Guided by these insights, we propose Blind Inversion-Backdoor Adversarial Unlearning (BI-BAU), which formulates the generation of adversarial examples satisfying the unlearning conditions as a blind inversion problem. We solve this by integrating the bi-level optimization process of adversarial training into an Expectation-Maximization (EM) algorithm framework to optimize the maximum a posteriori (MAP) objective. Furthermore, BI-BAU is extended to untargeted adversarial scenarios with unknown target classes, as well as to multi-modal contrastive learning tasks, enhancing its applicability to real-world deployment scenarios where pre-trained models may be compromised. Extensive experiments demonstrate that our method exhibits general applicability across a wide spectrum of backdoor attacks and can effectively and thoroughly eliminate the backdoor effects from a backdoor model.",
+            "categories": "cs.LG",
+            "comment": "Accepted by ACM CCS 2026"
+          },
+          "analysis": {
+            "problem_statement": "The paper addresses the challenge of thoroughly eliminating backdoor effects from a compromised backdoor model in the context of continual learning.",
+            "bottleneck_addressed": "Catastrophic Forgetting in Continual Learning",
+            "executive_summary": "This paper presents a novel approach to backdoor adversarial unlearning, addressing the limitations of current backdoor defenses and safety tuning strategies. By leveraging the mechanism of catastrophic forgetting, the authors propose a three-stage process for complete backdoor unlearning, which can be applied to various scenarios, including untargeted adversarial attacks and multi-modal contrastive learning tasks. This work has significant implications for ensuring the robustness and reliability of pre-trained models in real-world deployment scenarios.",
+            "key_metrics": {
+              "primary_metric": "Effectiveness in eliminating backdoor effects",
+              "metric_value": "Not explicitly stated",
+              "baseline": "Current backdoor defenses and safety tuning strategies",
+              "improvement_percentage": "Not quantifiable"
+            },
+            "technical_breakdown": {
+              "method": "The proposed method, Blind Inversion-Backdoor Adversarial Unlearning (BI-BAU), formulates the generation of adversarial examples satisfying the unlearning conditions as a blind inversion problem, which is solved by integrating the bi-level optimization process of adversarial training into an Expectation-Maximization (EM) algorithm framework to optimize the maximum a posteriori (MAP) objective.",
+              "architecture": "Expectation-Maximization (EM) algorithm framework, bi-level optimization process, and maximum a posteriori (MAP) objective",
+              "implementation_details": "The authors use a bi-level optimization process, which involves an inner loop for generating adversarial examples and an outer loop for optimizing the MAP objective. The EM algorithm is used to optimize the MAP objective.",
+              "code_complexity": "The computational complexity of the proposed method is high due to the bi-level optimization process and the use of the EM algorithm. The training time implications are not explicitly stated."
+            },
+            "relevance_tags": [
+              "Backdoor Attacks",
+              "Adversarial Unlearning",
+              "Continual Learning",
+              "Catastrophic Forgetting"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-06-15T03:33:24.942425",
+          "conference_info": {
+            "conference": "ACM CCS",
+            "year": "2026",
+            "comment": "Accepted by ACM CCS 2026",
+            "raw_comment": "Accepted by ACM CCS 2026",
+            "category": "Security",
+            "rank": "A+"
+          }
+        }
+      ],
+      "updated_at": "2026-06-15T03:37:30.262658"
     }
   }
 }
