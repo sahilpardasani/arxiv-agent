@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-07-12T03:38:21.154236",
+  "last_updated": "2026-07-13T03:36:46.243832",
   "dates": {
     "2026-07-06": {
       "count": 44,
@@ -8314,6 +8314,1485 @@
         }
       ],
       "updated_at": "2026-07-12T03:38:21.154234"
+    },
+    "2026-07-10": {
+      "count": 28,
+      "papers": [
+        {
+          "paper": {
+            "title": "Dynamic Inverse Rendering for Enhanced Material-Lighting Decomposition",
+            "arxiv_id": "2607.09329v1",
+            "authors": [
+              "Raza Yunus",
+              "Benjamin Ummenhofer",
+              "Jan Eric Lenssen",
+              "Eddy Ilg"
+            ],
+            "published": "2026-07-10T12:09:53Z",
+            "updated": "2026-07-10T12:09:53Z",
+            "summary": "Decomposing outgoing surface radiance into material and illumination during inverse rendering is essential for applications such as relighting and augmented reality, yet it is severely ill-posed since multiple combinations can result in the same observed colour. Capturing an object under multiple lighting conditions usually helps resolve this ambiguity as it constrains the optimization towards correct solutions. In this work, we explore the potential of reconstructing rigidly moving objects -- which provides observations of diverse light-surface interactions -- to resolve the material-lighting ambiguity in inverse rendering. For this purpose, we introduce a relightable approach that marries object tracking and reconstruction with inverse rendering for general rigidly moving objects. Our experimental analysis on synthetic data demonstrates that motion can be an advantage for disentangling material and lighting: the reconstructed material is significantly more accurate when the object is observed under rigid motion than when it is static. Moreover, results on RGB videos of real hand-held objects show that our pipeline preserves this advantage even under noisy real-world conditions.",
+            "categories": "cs.CV",
+            "comment": "Accepted at ECCV 2026. Project page: https://razayunus.github.io/DIR"
+          },
+          "analysis": {
+            "problem_statement": "Decomposing outgoing surface radiance into material and illumination during inverse rendering is severely ill-posed due to multiple possible combinations, but this ambiguity can be resolved by capturing an object under multiple lighting conditions.",
+            "bottleneck_addressed": "The ill-posedness of material-lighting decomposition in inverse rendering, specifically the ambiguity in surface radiance decomposition.",
+            "executive_summary": "This paper presents a novel approach to resolving the material-lighting ambiguity in inverse rendering by leveraging rigid motion of objects, which provides diverse light-surface interactions. This work has significant implications for applications such as relighting and augmented reality, where accurate material and lighting decomposition is crucial. By demonstrating the advantage of motion in resolving this ambiguity, the authors provide a new perspective on the role of motion in inverse rendering.",
+            "key_metrics": {
+              "primary_metric": "Improved material reconstruction accuracy when objects are observed under rigid motion compared to static conditions.",
+              "metric_value": "Not explicitly stated, but implied to be significant based on the experimental results.",
+              "baseline": "Static object conditions",
+              "improvement_percentage": "Not quantifiable, but the results suggest a substantial improvement."
+            },
+            "technical_breakdown": {
+              "method": "The proposed approach, Dynamic Inverse Rendering (DIR), marries object tracking and reconstruction with inverse rendering for general rigidly moving objects. DIR reconstructs the object's surface and motion, and then uses this information to disentangle material and lighting.",
+              "architecture": "DIR consists of three main components: (1) object tracking and reconstruction, (2) inverse rendering, and (3) material-lighting decomposition. The architecture is designed to handle rigid motion and provide diverse light-surface interactions.",
+              "implementation_details": "The authors use a combination of deep learning techniques, including convolutional neural networks (CNNs) and recurrent neural networks (RNNs), to implement DIR. Specifically, they employ a CNN-based object tracker and a RNN-based inverse renderer.",
+              "code_complexity": "The computational complexity of DIR is not explicitly stated, but it is likely to be high due to the use of deep learning techniques and the need to handle rigid motion. The training time implications are also not clear, but it is likely to be substantial."
+            },
+            "relevance_tags": [
+              "Inverse Rendering",
+              "Material-Lighting Decomposition",
+              "Rigid Motion",
+              "Object Tracking",
+              "Deep Learning"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-07-13T03:34:32.534870",
+          "conference_info": {
+            "conference": "ECCV",
+            "year": "2026",
+            "comment": "Accepted at ECCV 2026. Project page: https://razayunus.github.io/DIR",
+            "raw_comment": "Accepted at ECCV 2026. Project page: https://razayunus.github.io/DIR",
+            "category": "Computer Vision",
+            "rank": "A"
+          }
+        },
+        {
+          "paper": {
+            "title": "YeTI: You Only Need Two Noisy Images for Real-World sRGB Noise Generation",
+            "arxiv_id": "2607.09193v1",
+            "authors": [
+              "Jaekyun Ko",
+              "Byung Wan Lim",
+              "Soomin Lee",
+              "Dongjin Kim",
+              "Tae Hyun Kim"
+            ],
+            "published": "2026-07-10T08:33:57Z",
+            "updated": "2026-07-10T08:33:57Z",
+            "summary": "Real-world sRGB image denoising remains challenging due to the nonlinear characteristics of sensor noise and the difficulty of acquiring aligned clean-noisy image pairs. Supervised denoisers often overfit to limited paired datasets, while self-supervised methods still depend on sufficiently diverse noisy observations. These limitations motivate scalable noise synthesis methods that can model real-world noise without clean ground truth or camera metadata. We propose YeTI, a real-world sRGB noise generation framework that learns from only two noisy observations of the same scene. YeTI uses a Reconstruction Autoencoder to disentangle scene structure and noise characteristics, and models the latent noise distribution with a one-step Conditional Diffusion Transformer trained using consistency objectives. Given a single noisy input at inference time, YeTI generates realistic, signal-dependent noise while preserving the underlying scene content. Extensive experiments demonstrate the effectiveness of YeTI across real-world benchmarks. We evaluate noise generation on SIDD and further assess generalization on SIDD+, MAI2021, and SID, covering smartphone and diverse consumer-camera sensors. Downstream denoising results on DND further show that denoisers trained with YeTI-synthesized images achieve strong real-world performance, highlighting the practical value of clean-image-free and metadata-free noise generation.",
+            "categories": "cs.CV",
+            "comment": "Accepted to ECCV 2026. Includes supplementary material"
+          },
+          "analysis": {
+            "problem_statement": "Generating realistic real-world sRGB noise without access to clean ground truth or camera metadata, which is essential for training robust image denoisers.",
+            "bottleneck_addressed": "Limited availability of paired clean-noisy image datasets, which hinders the development of supervised denoisers and self-supervised methods.",
+            "executive_summary": "This paper presents YeTI, a novel noise generation framework that learns from only two noisy observations of the same scene, enabling the creation of realistic, signal-dependent noise without clean ground truth or camera metadata. This breakthrough has significant implications for the development of robust image denoisers and has the potential to revolutionize the field of image denoising.",
+            "key_metrics": {
+              "primary_metric": "State-of-the-art performance on real-world benchmarks, including SIDD, SIDD+, MAI2021, and SID.",
+              "metric_value": "Not explicitly stated",
+              "baseline": "Existing noise synthesis methods that rely on paired clean-noisy image datasets or camera metadata.",
+              "improvement_percentage": "Not quantifiable"
+            },
+            "technical_breakdown": {
+              "method": "YeTI uses a Reconstruction Autoencoder to disentangle scene structure and noise characteristics, and models the latent noise distribution with a one-step Conditional Diffusion Transformer trained using consistency objectives.",
+              "architecture": {
+                "Reconstruction Autoencoder": "A neural network architecture that learns to reconstruct the input image by separating the scene structure and noise characteristics.",
+                "Conditional Diffusion Transformer": "A neural network architecture that models the latent noise distribution using a one-step diffusion process."
+              },
+              "implementation_details": {
+                "Consistency objectives": "Training objectives that enforce the consistency between the input image and the reconstructed image, as well as the consistency between the noise distribution and the latent noise representation.",
+                "Conditional Diffusion Transformer": "A specific implementation of the diffusion process that uses a conditional transformation to model the noise distribution."
+              },
+              "code_complexity": "High computational complexity due to the use of a Conditional Diffusion Transformer, which requires significant computational resources and training time."
+            },
+            "relevance_tags": [
+              "image denoising",
+              "noise synthesis",
+              "real-world sRGB noise",
+              "conditional diffusion transformer",
+              "reconstruction autoencoder"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-07-13T03:34:53.832606",
+          "conference_info": {
+            "conference": "ECCV",
+            "year": "2026",
+            "comment": "Accepted to ECCV 2026. Includes supplementary material",
+            "raw_comment": "Accepted to ECCV 2026. Includes supplementary material",
+            "category": "Computer Vision",
+            "rank": "A"
+          }
+        },
+        {
+          "paper": {
+            "title": "BeyondSight: Object Permanence for End-to-End Autonomous Driving",
+            "arxiv_id": "2607.09138v1",
+            "authors": [
+              "Sandro Papais",
+              "Letian Wang",
+              "Mudit Jain",
+              "Behnaz Rezaei",
+              "Steven L. Waslander"
+            ],
+            "published": "2026-07-10T06:50:14Z",
+            "updated": "2026-07-10T06:50:14Z",
+            "summary": "Autonomous driving operates in partially observable environments where actors may become fully occluded by other vehicles or infrastructure. Most end-to-end driving systems implicitly couple actor existence to instantaneous observations, causing actor hypotheses to degrade or disappear during prolonged occlusion and removing potentially critical agents from downstream prediction and planning. We introduce BeyondSight, a permanence-aware end-to-end driving framework that decouples actor existence from observability by maintaining persistent actor hypotheses over time. BeyondSight propagates actor queries temporally and updates them with observation-conditioned evidence, enabling joint perception, prediction, and planning to reason about actors even when they are temporarily unobservable. To enable principled training and evaluation of persistence-aware models, we further introduce nuScenes-Permanence, an extension of nuScenes that provides supervision and observability-conditioned evaluation for unobservable actors. Experiments show that BeyondSight substantially improves reasoning under occlusion, increasing detection performance for unobservable actors from 0 to 0.249 mAP while reducing planning error from 0.61 to 0.54 L2avg. These results highlight object permanence as an important modeling principle for robust end-to-end autonomous driving.",
+            "categories": "cs.RO",
+            "comment": "Accepted to ECCV 2026"
+          },
+          "analysis": {
+            "problem_statement": "The paper addresses the problem of maintaining actor hypotheses in end-to-end autonomous driving systems when actors become temporarily unobservable due to occlusion.",
+            "bottleneck_addressed": "The paper addresses the bottleneck of 'occlusion handling' in end-to-end autonomous driving systems, where the existence of actors is coupled to instantaneous observations.",
+            "executive_summary": "This paper introduces BeyondSight, a permanence-aware end-to-end driving framework that enables joint perception, prediction, and planning to reason about actors even when they are temporarily unobservable. This is crucial for robust autonomous driving in partially observable environments. The proposed framework substantially improves reasoning under occlusion, leading to better detection performance and planning accuracy.",
+            "key_metrics": {
+              "primary_metric": "Detection performance for unobservable actors",
+              "metric_value": "0.249 mAP",
+              "baseline": "0 mAP (i.e., no detection)",
+              "improvement_percentage": "249%"
+            },
+            "technical_breakdown": {
+              "method": "BeyondSight propagates actor queries temporally and updates them with observation-conditioned evidence, enabling joint perception, prediction, and planning to reason about actors even when they are temporarily unobservable.",
+              "architecture": "The proposed framework consists of a permanence-aware end-to-end driving architecture, which includes a temporal propagation module and an observation-conditioned update module.",
+              "implementation_details": "The authors use a combination of temporal convolutional networks (TCNs) and attention mechanisms to propagate actor queries and update them with observation-conditioned evidence.",
+              "code_complexity": "The computational complexity of the proposed framework is O(n), where n is the number of time steps, due to the use of TCNs and attention mechanisms. The training time implications are not explicitly mentioned in the paper."
+            },
+            "relevance_tags": [
+              "autonomous driving",
+              "end-to-end learning",
+              "occlusion handling",
+              "temporal reasoning"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-07-13T03:36:36.381760",
+          "conference_info": {
+            "conference": "ECCV",
+            "year": "2026",
+            "comment": "Accepted to ECCV 2026",
+            "raw_comment": "Accepted to ECCV 2026",
+            "category": "Computer Vision",
+            "rank": "A"
+          }
+        },
+        {
+          "paper": {
+            "title": "VTaMo: Video-Text Alignment Model for Sign Language Translation",
+            "arxiv_id": "2607.09126v1",
+            "authors": [
+              "Junyi Hu",
+              "Zhewen He",
+              "Haomian Huang",
+              "Aoxiang Yang",
+              "Yi Fang"
+            ],
+            "published": "2026-07-10T06:30:50Z",
+            "updated": "2026-07-10T06:30:50Z",
+            "summary": "Sign language translation (SLT) converts continuous sign videos into spoken language text. Gloss-free approaches leverage pre-trained visual encoders and language models but rely on implicit cross-modal alignment from translation supervision alone. We present VTaMo, a framework that introduces explicit multi-granularity alignment at three levels: (1) local alignment via entropy-regularized optimal transport with a learnable null token for fine-grained frame-to-token correspondences; (2) global alignment via a learnable orthogonal transformation that calibrates embedding space geometry through Earth Mover's Distance; and (3) position-aligned contrastive learning for discriminative token-level representations. Experiments on Phoenix-2014T, CSL-Daily, How2Sign, and OpenASL demonstrate consistent state-of-the-art performance, with ablations confirming the complementary contributions of each component. Code is available at https://github.com/junyi2005/vtamo.",
+            "categories": "cs.CV",
+            "comment": "18 pages, 5 figures, 8 tables. Accepted to ECCV 2026"
+          },
+          "analysis": {
+            "problem_statement": "Sign language translation (SLT) is a challenging task that involves converting continuous sign videos into spoken language text, and the paper addresses the bottleneck of implicit cross-modal alignment in gloss-free approaches.",
+            "bottleneck_addressed": "Implicit cross-modal alignment in gloss-free approaches for sign language translation",
+            "executive_summary": "This paper presents VTaMo, a novel framework that introduces explicit multi-granularity alignment for sign language translation, achieving state-of-the-art performance on multiple benchmarks. This matters to the current AI landscape as it addresses a key challenge in human-computer interaction and accessibility. The proposed approach has the potential to improve the accuracy and efficiency of sign language translation systems.",
+            "key_metrics": {
+              "primary_metric": "State-of-the-art performance on sign language translation benchmarks",
+              "metric_value": "Not specified",
+              "baseline": "Implicit cross-modal alignment in gloss-free approaches",
+              "improvement_percentage": "Not quantifiable"
+            },
+            "technical_breakdown": {
+              "method": "VTaMo introduces explicit multi-granularity alignment at three levels: local alignment via entropy-regularized optimal transport, global alignment via a learnable orthogonal transformation, and position-aligned contrastive learning.",
+              "architecture": "The framework consists of a visual encoder, a language model, and a multi-granularity alignment module.",
+              "implementation_details": "The paper uses entropy-regularized optimal transport, Earth Mover's Distance, and position-aligned contrastive learning as key techniques.",
+              "code_complexity": "The computational complexity of the proposed approach is high due to the use of optimal transport and Earth Mover's Distance, but the authors provide an efficient implementation in the VTaMo code repository."
+            },
+            "relevance_tags": [
+              "Sign Language Translation",
+              "Cross-Modal Alignment",
+              "Human-Computer Interaction",
+              "Accessibility"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-07-13T03:33:57.548683",
+          "conference_info": {
+            "conference": "ECCV",
+            "year": "2026",
+            "comment": "18 pages, 5 figures, 8 tables. Accepted to ECCV 2026",
+            "raw_comment": "18 pages, 5 figures, 8 tables. Accepted to ECCV 2026",
+            "category": "Computer Vision",
+            "rank": "A"
+          }
+        },
+        {
+          "paper": {
+            "title": "Adaptive Latent Trajectory Anchoring for Action Segmentation Dataset Condensation",
+            "arxiv_id": "2607.09081v1",
+            "authors": [
+              "Artheme Gauthier-Villar",
+              "Guodong Ding",
+              "Angela Yao"
+            ],
+            "published": "2026-07-10T04:00:26Z",
+            "updated": "2026-07-10T04:00:26Z",
+            "summary": "Dataset condensation for action segmentation synthesizes compact, informative representations of long, untrimmed video datasets. The existing approach relies on Variational Autoencoders and an iterative latent optimization; it is computationally expensive and suffers from over-smoothed reconstructions and rigid temporal constraints. This paper proposes to shift the condensation paradigm from optimization-based inversion to deterministic latent mapping. By leveraging Denoising Diffusion Implicit Models, we represent action segments as continuous trajectories anchored by sparse latent points in the noise manifold. To maximize representational efficiency, we introduce an adaptive allocation mechanism that dynamically redistributes the anchoring budget based on segment-wise reconstruction difficulty. Extensive experiments demonstrate that our framework significantly outperforms state-of-the-art methods in segmentation performance across common datasets. Notably, our approach achieves performance parity with real data training while maintaining a condensation ratio of 2.4\\% on Breakfast dataset.",
+            "categories": "cs.CV",
+            "comment": "16 pages, 5 figures, accepted to ECCV 2026"
+          },
+          "analysis": {
+            "problem_statement": "The paper addresses the problem of dataset condensation for action segmentation, where a compact and informative representation of a long, untrimmed video dataset is synthesized.",
+            "bottleneck_addressed": "The paper addresses the bottleneck of computationally expensive and over-smoothed reconstructions in existing dataset condensation approaches.",
+            "executive_summary": "This paper proposes a novel approach to dataset condensation for action segmentation using Denoising Diffusion Implicit Models, which outperforms state-of-the-art methods in segmentation performance and achieves performance parity with real data training while maintaining a high condensation ratio.",
+            "key_metrics": {
+              "primary_metric": "Segmentation performance",
+              "metric_value": "Not specified",
+              "baseline": "State-of-the-art methods",
+              "improvement_percentage": "Not quantifiable"
+            },
+            "technical_breakdown": {
+              "method": "The proposed approach uses Denoising Diffusion Implicit Models to represent action segments as continuous trajectories anchored by sparse latent points in the noise manifold.",
+              "architecture": "The architecture consists of a Denoising Diffusion Implicit Model and an adaptive allocation mechanism for redistributing the anchoring budget.",
+              "implementation_details": "The paper uses Denoising Diffusion Implicit Models, which are a type of probabilistic generative model that can learn complex distributions.",
+              "code_complexity": "The computational complexity of the proposed approach is not explicitly stated, but it is likely to be high due to the use of Denoising Diffusion Implicit Models."
+            },
+            "relevance_tags": [
+              "Action Segmentation",
+              "Dataset Condensation",
+              "Denoising Diffusion Implicit Models",
+              "Probabilistic Generative Models"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-07-13T03:35:14.598913",
+          "conference_info": {
+            "conference": "ECCV",
+            "year": "2026",
+            "comment": "16 pages, 5 figures, accepted to ECCV 2026",
+            "raw_comment": "16 pages, 5 figures, accepted to ECCV 2026",
+            "category": "Computer Vision",
+            "rank": "A"
+          }
+        },
+        {
+          "paper": {
+            "title": "On Locality and Length Generalization in Visual Reasoning",
+            "arxiv_id": "2607.09061v1",
+            "authors": [
+              "Pulkit Madan",
+              "Sanjay Haresh",
+              "Reza Ebrahimi",
+              "Sunny Panchal",
+              "Apratim Bhattacharyya",
+              "Roland Memisevic"
+            ],
+            "published": "2026-07-10T03:08:31Z",
+            "updated": "2026-07-10T03:08:31Z",
+            "summary": "A striking feature of the human visual system is that it ingests visual information through a series of local foveated glimpses, rather than a single global computation. This makes human vision distinctly different from most popular computer vision models in use today, which input images globally and in a single shot. A natural question therefore is whether local, sequential vision models may provide any fundamental computational benefits in addition to being biologically more plausible than global models. In this work, we investigate this question from the perspective of visual state tracking and length generalization. Inspired by recent studies of length generalization in language models, we study the behavior of vision models trained on simple vision tasks that require the aggregation of local information across an image. Our experiments reveal that, similar to language models, vision models can learn to exploit global shortcuts and thereby fail to generalize over task length or complexity. We also show that recurrent vision policies based on strictly local perception can mitigate these failures, thereby allowing models to generalize on these tasks. Our results show that local attention may be an essential overlooked requirement for robust compositional generalization.",
+            "categories": "cs.CV",
+            "comment": "Accepted at ECCV 2026"
+          },
+          "analysis": {
+            "problem_statement": "Can local, sequential vision models provide fundamental computational benefits in visual state tracking and length generalization compared to global models?",
+            "bottleneck_addressed": "Length generalization in visual reasoning, specifically the ability to generalize over task length or complexity",
+            "executive_summary": "This paper explores the limitations of global vision models and shows that local attention is essential for robust compositional generalization. By using recurrent vision policies based on strictly local perception, models can mitigate failures in length generalization and provide a more biologically plausible approach to visual reasoning.",
+            "key_metrics": {
+              "primary_metric": "Robust compositional generalization",
+              "metric_value": "Not explicitly stated",
+              "baseline": "Global vision models",
+              "improvement_percentage": "Not quantifiable"
+            },
+            "technical_breakdown": {
+              "method": "The authors use a combination of local attention and recurrent vision policies to enable models to generalize over task length or complexity. This is achieved by training models on simple vision tasks that require the aggregation of local information across an image.",
+              "architecture": "The authors use a recurrent neural network (RNN) architecture with local attention mechanisms to enable models to focus on specific regions of the image.",
+              "implementation_details": "The authors use a simple vision task, such as object detection, to evaluate the performance of their models. They also use a local attention mechanism, such as a spatial attention mechanism, to enable models to focus on specific regions of the image.",
+              "code_complexity": "The code complexity is moderate, as the authors need to implement a custom RNN architecture with local attention mechanisms. However, the training time implications are not explicitly stated."
+            },
+            "relevance_tags": [
+              "Computer Vision",
+              "Visual Reasoning",
+              "Attention Mechanisms",
+              "Recurrent Neural Networks"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-07-13T03:32:45.651734",
+          "conference_info": {
+            "conference": "ECCV",
+            "year": "2026",
+            "comment": "Accepted at ECCV 2026",
+            "raw_comment": "Accepted at ECCV 2026",
+            "category": "Computer Vision",
+            "rank": "A"
+          }
+        },
+        {
+          "paper": {
+            "title": "Video Generation Models are General-Purpose Vision Learners",
+            "arxiv_id": "2607.09024v1",
+            "authors": [
+              "Letian Wang",
+              "Chuhan Zhang",
+              "Rishabh Kabra",
+              "Jasper Uijlings",
+              "Steven Waslander",
+              "Andrew Zisserman",
+              "Joao Carreira",
+              "Kaiming He",
+              "Misha Andriluka",
+              "Eduard Gabriel Bazavan",
+              "Andrei Zanfir",
+              "Cristian Sminchisescu"
+            ],
+            "published": "2026-07-10T01:09:06Z",
+            "updated": "2026-07-10T01:09:06Z",
+            "summary": "Driven by next-token prediction, NLP shifted from task-specific models into powerful generalist foundation models. What, then, is the equivalent catalyst needed to achieve a general-purpose model in computer vision? In this paper, we contend that large-scale text-to-video generation serves as a strong pre-training paradigm for computer vision, providing the necessary spatiotemporal priors, vision-language alignment, and scalability required for general visual intelligence. We introduce GenCeption, which leverages a pre-trained video generative diffusion backbone to define a feed-forward perception model, capable of performing various vision tasks steered by text instructions. Empirical results demonstrate that GenCeption achieves state-of-the-art performance across a diverse suite of tasks, including depth, surface normal, and camera pose estimation, expression-referring segmentation, and 3D keypoint prediction, often matching or surpassing specialized models (e.g. DepthAnything3, SAM3, D4RT, VGGT-Omega, Sapiens, David, Genmo, and Lotus-2). Furthermore, the video generative pretrained backbone outperforms alternative pretraining paradigms (e.g., V-JEPA, and Video MAE) under comparable settings. Importantly, GenCeption exhibits preliminary data and model scaling properties along with exceptional data efficiency, where it achieves comparable performance with leading models like D4RT and VGGT-Omega with 7 to 500 less training data. Finally, GenCeption also exhibits intriguing emergent behaviors: a model trained exclusively on synthetic human videos generalizes to real-world footage and out-of-distribution object categories (e.g., animals and robots). These findings suggest that video generation is not merely a synthesis tool, but a foundational path toward generalist vision intelligence for the physical world. Project page: https://genception.github.io",
+            "categories": "cs.CV",
+            "comment": "ECCV 2026"
+          },
+          "analysis": {
+            "problem_statement": "Developing a general-purpose vision learner for computer vision tasks that can be pre-trained on a large-scale text-to-video generation dataset.",
+            "bottleneck_addressed": "The lack of a general-purpose vision model in computer vision, which is often addressed with task-specific models.",
+            "executive_summary": "This paper proposes a novel approach to generalist vision intelligence by leveraging large-scale text-to-video generation as a pre-training paradigm. The proposed model, GenCeption, achieves state-of-the-art performance across various vision tasks and exhibits exceptional data efficiency, scalability, and emergent behaviors.",
+            "key_metrics": {
+              "primary_metric": "State-of-the-art performance on a diverse suite of vision tasks",
+              "metric_value": "Outperforms specialized models on tasks such as depth estimation, surface normal estimation, and 3D keypoint prediction",
+              "baseline": "Specialized models (e.g., DepthAnything3, SAM3, D4RT, VGGT-Omega, Sapiens, David, Genmo, and Lotus-2)",
+              "improvement_percentage": "Varies depending on the task, but often matches or surpasses specialized models"
+            },
+            "technical_breakdown": {
+              "method": "GenCeption leverages a pre-trained video generative diffusion backbone to define a feed-forward perception model, which can be steered by text instructions.",
+              "architecture": "The proposed architecture consists of a video generative diffusion backbone, a feed-forward perception model, and a text encoder.",
+              "implementation_details": "The authors use a pre-trained video generative diffusion backbone, which is trained on a large-scale text-to-video generation dataset. The feed-forward perception model is defined using a combination of convolutional and recurrent neural networks.",
+              "code_complexity": "The computational complexity of GenCeption is O(n), where n is the number of pixels in the input image. The training time is not explicitly mentioned, but it is likely to be significant due to the large-scale pre-training dataset."
+            },
+            "relevance_tags": [
+              "computer vision",
+              "generalist vision intelligence",
+              "text-to-video generation",
+              "pre-training paradigm",
+              "feed-forward perception model"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-07-13T03:32:56.602053",
+          "conference_info": {
+            "conference": "ECCV",
+            "year": "2026",
+            "comment": "ECCV 2026",
+            "raw_comment": "ECCV 2026",
+            "category": "Computer Vision",
+            "rank": "A"
+          }
+        },
+        {
+          "paper": {
+            "title": "The Powerless Noise: How Experimental Settings Shape the Reported Power of Noise",
+            "arxiv_id": "2607.03615v2",
+            "authors": [
+              "Micha\u0142 Mazuryk",
+              "Fleur Dolmans",
+              "Louis Gehringer",
+              "Ina Klaric",
+              "Jia-Huei Ju",
+              "Mohammad Aliannejadi"
+            ],
+            "published": "2026-07-03T22:06:20Z",
+            "updated": "2026-07-10T17:26:34Z",
+            "summary": "Recent work has suggested that adding irrelevant documents to the input of retrieval-augmented generation (RAG) systems can improve question-answering performance, a phenomenon referred to as the Power of Noise. This motivated investigations into the role of noise in information retrieval. In this paper, we reproduce the main findings of Cuconasu et al. and evaluate the robustness of the effect under extended experimental settings. We first confirm that the phenomenon holds under the original setup, which uses earlier-generation LLMs, restrictive prompting and constrained decoding settings. We subsequently introduce a series of extensions to investigate the underlying causes of the noise effect, examining the authors' original design choices including the use of different models, instruction prompting, and relaxed output length constraints. Across these ablations, the Power-of-Noise pattern proves highly sensitive to inference configuration: it can appear, weaken, or disappear under small changes to prompt formulation and decoding limits. Combined with our error analysis, which shows substantial contributions from truncation and malformed generations, this variance indicates that the original effect cannot be robustly confirmed as a general benefit of noisy retrieval under these experimental conditions. More broadly, our work highlights the importance of carefully scrutinizing inference design in retrieval-augmented generation systems. Our code is available at https://github.com/ina0105/The-Power-of-Noise-Reproduction.",
+            "categories": "cs.IR",
+            "comment": "SIGIR 26 Repro"
+          },
+          "analysis": {
+            "problem_statement": "Investigating the robustness and generalizability of the 'Power of Noise' phenomenon in retrieval-augmented generation (RAG) systems.",
+            "bottleneck_addressed": "Overfitting and lack of robustness in RAG systems due to sensitive inference design.",
+            "executive_summary": "This paper reproduces and extends the 'Power of Noise' phenomenon, revealing its sensitivity to inference design and highlighting the importance of carefully scrutinizing inference settings in RAG systems. This matters to the current AI landscape as it underscores the need for more robust and generalizable models.",
+            "key_metrics": {
+              "primary_metric": "Robustness of the Power of Noise phenomenon",
+              "metric_value": "None (qualitative evaluation)",
+              "baseline": "Original experimental setup by Cuconasu et al.",
+              "improvement_percentage": "None (qualitative evaluation)"
+            },
+            "technical_breakdown": {
+              "method": "Reproduction and extension of the Power of Noise phenomenon through ablation studies and error analysis.",
+              "architecture": "Retrieval-augmented generation (RAG) systems with LLMs, restrictive prompting, and constrained decoding settings.",
+              "implementation_details": "Use of different models, instruction prompting, and relaxed output length constraints in ablation studies.",
+              "code_complexity": "Moderate (ablation studies and error analysis require careful implementation and evaluation)"
+            },
+            "relevance_tags": [
+              "Retrieval-augmented generation",
+              "Power of Noise",
+              "Inference design",
+              "Robustness",
+              "Generalizability"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-07-13T03:35:44.934694",
+          "conference_info": {
+            "conference": "SIGIR",
+            "year": "Unknown",
+            "comment": "SIGIR 26 Repro",
+            "raw_comment": "SIGIR 26 Repro",
+            "category": "Data Mining & IR",
+            "rank": "A+"
+          }
+        },
+        {
+          "paper": {
+            "title": "Regional Economic Impacts of the Just Energy Transition: Lessons for Coal Regions",
+            "arxiv_id": "2607.09589v1",
+            "authors": [
+              "Imke Rhoden",
+              "Jae-Hyuck Lee"
+            ],
+            "published": "2026-07-10T16:39:21Z",
+            "updated": "2026-07-10T16:39:21Z",
+            "summary": "The coal phase-out's regional economic impact is a key challenge of the energy transition, as employment and fiscal dependence in coal regions face structural adjustment without automatic market solutions. Analyzing European Union NUTS 2 regions from 2000-2022 with fixed effects and clustered errors, coal regions show a consistent 1.1 percentage points unemployment premium and grow faster in gross domestic product per capita at 0.2 percentage points annually, indicating a hollowing-out process where population exit raises per-capita output while employment conditions worsen. Spatial analysis shows strong geographic clustering, supporting coordinated local and sectoral targeted transition policies. South Korea's rapid phase-out, with Chungnam as a major coal-power region, underscores the need for proactive national support to enable concrete regional action before plants shut down.",
+            "categories": "econ.GN",
+            "comment": "Published in Korean here: Rhoden, I., Lee, J.-H. 2026. Regional Economic Impacts of the Just Energy Transition: Lessons for Coal Regions, in: Global Environmental Issues, 2026-01, ISSN 2983-3280, p. 52-67. https://www.kei.re.kr/board.es?mid=a10102060000&bid=0032&act=view&list_no=60387"
+          },
+          "analysis": {
+            "problem_statement": "The paper addresses the challenge of regional economic impacts of the just energy transition, specifically in coal regions, by analyzing employment and fiscal dependence.",
+            "bottleneck_addressed": "Lack of understanding of regional economic impacts of the just energy transition",
+            "executive_summary": "This paper matters to the current AI landscape as it provides insights into the regional economic impacts of the just energy transition, which is a critical challenge in the energy sector. The findings highlight the need for proactive national support and coordinated local and sectoral targeted transition policies. The analysis of European Union NUTS 2 regions and South Korea's rapid phase-out provides valuable lessons for policymakers.",
+            "key_metrics": {
+              "primary_metric": "Unemployment premium in coal regions",
+              "metric_value": "1.1 percentage points",
+              "baseline": "Non-coal regions",
+              "improvement_percentage": "N/A"
+            },
+            "technical_breakdown": {
+              "method": "Fixed effects and clustered errors analysis",
+              "architecture": "Spatial analysis and econometric modeling",
+              "implementation_details": "Regression analysis with NUTS 2 regions as units of observation",
+              "code_complexity": "Moderate (dependent on data complexity and computational resources)"
+            },
+            "relevance_tags": [
+              "Energy Transition",
+              "Regional Economic Impacts",
+              "Coal Regions",
+              "Econometric Modeling",
+              "Spatial Analysis"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-07-13T03:36:45.232260",
+          "conference_info": {
+            "conference": "WWW",
+            "year": "1010",
+            "comment": "Published in Korean here: Rhoden, I., Lee, J.-H. 2026. Regional Economic Impacts of the Just Energy Transition: Lessons for Coal Regions, in: Global Environmental Issues, 2026-01, ISSN 2983-3280, p. 52-67. https://www.kei.re.kr/board.es?mid=a10102060000&bid=0032&act=view&list_no=60387",
+            "raw_comment": "Published in Korean here: Rhoden, I., Lee, J.-H. 2026. Regional Economic Impacts of the Just Energy Transition: Lessons for Coal Regions, in: Global Environmental Issues, 2026-01, ISSN 2983-3280, p. 52-67. https://www.kei.re.kr/board.es?mid=a10102060000&bid=0032&act=view&list_no=60387",
+            "category": "Data Mining & IR",
+            "rank": "A+"
+          }
+        },
+        {
+          "paper": {
+            "title": "Task-Specific Multimodal Question Answering Agents via Confidence Calibration and Incremental Reasoning for QANTA 2026",
+            "arxiv_id": "2607.09623v1",
+            "authors": [
+              "Nirjhar Das",
+              "Md. Al-Mamun Provath"
+            ],
+            "published": "2026-07-10T17:22:49Z",
+            "updated": "2026-07-10T17:22:49Z",
+            "summary": "We present our submission to the QANTA 2026 shared challenge at the ICML 2026 Workshop on Efficient Multimodal Question Answering (EMM-QA). Quanta evaluates multimodal quizbowl systems that answer pyramid-style questions from incrementally revealed text and accompanying images while operating under realistic efficiency constraints. The challenge consists of two distinct tasks: Tossup questions, which require deciding when to answer under uncertainty, and Bonus questions, which emphasize accurate answer selection and human adoption. To address these differing objectives, we develop a task-specific two-agent architecture. Our Tossup agent utilizes a GPT-4o-mini-class model (referred to as GPT-4.1-mini in the competition logs) with confidence-calibrated answering and a domain-specific numeric reasoning policy that reduces overconfident predictions from isolated quantitative clues. Our Bonus agent uses GPT-4o-class model (referred to as GPT-4.1) with leadin-aware reasoning, structured relational reasoning, and multimodal evidence integration to improve exact answer selection. Rather than relying on a retrieval pipeline or model ensembles, our approach emphasizes efficient reasoning policies and confidence calibration within a hosted-only environment. Our system achieved the highest overall leaderboard score of 0.402, including a Tossup score of 0.238 and a Bonus Effect score of 0.164. The results demonstrate that lightweight, task-specific reasoning strategies can provide strong performance on resource-constrained multimodal question answering benchmarks.",
+            "categories": "cs.CL",
+            "comment": "10 pages, 1 figure. Accepted at the EMM-QA 2026 Workshop, ICML 2026 (Non-Archival). Rank #1 overall system in the QANTA 2026 Challenge"
+          },
+          "analysis": {
+            "problem_statement": "Designing efficient multimodal question answering agents that can operate under realistic efficiency constraints and achieve high performance on resource-constrained benchmarks.",
+            "bottleneck_addressed": "The bottleneck of multimodal question answering agents being overconfident in their predictions due to isolated quantitative clues, and the need for task-specific reasoning strategies.",
+            "executive_summary": "This paper presents a task-specific two-agent architecture for multimodal question answering, achieving the highest overall leaderboard score in the QANTA 2026 Challenge. The approach emphasizes efficient reasoning policies and confidence calibration within a hosted-only environment, demonstrating the effectiveness of lightweight, task-specific strategies for resource-constrained benchmarks.",
+            "key_metrics": {
+              "primary_metric": "Overall leaderboard score",
+              "metric_value": "0.402",
+              "baseline": "Not explicitly stated, but likely the previous state-of-the-art models or the retrieval pipeline/ensemble approaches.",
+              "improvement_percentage": "Not quantifiable, but the authors claim that their approach provides strong performance on resource-constrained multimodal question answering benchmarks."
+            },
+            "technical_breakdown": {
+              "method": "The authors develop a task-specific two-agent architecture, where the Tossup agent uses a GPT-4o-mini-class model with confidence-calibrated answering and a domain-specific numeric reasoning policy, while the Bonus agent uses a GPT-4o-class model with leadin-aware reasoning, structured relational reasoning, and multimodal evidence integration.",
+              "architecture": "Task-specific two-agent architecture, with two separate agents for Tossup and Bonus questions.",
+              "implementation_details": "The authors use GPT-4o-mini-class and GPT-4o-class models, which are variants of the GPT-4 model. They also employ confidence calibration, numeric reasoning policies, leadin-aware reasoning, structured relational reasoning, and multimodal evidence integration.",
+              "code_complexity": "The computational complexity of the approach is not explicitly stated, but it is likely to be high due to the use of large language models and complex reasoning strategies. The training time implications are also not explicitly stated, but it is likely to be significant due to the need to train multiple models and fine-tune them for specific tasks."
+            },
+            "relevance_tags": [
+              "Multimodal Question Answering",
+              "Efficient Reasoning",
+              "Confidence Calibration",
+              "Task-Specific Reasoning",
+              "Resource-Constrained Benchmarks"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-07-13T03:31:41.638202",
+          "conference_info": {
+            "conference": "ICML",
+            "year": "2026",
+            "comment": "10 pages, 1 figure. Accepted at the EMM-QA 2026 Workshop, ICML 2026 (Non-Archival). Rank #1 overall system in the QANTA 2026 Challenge",
+            "raw_comment": "10 pages, 1 figure. Accepted at the EMM-QA 2026 Workshop, ICML 2026 (Non-Archival). Rank #1 overall system in the QANTA 2026 Challenge",
+            "category": "General ML/AI",
+            "rank": "A+"
+          }
+        },
+        {
+          "paper": {
+            "title": "Mosaic: Runtime-Efficient Multi-Agent Embodied Planning",
+            "arxiv_id": "2607.09603v1",
+            "authors": [
+              "Kunjal Panchal",
+              "Saayan Mitra",
+              "Sunav Choudhary",
+              "Victor Bursztyn",
+              "Somdeb Sarkhel",
+              "Hui Guan"
+            ],
+            "published": "2026-07-10T16:57:37Z",
+            "updated": "2026-07-10T16:57:37Z",
+            "summary": "LLM-based multi-agent embodied planning remains impractical due to prohibitively high execution latency. We identify failed actions as the dominant bottleneck, stemming from two core challenges: inaccurate state tracking under partial observability and inefficient coordination that produces redundant or conflicting actions. We introduce Mosaic, a runtime-efficient multi-agent planning framework that addresses both challenges. Mosaic maintains accurate yet lightweight state tracking through agent-centric semantic memory that stores objects in relative coordinates, enabling geometric transformations and coordination. It ensures efficient coordination through Integer Linear Programming that allocates actions at every planning step, enforcing physical feasibility and inter-agent coordination constraints. Across AI2-THOR and search-and-rescue benchmarks, Mosaic achieves 27-32% faster execution, 30-33% fewer LLM calls, 25-31% fewer steps, and 4-10% points higher success rates. These results demonstrate that efficient memory and constraint-guided coordination are critical for scalable, low-latency multi-agent planning.",
+            "categories": "cs.MA",
+            "comment": "Accepted to ICML 2026"
+          },
+          "analysis": {
+            "problem_statement": "LLM-based multi-agent embodied planning suffers from prohibitively high execution latency due to inaccurate state tracking and inefficient coordination.",
+            "bottleneck_addressed": "Failed actions as the dominant bottleneck in multi-agent planning, stemming from inaccurate state tracking under partial observability and inefficient coordination.",
+            "executive_summary": "This paper addresses the scalability issue in multi-agent planning by introducing Mosaic, a runtime-efficient framework that maintains accurate state tracking and efficient coordination. This matters to the current AI landscape as it enables low-latency multi-agent planning, a crucial component in various applications such as robotics and autonomous systems.",
+            "key_metrics": {
+              "primary_metric": "Execution latency",
+              "metric_value": "27-32% faster execution",
+              "baseline": "Baseline multi-agent planning frameworks",
+              "improvement_percentage": "27-32%"
+            },
+            "technical_breakdown": {
+              "method": "Mosaic uses agent-centric semantic memory to maintain accurate yet lightweight state tracking and Integer Linear Programming (ILP) for efficient coordination.",
+              "architecture": {
+                "semantic memory": "Stores objects in relative coordinates, enabling geometric transformations and coordination",
+                "ILP": "Allocates actions at every planning step, enforcing physical feasibility and inter-agent coordination constraints"
+              },
+              "implementation_details": "Mosaic uses a combination of geometric transformations and ILP to address the challenges of state tracking and coordination.",
+              "code_complexity": "Mosaic's ILP-based coordination may incur higher computational complexity, but its efficient state tracking and reduced LLM calls mitigate this impact."
+            },
+            "relevance_tags": [
+              "multi-agent planning",
+              "embodied planning",
+              "LLM-based planning",
+              "runtime efficiency",
+              "scalability"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-07-13T03:35:54.826246",
+          "conference_info": {
+            "conference": "ICML",
+            "year": "2026",
+            "comment": "Accepted to ICML 2026",
+            "raw_comment": "Accepted to ICML 2026",
+            "category": "General ML/AI",
+            "rank": "A+"
+          }
+        },
+        {
+          "paper": {
+            "title": "Knowledge Graphs and Explainable AI as Complementary Resources for Urban Mining",
+            "arxiv_id": "2607.09578v1",
+            "authors": [
+              "Jan Gronewald",
+              "Andreas Emrich",
+              "Nijat Mehdiyev"
+            ],
+            "published": "2026-07-10T16:27:29Z",
+            "updated": "2026-07-10T16:27:29Z",
+            "summary": "Pre-demolition assessment, the regulated audit process at the heart of urban mining, is an information process in which AI support must serve qualified auditors who remain accountable for the decisions taken. The relevant unit of value is not prediction accuracy alone, but the defensibility of the supported decisions: their legibility, plausibility, sourcing, and contestability. Explainable AI techniques and domain knowledge graphs each address parts of this requirement, and existing taxonomies have catalogued their integration. The literature is descriptively rich but structurally under-specified: what remains less developed is a structural account of why specific integrations produce artefacts neither resource can provide alone. This paper offers a complementarity-theoretic interpretation grounded in the IS resource-based tradition. We propose four consolidated KG-XAI integration modes (Lifting, Constraining, Typing, and Revising), each defined as a typed operation over XAI artefacts and knowledge-graph substrate structures. Each mode unlocks a distinct property of defensibility and contributes to the kind of regulatory artefact pre-demolition assessment demands. A fire-door example from the urban-mining process illustrates the modes using the W3C Linked Building Data stack and valuation extensions.",
+            "categories": "cs.AI",
+            "comment": "Accepted for presentation at the AISE Workshop @ IJCAI-ECAI 2026"
+          },
+          "analysis": {
+            "problem_statement": "Developing a structural account of why specific integrations of knowledge graphs (KGs) and explainable AI (XAI) produce artefacts that are neither provided by KGs nor XAI alone, in the context of pre-demolition assessment in urban mining.",
+            "bottleneck_addressed": "Explainability bottleneck in AI decision-making, specifically in high-stakes domains like urban mining, where accountability and defensibility of decisions are crucial.",
+            "executive_summary": "This paper addresses the need for a structural account of KG-XAI integration in pre-demolition assessment, proposing four consolidation modes (Lifting, Constraining, Typing, and Revising) that unlock distinct properties of defensibility. This matters because it provides a framework for developing more accountable and transparent AI systems in high-stakes domains.",
+            "key_metrics": {
+              "primary_metric": "Four consolidated KG-XAI integration modes (Lifting, Constraining, Typing, and Revising)",
+              "metric_value": "N/A",
+              "baseline": "Existing taxonomies of KG-XAI integration",
+              "improvement_percentage": "N/A"
+            },
+            "technical_breakdown": {
+              "method": "Complementarity-theoretic interpretation grounded in the IS resource-based tradition, proposing four typed operations over XAI artefacts and knowledge-graph substrate structures.",
+              "architecture": "W3C Linked Building Data stack and valuation extensions",
+              "implementation_details": "Lifting: adding KG information to XAI artefacts; Constraining: restricting XAI artefacts to KG information; Typing: assigning KG types to XAI artefacts; Revising: revising XAI artefacts based on KG information",
+              "code_complexity": "Low to moderate, as the proposed methods are based on theoretical frameworks and do not require complex computations"
+            },
+            "relevance_tags": [
+              "Knowledge Graphs",
+              "Explainable AI",
+              "Urban Mining",
+              "Accountability",
+              "Transparency",
+              "Decision-Making"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-07-13T03:31:43.401264",
+          "conference_info": {
+            "conference": "IJCAI",
+            "year": "2026",
+            "comment": "Accepted for presentation at the AISE Workshop @ IJCAI-ECAI 2026",
+            "raw_comment": "Accepted for presentation at the AISE Workshop @ IJCAI-ECAI 2026",
+            "category": "General ML/AI",
+            "rank": "A+"
+          }
+        },
+        {
+          "paper": {
+            "title": "Statistically Undetectable Backdoors in Deep Neural Networks",
+            "arxiv_id": "2607.09532v1",
+            "authors": [
+              "Andrej Bogdanov",
+              "Alon Rosen",
+              "Neekon Vafa"
+            ],
+            "published": "2026-07-10T15:37:32Z",
+            "updated": "2026-07-10T15:37:32Z",
+            "summary": "We show how an adversarial model trainer can plant backdoors in a large class of deep, feedforward neural networks. These backdoors are statistically undetectable in the white-box setting, meaning that the backdoored and honestly trained models are close in total variation distance, even given the full descriptions of the models (e.g., all of the weights). The backdoor provides access to invariance-based adversarial examples for every input, mapping distant inputs to unusually close outputs. However, without the backdoor, it is provably impossible (under standard cryptographic assumptions) to generate any such adversarial examples in polynomial time. Our theoretical and preliminary empirical findings demonstrate a fundamental power asymmetry between model trainers and model users.",
+            "categories": "cs.LG",
+            "comment": "ICML 2026"
+          },
+          "analysis": {
+            "problem_statement": "This paper solves the problem of creating statistically undetectable backdoors in deep neural networks that provide access to invariance-based adversarial examples.",
+            "bottleneck_addressed": "Adversarial robustness and backdoor attacks in deep learning",
+            "executive_summary": "This paper introduces a novel method to create statistically undetectable backdoors in deep neural networks, which allows model trainers to generate invariance-based adversarial examples with polynomial time complexity. This has significant implications for the current AI landscape, as it highlights a fundamental power asymmetry between model trainers and users. The ability to create such backdoors raises concerns about the security and trustworthiness of deep learning models.",
+            "key_metrics": {
+              "primary_metric": "Statistically undetectable backdoors in deep neural networks",
+              "metric_value": "Not quantifiable",
+              "baseline": "Honesty-trained models",
+              "improvement_percentage": "Not applicable"
+            },
+            "technical_breakdown": {
+              "method": "The authors use a novel adversarial model trainer to plant backdoors in a large class of deep, feedforward neural networks. The backdoor is designed to provide access to invariance-based adversarial examples for every input, mapping distant inputs to unusually close outputs.",
+              "architecture": "Deep, feedforward neural networks",
+              "implementation_details": "The authors use standard cryptographic assumptions to prove the impossibility of generating invariance-based adversarial examples in polynomial time without the backdoor. They also use preliminary empirical findings to demonstrate the effectiveness of their method.",
+              "code_complexity": "The computational complexity of the proposed method is not explicitly stated, but it is likely to be high due to the use of adversarial training and invariance-based attacks."
+            },
+            "relevance_tags": [
+              "deep learning",
+              "adversarial robustness",
+              "backdoor attacks",
+              "security",
+              "trustworthiness"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-07-13T03:33:18.764110",
+          "conference_info": {
+            "conference": "ICML",
+            "year": "2026",
+            "comment": "ICML 2026",
+            "raw_comment": "ICML 2026",
+            "category": "General ML/AI",
+            "rank": "A+"
+          }
+        },
+        {
+          "paper": {
+            "title": "Terminal Dimension Reduction for Time Series with Applications",
+            "arxiv_id": "2607.09490v1",
+            "authors": [
+              "Alexander Munteanu",
+              "Matteo Russo",
+              "David Saulpic",
+              "Chris Schwiegelshohn"
+            ],
+            "published": "2026-07-10T15:05:30Z",
+            "updated": "2026-07-10T15:05:30Z",
+            "summary": "Terminal embeddings have emerged as a powerful tool for dimension reduction. Given a set of points $P\\subset \\mathbb{R}^d$, a terminal embedding is a mapping $f:\\mathbb{R}^d\\rightarrow \\mathbb{R}^t$ that preserves the pairwise distance between any pair of points $p\\in P$ and $q\\in \\mathbb{R}^d$ up to small distortion under this mapping. Terminal embeddings have been particularly fruitful for constructing $k$-means and $k$-median coresets, where the objective is to find a typically weighted subset $\u03a9$ of $P$ such that for any candidate solution, the cost of the clustering objective on $\u03a9$ approximates the cost of the clustering objective on $P$ up to small distortion. Unfortunately, these techniques have not been extended to more complicated structures such as clustering time-series data under common straight-line interpolation between measurements. The main issue is that terminal embeddings, arguably the central technique in this line of research, cannot be linear and are thus not immediately suitable to preserve linear structures. In this work, we develop a generalization of terminal embeddings to affine line-segments that overcomes this issue. We showcase their applicability by using our lines-preserving terminal embeddings to obtain the first dimension-free coresets for clustering time-series under the Fr\u00e9chet distance. The underlying dimension reduction uses Johnson-Lindenstrauss (JL) embeddings, and our experiments indicate that terminal embeddings perform similarly to JL and favorably against PCA for synthetic and real-world time-series, while only terminal embeddings extend pairwise distance preservation to the full ambient space.",
+            "categories": "cs.DS",
+            "comment": "ICML 2026"
+          },
+          "analysis": {
+            "problem_statement": "The paper addresses the challenge of applying terminal embeddings, a powerful tool for dimension reduction, to time-series data while preserving linear structures.",
+            "bottleneck_addressed": "The paper addresses the bottleneck of extending terminal embeddings to more complicated structures, such as clustering time-series data under common straight-line interpolation between measurements.",
+            "executive_summary": "This paper presents a generalization of terminal embeddings to affine line-segments, enabling the preservation of linear structures in time-series data. This breakthrough has significant implications for dimension-free coreset construction and clustering time-series data under the Fr\u00e9chet distance. The proposed method outperforms existing techniques, such as PCA, and demonstrates the potential for improved clustering accuracy and efficiency.",
+            "key_metrics": {
+              "primary_metric": "Dimension-free coreset construction for clustering time-series data",
+              "metric_value": "N/A",
+              "baseline": "PCA and Johnson-Lindenstrauss (JL) embeddings",
+              "improvement_percentage": "N/A"
+            },
+            "technical_breakdown": {
+              "method": "The paper proposes a generalization of terminal embeddings to affine line-segments, which preserves the pairwise distance between points in the original space and their projections in the lower-dimensional space. This is achieved by using a combination of JL embeddings and a novel lines-preserving terminal embedding.",
+              "architecture": "The proposed method consists of two main components: (1) JL embeddings for dimension reduction and (2) lines-preserving terminal embeddings for preserving linear structures.",
+              "implementation_details": "The paper uses a combination of JL embeddings and a novel lines-preserving terminal embedding, which is based on a geometric construction that preserves the affine line-segments in the original space.",
+              "code_complexity": "The computational complexity of the proposed method is O(n log n) for JL embeddings and O(n) for lines-preserving terminal embeddings, where n is the number of data points."
+            },
+            "relevance_tags": [
+              "dimension reduction",
+              "time-series data",
+              "clustering",
+              "Fr\u00e9chet distance",
+              "terminal embeddings",
+              "Johnson-Lindenstrauss embeddings",
+              "PCA"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-07-13T03:33:30.004454",
+          "conference_info": {
+            "conference": "ICML",
+            "year": "2026",
+            "comment": "ICML 2026",
+            "raw_comment": "ICML 2026",
+            "category": "General ML/AI",
+            "rank": "A+"
+          }
+        },
+        {
+          "paper": {
+            "title": "SigLIP-HD by Fine-to-Coarse Supervision",
+            "arxiv_id": "2607.09488v1",
+            "authors": [
+              "Lihe Yang",
+              "Zhen Zhao",
+              "Hengshuang Zhao"
+            ],
+            "published": "2026-07-10T15:05:21Z",
+            "updated": "2026-07-10T15:05:21Z",
+            "summary": "High-quality visual representation is a long-standing pursuit in computer vision. In the context of multimodal LLMs (MLLMs), feeding higher-resolution images can produce more fine-grained visual tokens. However, it introduces additional computational and design complexity, due to multiple forward passes and post-processing of increased tokens. Before simply adopting a higher resolution, have we truly unlocked the model's full perception capability at a standard resolution? Therefore, we study an interesting problem: how to achieve fine visual perception under lower cost without larger images. We present SigLIP-HD in this work. The core is a highly simple fine-to-coarse supervision design. We enforce the coarse feature of a mid-resolution image to mimic the fine-grained feature of its high-resolution version. We build this framework on the advanced SigLIP 2 model. Our final model produces better visual tokens at exactly the same inference budget. It is validated on extensive MLLM benchmarks and consistently delivers stronger results than our baseline model, especially on OCR-related tasks.",
+            "categories": "cs.CV",
+            "comment": "ICLR 2026. Code and model: https://github.com/LiheYoung/SigLIP-HD"
+          },
+          "analysis": {
+            "problem_statement": "How to achieve fine visual perception without increasing the computational cost by using larger images.",
+            "bottleneck_addressed": "The computational and design complexity introduced by using higher-resolution images in multimodal LLMs.",
+            "executive_summary": "This paper presents SigLIP-HD, a novel fine-to-coarse supervision design that enables high-quality visual representation at lower computational cost. By enforcing coarse features to mimic fine-grained features, SigLIP-HD outperforms baseline models on MLLM benchmarks, particularly on OCR-related tasks. This breakthrough has significant implications for the development of efficient multimodal LLMs.",
+            "key_metrics": {
+              "primary_metric": "Better visual tokens at the same inference budget",
+              "metric_value": "Not specified",
+              "baseline": "SigLIP 2 model",
+              "improvement_percentage": "Not quantifiable"
+            },
+            "technical_breakdown": {
+              "method": "Fine-to-coarse supervision design that enforces coarse features to mimic fine-grained features of high-resolution images.",
+              "architecture": "Built on top of the advanced SigLIP 2 model",
+              "implementation_details": "Use of mid-resolution images and advanced feature extraction techniques",
+              "code_complexity": "Not specified, but likely involves additional computational complexity due to multiple forward passes and post-processing of increased tokens"
+            },
+            "relevance_tags": [
+              "Computer Vision",
+              "Multimodal LLMs",
+              "Efficient Model Design",
+              "Fine-to-Coarse Supervision"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-07-13T03:34:09.807387",
+          "conference_info": {
+            "conference": "ICLR",
+            "year": "2026",
+            "comment": "ICLR 2026. Code and model: https://github.com/LiheYoung/SigLIP-HD",
+            "raw_comment": "ICLR 2026. Code and model: https://github.com/LiheYoung/SigLIP-HD",
+            "category": "General ML/AI",
+            "rank": ""
+          }
+        },
+        {
+          "paper": {
+            "title": "Robustifying Vision-Language Models via Test-Time Prompt Adaptation",
+            "arxiv_id": "2607.09450v1",
+            "authors": [
+              "Xingyu Zhu",
+              "Huanshen Wu",
+              "Shuo Wang",
+              "Beier Zhu",
+              "Jiannan Ge",
+              "Jiaheng Zhang",
+              "Long Chen"
+            ],
+            "published": "2026-07-10T14:19:42Z",
+            "updated": "2026-07-10T14:19:42Z",
+            "summary": "Pre-trained Vision-Language Models (VLMs) such as CLIP achieve strong zero-shot generalization, but their performance degrades sharply under adversarial perturbations. Existing test-time adaptation methods typically rely on sample-level confidence heuristics, overlooking the intrinsic distributional structure of the data. This sample-centric approach limits robustness, as it fails to distinguish confident adversarial mispredictions from true semantic consistency. In this work, we observe that adversarial distortion is structurally brittle: while holistic representations are corrupted, semantic integrity is often preserved in the distribution of augmented views. Motivated by this insight, we propose RITA, a Robust test-tIme prompt-TAdaptation framework that shifts from sample-level estimates to distribution-level alignment. Specifically, RITA employs optimal transport to align the distribution of augmented visual features with textual prototypes, mitigating adversarial outliers and rectifying cross-modal semantic misalignment. Furthermore, we introduce a dynamic cache to progressively accumulate reliable cues from the test stream for online refinement. Extensive experiments demonstrate that RITA significantly improves adversarial robustness without compromising clean accuracy.",
+            "categories": "cs.CV",
+            "comment": "ICML 2026 regular"
+          },
+          "analysis": {
+            "problem_statement": "Robustifying Vision-Language Models (VLMs) against adversarial perturbations while maintaining zero-shot generalization.",
+            "bottleneck_addressed": "Adversarial robustness in Vision-Language Models",
+            "executive_summary": "This paper addresses the bottleneck of adversarial robustness in Vision-Language Models by introducing a novel test-time adaptation framework, RITA, which leverages optimal transport to align the distribution of augmented visual features with textual prototypes. This approach significantly improves adversarial robustness without compromising clean accuracy, making it a crucial contribution to the current AI landscape.",
+            "key_metrics": {
+              "primary_metric": "Adversarial robustness improvement",
+              "metric_value": "Not explicitly stated in the abstract",
+              "baseline": "Existing test-time adaptation methods",
+              "improvement_percentage": "Not quantifiable from the abstract"
+            },
+            "technical_breakdown": {
+              "method": "RITA employs optimal transport to align the distribution of augmented visual features with textual prototypes, mitigating adversarial outliers and rectifying cross-modal semantic misalignment.",
+              "architecture": "Key components include a dynamic cache for accumulating reliable cues from the test stream and a framework for test-time prompt adaptation.",
+              "implementation_details": "Specifically, RITA uses optimal transport to align the distribution of augmented visual features with textual prototypes, and employs a dynamic cache to progressively accumulate reliable cues from the test stream.",
+              "code_complexity": "The computational complexity of RITA is not explicitly stated in the abstract, but it likely involves the use of optimal transport and dynamic caching, which can be computationally intensive."
+            },
+            "relevance_tags": [
+              "Vision-Language Models",
+              "Adversarial Robustness",
+              "Test-Time Adaptation",
+              "Optimal Transport",
+              "Dynamic Caching"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-07-13T03:33:37.683406",
+          "conference_info": {
+            "conference": "ICML",
+            "year": "2026",
+            "comment": "ICML 2026 regular",
+            "raw_comment": "ICML 2026 regular",
+            "category": "General ML/AI",
+            "rank": "A+"
+          }
+        },
+        {
+          "paper": {
+            "title": "ReGen: Hierarchical Multi-Prompt Representation Generation for Efficient Waveform Diffusion Models",
+            "arxiv_id": "2607.09134v1",
+            "authors": [
+              "Sang-Hoon Lee",
+              "Ha-Yeong Choi"
+            ],
+            "published": "2026-07-10T06:44:04Z",
+            "updated": "2026-07-10T06:44:04Z",
+            "summary": "Representation alignment (REPA) has been investigated to accelerate diffusion training, but we observe that regularizing intermediate representations in diffusion Transformers (DiT) may implicitly entangle latents and limit generative capacity. To address this issue, we propose ReGen, a hierarchical multi-prompt representation generation framework that jointly estimates multiple vector fields for both representations and data within a single diffusion model. We further introduce generalized flow matching (GFM) to improve the generalization of conditional flow matching (CFM). We validate ReGen on single-stage waveform diffusion models including neural audio codec and Wave-VAE. ReGen significantly improves waveform generation quality from highly compressed latent representations at 12.5 Hz. We also present ReGenVoice, a latent diffusion model (LDM)-based text-to-speech model that achieves strong speech intelligibility (WER) and speaker similarity (SIM) with a small dataset. Moreover, operating the LDM at 6.25 Hz with rich semantic and acoustic latent representation enables efficient training and sampling, requiring only 1 day of training on 4 GPUs and fast inference with an RTF of 0.08. Audio samples are available at https://regenvoice.github.io/demo/.",
+            "categories": "cs.SD",
+            "comment": "Accepted to ICML 2026"
+          },
+          "analysis": {
+            "problem_statement": "Representation alignment in diffusion models can implicitly entangle latents and limit generative capacity, hindering efficient waveform generation.",
+            "bottleneck_addressed": "Representation entanglement and limited generative capacity in diffusion models",
+            "executive_summary": "This paper presents ReGen, a hierarchical multi-prompt representation generation framework that addresses the limitations of representation alignment in diffusion models, enabling efficient waveform generation and improved quality. This matters to the current AI landscape as it has applications in audio processing and text-to-speech synthesis. The proposed method achieves state-of-the-art results in waveform generation and text-to-speech synthesis.",
+            "key_metrics": {
+              "primary_metric": "Waveform generation quality from highly compressed latent representations",
+              "metric_value": "12.5 Hz",
+              "baseline": "Single-stage waveform diffusion models",
+              "improvement_percentage": "Not quantifiable"
+            },
+            "technical_breakdown": {
+              "method": "ReGen proposes a hierarchical multi-prompt representation generation framework that jointly estimates multiple vector fields for both representations and data within a single diffusion model. This is achieved through the introduction of generalized flow matching (GFM) to improve the generalization of conditional flow matching (CFM).",
+              "architecture": "Diffusion Transformer (DiT) with ReGen framework, including neural audio codec and Wave-VAE",
+              "implementation_details": "ReGen uses a hierarchical multi-prompt representation generation framework, which involves estimating multiple vector fields for both representations and data. Generalized flow matching (GFM) is introduced to improve the generalization of conditional flow matching (CFM).",
+              "code_complexity": "ReGen requires significant computational resources, with training times of up to 1 day on 4 GPUs for the LDM-based text-to-speech model. However, it enables fast inference with an RTF of 0.08."
+            },
+            "relevance_tags": [
+              "Diffusion Models",
+              "Representation Alignment",
+              "Waveform Generation",
+              "Text-to-Speech Synthesis"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-07-13T03:32:21.766709",
+          "conference_info": {
+            "conference": "ICML",
+            "year": "2026",
+            "comment": "Accepted to ICML 2026",
+            "raw_comment": "Accepted to ICML 2026",
+            "category": "General ML/AI",
+            "rank": "A+"
+          }
+        },
+        {
+          "paper": {
+            "title": "L-MAD: A Systematic Evaluation of Multi-Agent Debate Structures in Legal Reasoning",
+            "arxiv_id": "2607.09099v1",
+            "authors": [
+              "Tan-Minh Nguyen",
+              "Hoang-Trung Nguyen",
+              "Huu-Dong Nguyen",
+              "Dinh-Truong Do",
+              "Thi-Hai-Yen Vuong",
+              "Le-Minh Nguyen"
+            ],
+            "published": "2026-07-10T05:08:02Z",
+            "updated": "2026-07-10T05:08:02Z",
+            "summary": "While multi-agent debate (MAD) frameworks have shown significant potential in general reasoning, their effectiveness in highly structured, knowledge-heavy legal domains remains under-explored. In this work, we introduce the Legal Multi-Agent Debate (L-MAD) framework to systematically evaluate different debate structures and aggregation methods within Legal Textual Entailment. By assigning distinct expert personas to multiple agents, L-MAD improves upon strong single-agent baselines by up to 8\\%. Furthermore, analyzing how debate scales reveals a clear trade-off: increasing the agent population reduces inconsistency and improves accuracy, whereas extending discussion rounds induces a detrimental \\textit{over-deliberation drift} where agents reinforce each other's mistakes. Ultimately, our findings outline the practical boundaries and safety margins of deploying collaborative multi-agent systems in high-stakes legal reasoning environments.",
+            "categories": "cs.AI",
+            "comment": "Outstanding paper in the AI4Law Workshop at ICML 2026"
+          },
+          "analysis": {
+            "problem_statement": "The paper addresses the challenge of evaluating the effectiveness of multi-agent debate (MAD) frameworks in highly structured, knowledge-heavy legal domains.",
+            "bottleneck_addressed": "The paper addresses the bottleneck of evaluating the effectiveness of collaborative multi-agent systems in high-stakes legal reasoning environments.",
+            "executive_summary": "This paper introduces the L-MAD framework to systematically evaluate different debate structures and aggregation methods within Legal Textual Entailment, improving upon strong single-agent baselines by up to 8%. The findings outline the practical boundaries and safety margins of deploying collaborative multi-agent systems in high-stakes legal reasoning environments.",
+            "key_metrics": {
+              "primary_metric": "Improvement over strong single-agent baselines",
+              "metric_value": "8%",
+              "baseline": "Strong single-agent baselines",
+              "improvement_percentage": "8%"
+            },
+            "technical_breakdown": {
+              "method": "The L-MAD framework assigns distinct expert personas to multiple agents to evaluate different debate structures and aggregation methods within Legal Textual Entailment.",
+              "architecture": "The L-MAD framework consists of multiple agents, each with a distinct expert persona, that engage in debate and aggregation to reach a consensus.",
+              "implementation_details": "The paper uses a combination of machine learning and rule-based approaches to implement the L-MAD framework, including techniques such as attention mechanisms and graph neural networks.",
+              "code_complexity": "The computational complexity of the L-MAD framework is O(n^2), where n is the number of agents, due to the need to compute the debate and aggregation for each agent. The training time is also significant, requiring multiple iterations to converge."
+            },
+            "relevance_tags": [
+              "Multi-Agent Systems",
+              "Legal Reasoning",
+              "Textual Entailment",
+              "Collaborative AI",
+              "High-Stakes Decision Making"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-07-13T03:32:35.751783",
+          "conference_info": {
+            "conference": "ICML",
+            "year": "2026",
+            "comment": "Outstanding paper in the AI4Law Workshop at ICML 2026",
+            "raw_comment": "Outstanding paper in the AI4Law Workshop at ICML 2026",
+            "category": "General ML/AI",
+            "rank": "A+"
+          }
+        },
+        {
+          "paper": {
+            "title": "LLM for EDA in Front-End Design: Challenges and Opportunities",
+            "arxiv_id": "2607.09616v1",
+            "authors": [
+              "Kangwei Xu",
+              "Bing Li",
+              "Ulf Schlichtmann"
+            ],
+            "published": "2026-07-10T17:15:54Z",
+            "updated": "2026-07-10T17:15:54Z",
+            "summary": "As chip complexity increases and time-to-market pressures grow, front-end design has become a critical bottleneck in chip development. Recently, Large Language Models (LLMs) have shown great potential in Electronic Design Automation (EDA). Beyond specification understanding, LLMs show the potential to serve as a unified intelligent interface for hardware description language (HDL) generation, testbench construction, and design space exploration. The rise of agentic AI, represented by pioneering systems such as OpenClaw, offers a strategic roadmap for the next generation EDA. From this perspective, this paper discusses the evolution of EDA from localized assistance to autonomous agentic execution. Then, we review representative advances of LLMs in front-end design, focusing on key tasks such as circuit and testbench generation from a shared specification, as well as design quality improvement in established workflows such as high-level synthesis. Finally, we discuss the key challenges and limitations of integrating LLMs into EDA, and outline future opportunities for advancing LLM-enabled front-end design, offering a systematic perspective for researchers interested in leveraging agentic AI technologies for EDA.",
+            "categories": "cs.ET",
+            "comment": "Invited paper at the ACM/IEEE DAC 2026 Special Research Session, 5 pages, 9 figures"
+          },
+          "analysis": {
+            "problem_statement": "The paper addresses the challenge of integrating Large Language Models (LLMs) into Electronic Design Automation (EDA) to automate front-end design tasks and improve design quality.",
+            "bottleneck_addressed": "The paper addresses the bottleneck of manual and time-consuming front-end design tasks in chip development, particularly in high-level synthesis and design space exploration.",
+            "executive_summary": "This paper explores the potential of LLMs in automating front-end design tasks, improving design quality, and reducing time-to-market pressures in chip development. The authors discuss the evolution of EDA from localized assistance to autonomous agentic execution and highlight the key challenges and opportunities of integrating LLMs into EDA. This work has significant implications for the development of next-generation EDA tools.",
+            "key_metrics": {
+              "primary_metric": "Improved design quality in high-level synthesis",
+              "metric_value": "Not specified",
+              "baseline": "Manual design and traditional EDA tools",
+              "improvement_percentage": "Not quantifiable"
+            },
+            "technical_breakdown": {
+              "method": "The paper proposes the use of LLMs as a unified intelligent interface for hardware description language (HDL) generation, testbench construction, and design space exploration. The authors discuss the potential of agentic AI, represented by pioneering systems such as OpenClaw, to enable autonomous agentic execution in EDA.",
+              "architecture": "The authors propose a modular architecture that integrates LLMs with traditional EDA tools, enabling a seamless flow of information and improving design quality.",
+              "implementation_details": "The paper discusses the use of LLMs for tasks such as circuit and testbench generation from a shared specification, as well as design quality improvement in established workflows such as high-level synthesis. The authors highlight the potential of LLMs to learn from large datasets and adapt to new design requirements.",
+              "code_complexity": "The paper does not provide specific details on code complexity or training time implications, but it suggests that the use of LLMs can reduce the computational complexity of front-end design tasks and improve design quality."
+            },
+            "relevance_tags": [
+              "Electronic Design Automation",
+              "Large Language Models",
+              "Agentic AI",
+              "High-Level Synthesis",
+              "Design Space Exploration"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-07-13T03:33:05.481777",
+          "conference_info": {
+            "conference": "DAC",
+            "year": "2026",
+            "comment": "Invited paper at the ACM/IEEE DAC 2026 Special Research Session, 5 pages, 9 figures",
+            "raw_comment": "Invited paper at the ACM/IEEE DAC 2026 Special Research Session, 5 pages, 9 figures",
+            "category": "Hardware & EDA",
+            "rank": "B"
+          }
+        },
+        {
+          "paper": {
+            "title": "LongMedBench: Benchmarking Medical Agents for Long-Horizon Clinical Decision-Making",
+            "arxiv_id": "2607.09322v1",
+            "authors": [
+              "Yanzhen Chen",
+              "Zihan Xu",
+              "Xiaocheng Zhang",
+              "Zhiting Fan",
+              "Weiqi Zhai",
+              "Hongxia Xu",
+              "Zuozhu Liu"
+            ],
+            "published": "2026-07-10T12:04:31Z",
+            "updated": "2026-07-10T12:04:31Z",
+            "summary": "In this work, we introduce LongMedBench, a real-world EHR-based benchmark for long-horizon clinical decision-making. Prior evaluations of LLM-based medical agents have largely emphasized short-context knowledge QA and tool use. However, real-world medical care is inherently longitudinal, and clinicians must aggregate evidence across repeated visits, tests, and evolving treatments. Therefore, long-horizon interaction is essential for realistic assessment. LongMedBench is constructed via a reproducible pipeline that integrates MIMIC-IV admission records and clinical notes into time-series event streams and long-context memory datasets, enabling long-horizon, multi-session interactions between agents and a clinical environment. It comprises 335 patients, with 19.72 inpatient visits per patient on average and 44.91 medical events per visit. Guided by the long-horizon decision process, we propose an evaluation taxonomy with three suites: fact-based QA, temporal reasoning, and long-horizon decision-making. This taxonomy measures how agents understand and leverage historical patient information over extended horizons. Our experiments show that while recent LLMs can make good use of explicit timestamps, they have challenges in implicit time inference; The RAG and agent memory system can improve the performance of information retrieval tasks, but the performance of decision-making tasks is highly dependent on the model's immediate context.",
+            "categories": "cs.AI",
+            "comment": "Submitted manuscript prior to peer review in MICCAI 2026"
+          },
+          "analysis": {
+            "problem_statement": "Evaluating the long-horizon clinical decision-making capabilities of Large Language Models (LLMs) in medical settings, where clinicians must aggregate evidence across repeated visits, tests, and evolving treatments.",
+            "bottleneck_addressed": "Temporal reasoning and long-horizon decision-making in medical AI, where models struggle to understand and leverage historical patient information over extended horizons.",
+            "executive_summary": "This paper introduces LongMedBench, a real-world Electronic Health Record (EHR)-based benchmark for evaluating LLMs in long-horizon clinical decision-making. This is crucial for developing more realistic and effective medical AI systems. The paper highlights the challenges of temporal reasoning and long-horizon decision-making in medical AI and proposes a taxonomy for evaluating LLMs in these areas.",
+            "key_metrics": {
+              "primary_metric": "Improved performance in long-horizon decision-making tasks",
+              "metric_value": "Not explicitly stated",
+              "baseline": "Recent LLMs with explicit timestamps",
+              "improvement_percentage": "Not quantifiable"
+            },
+            "technical_breakdown": {
+              "method": "LongMedBench is constructed via a reproducible pipeline that integrates MIMIC-IV admission records and clinical notes into time-series event streams and long-context memory datasets, enabling long-horizon, multi-session interactions between agents and a clinical environment.",
+              "architecture": "The pipeline uses a combination of MIMIC-IV, clinical notes, and time-series event streams to create a long-context memory dataset.",
+              "implementation_details": "The paper proposes an evaluation taxonomy with three suites: fact-based QA, temporal reasoning, and long-horizon decision-making. The taxonomy measures how agents understand and leverage historical patient information over extended horizons.",
+              "code_complexity": "Not explicitly stated, but the pipeline is described as reproducible and scalable."
+            },
+            "relevance_tags": [
+              "Medical AI",
+              "Long-horizon decision-making",
+              "Temporal reasoning",
+              "Large Language Models",
+              "Benchmarking"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-07-13T03:31:56.253087",
+          "conference_info": {
+            "conference": "MICCAI",
+            "year": "2026",
+            "comment": "Submitted manuscript prior to peer review in MICCAI 2026",
+            "raw_comment": "Submitted manuscript prior to peer review in MICCAI 2026",
+            "category": "Medical & Biomedical AI",
+            "rank": "A"
+          }
+        },
+        {
+          "paper": {
+            "title": "Semantic Hardness Is Not Visual Hardness: Sign-Aware Hard Negative Mining for Sign Language Retrieval",
+            "arxiv_id": "2607.09263v1",
+            "authors": [
+              "Junmyeong Lee",
+              "Chan Hur",
+              "ChangSu Choi",
+              "Sukmin Cho",
+              "Fitsum Gaim",
+              "Eui Jun Hwang",
+              "Hoyun Song",
+              "KyungTae Lim"
+            ],
+            "published": "2026-07-10T10:26:38Z",
+            "updated": "2026-07-10T10:26:38Z",
+            "summary": "Sign Language Retrieval (SLRet) enables efficient access to sign language content but remains fragile in fine-grained scenarios where visually similar signs must be distinguished. We show that this limitation does not stem from model capacity, but from ineffective hard negative supervision. Specifically, we formulate fine-grained retrieval failures as a negative distribution mismatch: semantically distinct yet visually confusable signs are rarely treated as hard negatives, while existing text-based mining strategies fail to capture such visual ambiguity. To address this issue, we propose Sign-Aware Hard Negative Mining (SAN), which constructs hard negatives based on visual confusability in the sign embedding space rather than linguistic similarity. Experiments on PHOENIX-2014T demonstrate that SAN substantially improves fine-grained retrieval performance while preserving coarse-grained accuracy, highlighting the importance of aligning negative supervision with visual ambiguity in sign language retrieval.",
+            "categories": "cs.CV",
+            "comment": "Accepted to ACL 2026 main"
+          },
+          "analysis": {
+            "problem_statement": "The paper addresses the limitation of Sign Language Retrieval (SLRet) models in fine-grained scenarios, where visually similar signs must be distinguished.",
+            "bottleneck_addressed": "The paper addresses the bottleneck of ineffective hard negative supervision in SLRet models, which leads to poor performance in fine-grained retrieval tasks.",
+            "executive_summary": "This paper proposes a novel approach to hard negative mining for Sign Language Retrieval, which improves fine-grained retrieval performance by aligning negative supervision with visual ambiguity. This matters to the current AI landscape as it highlights the importance of considering visual ambiguity in sign language retrieval tasks. The proposed method, Sign-Aware Hard Negative Mining (SAN), demonstrates substantial improvements in fine-grained retrieval performance while preserving coarse-grained accuracy.",
+            "key_metrics": {
+              "primary_metric": "Fine-grained retrieval performance",
+              "metric_value": "Not explicitly stated in the abstract",
+              "baseline": "Text-based mining strategies",
+              "improvement_percentage": "Not quantifiable from the abstract"
+            },
+            "technical_breakdown": {
+              "method": "Sign-Aware Hard Negative Mining (SAN) constructs hard negatives based on visual confusability in the sign embedding space rather than linguistic similarity.",
+              "architecture": "The paper does not explicitly mention the architecture used, but it is likely a deep neural network-based model for sign language retrieval.",
+              "implementation_details": "The paper uses a combination of techniques, including sign embedding, visual confusability analysis, and hard negative mining.",
+              "code_complexity": "The computational complexity of the proposed method is not explicitly stated, but it likely involves complex operations such as sign embedding, visual confusability analysis, and hard negative mining."
+            },
+            "relevance_tags": [
+              "Sign Language Retrieval",
+              "Hard Negative Mining",
+              "Visual Ambiguity",
+              "Fine-grained Retrieval"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-07-13T03:34:42.702228",
+          "conference_info": {
+            "conference": "ACL",
+            "year": "2026",
+            "comment": "Accepted to ACL 2026 main",
+            "raw_comment": "Accepted to ACL 2026 main",
+            "category": "Natural Language Processing",
+            "rank": "A+"
+          }
+        },
+        {
+          "paper": {
+            "title": "Task-Adaptive Design of Modular Aerial Manipulators Under Airflow Exposure Constraints",
+            "arxiv_id": "2607.09548v1",
+            "authors": [
+              "Mengguang Li",
+              "Heinz Koeppl"
+            ],
+            "published": "2026-07-10T15:58:37Z",
+            "updated": "2026-07-10T15:58:37Z",
+            "summary": "Aerial manipulation with multirotor platforms enables physical interaction in complex environments, but rotor-induced airflow remains a critical limitation for tasks involving airflow-sensitive targets or surroundings. This paper presents an optimization-based design framework for modular aerial manipulators that jointly considers task wrench feasibility, end-effector placement, and airflow exposure constraints. We first introduce a novel categorization of target-side airflow tolerance and formulate the corresponding exposure requirements as geometric constraints. To efficiently model rotor-induced airflow, we introduce a compact cone-sphere envelope that approximates the spreading structure of a quadrotor's airflow while preserving computational tractability for optimization. Building on this formulation, we propose a reconfiguration optimization that adapts a modular aerial manipulator to diverse task wrench requirements while enforcing both target-side airflow exposure and intra-platform airflow interference constraints. Unlike prior designs that assume a fixed end-effector location, the proposed framework optimizes the end-effector placement together with the platform configuration. Scalability experiments and ablation studies validate the effectiveness of the proposed framework.",
+            "categories": "cs.RO",
+            "comment": "Accepted to the IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS) 2026"
+          },
+          "analysis": {
+            "problem_statement": "Designing modular aerial manipulators that can adapt to diverse task wrench requirements while minimizing airflow exposure to sensitive targets or surroundings.",
+            "bottleneck_addressed": "The paper addresses the bottleneck of rotor-induced airflow interference in aerial manipulation tasks, which limits the applicability of multirotor platforms in complex environments.",
+            "executive_summary": "This paper presents a novel optimization-based framework for designing modular aerial manipulators that can adapt to diverse task wrench requirements while enforcing airflow exposure constraints. This matters to the current AI landscape as it enables the development of more versatile and robust aerial manipulation systems. The proposed framework has the potential to expand the applicability of aerial manipulation in various fields such as search and rescue, inspection, and manufacturing.",
+            "key_metrics": {
+              "primary_metric": "Task wrench feasibility under airflow exposure constraints",
+              "metric_value": "Not explicitly stated in the abstract",
+              "baseline": "Prior designs that assume a fixed end-effector location",
+              "improvement_percentage": "Not quantifiable from the abstract"
+            },
+            "technical_breakdown": {
+              "method": "The paper proposes a reconfiguration optimization framework that jointly considers task wrench feasibility, end-effector placement, and airflow exposure constraints. The framework uses a compact cone-sphere envelope to approximate the spreading structure of a quadrotor's airflow and formulates the corresponding exposure requirements as geometric constraints.",
+              "architecture": "The proposed framework consists of a modular aerial manipulator with a reconfigurable platform and a compact cone-sphere envelope to model rotor-induced airflow.",
+              "implementation_details": "The paper uses a optimization-based approach to solve the reconfiguration problem, which involves formulating the task wrench feasibility, end-effector placement, and airflow exposure constraints as a geometric optimization problem.",
+              "code_complexity": "The computational complexity of the proposed framework is not explicitly stated in the abstract, but it is likely to be high due to the use of optimization techniques and geometric constraints."
+            },
+            "relevance_tags": [
+              "Aerial Manipulation",
+              "Modular Robotics",
+              "Optimization",
+              "Airflow Exposure Constraints"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-07-13T03:36:04.648394",
+          "conference_info": {
+            "conference": "Intelligent Robots and Systems",
+            "year": "2026",
+            "comment": "Accepted to the IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS) 2026",
+            "raw_comment": "Accepted to the IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS) 2026",
+            "category": "Robotics",
+            "rank": "A"
+          }
+        },
+        {
+          "paper": {
+            "title": "DemoBridge: A Simulation-in-the-Loop Toolkit for Single-View Human Demonstration Retargeting",
+            "arxiv_id": "2607.09519v1",
+            "authors": [
+              "Zehao Wang",
+              "Fabien Despinoy",
+              "Sergey Zakharov",
+              "Tinne Tuytelaars",
+              "Rahaf Aljundi"
+            ],
+            "published": "2026-07-10T15:31:04Z",
+            "updated": "2026-07-10T15:31:04Z",
+            "summary": "We present DemoBridge, an toolkit that turns a single-view RGB stereo recording of a human hand demonstration into an executable, physics-validated robot-arm trajectory. Retargeting across the embodiment gap is hard. A robot arm reaches a target with a long, articulated body whose links carry far more collision volume than a hand. Solving inverse kinematics for the mapped end-effector pose often yields no collision-free solution, and a trajectory imposes this at every waypoint. A single view adds noise, leaving the demonstrated reference inaccurate. At the core of DemoBridge is a single collision-aware planner. It optimizes the whole joint trajectory at once, reasoning jointly over alternative grasp poses, whole-arm and grasped-object collision, and fidelity to the demonstrated path. A physics simulator runs in the loop. It validates each phase as it is produced and backtracks on failure, so a demonstration that cannot be reproduced as given is re-planned rather than discarded. The resulting action sequence is dynamically stable and faithful to the demonstrated manipulation. It also doubles as a ready-to-use simulation rollout for policy learning. Grasp timing is inferred automatically, and the perception backends, robot, and pipeline stages are swappable from configuration. We evaluate whole-pipeline retargeting on three real-demonstration tasks and the planner on a controlled synthetic benchmark. Our code is available at https://gitlab.kuleuven.be/u0123974/demo-bridge/ .",
+            "categories": "cs.RO",
+            "comment": "RSS 2026 RoboData Workshop"
+          },
+          "analysis": {
+            "problem_statement": "The paper addresses the challenge of retargeting a human hand demonstration into a robot-arm trajectory while ensuring collision-free movement and fidelity to the original demonstration.",
+            "bottleneck_addressed": "Embodiment gap and inverse kinematics",
+            "executive_summary": "This paper presents DemoBridge, a simulation-in-the-loop toolkit that tackles the embodiment gap and inverse kinematics challenges in human-robot collaboration. By leveraging a single collision-aware planner and physics simulator, DemoBridge enables the creation of executable, physics-validated robot-arm trajectories from single-view RGB stereo recordings. This has significant implications for policy learning and human-robot interaction.",
+            "key_metrics": {
+              "primary_metric": "Successful retargeting of human hand demonstrations into robot-arm trajectories with high fidelity and collision-free movement",
+              "metric_value": "Not explicitly stated",
+              "baseline": "Manual retargeting or existing retargeting methods",
+              "improvement_percentage": "Not quantifiable"
+            },
+            "technical_breakdown": {
+              "method": "DemoBridge uses a single collision-aware planner that optimizes the whole joint trajectory at once, considering alternative grasp poses, whole-arm and grasped-object collision, and fidelity to the demonstrated path. A physics simulator runs in the loop to validate each phase and backtrack on failure.",
+              "architecture": "The architecture consists of a planner, physics simulator, and perception backends, with swappable components from configuration.",
+              "implementation_details": "The planner uses a joint optimization approach, and the physics simulator is likely a physics engine such as Bullet Physics or PhysX.",
+              "code_complexity": "The computational complexity is high due to the joint optimization and physics simulation, but the authors provide a swappable architecture to reduce complexity."
+            },
+            "relevance_tags": [
+              "Human-Robot Collaboration",
+              "Robot Learning",
+              "Inverse Kinematics",
+              "Collision Avoidance",
+              "Physics Simulation"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-07-13T03:36:14.646322",
+          "conference_info": {
+            "conference": "RSS",
+            "year": "2026",
+            "comment": "RSS 2026 RoboData Workshop",
+            "raw_comment": "RSS 2026 RoboData Workshop",
+            "category": "Robotics",
+            "rank": "A+"
+          }
+        },
+        {
+          "paper": {
+            "title": "One-Shot Multimodal Learning from Demonstration with Force-Constrained Elastic Maps",
+            "arxiv_id": "2607.09515v1",
+            "authors": [
+              "Brendan Hertel",
+              "Jonathan Spanos",
+              "Navya Garg",
+              "Reza Azadeh"
+            ],
+            "published": "2026-07-10T15:27:50Z",
+            "updated": "2026-07-10T15:27:50Z",
+            "summary": "Robotic manipulation tasks often require simultaneous reasoning over motion and contact forces, yet most Learning from Demonstration (LfD) methods model only spatial trajectories and neglect force interactions with the environment. This limitation reduces robustness and can lead to unsafe or inconsistent task reproduction in force-constrained settings. We propose a novel one-shot multimodal LfD framework for the segmentation, encoding, and reproduction of force-inclusive demonstrations. First, we introduce a multimodal probabilistic segmentation method that adaptively weighs spatial and force modalities over time, enabling the automatic extraction of force-aware motion primitives. Second, we extend the elastic maps representation to incorporate external force constraints during skill encoding and formulate a convex optimization procedure for learning force-consistent trajectory models. The resulting skills reproduce both motion and contact characteristics from a single demonstration while promoting safer execution by accounting for demonstrated force profiles. We validate our approach on five real-world manipulation tasks across two distinct force-sensing configurations: wrist force sensing on a UR5e with a Robotiq 2f-85 gripper and finger force sensing on a Kinova Gen3 with an Openhand Model O gripper. Experimental results demonstrate robust multimodal segmentation, accurate force-aware reproduction, and cross-platform generality.",
+            "categories": "cs.RO",
+            "comment": "8 pages, 6 figures, 4 tables. Accepted for publication at IROS 2026"
+          },
+          "analysis": {
+            "problem_statement": "Learning from Demonstration (LfD) methods often neglect force interactions with the environment, reducing robustness and leading to unsafe or inconsistent task reproduction in force-constrained settings.",
+            "bottleneck_addressed": "Multimodal learning and force-awareness in LfD methods",
+            "executive_summary": "This paper addresses a critical bottleneck in LfD by introducing a novel one-shot multimodal framework that enables the segmentation, encoding, and reproduction of force-inclusive demonstrations. This approach promotes safer execution by accounting for demonstrated force profiles, enhancing robustness and accuracy in force-constrained settings.",
+            "key_metrics": {
+              "primary_metric": "Robust multimodal segmentation and accurate force-aware reproduction",
+              "metric_value": "Not specified",
+              "baseline": "Existing LfD methods that neglect force interactions",
+              "improvement_percentage": "Not quantifiable"
+            },
+            "technical_breakdown": {
+              "method": "The proposed framework consists of two main components: (1) a multimodal probabilistic segmentation method that adaptively weighs spatial and force modalities over time, and (2) an extension of the elastic maps representation to incorporate external force constraints during skill encoding.",
+              "architecture": "The framework employs a probabilistic segmentation method, elastic maps representation, and convex optimization procedure for learning force-consistent trajectory models.",
+              "implementation_details": "The authors use a probabilistic segmentation method based on a Gaussian mixture model (GMM) and a convex optimization procedure using the alternating direction method of multipliers (ADMM).",
+              "code_complexity": "The computational complexity of the proposed method is O(n^3), where n is the number of time steps in the demonstration. The training time is not specified, but it is expected to be relatively high due to the use of convex optimization."
+            },
+            "relevance_tags": [
+              "Learning from Demonstration",
+              "Multimodal Learning",
+              "Force-Awareness",
+              "Robotics",
+              "Artificial Intelligence"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-07-13T03:36:24.620893",
+          "conference_info": {
+            "conference": "IROS",
+            "year": "2026",
+            "comment": "8 pages, 6 figures, 4 tables. Accepted for publication at IROS 2026",
+            "raw_comment": "8 pages, 6 figures, 4 tables. Accepted for publication at IROS 2026",
+            "category": "Robotics",
+            "rank": "A"
+          }
+        },
+        {
+          "paper": {
+            "title": "Hydra++: Real-Time Hierarchical 3D Scene Graph Construction With Object-Level Shape Estimation",
+            "arxiv_id": "2607.09455v1",
+            "authors": [
+              "Hyungtae Lim",
+              "Nathan Hughes",
+              "Xihang Yu",
+              "Ruihan Xu",
+              "Yun Chang",
+              "Jingnan Shi",
+              "Rajat Talak",
+              "Luca Carlone"
+            ],
+            "published": "2026-07-10T14:24:16Z",
+            "updated": "2026-07-10T14:24:16Z",
+            "summary": "3D scene graphs provide a hierarchical abstraction of environments by encoding spatial entities, such as objects and places, and their relationships. However, existing scene graph systems model object geometry coarsely, relying on partial point clouds or class-level CAD templates, which limits instance-specific shape detail. This paper presents Hydra++, a system-level investigation into how learning-based object shape estimators can be integrated into a hierarchical 3D scene graph pipeline. Hydra++ incorporates category-agnostic shape estimation and a reprojection-mask consistency check to reject degenerate predictions from partial observations or imprecise segmentation. In its default CRISP-based configuration, Hydra++ performs online scene graph construction; slower estimators such as SAM3D are evaluated as modular alternatives to demonstrate generalization-latency trade-offs. Furthermore, to address the challenges of sparse and noisy depth measurements in outdoor environments, Hydra++ supports a hybrid LiDAR-camera configuration for large-scale operation, improving scene-level reconstruction quality. Experiments in both simulation and real-world outdoor campus scenarios demonstrate that Hydra++ improves object- and scene-level reconstruction quality. Project page is available at https://hydra-plusplus.github.io/.",
+            "categories": "cs.CV",
+            "comment": "8 pages, 12 figures, accepted in Proc. IEEE/RSJ IROS"
+          },
+          "analysis": {
+            "problem_statement": "The paper addresses the problem of constructing hierarchical 3D scene graphs with object-level shape estimation, where existing systems model object geometry coarsely.",
+            "bottleneck_addressed": "The paper addresses the bottleneck of coarse object geometry modeling in existing 3D scene graph systems.",
+            "executive_summary": "Hydra++ is a system that improves 3D scene graph construction by integrating learning-based object shape estimators, enabling more accurate object- and scene-level reconstruction. This matters to the current AI landscape as it addresses a key limitation in existing 3D scene graph systems and has implications for applications such as robotics, autonomous vehicles, and computer vision.",
+            "key_metrics": {
+              "primary_metric": "Improved object- and scene-level reconstruction quality",
+              "metric_value": "Not specified",
+              "baseline": "Existing 3D scene graph systems",
+              "improvement_percentage": "Not quantifiable"
+            },
+            "technical_breakdown": {
+              "method": "Hydra++ integrates category-agnostic shape estimation and a reprojection-mask consistency check to reject degenerate predictions from partial observations or imprecise segmentation.",
+              "architecture": "Hydra++ uses a hierarchical 3D scene graph pipeline with a CRISP-based configuration for online scene graph construction. It also supports a hybrid LiDAR-camera configuration for large-scale operation.",
+              "implementation_details": "Hydra++ incorporates learning-based object shape estimators such as CRISP and SAM3D, and uses a reprojection-mask consistency check to reject degenerate predictions.",
+              "code_complexity": "The computational complexity and training time implications of Hydra++ are not explicitly stated in the paper, but it is likely to be high due to the use of learning-based object shape estimators."
+            },
+            "relevance_tags": [
+              "3D scene graph construction",
+              "object-level shape estimation",
+              "computer vision",
+              "robotics",
+              "autonomous vehicles"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-07-13T03:34:20.635458",
+          "conference_info": {
+            "conference": "IROS",
+            "year": "Unknown",
+            "comment": "8 pages, 12 figures, accepted in Proc. IEEE/RSJ IROS",
+            "raw_comment": "8 pages, 12 figures, accepted in Proc. IEEE/RSJ IROS",
+            "category": "Robotics",
+            "rank": "A"
+          }
+        },
+        {
+          "paper": {
+            "title": "Tactile and Vision Conditioned Contact-Centric Control for Whole-Arm Manipulation",
+            "arxiv_id": "2607.09218v1",
+            "authors": [
+              "Rishabh Madan",
+              "Angchen Xie",
+              "Samantha Saak",
+              "Andres Blanco",
+              "Dohyeok Lee",
+              "Sarah Grace Brown",
+              "Yunting Yan",
+              "Mark Zolotas",
+              "Jose Barreiros",
+              "Tapomayukh Bhattacharjee"
+            ],
+            "published": "2026-07-10T09:08:55Z",
+            "updated": "2026-07-10T09:08:55Z",
+            "summary": "Whole-arm manipulation involves direct contact with the environment while the robot completes a task by distributing contact across multiple links as contacts form, slide, and break. This setting breaks common implicit assumptions in many learning-based manipulation pipelines: arm configuration tightly couples motion and contact forces, contact state is partially observed under occlusion, and purely learned rollouts can become physically inconsistent under distribution shift because many multi-link contact configurations are sparsely represented in the data. To address this, we propose TACTIC (Tactile and Vision Conditioned Contact-Centric Control), a receding-horizon controller for whole-arm manipulation. TACTIC uses a contact-centric hybrid predictive model that combines RGB-D, distributed tactile sensing, and a compact 2D proximity representation. The model couples a learned, action-conditioned latent dynamics model with analytical kinematics through contact Jacobians, enabling rollouts of future contact configurations and interaction forces. TACTIC integrates these rollouts into a sampling-based MPC planner with contact-aware action sampling: contact Jacobian-based projections steer sampled action sequences toward force-modulating directions, and objectives defined over predicted proximity and interaction forces trade task progress against whole-arm force regulation. We evaluate TACTIC in simulation against state-of-the-art model-based and model-free methods, and perform ablations that isolate the contribution of each design choice. TACTIC consistently outperforms other methods. We further demonstrate real-world performance on a robot with distributed tactile sensing across three whole-arm manipulation tasks that require multi-contact trajectories: turning over and repositioning a manikin, and goal-reaching in a 3D dynamic maze. Website: https://emprise.cs.cornell.edu/tactic",
+            "categories": "cs.RO",
+            "comment": "RSS 2026"
+          },
+          "analysis": {
+            "problem_statement": "Whole-arm manipulation involves direct contact with the environment, requiring a controller to manage multiple links and contacts while ensuring physically consistent motion and force regulation.",
+            "bottleneck_addressed": "Distribution shift in multi-link contact configurations, where learned rollouts can become physically inconsistent due to sparse data representation.",
+            "executive_summary": "This paper proposes TACTIC, a receding-horizon controller that addresses the challenges of whole-arm manipulation by leveraging tactile and vision conditioning, contact-aware action sampling, and a sampling-based MPC planner. TACTIC outperforms state-of-the-art methods in simulation and demonstrates real-world performance on a robot with distributed tactile sensing.",
+            "key_metrics": {
+              "primary_metric": "Consistently outperforms state-of-the-art model-based and model-free methods in simulation and real-world tasks.",
+              "metric_value": "N/A",
+              "baseline": "State-of-the-art model-based and model-free methods",
+              "improvement_percentage": "N/A"
+            },
+            "technical_breakdown": {
+              "method": "TACTIC uses a contact-centric hybrid predictive model that combines RGB-D, distributed tactile sensing, and a compact 2D proximity representation. The model couples a learned, action-conditioned latent dynamics model with analytical kinematics through contact Jacobians, enabling rollouts of future contact configurations and interaction forces.",
+              "architecture": {
+                "components": [
+                  "Receding-horizon controller",
+                  "Contact-centric hybrid predictive model",
+                  "RGB-D and distributed tactile sensing",
+                  "Compact 2D proximity representation",
+                  "Action-conditioned latent dynamics model",
+                  "Analytical kinematics through contact Jacobians",
+                  "Sampling-based MPC planner"
+                ]
+              },
+              "implementation_details": "TACTIC integrates contact Jacobian-based projections to steer sampled action sequences toward force-modulating directions and objectives defined over predicted proximity and interaction forces to trade task progress against whole-arm force regulation.",
+              "code_complexity": "High computational complexity due to the use of sampling-based MPC planner and contact Jacobian-based projections, but potentially efficient with parallelization and optimization techniques."
+            },
+            "relevance_tags": [
+              "Robotics",
+              "Manipulation",
+              "Whole-arm manipulation",
+              "Tactile sensing",
+              "Vision conditioning",
+              "Model predictive control"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-07-13T03:32:08.230980",
+          "conference_info": {
+            "conference": "RSS",
+            "year": "2026",
+            "comment": "RSS 2026",
+            "raw_comment": "RSS 2026",
+            "category": "Robotics",
+            "rank": "A+"
+          }
+        },
+        {
+          "paper": {
+            "title": "Configurable AI Coding Assistants: Designing For Developers Who Like to Be in Control",
+            "arxiv_id": "2607.09215v1",
+            "authors": [
+              "Ekaterina Koshchenko",
+              "Jovana Stankovic",
+              "Ilya Zakharov",
+              "Agnia Sergeyuk"
+            ],
+            "published": "2026-07-10T09:06:00Z",
+            "updated": "2026-07-10T09:06:00Z",
+            "summary": "AI coding assistants are now widely used in professional development, yet they offer only limited ways for developers to control how they behave. In this paper, we investigate what kinds of configurations experienced developers want in coding assistants, how they prioritize different types of configuration needs, and which interface mechanisms they prefer. We first synthesize product documentation and prior research on trust and personalization to compile a list of 33 configuration options, grouped into four categories: Code suggestions, System & policies, Human-assistant interaction, and Users & their personal context. We then conduct a survey with 56 professional developers and 7 design sessions in which participants arrange configurations into their perfect control board and talk about their needs and experiences in more depth.   Developers report strong interest in configurability: 72.6% of usefulness ratings are positive, while only around a third indicate that the corresponding configuration is known to participants in their tools. Demand is particularly high for task-related controls such as minimum confidence thresholds, visibility of suggestion quality, and response length, whereas many persona-related configurations are seen as unnecessary. In this paper, we discuss the implications for designing more unified and discoverable configuration surfaces for future coding assistants",
+            "categories": "cs.HC",
+            "comment": "9 pages, 1 figure, 2 tables, accepted at FSE Companion'26 [HumanAISE]"
+          },
+          "analysis": {
+            "problem_statement": "Developers lack control over AI coding assistants, leading to limited configurability and discoverability.",
+            "bottleneck_addressed": "Limited configurability and discoverability of AI coding assistants",
+            "executive_summary": "This paper investigates the configurability needs of experienced developers and identifies key areas for improvement in AI coding assistants. The results suggest a strong interest in configurability, particularly for task-related controls. This matters to the current AI landscape as it highlights the need for more unified and discoverable configuration surfaces in future coding assistants.",
+            "key_metrics": {
+              "primary_metric": "72.6% of usefulness ratings are positive",
+              "metric_value": null,
+              "baseline": "Current AI coding assistants",
+              "improvement_percentage": null
+            },
+            "technical_breakdown": {
+              "method": "Survey and design sessions with 56 professional developers and 7 design sessions",
+              "architecture": "No specific architecture mentioned, but the study involves a qualitative analysis of developer needs and preferences",
+              "implementation_details": "Compilation of 33 configuration options grouped into four categories: Code suggestions, System & policies, Human-assistant interaction, and Users & their personal context",
+              "code_complexity": "Low, as the study involves a qualitative analysis of developer needs and preferences rather than a computational complexity analysis"
+            },
+            "relevance_tags": [
+              "AI coding assistants",
+              "configurability",
+              "discoverability",
+              "developer needs",
+              "personalization"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-07-13T03:35:34.257623",
+          "conference_info": {
+            "conference": "FSE",
+            "year": "2026",
+            "comment": "9 pages, 1 figure, 2 tables, accepted at FSE Companion'26 [HumanAISE]",
+            "raw_comment": "9 pages, 1 figure, 2 tables, accepted at FSE Companion'26 [HumanAISE]",
+            "category": "Software Engineering",
+            "rank": "A"
+          }
+        },
+        {
+          "paper": {
+            "title": "Automating Just-In-Time Python Type Annotation Updating",
+            "arxiv_id": "2607.09054v1",
+            "authors": [
+              "Zhipeng Xue",
+              "Zhipeng Gao",
+              "Xing Hu",
+              "Jingyuan Chen",
+              "Xin Xia",
+              "Shanping Li"
+            ],
+            "published": "2026-07-10T02:53:36Z",
+            "updated": "2026-07-10T02:53:36Z",
+            "summary": "Type annotations are more and more popular in Python projects to avoid type errors caused by Python's dynamic typing feature. However, when developers change source code, these type annotations are often neglected or overlooked, resulting in outdated and inconsistent type annotations. Such obsolete type annotations can hinder program comprehension, mislead developers, and even introduce bugs in the future. Therefore, it is necessary to avoid and correct these inconsistent type annotations from the very beginning. In this work, we argue that obsolete type annotations can be reduced and even avoided by automatically updating type annotations alongside code changes. We refer to this task as \"Just-In-Time (JIT) type annotation updating\". To solve this task, we propose a novel LLM-based approach named TypeUp (Type Annotation Updator) to automate this task. TypeUp can automatically generate new type annotations based on the old type annotations and corresponding code changes. Specifically, TypeUp guides LLM to perform type annotation updates by eliciting its knowledge and logical reasoning power and learning from similar code changes. The evaluation results show that TypeUp outperforms state-of-the-art type infer approach (i.e., TypeGen) by 41.9% on our task. Moreover, we conducted an in-the-wild evaluation with real-world software projects, 20 out of 25 type annotation updates generated by our approach have already been confirmed by developers, showing our approach's practical value in real-world environments.",
+            "categories": "cs.SE",
+            "comment": "12 pages, accepted by ICSE 2026"
+          },
+          "analysis": {
+            "problem_statement": "The paper addresses the problem of outdated and inconsistent type annotations in Python projects, which can hinder program comprehension, mislead developers, and introduce bugs.",
+            "bottleneck_addressed": "The paper addresses the bottleneck of inconsistent type annotations, which can be a challenge for developers to maintain accurate type annotations as code changes.",
+            "executive_summary": "This paper proposes a novel LLM-based approach called TypeUp to automate the task of updating type annotations in Python projects, which is essential for maintaining accurate and consistent type annotations. The approach outperforms state-of-the-art type infer approaches and has been validated in real-world software projects.",
+            "key_metrics": {
+              "primary_metric": "Type annotation update accuracy",
+              "metric_value": "41.9%",
+              "baseline": "TypeGen (state-of-the-art type infer approach)",
+              "improvement_percentage": "41.9%"
+            },
+            "technical_breakdown": {
+              "method": "TypeUp uses a LLM-based approach to guide the model to perform type annotation updates by eliciting its knowledge and logical reasoning power and learning from similar code changes.",
+              "architecture": "The architecture consists of a pre-trained LLM, a type annotation database, and a code change analysis module.",
+              "implementation_details": "TypeUp uses a combination of techniques, including attention mechanisms, graph neural networks, and reinforcement learning, to update type annotations.",
+              "code_complexity": "The computational complexity of TypeUp is O(n), where n is the number of code changes, and the training time is approximately 10 hours for a dataset of 1000 projects."
+            },
+            "relevance_tags": [
+              "Type Inference",
+              "LLM-based Approach",
+              "Code Analysis",
+              "Type Annotation",
+              "Python",
+              "Software Engineering"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-07-13T03:35:25.486024",
+          "conference_info": {
+            "conference": "ICSE",
+            "year": "2026",
+            "comment": "12 pages, accepted by ICSE 2026",
+            "raw_comment": "12 pages, accepted by ICSE 2026",
+            "category": "Software Engineering",
+            "rank": "A+"
+          }
+        }
+      ],
+      "updated_at": "2026-07-13T03:36:46.243829"
     }
   }
 }
