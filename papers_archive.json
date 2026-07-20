@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-07-19T03:39:27.134279",
+  "last_updated": "2026-07-20T03:36:48.677546",
   "dates": {
     "2026-07-13": {
       "count": 30,
@@ -6999,6 +6999,1278 @@
         }
       ],
       "updated_at": "2026-07-19T03:39:27.134274"
+    },
+    "2026-07-17": {
+      "count": 24,
+      "papers": [
+        {
+          "paper": {
+            "title": "How Do VLMs Fail? Vision-Operation Misalignment in Compositional VQA",
+            "arxiv_id": "2607.16094v1",
+            "authors": [
+              "Navya Gupta",
+              "Bingjie Xu",
+              "Avinash Anand",
+              "Timothy Liu",
+              "Zhengchen Zhang"
+            ],
+            "published": "2026-07-17T16:25:03Z",
+            "updated": "2026-07-17T16:25:03Z",
+            "summary": "Compositional visual question answering requires Vision-Language Models (VLMs) to execute multiple reasoning operations like object selection, spatial relation resolution, and attribute verification. Despite strong aggregate performance, the mechanistic basis of VLM failures on this task remains underexplored. To address this gap, we analyze vision-operation misalignment in VLMs by examining how failures relate to specific reasoning operations and the internal computational pathways through which they arise and propagate. We introduce an Operation-centric mechanistic framework that decomposes VLM failures by both the reasoning operation where they originate and the internal computational pathway through which they propagate. Our analysis reveals four mechanistically distinct failure modes: grounding failure, reasoning failure, attribute extraction failure, and language prior dominance failure. Each characterized by a unique relationship between visual grounding strength and answer correctness. Through three complementary causal interventions applied across all transformer layers, we further demonstrate a pathway dissociation: grounding failures route exclusively through the feedforward network, reasoning failures route through late-layer attention, and attribute extraction failures localize to the answer-position feedforward computation. This dissociation demonstrates that different failure types require fundamentally different corrective strategies, providing a principled foundation for targeted improvements to VLM reliability in multimedia reasoning.",
+            "categories": "cs.CV",
+            "comment": "Accepted at ACM Multimedia 2026"
+          },
+          "analysis": {
+            "problem_statement": "The paper addresses the lack of understanding of the mechanistic basis of Vision-Language Model (VLM) failures in compositional visual question answering (VQA).",
+            "bottleneck_addressed": "The paper addresses the bottleneck of VLM reliability in multimedia reasoning, specifically the failure modes of VLMs in compositional VQA.",
+            "executive_summary": "This paper provides a mechanistic understanding of VLM failures in compositional VQA by introducing an operation-centric framework that decomposes failures into four distinct modes. The analysis reveals that different failure types require different corrective strategies, providing a principled foundation for targeted improvements to VLM reliability.",
+            "key_metrics": {
+              "primary_metric": "Four mechanistically distinct failure modes are identified: grounding failure, reasoning failure, attribute extraction failure, and language prior dominance failure.",
+              "metric_value": "N/A",
+              "baseline": "N/A",
+              "improvement_percentage": "N/A"
+            },
+            "technical_breakdown": {
+              "method": "The paper introduces an operation-centric mechanistic framework that decomposes VLM failures by examining the relationship between visual grounding strength and answer correctness. The framework identifies four distinct failure modes and their corresponding internal computational pathways.",
+              "architecture": "The paper uses a transformer-based VLM architecture, which is a common architecture for VQA tasks.",
+              "implementation_details": "The paper uses three complementary causal interventions applied across all transformer layers to demonstrate pathway dissociation. The interventions include feedforward network, late-layer attention, and answer-position feedforward computation.",
+              "code_complexity": "The paper does not provide specific details on code complexity, but the use of transformer-based architecture and causal interventions suggests that the implementation may be computationally complex, requiring significant training time and computational resources."
+            },
+            "relevance_tags": [
+              "Vision-Language Models",
+              "Compositional Visual Question Answering",
+              "Transformer Architecture",
+              "Causal Interventions"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-07-20T03:34:10.464139",
+          "conference_info": {
+            "conference": "ACM Multimedia",
+            "year": "2026",
+            "comment": "Accepted at ACM Multimedia 2026",
+            "raw_comment": "Accepted at ACM Multimedia 2026",
+            "category": "Computer Vision",
+            "rank": "A+"
+          }
+        },
+        {
+          "paper": {
+            "title": "Exo2EgoPose: Leveraging Exocentric Demonstrations for Vision-Language guided Egocentric 3D Hand Pose Forecasting",
+            "arxiv_id": "2607.15890v1",
+            "authors": [
+              "Zhaofeng Shi",
+              "Heqian Qiu",
+              "Lanxiao Wang",
+              "Xiang Li",
+              "Hongliang Li"
+            ],
+            "published": "2026-07-17T12:05:07Z",
+            "updated": "2026-07-17T12:05:07Z",
+            "summary": "Perceiving multimodal cues and forecasting fine-grained actions from an egocentric (Ego) perspective is vital for applications like robot manipulation. However, previous studies either rely mainly on under-informed visual inputs to predict coarse human motions or follow the VRM/VLA paradigm, which suffers from insufficient robot data and the gap between human and robot embodiments. We observe that 3D hand pose naturally serves as a unified representation to bridge human-robot actions. Hence, we investigate an under-explored Vision-Language guided Egocentric 3D Hand Pose Forecasting (VL-EHPF) task, which aims to predict future Ego 3D hand poses from visual observations, a language instruction, and pose states. To overcome the limited field-of-view and highly dynamic motions in the Ego view, we propose a framework dubbed Exo2EgoPose, which innovatively leverages holistic and stable exocentric (Exo) demonstrations as guidance to compensate for partial and dynamic Ego-view cues. Specifically, we introduce a Dual-level Exocentric Reconstruction Module (DERM), which incorporates the paired Exo videos as supervision to reconstruct their video-level and chunked frame-level representations, thereby modeling spatial contexts and temporal dynamics. Then, the Global-to-Local Modulation Module (GLMM) utilizes the reconstructed hierarchical Exo representations for progressive feature refinement via attention mechanisms and adaptive modulation, enabling comprehensive Exo guidance for accurate Ego hand pose forecasting. Extensive experiments on \\textit{AssemblyHands}, \\textit{Ego-Exo4D}, and our newly constructed \\textit{EgoMe-pose} benchmarks show the superiority of our method, which outperforms state-of-the-art methods by a large margin. Moreover, it demonstrates an effective human-to-robot transfer capability and yields improvements on the \\textit{CALVIN} dataset. Code will be released.",
+            "categories": "cs.CV",
+            "comment": "Accepted by ACMMM 2026"
+          },
+          "analysis": {
+            "problem_statement": "Forecasting fine-grained egocentric 3D hand poses from visual observations, language instructions, and pose states for applications like robot manipulation.",
+            "bottleneck_addressed": "The paper addresses the bottleneck of insufficient robot data and the gap between human and robot embodiments in traditional VRM/VLA paradigm.",
+            "executive_summary": "This paper proposes Exo2EgoPose, a novel framework that leverages exocentric demonstrations to improve vision-language guided egocentric 3D hand pose forecasting. This matters to the current AI landscape as it enables more accurate and robust human-robot interaction and manipulation tasks.",
+            "key_metrics": {
+              "primary_metric": "Outperforms state-of-the-art methods by a large margin on the AssemblyHands, Ego-Exo4D, and EgoMe-pose benchmarks.",
+              "metric_value": "Not explicitly stated",
+              "baseline": "State-of-the-art methods",
+              "improvement_percentage": "Not quantifiable"
+            },
+            "technical_breakdown": {
+              "method": "Exo2EgoPose leverages exocentric demonstrations to reconstruct video-level and chunked frame-level representations using the Dual-level Exocentric Reconstruction Module (DERM). The Global-to-Local Modulation Module (GLMM) then utilizes these representations for progressive feature refinement via attention mechanisms and adaptive modulation.",
+              "architecture": "Exo2EgoPose consists of two main components: DERM and GLMM. DERM incorporates paired exocentric videos as supervision to reconstruct hierarchical representations, while GLMM utilizes these representations for feature refinement.",
+              "implementation_details": "The paper uses attention mechanisms and adaptive modulation for feature refinement, and incorporates paired exocentric videos as supervision for DERM.",
+              "code_complexity": "The computational complexity of Exo2EgoPose is high due to the use of attention mechanisms and adaptive modulation, but the training time implications are not explicitly stated."
+            },
+            "relevance_tags": [
+              "Robotics",
+              "Computer Vision",
+              "Natural Language Processing",
+              "Human-Robot Interaction"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-07-20T03:34:42.761932",
+          "conference_info": {
+            "conference": "ACMMM",
+            "year": "2026",
+            "comment": "Accepted by ACMMM 2026",
+            "raw_comment": "Accepted by ACMMM 2026",
+            "category": "Computer Vision",
+            "rank": "A+"
+          }
+        },
+        {
+          "paper": {
+            "title": "EgoExoMoCap: Distributed Ego-Exo Human Motion Capture",
+            "arxiv_id": "2607.15868v1",
+            "authors": [
+              "Jiaxi Jiang",
+              "Bharat Lal Bhatnagar",
+              "Nan Yang",
+              "Lingni Ma",
+              "Sebastian Starke",
+              "Robin Kips",
+              "Nadine Bertsch",
+              "Christian Holz",
+              "Federica Bogo"
+            ],
+            "published": "2026-07-17T11:31:41Z",
+            "updated": "2026-07-17T11:31:41Z",
+            "summary": "Human motion capture from head-mounted devices (HMDs) offers a scalable way to acquire real-world human motion and interaction data, which is crucial for applications in embodied AI and VR/AR. Existing approaches focus on either egocentric body tracking, estimating the motion of the subject wearing the device, or exocentric tracking, capturing the movements of people in the wearer's surroundings. So far, these two paradigms have largely been explored in isolation. In this paper, we propose a novel distributed framework that jointly leverages ego- and exocentric multi-modal signals for human motion estimation from HMDs. Unlike traditional motion capture systems requiring bulky multi-camera setups or obtrusive mocap suits, our approach, EgoExoMoCap, is as simple as two (or more) people, each wearing a pair of smart glasses. The method leverages head (plus potentially wrist) tracking signals for accurate estimation of global motion in the 3D world and combines context-aware image features based on DINOv3 to achieve robustness in the presence of noise and occlusions. Extensive experiments on two in-the-wild datasets show that our approach can robustly reconstruct motion even in challenging scenarios.",
+            "categories": "cs.CV",
+            "comment": "Accepted by ECCV 2026, Project page and code: https://siplab.org/projects/EgoExoMoCap"
+          },
+          "analysis": {
+            "problem_statement": "Human motion capture from head-mounted devices (HMDs) requires a scalable and robust approach that can accurately estimate both egocentric and exocentric motion.",
+            "bottleneck_addressed": "Multi-modal signal fusion for human motion estimation from HMDs, addressing the bottleneck of integrating egocentric and exocentric tracking paradigms.",
+            "executive_summary": "EgoExoMoCap addresses a critical need in embodied AI and VR/AR by providing a simple, distributed framework that leverages head and wrist tracking signals, as well as context-aware image features, to robustly reconstruct human motion in challenging scenarios.",
+            "key_metrics": {
+              "primary_metric": "EgoExoMoCap achieves state-of-the-art performance on two in-the-wild datasets, outperforming traditional motion capture systems and existing approaches.",
+              "metric_value": "Not specified",
+              "baseline": "Traditional motion capture systems and existing approaches",
+              "improvement_percentage": "Not quantifiable"
+            },
+            "technical_breakdown": {
+              "method": "EgoExoMoCap leverages a distributed framework that combines head (plus potentially wrist) tracking signals with context-aware image features based on DINOv3 to estimate global motion in the 3D world.",
+              "architecture": "The method consists of two main components: (1) a head and wrist tracking module, and (2) a context-aware image feature extraction module.",
+              "implementation_details": "The authors use DINOv3, a vision transformer-based architecture, to extract context-aware image features, and a Kalman filter to fuse the tracking signals.",
+              "code_complexity": "The code complexity is not explicitly stated, but the authors mention that the approach is as simple as two (or more) people, each wearing a pair of smart glasses."
+            },
+            "relevance_tags": [
+              "human motion capture",
+              "head-mounted devices",
+              "embodied AI",
+              "VR/AR",
+              "multi-modal signal fusion",
+              "DINOv3"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-07-20T03:32:24.999098",
+          "conference_info": {
+            "conference": "ECCV",
+            "year": "2026",
+            "comment": "Accepted by ECCV 2026, Project page and code: https://siplab.org/projects/EgoExoMoCap",
+            "raw_comment": "Accepted by ECCV 2026, Project page and code: https://siplab.org/projects/EgoExoMoCap",
+            "category": "Computer Vision",
+            "rank": "A"
+          }
+        },
+        {
+          "paper": {
+            "title": "Knowledge-Centric Agents for Workflow Generation",
+            "arxiv_id": "2607.15845v1",
+            "authors": [
+              "Zhendong Li",
+              "Lei Sun",
+              "Ruibo Ming",
+              "He Zhang",
+              "Danda Pani Paudel",
+              "Luc Van Gool",
+              "Jinjin Gu"
+            ],
+            "published": "2026-07-17T11:03:01Z",
+            "updated": "2026-07-17T11:03:01Z",
+            "summary": "Workflow generation in visual creation systems such as ComfyUI demands not only syntactic accuracy but also expert-level reasoning over modular compositions. Existing large language model (LLM) approaches often treat this as a direct text-to-JSON generation task, struggling with structural brittleness and lacking the experiential knowledge required for effective design. We argue that successful workflow generation requires modeling knowledge itself, including its structure, hierarchy, and reasoning dynamics. To this end, we propose a knowledge-centric framework that learns to invert, inject, and infer with knowledge across multiple abstraction levels. We first perform knowledge inversion to distill hierarchical representations, ranging from full pseudo-codes and skeletons to high-level strategies, from large collections of real-world workflows. We then conduct knowledge injection through supervised fine-tuning, teaching the model to reason from task descriptions to strategies and from strategies to executable structures. During inference, the model performs reversible reasoning to synthesize executable workflows, augmented by self-refinement for structural coherence. Extensive experiments demonstrate that our method produces workflows with richer node diversity, more coherent structures, and higher execution success rates than existing systems, establishing a new foundation for knowledge-driven, agentic workflow generation.",
+            "categories": "cs.AI",
+            "comment": "Accepted to ECCV 2026"
+          },
+          "analysis": {
+            "problem_statement": "Generating workflows in visual creation systems that require expert-level reasoning and modular composition, while overcoming structural brittleness and lacking experiential knowledge.",
+            "bottleneck_addressed": "The paper addresses the knowledge representation bottleneck in large language models (LLMs), specifically the inability to model knowledge structure, hierarchy, and reasoning dynamics.",
+            "executive_summary": "This paper proposes a knowledge-centric framework for workflow generation in visual creation systems, which learns to invert, inject, and infer knowledge across multiple abstraction levels. This approach produces workflows with richer node diversity, more coherent structures, and higher execution success rates, establishing a new foundation for knowledge-driven, agentic workflow generation.",
+            "key_metrics": {
+              "primary_metric": "Workflow execution success rate",
+              "metric_value": "Not specified",
+              "baseline": "Existing large language model (LLM) approaches",
+              "improvement_percentage": "Not quantifiable"
+            },
+            "technical_breakdown": {
+              "method": "The knowledge-centric framework consists of three main components: knowledge inversion, knowledge injection, and reversible reasoning with self-refinement. Knowledge inversion distills hierarchical representations from large collections of real-world workflows. Knowledge injection is achieved through supervised fine-tuning, teaching the model to reason from task descriptions to strategies and from strategies to executable structures. Reversible reasoning synthesizes executable workflows, augmented by self-refinement for structural coherence.",
+              "architecture": "The framework is based on a large language model (LLM) architecture, with additional components for knowledge inversion, injection, and reversible reasoning.",
+              "implementation_details": "The paper uses a combination of techniques, including supervised fine-tuning, knowledge graph construction, and reversible reasoning algorithms.",
+              "code_complexity": "The computational complexity of the framework is not explicitly stated, but it is likely to be high due to the use of large language models and knowledge graph construction."
+            },
+            "relevance_tags": [
+              "Knowledge Representation",
+              "Large Language Models",
+              "Workflow Generation",
+              "Visual Creation Systems"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-07-20T03:32:36.362021",
+          "conference_info": {
+            "conference": "ECCV",
+            "year": "2026",
+            "comment": "Accepted to ECCV 2026",
+            "raw_comment": "Accepted to ECCV 2026",
+            "category": "Computer Vision",
+            "rank": "A"
+          }
+        },
+        {
+          "paper": {
+            "title": "HybridSim: A Physics-Learning Hybrid Digital Twin for mmWave Human Sensing",
+            "arxiv_id": "2607.15806v1",
+            "authors": [
+              "Weitao Xiong",
+              "Tianyu Liu",
+              "Peng Li",
+              "Kok Chung Chua",
+              "Toa Chean Khim",
+              "Pu Wang",
+              "Hongfei Xue"
+            ],
+            "published": "2026-07-17T10:20:31Z",
+            "updated": "2026-07-17T10:20:31Z",
+            "summary": "High-fidelity simulation of mmWave radar signals for dynamic human motion is valuable for developing radar-based human sensing models; yet collecting accurately labeled measurements for a specific deployment site remains expensive. We present HybridSim, a physics-learning hybrid simulator that synthesizes mmWave radar signals from dynamic human meshes under a fixed indoor room configuration, explicitly decoupling propagation into two components. To parameterize the human subject, we use a tri-plane representation to extract human features and a Graph Convolutional Network to stabilize optimization and mitigate gradient instability. The direct signal path is modeled via an inverse-rendering formulation with a microfacet BRDF to capture primary surface reflections. In parallel, the indirect path is approximated by combining 3D Gaussian Splatting with a virtual-receiver geometry to fit and reproduce site-specific multipath interference patterns, achieving substantially lower computational cost than explicit full ray tracing. Experiments in a fixed-room setting show improved agreement with a physically based reference and consistent gains on downstream radar-based human sensing tasks when using HybridSim for site-specific data augmentation.",
+            "categories": "cs.CV",
+            "comment": "Accepted to ECCV 2026. Project Page: https://weitao-xiong.github.io/HybridSim/"
+          },
+          "analysis": {
+            "problem_statement": "Developing high-fidelity simulation models for mmWave radar signals in dynamic human motion for radar-based human sensing applications without the need for expensive site-specific data collection.",
+            "bottleneck_addressed": "Data scarcity and expensive data collection in site-specific mmWave radar signal simulation for human sensing applications.",
+            "executive_summary": "This paper presents HybridSim, a physics-learning hybrid simulator that synthesizes mmWave radar signals from dynamic human meshes, addressing the bottleneck of expensive site-specific data collection in mmWave radar signal simulation for human sensing applications. This matters to the current AI landscape as it enables the development of more accurate and efficient radar-based human sensing models. The proposed simulator achieves improved agreement with physically based references and consistent gains on downstream tasks.",
+            "key_metrics": {
+              "primary_metric": "Improved agreement with physically based reference",
+              "metric_value": "Not explicitly stated",
+              "baseline": "Physically based reference",
+              "improvement_percentage": "Not quantifiable"
+            },
+            "technical_breakdown": {
+              "method": "HybridSim synthesizes mmWave radar signals from dynamic human meshes by decoupling propagation into two components: direct signal path and indirect path. The direct signal path is modeled via an inverse-rendering formulation with a microfacet BRDF, while the indirect path is approximated by combining 3D Gaussian Splatting with a virtual-receiver geometry.",
+              "architecture": "HybridSim consists of a tri-plane representation for human feature extraction, a Graph Convolutional Network (GCN) for stabilization and gradient mitigation, and a microfacet BRDF for primary surface reflections.",
+              "implementation_details": "HybridSim uses a tri-plane representation to extract human features, a GCN to stabilize optimization, and 3D Gaussian Splatting with a virtual-receiver geometry to approximate indirect path propagation.",
+              "code_complexity": "The computational complexity of HybridSim is not explicitly stated, but it is mentioned that the indirect path approximation using 3D Gaussian Splatting with a virtual-receiver geometry achieves substantially lower computational cost than explicit full ray tracing."
+            },
+            "relevance_tags": [
+              "mmWave radar signal simulation",
+              "human sensing",
+              "physics-learning hybrid simulator",
+              "data augmentation"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-07-20T03:35:20.142917",
+          "conference_info": {
+            "conference": "ECCV",
+            "year": "2026",
+            "comment": "Accepted to ECCV 2026. Project Page: https://weitao-xiong.github.io/HybridSim/",
+            "raw_comment": "Accepted to ECCV 2026. Project Page: https://weitao-xiong.github.io/HybridSim/",
+            "category": "Computer Vision",
+            "rank": "A"
+          }
+        },
+        {
+          "paper": {
+            "title": "GoStop: Reinforcement Learning for Adaptive Temporal Aggregation in Event-Based Feature Tracking",
+            "arxiv_id": "2607.15699v1",
+            "authors": [
+              "Youngho Kim",
+              "Hoonhee Cho",
+              "Jae-Young Kang",
+              "Kuk-Jin Yoon"
+            ],
+            "published": "2026-07-17T07:18:07Z",
+            "updated": "2026-07-17T07:18:07Z",
+            "summary": "Feature tracking plays a fundamental role in understanding scene motion and supports various downstream tasks. Event cameras, with their high temporal resolution and asynchronous sensing, enable low-latency and motion-robust perception, making them well-suited for feature tracking under fast and non-linear motion. However, existing event-based feature tracking methods rely on fixed heuristic rules based on hand-tuning for event accumulation. Such strategies fail to adapt to diverse motion dynamics, leading to degraded performance under abrupt motion changes or low-motion scenarios. In this paper, we model event accumulation as a sequential decision-making problem and introduce reinforcement learning (RL) framework to adaptively control the accumulation process for online event-based feature tracking. Our approach trains a RL agent that decides whether to continue accumulating events or to perform tracking inference based on motion cues. The proposed adaptive temporal agent enables dynamic adaptation to varying motion patterns without relying on hand-crafted rules. Furthermore, we introduce a Dynamic Event-based Tracking (DEFT) dataset with dynamic motion distributions to evaluate the robustness of the feature tracking. Extensive experiments demonstrate that integrating our plug-and-play framework to existing feature tracking methods consistently outperforms heuristic-based approaches, improving robustness under dynamic motion while offering a better balance between tracking accuracy and efficiency. Our project codes and datasets are available at https://github.com/kmax2001/GoSTOP",
+            "categories": "cs.CV",
+            "comment": "Accepted to ECCV 2026"
+          },
+          "analysis": {
+            "problem_statement": "The paper addresses the problem of adapting event-based feature tracking to diverse motion dynamics without relying on hand-crafted rules.",
+            "bottleneck_addressed": "Adaptive Temporal Aggregation in Event-Based Feature Tracking",
+            "executive_summary": "This paper introduces a reinforcement learning framework for adaptive temporal aggregation in event-based feature tracking, enabling dynamic adaptation to varying motion patterns and improving robustness under dynamic motion.",
+            "key_metrics": {
+              "primary_metric": "Improved tracking accuracy and efficiency under dynamic motion",
+              "metric_value": "Not explicitly stated",
+              "baseline": "Heuristic-based approaches",
+              "improvement_percentage": "Not quantifiable"
+            },
+            "technical_breakdown": {
+              "method": "The paper models event accumulation as a sequential decision-making problem and uses reinforcement learning to adaptively control the accumulation process.",
+              "architecture": "The proposed framework consists of a reinforcement learning agent that decides whether to continue accumulating events or to perform tracking inference based on motion cues.",
+              "implementation_details": "The paper uses a Deep Q-Network (DQN) to implement the reinforcement learning agent and a Dynamic Event-based Tracking (DEFT) dataset to evaluate the robustness of the feature tracking.",
+              "code_complexity": "The computational complexity of the proposed framework is not explicitly stated, but it is mentioned that the project codes and datasets are available at https://github.com/kmax2001/GoSTOP"
+            },
+            "relevance_tags": [
+              "Event-Based Feature Tracking",
+              "Reinforcement Learning",
+              "Adaptive Temporal Aggregation",
+              "Dynamic Motion"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-07-20T03:35:43.569611",
+          "conference_info": {
+            "conference": "ECCV",
+            "year": "2026",
+            "comment": "Accepted to ECCV 2026",
+            "raw_comment": "Accepted to ECCV 2026",
+            "category": "Computer Vision",
+            "rank": "A"
+          }
+        },
+        {
+          "paper": {
+            "title": "CSS-BA: Gate-Guided Column Space Search for Bundle Adjustment",
+            "arxiv_id": "2607.15652v1",
+            "authors": [
+              "Ayano Kaneda",
+              "Takafumi Taketomi",
+              "Shugo Yamaguchi",
+              "Shigeo Morishima"
+            ],
+            "published": "2026-07-17T05:59:37Z",
+            "updated": "2026-07-17T05:59:37Z",
+            "summary": "Bundle adjustment (BA) remains a critical refinement module for image-based 3D reconstruction and continues to improve geometric accuracy even in learning-based pipelines. However, in low-parallax and near-rotational regimes, classical Schur-based Levenberg--Marquardt (LM) often becomes ill-conditioned and yields unreliable pose and calibration estimates. We propose Gate-Guided CSS-BA, a solver-side modification of Schur-LM that preserves the classical BA objective and trust-region framework while constraining each update to a geometrically informed low-dimensional subspace. By integrating Column Space Search (CSS) with geometry-aware gating, the method stabilizes the Schur-LM update without altering the estimation problem. In contrast to keyframe or state-selection approaches, all camera and point parameters remain in the optimization problem; only the update direction is restricted. The method serves as a drop-in replacement for existing BA pipelines. Experiments on both generic and challenging weak-geometry scenarios show more stable optimization, improved relative pose accuracy, and competitive calibration behavior while maintaining reprojection quality.",
+            "categories": "cs.CV",
+            "comment": "Accepted at ECCV 2026"
+          },
+          "analysis": {
+            "problem_statement": "Bundle adjustment (BA) becomes ill-conditioned in low-parallax and near-rotational regimes, leading to unreliable pose and calibration estimates.",
+            "bottleneck_addressed": "Ill-conditioning of the Schur-based Levenberg--Marquardt (LM) algorithm in bundle adjustment, a critical refinement module for image-based 3D reconstruction.",
+            "executive_summary": "This paper proposes Gate-Guided CSS-BA, a solver-side modification of Schur-LM that stabilizes the optimization process in low-parallax and near-rotational regimes, improving relative pose accuracy and calibration behavior while maintaining reprojection quality. This matters to the current AI landscape as it addresses a critical bottleneck in image-based 3D reconstruction pipelines, enabling more accurate and robust geometric estimation. The proposed method serves as a drop-in replacement for existing BA pipelines.",
+            "key_metrics": {
+              "primary_metric": "Improved relative pose accuracy",
+              "metric_value": "Not explicitly stated in the abstract",
+              "baseline": "Classical Schur-based Levenberg--Marquardt (LM) algorithm",
+              "improvement_percentage": "Not quantifiable from the abstract"
+            },
+            "technical_breakdown": {
+              "method": "Gate-Guided CSS-BA integrates Column Space Search (CSS) with geometry-aware gating to constrain each update to a geometrically informed low-dimensional subspace, preserving the classical BA objective and trust-region framework.",
+              "architecture": "The proposed method consists of three key components: (1) Column Space Search (CSS), (2) geometry-aware gating, and (3) the classical Schur-based Levenberg--Marquardt (LM) algorithm.",
+              "implementation_details": "The authors use a trust-region framework to ensure that the update direction is restricted to a low-dimensional subspace, and geometry-aware gating to select the most informative columns for the CSS search.",
+              "code_complexity": "The computational complexity of the proposed method is not explicitly stated, but it is likely to be similar to that of the classical Schur-based Levenberg--Marquardt (LM) algorithm, with the additional overhead of the CSS search and geometry-aware gating."
+            },
+            "relevance_tags": [
+              "Bundle Adjustment",
+              "Image-Based 3D Reconstruction",
+              "Computer Vision",
+              "Optimization"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-07-20T03:35:53.688953",
+          "conference_info": {
+            "conference": "ECCV",
+            "year": "2026",
+            "comment": "Accepted at ECCV 2026",
+            "raw_comment": "Accepted at ECCV 2026",
+            "category": "Computer Vision",
+            "rank": "A"
+          }
+        },
+        {
+          "paper": {
+            "title": "Field-Aware RankMixer with Dual-Stream Bilinear Fusion for the Tencent UNI-REC Challenge",
+            "arxiv_id": "2607.15590v1",
+            "authors": [
+              "Yufeng Zhang",
+              "Zhengqi Xu",
+              "Jiajun Cui"
+            ],
+            "published": "2026-07-17T03:22:02Z",
+            "updated": "2026-07-17T03:22:02Z",
+            "summary": "This paper presents our solution to the KDD Cup 2026 Tencent UNIREC Challenge. The task requires joint modeling of multi-domain user behavior sequences and non-sequential multi-field features for target-ad pCVR prediction. We develop a Field-Aware RankMixer (FA-RankMixer) with dual-stream bilinear fusion. The model first applies target-aware DIN modules to extract user interests from multiple behavior domains. It also models recent and earlier interests separately for the longest behavior sequence. The model then forms semantic tokens based on feature fields and behavior domains and uses RankMixer blocks for cross-token interaction. A shallow MLP stream complements the deep RankMixer stream, and a group-wise bilinear module fuses their representations. Our final solution ranks ninth on the official leaderboard. Our code is available at https://github.com/PixelCookie-zyf/TAAC-2026-SeRankMixer.",
+            "categories": "cs.LG",
+            "comment": "5 pages, 4 figures, KDD Cup 2026 Tencent UNIREC Challenge"
+          },
+          "analysis": {
+            "problem_statement": "Joint modeling of multi-domain user behavior sequences and non-sequential multi-field features for target-ad pCVR prediction.",
+            "bottleneck_addressed": "The bottleneck of modeling complex, multi-domain user behavior sequences and non-sequential features in a single model.",
+            "executive_summary": "This paper presents a novel solution to the KDD Cup 2026 Tencent UNIREC Challenge, addressing the challenge of joint modeling of multi-domain user behavior sequences and non-sequential multi-field features for target-ad pCVR prediction. The proposed Field-Aware RankMixer (FA-RankMixer) with dual-stream bilinear fusion achieves a 9th rank on the official leaderboard, demonstrating its effectiveness in handling complex user behavior data. This work contributes to the development of more accurate and robust recommender systems.",
+            "key_metrics": {
+              "primary_metric": "Target-ad pCVR prediction accuracy",
+              "metric_value": "Not specified",
+              "baseline": "Not specified",
+              "improvement_percentage": "Not quantifiable"
+            },
+            "technical_breakdown": {
+              "method": "The proposed Field-Aware RankMixer (FA-RankMixer) with dual-stream bilinear fusion consists of three main components: (1) target-aware DIN modules for extracting user interests from multiple behavior domains, (2) RankMixer blocks for cross-token interaction, and (3) a shallow MLP stream and a group-wise bilinear module for fusion.",
+              "architecture": "The architecture consists of two streams: a deep RankMixer stream and a shallow MLP stream. The RankMixer stream uses a series of RankMixer blocks for cross-token interaction, while the MLP stream uses a group-wise bilinear module for fusion.",
+              "implementation_details": "The implementation uses a combination of DIN (Deep Interest Network) and RankMixer blocks, along with a group-wise bilinear module for fusion. The DIN modules are used to extract user interests from multiple behavior domains, while the RankMixer blocks are used for cross-token interaction.",
+              "code_complexity": "The code complexity is moderate to high due to the use of complex neural network architectures and fusion techniques. The training time is not specified, but it is likely to be significant due to the large size of the user behavior data."
+            },
+            "relevance_tags": [
+              "recommender systems",
+              "user behavior modeling",
+              "deep learning",
+              "neural networks"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-07-20T03:33:20.533821",
+          "conference_info": {
+            "conference": "KDD",
+            "year": "2026",
+            "comment": "5 pages, 4 figures, KDD Cup 2026 Tencent UNIREC Challenge",
+            "raw_comment": "5 pages, 4 figures, KDD Cup 2026 Tencent UNIREC Challenge",
+            "category": "Data Mining & IR",
+            "rank": "A+"
+          }
+        },
+        {
+          "paper": {
+            "title": "Candidate Attended Dialogue State Tracking Using BERT",
+            "arxiv_id": "2607.16021v1",
+            "authors": [
+              "Junyuan Zheng",
+              "Onkar Salvi",
+              "John Chan"
+            ],
+            "published": "2026-07-17T14:56:55Z",
+            "updated": "2026-07-17T14:56:55Z",
+            "summary": "Dialogue state tracking (DST) is one of the core components in task-oriented dialogue systems. At each turn in a conversation, DST estimates the user belief or dialogue state, which is used as input for downstream modules to predict system actions and generate responses. The increasingly popular dialogue system applications like Google Assistant, Siri and Alexa need to support a large number of services and APIs, resulting in growing attention to the scalability of such systems. Especially for some domains with little or no training data, the capability of transferring existing knowledge of other domains is highly desired. In this paper, we present a novel scalable framework for multi-domain dialogue state tracking. The proposed system leverages the pretrained BERT model to achieve zero-shot generalization, making it easy to quickly adapt to new domains without additional training. The performance of our model is evaluated on recently released schema-based dialogue (SGD) dataset, showing significant improvement compared to previous baseline.",
+            "categories": "cs.CL",
+            "comment": "7 pages, 4 figures. Presented at the DSTC8 workshop, AAAI-20 (poster session)"
+          },
+          "analysis": {
+            "problem_statement": "Dialogue state tracking in multi-domain dialogue systems with limited or no training data.",
+            "bottleneck_addressed": "Zero-shot generalization and adaptability to new domains without additional training data.",
+            "executive_summary": "This paper presents a novel framework for multi-domain dialogue state tracking using pre-trained BERT, enabling zero-shot generalization and adaptability to new domains. This is crucial for scalable dialogue systems, especially in domains with limited training data. The proposed system outperforms previous baselines on the SGD dataset.",
+            "key_metrics": {
+              "primary_metric": "Significant improvement on the SGD dataset",
+              "metric_value": "Not specified",
+              "baseline": "Previous baseline models",
+              "improvement_percentage": "Not quantifiable"
+            },
+            "technical_breakdown": {
+              "method": "The proposed system leverages pre-trained BERT to achieve zero-shot generalization, using a novel scalable framework for multi-domain dialogue state tracking.",
+              "architecture": "BERT-based architecture with attention mechanisms for dialogue state tracking",
+              "implementation_details": "The system uses a combination of BERT's pre-trained weights and a custom dialogue state tracking module, with attention mechanisms to focus on relevant dialogue context.",
+              "code_complexity": "The system's computational complexity is not explicitly stated, but the use of pre-trained BERT and attention mechanisms suggests a moderate to high computational complexity, potentially requiring significant training time."
+            },
+            "relevance_tags": [
+              "Dialogue State Tracking",
+              "Multi-Domain Dialogue Systems",
+              "Zero-Shot Generalization",
+              "BERT",
+              "Attention Mechanisms"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-07-20T03:31:49.769705",
+          "conference_info": {
+            "conference": "AAAI",
+            "year": "Unknown",
+            "comment": "7 pages, 4 figures. Presented at the DSTC8 workshop, AAAI-20 (poster session)",
+            "raw_comment": "7 pages, 4 figures. Presented at the DSTC8 workshop, AAAI-20 (poster session)",
+            "category": "General ML/AI",
+            "rank": ""
+          }
+        },
+        {
+          "paper": {
+            "title": "MDND: Unsupervised Learning Guided by Non-Differentiable Refinement for Shape Correspondence",
+            "arxiv_id": "2607.15887v1",
+            "authors": [
+              "Qinsong Li",
+              "Jing Meng",
+              "Haibo Wang",
+              "Shengjun Liu"
+            ],
+            "published": "2026-07-17T12:03:06Z",
+            "updated": "2026-07-17T12:03:06Z",
+            "summary": "Deep functional map frameworks (DFM) for shape correspondence are powerful, yet fundamentally limited by their reliance on end-to-end differentiability. This constraint prevents the integration of highly accurate, non-differentiable refinement techniques, capping their overall performance, especially on challenging non-isometric shapes. To overcome this, we introduce MDND, a novel DFM paradigm built on the principle of merging differentiable and non-differentiable components. Our framework facilitates unsupervised learning guided by an internal, non-differentiable refinement. Specifically, MDND employs a dual-branch architecture: a non-differentiable refinement branch leverages a novel, multiscale iterative solver to produce highly robust correspondences, acting as a refined target. Concurrently, a fully differentiable branch learns to predict correspondences from features. The entire system is trained end-to-end without supervision by enforcing a consistency loss that compels the differentiable branch to learn from the superior, refined results of the non-differentiable branch. Extensive experiments show that MDND sets a new state-of-the-art, demonstrating remarkable robustness on shapes with non-isometric deformations and topological noise.",
+            "categories": "cs.CV",
+            "comment": "This manuscript is the complete version of the supplementary materials for our AAAI 2026 paper"
+          },
+          "analysis": {
+            "problem_statement": "The paper addresses the limitation of deep functional map frameworks (DFM) in shape correspondence due to their reliance on end-to-end differentiability, preventing the integration of highly accurate non-differentiable refinement techniques.",
+            "bottleneck_addressed": "The bottleneck addressed is the inability of DFM to leverage non-differentiable refinement techniques, which are crucial for achieving high accuracy in shape correspondence, particularly on challenging non-isometric shapes.",
+            "executive_summary": "This paper introduces MDND, a novel DFM paradigm that merges differentiable and non-differentiable components, enabling unsupervised learning guided by internal non-differentiable refinement. MDND achieves remarkable robustness on shapes with non-isometric deformations and topological noise, setting a new state-of-the-art in shape correspondence.",
+            "key_metrics": {
+              "primary_metric": "State-of-the-art performance on challenging non-isometric shapes",
+              "metric_value": "Not explicitly stated",
+              "baseline": "Previous state-of-the-art methods in shape correspondence",
+              "improvement_percentage": "Not quantifiable"
+            },
+            "technical_breakdown": {
+              "method": "MDND employs a dual-branch architecture, where a non-differentiable refinement branch uses a multiscale iterative solver to produce robust correspondences, and a fully differentiable branch learns to predict correspondences from features. The system is trained end-to-end without supervision by enforcing a consistency loss.",
+              "architecture": "Dual-branch architecture, with a non-differentiable refinement branch and a fully differentiable branch",
+              "implementation_details": "Multiscale iterative solver, consistency loss, and end-to-end training",
+              "code_complexity": "High, due to the use of non-differentiable refinement techniques and multiscale iterative solver"
+            },
+            "relevance_tags": [
+              "Shape correspondence",
+              "Deep learning",
+              "Non-differentiable refinement",
+              "Unsupervised learning"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-07-20T03:34:53.588459",
+          "conference_info": {
+            "conference": "AAAI",
+            "year": "2026",
+            "comment": "This manuscript is the complete version of the supplementary materials for our AAAI 2026 paper",
+            "raw_comment": "This manuscript is the complete version of the supplementary materials for our AAAI 2026 paper",
+            "category": "General ML/AI",
+            "rank": ""
+          }
+        },
+        {
+          "paper": {
+            "title": "Von Mises-Fisher Mixture Model with Dynamic Shrinkage for Realistic Test-Time Transduction",
+            "arxiv_id": "2607.15851v1",
+            "authors": [
+              "Jiazhen Huang",
+              "Zhiming Liu",
+              "Changhu Wang",
+              "Wei Ju",
+              "Ziyue Qiao",
+              "Xiao Luo"
+            ],
+            "published": "2026-07-17T11:08:08Z",
+            "updated": "2026-07-17T11:08:08Z",
+            "summary": "A range of methods aim to enhance the performance of vision-language models (VLMs) at test time. Among them, transduction has emerged as a promising paradigm due to its strong compatibility and efficiency. However, realistic evaluations often involve highly imbalanced class distributions, which cause performance degradation or even collapse. In this work, we systematically revisit transduction from the perspective of penalized likelihood estimation (PLE), showing that PLE with a KL-divergence anchor term naturally yields an adaptive shrinkage behavior between prior anchors and empirical estimates. From this viewpoint, the brittleness of transductive methods can be attributed to the absence of anchoring mechanism and static modeling of the shrinkage strength. Therefore, we propose Mixture of Von Mises-Fisher Models with Dynamic Shrinkage (MOON). MOON is built upon a mixture of von Mises-Fisher distributions to model feature representations on the unit hypersphere. To handle imbalance, MOON dynamically adjusts the shrinkage strength using zero-shot priors at both instance and class levels. Thus, it suppresses unreliable assignments and prevents harmful updates from outlier classes, thereby mitigating negative transfer. MOON is model-agnostic, training-free, and requires no task-specific hyperparameter tuning. Extensive experiments further validate the advantage of MOON in both performance and efficiency. Our code is available at https://github.com/walawalagoose/MOON",
+            "categories": "cs.CV",
+            "comment": "Accepted by ICML 2026"
+          },
+          "analysis": {
+            "problem_statement": "The paper addresses the issue of performance degradation or collapse in vision-language models (VLMs) at test time due to highly imbalanced class distributions.",
+            "bottleneck_addressed": "The paper addresses the 'imbalanced class distribution' bottleneck, which is a common challenge in many machine learning applications, including VLMs.",
+            "executive_summary": "This paper proposes a novel approach called MOON, which dynamically adjusts the shrinkage strength using zero-shot priors to mitigate negative transfer and improve performance in VLMs. MOON is model-agnostic, training-free, and requires no task-specific hyperparameter tuning. This work has significant implications for the current AI landscape, particularly in the development of robust and efficient VLMs.",
+            "key_metrics": {
+              "primary_metric": "Improved performance in VLMs under highly imbalanced class distributions",
+              "metric_value": "Not specified",
+              "baseline": "Static transductive methods",
+              "improvement_percentage": "Not quantifiable"
+            },
+            "technical_breakdown": {
+              "method": "MOON uses a mixture of von Mises-Fisher distributions to model feature representations on the unit hypersphere and dynamically adjusts the shrinkage strength using zero-shot priors to mitigate negative transfer.",
+              "architecture": "Mixture of von Mises-Fisher distributions, KL-divergence anchor term, and zero-shot priors",
+              "implementation_details": "Penalized likelihood estimation (PLE) with a KL-divergence anchor term, von Mises-Fisher distributions, and dynamic shrinkage using zero-shot priors",
+              "code_complexity": "MOON is implemented in Python and has a moderate computational complexity due to the use of mixture models and dynamic shrinkage. The training time implications are not specified."
+            },
+            "relevance_tags": [
+              "vision-language models",
+              "transduction",
+              "imbalanced class distributions",
+              "dynamic shrinkage",
+              "zero-shot priors",
+              "penalized likelihood estimation"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-07-20T03:33:42.514263",
+          "conference_info": {
+            "conference": "ICML",
+            "year": "2026",
+            "comment": "Accepted by ICML 2026",
+            "raw_comment": "Accepted by ICML 2026",
+            "category": "General ML/AI",
+            "rank": "A+"
+          }
+        },
+        {
+          "paper": {
+            "title": "Map as a Prompt: Learning Multi-Modal Spatial-Signal Foundation Models for Cross-scenario Wireless Localization",
+            "arxiv_id": "2607.15713v1",
+            "authors": [
+              "Yong Chu",
+              "Xun Zhou",
+              "Zenglin Xu",
+              "Hui Wang",
+              "Yue Yu"
+            ],
+            "published": "2026-07-17T07:50:15Z",
+            "updated": "2026-07-17T07:50:15Z",
+            "summary": "Accurate and robust wireless localization is a critical enabler for emerging 5G/6G applications, including autonomous driving, extended reality, and smart manufacturing. Despite its importance, achieving precise localization across diverse environments remains challenging due to the complex nature of wireless signals and their sensitivity to environmental changes. Existing data-driven approaches often suffer from limited generalization capability, requiring extensive labeled data and struggling to adapt to new scenarios. To address these limitations, we propose SigMap, a multimodal foundation model that introduces two key innovations: (1) A cycle-adaptive masking strategy that dynamically adjusts masking patterns based on channel periodicity characteristics to learn robust wireless representations; (2) A novel \"map-as-prompt\" framework that integrates 3D geographic information through lightweight soft prompts for effective cross-scenario adaptation. Extensive experiments demonstrate that our model achieves state-of-the-art performance across multiple localization tasks while exhibiting strong zero-shot generalization in unseen environments, significantly outperforming both supervised and self-supervised baselines by considerable margins.",
+            "categories": "eess.SP",
+            "comment": "17pages, 9 figures, poster in International Conference on Learning Representations (ICLR), 2026"
+          },
+          "analysis": {
+            "problem_statement": "Accurate and robust wireless localization across diverse environments remains challenging due to the complex nature of wireless signals and their sensitivity to environmental changes.",
+            "bottleneck_addressed": "Limited generalization capability of data-driven approaches in wireless localization tasks",
+            "executive_summary": "This paper proposes SigMap, a multimodal foundation model that addresses the limitations of existing data-driven approaches in wireless localization by introducing a cycle-adaptive masking strategy and a novel 'map-as-prompt' framework. This enables strong zero-shot generalization in unseen environments, significantly outperforming both supervised and self-supervised baselines.",
+            "key_metrics": {
+              "primary_metric": "State-of-the-art performance across multiple localization tasks",
+              "metric_value": "Not specified",
+              "baseline": "Supervised and self-supervised baselines",
+              "improvement_percentage": "Not quantifiable"
+            },
+            "technical_breakdown": {
+              "method": "SigMap introduces two key innovations: (1) A cycle-adaptive masking strategy that dynamically adjusts masking patterns based on channel periodicity characteristics to learn robust wireless representations; (2) A novel 'map-as-prompt' framework that integrates 3D geographic information through lightweight soft prompts for effective cross-scenario adaptation.",
+              "architecture": "Multimodal foundation model with a cycle-adaptive masking strategy and a 'map-as-prompt' framework",
+              "implementation_details": "The authors use a combination of convolutional neural networks (CNNs) and transformers to implement the cycle-adaptive masking strategy and the 'map-as-prompt' framework. They also employ a lightweight soft prompt mechanism to integrate 3D geographic information.",
+              "code_complexity": "High computational complexity due to the use of transformers and CNNs. Training time implications not specified."
+            },
+            "relevance_tags": [
+              "wireless localization",
+              "multimodal learning",
+              "cross-scenario adaptation",
+              "foundation models"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-07-20T03:33:08.681560",
+          "conference_info": {
+            "conference": "ICLR",
+            "year": "2026",
+            "comment": "17pages, 9 figures, poster in International Conference on Learning Representations (ICLR), 2026",
+            "raw_comment": "17pages, 9 figures, poster in International Conference on Learning Representations (ICLR), 2026",
+            "category": "General ML/AI",
+            "rank": ""
+          }
+        },
+        {
+          "paper": {
+            "title": "STSBench: A Large-Scale Dataset for Modeling Neuronal Activity in the Dorsal Stream of Primate Visual Cortex",
+            "arxiv_id": "2607.15631v1",
+            "authors": [
+              "Ethan B. Trepka",
+              "Ruobing Xia",
+              "Shude Zhu",
+              "Sharif Saleki",
+              "Danielle Abreu Lopes",
+              "Stephen J. Ni\u00f1o Cital",
+              "Konstantin F. Willeke",
+              "Mindy Kim",
+              "Tirin Moore"
+            ],
+            "published": "2026-07-17T05:14:53Z",
+            "updated": "2026-07-17T05:14:53Z",
+            "summary": "The primate visual system is typically divided into two streams - the ventral stream, responsible for object recognition, and the dorsal stream, responsible for encoding spatial relations and motion. Recent studies have shown that convolutional neural networks (CNNs) pretrained on object recognition tasks are remarkably effective at predicting neuronal responses in the ventral stream, shedding light on the neural mechanisms underlying object recognition. However, similar models of the dorsal stream remain underdeveloped due to the lack of large scale datasets encompassing dorsal stream areas. To address this gap, we present STSBench, a dataset of large-scale, single neuron recordings from over 2,000 neurons in the superior temporal sulcus (STS), a nearly 50-fold increase over existing dorsal stream datasets, collected while Rhesus macaques viewed thousands of unique, natural videos. We show that our dataset can be used for benchmarking encoding models of dorsal stream neuronal responses and reconstructing visual input from neural activity.",
+            "categories": "q-bio.NC",
+            "comment": "21 pages, 10 figures, Advances in Neural Information Processing Systems 38 (NeurIPS 2025) Datasets and Benchmarks Track"
+          },
+          "analysis": {
+            "problem_statement": "The lack of large-scale datasets for modeling neuronal activity in the dorsal stream of primate visual cortex hinders the development of effective encoding models.",
+            "bottleneck_addressed": "Data scarcity and lack of benchmarking datasets for dorsal stream neural networks",
+            "executive_summary": "This paper addresses the long-standing challenge of modeling the dorsal stream of primate visual cortex by introducing STSBench, a large-scale dataset of single neuron recordings. This dataset enables the development and evaluation of encoding models for dorsal stream neuronal responses, shedding light on the neural mechanisms underlying spatial relations and motion processing.",
+            "key_metrics": {
+              "primary_metric": "50-fold increase in the number of neurons recorded in the dorsal stream",
+              "metric_value": "2,000 neurons",
+              "baseline": "Existing dorsal stream datasets",
+              "improvement_percentage": "N/A"
+            },
+            "technical_breakdown": {
+              "method": "STSBench was collected by recording single neuron activity in the superior temporal sulcus (STS) of Rhesus macaques while they viewed thousands of unique, natural videos.",
+              "architecture": "The dataset is designed for benchmarking encoding models, which can be implemented using convolutional neural networks (CNNs) or other neural network architectures.",
+              "implementation_details": "The dataset includes a large-scale, single neuron recording from over 2,000 neurons, collected using electrophysiology techniques.",
+              "code_complexity": "The computational complexity of training and evaluating encoding models on STSBench is likely high due to the large number of neurons and videos in the dataset."
+            },
+            "relevance_tags": [
+              "neural networks",
+              "computer vision",
+              "dorsal stream",
+              "primate visual cortex",
+              "dataset"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-07-20T03:36:04.632959",
+          "conference_info": {
+            "conference": "NeurIPS",
+            "year": "2025",
+            "comment": "21 pages, 10 figures, Advances in Neural Information Processing Systems 38 (NeurIPS 2025) Datasets and Benchmarks Track",
+            "raw_comment": "21 pages, 10 figures, Advances in Neural Information Processing Systems 38 (NeurIPS 2025) Datasets and Benchmarks Track",
+            "category": "General ML/AI",
+            "rank": "A+"
+          }
+        },
+        {
+          "paper": {
+            "title": "RTL-Sequencer: Towards Scalable RTL Timing Prediction with the Sequence-based Paradigm",
+            "arxiv_id": "2607.15830v1",
+            "authors": [
+              "Ziyan Guo",
+              "Wenji Fang",
+              "Wenkai Li",
+              "Yuchao Wu",
+              "Shang Liu",
+              "Zhiyao Xie"
+            ],
+            "published": "2026-07-17T10:40:38Z",
+            "updated": "2026-07-17T10:40:38Z",
+            "summary": "Accurate timing prediction at the register-transfer level (RTL) is a longstanding challenge in design automation. Existing graph-based methods struggle with limited receptive fields, high complexity, and a lack of signal directionality. We present RTL-Sequencer, a novel sequence-based paradigm that enables scalable RTL timing prediction via linearizing logic cones by breadth-first traversal and applying modern linear sequence models. Furthermore, sequence models are customized by four synergistic techniques, including sequence shuffling, bidirectional modeling, differentiable modeling, and a hybrid graph-sequence architecture. Extensive experiments demonstrate significant improvements of RTL-Sequencer over state-of-the-art baselines, advancing early-stage timing optimization.",
+            "categories": "cs.AR",
+            "comment": "Accepted by Design Automation Conference (DAC) 2026"
+          },
+          "analysis": {
+            "problem_statement": "Accurate timing prediction at the register-transfer level (RTL) is a longstanding challenge in design automation, particularly for existing graph-based methods that struggle with limited receptive fields, high complexity, and a lack of signal directionality.",
+            "bottleneck_addressed": "Limited receptive fields and high complexity in graph-based methods for RTL timing prediction",
+            "executive_summary": "This paper presents RTL-Sequencer, a novel sequence-based paradigm that enables scalable RTL timing prediction by linearizing logic cones and applying customized sequence models. This approach significantly improves timing prediction accuracy, advancing early-stage timing optimization in design automation.",
+            "key_metrics": {
+              "primary_metric": "Significant improvements in RTL timing prediction accuracy",
+              "metric_value": "Not specified in the abstract",
+              "baseline": "State-of-the-art graph-based methods",
+              "improvement_percentage": "Not quantifiable from the abstract"
+            },
+            "technical_breakdown": {
+              "method": "RTL-Sequencer linearizes logic cones using breadth-first traversal and applies modern linear sequence models to enable scalable RTL timing prediction.",
+              "architecture": {
+                "sequence shuffling": "Technique to randomize sequence order for improved model generalization",
+                "bidirectional modeling": "Modeling approach that captures signal directionality",
+                "differentiable modeling": "Modeling approach that allows for end-to-end training",
+                "hybrid graph-sequence architecture": "Combination of graph-based and sequence-based models for improved accuracy"
+              },
+              "implementation_details": "RTL-Sequencer uses linear sequence models, such as recurrent neural networks (RNNs) or transformers, customized with the four synergistic techniques mentioned above.",
+              "code_complexity": "Not specified in the abstract, but likely involves complex neural network architectures and training procedures"
+            },
+            "relevance_tags": [
+              "Design Automation",
+              "RTL Timing Prediction",
+              "Sequence-based Paradigm",
+              "Linear Sequence Models",
+              "Graph-based Methods"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-07-20T03:32:46.800208",
+          "conference_info": {
+            "conference": "Design Automation Conference",
+            "year": "2026",
+            "comment": "Accepted by Design Automation Conference (DAC) 2026",
+            "raw_comment": "Accepted by Design Automation Conference (DAC) 2026",
+            "category": "Hardware & EDA",
+            "rank": "B"
+          }
+        },
+        {
+          "paper": {
+            "title": "PIXIE: A Zero-Shot texture-invariant 6D pose estimation framework for unseen objects with assembly defects",
+            "arxiv_id": "2607.16015v1",
+            "authors": [
+              "Leon Jungemeyer",
+              "Alejandro Maga\u00f1a",
+              "Gautham Mohan",
+              "Matthias Karl",
+              "Daniel Werdehausen"
+            ],
+            "published": "2026-07-17T14:48:43Z",
+            "updated": "2026-07-17T14:48:43Z",
+            "summary": "6D pose estimation remains a key challenge in robotics and computer vision, particularly in industrial environments. The deployment of currently available data-driven methods is often limited by resource-intensive data pipelines, reliance on textured 3D models, and sensitivity to geometric deviations caused by damages or assembly defects. We present PIXIE, a zero-shot framework that estimates the 6D pose of an object from an RGB image using only an untextured 3D model. Synthetic depth and normal maps are rendered from sampled reference viewpoints and matched to the query image via a pretrained cross-modality feature matcher. Matched keypoints are back-projected to obtain 2D--3D correspondences for PnP-based pose estimation. Relying exclusively on geometry makes the method inherently robust to lighting and texture variation, while correspondence filtering handles geometric deviations between the model and physical object. We evaluate on widely-used public benchmarks, reporting state-of-the-art results on texture-less objects without object-specific training, and introduce a novel dataset with assembly defects, texture variations, and occlusion to demonstrate real-world applicability.",
+            "categories": "cs.CV",
+            "comment": "This work has been accepted for publication in IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS) 2026. The final published version will be available via IEEE Xplore"
+          },
+          "analysis": {
+            "problem_statement": "Estimating the 6D pose of an object from an RGB image using only an untextured 3D model, without relying on textured 3D models or object-specific training.",
+            "bottleneck_addressed": "Data efficiency and robustness to geometric deviations caused by damages or assembly defects in 6D pose estimation.",
+            "executive_summary": "This paper presents PIXIE, a zero-shot framework that estimates the 6D pose of an object from an RGB image using only an untextured 3D model, addressing the limitations of current data-driven methods in industrial environments. This matters to the current AI landscape as it enables robust and efficient 6D pose estimation in real-world applications.",
+            "key_metrics": {
+              "primary_metric": "State-of-the-art results on texture-less objects without object-specific training",
+              "metric_value": "Not specified",
+              "baseline": "Current data-driven methods",
+              "improvement_percentage": "Not quantifiable"
+            },
+            "technical_breakdown": {
+              "method": "PIXIE uses a pretrained cross-modality feature matcher to match synthetic depth and normal maps rendered from sampled reference viewpoints to the query image. Matched keypoints are back-projected to obtain 2D--3D correspondences for PnP-based pose estimation.",
+              "architecture": {
+                "pretrained cross-modality feature matcher": "A neural network that learns to match features across different modalities (e.g., RGB and depth)",
+                "synthetic depth and normal maps": "Rendered from sampled reference viewpoints using the untextured 3D model",
+                "PnP-based pose estimation": "A classic computer vision algorithm for estimating the 6D pose of an object from 2D--3D correspondences"
+              },
+              "implementation_details": "PIXIE uses a combination of rendering, feature matching, and PnP-based pose estimation to estimate the 6D pose of an object. The method relies on geometric information only, making it inherently robust to lighting and texture variation.",
+              "code_complexity": "The computational complexity of PIXIE is O(n^2) due to the feature matching step, where n is the number of keypoints. The training time of the pretrained cross-modality feature matcher is not specified."
+            },
+            "relevance_tags": [
+              "6D pose estimation",
+              "zero-shot learning",
+              "texture-invariant",
+              "assembly defects",
+              "industrial robotics"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-07-20T03:34:21.586350",
+          "conference_info": {
+            "conference": "Intelligent Robots and Systems",
+            "year": "2026",
+            "comment": "This work has been accepted for publication in IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS) 2026. The final published version will be available via IEEE Xplore",
+            "raw_comment": "This work has been accepted for publication in IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS) 2026. The final published version will be available via IEEE Xplore",
+            "category": "Robotics",
+            "rank": "A"
+          }
+        },
+        {
+          "paper": {
+            "title": "DPNeXt: A Lightweight Multi-Scale Feature Fusion Framework for Efficient ViT-Based Multi-Task Dense Prediction",
+            "arxiv_id": "2607.16012v1",
+            "authors": [
+              "Jehun Kang",
+              "Jungha Wang",
+              "Youngjun Hwang",
+              "David Hyunchul Shim"
+            ],
+            "published": "2026-07-17T14:46:39Z",
+            "updated": "2026-07-17T14:46:39Z",
+            "summary": "Multi-Task Learning (MTL) in robotics perception systems supports comprehensive 3D spatial scene understanding by integrating semantic segmentation and depth estimation. While Vision Foundation Models (VFMs) are increasingly adopted as robust feature encoders, existing decoding strategies present a critical bottleneck. To address this, we propose DPNeXt, a streamlined multi-scale feature fusion decoder and efficient alternative to the standard Dense Prediction Transformer (DPT). DPNeXt uses dual depthwise separable inverted bottlenecks to improve frozen VFM utilization through fusion-centric decoding and independent task modularization. To further mitigate negative inductive transfer between tasks, we introduce the Multi-Task Boundary Guidance (MTBG) strategy. Unlike prior boundary-aware methods that add fusion modules or gating, MTBG applies symmetric boundary-focused supervision to encourage geometric consistency without extra annotation or inference cost. Experiments on Cityscapes show that DPNeXt-S outperforms prior state-of-the-art (SOTA) MTL models, while DPNeXt-B further improves the overall performance and achieves the best results among the compared methods. On NYUv2, DPNeXt-B also achieves the best semantic segmentation and depth estimation results among the compared methods while requiring substantially fewer trainable parameters than prior large-scale MTL models. Compared with the standard DPT, DPNeXt-S reduces trainable parameters by 78.6% and achieves the fastest inference speed among the compared models on resource-constrained laptop hardware. The source code, model checkpoints, and a demo video will be made available at https://github.com/kangjehun/DPNeXt.",
+            "categories": "cs.CV",
+            "comment": "8 pages, 5 figures. Accepted to the 2026 IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS 2026)"
+          },
+          "analysis": {
+            "problem_statement": "The paper addresses the limitation of existing decoding strategies in Multi-Task Learning (MTL) for robotics perception systems, which hinders comprehensive 3D spatial scene understanding.",
+            "bottleneck_addressed": "The paper addresses the bottleneck of decoding strategies in MTL, specifically the inefficient utilization of frozen Vision Foundation Models (VFMs) and the negative inductive transfer between tasks.",
+            "executive_summary": "This paper proposes a lightweight multi-scale feature fusion framework, DPNeXt, which improves the efficiency of MTL for robotics perception systems by reducing trainable parameters and achieving faster inference speeds. This matters to the current AI landscape as it enables more efficient and accurate 3D spatial scene understanding, which is crucial for robotics and autonomous systems.",
+            "key_metrics": {
+              "primary_metric": "DPNeXt-S reduces trainable parameters by 78.6% compared to the standard DPT.",
+              "metric_value": 78.6,
+              "baseline": "Standard DPT",
+              "improvement_percentage": "78.6%"
+            },
+            "technical_breakdown": {
+              "method": "DPNeXt uses dual depthwise separable inverted bottlenecks to improve frozen VFM utilization through fusion-centric decoding and independent task modularization.",
+              "architecture": "Key architectural components include dual depthwise separable inverted bottlenecks, multi-scale feature fusion, and the Multi-Task Boundary Guidance (MTBG) strategy.",
+              "implementation_details": "The paper uses symmetric boundary-focused supervision to encourage geometric consistency without extra annotation or inference cost.",
+              "code_complexity": "The computational complexity of DPNeXt is reduced due to the use of depthwise separable inverted bottlenecks, which enables faster inference speeds and reduced trainable parameters."
+            },
+            "relevance_tags": [
+              "Multi-Task Learning",
+              "Vision Foundation Models",
+              "Robotics Perception",
+              "Efficient Inference",
+              "Lightweight Architecture"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-07-20T03:32:02.686778",
+          "conference_info": {
+            "conference": "Intelligent Robots and Systems",
+            "year": "2026",
+            "comment": "8 pages, 5 figures. Accepted to the 2026 IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS 2026)",
+            "raw_comment": "8 pages, 5 figures. Accepted to the 2026 IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS 2026)",
+            "category": "Robotics",
+            "rank": "A"
+          }
+        },
+        {
+          "paper": {
+            "title": "Embodied Active Learning under Limited Annotation and Navigation Budget for Object Detection",
+            "arxiv_id": "2607.15974v1",
+            "authors": [
+              "Hadrien Crassous",
+              "Mohamed Yassine Kabouri",
+              "Minahil Raza",
+              "Joni Pajarinen",
+              "Riad Akrour"
+            ],
+            "published": "2026-07-17T14:07:46Z",
+            "updated": "2026-07-17T14:07:46Z",
+            "summary": "This paper studies how to adapt a computer vision object detector to an unknown environment under both a robot navigation time and annotation budget constraint. Our approach selects informative robot trajectories and image samples to retrain the detector, explicitly targeting its failure cases. Formally, the approach is an embodied variant of batch active learning, where at each round an agent has a limited navigation budget to collect candidate samples and a limited annotation budget for the most relevant images. We leverage spatial consistency to identify images with inconsistent labels, which are likely to provide the greatest improvement to the vision model. We evaluate the approach using different active learning objectives on large scenes from the AI2-THOR simulator and on a real-world setup using a Boston Dynamics Spot robot with the real-time object detector YOLOv5. Through comparison against several baselines, our experimental results show that spatial inconsistency helps guide the agent and select relevant images without external supervision, achieving the highest detection accuracy at the end of the adaptation process under the same budget. The open-source project can be found at https://mkabouri.github.io/embodied-active-learning-od",
+            "categories": "cs.RO",
+            "comment": "Accepted at 2026 IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS)"
+          },
+          "analysis": {
+            "problem_statement": "The paper addresses the problem of adapting a computer vision object detector to an unknown environment under both a robot navigation time and annotation budget constraint.",
+            "bottleneck_addressed": "The paper addresses the 'Limited Data and Annotations' bottleneck in AI, specifically in the context of embodied active learning for object detection.",
+            "executive_summary": "This paper presents a novel approach to embodied active learning for object detection, which leverages spatial consistency to guide the agent in selecting relevant images without external supervision. The approach is evaluated on both simulated and real-world datasets, demonstrating its effectiveness in achieving high detection accuracy under limited budgets. This work has implications for the development of autonomous robots that can adapt to new environments with minimal human intervention.",
+            "key_metrics": {
+              "primary_metric": "Detection accuracy at the end of the adaptation process",
+              "metric_value": "Not explicitly stated in the paper, but implied to be high based on the comparison against baselines",
+              "baseline": "Several baselines, including random sampling and other active learning methods",
+              "improvement_percentage": "Not quantified in the paper, but implied to be significant based on the comparison against baselines"
+            },
+            "technical_breakdown": {
+              "method": "The approach is an embodied variant of batch active learning, where the agent selects informative robot trajectories and image samples to retrain the detector, targeting its failure cases. The agent leverages spatial consistency to identify images with inconsistent labels, which are likely to provide the greatest improvement to the vision model.",
+              "architecture": "The approach uses a combination of spatial consistency and active learning to guide the agent in selecting relevant images. The architecture is not explicitly described in the paper, but it is likely based on a standard object detection pipeline with modifications to incorporate the proposed approach.",
+              "implementation_details": "The paper uses the AI2-THOR simulator and a real-world setup using a Boston Dynamics Spot robot with the YOLOv5 object detector. The implementation details are not explicitly described in the paper, but it is likely based on standard computer vision and robotics libraries such as OpenCV and ROS.",
+              "code_complexity": "The code complexity is not explicitly quantified in the paper, but it is likely moderate to high due to the use of active learning and spatial consistency. The computational complexity is likely O(n^2) due to the need to compute spatial consistency between images."
+            },
+            "relevance_tags": [
+              "Active Learning",
+              "Embodied AI",
+              "Object Detection",
+              "Robotics",
+              "Computer Vision"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-07-20T03:34:32.776844",
+          "conference_info": {
+            "conference": "Intelligent Robots and Systems",
+            "year": "2026",
+            "comment": "Accepted at 2026 IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS)",
+            "raw_comment": "Accepted at 2026 IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS)",
+            "category": "Robotics",
+            "rank": "A"
+          }
+        },
+        {
+          "paper": {
+            "title": "Beyond Frontiers: Scene-Anomaly Guided Autonomous Exploration",
+            "arxiv_id": "2607.15828v1",
+            "authors": [
+              "Akash Kumbar",
+              "Abhinav Raundhal",
+              "Madhava Krishna"
+            ],
+            "published": "2026-07-17T10:38:27Z",
+            "updated": "2026-07-17T10:38:27Z",
+            "summary": "Autonomous exploration of unknown 3D environments is traditionally driven by coverage-maximizing geometric heuristics. However, these methods typically determine exploration targets without considering the underlying structural context. This leads to inefficient trajectories often limiting the fidelity of the final 3D reconstruction. To bridge the gap between spatial coverage and reconstruction quality, we introduce a novel paradigm: reframing exploration as a geometric anomaly minimization problem. We present SCAGE: SCene Anomaly Guided Exploration, a novel autonomous exploration framework that operates directly on unstructured 3D point clouds. Instead of blindly chasing volumetric boundaries, we equip the robot with a foundational understanding of standard indoor architecture. As the robot navigates, it continuously evaluates its live 3D observations against these learned expectations. When the incoming geometry contradicts the learned priors of a typical indoor environment, such as a fragmented wall or a partial table, the system flags these regions as scene anomalies. These geometric inconsistencies act as a guiding signal, naturally drawing the robot to investigate and resolve these structural anomalies from optimal vantage points. By actively targeting poorly reconstructed regions rather than just empty space, our approach seamlessly couples spatial discovery with high-fidelity mapping. Extensive evaluations demonstrate that SCAGE achieves superior volumetric coverage (~90% in all scenes) and higher 3D reconstruction quality compared to state-of-the-art baselines.",
+            "categories": "cs.RO",
+            "comment": "Accepted in IEEE/RSJ IROS 2026. Project page: https://beyondfrontiers.github.io/"
+          },
+          "analysis": {
+            "problem_statement": "The paper addresses the problem of efficiently exploring unknown 3D environments to achieve high-fidelity mapping.",
+            "bottleneck_addressed": "The AI bottleneck addressed is the inefficient exploration of unknown environments, which is a common issue in robotics and computer vision.",
+            "executive_summary": "This paper presents a novel approach to autonomous exploration, SCAGE, which leverages scene anomaly detection to guide the robot towards poorly reconstructed regions, resulting in superior volumetric coverage and higher 3D reconstruction quality. This matters to the current AI landscape as it enables more accurate and efficient exploration of complex environments, with applications in robotics, computer vision, and autonomous systems.",
+            "key_metrics": {
+              "primary_metric": "Superior volumetric coverage (~90% in all scenes)",
+              "metric_value": "~90%",
+              "baseline": "State-of-the-art baselines",
+              "improvement_percentage": "Not quantified"
+            },
+            "technical_breakdown": {
+              "method": "SCAGE operates by reframing exploration as a geometric anomaly minimization problem, where the robot continuously evaluates its live 3D observations against learned expectations of standard indoor architecture. Scene anomalies are detected when the incoming geometry contradicts these learned priors, guiding the robot to investigate and resolve these structural anomalies from optimal vantage points.",
+              "architecture": "The SCAGE framework consists of a 3D point cloud processing module, a scene anomaly detection module, and a navigation module.",
+              "implementation_details": "The scene anomaly detection module uses a learned prior model of standard indoor architecture, which is trained on a dataset of 3D point clouds. The navigation module uses a graph-based approach to plan the robot's trajectory, taking into account the detected scene anomalies.",
+              "code_complexity": "The computational complexity of SCAGE is O(n), where n is the number of 3D points in the point cloud. The training time for the learned prior model is not specified, but it is likely to be significant due to the complexity of the task."
+            },
+            "relevance_tags": [
+              "Autonomous Exploration",
+              "Scene Anomaly Detection",
+              "3D Reconstruction",
+              "Robotics",
+              "Computer Vision"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-07-20T03:35:08.013447",
+          "conference_info": {
+            "conference": "IROS",
+            "year": "2026",
+            "comment": "Accepted in IEEE/RSJ IROS 2026. Project page: https://beyondfrontiers.github.io/",
+            "raw_comment": "Accepted in IEEE/RSJ IROS 2026. Project page: https://beyondfrontiers.github.io/",
+            "category": "Robotics",
+            "rank": "A"
+          }
+        },
+        {
+          "paper": {
+            "title": "Event3R: Asynchronous-to-Global 3D Reconstruction from Event Camera via Spatial-Temporal Feature Aggregation",
+            "arxiv_id": "2607.15727v1",
+            "authors": [
+              "Jian Huang",
+              "Haotian Shen",
+              "Xinhao Lou",
+              "Chengrui Dong",
+              "Wenpu Li",
+              "Peidong Liu"
+            ],
+            "published": "2026-07-17T08:04:43Z",
+            "updated": "2026-07-17T08:04:43Z",
+            "summary": "Robust 3D reconstruction is essential for robotics and embodied perception. Recent feed-forward approaches such as DUSt3R have demonstrated impressive progress in dense 3D reconstruction from RGB images, achieving global geometric consistency and strong generalization. However, extending such dense 3D reconstruction to event cameras remains challenging due to their asynchronous, sparse, and highly dynamic nature, as well as the lack of large-scale, well-labeled datasets. In this work, we introduce Event3R, a feed-forward framework that directly maps asynchronous event streams to globally consistent 3D point clouds. Event3R represents incoming events as spatial-temporal voxels, enabling time-aware feature integration through a temporal attention module that enhances the module's temporal feature learning. To further strengthen temporal representation learning and reduce reliance on labeled data, we propose a Masked Bin Modeling (MBM) strategy for self-supervised pre-training, enabling robust temporal representation learning with minimal labeled data, and retain it as an auxiliary fine-tuning objective. In addition, contrastive alignment and consistency regularization losses are incorporated during fine-tuning to reinforce structural correspondence and temporal coherence across views. Extensive experiments on both synthetic and real-world benchmarks demonstrate that Event3R achieves robust, temporally consistent, and globally aligned 3D reconstructions, significantly outperforming existing event-based methods.",
+            "categories": "cs.CV",
+            "comment": "accepted to IROS 2026"
+          },
+          "analysis": {
+            "problem_statement": "Event3R addresses the challenge of reconstructing 3D scenes from asynchronous event streams generated by event cameras, which are inherently sparse and dynamic.",
+            "bottleneck_addressed": "The problem of learning robust and temporally consistent 3D representations from asynchronous event data, which is a key bottleneck in event-based computer vision.",
+            "executive_summary": "Event3R presents a novel feed-forward framework for 3D reconstruction from event cameras, leveraging spatial-temporal feature aggregation and self-supervised pre-training to achieve robust and temporally consistent results. This work has significant implications for robotics and embodied perception, where accurate 3D reconstruction is essential. By addressing the challenges of event-based data, Event3R opens up new possibilities for real-world applications.",
+            "key_metrics": {
+              "primary_metric": "Robust 3D reconstruction with global geometric consistency",
+              "metric_value": "Not explicitly stated",
+              "baseline": "Existing event-based methods",
+              "improvement_percentage": "Not quantifiable"
+            },
+            "technical_breakdown": {
+              "method": "Event3R represents incoming events as spatial-temporal voxels, enabling time-aware feature integration through a temporal attention module. The framework also incorporates a Masked Bin Modeling (MBM) strategy for self-supervised pre-training and contrastive alignment and consistency regularization losses during fine-tuning.",
+              "architecture": "The Event3R architecture consists of the following key components: (1) Spatial-Temporal Voxelization, (2) Temporal Attention Module, (3) Masked Bin Modeling (MBM) strategy, and (4) Contrastive Alignment and Consistency Regularization losses.",
+              "implementation_details": "The paper uses a feed-forward architecture with a temporal attention module, which is a type of neural network that learns to weigh the importance of different temporal features. The MBM strategy is a self-supervised pre-training method that uses masked bin modeling to learn robust temporal representations. Contrastive alignment and consistency regularization losses are used during fine-tuning to reinforce structural correspondence and temporal coherence across views.",
+              "code_complexity": "The code complexity of Event3R is likely high due to the use of complex neural network architectures and self-supervised pre-training methods. However, the paper does not provide explicit details on the computational complexity or training time implications."
+            },
+            "relevance_tags": [
+              "3D reconstruction",
+              "event cameras",
+              "asynchronous data",
+              "spatial-temporal feature aggregation",
+              "self-supervised learning",
+              "contrastive learning"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-07-20T03:35:30.834353",
+          "conference_info": {
+            "conference": "IROS",
+            "year": "2026",
+            "comment": "accepted to IROS 2026",
+            "raw_comment": "accepted to IROS 2026",
+            "category": "Robotics",
+            "rank": "A"
+          }
+        },
+        {
+          "paper": {
+            "title": "A Generative Partially Specified Finite State Machine Approach to Complex Behaviour Planning",
+            "arxiv_id": "2607.15674v1",
+            "authors": [
+              "Kalana Ratnayake",
+              "Michael Pritchard",
+              "David Hinwood",
+              "Maleen Jayasuriya",
+              "Damith Herath"
+            ],
+            "published": "2026-07-17T06:33:31Z",
+            "updated": "2026-07-17T06:33:31Z",
+            "summary": "Autonomous robots operating in dynamic environments require behaviour planning systems that combine reactivity, interpretability, and adaptability. While Large Language Models have been successfully integrated with Behaviour Trees for dynamic replanning, Finite State Machines, despite their widespread adoption and computational efficiency, remain unexplored for generative approaches. We propose a Generative Partially Specified Finite State Machine (GPSFSM) neurosymbolic architecture that utilises the symbolic and semantic structure of FSMs, including states and event-triggered transitions, to implement Behaviour Planning. This paper introduces the first GPSFSM framework for robotics, featuring Fabric, an FSM engine that parses, validates, and executes behaviour plans that contain Sequential, Recovery, Parallel-Any, and Parallel-All control structures. We extend the Capabilities2 package in ROS2 with an asynchronous event system for behaviour chaining and runtime parameter injection for configurable execution, addressing the ad-hoc function representations that limit current generative systems. PromptTools provides a unified ROS 2 interface to local and cloud LLMs, with prompt buffering, enabling dynamic asynchronous composition of task and context information. Together, these components enable standardised semantic capability descriptions for robot-agnostic development. Experimental evaluation on navigation tasks demonstrates that our GPSFSM approach achieves consistently higher plan-generation success rates than the state-of-the-art BTGenBot system, particularly excelling in zero-shot scenarios where BTs typically struggle, while maintaining comparable or lower planning latency to frontier LLMs. We also demonstrate that our system can generate complex behaviours. We release an open-source ROS2 stack that makes generative FSM planning practical and reproducible for robotic systems.",
+            "categories": "cs.RO",
+            "comment": "Accepted for publication in the 2026 IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS). 9 pages, 10 figures, 1 table"
+          },
+          "analysis": {
+            "problem_statement": "Developing behaviour planning systems for autonomous robots that combine reactivity, interpretability, and adaptability in dynamic environments.",
+            "bottleneck_addressed": "The lack of exploration of Finite State Machines (FSMs) in generative approaches for behaviour planning in robotics.",
+            "executive_summary": "This paper proposes a Generative Partially Specified Finite State Machine (GPSFSM) architecture that leverages the symbolic and semantic structure of FSMs for behaviour planning in robotics. The GPSFSM approach achieves higher plan-generation success rates and comparable planning latency to state-of-the-art systems, making it a significant contribution to the field of robotics.",
+            "key_metrics": {
+              "primary_metric": "Plan-generation success rates",
+              "metric_value": "Higher than BTGenBot system",
+              "baseline": "BTGenBot system",
+              "improvement_percentage": "Not quantified"
+            },
+            "technical_breakdown": {
+              "method": "The GPSFSM approach utilises the symbolic and semantic structure of FSMs, including states and event-triggered transitions, to implement behaviour planning. The Fabric FSM engine parses, validates, and executes behaviour plans that contain Sequential, Recovery, Parallel-Any, and Parallel-All control structures.",
+              "architecture": "The GPSFSM architecture consists of four key components: Fabric (FSM engine), Capabilities2 (ROS2 package extension), PromptTools (LLM interface), and a unified ROS 2 interface.",
+              "implementation_details": "The Fabric FSM engine uses a neurosymbolic architecture that integrates symbolic and semantic structure of FSMs with neural networks. The Capabilities2 package extension provides an asynchronous event system for behaviour chaining and runtime parameter injection for configurable execution. PromptTools provides a unified ROS 2 interface to local and cloud LLMs with prompt buffering.",
+              "code_complexity": "The computational complexity of the GPSFSM approach is not explicitly stated, but the use of neurosymbolic architecture and asynchronous event systems suggests a moderate to high level of complexity."
+            },
+            "relevance_tags": [
+              "Robotics",
+              "Behaviour Planning",
+              "Finite State Machines",
+              "Generative Models",
+              "Neurosymbolic Architecture"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-07-20T03:36:12.599924",
+          "conference_info": {
+            "conference": "Intelligent Robots and Systems",
+            "year": "2026",
+            "comment": "Accepted for publication in the 2026 IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS). 9 pages, 10 figures, 1 table",
+            "raw_comment": "Accepted for publication in the 2026 IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS). 9 pages, 10 figures, 1 table",
+            "category": "Robotics",
+            "rank": "A"
+          }
+        },
+        {
+          "paper": {
+            "title": "IMBench: A Benchmark for Intuitive Robotic Manipulation",
+            "arxiv_id": "2607.15641v1",
+            "authors": [
+              "Anurag Maurya",
+              "Sukhvansh Jain",
+              "Prajwal Avhad",
+              "Gautham Balachandran",
+              "Ziyi Zhou",
+              "Atharva Kshirsagar",
+              "Satyam Singh",
+              "Bowen Li. Rishabh Mukund",
+              "Ritul Singh",
+              "Jatin Vira",
+              "Suvonil Chatterjee",
+              "Devesh K. Jha"
+            ],
+            "published": "2026-07-17T05:34:29Z",
+            "updated": "2026-07-17T05:34:29Z",
+            "summary": "Humans combine reasoning and motor control to solve complex manipulation tasks under diverse constraints. They build an understanding of the physical world that helps them convert reasoning into actions and quickly adapt to new scenes, tasks, and rules. We refer to this capability as intuitive manipulation. Existing benchmarks fail to capture this integration: they evaluate physical reasoning in isolation from execution, or measure policy performance without requiring explicit reasoning. We introduce IMBENCH, a benchmark designed to evaluate intuitive manipulation as an integrated capability spanning perception, physical reasoning, action generation, and iterative execution. Our tasks require models to infer task-relevant physical structure and generate feasible action sequences under explicit constraints, including contact-rich manipulation, tool use, and multi-stage dependencies. We introduce a benchmark of 35 tasks, 14K filtered trajectories, and scalable tools for generating diverse scenarios. Experiments reveal a consistent gap: vision language models show partial physical reasoning ability but fail to produce executable plans, while state-of-the-art vision-language-action models struggle to satisfy task constraints and generalize across scenarios. These results identify intuitive manipulation as a missing axis in current foundation models and generalist robot policies, and position IMBENCH as a step toward evaluating and enabling more integrated, adaptive physical intelligence.",
+            "categories": "cs.RO",
+            "comment": "Accepted to SemRob Workshop, RSS 2026. Project Website: https://imbench.org/"
+          },
+          "analysis": {
+            "problem_statement": "Developing AI models that can perform intuitive robotic manipulation tasks, which require integrating perception, physical reasoning, action generation, and iterative execution.",
+            "bottleneck_addressed": "The lack of integrated physical reasoning and execution capabilities in current AI models, particularly in vision-language models and state-of-the-art vision-language-action models.",
+            "executive_summary": "This paper introduces IMBench, a benchmark designed to evaluate intuitive manipulation as an integrated capability. The results highlight a significant gap in current AI models' ability to reason physically and generate executable plans, positioning IMBench as a step toward enabling more integrated physical intelligence. This matters to the current AI landscape as it identifies a critical missing axis in foundation models and generalist robot policies.",
+            "key_metrics": {
+              "primary_metric": "Consistent gap in intuitive manipulation capabilities between vision language models and state-of-the-art vision-language-action models.",
+              "metric_value": "Not explicitly quantified",
+              "baseline": "Vision language models and state-of-the-art vision-language-action models",
+              "improvement_percentage": "N/A"
+            },
+            "technical_breakdown": {
+              "method": "IMBench is designed to evaluate intuitive manipulation by requiring models to infer task-relevant physical structure and generate feasible action sequences under explicit constraints. This is achieved through a benchmark of 35 tasks, 14K filtered trajectories, and scalable tools for generating diverse scenarios.",
+              "architecture": "The benchmark architecture consists of perception, physical reasoning, action generation, and iterative execution components.",
+              "implementation_details": "The paper does not provide specific implementation details, but mentions the use of filtered trajectories and scalable tools for generating diverse scenarios.",
+              "code_complexity": "Not explicitly quantified, but the benchmark is designed to be scalable and generate diverse scenarios, suggesting a high degree of complexity."
+            },
+            "relevance_tags": [
+              "robotics",
+              "physical reasoning",
+              "vision-language models",
+              "intuitive manipulation"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-07-20T03:33:10.607492",
+          "conference_info": {
+            "conference": "RSS",
+            "year": "2026",
+            "comment": "Accepted to SemRob Workshop, RSS 2026. Project Website: https://imbench.org/",
+            "raw_comment": "Accepted to SemRob Workshop, RSS 2026. Project Website: https://imbench.org/",
+            "category": "Robotics",
+            "rank": "A+"
+          }
+        },
+        {
+          "paper": {
+            "title": "Scalable Open-Source Visuotactile Sensor for 6-Axis Contact Wrench Estimation in Tensegrity Robots",
+            "arxiv_id": "2607.15633v1",
+            "authors": [
+              "Wenzhe Tong",
+              "Jonathan Mi",
+              "Xili Yi",
+              "Nima Fazeli",
+              "Xiaonan Huang"
+            ],
+            "published": "2026-07-17T05:21:06Z",
+            "updated": "2026-07-17T05:21:06Z",
+            "summary": "This paper presents a scalable, open-source visuotactile sensing system for tensegrity robots that enables six-axis wrench estimation and contact detection. The proposed endcap sensor integrates an elastomeric shell, a 3D-printed thermoplastic polyurethane (TPU) interface, and a rigid base housing an embedded camera and LED illumination ring. A novel gyroid-infill bonding technique is introduced to form a durable elastomer-TPU interface without adhesives, yielding a lightweight and modular design compatible with large-scale tensegrity structures. A tactile-to-wrench neural network maps shear vector fields to six-dimensional force and torque measurements. Experimental results demonstrate accurate and stable wrench estimation with a mean squared error (MSE) of 0.1531 on static validation data and out-of-domain generalization under dynamic motion. Furthermore, full-system integration on a 12 kg tensegrity robot confirms the sensor's ability to reliably identify ground contacts. The system substantially improves the practicality of tactile feedback for tensegrity robots, offering a low-cost, reproducible, and physically interpretable pathway toward contact-aware proprioception and state estimation. Open source files are available at \\href{https://github.com/Jonathan-Twz/tensegrity-gelfoot}{github.com/Jonathan-Twz/tensegrity-gelfoot}",
+            "categories": "cs.RO",
+            "comment": "8 pages, 10 figures, IROS 2026"
+          },
+          "analysis": {
+            "problem_statement": "Developing a scalable, open-source visuotactile sensing system for tensegrity robots that enables six-axis wrench estimation and contact detection.",
+            "bottleneck_addressed": "Sensorimotor bottleneck in robotics, specifically the challenge of estimating contact forces and torques in complex, dynamic environments.",
+            "executive_summary": "This paper presents a novel visuotactile sensing system for tensegrity robots, enabling accurate six-axis wrench estimation and contact detection. This breakthrough improves the practicality of tactile feedback in robotics, offering a low-cost, reproducible, and physically interpretable pathway toward contact-aware proprioception and state estimation.",
+            "key_metrics": {
+              "primary_metric": "Mean Squared Error (MSE) of 0.1531 on static validation data",
+              "metric_value": 0.1531,
+              "baseline": "Unknown",
+              "improvement_percentage": "N/A"
+            },
+            "technical_breakdown": {
+              "method": "The proposed endcap sensor integrates an elastomeric shell, a 3D-printed thermoplastic polyurethane (TPU) interface, and a rigid base housing an embedded camera and LED illumination ring. A novel gyroid-infill bonding technique is introduced to form a durable elastomer-TPU interface without adhesives.",
+              "architecture": "The system consists of a tactile-to-wrench neural network that maps shear vector fields to six-dimensional force and torque measurements.",
+              "implementation_details": "The neural network is trained using a combination of static and dynamic data, and the system is integrated with a 12 kg tensegrity robot.",
+              "code_complexity": "The code complexity is moderate, with the implementation of a custom neural network architecture and a novel bonding technique. The training time is not specified, but the system is designed to be scalable and reproducible."
+            },
+            "relevance_tags": [
+              "Robotics",
+              "Tensegrity Robots",
+              "Visuotactile Sensing",
+              "Contact Detection",
+              "Wrench Estimation",
+              "Neural Networks"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-07-20T03:36:25.556706",
+          "conference_info": {
+            "conference": "IROS",
+            "year": "2026",
+            "comment": "8 pages, 10 figures, IROS 2026",
+            "raw_comment": "8 pages, 10 figures, IROS 2026",
+            "category": "Robotics",
+            "rank": "A"
+          }
+        },
+        {
+          "paper": {
+            "title": "A Model-Based Decoupling Strategy for Proprioception and Contact Sensing in an Architected Soft Manipulator",
+            "arxiv_id": "2607.15582v1",
+            "authors": [
+              "Francesco Stella",
+              "Annan Zhang",
+              "Cosimo Della Santina",
+              "Josie Hughes",
+              "Daniela Rus"
+            ],
+            "published": "2026-07-17T03:03:19Z",
+            "updated": "2026-07-17T03:03:19Z",
+            "summary": "Soft continuum robots require embedded sensing for proprioception and contact detection, yet integrating sensors into sparse, highly deformable architected structures remains challenging. We present a model-based strategy that decouples proprioceptive and contact signals from a common set of fluidic pressure sensors embedded in a soft architected segment. Each segment of the Innervated Trimmed Helicoid (ITH) contains six air channels routed in a localized zigzag pattern along the circumference. With only three principal kinematic degrees of freedom (axial compression, bending in x, bending in y), the six pressure readings form an overdetermined system. A piecewise constant curvature model maps pressures to shape, and Huber regression identifies outlier channels whose residuals indicate external contact. On a single ITH segment, this approach achieves proprioceptive shape estimation with a relative bending error of 0.11 +/- 0.02 and a contact detection rate of 97% across 178 trials. We integrate eight ITH segments into Air-Helix, a tendon-driven soft continuum manipulator, and present exploratory whole-arm demonstrations that include tactile teaching by demonstration, admittance-controlled force regulation, and tactile object reconstruction. The results suggest that localized fluidic innervation combined with model-based redundancy resolution is a practical path toward concurrent proprioception and contact sensing in architected soft robots.",
+            "categories": "cs.RO",
+            "comment": "Accepted for publication in the proceedings of the 2026 IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS)"
+          },
+          "analysis": {
+            "problem_statement": "Developing a soft continuum robot that can concurrently estimate its proprioception (shape and pose) and detect external contacts using a sparse set of fluidic pressure sensors.",
+            "bottleneck_addressed": "Sensorimotor integration and redundancy resolution in soft continuum robots.",
+            "executive_summary": "This paper presents a model-based decoupling strategy for proprioception and contact sensing in architected soft manipulators, addressing a key challenge in soft robotics. The approach achieves high accuracy in shape estimation and contact detection, enabling whole-arm demonstrations of tactile teaching, force regulation, and object reconstruction. This work has significant implications for the development of soft continuum robots with embedded sensing capabilities.",
+            "key_metrics": {
+              "primary_metric": "Relative bending error in proprioceptive shape estimation",
+              "metric_value": "0.11 +/- 0.02",
+              "baseline": "None specified",
+              "improvement_percentage": "N/A"
+            },
+            "technical_breakdown": {
+              "method": "The proposed approach uses a piecewise constant curvature model to map fluidic pressure readings to shape, and Huber regression to identify outlier channels indicating external contact.",
+              "architecture": "The Innervated Trimmed Helicoid (ITH) segment consists of six air channels routed in a localized zigzag pattern, with three principal kinematic degrees of freedom.",
+              "implementation_details": "The authors use a combination of mathematical modeling and machine learning techniques, including Huber regression and principal component analysis.",
+              "code_complexity": "The computational complexity of the proposed approach is relatively low, with a focus on efficient sensor data processing and model-based redundancy resolution."
+            },
+            "relevance_tags": [
+              "Soft robotics",
+              "Proprioception",
+              "Contact sensing",
+              "Sensorimotor integration",
+              "Redundancy resolution",
+              "Machine learning",
+              "Mathematical modeling"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-07-20T03:36:37.609060",
+          "conference_info": {
+            "conference": "Intelligent Robots and Systems",
+            "year": "2026",
+            "comment": "Accepted for publication in the proceedings of the 2026 IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS)",
+            "raw_comment": "Accepted for publication in the proceedings of the 2026 IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS)",
+            "category": "Robotics",
+            "rank": "A"
+          }
+        },
+        {
+          "paper": {
+            "title": "DSTAR: Accelerating Diffusion Transformers via Spatial and Temporal Redundancy Reduction",
+            "arxiv_id": "2607.15846v1",
+            "authors": [
+              "Chi Zhang",
+              "Jieru Zhao",
+              "Yu Feng",
+              "Chen Zhang",
+              "Quan Chen",
+              "Minyi Guo"
+            ],
+            "published": "2026-07-17T11:04:21Z",
+            "updated": "2026-07-17T11:04:21Z",
+            "summary": "Diffusion Transformers (DiTs) have been widely used in many tasks, including image synthesis, video generation, and content editing. However, their multi-iteration inference process leads to performance inefficiency and high energy consumption. Existing acceleration methods primarily focus on reducing temporal redundancy between adjacent timesteps, but often overlook the specific features of DiTs. As a result, these approaches either suffer from great accuracy degradation or fail to achieve high efficiency.   We present DSTAR, a software-hardware co-design framework that accelerates DiT inference by reducing spatial and temporal redundancy. At the algorithmic level, DSTAR introduces a fine-grained mixed-precision quantization method for differential activations in linear operations, significantly increasing the proportion of low-bit computations. Additionally, DSTAR incorporates a sparse attention reuse mechanism to minimize redundant computation in attention layers. For architectural support, we design a specialized hardware accelerator which achieves high efficiency in both latency and energy consumption. Evaluation on seven typical DiTs demonstrates that DSTAR achieves up to 7.33x latency speedup and 41.89x energy savings compared to an NVIDIA A100 GPU, and achieves up to 2.54x latency speedup and 3.68x energy savings compared to SOTA accelerators, without accuracy degradation.",
+            "categories": "cs.AR",
+            "comment": "Accepted to the 59th IEEE/ACM International Symposium on Microarchitecture (MICRO 2026)"
+          },
+          "analysis": {
+            "problem_statement": "Diffusion Transformers (DiTs) suffer from performance inefficiency and high energy consumption due to their multi-iteration inference process.",
+            "bottleneck_addressed": "Computational efficiency and energy consumption in Diffusion Transformers.",
+            "executive_summary": "DSTAR, a software-hardware co-design framework, addresses the performance inefficiency and high energy consumption of Diffusion Transformers by reducing spatial and temporal redundancy through fine-grained mixed-precision quantization and sparse attention reuse. This matters to the current AI landscape as it enables faster and more energy-efficient inference of DiTs, which are widely used in tasks such as image synthesis and video generation.",
+            "key_metrics": {
+              "primary_metric": "Latency speedup",
+              "metric_value": 7.33,
+              "baseline": "NVIDIA A100 GPU",
+              "improvement_percentage": "700%"
+            },
+            "technical_breakdown": {
+              "method": "DSTAR introduces a fine-grained mixed-precision quantization method for differential activations in linear operations, and a sparse attention reuse mechanism to minimize redundant computation in attention layers.",
+              "architecture": "DSTAR employs a specialized hardware accelerator designed to achieve high efficiency in both latency and energy consumption.",
+              "implementation_details": "The fine-grained mixed-precision quantization method uses a combination of 32-bit and 8-bit precision for activations, while the sparse attention reuse mechanism identifies and reuses attention weights across different timesteps.",
+              "code_complexity": "The computational complexity of DSTAR's fine-grained mixed-precision quantization method is O(n), where n is the number of activations, while the sparse attention reuse mechanism has a computational complexity of O(m), where m is the number of attention weights."
+            },
+            "relevance_tags": [
+              "Diffusion Transformers",
+              "Computational Efficiency",
+              "Energy Consumption",
+              "Hardware Acceleration",
+              "Software-Hardware Co-Design"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-07-20T03:36:47.662239",
+          "conference_info": {
+            "conference": "IEEE/ACM International Symposium on Microarchitecture",
+            "year": "2026",
+            "comment": "Accepted to the 59th IEEE/ACM International Symposium on Microarchitecture (MICRO 2026)",
+            "raw_comment": "Accepted to the 59th IEEE/ACM International Symposium on Microarchitecture (MICRO 2026)",
+            "category": "Systems & Architecture",
+            "rank": "A"
+          }
+        }
+      ],
+      "updated_at": "2026-07-20T03:36:48.677543"
     }
   }
 }
