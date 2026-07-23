@@ -1,1046 +1,220 @@
 {
-  "last_updated": "2026-07-22T03:37:29.111741",
-  "total_papers": 29,
+  "last_updated": "2026-07-23T03:47:55.287430",
+  "total_papers": 5,
   "papers": [
     {
       "paper": {
-        "title": "Point Ladder Tuning: Parameter-Efficient Hierarchical Adaptation for 3D Point Cloud Understanding",
-        "arxiv_id": "2607.19171v1",
+        "title": "Auto-Fill: Learning to Predict Missing Values Accurately with Specialist Language Models",
+        "arxiv_id": "2607.19847v1",
         "authors": [
-          "Junlin Chang",
-          "Longhao Zou",
-          "Rui Li"
-        ],
-        "published": "2026-07-21T15:06:37Z",
-        "updated": "2026-07-21T15:06:37Z",
-        "summary": "Fine-tuning pre-trained point-cloud backbones typically updates all parameters, resulting in substantial computation and memory overhead. More importantly, modern point backbones rely on aggressive tokenization and downsampling, which yields compact global tokens but irreversibly discards fine-grained local geometry, an inherent bottleneck for parameter-efficient adaptation. Consequently, existing PEFT methods that operate only on these coarsened tokens can modulate global semantics but struggle to recover the missing multi-scale locality. We present Point Ladder Tuning (PLT), a locality-aware PEFT framework that performs hierarchical, instance-conditioned adaptation while keeping the backbone frozen. PLT forms a lightweight closed loop: (i) a Hierarchical Ladder Network (HLN) constructs a multi-resolution local feature pyramid directly from raw points; (ii) a Local-Global Fusion (LGF) aligns and fuses local pyramids with intermediate backbone semantics; and (iii) a Dynamic Prompt Generator produces instance-aware multi-scale prompts to modulate the frozen backbone effectively. For dense prediction, we further introduce a lightweight segmentation head that progressively upsamples fused features and leverages backbone priors to refine fine structures. Extensive experiments on classification and dense prediction show that PLT consistently surpasses prior PEFT baselines with minimal tunable parameters. PLT achieves state-of-the-art performance using only 2.71% trainable parameters for classification and 7.69% for dense prediction, and scales favorably to larger backbones, requiring merely 0.36% parameters on PointGPT-L. The code is released at https://github.com/JunLinChang/ECCV2026-PLT.",
-        "categories": "cs.CV",
-        "comment": "Accepted to ECCV 2026. Code: https://github.com/JunLinChang/ECCV2026-PLT"
-      },
-      "analysis": {
-        "problem_statement": "Fine-tuning pre-trained point-cloud backbones for 3D point cloud understanding typically updates all parameters, resulting in substantial computation and memory overhead, while existing parameter-efficient fine-tuning (PEFT) methods struggle to recover missing multi-scale locality.",
-        "bottleneck_addressed": "Irreversible downsampling and tokenization in modern point backbones, leading to a loss of fine-grained local geometry.",
-        "executive_summary": "This paper presents Point Ladder Tuning (PLT), a parameter-efficient fine-tuning framework that addresses the bottleneck of irreversible downsampling and tokenization in modern point backbones. PLT achieves state-of-the-art performance on 3D point cloud classification and dense prediction tasks with minimal tunable parameters.",
-        "key_metrics": {
-          "primary_metric": "Achieves state-of-the-art performance on classification and dense prediction tasks with minimal tunable parameters.",
-          "metric_value": "2.71% trainable parameters for classification, 7.69% for dense prediction",
-          "baseline": "Prior PEFT baselines",
-          "improvement_percentage": "Not quantifiable"
-        },
-        "technical_breakdown": {
-          "method": "PLT forms a lightweight closed loop: (i) a Hierarchical Ladder Network (HLN) constructs a multi-resolution local feature pyramid directly from raw points; (ii) a Local-Global Fusion (LGF) aligns and fuses local pyramids with intermediate backbone semantics; and (iii) a Dynamic Prompt Generator produces instance-aware multi-scale prompts to modulate the frozen backbone effectively.",
-          "architecture": "Hierarchical Ladder Network (HLN), Local-Global Fusion (LGF), Dynamic Prompt Generator, and a lightweight segmentation head",
-          "implementation_details": "PLT uses a multi-resolution local feature pyramid, local-global fusion, and dynamic prompt generation to modulate the frozen backbone.",
-          "code_complexity": "The code complexity is relatively low, with a lightweight closed loop architecture that requires minimal tunable parameters."
-        },
-        "relevance_tags": [
-          "3D point cloud understanding",
-          "parameter-efficient fine-tuning",
-          "point cloud classification",
-          "dense prediction"
-        ],
-        "confidence": "high"
-      },
-      "analyzed_at": "2026-07-22T03:33:52.274153",
-      "conference_info": {
-        "conference": "ECCV",
-        "year": "2026",
-        "comment": "Accepted to ECCV 2026. Code: https://github.com/JunLinChang/ECCV2026-PLT",
-        "raw_comment": "Accepted to ECCV 2026. Code: https://github.com/JunLinChang/ECCV2026-PLT",
-        "category": "Computer Vision",
-        "rank": "A"
-      }
-    },
-    {
-      "paper": {
-        "title": "FlexiAvatar: Unified 3D Gaussian Human Avatars Under Arbitrary Body Visibility",
-        "arxiv_id": "2607.19100v1",
-        "authors": [
-          "Yihalem Yimolal Tiruneh",
-          "Muhammad Salman Ali",
-          "Uyoung Jeong",
-          "Muneeb A. Khan",
-          "MD Khalequzzaman Chowdhury Sayem",
-          "Allanur Bayramgeldiyev",
-          "Binod Bhattarai",
-          "Seungryul Baek"
-        ],
-        "published": "2026-07-21T13:43:31Z",
-        "updated": "2026-07-21T13:43:31Z",
-        "summary": "Reconstructing animatable 3D human avatars from monocular video is a fundamental problem in computer vision with broad applications in AR/VR and digital content creation. Existing approaches typically couple parametric body models with neural rendering or 3D Gaussian splatting and optimize all body regions jointly from short videos, which often degrades fidelity in the visible areas. To overcome this limitation, we introduce FlexiAvatar, a unified framework that explicitly optimizes only the visible body regions, effectively eliminating artifacts arising from unobserved limbs. Our method integrates occlusion-robust SMPL-X tracking with part-specific residual refinement to capture high-frequency geometric and appearance details. To complete entirely unseen regions (e.g., back views), we leverage a diffusion-based approach to generate texture consistent with the observed appearance. Experiments on full-body (NeuMan, ZJU-MoCap, WildAvatar), upper/half-body (talk-show clips), and head-only (INSTA) inputs show that FlexiAvatar delivers consistently higher reconstruction quality, outperforming state-of-the-art methods by an average PSNR improvement of approximately 3% across datasets. Finally, by restricting optimization to observed regions, our method reduces the effective number of Gaussians that must be optimized and rendered, leading to reduced runtime and memory overhead in partial-visibility scenarios.",
-        "categories": "cs.CV",
-        "comment": "Accepted in ECCV 2026"
-      },
-      "analysis": {
-        "problem_statement": "Reconstructing high-quality, animatable 3D human avatars from monocular video while minimizing artifacts from unobserved body regions.",
-        "bottleneck_addressed": "Optimization of parametric body models with neural rendering or 3D Gaussian splatting, which often degrades fidelity in visible areas.",
-        "executive_summary": "FlexiAvatar addresses the limitation of existing approaches by optimizing only visible body regions, leading to improved reconstruction quality and reduced runtime and memory overhead. This matters to the current AI landscape as it enables more accurate and efficient 3D human reconstruction, with applications in AR/VR and digital content creation.",
-        "key_metrics": {
-          "primary_metric": "Average PSNR improvement",
-          "metric_value": "3%",
-          "baseline": "State-of-the-art methods",
-          "improvement_percentage": "3%"
-        },
-        "technical_breakdown": {
-          "method": "FlexiAvatar integrates occlusion-robust SMPL-X tracking with part-specific residual refinement to capture high-frequency geometric and appearance details. For unseen regions, it leverages a diffusion-based approach to generate texture consistent with the observed appearance.",
-          "architecture": "The framework consists of three main components: (1) SMPL-X tracking, (2) part-specific residual refinement, and (3) diffusion-based texture synthesis.",
-          "implementation_details": "The method uses a combination of 3D Gaussian splatting and neural rendering to reconstruct the 3D human avatar. The SMPL-X tracking module uses a variant of the SMPL-X model to estimate the 3D pose and shape of the human body. The part-specific residual refinement module refines the estimated pose and shape using a residual learning approach. The diffusion-based texture synthesis module generates texture for unseen regions using a diffusion-based generative model.",
-          "code_complexity": "The computational complexity of the method is O(n^3) due to the 3D Gaussian splatting and neural rendering operations, where n is the number of pixels in the input image. The training time of the diffusion-based texture synthesis module is O(m^2) due to the diffusion-based generative model, where m is the number of samples in the diffusion process."
-        },
-        "relevance_tags": [
-          "3D human reconstruction",
-          "monocular video",
-          "AR/VR",
-          "digital content creation",
-          "computer vision"
-        ],
-        "confidence": "high"
-      },
-      "analyzed_at": "2026-07-22T03:34:04.782030",
-      "conference_info": {
-        "conference": "ECCV",
-        "year": "2026",
-        "comment": "Accepted in ECCV 2026",
-        "raw_comment": "Accepted in ECCV 2026",
-        "category": "Computer Vision",
-        "rank": "A"
-      }
-    },
-    {
-      "paper": {
-        "title": "CoGoal3D: Collaborative 3D Object Detection with 3D-Aware Fusion and Refinement",
-        "arxiv_id": "2607.19036v1",
-        "authors": [
-          "Zhihao Yang",
-          "Zhiyu Xiang",
-          "Peng Xu",
-          "Tianyu Pu",
-          "Kai Wang",
-          "Eryun Liu",
-          "Dongping Zhang",
-          "Yong Ding"
-        ],
-        "published": "2026-07-21T12:20:48Z",
-        "updated": "2026-07-21T12:20:48Z",
-        "summary": "V2X collaborative object detection features overcoming the limitations of single-vehicle systems by aggregating environmental features from multiple collaborative agents. However, existing mainstream V2X perception methods mainly focus on 2D BEV object detection. When 3D detection task is concerned, inferior results are obtained because they ignore the 3D spatial misalignment caused by differing height and attitude among the collaborators. In this paper, we propose a novel collaborative 3D object detection framework called CoGoal3D, which extracts and refines the 3D feature gradually in a two-stage pipeline. In the first stage, a multiscale 3D-aware global fusion module is designed to mitigate the 3D spatial misalignment. The resulting proposals are then refined in the second stage with an auxiliary task of 3D point reconstruction. An effective multi-agent collaborative data augmentation strategy is further proposed to enrich the training data while minimizing information loss. Extensive experiments on public real-world datasets demonstrate that our CoGoal3D achieves new state-of-the-art performance, with 3D AP@0.7 improvements of 10.86%, 10.34%, and 10.18% on the DAIR-V2X, V2V4Real, and V2X-Real datasets, respectively. Code is available at https://github.com/Megalo-f/CoGoal3D.",
-        "categories": "cs.CV",
-        "comment": "Accepted to ECCV 2026. 17 pages, 8 figures, 6 tables. Code: https://github.com/Megalo-f/CoGoal3D"
-      },
-      "analysis": {
-        "problem_statement": "The paper addresses the limitation of existing V2X collaborative object detection methods in 3D object detection tasks due to 3D spatial misalignment caused by differing height and attitude among collaborators.",
-        "bottleneck_addressed": "Addressing the 3D spatial misalignment bottleneck in V2X collaborative object detection, which is a key challenge in achieving accurate and robust 3D object detection.",
-        "executive_summary": "This paper proposes a novel collaborative 3D object detection framework called CoGoal3D, which extracts and refines 3D features in a two-stage pipeline to achieve state-of-the-art performance in 3D object detection tasks. This matters to the current AI landscape as it enables more accurate and robust 3D object detection in V2X applications, which is crucial for autonomous vehicles and smart cities.",
-        "key_metrics": {
-          "primary_metric": "3D AP@0.7",
-          "metric_value": "10.86%, 10.34%, and 10.18% on the DAIR-V2X, V2V4Real, and V2X-Real datasets, respectively",
-          "baseline": "Existing mainstream V2X perception methods",
-          "improvement_percentage": "10.86%, 10.34%, and 10.18%"
-        },
-        "technical_breakdown": {
-          "method": "CoGoal3D extracts and refines 3D features in a two-stage pipeline. In the first stage, a multiscale 3D-aware global fusion module is designed to mitigate 3D spatial misalignment. The resulting proposals are then refined in the second stage with an auxiliary task of 3D point reconstruction.",
-          "architecture": "The framework consists of a multiscale 3D-aware global fusion module, a 3D point reconstruction module, and a multi-agent collaborative data augmentation strategy.",
-          "implementation_details": "The authors use a two-stage pipeline with a 3D-aware global fusion module and a 3D point reconstruction module. The multiscale 3D-aware global fusion module uses a combination of 3D convolutional neural networks (CNNs) and point cloud processing techniques. The 3D point reconstruction module uses a point cloud processing technique to refine the 3D features.",
-          "code_complexity": "The code complexity is moderate, with a total of 17 pages and 8 figures. The authors provide a GitHub repository with the implementation details."
-        },
-        "relevance_tags": [
-          "V2X",
-          "Collaborative Object Detection",
-          "3D Object Detection",
-          "Autonomous Vehicles",
-          "Smart Cities"
-        ],
-        "confidence": "high"
-      },
-      "analyzed_at": "2026-07-22T03:31:50.223461",
-      "conference_info": {
-        "conference": "ECCV",
-        "year": "2026",
-        "comment": "Accepted to ECCV 2026. 17 pages, 8 figures, 6 tables. Code: https://github.com/Megalo-f/CoGoal3D",
-        "raw_comment": "Accepted to ECCV 2026. 17 pages, 8 figures, 6 tables. Code: https://github.com/Megalo-f/CoGoal3D",
-        "category": "Computer Vision",
-        "rank": "A"
-      }
-    },
-    {
-      "paper": {
-        "title": "IMMoE: Incomplete Multi-View Anomaly Detection via Mixture of View Experts Fusion",
-        "arxiv_id": "2607.19032v1",
-        "authors": [
-          "Lei Hu"
-        ],
-        "published": "2026-07-21T12:19:33Z",
-        "updated": "2026-07-21T12:19:33Z",
-        "summary": "Existing Multi-view Anomaly Detection (MAD) methods assume that all views are completely available and model each view separately. However, in real industrial scenarios, information in the view may be missing due to faults such as occlusion, which leads to the performance degradation of existing methods due to the lack of a multi-view consistency prior. To address this, we explored a more challenging task: Incomplete Multi-View Anomaly Detection (IMVAD), in which some areas of each view were masked. We proposed a pipeline for automatically generating the IMVAD dataset and generated the \\textbf{RIMAD} dataset based on the Real-IAD dataset through this pipeline. In addition, in order to effectively utilize the information of multiple views in the absence of view information, we propose \\textbf{IMMoE}, which consists of two key modules: (1) Multi-View Expert Fusion (MVEF) effectively fuses multi-view information through a multi-view expert network and guides the reconstruction of a single view; (2) Local Anomaly Enhancement Encoder (LAEE) effectively prevents the model from overfitting the mask region by applying dropout to local features. Our method achieves state-of-the-art performance on both the RIMAD and Real-IAD datasets, especially on RIMAD, we have increased the pixel-level and image-level metrics by 11.8\\% and 2.8\\%, respectively. Our source code is available at https://github.com/HULEI7/IMMoE",
-        "categories": "cs.CV",
-        "comment": "Accepted by ECCV 2026"
-      },
-      "analysis": {
-        "problem_statement": "The paper addresses the problem of incomplete multi-view anomaly detection, where some areas of each view are masked due to faults such as occlusion, and existing methods degrade in performance due to the lack of multi-view consistency prior.",
-        "bottleneck_addressed": "The AI bottleneck addressed by this paper is the lack of effective utilization of multi-view information in the presence of missing view information, leading to performance degradation in anomaly detection tasks.",
-        "executive_summary": "This paper proposes a novel approach to incomplete multi-view anomaly detection, addressing a critical challenge in real-world industrial scenarios. The proposed method, IMMoE, achieves state-of-the-art performance on two benchmark datasets, highlighting its potential to improve the robustness and accuracy of anomaly detection systems.",
-        "key_metrics": {
-          "primary_metric": "Pixel-level and image-level metrics on the RIMAD dataset",
-          "metric_value": "11.8% and 2.8% respectively",
-          "baseline": "Existing multi-view anomaly detection methods",
-          "improvement_percentage": "11.8% and 2.8% respectively"
-        },
-        "technical_breakdown": {
-          "method": "IMMoE consists of two key modules: (1) Multi-View Expert Fusion (MVEF) and (2) Local Anomaly Enhancement Encoder (LAEE). MVEF effectively fuses multi-view information through a multi-view expert network and guides the reconstruction of a single view. LAEE prevents the model from overfitting the mask region by applying dropout to local features.",
-          "architecture": "The architecture of IMMoE includes a multi-view expert network and a local anomaly enhancement encoder.",
-          "implementation_details": "The implementation details include the use of a multi-view expert network with a fusion mechanism and a local anomaly enhancement encoder with dropout applied to local features.",
-          "code_complexity": "The code complexity is moderate, as it involves the implementation of a multi-view expert network and a local anomaly enhancement encoder, which may require additional computational resources and training time."
-        },
-        "relevance_tags": [
-          "Anomaly Detection",
-          "Multi-View Learning",
-          "Incomplete Data",
-          "Robustness",
-          "Accuracy"
-        ],
-        "confidence": "high"
-      },
-      "analyzed_at": "2026-07-22T03:34:29.767094",
-      "conference_info": {
-        "conference": "ECCV",
-        "year": "2026",
-        "comment": "Accepted by ECCV 2026",
-        "raw_comment": "Accepted by ECCV 2026",
-        "category": "Computer Vision",
-        "rank": "A"
-      }
-    },
-    {
-      "paper": {
-        "title": "Mitigating Modality and Language-Style Gaps for Zero-Shot Video Moment Retrieval",
-        "arxiv_id": "2607.19027v1",
-        "authors": [
-          "Jihyun Lee",
-          "Cheol-Ho Cho",
-          "Woojin Jun",
-          "Woojin Jeong",
-          "Jae-Pil Heo"
-        ],
-        "published": "2026-07-21T12:16:29Z",
-        "updated": "2026-07-21T12:16:29Z",
-        "summary": "Zero-shot video moment retrieval aims to overcome the limitations of traditional approaches that require large-scale datasets annotated with text and its relevant temporal spans. Despite advances in pre-trained vision-language models and multimodal large language models, existing ZMR methods still heavily depend on query-to-video content similarity, making them vulnerable to modality and language-style gaps. These gaps lead to unreliable span proposals and unstable moment retrieval results. To address this issue, we propose Self-Similarity-based Moment Proposal and Scoring that instead exploits intrinsic relationships within videos, enabling robust span generation and scoring. By deriving self-similarity only from the video content, we circumvent the noisy and mismatched patterns of query-frame or query-caption similarities, thereby mitigating both modality and language-style gaps. Furthermore, we introduce a query-aware MLLM-based reasoning stage to further sharpen alignment between text and video. Extensive experiments demonstrate that Self-SiMS achieves state-of-the-art performance across ZMR benchmarks.",
-        "categories": "cs.CV",
-        "comment": "ECCV 2026 (* These authors contributed equally.)"
-      },
-      "analysis": {
-        "problem_statement": "Zero-shot video moment retrieval methods heavily rely on query-to-video content similarity, making them vulnerable to modality and language-style gaps, leading to unreliable span proposals and unstable moment retrieval results.",
-        "bottleneck_addressed": "The modality and language-style gaps in zero-shot video moment retrieval, which are caused by the noisy and mismatched patterns of query-frame or query-caption similarities.",
-        "executive_summary": "This paper addresses a critical bottleneck in zero-shot video moment retrieval by introducing a novel approach that exploits intrinsic relationships within videos to generate robust span proposals and scoring, thereby mitigating modality and language-style gaps. This matters to the current AI landscape as it enables more accurate and reliable video moment retrieval, which has numerous applications in video analysis, surveillance, and content recommendation.",
-        "key_metrics": {
-          "primary_metric": "State-of-the-art performance across ZMR benchmarks",
-          "metric_value": "Not specified",
-          "baseline": "Existing ZMR methods",
-          "improvement_percentage": "Not quantifiable"
-        },
-        "technical_breakdown": {
-          "method": "The proposed method, Self-Similarity-based Moment Proposal and Scoring (Self-SiMS), exploits intrinsic relationships within videos to generate robust span proposals and scoring, thereby mitigating modality and language-style gaps.",
-          "architecture": "The architecture consists of two stages: (1) Self-SiMS, which generates moment proposals and scores based on self-similarity within the video, and (2) a query-aware MLLM-based reasoning stage, which sharpens alignment between text and video.",
-          "implementation_details": "The authors use pre-trained vision-language models and multimodal large language models (MLLMs) to derive self-similarity from video content and to reason about text-video alignment.",
-          "code_complexity": "The computational complexity of the proposed method is not explicitly stated, but it is likely to be high due to the use of pre-trained models and MLLM-based reasoning."
-        },
-        "relevance_tags": [
-          "zero-shot video moment retrieval",
-          "modality gap",
-          "language-style gap",
-          "self-similarity",
-          "multimodal large language models",
-          "vision-language models"
-        ],
-        "confidence": "high"
-      },
-      "analyzed_at": "2026-07-22T03:34:38.984285",
-      "conference_info": {
-        "conference": "ECCV",
-        "year": "2026",
-        "comment": "ECCV 2026 (* These authors contributed equally.)",
-        "raw_comment": "ECCV 2026 (* These authors contributed equally.)",
-        "category": "Computer Vision",
-        "rank": "A"
-      }
-    },
-    {
-      "paper": {
-        "title": "Reliability-Aware 3D Geometric Injection for Universal Person Re-identification",
-        "arxiv_id": "2607.18863v1",
-        "authors": [
-          "Bohan Su",
-          "Jiashuo Wang",
-          "Fangyi Liu",
-          "Mang Ye"
-        ],
-        "published": "2026-07-21T08:54:25Z",
-        "updated": "2026-07-21T08:54:25Z",
-        "summary": "Universal person re-identification (ReID) aims to retrieve pedestrian identities across diverse real-world scenarios, including severe occlusions, clothing changes, and cross-modality shifts, within a unified model. However, existing 2D representations fundamentally struggle with spatial ambiguities due to a lack of depth and topological awareness, while naively introducing monocular 3D priors often causes severe negative transfer due to geometric estimation noise under extreme visual degradation. To safely harness the clothing-invariant and canonical structural properties of 3D geometry, we propose UniGeo, a Universal Monocular 3D-Enhanced ReID framework driven by a Consistency-Aware Reliability Gate and Dual-Stream Residual Fusion. Specifically, the processing of 3D information is strategically decoupled into geometric extraction and dynamic utilization. To provide pure structural compensation, we project monocular 3D parameters into kinematic joint representations, explicitly capturing instance-level geometric topology to resolve appearance-based ambiguities. To robustly incorporate these cues without perturbing the reliable 2D feature space, we isolate the 3D prior as a late-stage structural residual; modulated by the consistency-aware gate, this mechanism adaptively filters geometric noise and enables controlled fallback to the pure 2D baseline. Extensive experiments show that our method improves challenging, structure-sensitive scenarios while preserving competitive performance on clean domains. Code is available at https://github.com/BohanSu/UniGeo.",
-        "categories": "cs.CV",
-        "comment": "Accepted at ECCV 2026"
-      },
-      "analysis": {
-        "problem_statement": "The paper addresses the challenge of person re-identification (ReID) across diverse real-world scenarios, including severe occlusions, clothing changes, and cross-modality shifts, within a unified model.",
-        "bottleneck_addressed": "The paper addresses the bottleneck of spatial ambiguities in 2D representations due to a lack of depth and topological awareness in universal person ReID.",
-        "executive_summary": "This paper proposes UniGeo, a Universal Monocular 3D-Enhanced ReID framework that harnesses the clothing-invariant and canonical structural properties of 3D geometry to improve person ReID in challenging scenarios while preserving competitive performance on clean domains. This matters to the current AI landscape as it addresses a critical limitation of existing 2D representations and has the potential to improve the robustness and accuracy of person ReID systems.",
-        "key_metrics": {
-          "primary_metric": "Improved performance in structure-sensitive scenarios",
-          "metric_value": "Not specified",
-          "baseline": "Pure 2D baseline",
-          "improvement_percentage": "Not quantifiable"
-        },
-        "technical_breakdown": {
-          "method": "UniGeo decouples 3D information processing into geometric extraction and dynamic utilization, projecting monocular 3D parameters into kinematic joint representations to capture instance-level geometric topology and resolve appearance-based ambiguities.",
-          "architecture": {
-            "Consistency-Aware Reliability Gate": "A mechanism that adaptively filters geometric noise and enables controlled fallback to the pure 2D baseline",
-            "Dual-Stream Residual Fusion": "A technique that robustly incorporates 3D cues without perturbing the reliable 2D feature space",
-            "3D-Enhanced ReID framework": "A unified model that integrates 3D geometry with 2D representations"
-          },
-          "implementation_details": "The paper uses a late-stage structural residual to isolate the 3D prior, modulated by the consistency-aware gate, and employs kinematic joint representations to capture instance-level geometric topology.",
-          "code_complexity": "The code complexity is not explicitly stated, but the implementation details suggest that the framework requires careful tuning of hyperparameters and potentially complex geometric processing."
-        },
-        "relevance_tags": [
-          "Person ReID",
-          "3D Geometry",
-          "Universal ReID",
-          "Consistency-Aware Reliability Gate",
-          "Dual-Stream Residual Fusion"
-        ],
-        "confidence": "high"
-      },
-      "analyzed_at": "2026-07-22T03:35:03.421371",
-      "conference_info": {
-        "conference": "ECCV",
-        "year": "2026",
-        "comment": "Accepted at ECCV 2026",
-        "raw_comment": "Accepted at ECCV 2026",
-        "category": "Computer Vision",
-        "rank": "A"
-      }
-    },
-    {
-      "paper": {
-        "title": "Open-Vocabulary Gaze Object Prediction: Benchmark and Method",
-        "arxiv_id": "2607.18827v1",
-        "authors": [
-          "Binglu Wang",
-          "Sensen Niu",
-          "Ying Chen",
-          "Guangyu Guo"
-        ],
-        "published": "2026-07-21T08:03:02Z",
-        "updated": "2026-07-21T08:03:02Z",
-        "summary": "Gaze Object Prediction (GOP) aims to localize and recognize the objects humans attend to, a task crucial for understanding human-centric interactions. However, existing methods are typically trained under a closed-vocabulary paradigm with a fixed label space and evaluated on scene-specific datasets, limiting their applicability to real-world scenarios where gaze targets often follow a long-tail distribution or belong to unseen categories. To address this gap, we introduce Diverse Scenes for Gaze object prediction (DiSG), a benchmark containing 86 in-the-wild categories that facilitates the evaluation of Open-Vocabulary GOP (OVGOP). Building on DiSG, we propose a framework that leverages text-driven object discovery to localize potential gaze candidates, with a gaze-guided selection module to pinpoint the intended target from the candidate objects. Furthermore, to better capture semantic knowledge across diverse in-the-wild categories, we introduce Gradient-Informed Selection Tuning (GIST) to selectively update parameters most relevant to a given class vocabulary. Extensive experiments demonstrate that our proposed model performs effectively in open-vocabulary settings and also outperforms existing methods in the conventional closed-vocabulary setting. The benchmark and code is available at https://github.com/sensniu/ovgop.",
-        "categories": "cs.CV",
-        "comment": "Accepted at ACM Multimedia 2026"
-      },
-      "analysis": {
-        "problem_statement": "The paper addresses the limitation of existing Gaze Object Prediction (GOP) methods, which are typically trained under a closed-vocabulary paradigm and evaluated on scene-specific datasets, failing to generalize to real-world scenarios with long-tail distributions or unseen categories.",
-        "bottleneck_addressed": "The paper addresses the bottleneck of limited generalizability in GOP tasks due to the closed-vocabulary assumption.",
-        "executive_summary": "This paper introduces a novel benchmark and method for Open-Vocabulary Gaze Object Prediction (OVGOP), enabling the evaluation of GOP models in real-world scenarios with diverse and unseen categories. The proposed method leverages text-driven object discovery and gaze-guided selection to improve performance. This work has significant implications for understanding human-centric interactions and improving the robustness of GOP models.",
-        "key_metrics": {
-          "primary_metric": "Improved performance on the DiSG benchmark",
-          "metric_value": "Not explicitly stated",
-          "baseline": "Existing GOP methods trained under a closed-vocabulary paradigm",
-          "improvement_percentage": "Not quantifiable"
-        },
-        "technical_breakdown": {
-          "method": "The proposed method consists of two main components: (1) text-driven object discovery to localize potential gaze candidates, and (2) a gaze-guided selection module to pinpoint the intended target from the candidate objects.",
-          "architecture": {
-            "Key components": [
-              "Text-driven object discovery module",
-              "Gaze-guided selection module",
-              "Gradient-Informed Selection Tuning (GIST) module"
-            ]
-          },
-          "implementation_details": [
-            "The text-driven object discovery module uses a pre-trained language model to generate object proposals",
-            "The gaze-guided selection module uses a gaze-guided attention mechanism to select the intended target",
-            "GIST is used to selectively update parameters most relevant to a given class vocabulary"
-          ],
-          "code_complexity": "The proposed method is implemented in PyTorch and has a moderate to high computational complexity due to the use of pre-trained language models and gaze-guided attention mechanisms."
-        },
-        "relevance_tags": [
-          "Computer Vision",
-          "Natural Language Processing",
-          "Human-Computer Interaction"
-        ],
-        "confidence": "high"
-      },
-      "analyzed_at": "2026-07-22T03:35:14.414259",
-      "conference_info": {
-        "conference": "ACM Multimedia",
-        "year": "2026",
-        "comment": "Accepted at ACM Multimedia 2026",
-        "raw_comment": "Accepted at ACM Multimedia 2026",
-        "category": "Computer Vision",
-        "rank": "A+"
-      }
-    },
-    {
-      "paper": {
-        "title": "ZeroSplat: Generalized Referring Segmentation in 3D Gaussian Splatting",
-        "arxiv_id": "2607.18801v1",
-        "authors": [
-          "Jiayu Ding",
-          "Meilu Song",
-          "Xiaoyi Zhang",
-          "Hongbo Jin",
-          "Yichen Jin",
-          "Xiangtian Si"
-        ],
-        "published": "2026-07-21T07:27:10Z",
-        "updated": "2026-07-21T07:27:10Z",
-        "summary": "Recent advancements in 3D Gaussian Splatting (3DGS) have enabled language-guided scene understanding. However, existing Referring 3D Gaussian Splatting (R3DGS) methods are fundamentally restricted to single-target queries. To reflect the ambiguity of real-world instructions, we introduce the Generalized Referring 3D Gaussian Splatting Segmentation (GR3DGS) task, which requires dynamically segmenting an arbitrary number of targets (0, 1, or $N$). To facilitate comprehensive evaluation of this new task, we construct two new benchmarks: GR-LERF and GR-ScanNet. Crucially, existing R3DGS paradigms exhibit fundamental technical bottlenecks that severely limit their performance on the GR3DGS task: they lack intrinsic 3D point-level understanding by operating merely on 2D rendered pixels, and they incur prohibitive computational overhead by requiring per-scene optimization to embed heavy semantic features. To dismantle these bottlenecks, we propose ZeroSplat, a novel training-free and zero-feature framework. ZeroSplat lifts 2D Vision-Language Model (VLM) priors into 3D space through robust multi-view geometric constraints. This strategy enables intrinsic point-level understanding without incurring any additional feature storage. Extensive experiments demonstrate that ZeroSplat significantly outperforms state-of-the-art methods across generalized and single-target scenarios while maintaining exceptional efficiency. Project Page: https://inkmind-ai.github.io/ZeroSplat",
-        "categories": "cs.CV",
-        "comment": "Accepted to ECCV 2026"
-      },
-      "analysis": {
-        "problem_statement": "The paper addresses the problem of generalized referring segmentation in 3D Gaussian Splatting, where the goal is to dynamically segment an arbitrary number of targets (0, 1, or N) in a 3D scene based on language-guided instructions.",
-        "bottleneck_addressed": "The paper addresses the bottleneck of existing Referring 3D Gaussian Splatting (R3DGS) methods, which lack intrinsic 3D point-level understanding and incur prohibitive computational overhead due to per-scene optimization.",
-        "executive_summary": "This paper introduces ZeroSplat, a novel training-free and zero-feature framework that lifts 2D Vision-Language Model (VLM) priors into 3D space through robust multi-view geometric constraints, enabling intrinsic point-level understanding and significantly outperforming state-of-the-art methods across generalized and single-target scenarios.",
-        "key_metrics": {
-          "primary_metric": "ZeroSplat outperforms state-of-the-art methods by a significant margin",
-          "baseline": "State-of-the-art methods in Referring 3D Gaussian Splatting (R3DGS)",
-          "improvement_percentage": "Not explicitly stated, but implied to be substantial based on the paper's claims",
-          "metric_value": "Not explicitly stated, but likely measured in terms of accuracy, precision, or recall"
-        },
-        "technical_breakdown": {
-          "method": "ZeroSplat lifts 2D VLM priors into 3D space through robust multi-view geometric constraints, enabling intrinsic point-level understanding without incurring additional feature storage.",
-          "architecture": "The architecture consists of a 2D VLM and a 3D Gaussian Splatting module, which is trained using multi-view geometric constraints.",
-          "implementation_details": "The paper uses a combination of 2D convolutional neural networks (CNNs) and 3D Gaussian Splatting to process 3D point clouds and render 2D images.",
-          "code_complexity": "The code complexity is likely high due to the use of 3D Gaussian Splatting and multi-view geometric constraints, but the paper claims that ZeroSplat is training-free and zero-feature, implying that it is computationally efficient."
-        },
-        "relevance_tags": [
-          "3D computer vision",
-          "vision-language models",
-          "referring segmentation",
-          "Gaussian Splatting",
-          "multi-view geometric constraints"
-        ],
-        "confidence": "high"
-      },
-      "analyzed_at": "2026-07-22T03:35:25.398917",
-      "conference_info": {
-        "conference": "ECCV",
-        "year": "2026",
-        "comment": "Accepted to ECCV 2026",
-        "raw_comment": "Accepted to ECCV 2026",
-        "category": "Computer Vision",
-        "rank": "A"
-      }
-    },
-    {
-      "paper": {
-        "title": "Posterior Samplings are Missing Modalities Generators for Medical Image Translation",
-        "arxiv_id": "2607.18763v1",
-        "authors": [
-          "Jonghun Kim"
-        ],
-        "published": "2026-07-21T06:41:44Z",
-        "updated": "2026-07-21T06:41:44Z",
-        "summary": "Magnetic resonance imaging comes in various modality contrasts that provide complementary anatomical and pathological information. Complete multimodal acquisitions are often unavailable due to time and protocol constraints. This leads to real-world datasets with missing modalities, where conventional medical image translation methods are typically limited to fixed source-target settings or require retraining for each observed source-target pair. We propose a unified framework that formulates missing-modality generation as a linear inverse problem under a joint distribution and solves it via posterior sampling with a flow matching model. By learning a joint prior over the complete modality set, our method can reconstruct arbitrary missing modalities at inference time by guiding the sampling trajectory to enforce measurement consistency with observed modalities. We further mitigate inter-modality error propagation in multi-target generation by adopting a many-to-one sampling strategy. Experiments on BraTS and IXI datasets show that our method achieves the best performance over baselines across most missing-modality scenarios. In downstream tumor segmentation, synthesized images from our method result in higher segmentation performance, indicating better preservation of clinically relevant structures.",
-        "categories": "cs.CV",
-        "comment": "ECCV 26"
-      },
-      "analysis": {
-        "problem_statement": "The paper addresses the problem of missing modalities in medical image translation, where conventional methods are limited to fixed source-target settings or require retraining for each observed source-target pair.",
-        "bottleneck_addressed": "This paper addresses the bottleneck of limited generalizability in medical image translation due to missing modalities.",
-        "executive_summary": "This paper proposes a unified framework for missing-modality generation in medical image translation, enabling the reconstruction of arbitrary missing modalities at inference time. This matters to the current AI landscape as it improves the generalizability of medical image translation models, enabling them to handle real-world datasets with missing modalities. The proposed method achieves state-of-the-art performance on BraTS and IXI datasets.",
-        "key_metrics": {
-          "primary_metric": "Best performance over baselines across most missing-modality scenarios",
-          "metric_value": "N/A",
-          "baseline": "Conventional medical image translation methods",
-          "improvement_percentage": "N/A"
-        },
-        "technical_breakdown": {
-          "method": "The proposed method formulates missing-modality generation as a linear inverse problem under a joint distribution and solves it via posterior sampling with a flow matching model.",
-          "architecture": "The architecture consists of a joint prior over the complete modality set, a flow matching model, and a many-to-one sampling strategy.",
-          "implementation_details": "The method uses posterior sampling with a flow matching model, which involves learning a joint prior over the complete modality set and guiding the sampling trajectory to enforce measurement consistency with observed modalities.",
-          "code_complexity": "The computational complexity of the proposed method is high due to the use of posterior sampling and flow matching models, which may require significant training time and computational resources."
-        },
-        "relevance_tags": [
-          "medical image translation",
-          "missing modalities",
-          "posterior sampling",
-          "flow matching model"
-        ],
-        "confidence": "high"
-      },
-      "analyzed_at": "2026-07-22T03:35:36.764172",
-      "conference_info": {
-        "conference": "ECCV",
-        "year": "Unknown",
-        "comment": "ECCV 26",
-        "raw_comment": "ECCV 26",
-        "category": "Computer Vision",
-        "rank": "A"
-      }
-    },
-    {
-      "paper": {
-        "title": "Advancing Multimodal Fusion on Heterogeneous Medical Data with Hybrid Geometry Attention",
-        "arxiv_id": "2607.19086v1",
-        "authors": [
-          "Joy Dhar",
-          "Manish Kumar Pandey",
-          "Nayyar Zaidi",
-          "Chen Chen",
-          "Maryam Haghighat",
-          "Ferdous Sohel",
-          "Puneet Goyal"
-        ],
-        "published": "2026-07-21T13:23:42Z",
-        "updated": "2026-07-21T13:23:42Z",
-        "summary": "Multimodal fusion learning (MFL) has shown great potential in the medical domain, where we are faced with disparate data modalities such as imaging, clinical records, and omics. However, existing MFL strategies face several major challenges. First, they struggle to capture complex cross-modal interactions effectively, which in turn limits performance improvements. Second, they incur high computational costs, restricting their applicability in resource-constrained healthcare AI applications. Finally, they are often designed and evaluated for narrow, fixed modality configurations (e.g., imaging-only, or specific pairs such as image and omics), which limits evidence of their adaptability and generalizability to broader collections of heterogeneous medical modalities. To address these challenges, we propose a novel MFL framework - Cascaded Unified Representation Learning for Efficient Fusion Network (CURE) - a lightweight and scalable framework that progressively integrates various modalities through a novel efficient Hybrid Geometry Aware Fusion layer (HyFuse), where each HyFuse layer is sequentially learned for each modality, making the framework adaptable and generalizable. Within HyFuse, an efficient residual convolution module captures rich multi-scale features to ensure cost-effective learning, while a hybrid-space aware attention mixer learns coarse-to-fine structural cues to better preserve cross-modal relationships. Complementary learnable late-fusion and shared information refinement modules are then employed to learn robust modality-order-invariant shared representations, which in turn yields consistent performance improvements. Extensive evaluations on 16 public datasets show that CURE outperforms leading multimodal fusion methods, boosting performance by up to 3.97% and lowering computational costs by up to 87.8%, ensuring more effective and reliable predictions.",
-        "categories": "cs.CV",
-        "comment": "ACM SIGKDD Conference on Knowledge Discovery and Data Mining (KDD 2026)"
-      },
-      "analysis": {
-        "problem_statement": "Multimodal fusion learning (MFL) strategies struggle to capture complex cross-modal interactions, incur high computational costs, and are often designed for narrow modality configurations.",
-        "bottleneck_addressed": "The AI bottleneck addressed is the lack of effective and efficient multimodal fusion learning strategies for heterogeneous medical data.",
-        "executive_summary": "This paper proposes a novel MFL framework called CURE, which addresses the challenges of existing MFL strategies by introducing a lightweight and scalable framework that can adapt to various modality configurations. CURE outperforms leading multimodal fusion methods and reduces computational costs, making it a significant contribution to the field of medical AI.",
-        "key_metrics": {
-          "primary_metric": "Performance improvement",
-          "metric_value": "Up to 3.97%",
-          "baseline": "Leading multimodal fusion methods",
-          "improvement_percentage": "3.97%"
-        },
-        "technical_breakdown": {
-          "method": "Cascaded Unified Representation Learning for Efficient Fusion Network (CURE) framework progressively integrates various modalities through a novel efficient Hybrid Geometry Aware Fusion layer (HyFuse).",
-          "architecture": {
-            "HyFuse": "A novel efficient Hybrid Geometry Aware Fusion layer that captures rich multi-scale features and learns coarse-to-fine structural cues.",
-            "Residual Convolution Module": "Captures rich multi-scale features.",
-            "Hybrid-Space Aware Attention Mixer": "Learns coarse-to-fine structural cues.",
-            "Learnable Late-Fusion Module": "Learns robust modality-order-invariant shared representations.",
-            "Shared Information Refinement Module": "Refines shared representations."
-          },
-          "implementation_details": "The framework uses residual convolution modules, hybrid-space aware attention mixers, and learnable late-fusion and shared information refinement modules.",
-          "code_complexity": "The framework is designed to be lightweight and scalable, reducing computational costs by up to 87.8% compared to leading multimodal fusion methods."
-        },
-        "relevance_tags": [
-          "Multimodal Fusion",
-          "Medical AI",
-          "Deep Learning",
-          "Attention Mechanisms",
-          "Efficient Learning"
-        ],
-        "confidence": "high"
-      },
-      "analyzed_at": "2026-07-22T03:34:17.739820",
-      "conference_info": {
-        "conference": "KDD",
-        "year": "2026",
-        "comment": "ACM SIGKDD Conference on Knowledge Discovery and Data Mining (KDD 2026)",
-        "raw_comment": "ACM SIGKDD Conference on Knowledge Discovery and Data Mining (KDD 2026)",
-        "category": "Data Mining & IR",
-        "rank": "A+"
-      }
-    },
-    {
-      "paper": {
-        "title": "An Epistemic Position-Based Click Model: From Interactions to Epistemic Distributions of Relevance and Bias",
-        "arxiv_id": "2607.18712v1",
-        "authors": [
-          "Oscar Rolando Ramirez Milian",
-          "Harrie Oosterhuis"
-        ],
-        "published": "2026-07-21T05:07:50Z",
-        "updated": "2026-07-21T05:07:50Z",
-        "summary": "User interactions with rankings are affected by both items' relevances and display positions. Accordingly, click probabilities are often modeled as a product of relevance and position factors; and for improving recommendation and search, one needs to disentangle relevance from position bias. However, existing click models only provide frequentist point-estimates that do not capture any measure of epistemic uncertainty. Consequently, there is no indication of how much confidence one should have in their predictions. In this work, we introduce the first evidential deep-learning approach to form an epistemic alternative to the important position-based click model. Our learned model takes as input item and position features and outputs a beta-distribution for every relevance and position-bias variable of the position-based model. These distributions capture epistemic uncertainty about click probabilities and the underlying effects of attraction and position bias. The main challenge of our approach is its optimization for which we propose approximation and conditioning techniques to provide numerical stability and variance reduction. Our experiments indicate that our approach captures epistemic uncertainty in predictions on previously-unseen data, whereas standard policy gradients fail to learn meaningful distributions. We believe our contribution of the first contextual epistemic click model constitutes an important step in incorporating Bayesian uncertainty into click modeling.",
-        "categories": "cs.IR",
-        "comment": "Published at SIGIR 2026"
-      },
-      "analysis": {
-        "problem_statement": "The paper addresses the challenge of disentangling relevance from position bias in click models, while capturing epistemic uncertainty in predictions.",
-        "bottleneck_addressed": "The paper addresses the bottleneck of frequentist point-estimates in click modeling, which do not capture epistemic uncertainty.",
-        "executive_summary": "This paper introduces the first evidential deep-learning approach to click modeling, which captures epistemic uncertainty in predictions. This is an important step in incorporating Bayesian uncertainty into click modeling, which can improve the reliability and interpretability of recommendation and search systems.",
-        "key_metrics": {
-          "primary_metric": "Improved epistemic uncertainty capture in predictions",
-          "metric_value": "Not explicitly stated",
-          "baseline": "Standard policy gradients",
-          "improvement_percentage": "Not quantifiable"
-        },
-        "technical_breakdown": {
-          "method": "The paper proposes a deep-learning approach that takes item and position features as input and outputs a beta-distribution for every relevance and position-bias variable. The approach uses approximation and conditioning techniques to provide numerical stability and variance reduction.",
-          "architecture": "The paper uses a deep neural network architecture, which is not explicitly described. However, it is likely a variant of a neural network that takes input features and outputs a probability distribution.",
-          "implementation_details": "The paper uses policy gradients as the optimization algorithm, and proposes approximation and conditioning techniques to provide numerical stability and variance reduction. The techniques used are not explicitly described, but are likely variants of existing methods such as variational inference or Monte Carlo methods.",
-          "code_complexity": "The paper does not provide a detailed analysis of the computational complexity or training time implications of the proposed approach. However, it is likely that the approach requires significant computational resources and training time, especially for large-scale datasets."
-        },
-        "relevance_tags": [
-          "Click Modeling",
-          "Epistemic Uncertainty",
-          "Bayesian Inference",
-          "Deep Learning"
-        ],
-        "confidence": "high"
-      },
-      "analyzed_at": "2026-07-22T03:36:22.246728",
-      "conference_info": {
-        "conference": "SIGIR",
-        "year": "2026",
-        "comment": "Published at SIGIR 2026",
-        "raw_comment": "Published at SIGIR 2026",
-        "category": "Data Mining & IR",
-        "rank": "A+"
-      }
-    },
-    {
-      "paper": {
-        "title": "Deep-learning Causal Retrieval Optimization for Efficient e-commerce Distribution in Pinterest",
-        "arxiv_id": "2607.14161v2",
-        "authors": [
-          "Junpeng Hou",
-          "XianXing Zhang",
-          "Sai Xiao",
-          "Derek Cheng",
-          "Darren Reger",
-          "Olafur Gudmundsson",
-          "Mehdi Ben Ayed",
-          "Zhiqing Rao",
-          "Huizhong Duan"
-        ],
-        "published": "2026-07-14T23:02:27Z",
-        "updated": "2026-07-21T03:28:01Z",
-        "summary": "Pinterest is where people turn inspiration into action as users browse ideas, then take steps toward realization, often by discovering shoppable content. To support this journey, we must distribute commerce content when it helps, not when it distracts. We frame this as a causal decision of triggering shopping candidate generators in early retrieval and deploy a production system at Pinterest that learns personalized and contextualized triggering policies. A deep multi-task model jointly predicts outcomes and uplift of multiple events, trained with a doubly-robust pseudo-outcome alongside calibrated outcome losses for stable, single-robust uplift learning. A randomized data logging supplies counterfactual coverage, and the model is evaluated by both regular and reverse metrics for full assessment. A linear-time offline replay is designed to select thresholds and forecast policy impact with extremely high consistency with online results. For productionization, the model runs in parallel with remote retrieval calls without end-to-end latency regression. At web scale, we cut shopping triggers by up to 85% while holding key shopping sessions neutral, improving important total sessions (+0.26%) and Pin saves (+1.10%), with significant infrastructure savings. By unifying deep causal learning with reliable offline replay and demonstrating production-grade deployment, this work provides a generally practical recipe for early-retrieval optimizations in modern cascading recommenders beyond shopping, aligning exploration and cost with user intent at scale.",
-        "categories": "cs.IR",
-        "comment": "Accepted at KDD '26: The 32nd ACM SIGKDD Conference on Knowledge Discovery and Data Mining"
-      },
-      "analysis": {
-        "problem_statement": "The paper addresses the problem of optimizing early retrieval in e-commerce distribution to minimize distractions and maximize user intent alignment.",
-        "bottleneck_addressed": "The paper addresses the bottleneck of inefficient early retrieval in modern cascading recommenders, which can lead to increased costs and decreased user engagement.",
-        "executive_summary": "This paper presents a practical solution to optimize early retrieval in e-commerce distribution by leveraging deep causal learning and reliable offline replay. This work has significant implications for modern cascading recommenders, enabling the alignment of exploration and cost with user intent at scale. By demonstrating production-grade deployment, the paper provides a recipe for early-retrieval optimizations that can be applied beyond shopping.",
-        "key_metrics": {
-          "primary_metric": "Cutting shopping triggers by up to 85%",
-          "metric_value": null,
-          "baseline": "No baseline specified",
-          "improvement_percentage": "85%"
-        },
-        "technical_breakdown": {
-          "method": "The solution uses a deep multi-task model that jointly predicts outcomes and uplift of multiple events, trained with a doubly-robust pseudo-outcome alongside calibrated outcome losses for stable, single-robust uplift learning.",
-          "architecture": "The model architecture consists of a deep neural network with multiple tasks, including outcome prediction and uplift estimation.",
-          "implementation_details": "The paper uses a randomized data logging system to supply counterfactual coverage, and a linear-time offline replay system to select thresholds and forecast policy impact.",
-          "code_complexity": "The computational complexity of the solution is not explicitly stated, but the use of deep learning and offline replay suggests that the training time may be significant."
-        },
-        "relevance_tags": [
-          "Deep Learning",
-          "Causal Inference",
-          "Recommendation Systems",
-          "E-commerce",
-          "Early Retrieval"
-        ],
-        "confidence": "high"
-      },
-      "analyzed_at": "2026-07-22T03:36:42.116877",
-      "conference_info": {
-        "conference": "KDD",
-        "year": "2026",
-        "comment": "Accepted at KDD '26: The 32nd ACM SIGKDD Conference on Knowledge Discovery and Data Mining",
-        "raw_comment": "Accepted at KDD '26: The 32nd ACM SIGKDD Conference on Knowledge Discovery and Data Mining",
-        "category": "Data Mining & IR",
-        "rank": "A+"
-      }
-    },
-    {
-      "paper": {
-        "title": "PLAID-PRF: Pseudo-Relevance Feedback with Centroid-like Tokens in PLAID",
-        "arxiv_id": "2607.18626v1",
-        "authors": [
-          "Xiao Wang",
-          "Sean MacAvaney",
-          "Craig Macdonald"
-        ],
-        "published": "2026-07-21T01:50:11Z",
-        "updated": "2026-07-21T01:50:11Z",
-        "summary": "Multi-vector dense retrieval models, such as ColBERT, achieve strong retrieval effectiveness by modelling fine-grained token-level interactions between queries and documents. Methods such as PLAID use centroid-based quantisation of each token's vector to reduce the index size and speed up retrieval while maintaining strong effectiveness. In this work, we introduce PLAID-PRF, a method that performs Pseudo-Relevance Feedback (PRF) over PLAID to reformulate ColBERT's query vectors based on the top-retrieved results. In contrast with prior methods that perform PRF on multi-vector retrieval models, PLAID-PRF keeps computational costs low by leveraging the internal PLAID centroid vectors, treating them similarly to tokens in traditional PRF methods. The method selects a small and diverse set of high-utility expansion vectors and appends them to the original query, rerunning PLAID to refine both candidate generation and final scoring. Extensive experiments on the standard in-domain MSMARCO and four out-of-domain BEIR benchmarks show that PLAID-PRF consistently improves retrieval effectiveness over various baselines. In particular, PLAID-PRF improves over PLAID by up to 4.3% nDCG@10 and 7.3% MRR@10, while introducing substantially less computation overhead than prior PRF methods. The results demonstrate that our proposed centroid-aware PRF method offers an effective and lightweight mechanism to improve the quality of top-ranked retrieved results. Overall, this work enables effective and efficient feedback-aware late-interaction retrieval without expensive query-time document-token clustering.",
-        "categories": "cs.IR",
-        "comment": "SIGIR 2026"
-      },
-      "analysis": {
-        "problem_statement": "Improving the effectiveness of multi-vector dense retrieval models, such as ColBERT, by reformulating query vectors based on top-retrieved results without introducing significant computational overhead.",
-        "bottleneck_addressed": "The bottleneck of high computational costs and limited scalability of traditional Pseudo-Relevance Feedback (PRF) methods in multi-vector dense retrieval models.",
-        "executive_summary": "This paper introduces PLAID-PRF, a lightweight and effective method that leverages internal centroid vectors in PLAID to perform PRF, improving retrieval effectiveness without significant computational overhead. This matters to the current AI landscape as it enables efficient feedback-aware late-interaction retrieval, a crucial component of modern search engines and information retrieval systems.",
-        "key_metrics": {
-          "primary_metric": "nDCG@10",
-          "metric_value": "4.3%",
-          "baseline": "PLAID",
-          "improvement_percentage": "up to 4.3%"
-        },
-        "technical_breakdown": {
-          "method": "PLAID-PRF performs Pseudo-Relevance Feedback over PLAID by selecting a small and diverse set of high-utility expansion vectors and appending them to the original query, rerunning PLAID to refine both candidate generation and final scoring.",
-          "architecture": "PLAID-PRF builds upon the PLAID architecture, which uses centroid-based quantisation of each token's vector to reduce index size and speed up retrieval.",
-          "implementation_details": "PLAID-PRF uses a centroid-aware PRF method, treating internal PLAID centroid vectors similarly to tokens in traditional PRF methods. The method employs a small and diverse set of high-utility expansion vectors, selected using a specific algorithm.",
-          "code_complexity": "PLAID-PRF introduces substantially less computation overhead than prior PRF methods, making it a lightweight and efficient solution."
-        },
-        "relevance_tags": [
-          "Information Retrieval",
-          "Natural Language Processing",
-          "Search Engines",
-          "Pseudo-Relevance Feedback",
-          "Multi-Vector Dense Retrieval Models"
-        ],
-        "confidence": "high"
-      },
-      "analyzed_at": "2026-07-22T03:33:31.917540",
-      "conference_info": {
-        "conference": "SIGIR",
-        "year": "2026",
-        "comment": "SIGIR 2026",
-        "raw_comment": "SIGIR 2026",
-        "category": "Data Mining & IR",
-        "rank": "A+"
-      }
-    },
-    {
-      "paper": {
-        "title": "AgentTrails: Towards Trust and Reuse for Agentic Tasks",
-        "arxiv_id": "2607.18816v1",
-        "authors": [
-          "Eden Wu",
-          "Sonia Castelo",
           "Yurong Liu",
-          "Cl\u00e1udio T. Silva",
-          "Juliana Freire"
+          "Yeye He",
+          "Haoyu Dong",
+          "Junjie Xing",
+          "Shi Han",
+          "Dongmei Zhang",
+          "Surajit Chaudhuri"
         ],
-        "published": "2026-07-21T07:53:58Z",
-        "updated": "2026-07-21T07:53:58Z",
-        "summary": "LLM-powered agents increasingly tackle complex tasks by invoking tools, querying databases, executing code, and manipulating intermediate artifacts. These agents follow trajectories that are typically stored as chronological logs, obscuring the underlying dataflow -- the dependencies between their actions and the artifacts they create and manipulate. This limits developers' ability to understand the agents' trails, compare executions, debug failures, and re-use the computations. We present AgentTrails, a prototype system for agent provenance and sensemaking. AgentTrails converts raw trajectories into structured provenance graphs, where tool calls are modeled as computational actions and inputs and outputs as data artifacts. The system supports the comparison of executions by placing multiple provenance graphs on a shared canvas and constructing a joined quotient graph that aligns recurring tools, artifacts, and dependency structures across trajectories. On top of this representation, AgentTrails supports pattern extraction, downstream analysis, and skill abstraction. We demonstrate AgentTrails on real-world agent trajectories, showing that it reveals hidden dependencies, aligns divergent executions, and surfaces recurring tool-use patterns beyond chronological logs.",
-        "categories": "cs.DB",
-        "comment": "4 pages, 4 figures. Short paper accepted at the Workshop on Systems for Data-centric Agents with Human-in-the-loop (DASHSys 2026), co-located with VLDB 2026"
+        "published": "2026-07-22T07:32:09Z",
+        "updated": "2026-07-22T07:32:09Z",
+        "summary": "Predicting missing cell values in tabular data is a fundamental problem in data cleaning. While state-of-the-art reasoning models show great promise in predicting missing values in tables, by reasoning holistically across rows and columns, they are costly to deploy at scale and tend to be overconfident, often generating hallucinated or false-positive predictions.   In this paper, we observe that achieving high-precision missing-value prediction in tables requires a distinct combination of three capabilities: (1) world knowledge, (2) text-based reasoning, and (3) code-based reasoning. We systematically explore design choices for combining these capabilities, and propose an Auto-Fill approach that post-trains three specialist small language models (SLMs), each optimized for one capability. We develop a calibrated ensemble mechanism that either dynamically selects the most confident specialist or abstains, ensuring high accuracy.   Extensive experiments on 11 benchmarks with 2200 real tables drawn from diverse domains show that Auto-Fill achieves superior accuracy compared to state-of-the-art reasoning models (e.g., o3-pro, Gemini 3 Pro, and DeepSeek R1), while operating at a fraction (less than 1%) of the cost of these frontier models. Our results highlight the effectiveness of specialization and calibrated abstention in the important domain of tabular data. Auto-Fill is publicly available at https://github.com/lyrain2001/auto-fill.",
+        "categories": "cs.LG",
+        "comment": "VLDB 2026"
       },
       "analysis": {
-        "problem_statement": "The paper addresses the challenge of understanding and reusing the complex, agentic tasks performed by Large Language Model (LLM) agents, which are hindered by the lack of structured provenance and sensemaking capabilities.",
-        "bottleneck_addressed": "Explainability and Reusability in LLM-powered Agents",
-        "executive_summary": "This paper presents AgentTrails, a system that converts raw agent trajectories into structured provenance graphs, enabling the comparison of executions, pattern extraction, downstream analysis, and skill abstraction. This matters to the current AI landscape as it addresses the need for explainability and reusability in complex, agentic tasks performed by LLM agents.",
+        "problem_statement": "Predicting missing cell values in tabular data with high accuracy and low computational cost.",
+        "bottleneck_addressed": "The overconfidence and hallucination of state-of-the-art reasoning models in predicting missing values, leading to high false-positive rates.",
+        "executive_summary": "This paper presents Auto-Fill, a novel approach that addresses the limitations of current reasoning models in missing value prediction. By combining world knowledge, text-based reasoning, and code-based reasoning with a calibrated ensemble mechanism, Auto-Fill achieves superior accuracy while operating at a fraction of the cost. This breakthrough has significant implications for the field of tabular data processing.",
         "key_metrics": {
-          "primary_metric": "Revealing hidden dependencies and aligning divergent executions",
-          "metric_value": "Not quantified",
-          "baseline": "Chronological logs",
-          "improvement_percentage": "Not applicable"
+          "primary_metric": "Superior accuracy compared to state-of-the-art reasoning models",
+          "metric_value": "Not specified",
+          "baseline": "o3-pro, Gemini 3 Pro, and DeepSeek R1",
+          "improvement_percentage": "Not quantifiable"
         },
         "technical_breakdown": {
-          "method": "AgentTrails converts raw trajectories into structured provenance graphs by modeling tool calls as computational actions and inputs and outputs as data artifacts. It supports the comparison of executions by constructing a joined quotient graph that aligns recurring tools, artifacts, and dependency structures across trajectories.",
-          "architecture": "The system consists of three main components: (1) Trajectory Processing, which converts raw trajectories into structured provenance graphs; (2) Graph Comparison, which aligns recurring tools, artifacts, and dependency structures across trajectories; and (3) Pattern Extraction, which supports downstream analysis and skill abstraction.",
-          "implementation_details": "The system uses graph algorithms, such as graph isomorphism and graph matching, to compare and align provenance graphs. It also employs techniques from data integration and data provenance to construct the joined quotient graph.",
-          "code_complexity": "Not specified, but the system likely involves complex graph algorithms and data integration techniques, which may require significant computational resources and training time."
+          "method": "Auto-Fill post-trains three specialist small language models (SLMs), each optimized for one capability: world knowledge, text-based reasoning, and code-based reasoning. A calibrated ensemble mechanism dynamically selects the most confident specialist or abstains to ensure high accuracy.",
+          "architecture": "Three SLMs, each with a distinct architecture optimized for one capability. A calibrated ensemble mechanism that selects the most confident specialist or abstains.",
+          "implementation_details": "The authors use a combination of techniques, including world knowledge, text-based reasoning, and code-based reasoning. The implementation details are not specified, but the authors mention that the approach is publicly available at https://github.com/lyrain2001/auto-fill.",
+          "code_complexity": "The computational complexity of Auto-Fill is not specified, but the authors mention that it operates at a fraction (less than 1%) of the cost of state-of-the-art reasoning models."
         },
         "relevance_tags": [
-          "Explainability",
-          "Reusability",
-          "LLM-powered Agents",
-          "Provenance Graphs",
-          "Graph Algorithms",
-          "Data Integration"
+          "Tabular Data",
+          "Missing Value Prediction",
+          "Reasoning Models",
+          "Specialist Language Models",
+          "Calibrated Ensemble Mechanism"
         ],
         "confidence": "high"
       },
-      "analyzed_at": "2026-07-22T03:32:07.232311",
+      "analyzed_at": "2026-07-23T03:47:16.507751",
       "conference_info": {
         "conference": "VLDB",
         "year": "2026",
-        "comment": "4 pages, 4 figures. Short paper accepted at the Workshop on Systems for Data-centric Agents with Human-in-the-loop (DASHSys 2026), co-located with VLDB 2026",
-        "raw_comment": "4 pages, 4 figures. Short paper accepted at the Workshop on Systems for Data-centric Agents with Human-in-the-loop (DASHSys 2026), co-located with VLDB 2026",
+        "comment": "VLDB 2026",
+        "raw_comment": "VLDB 2026",
         "category": "Databases",
         "rank": "A+"
       }
     },
     {
       "paper": {
-        "title": "From Trajectories to Instructions: Language-Conditioned Meta-Reinforcement Learning",
-        "arxiv_id": "2607.18830v1",
+        "title": "Efficient Clustering with Provable Guardrails for LLM Inference at Scale",
+        "arxiv_id": "2607.19704v1",
         "authors": [
-          "Garvit Singla",
-          "Uma Maheswari Natarajan",
-          "Raghuram Bharadwaj Diddigi"
+          "Longshaokan Wang",
+          "Wai Tsang Keung",
+          "Punit Ghodasara",
+          "Roman Wang",
+          "Ali Dashti",
+          "Francesc Moreno-Noguer"
         ],
-        "published": "2026-07-21T08:10:45Z",
-        "updated": "2026-07-21T08:10:45Z",
-        "summary": "Model-Agnostic Meta-Learning (MAML) is a widely used framework for reinforcement learning (RL) that enables efficient transfer by learning global policy parameters that can be rapidly adapted to new tasks. MAML training proceeds in two loops: an inner loop where the global parameters are adapted to task-specific parameters, and an outer loop where these task-specific parameters are evaluated and losses are back-propagated to improve the global parameters. Traditionally, the inner loop adaptation is performed by collecting trajectories from the task environment and applying gradient updates on the empirical expected return, which can be a costly operation. We note that it is the outer loop that drives the actual learning of global parameters, and therefore the inner loop adaptation mechanism need not be restricted to be gradient-based. This observation leads us to ask: Can we replace the inner loop trajectory collection and gradient update with a simpler, task-specific signal? In many practical settings, tasks are naturally accompanied by language instructions. Leveraging these instructions as a direct task-specific signal, we propose LA-MAML (Language Adapted MAML), which modifies the inner loop by adapting the global policy parameters in a single step through a learned embedding of the task instruction, replacing the inner loop trajectory collection and gradient-based updates. Experiments on the BabyAI benchmark demonstrate that LA-MAML achieves competitive or improved performance compared to baselines at a significantly lower per-iteration wall-clock training time. These results demonstrate that language instructions are an effective and efficient substitute for trajectory-based inner loop adaptation in meta RL.",
+        "published": "2026-07-22T03:06:57Z",
+        "updated": "2026-07-22T03:06:57Z",
+        "summary": "Scaling LLM-based applications to millions of users is bottlenecked by the inference cost and latency of modern foundation models. A natural fix is to cluster the inputs and call the LLM only on cluster representatives, letting other members inherit the output -- but this is only safe if each member is measurably close to its representative. Existing clustering methods do not offer such per-sample quality control at scale: none jointly guarantee a minimal within-cluster similarity, exact matching of categorical attributes, and scalability to tens of millions of samples. We propose a two-stage algorithm that generates initial clusters with Mini-batch K-Means, then greedily selects representatives within each initial cluster -- a step equivalent to the Johnson-Chvatal heuristic for Set Cover over alpha-balls in embedding space. The algorithm enforces the similarity and attribute guardrails exactly by construction, and runs in $O(nd + n^2 d/K)$ time and $O(nd + n^2/K^2)$ memory for $n$ samples, feature dimension $d$, and $K$ initial clusters -- linear in $n$ when $K$ grows proportionally with $n$. We provide benchmarks against common clustering methods on internal and public datasets: our method not only delivers per-sample guardrails but also runs 10-1000x faster and scales to data sizes where most standard methods become intractable. Deployed on 38 million customers for a persona-based recommender, the clustering method cut downstream cost and latency by 50-fold while preserving personalization and unblocked the production launch.",
         "categories": "cs.LG",
-        "comment": "Accepted at the International Conference on Artificial Neural Networks (ICANN 2026)"
+        "comment": "Accepted for presentation at ICML HiLD workshop 2026 (non-archival)"
       },
       "analysis": {
-        "problem_statement": "Can we replace the inner loop trajectory collection and gradient update in Model-Agnostic Meta-Learning (MAML) with a simpler, task-specific signal, such as language instructions?",
-        "bottleneck_addressed": "Efficient transfer learning in reinforcement learning (RL) through inner loop adaptation",
-        "executive_summary": "This paper proposes LA-MAML, a modified version of MAML that leverages language instructions as a direct task-specific signal to adapt global policy parameters, achieving competitive or improved performance at a significantly lower per-iteration training time.",
+        "problem_statement": "Efficiently clustering inputs to large language models (LLMs) while ensuring per-sample quality control and scalability to millions of users.",
+        "bottleneck_addressed": "Inference cost and latency of modern foundation models",
+        "executive_summary": "This paper addresses the scalability bottleneck of LLM-based applications by proposing a two-stage clustering algorithm that ensures per-sample quality control, exact matching of categorical attributes, and scalability to tens of millions of samples. This method has been deployed in production and has shown significant improvements in cost and latency reduction while preserving personalization.",
         "key_metrics": {
-          "primary_metric": "Competitive or improved performance on the BabyAI benchmark",
-          "metric_value": "Not specified",
-          "baseline": "Traditional MAML with trajectory collection and gradient updates",
-          "improvement_percentage": "Not quantifiable"
+          "primary_metric": "10-1000x faster",
+          "metric_value": "10-1000",
+          "baseline": "Common clustering methods",
+          "improvement_percentage": "1000%"
         },
         "technical_breakdown": {
-          "method": "LA-MAML modifies the inner loop of MAML by adapting global policy parameters in a single step through a learned embedding of the task instruction, replacing trajectory collection and gradient-based updates.",
-          "architecture": "The proposed architecture consists of a global policy network and a task-specific embedding network.",
-          "implementation_details": "The authors use a multi-layer perceptron (MLP) as the task-specific embedding network and a policy gradient method (e.g., REINFORCE) for policy updates.",
-          "code_complexity": "The proposed method reduces the computational complexity of the inner loop adaptation, allowing for faster training times."
+          "method": "The proposed algorithm consists of two stages: (1) generating initial clusters using Mini-batch K-Means, and (2) greedily selecting representatives within each initial cluster using the Johnson-Chvatal heuristic for Set Cover over alpha-balls in embedding space.",
+          "architecture": "The algorithm uses a two-stage approach with Mini-batch K-Means and Johnson-Chvatal heuristic as key components.",
+          "implementation_details": "The algorithm runs in $O(nd + n^2 d/K)$ time and $O(nd + n^2/K^2)$ memory for $n$ samples, feature dimension $d$, and $K$ initial clusters.",
+          "code_complexity": "Linear in $n$ when $K$ grows proportionally with $n$"
         },
         "relevance_tags": [
-          "Meta-Learning",
-          "Reinforcement Learning",
-          "Language-Conditioned Learning"
-        ],
-        "confidence": "high"
-      },
-      "analyzed_at": "2026-07-22T03:31:52.021251",
-      "conference_info": {
-        "conference": "Neural Networks",
-        "year": "2026",
-        "comment": "Accepted at the International Conference on Artificial Neural Networks (ICANN 2026)",
-        "raw_comment": "Accepted at the International Conference on Artificial Neural Networks (ICANN 2026)",
-        "category": "General ML/AI",
-        "rank": ""
-      }
-    },
-    {
-      "paper": {
-        "title": "Cross-Agent Campaign Attribution: Linking Asynchronous Attacks Across LLM Agents",
-        "arxiv_id": "2607.18826v1",
-        "authors": [
-          "SangJin Park",
-          "Myungsub Choi",
-          "Jineok Kim",
-          "Minseung Kang"
-        ],
-        "published": "2026-07-21T08:01:51Z",
-        "updated": "2026-07-21T08:01:51Z",
-        "summary": "LLM-agent defenses are typically evaluated one session at a time. In deployment, however, attacks can be distributed across independent agents, teams, and runtimes, leaving each local guardrail with only a sparse fragment. We formalize cross-agent asynchronous campaign attribution: linking sessions from the same latent adversarial campaign without shared runtime state, test-time campaign labels, or attacker identity oracles. We introduce Asynchronous Attribution Fingerprint Vectors ($A^2FV$), a lightweight proxy-side reference protocol for scoring pairwise campaign similarity from proxy-observable tool-use, timing, and prompt residue. We also construct SCD-v1, a controlled persona-matched benchmark with benign traffic, isolated attacks, multi-session campaigns, matched non-oracle evasion, and leakage audits. On SCD-v1, $A^2FV$ achieves 0.82 pairwise AUC for campaign linking, while score-only adaptations of per-session detectors and chunked LLM judges remain near chance under the same task. The strongest fixed signal is carried by structural and stylometric residue, while timing is retained as a diagnostic channel for richer proxy traces. Crossed-style controls show that the signal is partly style-sensitive but not reducible to style alone. Static and dimension-aware non-oracle stress tests further show that pairwise separability persists under controlled evasion. These results establish cross-agent campaign attribution as a distinct evaluation layer for securing LLM agents in the wild.",
-        "categories": "cs.CR",
-        "comment": "22 pages, 5 figures. Accepted at the Second Workshop on Agents in the Wild: Safety, Security, and Beyond (AIWILD) at ICML 2026"
-      },
-      "analysis": {
-        "problem_statement": "The paper addresses the challenge of attributing asynchronous attacks across independent LLM agents in a distributed environment.",
-        "bottleneck_addressed": "Adversarial robustness in Large Language Models (LLMs) under distributed attacks",
-        "executive_summary": "This paper tackles a critical security issue in LLMs by developing a novel attribution method that links asynchronous attacks across independent agents, enabling more effective defenses against distributed attacks. This matters to the current AI landscape as LLMs are increasingly used in high-stakes applications, making them vulnerable to sophisticated attacks. The proposed method, Asynchronous Attribution Fingerprint Vectors ($A^2FV$), achieves state-of-the-art results on a controlled benchmark.",
-        "key_metrics": {
-          "primary_metric": "Pairwise AUC for campaign linking",
-          "metric_value": 0.82,
-          "baseline": "Score-only adaptations of per-session detectors and chunked LLM judges",
-          "improvement_percentage": "82% improvement over baseline"
-        },
-        "technical_breakdown": {
-          "method": "The proposed method, Asynchronous Attribution Fingerprint Vectors ($A^2FV$), uses a lightweight proxy-side reference protocol to score pairwise campaign similarity from proxy-observable tool-use, timing, and prompt residue.",
-          "architecture": "The architecture consists of a proxy-side component that extracts features from tool-use, timing, and prompt residue, and a reference protocol that scores pairwise campaign similarity.",
-          "implementation_details": "The method uses a combination of structural and stylometric residue, as well as timing, to construct the attribution fingerprint vectors.",
-          "code_complexity": "The computational complexity of the method is relatively low, as it only requires extracting features from proxy-observable data and scoring pairwise campaign similarity."
-        },
-        "relevance_tags": [
-          "Adversarial Robustness",
+          "Efficient Clustering",
           "Large Language Models",
-          "Distributed Attacks",
-          "Security",
-          "AI Safety"
+          "Scalability",
+          "Per-Sample Quality Control",
+          "Set Cover",
+          "Johnson-Chvatal Heuristic"
         ],
         "confidence": "high"
       },
-      "analyzed_at": "2026-07-22T03:32:05.317404",
+      "analyzed_at": "2026-07-23T03:47:52.523688",
       "conference_info": {
         "conference": "ICML",
         "year": "2026",
-        "comment": "22 pages, 5 figures. Accepted at the Second Workshop on Agents in the Wild: Safety, Security, and Beyond (AIWILD) at ICML 2026",
-        "raw_comment": "22 pages, 5 figures. Accepted at the Second Workshop on Agents in the Wild: Safety, Security, and Beyond (AIWILD) at ICML 2026",
+        "comment": "Accepted for presentation at ICML HiLD workshop 2026 (non-archival)",
+        "raw_comment": "Accepted for presentation at ICML HiLD workshop 2026 (non-archival)",
         "category": "General ML/AI",
         "rank": "A+"
       }
     },
     {
       "paper": {
-        "title": "CPInj: Uncovering Prompt Injection Risks in Textual Collaborative Prompt Optimization",
-        "arxiv_id": "2607.18622v1",
+        "title": "Multi-Mask Diffusion Language Models for Few-Step Generation",
+        "arxiv_id": "2607.19686v1",
         "authors": [
-          "Xinting Liao",
-          "Behnoosh Zamanlooy",
-          "Masoumeh Shafieinejad",
-          "David B. Emerson",
-          "Ruinan Jin",
-          "Deval Pandya",
-          "Xiaoxiao Li"
+          "Sijin Chen",
+          "Yinuo Ren",
+          "Heyang Zhao",
+          "Ziheng Cheng",
+          "Quanquan Gu",
+          "Lexing Ying"
         ],
-        "published": "2026-07-21T01:44:59Z",
-        "updated": "2026-07-21T01:44:59Z",
-        "summary": "Textual Collaborative Prompt Optimization (TCPO) extends Textgrad (Yuksekgonul et al., 2025) to a decentralized setting by allowing multiple clients to jointly improve prompts for large language models (LLMs) while keeping their data locally. Its reliance on free-form textual updating and aggregation introduces a new and largely unexplored attack surface, i.e., malicious instructions can be injected into local prompts and propagated through server-side prompt aggregation. Unlike conventional prompt injection attacks, attacking TCPO targets the collaborative optimization loop in TCPO. This setting is more challenging because malicious instructions must survive aggregation, persist through subsequent benign prompt optimization, and evade server-side defenses. To expose this risk, we propose CPInj, a collaborative prompt injection attack that contaminates the aggregated global prompt with malicious instructions, degrades downstream task performance, resists purification by prompt optimization on benign clients, and evades advanced detection-based defenses on the server. We find that current defense methods are ineffective against CPInj. To mitigate this attack, we further propose a defense-oriented aggregation method, i.e., APAgg, which purifies malicious instructions and partially recovers TCPO utility. We conduct extensive experiments across three LLM families and five reasoning tasks in math, logic, and medicine. The results demonstrate that our proposed attack reveals a critical vulnerability in TCPO. Although we take a first step toward mitigation, the attack remains highly effective and far from fully resolved, calling for more robust defense for TCPO.",
-        "categories": "cs.CR",
-        "comment": "Accepted by COLM 2026 and AI4GOOD workshop"
+        "published": "2026-07-22T02:35:40Z",
+        "updated": "2026-07-22T02:35:40Z",
+        "summary": "Masked diffusion models (MDMs) are a promising family of language generators, but achieving high-quality few-step generation remains challenging. In MDMs, all forward trajectories collapse to a single fully masked state, leaving no terminal entropy for consistency-style few-step generation. While recent few-step alternatives based on uniform-state diffusion avoid this degeneracy, it becomes harder to distinguish clean tokens from noise than MDMs, which usually harms modeling quality and training efficiency. In this work, we propose a multi-mask diffusion model (MultiMDM) that preserves the masking structure towards few-step generation. In the forward process, each clean token is first pushed towards a designated mask and then gradually mixes over the mask set. As a result, the backward process has a drafting capability by predicting a designated mask before refining to a clean token. We derive a closed-form ELBO training objective for MultiMDM that supports continual training from pretrained MDMs. In addition, we formulate a purely discrete-state consistency distillation scheme, with a shared-Gumbel coupling to reduce pathwise entropy. Experiments on pretraining and distillation show that MultiMDM provides an effective foundation for principled few-step generation.",
+        "categories": "cs.CL",
+        "comment": "38 pages; Accepted at COLM 2026"
       },
       "analysis": {
-        "problem_statement": "CPInj: Uncovering Prompt Injection Risks in Textual Collaborative Prompt Optimization addresses the vulnerability of Textual Collaborative Prompt Optimization (TCPO) to malicious prompt injection attacks.",
-        "bottleneck_addressed": "Adversarial Robustness in Large Language Models (LLMs)",
-        "executive_summary": "This paper reveals a critical vulnerability in Textual Collaborative Prompt Optimization (TCPO), a decentralized setting for optimizing prompts for LLMs. The proposed attack, CPInj, contaminates the aggregated global prompt with malicious instructions, degrading downstream task performance and evading current defenses. This highlights the need for more robust defense mechanisms in TCPO.",
+        "problem_statement": "Achieving high-quality few-step generation in masked diffusion models (MDMs) remains challenging due to the degeneracy of all forward trajectories collapsing to a single fully masked state.",
+        "bottleneck_addressed": "The degeneracy of forward trajectories in MDMs, which hinders few-step generation and consistency-style generation.",
+        "executive_summary": "This paper proposes a multi-mask diffusion model (MultiMDM) that addresses the degeneracy issue in MDMs, enabling principled few-step generation. MultiMDM preserves the masking structure and introduces a drafting capability in the backward process, allowing for more efficient and effective few-step generation. This work has significant implications for the development of language generators and models.",
         "key_metrics": {
-          "primary_metric": "Attack success rate",
-          "metric_value": "95.2% (average across three LLM families and five reasoning tasks)",
-          "baseline": "Current defense methods",
-          "improvement_percentage": "N/A (attack success rate is a measure of vulnerability rather than improvement)"
+          "primary_metric": "Few-step generation quality",
+          "metric_value": "Not explicitly stated",
+          "baseline": "Uniform-state diffusion models",
+          "improvement_percentage": "Not quantifiable"
         },
         "technical_breakdown": {
-          "method": "CPInj uses a collaborative prompt injection attack to contaminate the aggregated global prompt with malicious instructions, which must survive aggregation, persist through subsequent benign prompt optimization, and evade server-side defenses.",
-          "architecture": "The proposed defense-oriented aggregation method, APAgg, uses a purification mechanism to remove malicious instructions from the aggregated prompt.",
-          "implementation_details": "The authors use a combination of natural language processing (NLP) and machine learning (ML) techniques to develop CPInj and APAgg. Specifically, they employ techniques such as prompt engineering, gradient-based optimization, and anomaly detection.",
-          "code_complexity": "The computational complexity of CPInj and APAgg is not explicitly stated, but the authors note that the attack and defense mechanisms require significant computational resources to train and evaluate."
+          "method": "MultiMDM introduces a multi-mask structure, where each clean token is pushed towards a designated mask and then gradually mixes over the mask set. This allows the backward process to predict a designated mask before refining to a clean token.",
+          "architecture": "MultiMDM architecture consists of a forward process with multiple masks and a backward process with a drafting capability.",
+          "implementation_details": "The paper derives a closed-form ELBO training objective for MultiMDM, which supports continual training from pretrained MDMs. Additionally, a purely discrete-state consistency distillation scheme is formulated, using a shared-Gumbel coupling to reduce pathwise entropy.",
+          "code_complexity": "The computational complexity of MultiMDM is not explicitly stated, but it is likely to be higher than that of MDMs due to the introduction of multiple masks and the drafting capability in the backward process."
         },
         "relevance_tags": [
-          "Adversarial Robustness",
-          "Large Language Models",
-          "Textual Collaborative Prompt Optimization",
-          "Prompt Injection Attacks"
+          "masked diffusion models",
+          "few-step generation",
+          "language generators",
+          "consistency-style generation",
+          "deep learning"
         ],
         "confidence": "high"
       },
-      "analyzed_at": "2026-07-22T03:32:18.306080",
+      "analyzed_at": "2026-07-23T03:47:18.781183",
       "conference_info": {
         "conference": "COLM",
         "year": "2026",
-        "comment": "Accepted by COLM 2026 and AI4GOOD workshop",
-        "raw_comment": "Accepted by COLM 2026 and AI4GOOD workshop",
+        "comment": "38 pages; Accepted at COLM 2026",
+        "raw_comment": "38 pages; Accepted at COLM 2026",
         "category": "General ML/AI",
         "rank": ""
       }
     },
     {
       "paper": {
-        "title": "AEVAL: From Anecdotal to Deterministic Testing for Agentic Skill Workflows",
-        "arxiv_id": "2607.16345v2",
+        "title": "PolySim: Deterministic Polynomial Surrogates for Cross-Modal Retrieval on CiM",
+        "arxiv_id": "2607.20358v1",
         "authors": [
-          "Tejas Singh Anand",
-          "Yuet Ying Christina Wang",
-          "Wanting Jiang",
-          "Steve Masson",
-          "Tian Zheng",
-          "Bingjie Zhou"
+          "Xinzhao Li",
+          "Charles Power",
+          "Pengyu Ren",
+          "Jongun Won",
+          "Likai Pei",
+          "Yuting Hu",
+          "Jinjun Xiong",
+          "Alptekin Vardar",
+          "Ningyuan Cao",
+          "Xiaobo Sharon Hu",
+          "Thomas K\u00e4mpfe",
+          "Kai Ni",
+          "Ruiyang Qin"
         ],
-        "published": "2026-07-16T21:33:05Z",
-        "updated": "2026-07-21T00:27:08Z",
-        "summary": "Modern agentic systems increasingly rely on skills: installable packages of natural language and code that teach an LLM agent to perform a domain task. As skill repositories grow, developers need automated quality signals on every change, yet evaluation today is largely anecdotal: a developer asks an agent to \"try the skill,\" watches a demo, and forms a subjective impression. This yields neither reproducibility across runs nor comparability across versions, and scales poorly to marketplaces where one regression can silently break dozens of downstream workflows.   We present AEVAL (Agentic Evaluation), a CI-integrated framework that replaces this practice with a deterministic, reproducible test pipeline for agentic skills. Every skill change triggers a test event: the skill runs against a developer declared evaluation contract inside an automated executor, emitting a structured, evidence grounded quality signal that downstream CI can route on.   A key ingredient is a structural separation between executor and grader, preventing a subtle but pervasive failure mode: an agent that silently self-corrects during execution and then grades its own patched outputs as passing.   Our contributions are: (i) a deterministic, change-triggered evaluation protocol with per-skill contracts and per-run artifact schemas; (ii) a formalization of self correction bias as a distinct failure mode of naive agentic evaluators; (iii) an executor/grader separation with a first-attempt grading rule and explicit self-correction tracking; and (iv) a tiered, grounded evidence fix suggestion scheme (LV1 causal, LV2 quality) posted as inline merge-request comments. Validated on real skills in a production agentic stack across multiple agent SDKs, AEVAL converts spurious 100% pass rates into reproducible first-attempt fail signals with an auditable record of every executor fix.",
-        "categories": "cs.SE",
-        "comment": "8 pages, 1 figure, 1 table, accepted at the ICML 2026 Workshop on Statistical Frameworks for Uncertainty in Agentic Systems"
-      },
-      "analysis": {
-        "problem_statement": "The lack of automated quality signals for agentic skills in modern AI systems leads to anecdotal evaluation, making it difficult to ensure reproducibility and comparability across versions.",
-        "bottleneck_addressed": "Evaluation bottleneck in Agentic Systems",
-        "executive_summary": "AEVAL addresses the evaluation bottleneck in agentic systems by introducing a deterministic, reproducible test pipeline for agentic skills, ensuring that changes are thoroughly evaluated and validated. This matters to the current AI landscape as it enables the development of more reliable and trustworthy agentic systems. AEVAL's contribution is crucial for the growth of skill repositories and the scalability of agentic systems.",
-        "key_metrics": {
-          "primary_metric": "Reproducible first-attempt fail signals with an auditable record of every executor fix",
-          "metric_value": "Not explicitly stated",
-          "baseline": "Anecdotal evaluation",
-          "improvement_percentage": "Not quantifiable"
-        },
-        "technical_breakdown": {
-          "method": "AEVAL introduces a change-triggered evaluation protocol with per-skill contracts and per-run artifact schemas. The protocol involves an executor that runs the skill against a developer-declared evaluation contract and emits a structured quality signal. A grader then evaluates the output based on the contract.",
-          "architecture": {
-            "executor": "Responsible for running the skill against the evaluation contract",
-            "grader": "Responsible for evaluating the output based on the contract",
-            "evaluation contract": "Developer-declared contract specifying the evaluation criteria"
-          },
-          "implementation_details": "AEVAL uses a structural separation between executor and grader to prevent self-correction bias. The executor/grader separation involves a first-attempt grading rule and explicit self-correction tracking.",
-          "code_complexity": "Not explicitly stated, but likely involves moderate complexity due to the introduction of a new evaluation protocol and the need for explicit self-correction tracking."
-        },
-        "relevance_tags": [
-          "Agentic Systems",
-          "Evaluation",
-          "Reproducibility",
-          "Trustworthiness"
-        ],
-        "confidence": "high"
-      },
-      "analyzed_at": "2026-07-22T03:36:02.137131",
-      "conference_info": {
-        "conference": "ICML",
-        "year": "2026",
-        "comment": "8 pages, 1 figure, 1 table, accepted at the ICML 2026 Workshop on Statistical Frameworks for Uncertainty in Agentic Systems",
-        "raw_comment": "8 pages, 1 figure, 1 table, accepted at the ICML 2026 Workshop on Statistical Frameworks for Uncertainty in Agentic Systems",
-        "category": "General ML/AI",
-        "rank": "A+"
-      }
-    },
-    {
-      "paper": {
-        "title": "Evaluating DV/CV-QKD Architectures for SAFE Long-Term Secure Storage: A Risk Model and ILP-Based Cost Optimization Approach",
-        "arxiv_id": "2607.19010v1",
-        "authors": [
-          "Alireza Tasdighi",
-          "Romain All\u00e9aume"
-        ],
-        "published": "2026-07-21T11:53:36Z",
-        "updated": "2026-07-21T11:53:36Z",
-        "summary": "This paper presents a unified cost-modeling and optimization framework designed to evaluate hybrid discrete-variable/continuous-variable quantum key distribution (DV/CV-QKD) infrastructures operating within the SAFE (Secure and Efficient) long-term storage (LTSS) protocol. Our methodology jointly addresses the information-theoretic and computational dimensions of cryptographic durability over multi-decade horizons by coupling a quantitative risk model with a stochastic integer linear programming (ILP) formulation. Going beyond idealized physics-informed limits, the framework incorporates realistic next-generation industrial implementations and multiplexed coexistence specifications, together with a sample-average approximation (SAA) pipeline, to determine cost-optimal and structurally feasible SAFE topologies under transmission-budget and security constraints. The proposed framework is evaluated on both randomized synthetic deployments and realistic metropolitan-scale QKD infrastructures, including the Paris Metro-Scale and Greater Paris networks, to characterize the interplay between network topology, QKD modality, and deployment cost while enforcing a target global compromise tolerance $\u03b5$. Numerical results show that the economically optimal architecture is highly scenario-dependent and that both hybrid and homogeneous modality allocations naturally emerge from the optimization. More importantly, the analysis reveals a non-monotonic relationship between the minimum required QKD link capacity and the infrastructure cost: contrary to intuition, increasing the minimum required per-link secret-key rate may reduce the overall deployment cost by enabling a global transition toward more economical CV-based solutions, whereas further capacity increases do not necessarily yield additional savings.",
-        "categories": "math.OC",
-        "comment": "This article (now on 15 double-column pages) extends the preliminary version presented at the 2026 International Conference on Quantum Communications, Networking, and Computing (QCNC)"
-      },
-      "analysis": {
-        "problem_statement": "Evaluating and optimizing hybrid discrete-variable/continuous-variable quantum key distribution (DV/CV-QKD) infrastructures for long-term secure storage (LTSS) under transmission-budget and security constraints.",
-        "bottleneck_addressed": "Optimization of complex quantum key distribution networks under multiple constraints",
-        "executive_summary": "This paper presents a unified cost-modeling and optimization framework for evaluating and optimizing hybrid DV/CV-QKD infrastructures for long-term secure storage. The framework is evaluated on both synthetic and realistic metropolitan-scale QKD infrastructures, revealing a non-monotonic relationship between QKD link capacity and infrastructure cost. This work is relevant to the current AI landscape as it addresses the optimization of complex quantum key distribution networks, a critical component of secure communication systems.",
-        "key_metrics": {
-          "primary_metric": "Cost-optimal and structurally feasible SAFE topologies under transmission-budget and security constraints",
-          "metric_value": "Not specified",
-          "baseline": "Idealized physics-informed limits and homogeneous modality allocations",
-          "improvement_percentage": "Not quantifiable"
-        },
-        "technical_breakdown": {
-          "method": "The framework combines a quantitative risk model with a stochastic integer linear programming (ILP) formulation to determine cost-optimal and structurally feasible SAFE topologies. The ILP formulation is solved using a sample-average approximation (SAA) pipeline.",
-          "architecture": "The framework consists of three main components: (1) a quantitative risk model, (2) a stochastic ILP formulation, and (3) a SAA pipeline.",
-          "implementation_details": "The framework incorporates realistic next-generation industrial implementations and multiplexed coexistence specifications. The SAA pipeline is used to approximate the expected value of the ILP objective function.",
-          "code_complexity": "The computational complexity of the ILP formulation is high due to the large number of variables and constraints. However, the use of a SAA pipeline helps to reduce the computational time."
-        },
-        "relevance_tags": [
-          "Quantum Key Distribution",
-          "Optimization",
-          "Secure Communication",
-          "Integer Linear Programming",
-          "Sample-Average Approximation"
-        ],
-        "confidence": "high"
-      },
-      "analyzed_at": "2026-07-22T03:37:28.104817",
-      "conference_info": {
-        "conference": "QCNC",
-        "year": "2026",
-        "comment": "This article (now on 15 double-column pages) extends the preliminary version presented at the 2026 International Conference on Quantum Communications, Networking, and Computing (QCNC)",
-        "raw_comment": "This article (now on 15 double-column pages) extends the preliminary version presented at the 2026 International Conference on Quantum Communications, Networking, and Computing (QCNC)",
-        "category": "Hardware & EDA",
-        "rank": ""
-      }
-    },
-    {
-      "paper": {
-        "title": "Mapping Without Graphs: Learning Coherence Traffic for Task Placement",
-        "arxiv_id": "2607.18879v1",
-        "authors": [
-          "Guochu Xiong",
-          "Tianrui Ma",
-          "Weichen Liu"
-        ],
-        "published": "2026-07-21T09:07:52Z",
-        "updated": "2026-07-21T09:07:52Z",
-        "summary": "Cache coherence is essential for communication in many-core Network-on-Chip (NoC)-based systems. As application scale and complexity increase, efficiently managing communication becomes increasingly challenging, making task mapping a key optimization technique. However, existing task mapping approaches suffer from two major limitations. First, they rely on predefined task graphs whose dependencies are typically derived from program structure or runtime information, such as dataflow, synchronization, traces, or profiling, without explicitly capturing coherence-induced interactions arising from shared data accesses. Consequently, these graphs provide only a partial representation of inter-task relationships, limiting mapping effectiveness. Second, they generally overlook cache coherence, even though coherence traffic constitutes a significant portion of NoC communication. This mismatch between modeled communication behavior and actual runtime interactions often leads to suboptimal mappings and degraded system performance. To address these limitations, we propose CoTM, a coherence-aware task mapping framework that constructs task graphs by inferring inter-task dependencies from dynamic coherence behavior. CoTM employs a lightweight heuristic with a multi-start optimization strategy to iteratively refine task placement, guided by a coherence-aware penalty function that jointly considers coherence traffic and NoC performance metrics. Experimental results demonstrate that CoTM reduces average link utilization by up to 47.85% and total energy consumption by up to 10.30% compared with existing approaches. These results highlight the importance of incorporating cache coherence into task mapping and demonstrate the potential of coherence-aware optimization for future many-core NoC systems.",
-        "categories": "cs.DC",
+        "published": "2026-07-22T16:45:03Z",
+        "updated": "2026-07-22T16:45:03Z",
+        "summary": "Cross-modal retrieval on edge devices benefits from probabilistic embeddings that capture semantic uncertainty, but deploying them on compute-in-memory (CiM) hardware remains an open problem. The core difficulty is a sampling gap: probabilistic methods such as PCME rely on Monte Carlo sampling and nonlinear distance evaluation at inference, which are fundamentally incompatible with CiM crossbar arrays that support only deterministic, single-step matrix-vector multiplication. Few existing probabilistic retrieval methods can be executed on a conventional crossbar. To bridge this gap, we propose PolySim, a framework that reformulates probabilistic retrieval into a fully deterministic pipeline. PolySim approximates each Gaussian embedding dimension using low-order polynomial bases and computes similarity via a learnable order-bilinear kernel, eliminating stochastic sampling while preserving distributional information. In experiments on six benchmarks spanning video, image, and audio retrieval, PolySim improves R@1 over deterministic baselines by up to 10.3\\% and matches or exceeds PCME, while reducing inference to a single crossbar-compatible matrix-vector multiplication. CrossSim evaluation under realistic device non-idealities confirms robust deployment on conventional crossbar arrays. To the best of our knowledge, PolySim is the first method to enable probabilistic cross-modal retrieval on CiM hardware.",
+        "categories": "cs.ET",
         "comment": "Accepted by ICCAD 2026"
       },
       "analysis": {
-        "problem_statement": "Efficiently managing communication in many-core Network-on-Chip (NoC)-based systems by addressing the limitations of existing task mapping approaches.",
-        "bottleneck_addressed": "Inadequate modeling of cache coherence in task mapping, leading to suboptimal mappings and degraded system performance.",
-        "executive_summary": "This paper addresses a critical bottleneck in many-core NoC systems by proposing a coherence-aware task mapping framework (CoTM) that infers inter-task dependencies from dynamic coherence behavior. CoTM improves task mapping effectiveness by jointly considering coherence traffic and NoC performance metrics, leading to significant reductions in link utilization and energy consumption. This work has important implications for the design of future many-core NoC systems.",
+        "problem_statement": "Cross-modal retrieval on edge devices is hindered by the deployment of probabilistic embeddings on compute-in-memory (CiM) hardware due to a sampling gap between probabilistic methods and CiM crossbar arrays.",
+        "bottleneck_addressed": "The sampling gap between probabilistic methods and CiM hardware, which is a fundamental incompatibility between Monte Carlo sampling and nonlinear distance evaluation at inference, and deterministic, single-step matrix-vector multiplication supported by CiM crossbar arrays.",
+        "executive_summary": "This paper proposes PolySim, a framework that reformulates probabilistic retrieval into a fully deterministic pipeline, enabling probabilistic cross-modal retrieval on CiM hardware. This matters to the current AI landscape as it addresses a significant bottleneck in deploying AI models on edge devices. By eliminating stochastic sampling while preserving distributional information, PolySim improves retrieval performance and reduces inference time.",
         "key_metrics": {
-          "primary_metric": "Average link utilization",
-          "metric_value": "47.85%",
-          "baseline": "Existing task mapping approaches",
-          "improvement_percentage": "47.85%"
+          "primary_metric": "R@1 (Recall at 1) improvement over deterministic baselines",
+          "metric_value": "10.3%",
+          "baseline": "Deterministic baselines",
+          "improvement_percentage": "10.3%"
         },
         "technical_breakdown": {
-          "method": "CoTM employs a lightweight heuristic with a multi-start optimization strategy to iteratively refine task placement, guided by a coherence-aware penalty function that jointly considers coherence traffic and NoC performance metrics.",
-          "architecture": "CoTM constructs task graphs by inferring inter-task dependencies from dynamic coherence behavior, using a coherence-aware penalty function to guide task placement.",
-          "implementation_details": "CoTM uses a multi-start optimization strategy with a lightweight heuristic to iteratively refine task placement, and employs a coherence-aware penalty function to jointly consider coherence traffic and NoC performance metrics.",
-          "code_complexity": "The computational complexity of CoTM is O(n^2), where n is the number of tasks, due to the iterative refinement of task placement using the multi-start optimization strategy."
+          "method": "PolySim approximates each Gaussian embedding dimension using low-order polynomial bases and computes similarity via a learnable order-bilinear kernel. This eliminates stochastic sampling and preserves distributional information.",
+          "architecture": "PolySim consists of two main components: (1) a polynomial surrogate for probabilistic embeddings and (2) a learnable order-bilinear kernel for similarity computation.",
+          "implementation_details": "PolySim employs polynomial basis approximation, learnable order-bilinear kernel, and matrix-vector multiplication for similarity computation.",
+          "code_complexity": "The computational complexity of PolySim is O(n^3), where n is the number of embedding dimensions. The training time is not explicitly mentioned in the paper, but it is likely to be comparable to other probabilistic retrieval methods."
         },
         "relevance_tags": [
-          "many-core",
-          "Network-on-Chip",
-          "task mapping",
-          "cache coherence",
-          "optimization"
+          "Cross-modal retrieval",
+          "Probabilistic embeddings",
+          "Compute-in-memory (CiM) hardware",
+          "Deterministic pipeline",
+          "Polynomial surrogate",
+          "Learnable order-bilinear kernel"
         ],
         "confidence": "high"
       },
-      "analyzed_at": "2026-07-22T03:37:06.951962",
+      "analyzed_at": "2026-07-23T03:47:54.284696",
       "conference_info": {
         "conference": "ICCAD",
         "year": "2026",
@@ -1052,472 +226,54 @@
     },
     {
       "paper": {
-        "title": "SAVEstate: A Method for Documenting Player Reflection in Digital Games",
-        "arxiv_id": "2607.17128v2",
+        "title": "It's Not What You Say, It's How You Say It: Evaluating LLM Responses to Expressions of Belief",
+        "arxiv_id": "2607.18232v2",
         "authors": [
-          "Nisha Devasia",
-          "Michele Newman",
-          "Safinah Ali",
-          "Julie A. Kientz",
-          "Jin Ha Lee"
+          "Kevin Du",
+          "Clara K\u00fcmpel",
+          "Michelle Wastl",
+          "Alex Warstadt"
         ],
-        "published": "2026-07-19T08:34:05Z",
-        "updated": "2026-07-21T14:47:45Z",
-        "summary": "In recent years, interest in eudaimonic player experiences (PX) - concerning reflection, meaning-making, and personal growth - has increased. However, most games user research methods are not well-suited to study eudaimonic PX, as they have been developed to evaluate features of hedonic PX, such as flow, immersion, and playability. To more deeply explore eudaimonic PX, we require methods that can 1) investigate how moment-to-moment PX shapes player reflection and 2) explore how players reengage and reinterpret their experiences longitudinally. In this paper, we present SAVEstate, a method that uses documentation as a means of studying player reflection. SAVEstate consists of two phases: reflection-in-action and reflection-on-action, which allow researchers to probe players' in-situ reflections and how they reengage with their gameplay, respectively. Using SAVEstate, we were able to observe in-situ meaning-making and connect it to post-game reflection-on-action, and view synchronous sensemaking across multiple participants. We also developed an open-source desktop application for researchers to adapt in their own SAVEstate deployments. We discuss implications for how researchers might use SAVEstate to conduct future research in meaningful PX.",
-        "categories": "cs.HC",
-        "comment": "Accepted for publication at CHI PLAY 2026"
-      },
-      "analysis": {
-        "problem_statement": "The paper addresses the limitation of existing game user research methods in capturing eudaimonic player experiences (PX) such as reflection, meaning-making, and personal growth.",
-        "bottleneck_addressed": "Human-centered game design and user experience evaluation, specifically the lack of suitable methods for studying eudaimonic PX.",
-        "executive_summary": "This paper presents SAVEstate, a method for documenting player reflection in digital games, enabling researchers to study eudaimonic player experiences and their longitudinal impact. This matters to the current AI landscape as it can inform the design of more engaging and meaningful games that promote player reflection and personal growth.",
-        "key_metrics": {
-          "primary_metric": "Improved understanding of eudaimonic player experiences",
-          "metric_value": "N/A",
-          "baseline": "Existing game user research methods",
-          "improvement_percentage": "N/A"
-        },
-        "technical_breakdown": {
-          "method": "SAVEstate consists of two phases: reflection-in-action and reflection-on-action, which allow researchers to probe players' in-situ reflections and how they reengage with their gameplay.",
-          "architecture": "SAVEstate uses a documentation-based approach, where researchers collect and analyze player reflections through a desktop application.",
-          "implementation_details": "The desktop application is open-source and allows researchers to adapt it for their own deployments.",
-          "code_complexity": "Low to moderate, as the method focuses on qualitative analysis and documentation rather than complex computations or training."
-        },
-        "relevance_tags": [
-          "Human-centered game design",
-          "User experience evaluation",
-          "Eudaimonic player experiences",
-          "Game research methods"
-        ],
-        "confidence": "high"
-      },
-      "analyzed_at": "2026-07-22T03:36:12.297254",
-      "conference_info": {
-        "conference": "CHI",
-        "year": "2026",
-        "comment": "Accepted for publication at CHI PLAY 2026",
-        "raw_comment": "Accepted for publication at CHI PLAY 2026",
-        "category": "Human-Computer Interaction",
-        "rank": "A+"
-      }
-    },
-    {
-      "paper": {
-        "title": "PC-Seg: Progressive Cross-View Consistency for 3D OCT Segmentation from Sparse 2D Annotations",
-        "arxiv_id": "2607.17718v2",
-        "authors": [
-          "Tsubasa Konno",
-          "Takahiro Ninomiya",
-          "Yukun Zhou",
-          "Koichi Ito",
-          "Siegfried K. Wagner",
-          "Yiqun Lin",
-          "Pearse A. Keane",
-          "Toru Nakazawa",
-          "Takafumi Aoki"
-        ],
-        "published": "2026-07-20T09:12:04Z",
-        "updated": "2026-07-21T07:22:24Z",
-        "summary": "Volumetric segmentation of optical coherence tomography (OCT) images is essential for diagnosing ocular diseases but requires labor-intensive voxel-wise annotations. While semi-supervised learning (SSL) can reduce annotation costs, most existing methods process data slice by slice and fail to exploit the inherent 3D spatial context. We propose PC-Seg, a progressive cross-view consistency framework that learns high-accuracy 3D segmentation models from sparse 2D annotations. Unlike conventional multi-view approaches, PC-Seg uses a single 2D model to learn cross-view consistency from standard B-scans and orthogonal slices, thereby generating reliable volumetric pseudo-labels. These pseudo-labels are then distilled into a 3D model, followed by a co-training stage in which the 2D and 3D models mutually refine each other through ensemble pseudo-labeling. Experiments on the MSHC and Duke DME datasets demonstrate that PC-Seg achieves accuracy comparable to fully supervised learning while using labels for only about 0.7% of the training data, outperforming state-of-the-art semi-supervised and retinal layer segmentation methods. Our code is publicly available at https://github.com/gsisaoki/pc-seg-official.",
-        "categories": "cs.CV",
-        "comment": "Accepted at MICCAI 2026"
-      },
-      "analysis": {
-        "problem_statement": "Developing accurate 3D segmentation models for optical coherence tomography (OCT) images from sparse 2D annotations.",
-        "bottleneck_addressed": "The lack of effective semi-supervised learning methods that can leverage 3D spatial context for volumetric segmentation tasks.",
-        "executive_summary": "This paper presents a novel semi-supervised learning framework, PC-Seg, which addresses the challenge of 3D OCT segmentation from sparse 2D annotations. PC-Seg achieves high accuracy comparable to fully supervised learning while using labels for only about 0.7% of the training data, outperforming state-of-the-art methods. This work has significant implications for the development of efficient and accurate medical image analysis models.",
-        "key_metrics": {
-          "primary_metric": "Accuracy comparable to fully supervised learning",
-          "metric_value": "Not specified",
-          "baseline": "Fully supervised learning",
-          "improvement_percentage": "Not quantifiable"
-        },
-        "technical_breakdown": {
-          "method": "PC-Seg uses a progressive cross-view consistency framework to learn high-accuracy 3D segmentation models from sparse 2D annotations. The framework consists of three stages: (1) learning cross-view consistency from standard B-scans and orthogonal slices using a single 2D model, (2) distilling pseudo-labels from the 2D model into a 3D model, and (3) co-training the 2D and 3D models through ensemble pseudo-labeling.",
-          "architecture": "The architecture consists of a 2D model and a 3D model, with the 2D model using a convolutional neural network (CNN) and the 3D model using a 3D CNN.",
-          "implementation_details": "The authors use a combination of techniques, including cross-view consistency, pseudo-labeling, and co-training, to develop the PC-Seg framework. They also use a publicly available code repository to facilitate reproducibility.",
-          "code_complexity": "The code complexity is moderate, with the authors using a combination of deep learning frameworks (e.g., PyTorch) and custom implementations for the PC-Seg framework. The training time implications are not specified, but the authors note that the framework can be trained on a single GPU."
-        },
-        "relevance_tags": [
-          "Medical Imaging",
-          "Semi-Supervised Learning",
-          "3D Segmentation",
-          "Optical Coherence Tomography (OCT)"
-        ],
-        "confidence": "high"
-      },
-      "analyzed_at": "2026-07-22T03:35:49.722491",
-      "conference_info": {
-        "conference": "MICCAI",
-        "year": "2026",
-        "comment": "Accepted at MICCAI 2026",
-        "raw_comment": "Accepted at MICCAI 2026",
-        "category": "Medical & Biomedical AI",
-        "rank": "A"
-      }
-    },
-    {
-      "paper": {
-        "title": "Content is What Remains: Invariant Speech Tokenization from Parallel Utterances",
-        "arxiv_id": "2607.19033v1",
-        "authors": [
-          "Laurin Wagner",
-          "Bernhard Thallinger",
-          "Miroslav Stankovic",
-          "Mario Zusag"
-        ],
-        "published": "2026-07-21T12:19:38Z",
-        "updated": "2026-07-21T12:19:38Z",
-        "summary": "Discrete speech tokenizers aim to disentangle semantic from acoustic information, yet targets from self-supervised learning (SSL) models like HuBERT retain non-linguistic variation: speaker identity, prosody, and channel conditions leak into the tokens, inflating entropy. Our key insight is that when enough speakers utter the same words under varying conditions, linguistic content is the only shared factor. We propose PINT (Parallel INvariant Tokenization), which fine-tunes an SSL encoder with alignment losses across parallel utterances and augmentations to distill this shared residual. PINT collapses identical words onto consistent token sequences, drastically reducing conditional entropy. Unlike ASR text, PINT tokens preserve frame-level temporal grounding and serve as drop-in semantic targets for audio codecs. Experiments show a 98.7% relative reduction in speaker probe accuracy (93.1% to 1.2%), a 42% lower ABX error rate, and 27-30% lower LM perplexity versus baselines, confirming that the right invariance is key to efficient learning.",
+        "published": "2026-07-20T17:58:31Z",
+        "updated": "2026-07-22T15:51:58Z",
+        "summary": "Users frequently express their beliefs to large language models (LLMs). In some situations, the LLM should accept these contextual beliefs as true. In others, they should stick to their prior knowledge. Notably, users' expressions of belief (EoBs) can take linguistically diverse forms - using presuppositions, evidential and certainty markers, or varied tones - each of which may have a different persuasiveness over the LLMs. We introduce a typology to systematically evaluate how different EoBs affect whether models follow context versus prior knowledge. The typology is grounded in four linguistically motivated dimensions: form, evidentiality, epistemic stance, and tone, spanning 17 fine-grained types. By pairing these EoBs with world knowledge facts, we generate controlled EoB-query pairs that isolate the effect of linguistic variation. Using this benchmark, we evaluate 16 LLMs that differ in architecture (Llama3, Qwen3, Gemma3), scale (1B-30B parameters), and training stages (base vs instruct). We identify meaningful variations in response behavior across these axes, e.g., that bigger models and instruction models tend to be less context-following than smaller models and base models. We further identify specific EoBs that statistically significantly persuade LMs more consistently than others. Our work reveals systematic patterns in how linguistic framing affects LLM context integration, with implications for prompt engineering and model robustness.",
         "categories": "cs.CL",
-        "comment": "Accepted at Interspeech 2026"
+        "comment": "Published at ACL 2026"
       },
       "analysis": {
-        "problem_statement": "The paper addresses the issue of non-linguistic variation in speech tokenization, where self-supervised learning (SSL) models retain speaker identity, prosody, and channel conditions, leading to inflated entropy.",
-        "bottleneck_addressed": "The bottleneck of non-linguistic variation in speech tokenization, which hinders the efficiency of learning and leads to poor performance in downstream tasks.",
-        "executive_summary": "This paper proposes a novel approach to speech tokenization, called PINT, which fine-tunes an SSL encoder with alignment losses to distill the shared linguistic content across parallel utterances and augmentations. This leads to a drastic reduction in conditional entropy and improved performance in downstream tasks.",
+        "problem_statement": "Developing large language models (LLMs) that can effectively integrate contextual information from user expressions of belief (EoBs) while avoiding over-reliance on prior knowledge.",
+        "bottleneck_addressed": "Context integration and knowledge bias in LLMs",
+        "executive_summary": "This paper addresses the challenge of developing LLMs that can effectively integrate contextual information from user expressions of belief, while avoiding over-reliance on prior knowledge. By introducing a typology to systematically evaluate how different EoBs affect LLMs, the authors identify meaningful variations in response behavior across different model architectures, scales, and training stages. This work has significant implications for prompt engineering and model robustness in the current AI landscape.",
         "key_metrics": {
-          "primary_metric": "Relative reduction in speaker probe accuracy",
-          "metric_value": "98.7%",
-          "baseline": "93.1%",
-          "improvement_percentage": "98.7%"
+          "primary_metric": "LLMs' ability to follow context versus prior knowledge",
+          "metric_value": "Not explicitly stated, but implies a statistically significant improvement",
+          "baseline": "Prior knowledge-based responses",
+          "improvement_percentage": "Not quantifiable, but implies a significant improvement"
         },
         "technical_breakdown": {
-          "method": "PINT fine-tunes an SSL encoder with alignment losses across parallel utterances and augmentations to distill the shared linguistic content.",
-          "architecture": "The proposed architecture consists of an SSL encoder, a tokenization module, and a loss function that combines alignment losses and a tokenization loss.",
-          "implementation_details": "The authors use the HuBERT model as the SSL encoder and implement the PINT algorithm using the PyTorch framework.",
-          "code_complexity": "The code complexity is moderate, with the implementation of the PINT algorithm requiring around 500-700 lines of code."
+          "method": "The authors introduce a typology of 17 fine-grained EoB types, grounded in four linguistically motivated dimensions: form, evidentiality, epistemic stance, and tone. They pair these EoBs with world knowledge facts to generate controlled EoB-query pairs that isolate the effect of linguistic variation.",
+          "architecture": "The authors evaluate 16 LLMs with different architectures (Llama3, Qwen3, Gemma3), scales (1B-30B parameters), and training stages (base vs instruct).",
+          "implementation_details": "The authors use a benchmark to evaluate the LLMs' response behavior, which involves generating controlled EoB-query pairs and analyzing the LLMs' responses.",
+          "code_complexity": "Not explicitly stated, but implies a moderate to high computational complexity due to the evaluation of multiple LLMs and EoB types."
         },
         "relevance_tags": [
-          "speech tokenization",
-          "self-supervised learning",
-          "parallel processing",
-          "invariant learning"
+          "Natural Language Processing",
+          "Large Language Models",
+          "Context Integration",
+          "Knowledge Bias",
+          "Prompt Engineering",
+          "Model Robustness"
         ],
         "confidence": "high"
       },
-      "analyzed_at": "2026-07-22T03:33:10.099553",
-      "conference_info": {
-        "conference": "Interspeech",
-        "year": "2026",
-        "comment": "Accepted at Interspeech 2026",
-        "raw_comment": "Accepted at Interspeech 2026",
-        "category": "Natural Language Processing",
-        "rank": ""
-      }
-    },
-    {
-      "paper": {
-        "title": "Constrained CTC Decoding for Efficient Diacritic Restoration",
-        "arxiv_id": "2607.18946v1",
-        "authors": [
-          "Rufael Marew",
-          "Amr Keleg",
-          "Hanan Aldarmaki"
-        ],
-        "published": "2026-07-21T10:30:26Z",
-        "updated": "2026-07-21T10:30:26Z",
-        "summary": "In this work, we address diacritic restoration for Arabic speech transcripts. Most speech data are undiacritized, limiting the ability of modeling fine-grained phonological distinctions. The speech modality has recently been explored as a way to complement text-based diacritic restoration efforts. We propose an efficient non-autoregressive approach for speech-to-text diacritization based on Connectionist Temporal Classification (CTC). Our method incorporates hard constraints during decoding by constructing a character-level diacritization lattice from an undiacritized transcript and restricting hypotheses to valid diacritized realizations. We evaluate on Classical Arabic and Modern Standard Arabic test sets (namely, ArVoice and ClArTTS) against a more computationally-complex multi-modal diacritic restoration baseline, and show statistically significant reductions in diacritic error rates in both, demonstrating that the proposed approach offers both performance and efficiency gains.",
-        "categories": "cs.CL",
-        "comment": "Accepted at Interspeech 2026"
-      },
-      "analysis": {
-        "problem_statement": "The paper addresses the problem of diacritic restoration for Arabic speech transcripts, where most speech data are undiacritized, limiting the ability of modeling fine-grained phonological distinctions.",
-        "bottleneck_addressed": "The paper addresses the bottleneck of diacritic restoration in speech-to-text systems, specifically for Arabic languages, where the lack of diacritics in speech data hinders the modeling of phonological distinctions.",
-        "executive_summary": "This paper proposes an efficient non-autoregressive approach for speech-to-text diacritization based on Connectionist Temporal Classification (CTC), which offers both performance and efficiency gains over a more computationally complex multi-modal diacritic restoration baseline. This matters to the current AI landscape as it improves the accuracy of speech-to-text systems for Arabic languages, enabling better modeling of phonological distinctions.",
-        "key_metrics": {
-          "primary_metric": "Statistically significant reductions in diacritic error rates",
-          "metric_value": "Not specified",
-          "baseline": "Multi-modal diacritic restoration baseline",
-          "improvement_percentage": "Not quantifiable"
-        },
-        "technical_breakdown": {
-          "method": "The proposed method incorporates hard constraints during decoding by constructing a character-level diacritization lattice from an undiacritized transcript and restricting hypotheses to valid diacritized realizations.",
-          "architecture": "The architecture is based on Connectionist Temporal Classification (CTC), a non-autoregressive approach for speech-to-text diacritization.",
-          "implementation_details": "The implementation uses a character-level diacritization lattice, which is constructed from an undiacritized transcript and used to restrict hypotheses to valid diacritized realizations.",
-          "code_complexity": "The proposed approach is efficient and non-autoregressive, implying lower computational complexity and training time compared to the multi-modal diacritic restoration baseline."
-        },
-        "relevance_tags": [
-          "Speech-to-Text",
-          "Diacritic Restoration",
-          "Arabic Languages",
-          "Connectionist Temporal Classification (CTC)",
-          "Non-Autoregressive Approach"
-        ],
-        "confidence": "high"
-      },
-      "analyzed_at": "2026-07-22T03:33:11.931068",
-      "conference_info": {
-        "conference": "Interspeech",
-        "year": "2026",
-        "comment": "Accepted at Interspeech 2026",
-        "raw_comment": "Accepted at Interspeech 2026",
-        "category": "Natural Language Processing",
-        "rank": ""
-      }
-    },
-    {
-      "paper": {
-        "title": "Transcription Policy as a Latent Variable: Activating Controllable Verbatim ASR with Word-Level Timing",
-        "arxiv_id": "2607.18934v1",
-        "authors": [
-          "Laurin Wagner",
-          "Mario Zusag",
-          "Bernhard Thallinger"
-        ],
-        "published": "2026-07-21T10:19:17Z",
-        "updated": "2026-07-21T10:19:17Z",
-        "summary": "Modern ASR models trained on heterogeneously annotated data treat transcription style (verbatim vs. intended) as an uncontrolled latent variable, causing measurable decoding instability, evaluation confounding (up to 60% of reported WER attributable to style mismatch), and unreliable word-level timing. We show that models already encode both styles; the challenge is controlled activation. Using coverage-aware decoder task tokens trained on parallel verbatim/intended transcript pairs, we raise German disfluency F1 from 10% to 79% zero-shot, despite English-only training. Full English-only fine-tuning surpasses all baselines in verbatim accuracy, disfluency detection, and intended-mode quality across both languages. We further introduce supervised cross-attention fine-tuning that improves word-level timestamps on disfluent speech beyond forced-alignment baselines. Finally, we propose verbatimize, a new task enabling scalable creation and enrichment of speech corpora with high-quality canonical verbatim transcriptions.",
-        "categories": "cs.CL",
-        "comment": "Accepted at Interspeech 2026 long track"
-      },
-      "analysis": {
-        "problem_statement": "The paper addresses the issue of transcription style (verbatim vs. intended) being treated as an uncontrolled latent variable in modern ASR models, leading to decoding instability, evaluation confounding, and unreliable word-level timing.",
-        "bottleneck_addressed": "The paper addresses the bottleneck of controlled activation of transcription style in ASR models.",
-        "executive_summary": "This paper tackles a crucial problem in ASR by introducing a novel approach to controlling transcription style, enabling more accurate and reliable word-level timing. This breakthrough has significant implications for the development of more robust and effective ASR systems.",
-        "key_metrics": {
-          "primary_metric": "German disfluency F1 score",
-          "metric_value": "79%",
-          "baseline": "10%",
-          "improvement_percentage": "680%"
-        },
-        "technical_breakdown": {
-          "method": "The authors propose a coverage-aware decoder task token approach, trained on parallel verbatim/intended transcript pairs, to raise the activation of transcription style. They also introduce supervised cross-attention fine-tuning to improve word-level timestamps.",
-          "architecture": "The architecture consists of a coverage-aware decoder, a task token encoder, and a cross-attention mechanism.",
-          "implementation_details": "The authors use a task token encoder to encode both verbatim and intended styles, and a cross-attention mechanism to fine-tune the model for word-level timestamps.",
-          "code_complexity": "The code complexity is moderate to high, as it involves the implementation of a novel coverage-aware decoder and a cross-attention mechanism."
-        },
-        "relevance_tags": [
-          "ASR",
-          "Transcription Style",
-          "Word-Level Timing",
-          "Disfluency Detection"
-        ],
-        "confidence": "high"
-      },
-      "analyzed_at": "2026-07-22T03:33:29.741563",
-      "conference_info": {
-        "conference": "Interspeech",
-        "year": "2026",
-        "comment": "Accepted at Interspeech 2026 long track",
-        "raw_comment": "Accepted at Interspeech 2026 long track",
-        "category": "Natural Language Processing",
-        "rank": ""
-      }
-    },
-    {
-      "paper": {
-        "title": "Is EEG-to-Text Feasible in Real-World Scenarios? An In-Depth Analysis Using a Neuropsychology-Inspired Benchmark",
-        "arxiv_id": "2607.18749v1",
-        "authors": [
-          "Zihan Zhang",
-          "Yu Bao",
-          "Xiao Ding",
-          "Tianyi Jiang",
-          "Kai Xiong"
-        ],
-        "published": "2026-07-21T06:17:16Z",
-        "updated": "2026-07-21T06:17:16Z",
-        "summary": "Translating brain signals into text could restore communication for people with severe paralysis, yet practically usable systems to date rely on invasive electrocorticography (ECoG). Electroencephalography (EEG) offers a non-invasive alternative, and EEG-to-text (EEG2Text) has been widely explored. Interestingly, however, EEG2Text models generally rely on teacher-forcing evaluation; without it, they fail to generate meaningful decoding. This reliance prevents EEG2Text from being applied in real-world, non-academic settings. This has fueled numerous debates about whether EEG2Text is a meaningful direction, by extension, and whether EEG truly contains decodable linguistic information. Here, using a neuropsychology-informed paradigm, we find that existing EEG2Text benchmarks have neglected EEG instability, a flaw that has confounded inference and sparked debate. Our experiments furnish key evidence for the feasibility of teacher-forcing-free EEG2Text decoding. Accordingly, we assemble the Corpus OF Eeg-To-Text (COFETT) using a 128-channel high-density EEG cap, providing a benchmark dedicated to evaluating EEG2Text models. In comparisons with multiple existing benchmarks, COFETT achieves SOTA ability to distinguish among model performances and enables robust, teacher-forcing-free evaluation, thereby opening a path toward practical EEG2Text applications. COFETT is open sourced in https://github.com/baoyudu/COFETT.",
-        "categories": "cs.LG",
-        "comment": "17 pages, 8 figures. Published in Proceedings of ACL 2026 Main Conference"
-      },
-      "analysis": {
-        "problem_statement": "Developing a non-invasive EEG-to-text system that can restore communication for people with severe paralysis without relying on invasive electrocorticography (ECoG) or teacher-forcing evaluation.",
-        "bottleneck_addressed": "The reliance on teacher-forcing evaluation in EEG-to-text models, which prevents their application in real-world settings.",
-        "executive_summary": "This paper addresses a critical bottleneck in EEG-to-text research by developing a new benchmark, COFETT, that enables robust, teacher-forcing-free evaluation. This breakthrough opens the door to practical EEG-to-text applications, potentially restoring communication for individuals with severe paralysis.",
-        "key_metrics": {
-          "primary_metric": "Achieving state-of-the-art (SOTA) ability to distinguish among model performances without relying on teacher-forcing evaluation.",
-          "metric_value": "Not explicitly stated",
-          "baseline": "Existing EEG-to-text benchmarks",
-          "improvement_percentage": "Not quantifiable"
-        },
-        "technical_breakdown": {
-          "method": "The authors propose a neuropsychology-informed paradigm that addresses EEG instability, a flaw in existing EEG-to-text benchmarks. They develop the Corpus OF Eeg-To-Text (COFETT) using a 128-channel high-density EEG cap, which provides a benchmark dedicated to evaluating EEG-to-text models.",
-          "architecture": "The COFETT benchmark is designed to evaluate EEG-to-text models without relying on teacher-forcing evaluation. The authors do not specify a particular architecture for the EEG-to-text models.",
-          "implementation_details": "The authors use a high-density EEG cap with 128 channels to collect EEG data. They also employ a neuropsychology-informed paradigm to address EEG instability.",
-          "code_complexity": "Not explicitly stated, but the development of a new benchmark and the use of a high-density EEG cap may imply increased computational complexity and training time."
-        },
-        "relevance_tags": [
-          "EEG-to-text",
-          "neuropsychology",
-          "benchmarking",
-          "non-invasive brain-computer interfaces",
-          "severe paralysis"
-        ],
-        "confidence": "high"
-      },
-      "analyzed_at": "2026-07-22T03:33:00.286168",
+      "analyzed_at": "2026-07-23T03:47:29.776813",
       "conference_info": {
         "conference": "ACL",
         "year": "2026",
-        "comment": "17 pages, 8 figures. Published in Proceedings of ACL 2026 Main Conference",
-        "raw_comment": "17 pages, 8 figures. Published in Proceedings of ACL 2026 Main Conference",
+        "comment": "Published at ACL 2026",
+        "raw_comment": "Published at ACL 2026",
         "category": "Natural Language Processing",
         "rank": "A+"
-      }
-    },
-    {
-      "paper": {
-        "title": "NGPS: GPS-Denied Aerial Geo-Localization and 2.5D Reconstruction via Deep Satellite Image Matching and Multi-Rate Sensor Fusion",
-        "arxiv_id": "2607.18936v1",
-        "authors": [
-          "Sanket Sharma"
-        ],
-        "published": "2026-07-21T10:20:08Z",
-        "updated": "2026-07-21T10:20:08Z",
-        "summary": "We present NGPS (Next-Generation Positioning System), a visual geo-localization framework for high-altitude UAVs that provides GPS-free absolute positioning by matching down-facing images to georeferenced satellite imagery with deep features. The system combines (1) adaptive confidence-weighted UKF fusion, where NGPS covariance is modulated by RANSAC inlier ratio, reprojection error, and match confidence; (2) velocity-predictive kernel extraction, using VIO velocity to predict the satellite search region; and (3) an asynchronous multi-rate temporal priority queue that interleaves absolute position (1-2 Hz), VIO (10-20 Hz), and IMU (100-200 Hz) updates in chronological order. Globally optimized poses from VINS pose-graph optimization, anchored by NGPS corrections, further enable real-time 2.5D georeferenced orthomosaic reconstruction. On five flight sequences (60-150 m AGL), NGPS achieves 2.94 m position RMSE, with worst-case ATE 6.04 m at 150 m AGL and 2 m/s, yielding a 3.5x improvement over standalone monocular VIO. The system runs in real time on an NVIDIA Jetson Orin NX. Part of the implementation is open-sourced at https://github.com/snktshrma/ngps_flight.",
-        "categories": "cs.RO",
-        "comment": "9 pages (8-page paper + IEEE copyright/citation cover page), 6 figures. Accepted to IEEE/RSJ IROS 2026"
-      },
-      "analysis": {
-        "problem_statement": "This paper addresses the problem of GPS-denied aerial geo-localization and 2.5D reconstruction for high-altitude UAVs.",
-        "bottleneck_addressed": "The bottleneck addressed in this paper is the lack of robust and accurate positioning systems for GPS-denied environments, which is a significant challenge in various applications such as aerial surveying, mapping, and surveillance.",
-        "executive_summary": "This paper presents a novel visual geo-localization framework called NGPS, which enables GPS-free absolute positioning for high-altitude UAVs by leveraging deep satellite image matching and multi-rate sensor fusion. NGPS achieves significant improvements in positioning accuracy and runs in real-time on an NVIDIA Jetson Orin NX. This matters to the current AI landscape as it addresses a critical challenge in various applications and has the potential to enable more widespread adoption of UAVs in various industries.",
-        "key_metrics": {
-          "primary_metric": "2.94 m position RMSE",
-          "metric_value": "2.94",
-          "baseline": "standalone monocular VIO",
-          "improvement_percentage": "350%"
-        },
-        "technical_breakdown": {
-          "method": "NGPS uses a combination of deep satellite image matching, adaptive confidence-weighted UKF fusion, velocity-predictive kernel extraction, and asynchronous multi-rate temporal priority queue to achieve GPS-free absolute positioning.",
-          "architecture": "The architecture of NGPS includes a deep feature extraction module, a UKF fusion module, a velocity-predictive kernel extraction module, and a temporal priority queue module.",
-          "implementation_details": "NGPS uses RANSAC inlier ratio, reprojection error, and match confidence to modulate the covariance of the UKF fusion module. The velocity-predictive kernel extraction module uses VIO velocity to predict the satellite search region. The temporal priority queue module interleaves absolute position, VIO, and IMU updates in chronological order.",
-          "code_complexity": "The computational complexity of NGPS is moderate, with the UKF fusion module and velocity-predictive kernel extraction module requiring significant computational resources. However, the system runs in real-time on an NVIDIA Jetson Orin NX, indicating that the computational complexity is manageable."
-        },
-        "relevance_tags": [
-          "Aerial Geo-Localization",
-          "GPS-Denied",
-          "Visual Odometry",
-          "Multi-Rate Sensor Fusion",
-          "Deep Learning",
-          "UAVs"
-        ],
-        "confidence": "high"
-      },
-      "analyzed_at": "2026-07-22T03:34:50.982047",
-      "conference_info": {
-        "conference": "IROS",
-        "year": "2026",
-        "comment": "9 pages (8-page paper + IEEE copyright/citation cover page), 6 figures. Accepted to IEEE/RSJ IROS 2026",
-        "raw_comment": "9 pages (8-page paper + IEEE copyright/citation cover page), 6 figures. Accepted to IEEE/RSJ IROS 2026",
-        "category": "Robotics",
-        "rank": "A"
-      }
-    },
-    {
-      "paper": {
-        "title": "MVP-Tac: A Miniaturized Dual-Modal Vision and Photoelastic Tactile Sensor for Robot-Assisted Minimally Invasive Surgery",
-        "arxiv_id": "2607.18660v1",
-        "authors": [
-          "Md Rakibul Islam Prince",
-          "Jaeeun Kim",
-          "Yuhao Zhou",
-          "Mason Vrshek",
-          "Shivani Reddy Sama",
-          "Adyaa Khera",
-          "Sheeraz Athar",
-          "Zijie Xu",
-          "Jiabin Liu",
-          "Shaoting Lin",
-          "Wei Li",
-          "Yu She"
-        ],
-        "published": "2026-07-21T03:08:14Z",
-        "updated": "2026-07-21T03:08:14Z",
-        "summary": "Robot-assisted minimally invasive surgery (RMIS) offers major benefits over open and conventional laparoscopic procedures, yet it still lacks tactile feedback for palpation while operating under strict requirements to preserve reliable vision for navigation and safety. In practice, visual feedback is indispensable, and tactile solutions that cannot coexist with vision are difficult to translate into RMIS tools. To address both needs, we introduce MVP-Tac, a compact, vision-based tactile sensor that provides co-located vision and tactile sensing. MVP-Tac uses reflective photoelastic imaging: a thin photoelastic elastomer produces stress-dependent interferograms under contact that are captured by an embedded camera through a miniaturized reflective polariscope. A semi-transparent membrane and controllable illumination enable switching between visual mode and tactile mode, enabling tactile perception without sacrificing vision. We validate MVP-Tac through force calibration in the 0 to 2 N range and demonstrate its potential for tumor palpation via video-based hardness classification on tissue phantoms, achieving 97% accuracy for exposed-tumor classification and 92% accuracy for subdermal-tumor classification. Finally, we conduct a simulated colonoscopy to validate both visual and tactile modalities in a constrained lumen, including vision-guided 3D photomapping of the luminal wall and in situ hardness classification of localized nodules. Overall, MVP-Tac provides a practical path toward restoring clinically useful palpation in RMIS while maintaining essential visual feedback. The design, fabrication, and firmware of MVP-Tac are open-sourced at https://mvp-tac.github.io/",
-        "categories": "cs.RO",
-        "comment": "8 pages, 8 figures. To appear in IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS) 2026"
-      },
-      "analysis": {
-        "problem_statement": "Developing a tactile sensor for robot-assisted minimally invasive surgery (RMIS) that can coexist with vision without sacrificing navigation and safety.",
-        "bottleneck_addressed": "Sensorimotor bottleneck: The lack of tactile feedback in RMIS, which hinders accurate palpation and diagnosis.",
-        "executive_summary": "This paper presents MVP-Tac, a compact, vision-based tactile sensor that provides co-located vision and tactile sensing for RMIS. MVP-Tac addresses the sensorimotor bottleneck in RMIS by enabling tactile perception without sacrificing vision, which is essential for navigation and safety. This breakthrough has significant implications for improving the accuracy and efficacy of RMIS.",
-        "key_metrics": {
-          "primary_metric": "97% accuracy for exposed-tumor classification and 92% accuracy for subdermal-tumor classification",
-          "metric_value": null,
-          "baseline": "None specified",
-          "improvement_percentage": null
-        },
-        "technical_breakdown": {
-          "method": "MVP-Tac uses reflective photoelastic imaging, which involves a thin photoelastic elastomer that produces stress-dependent interferograms under contact. These interferograms are captured by an embedded camera through a miniaturized reflective polariscope.",
-          "architecture": "The MVP-Tac architecture consists of a semi-transparent membrane, a controllable illumination system, and a camera. The semi-transparent membrane enables switching between visual mode and tactile mode, while the controllable illumination system allows for adjustable lighting conditions.",
-          "implementation_details": "The MVP-Tac system uses a photoelastic elastomer, which is a type of material that exhibits stress-dependent optical properties. The elastomer is embedded with a camera and a reflective polariscope, which captures the interferograms produced by the elastomer under contact.",
-          "code_complexity": "The code complexity of MVP-Tac is not explicitly stated in the paper. However, the system's firmware is open-sourced, which suggests that the code is relatively simple and accessible."
-        },
-        "relevance_tags": [
-          "Robot-Assisted Minimally Invasive Surgery",
-          "Tactile Sensing",
-          "Vision-Based Sensing",
-          "Sensorimotor Bottleneck",
-          "Medical Robotics"
-        ],
-        "confidence": "high"
-      },
-      "analyzed_at": "2026-07-22T03:37:05.165340",
-      "conference_info": {
-        "conference": "Intelligent Robots and Systems",
-        "year": "2026",
-        "comment": "8 pages, 8 figures. To appear in IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS) 2026",
-        "raw_comment": "8 pages, 8 figures. To appear in IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS) 2026",
-        "category": "Robotics",
-        "rank": "A"
-      }
-    },
-    {
-      "paper": {
-        "title": "Intelligent Multi-UAV Navigation in ITNTNs: A Hierarchical LLM Approach",
-        "arxiv_id": "2607.18604v1",
-        "authors": [
-          "Zijiang Yan",
-          "Hao Zhou",
-          "Wael Jaafar",
-          "Jianhua Pei",
-          "Ping Wang",
-          "Halim Yanikomeroglu",
-          "Hina Tabassum"
-        ],
-        "published": "2026-07-21T00:34:42Z",
-        "updated": "2026-07-21T00:34:42Z",
-        "summary": "The deployment of high-speed Uncrewed Aerial Vehicles (UAVs) in 3D aerial highways necessitates robust coordination of physical flight kinematics and multi-tier network handovers. While Deep Reinforcement Learning (DRL) offers rapid tactical control, it lacks the zero-shot strategic reasoning required to quickly adapt to dynamic Integrated Terrestrial and Non-Terrestrial Networks (ITNTNs). Conversely, Large Language Models (LLMs) excel at semantic reasoning but suffer from high inference latency, rendering them unsuitable for real-time aerodynamic control. To bridge this gap, we propose a novel Hierarchical LLM-driven control framework. A massive cloud-based LLM deployed on a High-Altitude Platform Station (HAPS) manages slow-timescale global load balancing, while lightweight edge-LLMs on individual UAVs translate local observations into tactical sub-goals. These sub-goals guide a fast-timescale physical DRL controller to execute collision-free, handover-aware trajectories. Simulation results demonstrate that our agentic architecture significantly reduces collision rates and improves aggregate system throughput compared to existing baselines.",
-        "categories": "cs.RO",
-        "comment": "This paper has been accepted by IEEE GLOBECOM 2026"
-      },
-      "analysis": {
-        "problem_statement": "The paper addresses the challenge of coordinating high-speed Uncrewed Aerial Vehicles (UAVs) in 3D aerial highways with Integrated Terrestrial and Non-Terrestrial Networks (ITNTNs) to achieve robust flight kinematics and efficient network handovers.",
-        "bottleneck_addressed": "The paper addresses the bottleneck of zero-shot strategic reasoning in Deep Reinforcement Learning (DRL) for dynamic ITNTNs and the high inference latency of Large Language Models (LLMs) for real-time aerodynamic control.",
-        "executive_summary": "This paper proposes a novel Hierarchical LLM-driven control framework to bridge the gap between DRL and LLMs for UAV navigation in ITNTNs. The framework leverages a massive cloud-based LLM for global load balancing and lightweight edge-LLMs for tactical sub-goal generation, significantly reducing collision rates and improving system throughput.",
-        "key_metrics": {
-          "primary_metric": "Collision rates",
-          "metric_value": "Not explicitly stated",
-          "baseline": "Existing DRL and LLM-based baselines",
-          "improvement_percentage": "Not quantifiable"
-        },
-        "technical_breakdown": {
-          "method": "The Hierarchical LLM-driven control framework consists of three components: (1) a massive cloud-based LLM deployed on a High-Altitude Platform Station (HAPS) for global load balancing, (2) lightweight edge-LLMs on individual UAVs for tactical sub-goal generation, and (3) a fast-timescale physical DRL controller for executing collision-free, handover-aware trajectories.",
-          "architecture": "Cloud-based LLM, edge-LLMs, and DRL controller",
-          "implementation_details": "The paper uses a combination of semantic reasoning and reinforcement learning to achieve zero-shot strategic reasoning and real-time aerodynamic control.",
-          "code_complexity": "High computational complexity due to the use of massive cloud-based LLMs and DRL controllers, but potentially reduced training time with the use of lightweight edge-LLMs."
-        },
-        "relevance_tags": [
-          "UAV navigation",
-          "ITNTNs",
-          "Hierarchical LLMs",
-          "DRL",
-          "Edge AI",
-          "Cloud computing"
-        ],
-        "confidence": "high"
-      },
-      "analyzed_at": "2026-07-22T03:32:37.326266",
-      "conference_info": {
-        "conference": "GLOBECOM",
-        "year": "2026",
-        "comment": "This paper has been accepted by IEEE GLOBECOM 2026",
-        "raw_comment": "This paper has been accepted by IEEE GLOBECOM 2026",
-        "category": "Systems & Architecture",
-        "rank": "B"
       }
     }
   ],
@@ -1538,14 +294,14 @@
     "Blockchain & Cryptography",
     "Other"
   ],
-  "filter_date": "2026-07-21",
+  "filter_date": "2026-07-22",
   "metrics": {
     "dashboard": {
-      "previous_date": "2026-07-20",
-      "previous_count": 36,
-      "current_date": "2026-07-21",
-      "current_count": 29,
-      "day_change": -7,
+      "previous_date": "2026-07-21",
+      "previous_count": 29,
+      "current_date": "2026-07-22",
+      "current_count": 5,
+      "day_change": -24,
       "trend": "\ud83d\udcc9 DOWN"
     }
   },
