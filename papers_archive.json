@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-07-26T03:37:44.831760",
+  "last_updated": "2026-07-27T03:48:29.746189",
   "dates": {
     "2026-07-20": {
       "count": 36,
@@ -5202,6 +5202,460 @@
         }
       ],
       "updated_at": "2026-07-26T03:37:44.831757"
+    },
+    "2026-07-24": {
+      "count": 8,
+      "papers": [
+        {
+          "paper": {
+            "title": "CARA: Concept-Aware Risk Attention for Interpretable Collision Anticipation",
+            "arxiv_id": "2607.22494v1",
+            "authors": [
+              "Zhishan Tao",
+              "Ruoyu Wang",
+              "Yucheng Wu",
+              "Enjun Du",
+              "Yilei Yuan",
+              "Sherwin Ho",
+              "Yue Su",
+              "Jinbo Su",
+              "Yi Hong"
+            ],
+            "published": "2026-07-24T17:06:05Z",
+            "updated": "2026-07-24T17:06:05Z",
+            "summary": "Collision anticipation in autonomous driving requires not only accurate early warnings but also interpretable reasoning about what risk factors are being tracked and how risk evolves over time. Existing methods fall short in this regard: feature-driven models are opaque, post-hoc explanations often lack fidelity, and concept-based methods are mostly designed for static recognition rather than dynamic driving scenes. We propose CARA (Concept-Aware Risk Attention), an intrinsically interpretable spatio-temporal framework for collision anticipation. CARA derives domain-grounded risk concepts from accident narratives, aligns them with video frames via vision-language similarity, and organizes them into evolving concept trajectories. These trajectories provide explicit risk evidence that guides spatial attention, temporal attention, and anticipation, allowing semantic concepts to directly influence both where the model attends and how it predicts risk over time. By treating semantic risk factors as dynamic intermediate evidence rather than auxiliary post-hoc explanations, CARA tightly couples interpretability with the predictive process. Extensive experiments on three benchmarks show that CARA consistently improves anticipation accuracy and warning earliness over strong baselines, while providing sparse and semantically grounded concept evidence.",
+            "categories": "cs.MM",
+            "comment": "Accepted to ACM Multimedia 2026(Oral)"
+          },
+          "analysis": {
+            "problem_statement": "Developing an interpretable and accurate collision anticipation system for autonomous driving that can reason about risk factors and their evolution over time.",
+            "bottleneck_addressed": "The opacity of feature-driven models and the lack of fidelity in post-hoc explanations for collision anticipation in autonomous driving.",
+            "executive_summary": "This paper addresses the critical need for interpretable and accurate collision anticipation systems in autonomous driving. CARA, a novel spatio-temporal framework, achieves this by deriving domain-grounded risk concepts from accident narratives and aligning them with video frames. This approach improves anticipation accuracy and warning earliness while providing sparse and semantically grounded concept evidence.",
+            "key_metrics": {
+              "primary_metric": "Improves anticipation accuracy and warning earliness",
+              "metric_value": "Not specified",
+              "baseline": "Strong baselines",
+              "improvement_percentage": "Not quantifiable"
+            },
+            "technical_breakdown": {
+              "method": "CARA derives domain-grounded risk concepts from accident narratives and aligns them with video frames via vision-language similarity. It then organizes these concepts into evolving concept trajectories, which provide explicit risk evidence that guides spatial attention, temporal attention, and anticipation.",
+              "architecture": "The CARA framework consists of three main components: (1) Concept Derivation, which extracts risk concepts from accident narratives; (2) Concept Alignment, which aligns risk concepts with video frames via vision-language similarity; and (3) Concept Trajectory, which organizes risk concepts into evolving trajectories.",
+              "implementation_details": "CARA uses a combination of natural language processing (NLP) and computer vision techniques, including vision-language similarity metrics (e.g., BERT) and spatio-temporal attention mechanisms.",
+              "code_complexity": "The computational complexity of CARA is not explicitly stated, but it likely involves the use of complex neural networks and attention mechanisms, which can be computationally expensive to train and deploy."
+            },
+            "relevance_tags": [
+              "Autonomous Driving",
+              "Interpretability",
+              "Risk Assessment",
+              "Computer Vision",
+              "Natural Language Processing"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-07-27T03:47:13.043695",
+          "conference_info": {
+            "conference": "ACM Multimedia",
+            "year": "2026",
+            "comment": "Accepted to ACM Multimedia 2026(Oral)",
+            "raw_comment": "Accepted to ACM Multimedia 2026(Oral)",
+            "category": "Computer Vision",
+            "rank": "A+"
+          }
+        },
+        {
+          "paper": {
+            "title": "Deformable Triangle Splatting: Flexible Primitives for Real-Time Radiance Field Rendering",
+            "arxiv_id": "2607.22446v1",
+            "authors": [
+              "Oriol Jim\u00e9nez-Ayguad\u00e9",
+              "Antonio Agudo"
+            ],
+            "published": "2026-07-24T16:08:26Z",
+            "updated": "2026-07-24T16:08:26Z",
+            "summary": "Recent radiance field methods represent scenes with 2D primitives that offer surface alignment and efficient rasterization, from Gaussian disks to triangles, yet all rely on convex boundaries: curved and concave structures demand excessive primitives. We introduce Deformable Triangle Splatting, which augments each triangle with $K$ control points per edge, each parameterized by a single learnable scalar displacement that shifts the boundary inward or outward, enabling non-convex shape representation while preserving the three base vertices that define the 3D plane. To render these non-convex primitives differentiably, we design a rasterization pipeline in the triangle's barycentric coordinate space, ensuring view-consistent rendering. A winding number test determines whether each pixel lies inside the deformed primitive, and a window function controlled by two learnable parameters, sharpness and corner smoothness, together with a per-primitive scalar opacity, produces the smooth opacity transition from interior to boundary. Validation is done in a variety of real-world scenes, outperforming recent works based on non-volumetric primitives in terms of visual quality and versatility while still achieving competitive rendering efficiency.",
+            "categories": "cs.CV",
+            "comment": "Accepted at ECCV 2026. Project page: https://orioljim1.github.io/detris"
+          },
+          "analysis": {
+            "problem_statement": "Representing complex, non-convex 3D scenes with radiance fields using flexible, deformable primitives for real-time rendering.",
+            "bottleneck_addressed": "The bottleneck of representing complex, non-convex shapes with traditional convex primitives, leading to excessive primitives and reduced rendering efficiency.",
+            "executive_summary": "This paper introduces Deformable Triangle Splatting, a novel method for representing non-convex 3D scenes using deformable triangles, enabling real-time rendering with improved visual quality and versatility. This matters to the current AI landscape as it addresses a critical limitation in radiance field rendering and has applications in computer vision, graphics, and robotics.",
+            "key_metrics": {
+              "primary_metric": "Improved visual quality and versatility in representing non-convex 3D scenes.",
+              "metric_value": "Not explicitly stated",
+              "baseline": "Recent works based on non-volumetric primitives",
+              "improvement_percentage": "Not quantifiable"
+            },
+            "technical_breakdown": {
+              "method": "Deformable Triangle Splatting augments each triangle with K control points per edge, parameterized by a single learnable scalar displacement, enabling non-convex shape representation while preserving the three base vertices.",
+              "architecture": "The method uses a rasterization pipeline in the triangle's barycentric coordinate space, ensuring view-consistent rendering. A winding number test determines whether each pixel lies inside the deformed primitive, and a window function controlled by two learnable parameters produces the smooth opacity transition.",
+              "implementation_details": "The method uses a differentiable rasterization pipeline, a winding number test, and a window function with learnable parameters.",
+              "code_complexity": "The computational complexity of the method is not explicitly stated, but it is likely to be higher than traditional convex primitive methods due to the additional control points and learnable parameters."
+            },
+            "relevance_tags": [
+              "Computer Vision",
+              "Graphics",
+              "Radiance Fields",
+              "Real-time Rendering",
+              "Non-convex Shape Representation"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-07-27T03:47:21.836665",
+          "conference_info": {
+            "conference": "ECCV",
+            "year": "2026",
+            "comment": "Accepted at ECCV 2026. Project page: https://orioljim1.github.io/detris",
+            "raw_comment": "Accepted at ECCV 2026. Project page: https://orioljim1.github.io/detris",
+            "category": "Computer Vision",
+            "rank": "A"
+          }
+        },
+        {
+          "paper": {
+            "title": "SiPhy: Single-Image Physical Property Reasoning",
+            "arxiv_id": "2607.22355v1",
+            "authors": [
+              "Hoang Le",
+              "Joonwoo Kwon",
+              "Elkhan Ismayilzada",
+              "Yufei Zhang",
+              "Zijun Cui"
+            ],
+            "published": "2026-07-24T14:36:37Z",
+            "updated": "2026-07-24T14:36:37Z",
+            "summary": "Inferring physical properties such as mass, stiffness, and elasticity from a single image is essential for simulation and embodied AI, yet most existing approaches rely on multi-view reconstruction or physics-based supervision. We introduce SiPhy, a unified framework for single-image physical property reasoning that aligns 3D-aware visual cues, depth with language-based material knowledge. From one RGB image, SiPhy samples pseudo-voxel points, extracts CLIP features, and grounds them to material candidates proposed by a VLM. A part-based contrastive aggregator enforces region consistency, while a heaviness-aware refinement improves thickness and volume estimation for dense objects. Across ABO-500, MVImgNet-100, and PhysXNet-100, SiPhy achieves state-of-the-art single-image performance, surpassing multi-view reconstruction methods by improving mass MnRE by up to 93% (vs. PUGS), reducing density MAE by 35.5% (vs. NeRF2Physics), and lowering Young's modulus error by 23.5%. We further validate SiPhy on real hand-object interaction datasets, demonstrating its potential as a data annotation engine for physical understanding from single-view imagery.",
+            "categories": "cs.CV",
+            "comment": "Accepted to ECCV 2026 (main track)"
+          },
+          "analysis": {
+            "problem_statement": "Inferring physical properties such as mass, stiffness, and elasticity from a single image.",
+            "bottleneck_addressed": "The bottleneck of requiring multi-view reconstruction or physics-based supervision for single-image physical property reasoning.",
+            "executive_summary": "This paper presents SiPhy, a unified framework for single-image physical property reasoning that achieves state-of-the-art performance by aligning 3D-aware visual cues, depth with language-based material knowledge. This matters to the current AI landscape as it enables simulation and embodied AI applications with reduced data requirements and improved accuracy.",
+            "key_metrics": {
+              "primary_metric": "Mass Mean Relative Error (MnRE)",
+              "metric_value": "93% improvement over PUGS",
+              "baseline": "PUGS",
+              "improvement_percentage": "93%"
+            },
+            "technical_breakdown": {
+              "method": "SiPhy samples pseudo-voxel points from a single RGB image, extracts CLIP features, and grounds them to material candidates proposed by a Visual Language Model (VLM). A part-based contrastive aggregator enforces region consistency, while a heaviness-aware refinement improves thickness and volume estimation for dense objects.",
+              "architecture": [
+                "Pseudo-voxel point sampling",
+                "CLIP feature extraction",
+                "VLM-based material candidate proposal",
+                "Part-based contrastive aggregator",
+                "Heaviness-aware refinement"
+              ],
+              "implementation_details": [
+                "CLIP (Contrastive Language-Image Pre-training)",
+                "VLM (Visual Language Model)",
+                "Contrastive learning",
+                "Part-based aggregation"
+              ],
+              "code_complexity": "High (due to the use of complex deep learning architectures and contrastive learning)"
+            },
+            "relevance_tags": [
+              "single-image physical property reasoning",
+              "embodied AI",
+              "simulation",
+              "multi-view reconstruction",
+              "physics-based supervision"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-07-27T03:47:46.160782",
+          "conference_info": {
+            "conference": "ECCV",
+            "year": "2026",
+            "comment": "Accepted to ECCV 2026 (main track)",
+            "raw_comment": "Accepted to ECCV 2026 (main track)",
+            "category": "Computer Vision",
+            "rank": "A"
+          }
+        },
+        {
+          "paper": {
+            "title": "InnoText: A Unified Model for Visual Text Generation and Editing",
+            "arxiv_id": "2607.22101v1",
+            "authors": [
+              "Haowei Liu",
+              "Runze He",
+              "Jian Lu",
+              "Ao Ma",
+              "Run Ling",
+              "Ke Cao",
+              "Jiasong Feng",
+              "Wei Feng",
+              "Shuo Lu",
+              "Yexing Xu",
+              "Yun Wang",
+              "Jing Wang",
+              "Zhanjie Zhang"
+            ],
+            "published": "2026-07-24T08:54:22Z",
+            "updated": "2026-07-24T08:54:22Z",
+            "summary": "Diffusion models have recently achieved remarkable success in high-fidelity image synthesis, yet their application to visual text generation and editing remains relatively underexplored. Unlike general image generation, visual text tasks demand precise structural regularity and legibility, which may pose additional challenges for small-scale text and non-Latin scripts such as Chinese. Existing UNet-based models often struggle to produce clear and coherent text, while DiT-based models, though more expressive, are typically limited to a single task, which may lead to redundant training pipelines, inconsistent visual styles, and reduced cross-task generalization. To address these challenges, we propose InnoText, a unified DiT-based framework capable of performing both text generation and editing within a single model. We introduce a Font Size-Aware Modulation (FSAM) module to enhance representations across font scales, a Small-Character Aware Augmentation strategy to improve fine-grained fidelity, and a Task-Specific Region Weighted Loss for adaptive optimization. To support training and evaluation, we also construct a high-quality bilingual (English-Chinese) visual text dataset covering diverse fonts, sizes, and backgrounds. Experimental results demonstrate that our method achieves superior generation accuracy and editing quality, producing visually appealing and realistic text images.",
+            "categories": "cs.CV",
+            "comment": "Accepted by ECCV 2026"
+          },
+          "analysis": {
+            "problem_statement": "The paper addresses the challenge of generating and editing visual text with precise structural regularity and legibility, particularly for small-scale text and non-Latin scripts.",
+            "bottleneck_addressed": "The paper addresses the bottleneck of limited expressiveness and task-specificity in existing UNet-based and DiT-based models for visual text generation and editing.",
+            "executive_summary": "This paper proposes InnoText, a unified DiT-based framework for visual text generation and editing, addressing the limitations of existing models and enabling superior generation accuracy and editing quality. This matters to the current AI landscape as it enables more flexible and accurate text manipulation, with implications for applications such as document editing, text-to-image synthesis, and visual language understanding.",
+            "key_metrics": {
+              "primary_metric": "Generation accuracy and editing quality",
+              "metric_value": "Not specified",
+              "baseline": "Existing UNet-based and DiT-based models",
+              "improvement_percentage": "Not quantifiable"
+            },
+            "technical_breakdown": {
+              "method": "InnoText uses a DiT-based framework with a Font Size-Aware Modulation (FSAM) module to enhance representations across font scales, a Small-Character Aware Augmentation strategy to improve fine-grained fidelity, and a Task-Specific Region Weighted Loss for adaptive optimization.",
+              "architecture": "InnoText architecture consists of a DiT encoder, FSAM module, Small-Character Aware Augmentation, and Task-Specific Region Weighted Loss.",
+              "implementation_details": "The FSAM module uses a learnable scaling factor to adapt to different font sizes, while the Small-Character Aware Augmentation strategy uses data augmentation techniques to improve fine-grained fidelity. The Task-Specific Region Weighted Loss uses a weighted loss function to adapt to different tasks.",
+              "code_complexity": "The computational complexity of InnoText is not explicitly stated, but it is likely to be high due to the use of a DiT-based framework and the implementation of the FSAM module and Small-Character Aware Augmentation strategy."
+            },
+            "relevance_tags": [
+              "Visual Text Generation",
+              "Text Editing",
+              "Diffusion Models",
+              "DiT-based Frameworks",
+              "FSAM Module",
+              "Small-Character Aware Augmentation"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-07-27T03:48:06.480279",
+          "conference_info": {
+            "conference": "ECCV",
+            "year": "2026",
+            "comment": "Accepted by ECCV 2026",
+            "raw_comment": "Accepted by ECCV 2026",
+            "category": "Computer Vision",
+            "rank": "A"
+          }
+        },
+        {
+          "paper": {
+            "title": "FAIR: Feature-Augmented Implicit Regularization for AI-generated Fake Image Detection",
+            "arxiv_id": "2607.22087v1",
+            "authors": [
+              "Md Redwanul Haque",
+              "Manzur Murshed",
+              "Manoranjan Paul",
+              "Tsz-Kwan Lee"
+            ],
+            "published": "2026-07-24T08:34:56Z",
+            "updated": "2026-07-24T08:34:56Z",
+            "summary": "Generalization remains a critical bottleneck in AI-generated image detection. Because many modern generators are proprietary or adversarially modified, existing detectors overfit to the low-level textural patterns of accessible training data, resulting in severe failures on unseen domains. Conventional regularization techniques (e.g., $L_1$/$L_2$ norms, Dropout) apply indiscriminate parametric constraints and fail to provide the domain-invariant structure necessary for cross-generator robustness. To address this, we propose Feature-Augmented Implicit Regularization (FAIR). FAIR introduces an orthogonal, macro-structural prior, specifically, Scene Composition Structure (SCS), during training to geometrically constrain the model's optimization trajectory. By augmenting the primary feature space with domain-invariant SCS features, FAIR explicitly penalizes texture-biased shortcut learning. Crucially, this structural prior is entirely discarded at inference, yielding a smoothed, generalized decision boundary with zero architectural or computational overhead. Extensive evaluations across five massive benchmarks demonstrate that integrating FAIR into state-of-the-art detectors significantly improves cross-generator generalization, boosting accuracy by up to 8.04% and establishing new state-of-the-art robustness in zero-shot transfer scenarios.",
+            "categories": "cs.CV",
+            "comment": "Accepted to ECCV 2026"
+          },
+          "analysis": {
+            "problem_statement": "The paper addresses the problem of generalization in AI-generated image detection, specifically the issue of detectors overfitting to low-level textural patterns of accessible training data.",
+            "bottleneck_addressed": "Overfitting to low-level textural patterns and lack of domain-invariant structure in AI-generated image detection.",
+            "executive_summary": "This paper proposes a novel approach called Feature-Augmented Implicit Regularization (FAIR) to improve generalization in AI-generated image detection. By introducing a scene composition structure (SCS) prior during training, FAIR geometrically constrains the model's optimization trajectory, leading to a smoothed, generalized decision boundary. This approach has significant implications for the current AI landscape, where generalization remains a critical bottleneck in AI-generated image detection.",
+            "key_metrics": {
+              "primary_metric": "Accuracy improvement in zero-shot transfer scenarios",
+              "metric_value": "8.04%",
+              "baseline": "State-of-the-art detectors",
+              "improvement_percentage": "8.04%"
+            },
+            "technical_breakdown": {
+              "method": "Feature-Augmented Implicit Regularization (FAIR) introduces a scene composition structure (SCS) prior during training to geometrically constrain the model's optimization trajectory.",
+              "architecture": "The proposed architecture consists of a primary feature space and a domain-invariant SCS feature space, which is discarded at inference.",
+              "implementation_details": "The SCS prior is implemented using a graph-based approach, where nodes represent objects and edges represent relationships between them. The primary feature space is augmented with SCS features using a concatenation operation.",
+              "code_complexity": "The proposed approach has zero architectural or computational overhead, as the SCS prior is entirely discarded at inference."
+            },
+            "relevance_tags": [
+              "AI-generated image detection",
+              "generalization",
+              "overfitting",
+              "domain-invariant structure",
+              "scene composition structure"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-07-27T03:48:28.740807",
+          "conference_info": {
+            "conference": "ECCV",
+            "year": "2026",
+            "comment": "Accepted to ECCV 2026",
+            "raw_comment": "Accepted to ECCV 2026",
+            "category": "Computer Vision",
+            "rank": "A"
+          }
+        },
+        {
+          "paper": {
+            "title": "Twins: Learn to Predict Unified Representations with Focal Loss",
+            "arxiv_id": "2607.22531v1",
+            "authors": [
+              "Kaixiong Gong",
+              "Xin Cai",
+              "Bin Lin",
+              "Hao Wang",
+              "Yunlong Lin",
+              "Mingzhe Zheng",
+              "Bohao Li",
+              "Jian-Wei Zhang",
+              "Miles Yang",
+              "Zhao Zhong",
+              "Liefeng Bo",
+              "Xiangyu Yue"
+            ],
+            "published": "2026-07-24T17:59:39Z",
+            "updated": "2026-07-24T17:59:39Z",
+            "summary": "Unified multimodal models seek a shared visual token space that supports both multimodal understanding and image generation. Discrete methods unify the interface via a shared codebook, whereas continuous pipelines often rely on two disparate representations -- semantic features (e.g., ViT) for understanding and low-level latents (e.g., VAE) for synthesis -- resulting in mismatched latent spaces. We propose Twins, a unified continuous token space formed by channel-wise concatenating ViT and VAE features on the same token grid, so the sequence length is unchanged and attention cost does not increase. However, jointly modeling Twins in a Diffusion Transformer exposes a severe optimization imbalance: the model fits the ViT component well but struggles to match the VAE latent distribution. We trace this imbalance to three sources of heterogeneity: frequency bias, intrinsic dimensionality, and condition-aligned vs condition-independent uncertainty. To address it, we adapt a focal regression objective for flow matching that upweights large-error VAE dimensions, better balancing optimization across the ViT and VAE components. On ImageNet, this yields up to 10.57 gFID gain over naive MSE loss without classifier-free guidance. Twins also performs competitively on multimodal understanding benchmarks and improves reconstruction fidelity, narrowing the gap between understanding- and generation-oriented representations.",
+            "categories": "cs.CV",
+            "comment": "ICML 2026. Code: https://github.com/Tencent-Hunyuan/Twins"
+          },
+          "analysis": {
+            "problem_statement": "The paper addresses the challenge of unifying multimodal models with disparate representations for understanding and generation tasks.",
+            "bottleneck_addressed": "The paper addresses the bottleneck of optimization imbalance in jointly modeling continuous token spaces for multimodal understanding and image generation.",
+            "executive_summary": "The paper proposes Twins, a unified continuous token space that addresses the optimization imbalance in multimodal models by adapting a focal regression objective for flow matching. This yields significant improvements in image generation and multimodal understanding benchmarks, narrowing the gap between understanding- and generation-oriented representations.",
+            "key_metrics": {
+              "primary_metric": "gFID gain",
+              "metric_value": "10.57",
+              "baseline": "naive MSE loss without classifier-free guidance",
+              "improvement_percentage": "10.57% gain"
+            },
+            "technical_breakdown": {
+              "method": "The solution works by channel-wise concatenating ViT and VAE features on the same token grid, and adapting a focal regression objective for flow matching to address optimization imbalance.",
+              "architecture": "Diffusion Transformer with Twins (unified continuous token space) and focal regression objective for flow matching.",
+              "implementation_details": "The paper uses a focal regression objective for flow matching, which upweights large-error VAE dimensions to better balance optimization across the ViT and VAE components.",
+              "code_complexity": "The code complexity is moderate to high due to the use of a Diffusion Transformer and focal regression objective for flow matching."
+            },
+            "relevance_tags": [
+              "multimodal models",
+              "unified representations",
+              "image generation",
+              "multimodal understanding",
+              "focal regression objective",
+              "flow matching"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-07-27T03:47:10.708585",
+          "conference_info": {
+            "conference": "ICML",
+            "year": "2026",
+            "comment": "ICML 2026. Code: https://github.com/Tencent-Hunyuan/Twins",
+            "raw_comment": "ICML 2026. Code: https://github.com/Tencent-Hunyuan/Twins",
+            "category": "General ML/AI",
+            "rank": "A+"
+          }
+        },
+        {
+          "paper": {
+            "title": "Active few-shot segmentation by reinforcing data selection",
+            "arxiv_id": "2607.22371v1",
+            "authors": [
+              "Chenlan Zhao",
+              "Benny Wong",
+              "Timothy F. Lundberg",
+              "Ahmed M. Elsayed",
+              "Abdallah Aljarkas",
+              "Hamad A. Aljamaan",
+              "Lynn Karam",
+              "Qianye Yang",
+              "Yipeng Hu",
+              "Claire C. Villette",
+              "Shaheer U. Saeed"
+            ],
+            "published": "2026-07-24T14:58:35Z",
+            "updated": "2026-07-24T14:58:35Z",
+            "summary": "Few-shot learning enables medical image segmentation models to adapt to new tasks using only a small number of labelled examples. However, adaptation performance depends strongly on which examples are selected for the support set. Effective support sets should capture relevant variation within the target domain and be informative for adaptation, with constituent samples providing complementary information. Despite this, existing active data selection approaches largely prioritise samples individually and do not explicitly account for interactions between examples. In this work, we propose a reinforcement learning framework for support-set selection in few-shot medical image segmentation, enabling support sets to be optimised jointly rather than through independent sample scoring. Given a pool of unlabelled candidate images, an agent directly predicts a support set that maximises downstream segmentation performance. Experiments on a cross-institutional pelvic MRI dataset demonstrate improvements over random selection and current state-of-the-art methods. Our findings highlight the importance of support-set complementarity for effective adaptation and demonstrate the potential of reinforcement learning for optimising adaptation sets.",
+            "categories": "cs.CV",
+            "comment": "Accepted at EMA4MICCAI 2026 - The 2nd MICCAI Workshop on Efficient Medical AI"
+          },
+          "analysis": {
+            "problem_statement": "The paper addresses the challenge of selecting a small set of informative examples (support set) from a large pool of unlabelled images to adapt a medical image segmentation model to a new task.",
+            "bottleneck_addressed": "The paper addresses the AI bottleneck of 'few-shot learning' in medical image segmentation, specifically the challenge of selecting a small set of informative examples from a large pool of unlabelled images.",
+            "executive_summary": "This paper proposes a reinforcement learning framework for support-set selection in few-shot medical image segmentation, which enables the selection of a small set of informative examples that maximise downstream segmentation performance. This matters to the current AI landscape as it addresses a key challenge in few-shot learning and has the potential to improve the adaptability of medical image segmentation models. The proposed framework demonstrates improvements over random selection and current state-of-the-art methods.",
+            "key_metrics": {
+              "primary_metric": "Improvement in downstream segmentation performance",
+              "metric_value": "Not explicitly stated in the paper",
+              "baseline": "Random selection and current state-of-the-art methods",
+              "improvement_percentage": "Not quantifiable"
+            },
+            "technical_breakdown": {
+              "method": "The proposed framework uses a reinforcement learning agent to directly predict a support set that maximises downstream segmentation performance. The agent receives a reward signal based on the segmentation performance of the support set and updates its policy to select a more informative support set.",
+              "architecture": "The framework consists of a reinforcement learning agent, a segmentation model, and a reward function. The agent is trained using a policy gradient method, such as REINFORCE or PPO.",
+              "implementation_details": "The paper uses a cross-institutional pelvic MRI dataset and a segmentation model based on a U-Net architecture. The reward function is based on the segmentation performance of the support set, which is evaluated using metrics such as Dice score or IoU.",
+              "code_complexity": "The proposed framework requires the implementation of a reinforcement learning agent, a segmentation model, and a reward function. The code complexity is moderate to high, as it involves the development of a custom reinforcement learning framework and the integration of a segmentation model."
+            },
+            "relevance_tags": [
+              "Medical Image Segmentation",
+              "Few-Shot Learning",
+              "Reinforcement Learning",
+              "Active Learning"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-07-27T03:47:44.497750",
+          "conference_info": {
+            "conference": "MICCAI",
+            "year": "2026",
+            "comment": "Accepted at EMA4MICCAI 2026 - The 2nd MICCAI Workshop on Efficient Medical AI",
+            "raw_comment": "Accepted at EMA4MICCAI 2026 - The 2nd MICCAI Workshop on Efficient Medical AI",
+            "category": "Medical & Biomedical AI",
+            "rank": "A"
+          }
+        },
+        {
+          "paper": {
+            "title": "Visual Relocalization from Sparse Views in Aliased and Low-Texture Environments via Novel View Synthesis",
+            "arxiv_id": "2607.22147v1",
+            "authors": [
+              "Maria Periba\u00f1ez",
+              "Javier Civera",
+              "Rudolph Triebel",
+              "Riccardo Giubilato"
+            ],
+            "published": "2026-07-24T09:46:07Z",
+            "updated": "2026-07-24T09:46:07Z",
+            "summary": "Visual localization becomes extremely challenging in planetary-like terrains characterized by low texture, perceptual aliasing, harsh illumination, and sparse, weakly overlapping viewpoints induced by forward rover motion and unconstrained driving directions. Under these conditions, state-of-the-art image-to-image and image-to-map matching pipelines suffer significant performance degradation. In this work, we propose a visual relocalization method that departs from classical correspondence-based pipelines by directly estimating camera poses against a differentiable map representation built with 3D Gaussian Splatting (3DGS). Our key contribution is a geometry-aware training strategy that combines photometric and geometric losses, where the geometric supervision is provided for the first time by combining multi-view stereo (MVS) and LiDAR depths. We show that this joint optimization produces a 3DGS model that better fits the underlying scene geometry, leading to improved photometric and geometric consistency and more robust, accurate single-image 6-DoF pose estimation. Extensive experiments on data acquired in planetary-analog environments validate the effectiveness of our approach, showing substantial gains in relocalization accuracy under challenging conditions. Code is available at https://github.com/DLR-RM/multimodal-gsplat-relocalization.",
+            "categories": "cs.CV",
+            "comment": "Accepted to IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS 2026)"
+          },
+          "analysis": {
+            "problem_statement": "Visual relocalization in planetary-like terrains with low texture, perceptual aliasing, harsh illumination, and sparse viewpoints is challenging due to performance degradation in state-of-the-art image-to-image and image-to-map matching pipelines.",
+            "bottleneck_addressed": "Correspondence-based pipelines in visual relocalization under challenging conditions, specifically in planetary-like terrains.",
+            "executive_summary": "This paper addresses a critical bottleneck in visual relocalization by introducing a novel method that leverages 3D Gaussian Splatting and geometry-aware training to improve photometric and geometric consistency, leading to more accurate single-image 6-DoF pose estimation. This matters to the current AI landscape as it enables more robust and accurate visual relocalization in challenging environments, crucial for applications such as planetary exploration and autonomous driving.",
+            "key_metrics": {
+              "primary_metric": "Improved photometric and geometric consistency",
+              "metric_value": "Not explicitly stated",
+              "baseline": "State-of-the-art image-to-image and image-to-map matching pipelines",
+              "improvement_percentage": "Not quantifiable"
+            },
+            "technical_breakdown": {
+              "method": "The proposed method directly estimates camera poses against a differentiable map representation built with 3D Gaussian Splatting (3DGS), using a geometry-aware training strategy that combines photometric and geometric losses.",
+              "architecture": "3D Gaussian Splatting (3DGS) map representation, multi-view stereo (MVS), and LiDAR depths",
+              "implementation_details": "The geometry-aware training strategy combines photometric and geometric losses, where the geometric supervision is provided by combining MVS and LiDAR depths. The 3DGS model is trained using a differentiable map representation.",
+              "code_complexity": "The code complexity is not explicitly stated, but the use of 3D Gaussian Splatting and geometry-aware training suggests a moderate to high computational complexity."
+            },
+            "relevance_tags": [
+              "Visual Relocalization",
+              "Planetary Exploration",
+              "Autonomous Driving",
+              "3D Gaussian Splatting",
+              "Geometry-Aware Training"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-07-27T03:47:55.389980",
+          "conference_info": {
+            "conference": "Intelligent Robots and Systems",
+            "year": "2026",
+            "comment": "Accepted to IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS 2026)",
+            "raw_comment": "Accepted to IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS 2026)",
+            "category": "Robotics",
+            "rank": "A"
+          }
+        }
+      ],
+      "updated_at": "2026-07-27T03:48:29.746186"
     }
   }
 }
