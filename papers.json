@@ -1,312 +1,278 @@
 {
-  "last_updated": "2026-07-26T03:37:44.826668",
-  "total_papers": 27,
+  "last_updated": "2026-07-27T03:48:29.742570",
+  "total_papers": 8,
   "papers": [
     {
       "paper": {
-        "title": "3D-Aware VLMs with Implicit and Explicit Geometries",
-        "arxiv_id": "2607.21595v1",
+        "title": "CARA: Concept-Aware Risk Attention for Interpretable Collision Anticipation",
+        "arxiv_id": "2607.22494v1",
         "authors": [
-          "Wenhao Li",
-          "Xueying Jiang",
-          "Quanhao Qian",
-          "Deli Zhao",
-          "Ran Xu",
-          "Shijian Lu",
-          "Gongjie Zhang"
+          "Zhishan Tao",
+          "Ruoyu Wang",
+          "Yucheng Wu",
+          "Enjun Du",
+          "Yilei Yuan",
+          "Sherwin Ho",
+          "Yue Su",
+          "Jinbo Su",
+          "Yi Hong"
         ],
-        "published": "2026-07-23T17:59:59Z",
-        "updated": "2026-07-23T17:59:59Z",
-        "summary": "Despite rapid progress, most existing vision-language models (VLMs) built from 2D visual inputs often struggle when handling various 3D tasks that require fine-grained spatial understanding and reasoning. To bridge this gap, we present VLM-IE3D, a unified framework that enhances the 3D spatial awareness of VLMs by equipping them with both implicit and explicit 3D geometries learned from RGB videos. Our VLM-IE3D introduces Implicit Geometry Tokens (IGTs) that capture high-level geometric priors from input videos, as well as complementary Explicit Geometry Tokens (EGTs) that encode detailed geometric structures from reconstructed 3D attributes. On top of that, VLM-IE3D comes with a 3D-aware adapter that effectively fuses the two types of geometric representations with 2D visual cues. This RGB-only design injects strong 3D inductive biases for fine-grained spatial understanding and reasoning without requiring any additional 3D inputs. Extensive experiments show that VLM-IE3D achieves superior performance consistently across various 3D tasks including 3D video detection, 3D visual grounding, 3D dense captioning, and spatial reasoning. Code and models are available at https://github.com/Vegetebird/VLM-IE3D.",
-        "categories": "cs.CV",
-        "comment": "Accepted by ECCV 2026, Open Sourced"
+        "published": "2026-07-24T17:06:05Z",
+        "updated": "2026-07-24T17:06:05Z",
+        "summary": "Collision anticipation in autonomous driving requires not only accurate early warnings but also interpretable reasoning about what risk factors are being tracked and how risk evolves over time. Existing methods fall short in this regard: feature-driven models are opaque, post-hoc explanations often lack fidelity, and concept-based methods are mostly designed for static recognition rather than dynamic driving scenes. We propose CARA (Concept-Aware Risk Attention), an intrinsically interpretable spatio-temporal framework for collision anticipation. CARA derives domain-grounded risk concepts from accident narratives, aligns them with video frames via vision-language similarity, and organizes them into evolving concept trajectories. These trajectories provide explicit risk evidence that guides spatial attention, temporal attention, and anticipation, allowing semantic concepts to directly influence both where the model attends and how it predicts risk over time. By treating semantic risk factors as dynamic intermediate evidence rather than auxiliary post-hoc explanations, CARA tightly couples interpretability with the predictive process. Extensive experiments on three benchmarks show that CARA consistently improves anticipation accuracy and warning earliness over strong baselines, while providing sparse and semantically grounded concept evidence.",
+        "categories": "cs.MM",
+        "comment": "Accepted to ACM Multimedia 2026(Oral)"
       },
       "analysis": {
-        "problem_statement": "Existing vision-language models (VLMs) struggle to handle 3D tasks that require fine-grained spatial understanding and reasoning due to their 2D visual input limitations.",
-        "bottleneck_addressed": "The bottleneck of 2D visual input limitations in VLMs, preventing them from effectively handling 3D tasks.",
-        "executive_summary": "This paper presents VLM-IE3D, a unified framework that enhances the 3D spatial awareness of VLMs by incorporating both implicit and explicit 3D geometries learned from RGB videos. This design enables VLMs to perform superiorly on various 3D tasks, including 3D video detection, 3D visual grounding, 3D dense captioning, and spatial reasoning. The RGB-only design injects strong 3D inductive biases without requiring additional 3D inputs.",
+        "problem_statement": "Developing an interpretable and accurate collision anticipation system for autonomous driving that can reason about risk factors and their evolution over time.",
+        "bottleneck_addressed": "The opacity of feature-driven models and the lack of fidelity in post-hoc explanations for collision anticipation in autonomous driving.",
+        "executive_summary": "This paper addresses the critical need for interpretable and accurate collision anticipation systems in autonomous driving. CARA, a novel spatio-temporal framework, achieves this by deriving domain-grounded risk concepts from accident narratives and aligning them with video frames. This approach improves anticipation accuracy and warning earliness while providing sparse and semantically grounded concept evidence.",
         "key_metrics": {
-          "primary_metric": "Superior performance on various 3D tasks",
-          "metric_value": "Not explicitly stated",
-          "baseline": "State-of-the-art VLMs",
-          "improvement_percentage": "Not quantifiable"
-        },
-        "technical_breakdown": {
-          "method": "VLM-IE3D introduces Implicit Geometry Tokens (IGTs) that capture high-level geometric priors from input videos, as well as Explicit Geometry Tokens (EGTs) that encode detailed geometric structures from reconstructed 3D attributes. A 3D-aware adapter effectively fuses the two types of geometric representations with 2D visual cues.",
-          "architecture": "The architecture consists of a VLM backbone, IGTs, EGTs, and a 3D-aware adapter.",
-          "implementation_details": "The authors use a combination of techniques, including attention mechanisms, graph neural networks, and 3D reconstruction algorithms.",
-          "code_complexity": "The code complexity is high due to the incorporation of multiple neural network components and 3D reconstruction algorithms. The training time implications are not explicitly stated."
-        },
-        "relevance_tags": [
-          "vision-language models",
-          "3D computer vision",
-          "spatial reasoning",
-          "RGB videos"
-        ],
-        "confidence": "high"
-      },
-      "analyzed_at": "2026-07-26T03:31:38.825740",
-      "conference_info": {
-        "conference": "ECCV",
-        "year": "2026",
-        "comment": "Accepted by ECCV 2026, Open Sourced",
-        "raw_comment": "Accepted by ECCV 2026, Open Sourced",
-        "category": "Computer Vision",
-        "rank": "A"
-      }
-    },
-    {
-      "paper": {
-        "title": "Unified Video Dense Prediction from Disjoint Data",
-        "arxiv_id": "2607.21592v1",
-        "authors": [
-          "Yihong Sun",
-          "Seoung Wug Oh",
-          "Jiahui Huang",
-          "Bharath Hariharan",
-          "Joon-Young Lee"
-        ],
-        "published": "2026-07-23T17:59:50Z",
-        "updated": "2026-07-23T17:59:50Z",
-        "summary": "Scene understanding requires simultaneous prediction about geometry, appearance, and semantics. However, existing task-specific annotations are fragmented across incompatible, domain-specific datasets. Current unified systems circumvent this by restricting training to fully co-annotated data, or by incurring the large computational cost of pseudo-labeling. To mitigate this, we introduce UniD, a unified video model that jointly predicts eight dense scene properties-depth, surface normals, semantic segmentation, boundaries, human parts, albedo, shading, and materials-all learned from disjoint, domain-specific datasets. We propose a simple yet effective distillation step in which per-task experts supervise a unified backbone through lightweight task projectors, eliminating the need for annotation overlap or pseudo-labeling. Our key insight is that the strong visual priors of a pretrained diffusion model are sufficient to bridge the domain gaps introduced by disjoint training sources, enabling robust generalization to scene-task combinations never seen during training. UniD achieves competitive performance against per-task specialists and multi-task baselines, with strong generalization to out-of-distribution scenarios and enhanced temporal and cross-task consistency. Code and video results are available at https://unid-video.github.io/.",
-        "categories": "cs.CV",
-        "comment": "ECCV 2026"
-      },
-      "analysis": {
-        "problem_statement": "The paper addresses the challenge of unified video dense prediction from disjoint, domain-specific datasets, where existing task-specific annotations are fragmented and incompatible.",
-        "bottleneck_addressed": "The paper addresses the bottleneck of domain adaptation and multi-task learning in video dense prediction, where disjoint training sources and lack of annotation overlap hinder the development of unified systems.",
-        "executive_summary": "This paper presents UniD, a unified video model that jointly predicts multiple scene properties from disjoint datasets without requiring annotation overlap or pseudo-labeling. UniD achieves competitive performance against per-task specialists and multi-task baselines, with strong generalization to out-of-distribution scenarios.",
-        "key_metrics": {
-          "primary_metric": "Competitive performance against per-task specialists and multi-task baselines",
+          "primary_metric": "Improves anticipation accuracy and warning earliness",
           "metric_value": "Not specified",
-          "baseline": "Per-task specialists and multi-task baselines",
+          "baseline": "Strong baselines",
           "improvement_percentage": "Not quantifiable"
         },
         "technical_breakdown": {
-          "method": "UniD uses a distillation step where per-task experts supervise a unified backbone through lightweight task projectors, eliminating the need for annotation overlap or pseudo-labeling.",
-          "architecture": "The architecture consists of a unified backbone and per-task experts, with the backbone being a pretrained diffusion model.",
-          "implementation_details": "The paper uses a distillation loss function and a lightweight task projector to supervise the unified backbone.",
-          "code_complexity": "The code complexity is relatively low due to the use of lightweight task projectors and a distillation loss function, but the computational cost of training the model is high due to the use of a pretrained diffusion model."
+          "method": "CARA derives domain-grounded risk concepts from accident narratives and aligns them with video frames via vision-language similarity. It then organizes these concepts into evolving concept trajectories, which provide explicit risk evidence that guides spatial attention, temporal attention, and anticipation.",
+          "architecture": "The CARA framework consists of three main components: (1) Concept Derivation, which extracts risk concepts from accident narratives; (2) Concept Alignment, which aligns risk concepts with video frames via vision-language similarity; and (3) Concept Trajectory, which organizes risk concepts into evolving trajectories.",
+          "implementation_details": "CARA uses a combination of natural language processing (NLP) and computer vision techniques, including vision-language similarity metrics (e.g., BERT) and spatio-temporal attention mechanisms.",
+          "code_complexity": "The computational complexity of CARA is not explicitly stated, but it likely involves the use of complex neural networks and attention mechanisms, which can be computationally expensive to train and deploy."
         },
         "relevance_tags": [
-          "video dense prediction",
-          "domain adaptation",
-          "multi-task learning",
-          "unified models",
-          "distillation"
+          "Autonomous Driving",
+          "Interpretability",
+          "Risk Assessment",
+          "Computer Vision",
+          "Natural Language Processing"
         ],
         "confidence": "high"
       },
-      "analyzed_at": "2026-07-26T03:35:07.134483",
-      "conference_info": {
-        "conference": "ECCV",
-        "year": "2026",
-        "comment": "ECCV 2026",
-        "raw_comment": "ECCV 2026",
-        "category": "Computer Vision",
-        "rank": "A"
-      }
-    },
-    {
-      "paper": {
-        "title": "Recurrent Sinusoidal INRs for Efficient High-Fidelity Representation",
-        "arxiv_id": "2607.21485v1",
-        "authors": [
-          "Hyunmin Cho",
-          "Jaejun Yoo",
-          "Kyong Hwan Jin"
-        ],
-        "published": "2026-07-23T16:26:51Z",
-        "updated": "2026-07-23T16:26:51Z",
-        "summary": "We study sinusoidal recurrence as an iterative mechanism for harmonic spectral enrichment in implicit neural representations (INRs). Our analysis reveals that sinusoidal activations induce a harmonic line spectrum, providing a spectral account of how recurrent unrolling enriches the effective spectral support. We realize this principle with a shared sinusoidal block that iteratively refines the latent representation. We empirically validate the resulting spectral behavior against feed-forward INRs, non-sinusoidal recurrent variants, and equilibrium-style sinusoidal models. Complementing this analysis, we evaluate the proposed architecture across image and 3D representation tasks. On RGB image benchmarks, our method achieves higher fidelity than feed-forward baselines with fewer parameters and fewer optimization steps, and it further transfers favorably to super-resolution, NeRF, and SDF tasks.",
-        "categories": "cs.CV",
-        "comment": "Accepted to ECCV 2026 (Poster)"
-      },
-      "analysis": {
-        "problem_statement": "The paper addresses the problem of efficiently representing high-fidelity data using implicit neural representations (INRs) while enriching the effective spectral support.",
-        "bottleneck_addressed": "The paper addresses the bottleneck of high computational complexity and limited spectral support in traditional feed-forward INRs.",
-        "executive_summary": "This paper presents a novel approach to implicit neural representations (INRs) that leverages sinusoidal recurrence to efficiently represent high-fidelity data. By inducing a harmonic line spectrum, the proposed method achieves higher fidelity than feed-forward baselines with fewer parameters and optimization steps. This breakthrough has significant implications for the current AI landscape, particularly in image and 3D representation tasks.",
-        "key_metrics": {
-          "primary_metric": "Higher fidelity than feed-forward baselines with fewer parameters and optimization steps",
-          "metric_value": "Not specified",
-          "baseline": "Feed-forward INRs",
-          "improvement_percentage": "Not quantifiable"
-        },
-        "technical_breakdown": {
-          "method": "The proposed method leverages sinusoidal recurrence to iteratively refine the latent representation, inducing a harmonic line spectrum that enriches the effective spectral support.",
-          "architecture": "The proposed architecture consists of a shared sinusoidal block that iteratively refines the latent representation.",
-          "implementation_details": "The paper uses a sinusoidal activation function and a recurrent unrolling mechanism to iteratively refine the latent representation.",
-          "code_complexity": "The computational complexity of the proposed method is not explicitly stated, but it is likely to be lower than traditional feed-forward INRs due to the use of sinusoidal recurrence."
-        },
-        "relevance_tags": [
-          "implicit neural representations",
-          "sinusoidal recurrence",
-          "spectral enrichment",
-          "high-fidelity data representation"
-        ],
-        "confidence": "high"
-      },
-      "analyzed_at": "2026-07-26T03:35:26.686267",
-      "conference_info": {
-        "conference": "ECCV",
-        "year": "2026",
-        "comment": "Accepted to ECCV 2026 (Poster)",
-        "raw_comment": "Accepted to ECCV 2026 (Poster)",
-        "category": "Computer Vision",
-        "rank": "A"
-      }
-    },
-    {
-      "paper": {
-        "title": "DINOde: Continuous Vision-Text Alignment for Open-Vocabulary Semantic Segmentation",
-        "arxiv_id": "2607.21371v1",
-        "authors": [
-          "Sung-Hoon Yoon",
-          "Hoyong Kwon",
-          "Changgyoon Oh",
-          "Kuk-Jin Yoon"
-        ],
-        "published": "2026-07-23T14:37:27Z",
-        "updated": "2026-07-23T14:37:27Z",
-        "summary": "Open-vocabulary semantic segmentation (OVSS) leverages textual semantics to segment objects beyond predefined categories. While the self-supervised model DINOv3 provides strong structured visual representations, its lack of native textual alignment hinders its direct application to OVSS. To bridge this gap, we propose DINOde, an ODE-based framework that continuously aligns CLIP text embeddings with the DINO visual manifold. Our approach employs two complementary components: (i) Semantic Text Flow (STF), which evolves text embeddings toward the DINO manifold through a continuous ODE trajectory, and (ii) Global Context Flow (GCF), which progressively refines the holistic image representation carried by DINO's CLS token. To preserve the hyperspherical geometry of the feature space during this evolution, we further introduce Velocity Tangent Projection, which constrains the learned velocity field to the tangent space. By modeling alignment as a continuous trajectory, DINOde avoids the manifold entanglement inherent in discrete MLP projections and yields more robust cross-modal alignment. Extensive experiments demonstrate that DINOde consistently outperforms existing methods and achieves state-of-the-art performance across multiple OVSS benchmarks. The code is available at https://github.com/yoon307/DINOde.",
-        "categories": "cs.CV",
-        "comment": "Accepted to ECCV 2026. 27 pages, 8 figures, and 10 tables. Includes supplementary material"
-      },
-      "analysis": {
-        "problem_statement": "The paper addresses the challenge of open-vocabulary semantic segmentation (OVSS), where the goal is to segment objects beyond predefined categories using textual semantics.",
-        "bottleneck_addressed": "The paper addresses the bottleneck of native textual alignment in self-supervised models, specifically DINOv3, which hinders its direct application to OVSS.",
-        "executive_summary": "This paper proposes DINOde, a novel framework that continuously aligns CLIP text embeddings with the DINO visual manifold, enabling robust cross-modal alignment and achieving state-of-the-art performance in OVSS benchmarks. This matters to the current AI landscape as it bridges the gap between self-supervised visual representations and open-vocabulary semantic segmentation. The proposed method has the potential to improve the performance of various computer vision tasks that rely on textual semantics.",
-        "key_metrics": {
-          "primary_metric": "State-of-the-art performance on multiple OVSS benchmarks",
-          "metric_value": "Not specified",
-          "baseline": "Existing methods",
-          "improvement_percentage": "Not quantifiable"
-        },
-        "technical_breakdown": {
-          "method": "DINOde employs two complementary components: Semantic Text Flow (STF) and Global Context Flow (GCF), which evolve text embeddings toward the DINO manifold through a continuous ODE trajectory. Velocity Tangent Projection is introduced to constrain the learned velocity field to the tangent space.",
-          "architecture": "DINOde architecture consists of a CLIP text encoder, a DINO visual encoder, and an ODE-based alignment module.",
-          "implementation_details": "The paper uses the DINOv3 model as the backbone for visual representations and the CLIP model for text embeddings. The ODE-based alignment module is implemented using the PyTorch implementation of the Neural Ordinary Differential Equations (ODEs) library.",
-          "code_complexity": "The code complexity is moderate to high due to the use of ODEs and the implementation of the Velocity Tangent Projection technique."
-        },
-        "relevance_tags": [
-          "computer vision",
-          "self-supervised learning",
-          "open-vocabulary semantic segmentation",
-          "cross-modal alignment",
-          "ODEs"
-        ],
-        "confidence": "high"
-      },
-      "analyzed_at": "2026-07-26T03:31:54.698419",
-      "conference_info": {
-        "conference": "ECCV",
-        "year": "2026",
-        "comment": "Accepted to ECCV 2026. 27 pages, 8 figures, and 10 tables. Includes supplementary material",
-        "raw_comment": "Accepted to ECCV 2026. 27 pages, 8 figures, and 10 tables. Includes supplementary material",
-        "category": "Computer Vision",
-        "rank": "A"
-      }
-    },
-    {
-      "paper": {
-        "title": "Decoupling Cross-Modality Manifold Discrepancy: Leveraging Visible Diffusion Priors for Infrared Super-Resolution",
-        "arxiv_id": "2607.21174v1",
-        "authors": [
-          "Yunpeng Hua",
-          "Hongwei Yu",
-          "Jiawei Li",
-          "Qiankun Liu",
-          "Huimin Ma",
-          "Jiansheng Chen"
-        ],
-        "published": "2026-07-23T10:59:53Z",
-        "updated": "2026-07-23T10:59:53Z",
-        "summary": "Infrared image super-resolution (IISR) mitigates the limitations imposed by low spatial resolution. Existing methods have recognized that IISR should preserve consistency in global distribution and structural information while enhancing image clarity. However, these methods are either insufficient or overly intrusive, a problem that becomes even more pronounced in diffusion-based models. To address these issues, we propose a dual-path diffusion-based framework for IISR, termed Shift-IISR. The proposed method is designed to improve the consistency of IISR results while preserving the generative capacity of diffusion models. Specifically, we develop a Global Representation Modulation (GRM) module to extract modality-specific information from infrared imagery and guide the global distribution of the diffusion model toward the ground truth. In addition, we introduce a Local Structure Refinement (LSR) module to encourage the model to focus on structural information at each step of the iterative denoising process. Extensive experiments demonstrate that the proposed method effectively improves distributional and structural consistency while maintaining competitive super-resolution performance. The source code of the proposed Shift-IISR can be available at https://github.com/Assassink8/Shift-IISR.",
-        "categories": "cs.CV",
-        "comment": "Accepted to ACM Multimedia 2026 (ACM MM 2026). Code: https://github.com/Assassink8/Shift-IISR"
-      },
-      "analysis": {
-        "problem_statement": "The paper addresses the problem of infrared image super-resolution (IISR) by mitigating the limitations imposed by low spatial resolution while preserving consistency in global distribution and structural information.",
-        "bottleneck_addressed": "The paper addresses the bottleneck of inconsistent results in diffusion-based models for IISR tasks.",
-        "executive_summary": "This paper proposes a dual-path diffusion-based framework, Shift-IISR, to improve the consistency of IISR results while maintaining competitive super-resolution performance. The method leverages visible diffusion priors to guide the global distribution of the diffusion model toward the ground truth. This work is relevant to the current AI landscape as it addresses the limitations of existing IISR methods and provides a more robust solution for real-world applications.",
-        "key_metrics": {
-          "primary_metric": "Distributional and structural consistency improvement",
-          "metric_value": "Not explicitly stated in the paper",
-          "baseline": "Existing diffusion-based models for IISR",
-          "improvement_percentage": "Not quantifiable"
-        },
-        "technical_breakdown": {
-          "method": "The proposed Shift-IISR method consists of two main components: Global Representation Modulation (GRM) and Local Structure Refinement (LSR) modules. GRM extracts modality-specific information from infrared imagery and guides the global distribution of the diffusion model toward the ground truth, while LSR encourages the model to focus on structural information at each step of the iterative denoising process.",
-          "architecture": "The architecture of Shift-IISR consists of a dual-path diffusion-based framework, which includes a GRM module and an LSR module. The GRM module is designed to extract modality-specific information, while the LSR module is designed to refine the structural information.",
-          "implementation_details": "The paper uses a diffusion-based model with a GRM module and an LSR module. The GRM module uses a visible diffusion prior to guide the global distribution of the diffusion model, while the LSR module uses a local structure refinement mechanism to refine the structural information. The implementation details are not explicitly stated in the paper.",
-          "code_complexity": "The code complexity of Shift-IISR is not explicitly stated in the paper. However, based on the description of the method, it appears to be a complex implementation that requires a good understanding of diffusion-based models and their applications in IISR tasks."
-        },
-        "relevance_tags": [
-          "Infrared Image Super-Resolution",
-          "Diffusion-Based Models",
-          "Global Representation Modulation",
-          "Local Structure Refinement"
-        ],
-        "confidence": "high"
-      },
-      "analyzed_at": "2026-07-26T03:36:17.936920",
+      "analyzed_at": "2026-07-27T03:47:13.043695",
       "conference_info": {
         "conference": "ACM Multimedia",
         "year": "2026",
-        "comment": "Accepted to ACM Multimedia 2026 (ACM MM 2026). Code: https://github.com/Assassink8/Shift-IISR",
-        "raw_comment": "Accepted to ACM Multimedia 2026 (ACM MM 2026). Code: https://github.com/Assassink8/Shift-IISR",
+        "comment": "Accepted to ACM Multimedia 2026(Oral)",
+        "raw_comment": "Accepted to ACM Multimedia 2026(Oral)",
         "category": "Computer Vision",
         "rank": "A+"
       }
     },
     {
       "paper": {
-        "title": "CRAG-MM-Diagnostics: Enabling Stage-Wise Analysis of Knowledge-Intensive VQA",
-        "arxiv_id": "2607.21155v1",
+        "title": "Deformable Triangle Splatting: Flexible Primitives for Real-Time Radiance Field Rendering",
+        "arxiv_id": "2607.22446v1",
         "authors": [
-          "Hanseok Oh",
-          "Parishad BehnamGhader",
-          "Benno Krojer",
-          "Hyunji Lee",
-          "Paul Liang",
-          "Siva Reddy",
-          "Verna Dankers"
+          "Oriol Jim\u00e9nez-Ayguad\u00e9",
+          "Antonio Agudo"
         ],
-        "published": "2026-07-23T10:37:01Z",
-        "updated": "2026-07-23T10:37:01Z",
-        "summary": "Knowledge-Intensive Visual Question Answering (KI-VQA) benchmarks evaluate Vision-Language Models (VLMs) as multimodal knowledge assistants by requiring external information beyond a provided image to answer questions. KI-VQA involves multiple sub-problems -referring expression understanding, visual grounding, object recognition, knowledge retrieval, and reasoning-yet existing benchmarks typically report only end-task accuracy, obscuring where failures arise. To analyze the full KI-VQA pipeline, we introduce CRAG-MM-Diagnostics, a diagnostic benchmark with stage-wise data annotations that isolate 1) language-based visual grounding, 2) object identification, and 3) knowledge retrieval and reasoning. We evaluate fully parametric and retrieval-augmented VLMs, providing fine-grained analyses using newly collected metadata, such as target ROIs, entity names, and visual complexity scores. Our results point to knowledge retrieval and reasoning as the primary bottleneck, but also highlight issues in the other parts of the KI-VQA pipeline, such as the fact that VLMs struggle with target object identification or that image retrievers struggle to integrate textual cues. These findings expose fundamental limitations in current KI-VQA systems and motivate stage-aware evaluation. We, lastly, leverage these findings to propose a grounded bimodal RAG pipeline that integrates a visual grounding module to crop targets before image retrieval, boosting GPT-5 and Qwen's respective accuracies by 13.3 and 8.5 percentage points.",
+        "published": "2026-07-24T16:08:26Z",
+        "updated": "2026-07-24T16:08:26Z",
+        "summary": "Recent radiance field methods represent scenes with 2D primitives that offer surface alignment and efficient rasterization, from Gaussian disks to triangles, yet all rely on convex boundaries: curved and concave structures demand excessive primitives. We introduce Deformable Triangle Splatting, which augments each triangle with $K$ control points per edge, each parameterized by a single learnable scalar displacement that shifts the boundary inward or outward, enabling non-convex shape representation while preserving the three base vertices that define the 3D plane. To render these non-convex primitives differentiably, we design a rasterization pipeline in the triangle's barycentric coordinate space, ensuring view-consistent rendering. A winding number test determines whether each pixel lies inside the deformed primitive, and a window function controlled by two learnable parameters, sharpness and corner smoothness, together with a per-primitive scalar opacity, produces the smooth opacity transition from interior to boundary. Validation is done in a variety of real-world scenes, outperforming recent works based on non-volumetric primitives in terms of visual quality and versatility while still achieving competitive rendering efficiency.",
+        "categories": "cs.CV",
+        "comment": "Accepted at ECCV 2026. Project page: https://orioljim1.github.io/detris"
+      },
+      "analysis": {
+        "problem_statement": "Representing complex, non-convex 3D scenes with radiance fields using flexible, deformable primitives for real-time rendering.",
+        "bottleneck_addressed": "The bottleneck of representing complex, non-convex shapes with traditional convex primitives, leading to excessive primitives and reduced rendering efficiency.",
+        "executive_summary": "This paper introduces Deformable Triangle Splatting, a novel method for representing non-convex 3D scenes using deformable triangles, enabling real-time rendering with improved visual quality and versatility. This matters to the current AI landscape as it addresses a critical limitation in radiance field rendering and has applications in computer vision, graphics, and robotics.",
+        "key_metrics": {
+          "primary_metric": "Improved visual quality and versatility in representing non-convex 3D scenes.",
+          "metric_value": "Not explicitly stated",
+          "baseline": "Recent works based on non-volumetric primitives",
+          "improvement_percentage": "Not quantifiable"
+        },
+        "technical_breakdown": {
+          "method": "Deformable Triangle Splatting augments each triangle with K control points per edge, parameterized by a single learnable scalar displacement, enabling non-convex shape representation while preserving the three base vertices.",
+          "architecture": "The method uses a rasterization pipeline in the triangle's barycentric coordinate space, ensuring view-consistent rendering. A winding number test determines whether each pixel lies inside the deformed primitive, and a window function controlled by two learnable parameters produces the smooth opacity transition.",
+          "implementation_details": "The method uses a differentiable rasterization pipeline, a winding number test, and a window function with learnable parameters.",
+          "code_complexity": "The computational complexity of the method is not explicitly stated, but it is likely to be higher than traditional convex primitive methods due to the additional control points and learnable parameters."
+        },
+        "relevance_tags": [
+          "Computer Vision",
+          "Graphics",
+          "Radiance Fields",
+          "Real-time Rendering",
+          "Non-convex Shape Representation"
+        ],
+        "confidence": "high"
+      },
+      "analyzed_at": "2026-07-27T03:47:21.836665",
+      "conference_info": {
+        "conference": "ECCV",
+        "year": "2026",
+        "comment": "Accepted at ECCV 2026. Project page: https://orioljim1.github.io/detris",
+        "raw_comment": "Accepted at ECCV 2026. Project page: https://orioljim1.github.io/detris",
+        "category": "Computer Vision",
+        "rank": "A"
+      }
+    },
+    {
+      "paper": {
+        "title": "SiPhy: Single-Image Physical Property Reasoning",
+        "arxiv_id": "2607.22355v1",
+        "authors": [
+          "Hoang Le",
+          "Joonwoo Kwon",
+          "Elkhan Ismayilzada",
+          "Yufei Zhang",
+          "Zijun Cui"
+        ],
+        "published": "2026-07-24T14:36:37Z",
+        "updated": "2026-07-24T14:36:37Z",
+        "summary": "Inferring physical properties such as mass, stiffness, and elasticity from a single image is essential for simulation and embodied AI, yet most existing approaches rely on multi-view reconstruction or physics-based supervision. We introduce SiPhy, a unified framework for single-image physical property reasoning that aligns 3D-aware visual cues, depth with language-based material knowledge. From one RGB image, SiPhy samples pseudo-voxel points, extracts CLIP features, and grounds them to material candidates proposed by a VLM. A part-based contrastive aggregator enforces region consistency, while a heaviness-aware refinement improves thickness and volume estimation for dense objects. Across ABO-500, MVImgNet-100, and PhysXNet-100, SiPhy achieves state-of-the-art single-image performance, surpassing multi-view reconstruction methods by improving mass MnRE by up to 93% (vs. PUGS), reducing density MAE by 35.5% (vs. NeRF2Physics), and lowering Young's modulus error by 23.5%. We further validate SiPhy on real hand-object interaction datasets, demonstrating its potential as a data annotation engine for physical understanding from single-view imagery.",
+        "categories": "cs.CV",
+        "comment": "Accepted to ECCV 2026 (main track)"
+      },
+      "analysis": {
+        "problem_statement": "Inferring physical properties such as mass, stiffness, and elasticity from a single image.",
+        "bottleneck_addressed": "The bottleneck of requiring multi-view reconstruction or physics-based supervision for single-image physical property reasoning.",
+        "executive_summary": "This paper presents SiPhy, a unified framework for single-image physical property reasoning that achieves state-of-the-art performance by aligning 3D-aware visual cues, depth with language-based material knowledge. This matters to the current AI landscape as it enables simulation and embodied AI applications with reduced data requirements and improved accuracy.",
+        "key_metrics": {
+          "primary_metric": "Mass Mean Relative Error (MnRE)",
+          "metric_value": "93% improvement over PUGS",
+          "baseline": "PUGS",
+          "improvement_percentage": "93%"
+        },
+        "technical_breakdown": {
+          "method": "SiPhy samples pseudo-voxel points from a single RGB image, extracts CLIP features, and grounds them to material candidates proposed by a Visual Language Model (VLM). A part-based contrastive aggregator enforces region consistency, while a heaviness-aware refinement improves thickness and volume estimation for dense objects.",
+          "architecture": [
+            "Pseudo-voxel point sampling",
+            "CLIP feature extraction",
+            "VLM-based material candidate proposal",
+            "Part-based contrastive aggregator",
+            "Heaviness-aware refinement"
+          ],
+          "implementation_details": [
+            "CLIP (Contrastive Language-Image Pre-training)",
+            "VLM (Visual Language Model)",
+            "Contrastive learning",
+            "Part-based aggregation"
+          ],
+          "code_complexity": "High (due to the use of complex deep learning architectures and contrastive learning)"
+        },
+        "relevance_tags": [
+          "single-image physical property reasoning",
+          "embodied AI",
+          "simulation",
+          "multi-view reconstruction",
+          "physics-based supervision"
+        ],
+        "confidence": "high"
+      },
+      "analyzed_at": "2026-07-27T03:47:46.160782",
+      "conference_info": {
+        "conference": "ECCV",
+        "year": "2026",
+        "comment": "Accepted to ECCV 2026 (main track)",
+        "raw_comment": "Accepted to ECCV 2026 (main track)",
+        "category": "Computer Vision",
+        "rank": "A"
+      }
+    },
+    {
+      "paper": {
+        "title": "InnoText: A Unified Model for Visual Text Generation and Editing",
+        "arxiv_id": "2607.22101v1",
+        "authors": [
+          "Haowei Liu",
+          "Runze He",
+          "Jian Lu",
+          "Ao Ma",
+          "Run Ling",
+          "Ke Cao",
+          "Jiasong Feng",
+          "Wei Feng",
+          "Shuo Lu",
+          "Yexing Xu",
+          "Yun Wang",
+          "Jing Wang",
+          "Zhanjie Zhang"
+        ],
+        "published": "2026-07-24T08:54:22Z",
+        "updated": "2026-07-24T08:54:22Z",
+        "summary": "Diffusion models have recently achieved remarkable success in high-fidelity image synthesis, yet their application to visual text generation and editing remains relatively underexplored. Unlike general image generation, visual text tasks demand precise structural regularity and legibility, which may pose additional challenges for small-scale text and non-Latin scripts such as Chinese. Existing UNet-based models often struggle to produce clear and coherent text, while DiT-based models, though more expressive, are typically limited to a single task, which may lead to redundant training pipelines, inconsistent visual styles, and reduced cross-task generalization. To address these challenges, we propose InnoText, a unified DiT-based framework capable of performing both text generation and editing within a single model. We introduce a Font Size-Aware Modulation (FSAM) module to enhance representations across font scales, a Small-Character Aware Augmentation strategy to improve fine-grained fidelity, and a Task-Specific Region Weighted Loss for adaptive optimization. To support training and evaluation, we also construct a high-quality bilingual (English-Chinese) visual text dataset covering diverse fonts, sizes, and backgrounds. Experimental results demonstrate that our method achieves superior generation accuracy and editing quality, producing visually appealing and realistic text images.",
+        "categories": "cs.CV",
+        "comment": "Accepted by ECCV 2026"
+      },
+      "analysis": {
+        "problem_statement": "The paper addresses the challenge of generating and editing visual text with precise structural regularity and legibility, particularly for small-scale text and non-Latin scripts.",
+        "bottleneck_addressed": "The paper addresses the bottleneck of limited expressiveness and task-specificity in existing UNet-based and DiT-based models for visual text generation and editing.",
+        "executive_summary": "This paper proposes InnoText, a unified DiT-based framework for visual text generation and editing, addressing the limitations of existing models and enabling superior generation accuracy and editing quality. This matters to the current AI landscape as it enables more flexible and accurate text manipulation, with implications for applications such as document editing, text-to-image synthesis, and visual language understanding.",
+        "key_metrics": {
+          "primary_metric": "Generation accuracy and editing quality",
+          "metric_value": "Not specified",
+          "baseline": "Existing UNet-based and DiT-based models",
+          "improvement_percentage": "Not quantifiable"
+        },
+        "technical_breakdown": {
+          "method": "InnoText uses a DiT-based framework with a Font Size-Aware Modulation (FSAM) module to enhance representations across font scales, a Small-Character Aware Augmentation strategy to improve fine-grained fidelity, and a Task-Specific Region Weighted Loss for adaptive optimization.",
+          "architecture": "InnoText architecture consists of a DiT encoder, FSAM module, Small-Character Aware Augmentation, and Task-Specific Region Weighted Loss.",
+          "implementation_details": "The FSAM module uses a learnable scaling factor to adapt to different font sizes, while the Small-Character Aware Augmentation strategy uses data augmentation techniques to improve fine-grained fidelity. The Task-Specific Region Weighted Loss uses a weighted loss function to adapt to different tasks.",
+          "code_complexity": "The computational complexity of InnoText is not explicitly stated, but it is likely to be high due to the use of a DiT-based framework and the implementation of the FSAM module and Small-Character Aware Augmentation strategy."
+        },
+        "relevance_tags": [
+          "Visual Text Generation",
+          "Text Editing",
+          "Diffusion Models",
+          "DiT-based Frameworks",
+          "FSAM Module",
+          "Small-Character Aware Augmentation"
+        ],
+        "confidence": "high"
+      },
+      "analyzed_at": "2026-07-27T03:48:06.480279",
+      "conference_info": {
+        "conference": "ECCV",
+        "year": "2026",
+        "comment": "Accepted by ECCV 2026",
+        "raw_comment": "Accepted by ECCV 2026",
+        "category": "Computer Vision",
+        "rank": "A"
+      }
+    },
+    {
+      "paper": {
+        "title": "FAIR: Feature-Augmented Implicit Regularization for AI-generated Fake Image Detection",
+        "arxiv_id": "2607.22087v1",
+        "authors": [
+          "Md Redwanul Haque",
+          "Manzur Murshed",
+          "Manoranjan Paul",
+          "Tsz-Kwan Lee"
+        ],
+        "published": "2026-07-24T08:34:56Z",
+        "updated": "2026-07-24T08:34:56Z",
+        "summary": "Generalization remains a critical bottleneck in AI-generated image detection. Because many modern generators are proprietary or adversarially modified, existing detectors overfit to the low-level textural patterns of accessible training data, resulting in severe failures on unseen domains. Conventional regularization techniques (e.g., $L_1$/$L_2$ norms, Dropout) apply indiscriminate parametric constraints and fail to provide the domain-invariant structure necessary for cross-generator robustness. To address this, we propose Feature-Augmented Implicit Regularization (FAIR). FAIR introduces an orthogonal, macro-structural prior, specifically, Scene Composition Structure (SCS), during training to geometrically constrain the model's optimization trajectory. By augmenting the primary feature space with domain-invariant SCS features, FAIR explicitly penalizes texture-biased shortcut learning. Crucially, this structural prior is entirely discarded at inference, yielding a smoothed, generalized decision boundary with zero architectural or computational overhead. Extensive evaluations across five massive benchmarks demonstrate that integrating FAIR into state-of-the-art detectors significantly improves cross-generator generalization, boosting accuracy by up to 8.04% and establishing new state-of-the-art robustness in zero-shot transfer scenarios.",
         "categories": "cs.CV",
         "comment": "Accepted to ECCV 2026"
       },
       "analysis": {
-        "problem_statement": "The paper addresses the limitation of existing Knowledge-Intensive Visual Question Answering (KI-VQA) benchmarks that only report end-task accuracy, obscuring where failures arise.",
-        "bottleneck_addressed": "Knowledge retrieval and reasoning, as well as other parts of the KI-VQA pipeline such as language-based visual grounding, object identification, and image retriever integration of textual cues.",
-        "executive_summary": "This paper introduces CRAG-MM-Diagnostics, a diagnostic benchmark that enables stage-wise analysis of KI-VQA, exposing fundamental limitations in current KI-VQA systems and motivating stage-aware evaluation. The findings lead to the proposal of a grounded bimodal RAG pipeline that improves the accuracy of state-of-the-art models. This work is crucial to the current AI landscape as it highlights the need for more nuanced evaluation of KI-VQA systems and provides a solution to address these limitations.",
+        "problem_statement": "The paper addresses the problem of generalization in AI-generated image detection, specifically the issue of detectors overfitting to low-level textural patterns of accessible training data.",
+        "bottleneck_addressed": "Overfitting to low-level textural patterns and lack of domain-invariant structure in AI-generated image detection.",
+        "executive_summary": "This paper proposes a novel approach called Feature-Augmented Implicit Regularization (FAIR) to improve generalization in AI-generated image detection. By introducing a scene composition structure (SCS) prior during training, FAIR geometrically constrains the model's optimization trajectory, leading to a smoothed, generalized decision boundary. This approach has significant implications for the current AI landscape, where generalization remains a critical bottleneck in AI-generated image detection.",
         "key_metrics": {
-          "primary_metric": "Boosting GPT-5 and Qwen's respective accuracies by 13.3 and 8.5 percentage points",
-          "metric_value": "13.3 and 8.5",
-          "baseline": "GPT-5 and Qwen",
-          "improvement_percentage": "13.3% and 8.5%"
+          "primary_metric": "Accuracy improvement in zero-shot transfer scenarios",
+          "metric_value": "8.04%",
+          "baseline": "State-of-the-art detectors",
+          "improvement_percentage": "8.04%"
         },
         "technical_breakdown": {
-          "method": "CRAG-MM-Diagnostics introduces a diagnostic benchmark with stage-wise data annotations that isolate language-based visual grounding, object identification, and knowledge retrieval and reasoning. The benchmark provides fine-grained analyses using newly collected metadata, such as target ROIs, entity names, and visual complexity scores.",
-          "architecture": "The grounded bimodal RAG pipeline integrates a visual grounding module to crop targets before image retrieval, which is a key architectural component.",
-          "implementation_details": "The paper uses fully parametric and retrieval-augmented VLMs, and proposes a grounded bimodal RAG pipeline that integrates a visual grounding module. The implementation details include the use of newly collected metadata and the evaluation of state-of-the-art models such as GPT-5 and Qwen.",
-          "code_complexity": "The computational complexity of the proposed solution is not explicitly mentioned in the paper. However, the introduction of a new benchmark and the development of a grounded bimodal RAG pipeline may require significant code modifications and additional computational resources."
+          "method": "Feature-Augmented Implicit Regularization (FAIR) introduces a scene composition structure (SCS) prior during training to geometrically constrain the model's optimization trajectory.",
+          "architecture": "The proposed architecture consists of a primary feature space and a domain-invariant SCS feature space, which is discarded at inference.",
+          "implementation_details": "The SCS prior is implemented using a graph-based approach, where nodes represent objects and edges represent relationships between them. The primary feature space is augmented with SCS features using a concatenation operation.",
+          "code_complexity": "The proposed approach has zero architectural or computational overhead, as the SCS prior is entirely discarded at inference."
         },
         "relevance_tags": [
-          "Knowledge-Intensive Visual Question Answering",
-          "Diagnostic Benchmark",
-          "Stage-wise Analysis",
-          "Visual Grounding",
-          "Object Identification",
-          "Knowledge Retrieval and Reasoning",
-          "Retrieval-Augmented VLMs",
-          "Grounded Bimodal RAG Pipeline"
+          "AI-generated image detection",
+          "generalization",
+          "overfitting",
+          "domain-invariant structure",
+          "scene composition structure"
         ],
         "confidence": "high"
       },
-      "analyzed_at": "2026-07-26T03:32:17.807222",
+      "analyzed_at": "2026-07-27T03:48:28.740807",
       "conference_info": {
         "conference": "ECCV",
         "year": "2026",
@@ -318,1189 +284,168 @@
     },
     {
       "paper": {
-        "title": "The Second LoViF 2026 Challenge on Real-World All-in-One Image Restoration: Methods and Results",
-        "arxiv_id": "2607.21118v1",
+        "title": "Twins: Learn to Predict Unified Representations with Focal Loss",
+        "arxiv_id": "2607.22531v1",
         "authors": [
-          "Xiang Chen",
-          "Hao Li",
-          "Jiangxin Dong",
-          "Jinshan Pan",
-          "Xin Li",
-          "Hongbo Ding",
-          "Junpeng Jiang",
-          "Xingyu Qiu",
-          "Yilian Zhong",
-          "Yuxiang Chen",
-          "Shibo Yin",
-          "Zixuan Huang",
-          "Yushun Fang",
-          "Xilei Zhu",
-          "Yahui Wang",
-          "Chen Lu",
-          "Xiaodong Zhou",
-          "Qingyue Cao",
-          "Changwei Gong",
-          "Jingyun Liu",
-          "Xingchen Yi",
-          "Hansen Shi",
-          "Ruiyi Liu",
-          "Jirui Xie",
-          "Tao Liu",
-          "Wenzhuo Ma",
-          "Hongzhen Li",
-          "Yongyong Chen",
-          "Zheng Zhou",
-          "Jingyong Su",
-          "Jie Liu",
-          "Haijin Zeng",
-          "Cheng Li",
-          "Peishuai Zha",
-          "Ziyi Wang",
-          "Jian Tang",
-          "Yan Chen",
-          "Long Bao",
-          "Heng Sun",
-          "Jiyuan Zhang",
-          "Shuai Liu",
-          "Wei Ding",
-          "Chengjun Guo",
-          "Yibin Huang",
-          "Xiaotao Wang",
-          "Dongqing Zou",
-          "Lei Lei",
-          "Xiaofeng Wang",
-          "Xiao Liu",
-          "Yulin Wu",
-          "Yuhan Zhao",
-          "Shurui Peng",
-          "Chao Ren",
-          "Yu-Kai Wang",
-          "Kosuke Shigematsu",
-          "Asuka Shin",
-          "Rong-Lin Jian",
-          "Cheng-Jun Kang",
-          "Jin-Hui Jiang",
-          "Jialin Zhou",
-          "Kuo Yuan",
-          "Songyu Zhang",
-          "E B Benson",
-          "Ashfaq Hussain",
-          "Pruthvikanth AC",
-          "Qirui Chen",
-          "Jinyuan Chen",
-          "Jun Zhang",
-          "Xu Zhang",
-          "Xuhui Cao",
-          "Jiaqi Ma",
-          "Laibin Chang",
-          "Yuchun Miao",
-          "Yichu Xu",
-          "Yuanzhi Yao",
-          "Shi Chen",
-          "Yuning Cui",
-          "Huan Zhang",
-          "Lefei Zhang",
-          "Saeed Ahmad",
-          "Ik Hyun Lee",
-          "Jun Young Park",
-          "Ji Hwan Yoon",
-          "Shangquan Sun",
-          "Behrooz Nobahar-Moghanlou",
-          "Majid Edalatjou",
-          "Karim Shahi-Niyar",
-          "Ruibo Zhang",
-          "Dexiang Hong",
-          "Xinyan Liu",
-          "Shengeng Tang",
-          "Weidong Chen"
+          "Kaixiong Gong",
+          "Xin Cai",
+          "Bin Lin",
+          "Hao Wang",
+          "Yunlong Lin",
+          "Mingzhe Zheng",
+          "Bohao Li",
+          "Jian-Wei Zhang",
+          "Miles Yang",
+          "Zhao Zhong",
+          "Liefeng Bo",
+          "Xiangyu Yue"
         ],
-        "published": "2026-07-23T09:54:25Z",
-        "updated": "2026-07-23T09:54:25Z",
-        "summary": "This paper presents a review of the second LoViF Challenge on Real-World All-in-One Image Restoration. The challenge aims to advance unified image restoration under diverse real-world degradation conditions, including blur, low-light, haze, rain, and snow. It provides a common benchmark for evaluating the restoration accuracy, robustness, and generalization capability of models across multiple degradation categories within a unified framework. The competition attracted 158 registered participants, and 20 teams were included in the final ranking after their submitted results were successfully reproduced and verified. This report provides a comprehensive analysis of the submitted solutions and corresponding results, highlighting recent advances in real-world all-in-one image restoration. The summarized methods and empirical findings reveal effective design strategies and establish an updated benchmark for future research in real-world low-level vision.",
+        "published": "2026-07-24T17:59:39Z",
+        "updated": "2026-07-24T17:59:39Z",
+        "summary": "Unified multimodal models seek a shared visual token space that supports both multimodal understanding and image generation. Discrete methods unify the interface via a shared codebook, whereas continuous pipelines often rely on two disparate representations -- semantic features (e.g., ViT) for understanding and low-level latents (e.g., VAE) for synthesis -- resulting in mismatched latent spaces. We propose Twins, a unified continuous token space formed by channel-wise concatenating ViT and VAE features on the same token grid, so the sequence length is unchanged and attention cost does not increase. However, jointly modeling Twins in a Diffusion Transformer exposes a severe optimization imbalance: the model fits the ViT component well but struggles to match the VAE latent distribution. We trace this imbalance to three sources of heterogeneity: frequency bias, intrinsic dimensionality, and condition-aligned vs condition-independent uncertainty. To address it, we adapt a focal regression objective for flow matching that upweights large-error VAE dimensions, better balancing optimization across the ViT and VAE components. On ImageNet, this yields up to 10.57 gFID gain over naive MSE loss without classifier-free guidance. Twins also performs competitively on multimodal understanding benchmarks and improves reconstruction fidelity, narrowing the gap between understanding- and generation-oriented representations.",
         "categories": "cs.CV",
-        "comment": "ECCV 2026 Workshops; https://lowlevelcv.com/"
+        "comment": "ICML 2026. Code: https://github.com/Tencent-Hunyuan/Twins"
       },
       "analysis": {
-        "problem_statement": "Developing a unified framework for real-world all-in-one image restoration under diverse degradation conditions, including blur, low-light, haze, rain, and snow.",
-        "bottleneck_addressed": "Multimodal image restoration and generalization across multiple degradation categories.",
-        "executive_summary": "This paper presents the second LoViF Challenge on Real-World All-in-One Image Restoration, which aims to advance unified image restoration under diverse real-world degradation conditions. The challenge attracted 158 participants and provides a comprehensive analysis of the submitted solutions and corresponding results. This matters to the current AI landscape as it establishes an updated benchmark for future research in real-world low-level vision.",
+        "problem_statement": "The paper addresses the challenge of unifying multimodal models with disparate representations for understanding and generation tasks.",
+        "bottleneck_addressed": "The paper addresses the bottleneck of optimization imbalance in jointly modeling continuous token spaces for multimodal understanding and image generation.",
+        "executive_summary": "The paper proposes Twins, a unified continuous token space that addresses the optimization imbalance in multimodal models by adapting a focal regression objective for flow matching. This yields significant improvements in image generation and multimodal understanding benchmarks, narrowing the gap between understanding- and generation-oriented representations.",
         "key_metrics": {
-          "primary_metric": "Restoration accuracy and robustness across multiple degradation categories.",
-          "metric_value": "Not explicitly stated in the paper.",
-          "baseline": "Not explicitly stated in the paper.",
-          "improvement_percentage": "Not quantifiable."
+          "primary_metric": "gFID gain",
+          "metric_value": "10.57",
+          "baseline": "naive MSE loss without classifier-free guidance",
+          "improvement_percentage": "10.57% gain"
         },
         "technical_breakdown": {
-          "method": "The challenge employed a unified framework for evaluating the restoration accuracy, robustness, and generalization capability of models across multiple degradation categories. The framework included a common benchmark for evaluating the performance of models under diverse real-world degradation conditions.",
-          "architecture": "The paper does not provide specific architectural components used in the challenge. However, it is likely that the participants used deep learning architectures such as convolutional neural networks (CNNs) or transformers.",
-          "implementation_details": "The paper does not provide specific implementation details. However, it is likely that the participants used techniques such as data augmentation, transfer learning, and ensemble methods to improve the performance of their models.",
-          "code_complexity": "The code complexity is not explicitly stated in the paper. However, it is likely that the participants used complex deep learning models that require significant computational resources and training time."
+          "method": "The solution works by channel-wise concatenating ViT and VAE features on the same token grid, and adapting a focal regression objective for flow matching to address optimization imbalance.",
+          "architecture": "Diffusion Transformer with Twins (unified continuous token space) and focal regression objective for flow matching.",
+          "implementation_details": "The paper uses a focal regression objective for flow matching, which upweights large-error VAE dimensions to better balance optimization across the ViT and VAE components.",
+          "code_complexity": "The code complexity is moderate to high due to the use of a Diffusion Transformer and focal regression objective for flow matching."
         },
         "relevance_tags": [
-          "Image Restoration",
-          "Real-World Degradation",
-          "Multimodal Learning",
-          "Deep Learning",
-          "Benchmarking"
+          "multimodal models",
+          "unified representations",
+          "image generation",
+          "multimodal understanding",
+          "focal regression objective",
+          "flow matching"
         ],
         "confidence": "high"
       },
-      "analyzed_at": "2026-07-26T03:36:29.256840",
-      "conference_info": {
-        "conference": "ECCV",
-        "year": "2026",
-        "comment": "ECCV 2026 Workshops; https://lowlevelcv.com/",
-        "raw_comment": "ECCV 2026 Workshops; https://lowlevelcv.com/",
-        "category": "Computer Vision",
-        "rank": "A"
-      }
-    },
-    {
-      "paper": {
-        "title": "HalluScope: Fine-grained Hallucination Diagnosis for Multimodal Large Language Models",
-        "arxiv_id": "2607.21105v1",
-        "authors": [
-          "Weilin Jin",
-          "Mingyu Wang",
-          "Wenbo Li",
-          "Haoyang Huang",
-          "Yifan Wu",
-          "Ying Li",
-          "Gang Huang",
-          "Zhonghai Wu"
-        ],
-        "published": "2026-07-23T09:35:32Z",
-        "updated": "2026-07-23T09:35:32Z",
-        "summary": "Although Multimodal Large Language Models have achieved strong performance across a wide range of vision-language tasks, they still suffer from hallucinations, where model outputs become inconsistent with the visual content, textual context, or commonsense knowledge. Existing studies primarily address this problem through coarse-grained detection. However, these approaches often provide insufficient diagnostic information for understanding hallucination types and supporting downstream hallucination mitigation. To bridge this gap, we propose fine-grained hallucination diagnosis for MLLMs, a new unified task that jointly performs hallucination detection, classification, and interpretable explanation generation. We develop an automated data generation pipeline and construct HalluScope-30K, a large-scale diagnostic dataset covering eight sources and five task categories. Based on this dataset, we design a multi-granular joint reward function and train two diagnosis models, HalluScope-4B and HalluScope-8B, which achieve state-of-the-art performance on both the MHALO benchmark and our fine-grained hallucination classification benchmark. Notably, detection and classification are mutually beneficial under joint optimization. Furthermore, diagnosis-driven feedback experiments show that the fine-grained diagnostic explanations produced by our model effectively guide target models to correct their hallucinations, with full diagnosis substantially outperforming all baselines on both Qwen3-VL-8B-Instruct and LLaVA-1.5-7B.",
-        "categories": "cs.CV",
-        "comment": "Accepted to ACM Multimedia 2026 (ACM MM 2026). This is not the camera-ready version. 18 pages, 7 figures, 12 tables"
-      },
-      "analysis": {
-        "problem_statement": "The paper addresses the issue of hallucinations in Multimodal Large Language Models (MLLMs), where model outputs become inconsistent with visual content, textual context, or commonsense knowledge.",
-        "bottleneck_addressed": "Hallucination in Multimodal Large Language Models (MLLMs)",
-        "executive_summary": "This paper proposes a fine-grained hallucination diagnosis framework for MLLMs, which jointly performs hallucination detection, classification, and interpretable explanation generation. This matters to the current AI landscape as it enables more accurate and transparent model outputs, which is crucial for downstream applications such as vision-language tasks.",
-        "key_metrics": {
-          "primary_metric": "State-of-the-art performance on both the MHALO benchmark and the fine-grained hallucination classification benchmark",
-          "metric_value": "Not specified",
-          "baseline": "Coarse-grained detection approaches",
-          "improvement_percentage": "Not quantifiable"
-        },
-        "technical_breakdown": {
-          "method": "The proposed framework, HalluScope, uses a multi-granular joint reward function to train two diagnosis models, HalluScope-4B and HalluScope-8B, which jointly perform hallucination detection, classification, and interpretable explanation generation.",
-          "architecture": "The architecture consists of a data generation pipeline, a diagnosis model, and a reward function.",
-          "implementation_details": "The authors use an automated data generation pipeline to construct HalluScope-30K, a large-scale diagnostic dataset covering eight sources and five task categories. They also use a multi-granular joint reward function to train the diagnosis models.",
-          "code_complexity": "The computational complexity and training time implications are not explicitly stated in the paper, but it is likely that the proposed framework requires significant computational resources and training time due to the large-scale dataset and complex architecture."
-        },
-        "relevance_tags": [
-          "Multimodal Large Language Models",
-          "Hallucination",
-          "Fine-grained diagnosis",
-          "Vision-language tasks"
-        ],
-        "confidence": "high"
-      },
-      "analyzed_at": "2026-07-26T03:36:40.471242",
-      "conference_info": {
-        "conference": "ACM Multimedia",
-        "year": "2026",
-        "comment": "Accepted to ACM Multimedia 2026 (ACM MM 2026). This is not the camera-ready version. 18 pages, 7 figures, 12 tables",
-        "raw_comment": "Accepted to ACM Multimedia 2026 (ACM MM 2026). This is not the camera-ready version. 18 pages, 7 figures, 12 tables",
-        "category": "Computer Vision",
-        "rank": "A+"
-      }
-    },
-    {
-      "paper": {
-        "title": "TransBiolab: A Real-World Multi-View Dataset of Cluttered Transparent Biomedical Objects",
-        "arxiv_id": "2607.21071v1",
-        "authors": [
-          "Ke Ma",
-          "Yifei Wang",
-          "Meng Wang",
-          "Tian Xia"
-        ],
-        "published": "2026-07-23T09:04:11Z",
-        "updated": "2026-07-23T09:04:11Z",
-        "summary": "Autonomous biomedical laboratories increasingly rely on visual perception to recognize, localize, and manipulate transparent plasticware, yet high-quality real-world datasets for this setting remain limited. The scarcity of domain-relevant data is particularly restrictive in cluttered multi-object scenes, where mutual occlusion and view-dependent appearance changes remain challenging even for contemporary visual foundation models. Existing transparent-object datasets have advanced segmentation, depth, and pose estimation, but they usually do not evaluate the combined setting of multi-object clutter, occlusion, and calibrated multi-view capture that characterizes real laboratory manipulation scenes. To address this gap, we present TrainsBiolab, a real-world RGB-D dataset of cluttered transparent biomedical objects captured as calibrated multi-view sequences. TrainsBiolab contains 161,315 frames from 98 scenes and 1.03M instance annotations over 15 laboratory object types, including 6D poses, full and visible masks, depth, and per-frame camera calibration. The dataset is organized along three axes that reflect operational difficulty: object category, the total number of objects in a frame, and camera viewpoint. We further define dataset-centric benchmarks for segmentation, depth estimation and completion, and 6D pose estimation, and report a system-level robot manipulation evaluation enabled by the released annotations and calibrations. By focusing on repeated transparent instances, clutter, and multi-view laboratory capture, TrainsBiolab provides a resource for segmentation, depth estimation, 6D pose estimation, and multi-view reasoning in autonomous laboratory manipulation. Project page: https://dualtransparency.github.io/TransBiolab/.",
-        "categories": "cs.CV",
-        "comment": "9 pages, 10 figures, accepted by ACM Multimedia 2026"
-      },
-      "analysis": {
-        "problem_statement": "The paper addresses the lack of high-quality real-world datasets for visual perception in cluttered multi-object scenes, particularly for transparent biomedical objects in laboratory settings.",
-        "bottleneck_addressed": "The paper addresses the bottleneck of limited domain-relevant data for visual perception in cluttered multi-object scenes, which hinders the development of robust visual foundation models.",
-        "executive_summary": "This paper presents TransBiolab, a real-world RGB-D dataset of cluttered transparent biomedical objects, which addresses the scarcity of domain-relevant data for visual perception in laboratory settings. This dataset is particularly relevant for the development of autonomous biomedical laboratories that rely on visual perception to recognize, localize, and manipulate transparent plasticware. The dataset provides a resource for segmentation, depth estimation, 6D pose estimation, and multi-view reasoning in autonomous laboratory manipulation.",
-        "key_metrics": {
-          "primary_metric": "A real-world RGB-D dataset of cluttered transparent biomedical objects with 161,315 frames, 98 scenes, and 1.03M instance annotations",
-          "metric_value": null,
-          "baseline": "Existing transparent-object datasets",
-          "improvement_percentage": null
-        },
-        "technical_breakdown": {
-          "method": "The dataset is captured as calibrated multi-view sequences using RGB-D cameras, which provides a comprehensive representation of the scene from multiple viewpoints.",
-          "architecture": "The dataset is organized along three axes: object category, total number of objects in a frame, and camera viewpoint.",
-          "implementation_details": "The dataset provides annotations for instance segmentation, 6D pose estimation, depth estimation, and per-frame camera calibration.",
-          "code_complexity": "The dataset is a collection of pre-captured images and annotations, so there is no code complexity associated with its creation."
-        },
-        "relevance_tags": [
-          "computer vision",
-          "dataset",
-          "autonomous laboratory manipulation",
-          "transparent biomedical objects",
-          "RGB-D cameras"
-        ],
-        "confidence": "high"
-      },
-      "analyzed_at": "2026-07-26T03:36:52.607885",
-      "conference_info": {
-        "conference": "ACM Multimedia",
-        "year": "2026",
-        "comment": "9 pages, 10 figures, accepted by ACM Multimedia 2026",
-        "raw_comment": "9 pages, 10 figures, accepted by ACM Multimedia 2026",
-        "category": "Computer Vision",
-        "rank": "A+"
-      }
-    },
-    {
-      "paper": {
-        "title": "Distribution-Alignment Bridge for Uncertainty-Aware Text-to-Video Retrieval",
-        "arxiv_id": "2607.20984v1",
-        "authors": [
-          "Kyeongmo Chae",
-          "Jihoon Lee",
-          "Sangtae Ahn"
-        ],
-        "published": "2026-07-23T07:07:28Z",
-        "updated": "2026-07-23T07:07:28Z",
-        "summary": "This paper proposes the Distribution-Alignment Bridge (DAB), a framework that reconceptualizes text-to-video retrieval as a distribution alignment task rather than traditional deterministic point matching. By modeling both text and video embeddings as Gaussian distributions defined by mean and variance, DAB explicitly accounts for modality-specific uncertainty. We employ a deterministic, diffusion-inspired bridge to iteratively refine text distributions toward their target video distributions through a truncated refinement process. This approach unifies probabilistic embedding and distributional transformation into a cohesive, end-to-end trainable system. To optimize cross-modal similarity, we introduce a distribution-aware contrastive loss based on Kullback-Leibler divergence. Extensive evaluations on MSR-VTT, MSVD, and VATEX benchmarks confirm that DAB significantly outperforms existing probabilistic and diffusion-based baselines, while providing calibrated uncertainty-aware ranking through bridge-induced distributional margins.",
-        "categories": "cs.CV",
-        "comment": "ECCV 2026"
-      },
-      "analysis": {
-        "problem_statement": "The paper addresses the problem of text-to-video retrieval with uncertainty-awareness, where the goal is to accurately match text queries with relevant videos while accounting for modality-specific uncertainty.",
-        "bottleneck_addressed": "The paper addresses the bottleneck of uncertainty-awareness in cross-modal retrieval tasks, specifically in text-to-video retrieval, where traditional deterministic approaches may not capture the inherent uncertainty in the data.",
-        "executive_summary": "This paper proposes a novel framework, Distribution-Alignment Bridge (DAB), that reconceptualizes text-to-video retrieval as a distribution alignment task, enabling uncertainty-aware ranking and significantly outperforming existing probabilistic and diffusion-based baselines. This matters to the current AI landscape as it tackles the challenge of uncertainty-awareness in cross-modal retrieval tasks, which is crucial for real-world applications such as video understanding and retrieval.",
-        "key_metrics": {
-          "primary_metric": "Cross-modal similarity",
-          "metric_value": "Not specified",
-          "baseline": "Probabilistic and diffusion-based baselines",
-          "improvement_percentage": "Not quantifiable"
-        },
-        "technical_breakdown": {
-          "method": "DAB reconceptualizes text-to-video retrieval as a distribution alignment task by modeling both text and video embeddings as Gaussian distributions defined by mean and variance. It employs a deterministic, diffusion-inspired bridge to iteratively refine text distributions toward their target video distributions through a truncated refinement process.",
-          "architecture": {
-            "Key components": "Distribution-Alignment Bridge (DAB), Gaussian distributions, diffusion-inspired bridge, truncated refinement process",
-            "Description": "DAB consists of a text encoder, a video encoder, and a bridge module. The text encoder and video encoder produce Gaussian distributions representing the text and video embeddings, respectively. The bridge module iteratively refines the text distributions toward the target video distributions."
-          },
-          "implementation_details": {
-            "Algorithms": "Kullback-Leibler divergence, diffusion-inspired bridge",
-            "Techniques": "Truncated refinement process, end-to-end trainable system"
-          },
-          "code_complexity": "The computational complexity of DAB is O(n^2) due to the Kullback-Leibler divergence calculation, where n is the number of samples. The training time is not specified."
-        },
-        "relevance_tags": [
-          "Text-to-Video Retrieval",
-          "Uncertainty-Awareness",
-          "Cross-Modal Retrieval",
-          "Distribution Alignment",
-          "Diffusion-Inspired Bridge"
-        ],
-        "confidence": "high"
-      },
-      "analyzed_at": "2026-07-26T03:37:02.722192",
-      "conference_info": {
-        "conference": "ECCV",
-        "year": "2026",
-        "comment": "ECCV 2026",
-        "raw_comment": "ECCV 2026",
-        "category": "Computer Vision",
-        "rank": "A"
-      }
-    },
-    {
-      "paper": {
-        "title": "Inference-Time Scaling of Diffusion Models via Progressive Seed Pruning",
-        "arxiv_id": "2607.21591v1",
-        "authors": [
-          "Rogerio Guimaraes",
-          "Pietro Perona"
-        ],
-        "published": "2026-07-23T17:59:46Z",
-        "updated": "2026-07-23T17:59:46Z",
-        "summary": "Diffusion and flow-matching models dominate conditional image generation, yet inference-time scaling for these models is far less developed than for autoregressive language models. Because final quality is highly sensitive to the initial noise seed, many approaches spend extra compute on seed search or resampling under a black-box reward, but typically maintaining a constant memory footprint throughout inference. We show that relaxing this constraint enables an underexplored inference-time scaling axis: by front-loading exploration, evaluating many seeds early, and pruning aggressively, we can use a fixed compute budget more effectively. \\emph{Progressive Seed Pruning} (\\PSP) scores intermediate denoised estimates and progressively narrows the candidate set so that only promising trajectories are fully denoised, while keeping the total number of model evaluations fixed. Across diffusion and flow-matching backbones, \\PSP \\ consistently improves reward-guided selection and achieves higher GenEval scores (automated) and better human evaluation on prompt-alignment than best-of-$N$, importance-sampling, and tree-search baselines at matched compute. Project page: https://www.vision.caltech.edu/psp. Code: https://github.com/rogerioagjr/psp.",
-        "categories": "cs.CV",
-        "comment": "Project page: https://www.vision.caltech.edu/psp. Code: https://github.com/rogerioagjr/psp"
-      },
-      "analysis": {
-        "problem_statement": "The paper addresses the problem of inference-time scaling for diffusion and flow-matching models in conditional image generation, where the goal is to improve the efficiency of these models without compromising their quality.",
-        "bottleneck_addressed": "Inference-time scaling bottleneck in diffusion and flow-matching models",
-        "executive_summary": "This paper presents a novel approach called Progressive Seed Pruning (PSP) that enables efficient inference-time scaling for diffusion and flow-matching models by front-loading exploration, evaluating many seeds early, and pruning aggressively. PSP achieves higher GenEval scores and better human evaluation on prompt-alignment than existing baselines at matched compute. This matters to the current AI landscape as it can improve the efficiency and effectiveness of conditional image generation models.",
-        "key_metrics": {
-          "primary_metric": "GenEval scores",
-          "metric_value": "Higher scores than baselines",
-          "baseline": "Best-of-$N$, importance-sampling, and tree-search methods",
-          "improvement_percentage": "Not quantified"
-        },
-        "technical_breakdown": {
-          "method": "PSP scores intermediate denoised estimates and progressively narrows the candidate set to focus on promising trajectories, while keeping the total number of model evaluations fixed.",
-          "architecture": "Diffusion and flow-matching backbones",
-          "implementation_details": "PSP uses a combination of seed search, early evaluation, and aggressive pruning to achieve efficient inference-time scaling.",
-          "code_complexity": "The code complexity of PSP is not explicitly quantified, but it likely involves additional computational overhead due to the pruning and evaluation of intermediate denoised estimates."
-        },
-        "relevance_tags": [
-          "conditional image generation",
-          "diffusion models",
-          "flow-matching models",
-          "inference-time scaling",
-          "efficient inference"
-        ],
-        "confidence": "high"
-      },
-      "analyzed_at": "2026-07-26T03:35:17.348618",
-      "conference_info": {
-        "conference": "WWW",
-        "year": "Unknown",
-        "comment": "Project page: https://www.vision.caltech.edu/psp. Code: https://github.com/rogerioagjr/psp",
-        "raw_comment": "Project page: https://www.vision.caltech.edu/psp. Code: https://github.com/rogerioagjr/psp",
-        "category": "Data Mining & IR",
-        "rank": "A+"
-      }
-    },
-    {
-      "paper": {
-        "title": "Graph Learning on Ensembles of Cyclic Peptides: An Investigation of Molecular Ensemble Modeling",
-        "arxiv_id": "2607.21561v1",
-        "authors": [
-          "Aaron Feller",
-          "Kris Deibler",
-          "Maxim Secor"
-        ],
-        "published": "2026-07-23T17:42:51Z",
-        "updated": "2026-07-23T17:42:51Z",
-        "summary": "Molecular property prediction from structure often uses a single representative conformation, even though many molecules exist as conformational ensembles in solution. We introduce EnsembleEGNN, a molecular ensemble foundation model that encodes an ensemble by first encoding each conformer with shared Equivariant Graph Neural Network (EGNN) layers, then pooling the resulting conformer representations with a Set Attention Block. We pretrain the model on CREMP, a cyclic peptide ensemble dataset, using a multi-task self-supervised objective combining masked token recovery, noisy-coordinate reconstruction, and pairwise distance reconstruction. On the CREMP-CycPeptMPDB dataset, training EnsembleEGNN from scratch fails entirely ($R^2=0.005$). However, the pretrained model reaches $R^2=0.477$ and Pearson $r=0.699$, outperforming the sequence-only BERT baseline ($R^2=0.439$, Pearson $r=0.667$). When EnsembleEGNN is co-trained end-to-end with the BERT sequence encoder, the hybrid model improves further to $R^2=0.538$ and Pearson $r=0.737$. These results demonstrate that encoding conformational ensembles into a single thermodynamically informed embedding improves cyclic-peptide property prediction.",
-        "categories": "cs.LG",
-        "comment": "Accepted to Graph Foundation Models workshop at ICML '26. Contains 8 pages, 4 figures"
-      },
-      "analysis": {
-        "problem_statement": "Predicting molecular properties from conformational ensembles of cyclic peptides, where a single representative conformation is often used despite the presence of multiple conformations in solution.",
-        "bottleneck_addressed": "The bottleneck of molecular property prediction from structure, specifically the limitation of using a single representative conformation when multiple conformations exist in solution.",
-        "executive_summary": "This paper introduces EnsembleEGNN, a molecular ensemble foundation model that encodes conformational ensembles into a single thermodynamically informed embedding, improving cyclic-peptide property prediction. This matters to the current AI landscape as it addresses a long-standing challenge in molecular property prediction and has implications for drug discovery and development.",
-        "key_metrics": {
-          "primary_metric": "R^2 value on the CREMP-CycPeptMPDB dataset",
-          "metric_value": 0.477,
-          "baseline": "Sequence-only BERT baseline",
-          "improvement_percentage": "9.1% improvement over the BERT baseline"
-        },
-        "technical_breakdown": {
-          "method": "EnsembleEGNN encodes each conformer with shared Equivariant Graph Neural Network (EGNN) layers, then pools the resulting conformer representations with a Set Attention Block.",
-          "architecture": "Equivariant Graph Neural Network (EGNN) layers, Set Attention Block, and a sequence encoder (BERT)",
-          "implementation_details": "Pretraining on CREMP dataset using a multi-task self-supervised objective combining masked token recovery, noisy-coordinate reconstruction, and pairwise distance reconstruction.",
-          "code_complexity": "High computational complexity due to the use of EGNN layers and Set Attention Block, with potential training time implications for large molecular datasets."
-        },
-        "relevance_tags": [
-          "Molecular Property Prediction",
-          "Conformational Ensembles",
-          "Graph Neural Networks",
-          "Equivariant Graph Neural Networks",
-          "Set Attention Block",
-          "Drug Discovery",
-          "Chemical Informatics"
-        ],
-        "confidence": "high"
-      },
-      "analyzed_at": "2026-07-26T03:34:07.816007",
+      "analyzed_at": "2026-07-27T03:47:10.708585",
       "conference_info": {
         "conference": "ICML",
         "year": "2026",
-        "comment": "Accepted to Graph Foundation Models workshop at ICML '26. Contains 8 pages, 4 figures",
-        "raw_comment": "Accepted to Graph Foundation Models workshop at ICML '26. Contains 8 pages, 4 figures",
+        "comment": "ICML 2026. Code: https://github.com/Tencent-Hunyuan/Twins",
+        "raw_comment": "ICML 2026. Code: https://github.com/Tencent-Hunyuan/Twins",
         "category": "General ML/AI",
         "rank": "A+"
       }
     },
     {
       "paper": {
-        "title": "White Box Evidence Packages for Policy Audit Reports",
-        "arxiv_id": "2607.21462v1",
+        "title": "Active few-shot segmentation by reinforcing data selection",
+        "arxiv_id": "2607.22371v1",
         "authors": [
-          "Seunghyun Yoo"
+          "Chenlan Zhao",
+          "Benny Wong",
+          "Timothy F. Lundberg",
+          "Ahmed M. Elsayed",
+          "Abdallah Aljarkas",
+          "Hamad A. Aljamaan",
+          "Lynn Karam",
+          "Qianye Yang",
+          "Yipeng Hu",
+          "Claire C. Villette",
+          "Shaheer U. Saeed"
         ],
-        "published": "2026-07-23T16:06:42Z",
-        "updated": "2026-07-23T16:06:42Z",
-        "summary": "As AI governance moves from benchmark scores toward auditable oversight, a central question is how reviewers can tell whether an LLM-generated audit report is actually supported by evidence. This paper studies that question in passage-anchored policy audits, where a report must interpret a given policy passage and cite evidence for its claims. We introduce a controlled evaluation framework that holds the passage, rubric, and auditor model fixed while changing only the evidence interface supplied to the auditor. Across 60 AGORA policy cases, we generate 600 structured reports under ten evidence conditions, including passage-based evidence, internal model evidence, a hybrid package, and a shuffled control that preserves evidence format while breaking case relevance. Five human reviewers evaluate the primary interfaces for correctness, passage grounding, diagnostic usefulness, and evidence misuse. The results show that internal evidence changes how reports cite and reason about evidence, but more internal citations do not by themselves make a report more valid. A white-box diagnostic explains the failure mode: causal localization is narrow, while reports readily reuse broader readable labels and token directions. The hybrid interface is the most useful on average, while the shuffled control exposes a key governance risk: reports can sound substantively plausible while citing irrelevant internal evidence. This study reframes internal model access as an evidence design problem for audit workflows, rather than as a guarantee of transparency.",
-        "categories": "cs.CY",
-        "comment": "16 pages, 5 figures. Presented at the Second Workshop on Technical AI Governance Research (TAIGR) at ICML 2026"
-      },
-      "analysis": {
-        "problem_statement": "The paper addresses the challenge of verifying the validity of LLM-generated audit reports in passage-anchored policy audits.",
-        "bottleneck_addressed": "Explainability and trustworthiness of AI-generated content",
-        "executive_summary": "This study investigates how to ensure the validity of AI-generated audit reports by introducing a controlled evaluation framework that evaluates the impact of different evidence interfaces on report quality. The results show that internal model evidence can lead to reports citing irrelevant evidence, highlighting a key governance risk. The study reframes internal model access as an evidence design problem for audit workflows.",
-        "key_metrics": {
-          "primary_metric": "Reports citing irrelevant internal evidence",
-          "metric_value": "Not quantified",
-          "baseline": "Reports without internal model evidence",
-          "improvement_percentage": "N/A"
-        },
-        "technical_breakdown": {
-          "method": "The study introduces a controlled evaluation framework that holds the passage, rubric, and auditor model fixed while changing only the evidence interface supplied to the auditor. The framework generates 600 structured reports under ten evidence conditions and evaluates them using five human reviewers.",
-          "architecture": "The framework consists of a passage-anchored policy audit system, an auditor model, and a controlled evaluation framework.",
-          "implementation_details": "The study uses a hybrid interface that combines passage-based evidence and internal model evidence, and a shuffled control that preserves evidence format while breaking case relevance.",
-          "code_complexity": "Not applicable, as this is a research paper and not a software implementation."
-        },
-        "relevance_tags": [
-          "AI governance",
-          "explainability",
-          "trustworthiness",
-          "LLM-generated content",
-          "audit reports"
-        ],
-        "confidence": "high"
-      },
-      "analyzed_at": "2026-07-26T03:37:12.695353",
-      "conference_info": {
-        "conference": "ICML",
-        "year": "2026",
-        "comment": "16 pages, 5 figures. Presented at the Second Workshop on Technical AI Governance Research (TAIGR) at ICML 2026",
-        "raw_comment": "16 pages, 5 figures. Presented at the Second Workshop on Technical AI Governance Research (TAIGR) at ICML 2026",
-        "category": "General ML/AI",
-        "rank": "A+"
-      }
-    },
-    {
-      "paper": {
-        "title": "SlerpFlow: Spherical Trajectory Correction for Rectified Flow Inversion",
-        "arxiv_id": "2607.21326v1",
-        "authors": [
-          "Wenbin Duan",
-          "Yan Shu",
-          "Zhuoyuan Fu",
-          "Fangmin Zhao",
-          "Yan Li",
-          "Yaru Zhao",
-          "Binyang Li"
-        ],
-        "published": "2026-07-23T13:55:21Z",
-        "updated": "2026-07-23T13:55:21Z",
-        "summary": "Rectified-flow-based diffusion transformers, particularly FLUX, have demonstrated outstanding performance in high-quality image generation. However, achieving fast and accurate inversion--transforming images back to latent noise for faithful reconstruction and editing--remains a challenging bottleneck due to the discretization errors of linear solvers. This paper introduces SlerpFlow, a straightforward yet highly effective zero-shot approach that unlocks the full potential of FLUX for high-fidelity inversion and editing. Unlike existing approaches (e.g., RF-Solver) that rely on complex numerical approximations such as high-order Taylor expansions to correct trajectory errors, we present a geometric view based on the Manifold Hypothesis: the empirically observed trajectory curvature is not a numerical artifact, but rather serves as a necessary \"centripetal force\" that constrains the flow to remain on the data manifold. Guided by this insight, SlerpFlow integrates Spherical Linear Interpolation (Slerp) to rectify flow velocity directions on the hypersphere, strictly adhering to the intrinsic curvature of the latent space. Crucially, by caching the corrected velocity for subsequent steps, SlerpFlow achieves high-precision inversion while maintaining the computational efficiency of a first-order Euler solver. Extensive experiments on FLUX-based reconstruction and editing tasks demonstrate that SlerpFlow improves reconstruction fidelity and achieves stronger semantic alignment in editing without requiring additional training. Code is available at https://github.com/0answer0/SlerpFlow.",
+        "published": "2026-07-24T14:58:35Z",
+        "updated": "2026-07-24T14:58:35Z",
+        "summary": "Few-shot learning enables medical image segmentation models to adapt to new tasks using only a small number of labelled examples. However, adaptation performance depends strongly on which examples are selected for the support set. Effective support sets should capture relevant variation within the target domain and be informative for adaptation, with constituent samples providing complementary information. Despite this, existing active data selection approaches largely prioritise samples individually and do not explicitly account for interactions between examples. In this work, we propose a reinforcement learning framework for support-set selection in few-shot medical image segmentation, enabling support sets to be optimised jointly rather than through independent sample scoring. Given a pool of unlabelled candidate images, an agent directly predicts a support set that maximises downstream segmentation performance. Experiments on a cross-institutional pelvic MRI dataset demonstrate improvements over random selection and current state-of-the-art methods. Our findings highlight the importance of support-set complementarity for effective adaptation and demonstrate the potential of reinforcement learning for optimising adaptation sets.",
         "categories": "cs.CV",
-        "comment": "16 pages. Accepted at ICML 2026"
+        "comment": "Accepted at EMA4MICCAI 2026 - The 2nd MICCAI Workshop on Efficient Medical AI"
       },
       "analysis": {
-        "problem_statement": "The paper addresses the problem of achieving fast and accurate inversion of rectified-flow-based diffusion transformers, particularly FLUX, for high-fidelity image reconstruction and editing.",
-        "bottleneck_addressed": "Discretization errors of linear solvers in rectified-flow-based diffusion transformers",
-        "executive_summary": "SlerpFlow is a novel approach that leverages the Manifold Hypothesis to correct trajectory errors in FLUX-based inversion, achieving high-precision reconstruction and editing without additional training. This breakthrough has significant implications for the field of generative models, enabling faster and more accurate image manipulation. By rectifying flow velocity directions on the hypersphere, SlerpFlow maintains computational efficiency while improving reconstruction fidelity and semantic alignment.",
+        "problem_statement": "The paper addresses the challenge of selecting a small set of informative examples (support set) from a large pool of unlabelled images to adapt a medical image segmentation model to a new task.",
+        "bottleneck_addressed": "The paper addresses the AI bottleneck of 'few-shot learning' in medical image segmentation, specifically the challenge of selecting a small set of informative examples from a large pool of unlabelled images.",
+        "executive_summary": "This paper proposes a reinforcement learning framework for support-set selection in few-shot medical image segmentation, which enables the selection of a small set of informative examples that maximise downstream segmentation performance. This matters to the current AI landscape as it addresses a key challenge in few-shot learning and has the potential to improve the adaptability of medical image segmentation models. The proposed framework demonstrates improvements over random selection and current state-of-the-art methods.",
         "key_metrics": {
-          "primary_metric": "Improved reconstruction fidelity and semantic alignment in editing tasks",
-          "metric_value": "Not explicitly stated in the abstract",
-          "baseline": "RF-Solver and other existing approaches",
-          "improvement_percentage": "Not quantifiable from the abstract"
-        },
-        "technical_breakdown": {
-          "method": "SlerpFlow integrates Spherical Linear Interpolation (Slerp) to rectify flow velocity directions on the hypersphere, adhering to the intrinsic curvature of the latent space.",
-          "architecture": "FLUX-based diffusion transformers",
-          "implementation_details": "Slerp, Euler solver, caching of corrected velocity for subsequent steps",
-          "code_complexity": "Low computational complexity due to the use of a first-order Euler solver and caching of corrected velocity"
-        },
-        "relevance_tags": [
-          "Generative Models",
-          "Diffusion Transformers",
-          "Image Reconstruction",
-          "Image Editing",
-          "Manifold Hypothesis"
-        ],
-        "confidence": "high"
-      },
-      "analyzed_at": "2026-07-26T03:36:04.906712",
-      "conference_info": {
-        "conference": "ICML",
-        "year": "2026",
-        "comment": "16 pages. Accepted at ICML 2026",
-        "raw_comment": "16 pages. Accepted at ICML 2026",
-        "category": "General ML/AI",
-        "rank": "A+"
-      }
-    },
-    {
-      "paper": {
-        "title": "A Unified Moral-Value Dataset for Instruction Tuning",
-        "arxiv_id": "2607.21279v1",
-        "authors": [
-          "Zhaohui Zeng",
-          "Florian Mai"
-        ],
-        "published": "2026-07-23T12:57:03Z",
-        "updated": "2026-07-23T12:57:03Z",
-        "summary": "Large language models (LLMs) have developed rapidly and become valuable tools in everyday life. However, how to align LLMs to a particular set of human values is still an open problem. Recent studies show that instruction tuning has strong potential for zero-shot tasks and may serve as an effective approach to addressing value alignment. Nevertheless, although many datasets for instruction tuning already exist, they are not specifically designed around moral scenarios and behaviors. We construct a unified moral-value dataset that can be directly used for instruction tuning. This dataset is built upon existing moral-value datasets by merging them into a unified corpus and converting them into an instruction-response format. We show that training on a mixed dataset combining general task datasets with our dataset preserves general-task performance, and we report preliminary observations on how the mixing ratio affects value-oriented task performance. Our work provides a moral-value dataset for instruction tuning and offers a useful resource for further alignment research. The dataset is available at https://huggingface.co/datasets/teohzzh/value-for-instruction-tuning.",
-        "categories": "cs.CL",
-        "comment": "Accepted at the 4th International Workshop on Value Engineering in AI (VALE 2026), co-located with IJCAI-ECAI 2026"
-      },
-      "analysis": {
-        "problem_statement": "Aligning large language models (LLMs) to human values through instruction tuning in a zero-shot setting.",
-        "bottleneck_addressed": "Value alignment in LLMs, specifically in instruction tuning tasks.",
-        "executive_summary": "This paper addresses the open problem of value alignment in LLMs by constructing a unified moral-value dataset for instruction tuning. The dataset is built by merging existing moral-value datasets and converting them into an instruction-response format. The authors demonstrate that training on a mixed dataset preserves general-task performance and provides preliminary observations on the impact of mixing ratios on value-oriented task performance.",
-        "key_metrics": {
-          "primary_metric": "Preservation of general-task performance when training on a mixed dataset",
-          "metric_value": "Not explicitly stated",
-          "baseline": "General task datasets without moral-value components",
+          "primary_metric": "Improvement in downstream segmentation performance",
+          "metric_value": "Not explicitly stated in the paper",
+          "baseline": "Random selection and current state-of-the-art methods",
           "improvement_percentage": "Not quantifiable"
         },
         "technical_breakdown": {
-          "method": "The authors merge existing moral-value datasets and convert them into an instruction-response format using a unified corpus.",
-          "architecture": "The unified moral-value dataset is built using a combination of existing moral-value datasets, and the instruction-response format is used for instruction tuning.",
-          "implementation_details": "The authors use a mixed dataset combining general task datasets with the unified moral-value dataset for instruction tuning.",
-          "code_complexity": "Not explicitly stated, but the construction of the unified moral-value dataset and the conversion to instruction-response format likely involve moderate computational complexity."
+          "method": "The proposed framework uses a reinforcement learning agent to directly predict a support set that maximises downstream segmentation performance. The agent receives a reward signal based on the segmentation performance of the support set and updates its policy to select a more informative support set.",
+          "architecture": "The framework consists of a reinforcement learning agent, a segmentation model, and a reward function. The agent is trained using a policy gradient method, such as REINFORCE or PPO.",
+          "implementation_details": "The paper uses a cross-institutional pelvic MRI dataset and a segmentation model based on a U-Net architecture. The reward function is based on the segmentation performance of the support set, which is evaluated using metrics such as Dice score or IoU.",
+          "code_complexity": "The proposed framework requires the implementation of a reinforcement learning agent, a segmentation model, and a reward function. The code complexity is moderate to high, as it involves the development of a custom reinforcement learning framework and the integration of a segmentation model."
         },
         "relevance_tags": [
-          "Value Alignment",
-          "Instruction Tuning",
-          "Large Language Models",
-          "Moral-Value Dataset"
-        ],
-        "confidence": "high"
-      },
-      "analyzed_at": "2026-07-26T03:34:57.177162",
-      "conference_info": {
-        "conference": "IJCAI",
-        "year": "2026",
-        "comment": "Accepted at the 4th International Workshop on Value Engineering in AI (VALE 2026), co-located with IJCAI-ECAI 2026",
-        "raw_comment": "Accepted at the 4th International Workshop on Value Engineering in AI (VALE 2026), co-located with IJCAI-ECAI 2026",
-        "category": "General ML/AI",
-        "rank": "A+"
-      }
-    },
-    {
-      "paper": {
-        "title": "Multi-stage Dynamic Selection for Cross-Project Defect Prediction",
-        "arxiv_id": "2607.20151v2",
-        "authors": [
-          "Juscimara G. Avelino",
-          "Juscelino S. A. Junior",
-          "George D. C. Cavalcanti",
-          "Rafael M. O. Cruz"
-        ],
-        "published": "2026-07-22T13:52:19Z",
-        "updated": "2026-07-23T12:07:53Z",
-        "summary": "Cross-Project Defect Prediction (CPDP) involves building models using data from external projects, called training projects, to predict modules from the target project. However, traditional CPDP methods suffer from the distribution shift between training and target projects that affects the model's performance. This paper proposes a novel CPDP framework that addresses this issue by proposing a two-stage multiple classifier system (MCS) selection scheme: one working at the project level and another at the module level. In the first stage, the framework evaluates multiple possible MCS configurations to find one that covers and generalizes well across multiple training projects. Consequently, the proposal is likely to obtain a diverse set of classifiers, each specialized in tackling software modules with distinct characteristics. The second selection stage operates at test time, selecting the most competent classifiers to predict each new module in the target project. Unlike previous approaches that apply the same classifiers to the entire target project, the proposed framework performs module-level model selection. This way, the system is more robust to changes in distributions between training and target projects because the selected set of classifiers is module-dependent. Our experimental results using 82 projects from four different CPDP benchmark datasets demonstrate that the proposed approach outperforms the state-of-the-art CPDP methods in most scenarios. The code, dataset, and further details about the proposed method are publicly available at https://github.com/jsaj/Multi_DES.",
-        "categories": "cs.SE",
-        "comment": "Paper accepted to the 2026 International Joint Conference on Neural Networks"
-      },
-      "analysis": {
-        "problem_statement": "Cross-Project Defect Prediction (CPDP) methods suffer from distribution shift between training and target projects, affecting model performance.",
-        "bottleneck_addressed": "Adversarial Distribution Shift: The proposed method addresses the issue of distribution shift between training and target projects in CPDP.",
-        "executive_summary": "This paper proposes a novel CPDP framework that uses a two-stage multiple classifier system (MCS) selection scheme to improve model performance by selecting module-dependent classifiers. This approach outperforms state-of-the-art CPDP methods in most scenarios, demonstrating its potential to improve the robustness of CPDP models.",
-        "key_metrics": {
-          "primary_metric": "Accuracy",
-          "metric_value": "Not specified",
-          "baseline": "State-of-the-art CPDP methods",
-          "improvement_percentage": "Not quantifiable"
-        },
-        "technical_breakdown": {
-          "method": "The proposed framework uses a two-stage MCS selection scheme: Stage 1 evaluates multiple MCS configurations to find one that covers and generalizes well across multiple training projects, while Stage 2 selects the most competent classifiers to predict each new module in the target project.",
-          "architecture": "The framework consists of two main components: a project-level MCS selection scheme and a module-level MCS selection scheme.",
-          "implementation_details": "The authors use a combination of feature selection and ensemble learning techniques to implement the MCS selection scheme. Specifically, they use Random Forest and Support Vector Machine (SVM) as base classifiers and apply feature selection using mutual information.",
-          "code_complexity": "The computational complexity of the proposed framework is O(n^2), where n is the number of training projects. The training time is also affected by the number of MCS configurations evaluated in Stage 1."
-        },
-        "relevance_tags": [
-          "Cross-Project Defect Prediction",
-          "Adversarial Distribution Shift",
-          "Multiple Classifier System",
-          "Ensemble Learning",
-          "Feature Selection"
-        ],
-        "confidence": "high"
-      },
-      "analyzed_at": "2026-07-26T03:34:37.308844",
-      "conference_info": {
-        "conference": "International Joint Conference on Neural Networks",
-        "year": "2026",
-        "comment": "Paper accepted to the 2026 International Joint Conference on Neural Networks",
-        "raw_comment": "Paper accepted to the 2026 International Joint Conference on Neural Networks",
-        "category": "General ML/AI",
-        "rank": "A"
-      }
-    },
-    {
-      "paper": {
-        "title": "Instance Hardness-Based Relevance for Imbalanced Regression",
-        "arxiv_id": "2607.20173v2",
-        "authors": [
-          "Vitor M. Leitao",
-          "Juscimara G. Avelino",
-          "George D. C. Cavalcanti",
-          "Rafael M. O. Cruz"
-        ],
-        "published": "2026-07-22T14:06:35Z",
-        "updated": "2026-07-23T12:05:30Z",
-        "summary": "Imbalanced regression problems arise when the target variable has an asymmetric distribution, resulting in underrepresented value ranges in the dataset. Traditional approaches for identifying rare instances rely on a relevance function that assigns higher importance to specific regions of the target distribution. However, the effectiveness of imbalance-aware learning methods depends strongly on how relevance is defined. In more complex scenarios, such as bimodal distributions, traditional relevance functions struggle to capture rarity, as they assign fixed relevance values based solely on target values, thereby compromising the distinction between truly rare and normal instances. To address these limitations, this study proposes an Instance Hardness-based relevance function (InHaR) for identifying rare instances in regression problems. Unlike traditional relevance functions, the proposed approach incorporates learning difficulty, allowing rarity to be inferred not only from the target distribution but also from the difficulty of instances for the learning algorithm. This property is particularly important in bimodal scenarios, where rarity cannot be accurately inferred from target values alone. Experimental results demonstrate that the InHaR correctly identifies rare regions under bimodal distributions and, when used to guide resampling strategies such as Random Oversampling (RO) and Gaussian Noise (GN), leads to significant improvements in predictive performance compared to traditional relevance-based approaches. The code, dataset, and further details about the proposed method are publicly available at https://github.com/VitorLeitao/instance-hardness-Imbalanced-regression.",
-        "categories": "cs.LG",
-        "comment": "Paper accepted to the 2026 International Joint Conference on Neural Networks"
-      },
-      "analysis": {
-        "problem_statement": "The paper addresses the issue of identifying rare instances in imbalanced regression problems, where traditional relevance functions struggle to capture rarity in complex scenarios such as bimodal distributions.",
-        "bottleneck_addressed": "Class imbalance problem in regression tasks, specifically the difficulty in distinguishing between truly rare and normal instances.",
-        "executive_summary": "This paper proposes an Instance Hardness-based relevance function (InHaR) to address the limitations of traditional relevance functions in identifying rare instances in imbalanced regression problems. InHaR incorporates learning difficulty to infer rarity, leading to significant improvements in predictive performance. This matters to the current AI landscape as it provides a solution to a common challenge in regression tasks.",
-        "key_metrics": {
-          "primary_metric": "Predictive performance improvement",
-          "metric_value": "Not explicitly stated in the summary, but implies improvement over traditional relevance-based approaches",
-          "baseline": "Traditional relevance-based approaches",
-          "improvement_percentage": "Not quantifiable from the summary, but implies significant improvement"
-        },
-        "technical_breakdown": {
-          "method": "The proposed Instance Hardness-based relevance function (InHaR) incorporates learning difficulty to infer rarity, allowing for more accurate identification of rare instances in imbalanced regression problems.",
-          "architecture": "No specific architectural components mentioned, but implies a machine learning framework for regression tasks",
-          "implementation_details": "The paper uses Random Oversampling (RO) and Gaussian Noise (GN) as resampling strategies guided by InHaR, and provides code and dataset on GitHub for further details",
-          "code_complexity": "Not explicitly stated, but implies a moderate to high computational complexity due to the use of machine learning frameworks and resampling strategies"
-        },
-        "relevance_tags": [
-          "Regression",
-          "Imbalanced Data",
-          "Class Imbalance",
-          "Rare Instance Identification",
-          "Learning Difficulty"
-        ],
-        "confidence": "high"
-      },
-      "analyzed_at": "2026-07-26T03:34:23.272862",
-      "conference_info": {
-        "conference": "International Joint Conference on Neural Networks",
-        "year": "2026",
-        "comment": "Paper accepted to the 2026 International Joint Conference on Neural Networks",
-        "raw_comment": "Paper accepted to the 2026 International Joint Conference on Neural Networks",
-        "category": "General ML/AI",
-        "rank": "A"
-      }
-    },
-    {
-      "paper": {
-        "title": "Relative Value Learning",
-        "arxiv_id": "2607.21120v1",
-        "authors": [
-          "Marc H\u00f6ftmann",
-          "Jan Robine",
-          "Stefan Harmeling"
-        ],
-        "published": "2026-07-23T09:55:45Z",
-        "updated": "2026-07-23T09:55:45Z",
-        "summary": "In reinforcement learning, critics typically estimate absolute state values $V(s)$, estimating how good a particular situation is in isolation. However, it turns out that only differences in value are relevant for control. Motivated by this, we propose Relative Value Learning (RV), a framework that learns value differences directly via an antisymmetric function $\u0394(s_i, s_j) = V(s_i) - V(s_j)$. We introduce a pairwise Bellman operator and prove it is a $\u03b3$-contraction with a unique fixed point equal to the true value differences, derive well-posed $1$-step, $n$-step and $\u03bb$-return targets and reconstruct generalized advantage estimation from pairwise differences to obtain an unbiased policy-gradient estimator (R-GAE). Beyond theoretical results, we integrate RV with PPO and achieve competitive performance on the Atari benchmark (49 ALE games) compared to standard PPO, indicating that relative value estimation is an effective alternative to absolute critics.",
-        "categories": "cs.LG",
-        "comment": "Published as a conference paper at ICLR 2026"
-      },
-      "analysis": {
-        "problem_statement": "The paper addresses the problem of learning value differences in reinforcement learning, rather than absolute state values.",
-        "bottleneck_addressed": "Value estimation bottleneck, specifically the need for absolute value estimation in traditional reinforcement learning methods.",
-        "executive_summary": "This paper proposes Relative Value Learning (RV), a framework that learns value differences directly, which is a more relevant quantity for control. This approach is shown to be effective in practice, achieving competitive performance on the Atari benchmark compared to standard PPO. This work has implications for the development of more efficient and effective reinforcement learning algorithms.",
-        "key_metrics": {
-          "primary_metric": "Competitive performance on the Atari benchmark",
-          "metric_value": "49 ALE games",
-          "baseline": "Standard PPO",
-          "improvement_percentage": "Not explicitly quantified, but implies a competitive advantage"
-        },
-        "technical_breakdown": {
-          "method": "The proposed method learns value differences directly via an antisymmetric function \u0394(s_i, s_j) = V(s_i) - V(s_j), using a pairwise Bellman operator and deriving well-posed targets for 1-step, n-step, and \u03bb-return estimation.",
-          "architecture": "The architecture consists of a critic network that estimates value differences, and a policy network that learns to optimize these differences.",
-          "implementation_details": "The paper introduces a pairwise Bellman operator, which is a \u03b3-contraction with a unique fixed point equal to the true value differences. The authors also reconstruct generalized advantage estimation from pairwise differences to obtain an unbiased policy-gradient estimator (R-GAE).",
-          "code_complexity": "The computational complexity of the proposed method is not explicitly quantified, but it is likely to be similar to or slightly higher than that of standard PPO, due to the additional computation required for pairwise Bellman operator and value difference estimation."
-        },
-        "relevance_tags": [
+          "Medical Image Segmentation",
+          "Few-Shot Learning",
           "Reinforcement Learning",
-          "Value Estimation",
-          "Policy Gradient Methods",
-          "Deep Learning"
+          "Active Learning"
         ],
         "confidence": "high"
       },
-      "analyzed_at": "2026-07-26T03:32:39.481222",
-      "conference_info": {
-        "conference": "ICLR",
-        "year": "2026",
-        "comment": "Published as a conference paper at ICLR 2026",
-        "raw_comment": "Published as a conference paper at ICLR 2026",
-        "category": "General ML/AI",
-        "rank": ""
-      }
-    },
-    {
-      "paper": {
-        "title": "Training Large Language Models for Self-Explanation Faithfulness",
-        "arxiv_id": "2607.21090v1",
-        "authors": [
-          "Yeoktatt Cheah",
-          "Mar\u00eda P\u00e9rez-Ortiz",
-          "Noah Y. Siegel",
-          "Oana-Maria Camburu"
-        ],
-        "published": "2026-07-23T09:20:38Z",
-        "updated": "2026-07-23T09:20:38Z",
-        "summary": "We propose a Reinforcement Learning (RL) method to directly optimize the faithfulness of self-explanations - the extent to which a model's generated reasoning accurately reflects its internal decision-making process. While existing work focuses on evaluating faithfulness or using inference-time prompting frameworks to improve an LLM's self-explanation's tractability, these approaches do not provide a mechanism to directly optimize a model's parameters to generate faithful self-explanations. We bridge this gap by modifying existing faithfulness metrics into an RL training objective. We investigate (1) if models can be trained to accurately detect factors that affect their decisions, and (2) whether RL can directly optimize for the disclosure of these factors thereby improving LLM self-explanations' faithfulness. We experiment with two intervention types: random-word insertions and user-bias insertions, using a per-sample reward derived from the Phi-CCT correlation metric. RL fine-tuned Llama3.1-8B and Qwen3-8B show substantial improvements on the Phi-CCT faithfulness metric, with in-distribution scores rising from near-zero to as high as 0.664, and out-of-distribution scores reaching up to 0.691 on held-out tasks such as StrategyQA. Cross-intervention generalization is weaker but more interesting: a priori we would not expect a model trained only on random word insertions to generalize to user-bias phrases, yet Llama3.1-8B shows non-zero transfer in this direction. The reverse direction and Qwen3-8B do not replicate this, indicating model-dependent and setup-dependent effects we cannot yet explain. Lastly we analyze model behavior to rule out reward gaming behaviors that often plague RL training. Ultimately, we show that models can be trained to implicitly identify influential factors and disclose them, offering a scalable path toward reducing unfaithful reasoning in LLMs.",
-        "categories": "cs.LG",
-        "comment": "To appear at the ICLR 2026 Workshop on Representational Alignment (Re-Align), 10 pages (long paper)"
-      },
-      "analysis": {
-        "problem_statement": "The paper addresses the problem of training large language models (LLMs) to generate faithful self-explanations, where self-explanations accurately reflect the internal decision-making process of the model.",
-        "bottleneck_addressed": "The bottleneck of unfaithful reasoning in LLMs, where models generate explanations that do not accurately reflect their internal workings.",
-        "executive_summary": "This paper proposes a novel reinforcement learning (RL) method to directly optimize the faithfulness of self-explanations in LLMs, enabling models to implicitly identify influential factors and disclose them. This work has significant implications for improving the transparency and accountability of LLMs, which are increasingly being used in high-stakes applications. The proposed method demonstrates substantial improvements in self-explanation faithfulness, with potential applications in areas such as explainable AI and human-AI collaboration.",
-        "key_metrics": {
-          "primary_metric": "Phi-CCT faithfulness metric",
-          "metric_value": "0.664 (in-distribution) and 0.691 (out-of-distribution)",
-          "baseline": "Random word insertions and user-bias insertions",
-          "improvement_percentage": "664% (in-distribution) and 691% (out-of-distribution)"
-        },
-        "technical_breakdown": {
-          "method": "The authors modify existing faithfulness metrics into an RL training objective, using a per-sample reward derived from the Phi-CCT correlation metric. The RL method is used to fine-tune two LLMs: Llama3.1-8B and Qwen3-8B.",
-          "architecture": "The proposed method uses a reinforcement learning framework, with a critic network to estimate the Phi-CCT correlation metric and a policy network to generate self-explanations.",
-          "implementation_details": "The authors use a combination of random word insertions and user-bias insertions as intervention types, and experiment with two LLMs: Llama3.1-8B and Qwen3-8B. The Phi-CCT correlation metric is used as the reward function.",
-          "code_complexity": "The proposed method requires significant computational resources, with training times ranging from several hours to several days. The code complexity is high, due to the use of RL and the need to implement a custom reward function."
-        },
-        "relevance_tags": [
-          "Explainable AI",
-          "Reinforcement Learning",
-          "Large Language Models",
-          "Self-Explanation Faithfulness"
-        ],
-        "confidence": "high"
-      },
-      "analyzed_at": "2026-07-26T03:33:02.745462",
-      "conference_info": {
-        "conference": "ICLR",
-        "year": "2026",
-        "comment": "To appear at the ICLR 2026 Workshop on Representational Alignment (Re-Align), 10 pages (long paper)",
-        "raw_comment": "To appear at the ICLR 2026 Workshop on Representational Alignment (Re-Align), 10 pages (long paper)",
-        "category": "General ML/AI",
-        "rank": ""
-      }
-    },
-    {
-      "paper": {
-        "title": "OPIUM: Mitigating Steering Externalities and Over-Refusal via Dual Objective Latent Optimization",
-        "arxiv_id": "2607.19806v2",
-        "authors": [
-          "Kavin Aravindan",
-          "Arihant Rastogi",
-          "Krishak Aneja",
-          "Aadi Prasad",
-          "Saiyam Jain",
-          "Vaishnavi Shivkumar",
-          "Ponnurangam Kumaraguru"
-        ],
-        "published": "2026-07-22T06:39:03Z",
-        "updated": "2026-07-23T05:44:07Z",
-        "summary": "Activation steering provides a lightweight mechanism for controlling large language models at inference time, but steering vectors can have unintended externalities: utility vectors may weaken safety behavior, while refusal vectors may induce over-refusal on benign prompts. We introduce OPIUM (Optimizing Protected Injections via Utility Manifolds), a training-free method for sanitizing steering vectors through representation matching. Given reference behaviors on two prompt sets, OPIUM optimizes a new steering vector that preserves the downstream representations induced by the desired intervention while matching a safer reference behavior on prompts where the original vector fails. Across steering-externality and over-refusal settings, OPIUM improves the safety--utility tradeoff relative to vanilla steering and directional ablation, suggesting that harmful side effects of activation steering can often be mitigated directly in activation space.",
-        "categories": "cs.LG",
-        "comment": "Accepted to the Mechanistic Interpretability Workshop at the 43rd International Conference on Machine Learning (ICML 2026)"
-      },
-      "analysis": {
-        "problem_statement": "Mitigating the unintended externalities of activation steering in large language models, specifically utility weakening and over-refusal.",
-        "bottleneck_addressed": "Activation steering's inability to control large language models without inducing unintended side effects.",
-        "executive_summary": "This paper proposes OPIUM, a training-free method for sanitizing steering vectors in activation steering, addressing a critical bottleneck in controlling large language models. By optimizing a new steering vector that preserves desired representations while matching safer reference behaviors, OPIUM improves the safety-utility tradeoff. This matters to the current AI landscape as it enables more effective and safe control of large language models.",
-        "key_metrics": {
-          "primary_metric": "Improves the safety-utility tradeoff relative to vanilla steering and directional ablation.",
-          "metric_value": "Not explicitly stated in the abstract.",
-          "baseline": "Vanilla steering and directional ablation.",
-          "improvement_percentage": "Not quantifiable from the abstract."
-        },
-        "technical_breakdown": {
-          "method": "OPIUM uses representation matching to optimize a new steering vector that preserves the downstream representations induced by the desired intervention while matching a safer reference behavior on prompts where the original vector fails.",
-          "architecture": "The architecture consists of two prompt sets: one for the desired intervention and another for the safer reference behavior.",
-          "implementation_details": "OPIUM uses a dual objective latent optimization framework, where the objectives are to preserve the desired representations and match the safer reference behavior.",
-          "code_complexity": "The computational complexity of OPIUM is not explicitly stated in the abstract, but it is likely to be high due to the optimization process."
-        },
-        "relevance_tags": [
-          "Activation Steering",
-          "Large Language Models",
-          "Safety-Utility Tradeoff",
-          "Representation Matching"
-        ],
-        "confidence": "high"
-      },
-      "analyzed_at": "2026-07-26T03:34:47.296482",
-      "conference_info": {
-        "conference": "ICML",
-        "year": "2026",
-        "comment": "Accepted to the Mechanistic Interpretability Workshop at the 43rd International Conference on Machine Learning (ICML 2026)",
-        "raw_comment": "Accepted to the Mechanistic Interpretability Workshop at the 43rd International Conference on Machine Learning (ICML 2026)",
-        "category": "General ML/AI",
-        "rank": "A+"
-      }
-    },
-    {
-      "paper": {
-        "title": "New Complexity-Theoretic Frontiers of Tractability for Neural Network Training",
-        "arxiv_id": "2607.20811v1",
-        "authors": [
-          "Cornelius Brand",
-          "Robert Ganian",
-          "Mathis Rocton"
-        ],
-        "published": "2026-07-23T00:44:44Z",
-        "updated": "2026-07-23T00:44:44Z",
-        "summary": "In spite of the fundamental role of neural networks in contemporary machine learning research, our understanding of the computational complexity of optimally training neural networks remains incomplete even when dealing with the simplest kinds of activation functions. Indeed, while there has been a number of very recent results that establish ever-tighter lower bounds for the problem under linear and ReLU activation functions, less progress has been made towards the identification of novel polynomial-time tractable network architectures. In this article we obtain novel algorithmic upper bounds for training linear- and ReLU-activated neural networks to optimality which push the boundaries of tractability for these problems beyond the previous state of the art. In particular, for ReLU networks we establish the polynomial-time tractability of all architectures where hidden neurons have an out-degree of $1$, improving upon the previous algorithm of Arora, Basu, Mianjy and Mukherjee. On the other hand, for networks with linear activation functions we identify the first non-trivial polynomial-time solvable class of networks by obtaining an algorithm that can optimally train network architectures satisfying a novel data throughput condition.",
-        "categories": "cs.LG",
-        "comment": "Appeared in the proceedings of NeurIPS 2023"
-      },
-      "analysis": {
-        "problem_statement": "The paper addresses the problem of finding polynomial-time tractable network architectures for optimally training neural networks with linear and ReLU activation functions.",
-        "bottleneck_addressed": "Computational complexity of neural network training",
-        "executive_summary": "This paper pushes the boundaries of tractability for neural network training by providing novel algorithmic upper bounds for training linear- and ReLU-activated neural networks to optimality. This matters to the current AI landscape as it improves our understanding of the computational complexity of neural network training, a fundamental problem in machine learning research.",
-        "key_metrics": {
-          "primary_metric": "Polynomial-time tractability of ReLU networks with out-degree 1 hidden neurons",
-          "metric_value": "N/A",
-          "baseline": "Previous algorithm of Arora, Basu, Mianjy and Mukherjee",
-          "improvement_percentage": "N/A"
-        },
-        "technical_breakdown": {
-          "method": "The authors use a novel algorithmic approach to establish polynomial-time tractability for ReLU networks with out-degree 1 hidden neurons and linear networks satisfying a novel data throughput condition.",
-          "architecture": "ReLU networks with out-degree 1 hidden neurons, linear networks with a data throughput condition",
-          "implementation_details": "The authors use a combination of linear programming and graph theory techniques to develop their algorithms.",
-          "code_complexity": "The authors provide a polynomial-time algorithm for training ReLU networks with out-degree 1 hidden neurons, and a polynomial-time algorithm for training linear networks satisfying the data throughput condition."
-        },
-        "relevance_tags": [
-          "Neural Networks",
-          "Computational Complexity",
-          "Machine Learning"
-        ],
-        "confidence": "high"
-      },
-      "analyzed_at": "2026-07-26T03:34:09.983299",
-      "conference_info": {
-        "conference": "NEURIPS",
-        "year": "2023",
-        "comment": "Appeared in the proceedings of NeurIPS 2023",
-        "raw_comment": "Appeared in the proceedings of NeurIPS 2023",
-        "category": "General ML/AI",
-        "rank": "A+"
-      }
-    },
-    {
-      "paper": {
-        "title": "CLUIE: Clustering-Aware Recurrent Propagation with Local Structural Compensation for Underwater Image Enhancement",
-        "arxiv_id": "2607.21467v1",
-        "authors": [
-          "Kui Jiang",
-          "Zefan Feng",
-          "Laibin Chang",
-          "Yan Luo",
-          "Junjun Jiang",
-          "Xiaopeng Fan"
-        ],
-        "published": "2026-07-23T16:09:36Z",
-        "updated": "2026-07-23T16:09:36Z",
-        "summary": "Underwater image enhancement remains challenging due to wavelength-dependent light absorption, scattering, and backscattering, which jointly cause color distortion, contrast degradation, and detail loss. Since these degradations vary with scene depth and imaging conditions, different regions within the same image often exhibit heterogeneous degradation patterns and thus require region-adaptive restoration. Although visual RWKV models offer an efficient linear-complexity solution for long-range dependency modeling, their predefined scanning orders are content-agnostic and therefore fail to adapt recurrent state propagation to spatially non-uniform restoration demands. To address this limitation, we propose a Clustering-aware RWKV framework, termed CRWKV, which reformulates the fixed recurrent propagation path of conventional RWKV into a content-adaptive token trajectory. Specifically, we introduce Clustering-aware Semantic Dynamic Reordering (CSDR), which groups tokens according to semantic feature similarity and derives a dynamic traversal order from inter-cluster contextual relations. This design enables WKV states to be accumulated along semantically correlated regions rather than fixed spatial or spectral orders. Since dynamic reordering may disrupt the local continuity of original spatial neighborhoods, we further propose Dark-response Modulated Local Propagation (DMLP), which extracts local structural responses via depth-wise convolution and adaptively modulates their propagation strength using a neighborhood-aware pseudo-dark response map. In this way, local structural cues are compensated before recurrent aggregation while preserving content-adaptive long-range modeling. Extensive experiments on multiple underwater image enhancement benchmarks demonstrate that CRWKV achieves state-of-the-art quantitative performance and superior visual quality.",
-        "categories": "cs.CV",
-        "comment": "13 pages, 12 figures, IEEE Transactions on Image Processing journal paper, code available at https://github.com/geekpool/CLUIE. This paper presents CLUIE, a clustering-aware recurrent RWKV framework for spatially heterogeneous underwater image enhancement, with full-reference/no-reference quantitative comparisons, comprehensive ablation studies and feature visualization for CSDR and DMLP modules"
-      },
-      "analysis": {
-        "problem_statement": "Underwater image enhancement remains challenging due to wavelength-dependent light absorption, scattering, and backscattering, which jointly cause color distortion, contrast degradation, and detail loss.",
-        "bottleneck_addressed": "Content-agnostic recurrent state propagation in visual RWKV models for spatially non-uniform restoration demands.",
-        "executive_summary": "This paper proposes a clustering-aware recurrent RWKV framework, CLUIE, which addresses the limitation of content-agnostic recurrent state propagation in visual RWKV models. CLUIE achieves state-of-the-art quantitative performance and superior visual quality on multiple underwater image enhancement benchmarks, making it a significant contribution to the field of underwater image enhancement.",
-        "key_metrics": {
-          "primary_metric": "State-of-the-art quantitative performance on multiple underwater image enhancement benchmarks",
-          "metric_value": "Not specified",
-          "baseline": "Not specified",
-          "improvement_percentage": "Not quantifiable"
-        },
-        "technical_breakdown": {
-          "method": "CLUIE reformulates the fixed recurrent propagation path of conventional RWKV into a content-adaptive token trajectory using Clustering-aware Semantic Dynamic Reordering (CSDR) and Dark-response Modulated Local Propagation (DMLP).",
-          "architecture": "CLUIE consists of a RWKV framework, CSDR module, and DMLP module.",
-          "implementation_details": "CSDR groups tokens according to semantic feature similarity and derives a dynamic traversal order from inter-cluster contextual relations. DMLP extracts local structural responses via depth-wise convolution and adaptively modulates their propagation strength using a neighborhood-aware pseudo-dark response map.",
-          "code_complexity": "The computational complexity of CLUIE is not explicitly stated, but it is likely to be higher than conventional RWKV models due to the introduction of CSDR and DMLP modules."
-        },
-        "relevance_tags": [
-          "underwater image enhancement",
-          "RWKV",
-          "clustering-aware recurrent propagation",
-          "local structural compensation",
-          "image processing"
-        ],
-        "confidence": "high"
-      },
-      "analyzed_at": "2026-07-26T03:35:40.727444",
-      "conference_info": {
-        "conference": "IEEE Transactions on Image Processing",
-        "year": "Unknown",
-        "comment": "13 pages, 12 figures, IEEE Transactions on Image Processing journal paper, code available at https://github.com/geekpool/CLUIE. This paper presents CLUIE, a clustering-aware recurrent RWKV framework for spatially heterogeneous underwater image enhancement, with full-reference/no-reference quantitative comparisons, comprehensive ablation studies and feature visualization for CSDR and DMLP modules",
-        "raw_comment": "13 pages, 12 figures, IEEE Transactions on Image Processing journal paper, code available at https://github.com/geekpool/CLUIE. This paper presents CLUIE, a clustering-aware recurrent RWKV framework for spatially heterogeneous underwater image enhancement, with full-reference/no-reference quantitative comparisons, comprehensive ablation studies and feature visualization for CSDR and DMLP modules",
-        "category": "Medical & Biomedical AI",
-        "rank": ""
-      }
-    },
-    {
-      "paper": {
-        "title": "Agent-Guided Relational Concept Discovery: Toward Interpretable Surgical Margin Assessment",
-        "arxiv_id": "2607.21437v1",
-        "authors": [
-          "Nooshin Maghsoodi",
-          "Amoon Jamzad",
-          "Robert Policelli",
-          "Mohammad Farahmand",
-          "Dilakshan Srikanthan",
-          "Martin Kaufmann",
-          "Kevin Y. M. Ren",
-          "Shaila Merchant",
-          "Sonal Varma",
-          "Ross Walker",
-          "Doug McKay",
-          "John Rudan",
-          "Gabor Fichtinger",
-          "Parvin Mousavi"
-        ],
-        "published": "2026-07-23T15:44:04Z",
-        "updated": "2026-07-23T15:44:04Z",
-        "summary": "Deep learning models can effectively use Rapid Evaporative Ionization Mass Spectrometry (REIMS) data for surgical margin assessment. However, their clinical adoption remains challenging due to limited generalization to operating room conditions. This difficulty arises because models are typically trained on labeled spectra collected from resected tissue samples, while they must operate on noisy, unlabeled data acquired directly during surgery. In addition, the black-box nature of deep learning models makes it difficult to understand and systematically improve their behavior. Concept-based learning offers a promising way to address these challenges by mapping raw measurements to human-understandable concepts. However, supervised concept-based approaches rely on concept annotations, which are difficult to obtain in complex mass spectrometry workflows. We propose Agent-Guided Concept Discovery, a framework that learns meaningful concepts directly from data without requiring predefined concept labels. During training, a reasoning agent refines semantic descriptions of the learned concepts and adaptively adjusts their weight based on diagnostic relevance. These concepts are further grounded using a biochemical knowledge graph to ensure consistency with known metabolic relationships. Across Skin and Breast Cancer datasets, our model improves balanced accuracy and sensitivity over the baseline. In a representative intraoperative case, it shows fewer false positives, indicating better generalization to surgical conditions.",
-        "categories": "cs.AI",
-        "comment": "This paper is accepted to MICCAI 2026, and this is the submission version, not the camera-ready version"
-      },
-      "analysis": {
-        "problem_statement": "The paper addresses the challenge of generalizing deep learning models for surgical margin assessment to noisy, unlabeled data acquired during surgery, while also improving interpretability.",
-        "bottleneck_addressed": "Interpretability and generalizability of deep learning models in real-world surgical conditions",
-        "executive_summary": "This paper presents a novel framework, Agent-Guided Relational Concept Discovery, which learns meaningful concepts directly from data without predefined labels, improving interpretability and generalizability of deep learning models for surgical margin assessment. This matters to the current AI landscape as it tackles a critical bottleneck in medical AI applications. The proposed framework has the potential to improve clinical adoption of AI models in surgical settings.",
-        "key_metrics": {
-          "primary_metric": "Improved balanced accuracy and sensitivity",
-          "metric_value": "Not specified",
-          "baseline": "Not specified",
-          "improvement_percentage": "Not quantifiable"
-        },
-        "technical_breakdown": {
-          "method": "The proposed framework uses a reasoning agent to refine semantic descriptions of learned concepts and adaptively adjust their weight based on diagnostic relevance. Concepts are further grounded using a biochemical knowledge graph to ensure consistency with known metabolic relationships.",
-          "architecture": "The framework consists of a deep learning model, a reasoning agent, and a biochemical knowledge graph.",
-          "implementation_details": "The framework uses a combination of deep learning techniques, such as convolutional neural networks (CNNs), and knowledge graph-based methods.",
-          "code_complexity": "The computational complexity of the framework is high due to the use of deep learning models and knowledge graph-based methods. The training time implications are not specified."
-        },
-        "relevance_tags": [
-          "Medical AI",
-          "Deep Learning",
-          "Interpretability",
-          "Generalizability",
-          "Surgical Margin Assessment"
-        ],
-        "confidence": "high"
-      },
-      "analyzed_at": "2026-07-26T03:31:41.433462",
+      "analyzed_at": "2026-07-27T03:47:44.497750",
       "conference_info": {
         "conference": "MICCAI",
         "year": "2026",
-        "comment": "This paper is accepted to MICCAI 2026, and this is the submission version, not the camera-ready version",
-        "raw_comment": "This paper is accepted to MICCAI 2026, and this is the submission version, not the camera-ready version",
+        "comment": "Accepted at EMA4MICCAI 2026 - The 2nd MICCAI Workshop on Efficient Medical AI",
+        "raw_comment": "Accepted at EMA4MICCAI 2026 - The 2nd MICCAI Workshop on Efficient Medical AI",
         "category": "Medical & Biomedical AI",
         "rank": "A"
       }
     },
     {
       "paper": {
-        "title": "Beyond Episodic Evaluation: Memory Architectural Bottlenecks in Sequential Embodied Question Answering",
-        "arxiv_id": "2607.21571v1",
+        "title": "Visual Relocalization from Sparse Views in Aliased and Low-Texture Environments via Novel View Synthesis",
+        "arxiv_id": "2607.22147v1",
         "authors": [
-          "Zikui Cai",
-          "Kaushal Janga",
-          "Tan Dat Dao",
-          "Seungjae Lee",
-          "Shivin Dass",
-          "Mingyo Seo",
-          "Kaiyu Yue",
-          "Mintong Kang",
-          "Nandhu Pillai",
-          "Monte Hoover",
-          "Aadi Palnitkar",
-          "Ruchit Rawal",
-          "Ruijie Zheng",
-          "Bo Li",
-          "Yuke Zhu",
-          "Roberto Mart\u00edn-Mart\u00edn",
-          "Tom Goldstein",
-          "Furong Huang"
+          "Maria Periba\u00f1ez",
+          "Javier Civera",
+          "Rudolph Triebel",
+          "Riccardo Giubilato"
         ],
-        "published": "2026-07-23T17:50:45Z",
-        "updated": "2026-07-23T17:50:45Z",
-        "summary": "Embodied question answering (EQA) is traditionally evaluated under an episodic formulation, where agents solve each task independently and reset internal state between episodes. However, real-world robots operate continuously and must accumulate, retain, and selectively reuse information acquired from prior interactions. Despite this practical requirement, the architectural mechanisms needed to support sequential memory in EQA remain underexplored. In this work, we investigate how different memory architectures behave when EQA agents are evaluated sequentially, with multiple questions answered in the same scene while memory is carried forward across queries. We find that simply preserving existing memory is often insufficient. Agents that retain only traversability information, such as 2D occupancy maps, remember where the robot has explored but not the visual-semantic evidence needed for later questions. Agents trained on short-horizon episodic data face a different challenge: when exposed to continuous, multi-query histories, their inherited context suffers from severe temporal mismatch, rather than forming a reusable scene representation. To overcome this architectural bottleneck, we highlight the necessity of structured, spatially grounded memory: architectures that map persistent visual observations onto metric 3D geometry preserve visual-semantic evidence in a coherent scene representation. Extensive experiments in simulated environments reveal that this form of memory breaks the accuracy-efficiency tradeoff in sequential settings, simultaneously achieving higher answer accuracy and lower navigation costs. We further validate these findings on a real-world mobile robot, demonstrating that spatially grounded visual memory is critical for enabling continuous, intelligent operation in physical environments.",
-        "categories": "cs.RO",
-        "comment": "Accepted to IROS 2026"
+        "published": "2026-07-24T09:46:07Z",
+        "updated": "2026-07-24T09:46:07Z",
+        "summary": "Visual localization becomes extremely challenging in planetary-like terrains characterized by low texture, perceptual aliasing, harsh illumination, and sparse, weakly overlapping viewpoints induced by forward rover motion and unconstrained driving directions. Under these conditions, state-of-the-art image-to-image and image-to-map matching pipelines suffer significant performance degradation. In this work, we propose a visual relocalization method that departs from classical correspondence-based pipelines by directly estimating camera poses against a differentiable map representation built with 3D Gaussian Splatting (3DGS). Our key contribution is a geometry-aware training strategy that combines photometric and geometric losses, where the geometric supervision is provided for the first time by combining multi-view stereo (MVS) and LiDAR depths. We show that this joint optimization produces a 3DGS model that better fits the underlying scene geometry, leading to improved photometric and geometric consistency and more robust, accurate single-image 6-DoF pose estimation. Extensive experiments on data acquired in planetary-analog environments validate the effectiveness of our approach, showing substantial gains in relocalization accuracy under challenging conditions. Code is available at https://github.com/DLR-RM/multimodal-gsplat-relocalization.",
+        "categories": "cs.CV",
+        "comment": "Accepted to IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS 2026)"
       },
       "analysis": {
-        "problem_statement": "The paper addresses the challenge of sequential embodied question answering (EQA) in continuous environments, where agents must accumulate, retain, and selectively reuse information acquired from prior interactions.",
-        "bottleneck_addressed": "The architectural bottleneck of preserving existing memory in EQA agents when evaluated sequentially, with multiple questions answered in the same scene while memory is carried forward across queries.",
-        "executive_summary": "This paper highlights the importance of structured, spatially grounded memory in EQA, enabling agents to break the accuracy-efficiency tradeoff in sequential settings. This is crucial for enabling continuous, intelligent operation in physical environments. The findings have significant implications for the development of autonomous robots that can operate in complex, dynamic environments.",
+        "problem_statement": "Visual relocalization in planetary-like terrains with low texture, perceptual aliasing, harsh illumination, and sparse viewpoints is challenging due to performance degradation in state-of-the-art image-to-image and image-to-map matching pipelines.",
+        "bottleneck_addressed": "Correspondence-based pipelines in visual relocalization under challenging conditions, specifically in planetary-like terrains.",
+        "executive_summary": "This paper addresses a critical bottleneck in visual relocalization by introducing a novel method that leverages 3D Gaussian Splatting and geometry-aware training to improve photometric and geometric consistency, leading to more accurate single-image 6-DoF pose estimation. This matters to the current AI landscape as it enables more robust and accurate visual relocalization in challenging environments, crucial for applications such as planetary exploration and autonomous driving.",
         "key_metrics": {
-          "primary_metric": "Higher answer accuracy and lower navigation costs in sequential EQA settings",
+          "primary_metric": "Improved photometric and geometric consistency",
           "metric_value": "Not explicitly stated",
-          "baseline": "Agents trained on short-horizon episodic data",
+          "baseline": "State-of-the-art image-to-image and image-to-map matching pipelines",
           "improvement_percentage": "Not quantifiable"
         },
         "technical_breakdown": {
-          "method": "The authors investigate the performance of different memory architectures in sequential EQA settings, highlighting the importance of structured, spatially grounded memory. They propose a novel architecture that maps persistent visual observations onto metric 3D geometry, preserving visual-semantic evidence in a coherent scene representation.",
-          "architecture": "The proposed architecture consists of a visual-semantic memory module that maps visual observations onto 3D geometry, and a navigation module that uses this memory to plan efficient navigation paths.",
-          "implementation_details": "The authors use a combination of convolutional neural networks (CNNs) and graph neural networks (GNNs) to implement the visual-semantic memory module and navigation module, respectively. They also use a reinforcement learning framework to train the agent in simulated environments.",
-          "code_complexity": "The code complexity is moderate to high, as the authors implement a novel architecture that requires significant computational resources. However, the authors provide extensive experimental results and analysis to justify the complexity of their approach."
+          "method": "The proposed method directly estimates camera poses against a differentiable map representation built with 3D Gaussian Splatting (3DGS), using a geometry-aware training strategy that combines photometric and geometric losses.",
+          "architecture": "3D Gaussian Splatting (3DGS) map representation, multi-view stereo (MVS), and LiDAR depths",
+          "implementation_details": "The geometry-aware training strategy combines photometric and geometric losses, where the geometric supervision is provided by combining MVS and LiDAR depths. The 3DGS model is trained using a differentiable map representation.",
+          "code_complexity": "The code complexity is not explicitly stated, but the use of 3D Gaussian Splatting and geometry-aware training suggests a moderate to high computational complexity."
         },
         "relevance_tags": [
-          "Embodied Question Answering",
-          "Sequential Learning",
-          "Memory Architectures",
-          "Autonomous Robotics",
-          "Spatially Grounded Memory"
+          "Visual Relocalization",
+          "Planetary Exploration",
+          "Autonomous Driving",
+          "3D Gaussian Splatting",
+          "Geometry-Aware Training"
         ],
         "confidence": "high"
       },
-      "analyzed_at": "2026-07-26T03:37:23.731800",
-      "conference_info": {
-        "conference": "IROS",
-        "year": "2026",
-        "comment": "Accepted to IROS 2026",
-        "raw_comment": "Accepted to IROS 2026",
-        "category": "Robotics",
-        "rank": "A"
-      }
-    },
-    {
-      "paper": {
-        "title": "GLAM-SLAM: Real-time Gaussian Large-scale Mapping via Flow Densification and Spatial Decomposition",
-        "arxiv_id": "2607.21416v1",
-        "authors": [
-          "Panagiotis Mermigkas",
-          "Argyris Manetas",
-          "Petros Maragos"
-        ],
-        "published": "2026-07-23T15:22:42Z",
-        "updated": "2026-07-23T15:22:42Z",
-        "summary": "Existing Gaussian-splatting-based monocular Simultaneous Localization and Mapping (SLAM) systems are either tailored to short sequences, are not real-time, or suffer from prohibitive GPU memory requirements, limiting their applicability in realistic, long-horizon scenarios. To address this, we present GLAM-SLAM, a real-time, decoupled Gaussian-splatting SLAM system designed for large-scale outdoor scenes. We ensure lightweight tracking using a robust, feature-based SLAM frontend, while for mapping, we adopt a structured, sparse anchor grid representation that ensures scalable operation and maintains scene coherence across long-term sequences. To satisfy the dense initialization requirements of 3D Gaussian Splatting (3DGS), we introduce a geometry-based flow-densification anchoring strategy using epipolar constraints. Furthermore, by treating mapping as a multi-scene problem, we propose a scene-partitioning strategy that introduces a strong spatial inductive bias via MLP initializations to generate localized Gaussians. We evaluate our system on the challenging, long-sequence KITTI Odometry, Oxford RobotCar, and M'alaga datasets. Extensive ablations and comparisons demonstrate a 15% improvement in reconstruction quality over the second-best performer, while maintaining real-time performance and the ability to scale to longer sequences. Code is publicly available for the benefit of the community.",
-        "categories": "cs.RO",
-        "comment": "Accepted to IROS 2026. Project page: https://glamslam.github.io/ Code: https://github.com/pmermigkas/GLAM-SLAM/"
-      },
-      "analysis": {
-        "problem_statement": "The paper addresses the challenge of developing a real-time, large-scale monocular SLAM system that can handle long-term sequences while maintaining scene coherence and scalability.",
-        "bottleneck_addressed": "The paper addresses the bottleneck of GPU memory requirements and real-time performance in existing Gaussian-splatting-based monocular SLAM systems.",
-        "executive_summary": "This paper presents GLAM-SLAM, a real-time, decoupled Gaussian-splatting SLAM system designed for large-scale outdoor scenes. It achieves a 15% improvement in reconstruction quality over the second-best performer while maintaining real-time performance and scalability. This matters to the current AI landscape as it enables the application of SLAM systems in realistic, long-horizon scenarios.",
-        "key_metrics": {
-          "primary_metric": "Reconstruction quality",
-          "metric_value": "Not explicitly stated",
-          "baseline": "Second-best performer",
-          "improvement_percentage": "15%"
-        },
-        "technical_breakdown": {
-          "method": "GLAM-SLAM uses a robust, feature-based SLAM frontend for lightweight tracking and a structured, sparse anchor grid representation for mapping. It adopts a geometry-based flow-densification anchoring strategy using epipolar constraints to satisfy the dense initialization requirements of 3D Gaussian Splatting (3DGS). Additionally, it proposes a scene-partitioning strategy that introduces a strong spatial inductive bias via MLP initializations to generate localized Gaussians.",
-          "architecture": "The system consists of a SLAM frontend, a mapping module, and a scene-partitioning strategy. The SLAM frontend uses a feature-based approach, while the mapping module employs a structured, sparse anchor grid representation. The scene-partitioning strategy uses a multi-scene approach and MLP initializations.",
-          "implementation_details": "The system uses 3D Gaussian Splatting (3DGS) for mapping and epipolar constraints for flow-densification anchoring. It also employs a scene-partitioning strategy using MLP initializations.",
-          "code_complexity": "The system is designed to be scalable and real-time, but the computational complexity and training time implications are not explicitly stated."
-        },
-        "relevance_tags": [
-          "SLAM",
-          "Gaussian-splatting",
-          "Real-time",
-          "Large-scale",
-          "Outdoor scenes",
-          "Scene coherence",
-          "Scalability"
-        ],
-        "confidence": "high"
-      },
-      "analyzed_at": "2026-07-26T03:35:53.170882",
-      "conference_info": {
-        "conference": "IROS",
-        "year": "2026",
-        "comment": "Accepted to IROS 2026. Project page: https://glamslam.github.io/ Code: https://github.com/pmermigkas/GLAM-SLAM/",
-        "raw_comment": "Accepted to IROS 2026. Project page: https://glamslam.github.io/ Code: https://github.com/pmermigkas/GLAM-SLAM/",
-        "category": "Robotics",
-        "rank": "A"
-      }
-    },
-    {
-      "paper": {
-        "title": "Grasp, Handover, Rotate: Bimanual Object Reorientation via Compositional Diffusion and Energy-Based Optimization",
-        "arxiv_id": "2607.21341v1",
-        "authors": [
-          "Wun Lam Yeung",
-          "Wenjun Liu",
-          "Yui Cheung Yu",
-          "Zhengyan Lambo Qin",
-          "Qijin She",
-          "Heng Li",
-          "Ziqi Wang",
-          "Ping Tan"
-        ],
-        "published": "2026-07-23T14:11:14Z",
-        "updated": "2026-07-23T14:11:14Z",
-        "summary": "Bimanual object reorientation - picking an object, handing it over between two arms, and placing it in a desired target pose - is valuable when direct placement from the initial grasp is infeasible due to collisions, kinematic constraints, or poor final orientation. However, achieving this under multiple competing objectives remains challenging. We introduce BiCompoDiff, a compositional diffusion and energy-based framework that jointly optimizes grasp selection, handover, regrasp, and motion planning under multiple constraints. By combining a pretrained grasp diffusion model with bimanual planning energy-based models (EBMs), our method injects gradient guidance during reverse diffusion to enforce collision avoidance, trajectory smoothness (via differentiable inverse kinematics), handover feasibility, and regrasp safety. Annealed MCMC sampling further refines grasp poses over the composite energy landscape. Experiments across diverse simulated household reorientation tasks demonstrate that BiCompoDiff achieves over 20% higher success rates and up to 37% smoother trajectories (measured by joint displacement) compared to strong sampling-based baselines. Real-world validation confirms effective sim-to-real transfer and robust performance on challenging scenes.",
-        "categories": "cs.RO",
-        "comment": "IROS 2026"
-      },
-      "analysis": {
-        "problem_statement": "The paper addresses the problem of bimanual object reorientation, where an object is picked, handed over between two arms, and placed in a desired target pose, under multiple competing objectives and constraints.",
-        "bottleneck_addressed": "The paper addresses the AI bottleneck of multi-objective optimization under complex constraints, specifically in the context of bimanual object reorientation.",
-        "executive_summary": "This paper presents a novel framework, BiCompoDiff, that jointly optimizes grasp selection, handover, regrasp, and motion planning under multiple constraints, achieving significant improvements in success rates and trajectory smoothness. This matters to the current AI landscape as it enables more efficient and effective bimanual object reorientation tasks, which are crucial in robotics and human-robot collaboration.",
-        "key_metrics": {
-          "primary_metric": "Success rates",
-          "metric_value": "Over 20%",
-          "baseline": "Sampling-based baselines",
-          "improvement_percentage": "20%"
-        },
-        "technical_breakdown": {
-          "method": "BiCompoDiff combines a pretrained grasp diffusion model with bimanual planning energy-based models (EBMs) to inject gradient guidance during reverse diffusion, enforcing collision avoidance, trajectory smoothness, handover feasibility, and regrasp safety.",
-          "architecture": "Compositional diffusion model, energy-based models (EBMs), pretrained grasp diffusion model, annealed MCMC sampling",
-          "implementation_details": "Reverse diffusion, differentiable inverse kinematics, collision avoidance, trajectory smoothness, handover feasibility, regrasp safety",
-          "code_complexity": "High computational complexity due to the use of diffusion models and MCMC sampling, but potentially scalable with advances in computational power and optimization techniques."
-        },
-        "relevance_tags": [
-          "Robotics",
-          "Human-Robot Collaboration",
-          "Multi-Objective Optimization",
-          "Diffusion Models",
-          "Energy-Based Models"
-        ],
-        "confidence": "high"
-      },
-      "analyzed_at": "2026-07-26T03:37:33.570195",
-      "conference_info": {
-        "conference": "IROS",
-        "year": "2026",
-        "comment": "IROS 2026",
-        "raw_comment": "IROS 2026",
-        "category": "Robotics",
-        "rank": "A"
-      }
-    },
-    {
-      "paper": {
-        "title": "Deep Reinforcement-Learning-Guided Model Predictive Control for Preventing Overtakes in Autonomous Racing",
-        "arxiv_id": "2607.20973v1",
-        "authors": [
-          "Yufei Xi",
-          "Yijie Liao",
-          "Tulga Ersal"
-        ],
-        "published": "2026-07-23T06:50:59Z",
-        "updated": "2026-07-23T06:50:59Z",
-        "summary": "This paper addresses defensive blocking in autonomous racing, where a vehicle must prevent a faster opponent from overtaking while operating near its dynamic limits. Different from lap-time minimization, we formulate defense as a spatial occupancy regulation problem via a hierarchical reinforcement-learning guided model predictive control framework. A Soft Actor-Critic strategic layer operates in the Frenet domain to generate geometry-aware defensive references, which are embedded into the nonlinear model predictive control formulation as spatial regularization under friction constraints. Evaluated on the Thunderhill West circuit in simulation, the framework increases average overtake time from 8.8 s to 14.6 s while significantly reducing opponent progress. Meanwhile, it allows the vehicle to utilize 83.4% of available tire force. The framework achieves a 33.3 ms mean solve time (13.9 ms std), supporting real-time high-speed adversarial interaction.",
-        "categories": "cs.RO",
-        "comment": "Accepted to the 2026 IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS 2026). 8 pages, 7 figures"
-      },
-      "analysis": {
-        "problem_statement": "The paper addresses the problem of defensive blocking in autonomous racing, where a vehicle must prevent a faster opponent from overtaking while operating near its dynamic limits.",
-        "bottleneck_addressed": "This paper addresses the bottleneck of 'Adversarial Interaction' in autonomous racing, specifically the challenge of preventing overtakes in high-speed scenarios.",
-        "executive_summary": "This paper presents a novel hierarchical reinforcement-learning guided model predictive control framework for defensive blocking in autonomous racing, which significantly improves overtake time and allows vehicles to utilize a large portion of their available tire force. This matters to the current AI landscape as it enables more realistic and challenging autonomous racing scenarios, pushing the boundaries of AI's ability to handle adversarial interactions. The framework's real-time capabilities also make it suitable for high-speed applications.",
-        "key_metrics": {
-          "primary_metric": "Average overtake time",
-          "metric_value": "14.6 s",
-          "baseline": "8.8 s",
-          "improvement_percentage": "66.4%"
-        },
-        "technical_breakdown": {
-          "method": "The proposed framework uses a Soft Actor-Critic strategic layer in the Frenet domain to generate geometry-aware defensive references, which are then embedded into a nonlinear model predictive control formulation as spatial regularization under friction constraints.",
-          "architecture": "The framework consists of a hierarchical structure with a strategic layer (Soft Actor-Critic) and a control layer (nonlinear model predictive control).",
-          "implementation_details": "The framework uses Soft Actor-Critic for reinforcement learning, and nonlinear model predictive control for spatial regularization. The Frenet domain is used for geometry-aware defensive references.",
-          "code_complexity": "The code complexity is moderate, with a mean solve time of 33.3 ms (13.9 ms std), indicating a relatively fast computation time suitable for real-time applications."
-        },
-        "relevance_tags": [
-          "autonomous racing",
-          "defensive blocking",
-          "reinforcement learning",
-          "model predictive control",
-          "adversarial interaction"
-        ],
-        "confidence": "high"
-      },
-      "analyzed_at": "2026-07-26T03:37:43.821201",
+      "analyzed_at": "2026-07-27T03:47:55.389980",
       "conference_info": {
         "conference": "Intelligent Robots and Systems",
         "year": "2026",
-        "comment": "Accepted to the 2026 IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS 2026). 8 pages, 7 figures",
-        "raw_comment": "Accepted to the 2026 IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS 2026). 8 pages, 7 figures",
+        "comment": "Accepted to IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS 2026)",
+        "raw_comment": "Accepted to IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS 2026)",
         "category": "Robotics",
         "rank": "A"
       }
@@ -1523,15 +468,15 @@
     "Blockchain & Cryptography",
     "Other"
   ],
-  "filter_date": "2026-07-23",
+  "filter_date": "2026-07-24",
   "metrics": {
     "dashboard": {
-      "previous_date": "2026-07-22",
-      "previous_count": 5,
-      "current_date": "2026-07-23",
-      "current_count": 27,
-      "day_change": 22,
-      "trend": "\ud83d\udcc8 UP"
+      "previous_date": "2026-07-23",
+      "previous_count": 27,
+      "current_date": "2026-07-24",
+      "current_count": 8,
+      "day_change": -19,
+      "trend": "\ud83d\udcc9 DOWN"
     }
   },
   "ranks": [
