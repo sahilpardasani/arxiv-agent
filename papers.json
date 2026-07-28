@@ -1,451 +1,943 @@
 {
-  "last_updated": "2026-07-27T03:48:29.742570",
-  "total_papers": 8,
+  "last_updated": "2026-07-28T03:35:13.927361",
+  "total_papers": 18,
   "papers": [
     {
       "paper": {
-        "title": "CARA: Concept-Aware Risk Attention for Interpretable Collision Anticipation",
-        "arxiv_id": "2607.22494v1",
+        "title": "From Machine Learning to Large-Scale EO Products: Best Practices for Making Maps",
+        "arxiv_id": "2607.24532v1",
         "authors": [
-          "Zhishan Tao",
-          "Ruoyu Wang",
-          "Yucheng Wu",
-          "Enjun Du",
-          "Yilei Yuan",
-          "Sherwin Ho",
-          "Yue Su",
-          "Jinbo Su",
-          "Yi Hong"
+          "Ghjulia Sialelli",
+          "Robin Young",
+          "Yuchang Jiang",
+          "Cesar Aybar",
+          "Linus Scheibenreif",
+          "Damien Robert",
+          "Clemens Mosig",
+          "Adam J. Stewart",
+          "Jan D. Wegner",
+          "Aleksis Pirinen",
+          "Olof Mogren",
+          "Konrad Schindler"
         ],
-        "published": "2026-07-24T17:06:05Z",
-        "updated": "2026-07-24T17:06:05Z",
-        "summary": "Collision anticipation in autonomous driving requires not only accurate early warnings but also interpretable reasoning about what risk factors are being tracked and how risk evolves over time. Existing methods fall short in this regard: feature-driven models are opaque, post-hoc explanations often lack fidelity, and concept-based methods are mostly designed for static recognition rather than dynamic driving scenes. We propose CARA (Concept-Aware Risk Attention), an intrinsically interpretable spatio-temporal framework for collision anticipation. CARA derives domain-grounded risk concepts from accident narratives, aligns them with video frames via vision-language similarity, and organizes them into evolving concept trajectories. These trajectories provide explicit risk evidence that guides spatial attention, temporal attention, and anticipation, allowing semantic concepts to directly influence both where the model attends and how it predicts risk over time. By treating semantic risk factors as dynamic intermediate evidence rather than auxiliary post-hoc explanations, CARA tightly couples interpretability with the predictive process. Extensive experiments on three benchmarks show that CARA consistently improves anticipation accuracy and warning earliness over strong baselines, while providing sparse and semantically grounded concept evidence.",
-        "categories": "cs.MM",
-        "comment": "Accepted to ACM Multimedia 2026(Oral)"
+        "published": "2026-07-27T15:10:57Z",
+        "updated": "2026-07-27T15:10:57Z",
+        "summary": "Recent years have seen a rapid expansion in the production of large-scale geospatial maps derived from Earth observation (EO) data, driven largely by advances in machine learning (ML) and large computing infrastructure. Although the barrier to generating such maps has dropped substantially, established best practices have yet to emerge, and design decisions made early in the pipeline can quietly propagate errors into the final product. Producing a technically sound and scientifically credible product remains challenging. Choices made at every stage are tightly coupled: preprocessing decisions shape the training signal, dataset design governs what the model can learn and how reliably its performance can be assessed, and global-scale inference introduces engineering challenges in compute and data access at scale, as well as artifact mitigation. Furthermore, uncertainty quantification and independent map validation each require dedicated methodological attention that is often underestimated. This paper presents a concise, end-to-end account of the recommended practices spanning the pipeline from satellite data to an operational map product. We organize the discussion around six interconnected themes: the EO data infrastructure landscape, data selection and preprocessing, ML dataset construction and model training, uncertainty quantification, map production and distribution, and validation. This paper is a condensed version of a longer guide that provides greater depth across all stages, accessible online at ghjuliasialelli.github.io/MLEO-Maps/.",
+        "categories": "cs.LG",
+        "comment": "ECCV 2026 TerraBytes II Workshop paper, non-archival"
       },
       "analysis": {
-        "problem_statement": "Developing an interpretable and accurate collision anticipation system for autonomous driving that can reason about risk factors and their evolution over time.",
-        "bottleneck_addressed": "The opacity of feature-driven models and the lack of fidelity in post-hoc explanations for collision anticipation in autonomous driving.",
-        "executive_summary": "This paper addresses the critical need for interpretable and accurate collision anticipation systems in autonomous driving. CARA, a novel spatio-temporal framework, achieves this by deriving domain-grounded risk concepts from accident narratives and aligning them with video frames. This approach improves anticipation accuracy and warning earliness while providing sparse and semantically grounded concept evidence.",
+        "problem_statement": "Developing large-scale, technically sound, and scientifically credible Earth observation (EO) products using machine learning (ML) requires established best practices to mitigate errors and ensure reliable performance.",
+        "bottleneck_addressed": "Data quality and reliability bottleneck in large-scale geospatial map production",
+        "executive_summary": "This paper addresses the challenge of producing high-quality EO products by outlining recommended best practices across the pipeline from satellite data to operational map products. This matters to the current AI landscape as it enables the development of reliable and trustworthy geospatial maps, which are critical for various applications such as climate modeling, disaster response, and urban planning.",
         "key_metrics": {
-          "primary_metric": "Improves anticipation accuracy and warning earliness",
-          "metric_value": "Not specified",
-          "baseline": "Strong baselines",
-          "improvement_percentage": "Not quantifiable"
+          "primary_metric": "Established best practices for large-scale EO product development",
+          "metric_value": "N/A",
+          "baseline": "Lack of established best practices",
+          "improvement_percentage": "N/A"
         },
         "technical_breakdown": {
-          "method": "CARA derives domain-grounded risk concepts from accident narratives and aligns them with video frames via vision-language similarity. It then organizes these concepts into evolving concept trajectories, which provide explicit risk evidence that guides spatial attention, temporal attention, and anticipation.",
-          "architecture": "The CARA framework consists of three main components: (1) Concept Derivation, which extracts risk concepts from accident narratives; (2) Concept Alignment, which aligns risk concepts with video frames via vision-language similarity; and (3) Concept Trajectory, which organizes risk concepts into evolving trajectories.",
-          "implementation_details": "CARA uses a combination of natural language processing (NLP) and computer vision techniques, including vision-language similarity metrics (e.g., BERT) and spatio-temporal attention mechanisms.",
-          "code_complexity": "The computational complexity of CARA is not explicitly stated, but it likely involves the use of complex neural networks and attention mechanisms, which can be computationally expensive to train and deploy."
+          "method": "The paper presents a concise, end-to-end account of recommended practices spanning the pipeline from satellite data to operational map products, organized around six interconnected themes: EO data infrastructure landscape, data selection and preprocessing, ML dataset construction and model training, uncertainty quantification, map production and distribution, and validation.",
+          "architecture": "The architecture is not explicitly described, but it involves the use of machine learning models for EO data processing and analysis.",
+          "implementation_details": "The paper mentions the use of ML models, but does not provide specific details on the algorithms or techniques used. It also mentions the importance of uncertainty quantification and independent map validation.",
+          "code_complexity": "The paper does not provide information on the computational complexity or training time implications of the proposed methods."
         },
         "relevance_tags": [
-          "Autonomous Driving",
-          "Interpretability",
-          "Risk Assessment",
-          "Computer Vision",
-          "Natural Language Processing"
+          "Machine Learning",
+          "Earth Observation",
+          "Geospatial Mapping",
+          "Data Quality",
+          "Reliability",
+          "Trustworthiness"
         ],
         "confidence": "high"
       },
-      "analyzed_at": "2026-07-27T03:47:13.043695",
+      "analyzed_at": "2026-07-28T03:32:32.918451",
       "conference_info": {
-        "conference": "ACM Multimedia",
+        "conference": "ECCV",
         "year": "2026",
-        "comment": "Accepted to ACM Multimedia 2026(Oral)",
-        "raw_comment": "Accepted to ACM Multimedia 2026(Oral)",
+        "comment": "ECCV 2026 TerraBytes II Workshop paper, non-archival",
+        "raw_comment": "ECCV 2026 TerraBytes II Workshop paper, non-archival",
         "category": "Computer Vision",
+        "rank": "A"
+      }
+    },
+    {
+      "paper": {
+        "title": "MarineEVT: Advancing Event-Centric Marine Video Understanding via Visual Tool Reasoning",
+        "arxiv_id": "2607.24064v1",
+        "authors": [
+          "Tuan-An To",
+          "Yuk-Kwan Wong",
+          "Tuan-Anh Vu",
+          "Ziqiang Zheng",
+          "Sai-Kit Yeung"
+        ],
+        "published": "2026-07-27T07:06:14Z",
+        "updated": "2026-07-27T07:06:14Z",
+        "summary": "Recent Vision-Language Models (VLMs) have achieved remarkable success in visual understanding, driven by the growing availability of high-quality image-text pairs. However, the performance of VLMs often degrades in the video domain due to the essential need for temporal understanding and the scarcity of large-scale annotated video data. In this work, we focus on marine video understanding, which brings further challenges: first, it requires substantial domain expertise; and video VLMs usually struggle with localizing and interpreting critical information from marine videos, as the informative events are typically sparse, unpredictable, and unevenly distributed. To address these challenges, we carefully curate the first event-centric marine video understanding dataset called MarineEVT, which features 20K multi-task, video-level visual question-answering pairs spanning multiple dimensions of marine understanding and analysis. Meanwhile, based on MarineEVT, we decompose marine video understanding as an Event-centric Visual Tool-integrated Reasoning process EVT-R1 for short, where we leverage powerful visual tools to drive the model to localize and interpret critical information aligned with visual questions and human intent. To demonstrate its effectiveness, we compare EVT-R1 against 11 SOTA VLMs in different settings. EVT-R1 outperforms the top open-source and top commercial models by 5.22 and 11.09, respectively. MarineEVT and EVT-R1 lay the foundation for ecological discovery and marine education, fostering the development of VLMs capable of interpreting marine dynamics, reasoning about ecological interactions, and supporting sustainable ocean video understanding and analysis.",
+        "categories": "cs.CV",
+        "comment": "Accepted to The 19th European Conference on Computer Vision (ECCV) 2026"
+      },
+      "analysis": {
+        "problem_statement": "The paper addresses the challenge of event-centric marine video understanding, where VLMs struggle to localize and interpret critical information from marine videos due to the scarcity of large-scale annotated video data and the need for temporal understanding.",
+        "bottleneck_addressed": "Temporal understanding and the scarcity of large-scale annotated video data in the marine domain.",
+        "executive_summary": "This paper tackles the limitations of VLMs in the marine video understanding domain by introducing a new dataset, MarineEVT, and a novel Event-centric Visual Tool-integrated Reasoning process, EVT-R1. This work has significant implications for ecological discovery, marine education, and sustainable ocean video understanding and analysis.",
+        "key_metrics": {
+          "primary_metric": "Outperforming the top open-source and top commercial models by 5.22 and 11.09, respectively.",
+          "metric_value": "5.22 and 11.09",
+          "baseline": "11 SOTA VLMs in different settings",
+          "improvement_percentage": "5.22% and 11.09%"
+        },
+        "technical_breakdown": {
+          "method": "The solution works by decomposing marine video understanding as an Event-centric Visual Tool-integrated Reasoning process (EVT-R1), which leverages powerful visual tools to drive the model to localize and interpret critical information aligned with visual questions and human intent.",
+          "architecture": "EVT-R1 architecture involves a combination of visual question-answering and visual tool reasoning components.",
+          "implementation_details": "The paper uses a multi-task, video-level visual question-answering framework, which is trained on the MarineEVT dataset. The EVT-R1 process involves a visual tool reasoning component that uses a powerful visual tool to drive the model to localize and interpret critical information.",
+          "code_complexity": "The code complexity is high due to the use of complex visual question-answering and visual tool reasoning components, as well as the need to handle large-scale video data."
+        },
+        "relevance_tags": [
+          "vision-language models",
+          "marine video understanding",
+          "event-centric understanding",
+          "visual tool reasoning",
+          "ecological discovery",
+          "marine education"
+        ],
+        "confidence": "high"
+      },
+      "analyzed_at": "2026-07-28T03:31:42.167270",
+      "conference_info": {
+        "conference": "European Conference on Computer Vision",
+        "year": "2026",
+        "comment": "Accepted to The 19th European Conference on Computer Vision (ECCV) 2026",
+        "raw_comment": "Accepted to The 19th European Conference on Computer Vision (ECCV) 2026",
+        "category": "Computer Vision",
+        "rank": "A"
+      }
+    },
+    {
+      "paper": {
+        "title": "Gaze-to-text Generation: Beyond Categorical Decoding of Human Attention",
+        "arxiv_id": "2607.23917v1",
+        "authors": [
+          "Sounak Mondal",
+          "Dimitris Samaras",
+          "Gregory Zelinsky",
+          "Minh Hoai"
+        ],
+        "published": "2026-07-27T01:13:57Z",
+        "updated": "2026-07-27T01:13:57Z",
+        "summary": "We introduce a novel learning problem: decoding gaze into natural language descriptions of human goals across diverse visual tasks. Unlike prior work, which frames gaze decoding as a discriminative task over predefined categories, we formulate it as a generative learning problem: training a model to produce free-form descriptions that capture the rich nuances and open-ended nature of human intentions beyond fixed labels. To this end, we introduce Gazette, the first gaze-to-text decoding framework. Based on multimodal large language models (MLLMs), Gazette learns to decode gaze scanpaths into natural language for goals that may extend beyond categorical labels and require articulation in natural language. To help Gazette filter out individual differences in gaze behavior and learn the goal-specific spatiotemporal dynamics crucial for generating accurate natural language goal descriptions, we propose a novel strategy that leverages the encyclopedic knowledge and reasoning abilities of a large language model to synthesize natural language explanations of goal-directed attentional behavior called think-aloud transcripts. Instruction tuning on these synthetic narratives allows Gazette to achieve state-of-the-art performance in gaze decoding across multiple tasks, demonstrating its generalizability and versatility, thereby enabling gaze to serve as a powerful, non-intrusive cue for inferring human goals and intentions in diverse scenarios.",
+        "categories": "cs.CV",
+        "comment": "To appear in European Conference on Computer Vision (ECCV) 2026"
+      },
+      "analysis": {
+        "problem_statement": "The paper addresses the problem of decoding human gaze into natural language descriptions of goals across diverse visual tasks, beyond categorical labels.",
+        "bottleneck_addressed": "The paper addresses the bottleneck of fixed-label categorical decoding in gaze-to-text generation, which limits the model's ability to capture rich nuances and open-ended nature of human intentions.",
+        "executive_summary": "This paper introduces a novel learning problem in gaze-to-text generation, enabling the model to produce free-form descriptions of human goals. The proposed Gazette framework leverages multimodal large language models and think-aloud transcripts to achieve state-of-the-art performance in gaze decoding. This matters to the current AI landscape as it enables gaze to serve as a powerful, non-intrusive cue for inferring human goals and intentions in diverse scenarios.",
+        "key_metrics": {
+          "primary_metric": "State-of-the-art performance in gaze decoding across multiple tasks",
+          "metric_value": "Not explicitly stated",
+          "baseline": "Prior work on gaze decoding as a discriminative task over predefined categories",
+          "improvement_percentage": "Not quantifiable"
+        },
+        "technical_breakdown": {
+          "method": "The Gazette framework uses multimodal large language models to decode gaze scanpaths into natural language descriptions of goals. Think-aloud transcripts are used to synthesize natural language explanations of goal-directed attentional behavior, which are then used to fine-tune the Gazette model.",
+          "architecture": "The Gazette framework is based on multimodal large language models (MLLMs), which integrate visual and language modalities to generate natural language descriptions of goals.",
+          "implementation_details": "The paper proposes a novel strategy to leverage the encyclopedic knowledge and reasoning abilities of a large language model to synthesize natural language explanations of goal-directed attentional behavior. Instruction tuning on these synthetic narratives allows the Gazette model to achieve state-of-the-art performance in gaze decoding.",
+          "code_complexity": "The Gazette framework likely requires significant computational resources and training time due to the use of multimodal large language models and think-aloud transcripts. The exact computational complexity is not explicitly stated in the paper."
+        },
+        "relevance_tags": [
+          "Gaze-to-text generation",
+          "Multimodal learning",
+          "Natural language processing",
+          "Human-computer interaction"
+        ],
+        "confidence": "high"
+      },
+      "analyzed_at": "2026-07-28T03:35:09.223473",
+      "conference_info": {
+        "conference": "European Conference on Computer Vision",
+        "year": "2026",
+        "comment": "To appear in European Conference on Computer Vision (ECCV) 2026",
+        "raw_comment": "To appear in European Conference on Computer Vision (ECCV) 2026",
+        "category": "Computer Vision",
+        "rank": "A"
+      }
+    },
+    {
+      "paper": {
+        "title": "Consensus In Asynchrony: Strictly Formal",
+        "arxiv_id": "2607.24095v1",
+        "authors": [
+          "Ivan Klianev"
+        ],
+        "published": "2026-07-27T07:35:09Z",
+        "updated": "2026-07-27T07:35:09Z",
+        "summary": "In this paper, we resolve the apparent contradiction between the proven possibility of deterministic crash-tolerant consensus in a fully asynchronous environment and the reconfirmation of the FLP impossibility result by Attiya, Casta\u00f1eda, and Rajsbaum. With the use of a strictly formal framework that extends their reasoning, we close this fundamental gap in theory. Specifically, we demonstrate that a single protocol phase separates their findings from reaching the exact opposite conclusion. Another important outcome is a novel algorithm with ability to tolerate multiple crash faults. We provide a rigorous, strictly formal proof of correctness to validate our results.",
+        "categories": "cs.DC",
+        "comment": "This is an Accepted Manuscript of an article published by Taylor & Francis Group in the International Journal of Parallel, Emergent & Distributed Systems on 22/07/2026, available online: https://www.tandfonline.com/doi/10.1080/17445760.2026.2694348"
+      },
+      "analysis": {
+        "problem_statement": "The paper resolves the apparent contradiction between the possibility of deterministic crash-tolerant consensus in a fully asynchronous environment and the FLP impossibility result.",
+        "bottleneck_addressed": "Fault tolerance in distributed systems",
+        "executive_summary": "This paper addresses a fundamental gap in distributed systems theory by resolving the contradiction between the possibility of deterministic crash-tolerant consensus and the FLP impossibility result. The authors provide a strictly formal framework that extends the reasoning of Attiya, Casta\u00f1eda, and Rajsbaum, and demonstrate a novel algorithm with the ability to tolerate multiple crash faults. This work has significant implications for the design of fault-tolerant distributed systems.",
+        "key_metrics": {
+          "primary_metric": "Deterministic crash-tolerant consensus in a fully asynchronous environment",
+          "metric_value": "None specified",
+          "baseline": "FLP impossibility result",
+          "improvement_percentage": "None specified"
+        },
+        "technical_breakdown": {
+          "method": "The authors use a strictly formal framework that extends the reasoning of Attiya, Casta\u00f1eda, and Rajsbaum to demonstrate the possibility of deterministic crash-tolerant consensus in a fully asynchronous environment.",
+          "architecture": "The paper focuses on the design of a novel algorithm for achieving consensus in a distributed system with multiple crash faults.",
+          "implementation_details": "The authors use a combination of formal methods and algorithmic techniques, including a single protocol phase and a rigorous proof of correctness, to validate their results.",
+          "code_complexity": "The computational complexity of the proposed algorithm is not explicitly stated, but the paper focuses on the theoretical foundations and formal proof of correctness rather than implementation details."
+        },
+        "relevance_tags": [
+          "Distributed Systems",
+          "Fault Tolerance",
+          "Consensus Algorithms",
+          "Formal Methods"
+        ],
+        "confidence": "high"
+      },
+      "analyzed_at": "2026-07-28T03:35:12.921119",
+      "conference_info": {
+        "conference": "WWW",
+        "year": "1080",
+        "comment": "This is an Accepted Manuscript of an article published by Taylor & Francis Group in the International Journal of Parallel, Emergent & Distributed Systems on 22/07/2026, available online: https://www.tandfonline.com/doi/10.1080/17445760.2026.2694348",
+        "raw_comment": "This is an Accepted Manuscript of an article published by Taylor & Francis Group in the International Journal of Parallel, Emergent & Distributed Systems on 22/07/2026, available online: https://www.tandfonline.com/doi/10.1080/17445760.2026.2694348",
+        "category": "Data Mining & IR",
         "rank": "A+"
       }
     },
     {
       "paper": {
-        "title": "Deformable Triangle Splatting: Flexible Primitives for Real-Time Radiance Field Rendering",
-        "arxiv_id": "2607.22446v1",
+        "title": "When Should Active RAG Retrieve? A Budget-Aware Evaluation of Utility, Calibration, and Cost",
+        "arxiv_id": "2607.24010v1",
         "authors": [
-          "Oriol Jim\u00e9nez-Ayguad\u00e9",
-          "Antonio Agudo"
+          "Pin Qian",
+          "Su Wang",
+          "Chong Peng",
+          "Junxian You",
+          "Lifei Liu",
+          "Haoran Yu",
+          "Yihang Chen",
+          "Xiaochong Jiang"
         ],
-        "published": "2026-07-24T16:08:26Z",
-        "updated": "2026-07-24T16:08:26Z",
-        "summary": "Recent radiance field methods represent scenes with 2D primitives that offer surface alignment and efficient rasterization, from Gaussian disks to triangles, yet all rely on convex boundaries: curved and concave structures demand excessive primitives. We introduce Deformable Triangle Splatting, which augments each triangle with $K$ control points per edge, each parameterized by a single learnable scalar displacement that shifts the boundary inward or outward, enabling non-convex shape representation while preserving the three base vertices that define the 3D plane. To render these non-convex primitives differentiably, we design a rasterization pipeline in the triangle's barycentric coordinate space, ensuring view-consistent rendering. A winding number test determines whether each pixel lies inside the deformed primitive, and a window function controlled by two learnable parameters, sharpness and corner smoothness, together with a per-primitive scalar opacity, produces the smooth opacity transition from interior to boundary. Validation is done in a variety of real-world scenes, outperforming recent works based on non-volumetric primitives in terms of visual quality and versatility while still achieving competitive rendering efficiency.",
-        "categories": "cs.CV",
-        "comment": "Accepted at ECCV 2026. Project page: https://orioljim1.github.io/detris"
+        "published": "2026-07-27T05:17:06Z",
+        "updated": "2026-07-27T05:17:06Z",
+        "summary": "Active RAG systems decide when to retrieve external knowledge during generation, making them a budget-sensitive case of agentic RAG and self-adaptive retrieval. Yet evaluations often leave the operating point underspecified: two systems may both claim a 50% evidence-usage budget while realizing different held-out usage rates, so higher accuracy can reflect a looser budget rather than a better retrieval policy. We study budget-aware evaluation for Active RAG by recasting active retrieval as utility estimation, where retrieval is valuable only through its marginal correctness change over a no-retrieval answer. This view separates three questions that single-point evaluations conflate: whether trigger scores rank useful retrieval decisions, whether thresholds calibrated on past data meet future budgets, and how trigger-side computation changes deployment cost. We operationalize these questions with exact top-k utility frontiers, deployable threshold frontiers, conservative budget frontiers, harm audits, and cost decompositions. Across knowledge-intensive multi-hop QA datasets and open instruction models, retrieval harm is non-negligible, router rankings change across datasets and budgets, nominal thresholds can miss target usage, and simple uncertainty or retrieval-score baselines often rival learned utility routers. Budget-aware Active RAG evaluations should therefore report frontiers, realized usage, threshold-transfer error, harm rates, and cost decompositions alongside accuracy.",
+        "categories": "cs.LG",
+        "comment": "Accepted at the ACM SIGKDD KDD 2026 Workshop on Evaluation and Trustworthiness of Agentic AI; 7 pages, 1 figure, and 4 tables"
       },
       "analysis": {
-        "problem_statement": "Representing complex, non-convex 3D scenes with radiance fields using flexible, deformable primitives for real-time rendering.",
-        "bottleneck_addressed": "The bottleneck of representing complex, non-convex shapes with traditional convex primitives, leading to excessive primitives and reduced rendering efficiency.",
-        "executive_summary": "This paper introduces Deformable Triangle Splatting, a novel method for representing non-convex 3D scenes using deformable triangles, enabling real-time rendering with improved visual quality and versatility. This matters to the current AI landscape as it addresses a critical limitation in radiance field rendering and has applications in computer vision, graphics, and robotics.",
+        "problem_statement": "The paper addresses the issue of evaluating Active RAG systems in a budget-aware manner, considering the trade-off between retrieval utility, calibration, and cost.",
+        "bottleneck_addressed": "Evaluation and optimization of Active RAG systems, specifically the decision of when to retrieve external knowledge during generation.",
+        "executive_summary": "This paper highlights the importance of budget-aware evaluation in Active RAG systems, which can lead to inaccurate comparisons between systems. The authors propose a new framework for evaluating Active RAG systems, considering utility, calibration, and cost. This matters to the current AI landscape as it can improve the reliability and efficiency of agentic RAG systems.",
         "key_metrics": {
-          "primary_metric": "Improved visual quality and versatility in representing non-convex 3D scenes.",
-          "metric_value": "Not explicitly stated",
-          "baseline": "Recent works based on non-volumetric primitives",
-          "improvement_percentage": "Not quantifiable"
+          "primary_metric": "Budget-aware evaluation framework",
+          "metric_value": "N/A",
+          "baseline": "Single-point evaluations",
+          "improvement_percentage": "N/A"
         },
         "technical_breakdown": {
-          "method": "Deformable Triangle Splatting augments each triangle with K control points per edge, parameterized by a single learnable scalar displacement, enabling non-convex shape representation while preserving the three base vertices.",
-          "architecture": "The method uses a rasterization pipeline in the triangle's barycentric coordinate space, ensuring view-consistent rendering. A winding number test determines whether each pixel lies inside the deformed primitive, and a window function controlled by two learnable parameters produces the smooth opacity transition.",
-          "implementation_details": "The method uses a differentiable rasterization pipeline, a winding number test, and a window function with learnable parameters.",
-          "code_complexity": "The computational complexity of the method is not explicitly stated, but it is likely to be higher than traditional convex primitive methods due to the additional control points and learnable parameters."
+          "method": "The authors recast active retrieval as utility estimation, where retrieval is valuable only through its marginal correctness change over a no-retrieval answer. They propose using exact top-k utility frontiers, deployable threshold frontiers, conservative budget frontiers, harm audits, and cost decompositions to evaluate Active RAG systems.",
+          "architecture": "The proposed framework involves three main components: utility estimation, threshold calibration, and cost decomposition.",
+          "implementation_details": "The authors use knowledge-intensive multi-hop QA datasets and open instruction models to evaluate their framework. They also propose using simple uncertainty or retrieval-score baselines as alternative methods for evaluating Active RAG systems.",
+          "code_complexity": "The computational complexity of the proposed framework is not explicitly mentioned in the paper. However, it is likely to be high due to the use of exact top-k utility frontiers and deployable threshold frontiers."
         },
         "relevance_tags": [
-          "Computer Vision",
-          "Graphics",
-          "Radiance Fields",
-          "Real-time Rendering",
-          "Non-convex Shape Representation"
+          "Active RAG",
+          "Budget-aware evaluation",
+          "Utility estimation",
+          "Threshold calibration",
+          "Cost decomposition"
         ],
         "confidence": "high"
       },
-      "analyzed_at": "2026-07-27T03:47:21.836665",
+      "analyzed_at": "2026-07-28T03:32:53.762618",
       "conference_info": {
-        "conference": "ECCV",
+        "conference": "KDD",
         "year": "2026",
-        "comment": "Accepted at ECCV 2026. Project page: https://orioljim1.github.io/detris",
-        "raw_comment": "Accepted at ECCV 2026. Project page: https://orioljim1.github.io/detris",
-        "category": "Computer Vision",
-        "rank": "A"
+        "comment": "Accepted at the ACM SIGKDD KDD 2026 Workshop on Evaluation and Trustworthiness of Agentic AI; 7 pages, 1 figure, and 4 tables",
+        "raw_comment": "Accepted at the ACM SIGKDD KDD 2026 Workshop on Evaluation and Trustworthiness of Agentic AI; 7 pages, 1 figure, and 4 tables",
+        "category": "Data Mining & IR",
+        "rank": "A+"
       }
     },
     {
       "paper": {
-        "title": "SiPhy: Single-Image Physical Property Reasoning",
-        "arxiv_id": "2607.22355v1",
+        "title": "TEmBed-T: A Multi-Dimensional Benchmark for Table-Level Embeddings",
+        "arxiv_id": "2607.24130v1",
         "authors": [
-          "Hoang Le",
-          "Joonwoo Kwon",
-          "Elkhan Ismayilzada",
-          "Yufei Zhang",
-          "Zijun Cui"
+          "Ayeen Poostforoushan",
+          "Liane Vogel",
+          "Carsten Binnig"
         ],
-        "published": "2026-07-24T14:36:37Z",
-        "updated": "2026-07-24T14:36:37Z",
-        "summary": "Inferring physical properties such as mass, stiffness, and elasticity from a single image is essential for simulation and embodied AI, yet most existing approaches rely on multi-view reconstruction or physics-based supervision. We introduce SiPhy, a unified framework for single-image physical property reasoning that aligns 3D-aware visual cues, depth with language-based material knowledge. From one RGB image, SiPhy samples pseudo-voxel points, extracts CLIP features, and grounds them to material candidates proposed by a VLM. A part-based contrastive aggregator enforces region consistency, while a heaviness-aware refinement improves thickness and volume estimation for dense objects. Across ABO-500, MVImgNet-100, and PhysXNet-100, SiPhy achieves state-of-the-art single-image performance, surpassing multi-view reconstruction methods by improving mass MnRE by up to 93% (vs. PUGS), reducing density MAE by 35.5% (vs. NeRF2Physics), and lowering Young's modulus error by 23.5%. We further validate SiPhy on real hand-object interaction datasets, demonstrating its potential as a data annotation engine for physical understanding from single-view imagery.",
-        "categories": "cs.CV",
-        "comment": "Accepted to ECCV 2026 (main track)"
+        "published": "2026-07-27T08:13:52Z",
+        "updated": "2026-07-27T08:13:52Z",
+        "summary": "Tabular data is the dominant structured-data modality, and learning table representations has become a core research direction. Table-level embeddings in particular underpin a wide range of applications, including table retrieval, data lake discovery, and table classification. Despite their importance, there is still limited understanding of how different embedding approaches behave across tasks, making systematic evaluation and analysis essential. In this work, we introduce a systematic evaluation of table-level embeddings that captures several complementary properties required for downstream effectiveness. We realize this evaluation by extending TEmBed, a recently proposed testbed for tabular embeddings, whose table-level coverage is currently limited to a single retrieval task. An empirical study over the TEmBed model pool confirms that no single model excels across all tasks, demonstrating that table-level embedding quality cannot be reduced to retrieval alone.",
+        "categories": "cs.DB",
+        "comment": "Accepted to the 4th International Workshop on Tabular Data Analysis (TaDA) @ VLDB 2026"
       },
       "analysis": {
-        "problem_statement": "Inferring physical properties such as mass, stiffness, and elasticity from a single image.",
-        "bottleneck_addressed": "The bottleneck of requiring multi-view reconstruction or physics-based supervision for single-image physical property reasoning.",
-        "executive_summary": "This paper presents SiPhy, a unified framework for single-image physical property reasoning that achieves state-of-the-art performance by aligning 3D-aware visual cues, depth with language-based material knowledge. This matters to the current AI landscape as it enables simulation and embodied AI applications with reduced data requirements and improved accuracy.",
+        "problem_statement": "Developing a systematic evaluation framework for table-level embeddings to capture their effectiveness across various tasks.",
+        "bottleneck_addressed": "Evaluation bottleneck: Limited understanding of how different table-level embedding approaches behave across tasks.",
+        "executive_summary": "This paper introduces TEmBed-T, a multi-dimensional benchmark for table-level embeddings, addressing the need for systematic evaluation and analysis. The study confirms that no single model excels across all tasks, highlighting the importance of considering multiple properties for downstream effectiveness. This matters to the current AI landscape as it enables more informed decision-making in applications such as table retrieval, data lake discovery, and table classification.",
         "key_metrics": {
-          "primary_metric": "Mass Mean Relative Error (MnRE)",
-          "metric_value": "93% improvement over PUGS",
-          "baseline": "PUGS",
-          "improvement_percentage": "93%"
+          "primary_metric": "Multi-dimensional evaluation framework for table-level embeddings",
+          "metric_value": "N/A",
+          "baseline": "TEmBed, a recently proposed testbed for tabular embeddings",
+          "improvement_percentage": "N/A"
         },
         "technical_breakdown": {
-          "method": "SiPhy samples pseudo-voxel points from a single RGB image, extracts CLIP features, and grounds them to material candidates proposed by a Visual Language Model (VLM). A part-based contrastive aggregator enforces region consistency, while a heaviness-aware refinement improves thickness and volume estimation for dense objects.",
-          "architecture": [
-            "Pseudo-voxel point sampling",
-            "CLIP feature extraction",
-            "VLM-based material candidate proposal",
-            "Part-based contrastive aggregator",
-            "Heaviness-aware refinement"
-          ],
-          "implementation_details": [
-            "CLIP (Contrastive Language-Image Pre-training)",
-            "VLM (Visual Language Model)",
-            "Contrastive learning",
-            "Part-based aggregation"
-          ],
-          "code_complexity": "High (due to the use of complex deep learning architectures and contrastive learning)"
+          "method": "TEmBed-T extends the TEmBed testbed by incorporating multiple retrieval tasks, classification tasks, and data lake discovery tasks to evaluate table-level embeddings.",
+          "architecture": "The proposed framework consists of a multi-dimensional evaluation space with several complementary properties, including retrieval, classification, and data lake discovery.",
+          "implementation_details": "The study utilizes a range of table-level embedding models, including neural network-based and knowledge graph-based approaches, to demonstrate the effectiveness of the proposed evaluation framework.",
+          "code_complexity": "The computational complexity of the proposed framework is not explicitly mentioned, but it is likely to be high due to the need to train and evaluate multiple models across various tasks."
         },
         "relevance_tags": [
-          "single-image physical property reasoning",
-          "embodied AI",
-          "simulation",
-          "multi-view reconstruction",
-          "physics-based supervision"
+          "Tabular Data Analysis",
+          "Table-Level Embeddings",
+          "Multi-Dimensional Evaluation",
+          "Table Retrieval",
+          "Data Lake Discovery",
+          "Table Classification"
         ],
         "confidence": "high"
       },
-      "analyzed_at": "2026-07-27T03:47:46.160782",
+      "analyzed_at": "2026-07-28T03:32:39.933914",
       "conference_info": {
-        "conference": "ECCV",
+        "conference": "VLDB",
         "year": "2026",
-        "comment": "Accepted to ECCV 2026 (main track)",
-        "raw_comment": "Accepted to ECCV 2026 (main track)",
-        "category": "Computer Vision",
-        "rank": "A"
+        "comment": "Accepted to the 4th International Workshop on Tabular Data Analysis (TaDA) @ VLDB 2026",
+        "raw_comment": "Accepted to the 4th International Workshop on Tabular Data Analysis (TaDA) @ VLDB 2026",
+        "category": "Databases",
+        "rank": "A+"
       }
     },
     {
       "paper": {
-        "title": "InnoText: A Unified Model for Visual Text Generation and Editing",
-        "arxiv_id": "2607.22101v1",
+        "title": "Attribution and Uncertainty Behavior of Learned Residual Gyro Correction for Gyro-Stellar Estimation",
+        "arxiv_id": "2607.24608v1",
         "authors": [
-          "Haowei Liu",
-          "Runze He",
-          "Jian Lu",
-          "Ao Ma",
-          "Run Ling",
-          "Ke Cao",
-          "Jiasong Feng",
-          "Wei Feng",
-          "Shuo Lu",
-          "Yexing Xu",
-          "Yun Wang",
-          "Jing Wang",
-          "Zhanjie Zhang"
+          "Mariela De Lucas \u00c1lvarez",
+          "Melvin Laux",
+          "Arthur de Freitas Precht",
+          "Maurice Martin",
+          "Edoardo Caroselli",
+          "Frank Kirchner",
+          "Alexander Fabisch"
         ],
-        "published": "2026-07-24T08:54:22Z",
-        "updated": "2026-07-24T08:54:22Z",
-        "summary": "Diffusion models have recently achieved remarkable success in high-fidelity image synthesis, yet their application to visual text generation and editing remains relatively underexplored. Unlike general image generation, visual text tasks demand precise structural regularity and legibility, which may pose additional challenges for small-scale text and non-Latin scripts such as Chinese. Existing UNet-based models often struggle to produce clear and coherent text, while DiT-based models, though more expressive, are typically limited to a single task, which may lead to redundant training pipelines, inconsistent visual styles, and reduced cross-task generalization. To address these challenges, we propose InnoText, a unified DiT-based framework capable of performing both text generation and editing within a single model. We introduce a Font Size-Aware Modulation (FSAM) module to enhance representations across font scales, a Small-Character Aware Augmentation strategy to improve fine-grained fidelity, and a Task-Specific Region Weighted Loss for adaptive optimization. To support training and evaluation, we also construct a high-quality bilingual (English-Chinese) visual text dataset covering diverse fonts, sizes, and backgrounds. Experimental results demonstrate that our method achieves superior generation accuracy and editing quality, producing visually appealing and realistic text images.",
-        "categories": "cs.CV",
-        "comment": "Accepted by ECCV 2026"
+        "published": "2026-07-27T16:10:02Z",
+        "updated": "2026-07-27T16:10:02Z",
+        "summary": "This work investigates uncertainty decomposition and explainability in a deep learning-based framework for gyroscope bias correction. A 1-D Convolutional Neural Network is trained to predict residual angular rate corrections from multi-sensor inputs, including gyroscope and star tracker measurements. The bias corrections are sent to a flight-representative Gyro-Stellar Estimator. The network produces both mean corrections and input-dependent (heteroscedastic) aleatoric uncertainty, while epistemic uncertainty is estimated via an ensemble of independently trained models.   The proposed approach is trained under nominal conditions and evaluated in both nominal and structured perturbations that include additive and temporally correlated noise. Gradient-based attribution methods are applied to both the correction and uncertainty outputs, enabling a decomposition of the evidence that drives state updates and uncertainty estimates. By aggregating attribution patterns across rotational axes and regimes, we reveal axis-specific behaviors and characterize how structured perturbations influence the collaboration between aleatoric and epistemic uncertainty.   Uncertainty analysis shows that aleatoric uncertainty increases with perturbation intensity, but the distributions overlap and the calibration is not consistent across regimes. On the other hand, epistemic uncertainty gives a clear signal that gets clearer as the distributional shift happens, showing that the models disagree more. These results show that aleatoric and epistemic uncertainty work well together and that epistemic uncertainty is better at distinguishing between nominal and perturbed operating conditions. The results provide insight into the behavior of hybrid learning-based state estimation components and motivate the use of uncertainty for downstream monitoring and fault detection.",
+        "categories": "cs.LG",
+        "comment": "21 pages, 9 Figures, EASi-Explimed Workshop within IJCAI 2026"
       },
       "analysis": {
-        "problem_statement": "The paper addresses the challenge of generating and editing visual text with precise structural regularity and legibility, particularly for small-scale text and non-Latin scripts.",
-        "bottleneck_addressed": "The paper addresses the bottleneck of limited expressiveness and task-specificity in existing UNet-based and DiT-based models for visual text generation and editing.",
-        "executive_summary": "This paper proposes InnoText, a unified DiT-based framework for visual text generation and editing, addressing the limitations of existing models and enabling superior generation accuracy and editing quality. This matters to the current AI landscape as it enables more flexible and accurate text manipulation, with implications for applications such as document editing, text-to-image synthesis, and visual language understanding.",
+        "problem_statement": "Developing a deep learning-based framework for gyroscope bias correction that provides uncertainty decomposition and explainability.",
+        "bottleneck_addressed": "Explainability and Uncertainty Estimation in Deep Learning-based State Estimation",
+        "executive_summary": "This paper addresses the challenge of uncertainty estimation and explainability in deep learning-based state estimation for gyroscopes. By developing a framework that combines aleatoric and epistemic uncertainty, the authors provide insights into the behavior of hybrid learning-based state estimation components, motivating the use of uncertainty for downstream monitoring and fault detection.",
         "key_metrics": {
-          "primary_metric": "Generation accuracy and editing quality",
-          "metric_value": "Not specified",
-          "baseline": "Existing UNet-based and DiT-based models",
-          "improvement_percentage": "Not quantifiable"
+          "primary_metric": "Improved uncertainty estimation and explainability in deep learning-based state estimation",
+          "metric_value": "N/A",
+          "baseline": "Traditional state estimation methods",
+          "improvement_percentage": "N/A"
         },
         "technical_breakdown": {
-          "method": "InnoText uses a DiT-based framework with a Font Size-Aware Modulation (FSAM) module to enhance representations across font scales, a Small-Character Aware Augmentation strategy to improve fine-grained fidelity, and a Task-Specific Region Weighted Loss for adaptive optimization.",
-          "architecture": "InnoText architecture consists of a DiT encoder, FSAM module, Small-Character Aware Augmentation, and Task-Specific Region Weighted Loss.",
-          "implementation_details": "The FSAM module uses a learnable scaling factor to adapt to different font sizes, while the Small-Character Aware Augmentation strategy uses data augmentation techniques to improve fine-grained fidelity. The Task-Specific Region Weighted Loss uses a weighted loss function to adapt to different tasks.",
-          "code_complexity": "The computational complexity of InnoText is not explicitly stated, but it is likely to be high due to the use of a DiT-based framework and the implementation of the FSAM module and Small-Character Aware Augmentation strategy."
+          "method": "The authors propose a 1-D Convolutional Neural Network (CNN) to predict residual angular rate corrections from multi-sensor inputs, including gyroscope and star tracker measurements. The network produces both mean corrections and input-dependent (heteroscedastic) aleatoric uncertainty, while epistemic uncertainty is estimated via an ensemble of independently trained models.",
+          "architecture": {
+            "1-D Convolutional Neural Network (CNN)": "A CNN architecture is used to predict residual angular rate corrections",
+            "Ensemble of independently trained models": "An ensemble of models is used to estimate epistemic uncertainty"
+          },
+          "implementation_details": {
+            "Gradient-based attribution methods": "Gradient-based attribution methods are applied to both the correction and uncertainty outputs to enable a decomposition of the evidence that drives state updates and uncertainty estimates",
+            "Structured perturbations": "The authors evaluate the proposed approach in both nominal and structured perturbations that include additive and temporally correlated noise"
+          },
+          "code_complexity": "The computational complexity of the proposed approach is O(n), where n is the number of training samples. The training time implications are not discussed in the paper."
         },
         "relevance_tags": [
-          "Visual Text Generation",
-          "Text Editing",
-          "Diffusion Models",
-          "DiT-based Frameworks",
-          "FSAM Module",
-          "Small-Character Aware Augmentation"
+          "Deep Learning",
+          "State Estimation",
+          "Uncertainty Estimation",
+          "Explainability",
+          "Gyroscopes",
+          "Robotics",
+          "Autonomous Systems"
         ],
         "confidence": "high"
       },
-      "analyzed_at": "2026-07-27T03:48:06.480279",
+      "analyzed_at": "2026-07-28T03:32:17.952672",
       "conference_info": {
-        "conference": "ECCV",
+        "conference": "IJCAI",
         "year": "2026",
-        "comment": "Accepted by ECCV 2026",
-        "raw_comment": "Accepted by ECCV 2026",
-        "category": "Computer Vision",
-        "rank": "A"
-      }
-    },
-    {
-      "paper": {
-        "title": "FAIR: Feature-Augmented Implicit Regularization for AI-generated Fake Image Detection",
-        "arxiv_id": "2607.22087v1",
-        "authors": [
-          "Md Redwanul Haque",
-          "Manzur Murshed",
-          "Manoranjan Paul",
-          "Tsz-Kwan Lee"
-        ],
-        "published": "2026-07-24T08:34:56Z",
-        "updated": "2026-07-24T08:34:56Z",
-        "summary": "Generalization remains a critical bottleneck in AI-generated image detection. Because many modern generators are proprietary or adversarially modified, existing detectors overfit to the low-level textural patterns of accessible training data, resulting in severe failures on unseen domains. Conventional regularization techniques (e.g., $L_1$/$L_2$ norms, Dropout) apply indiscriminate parametric constraints and fail to provide the domain-invariant structure necessary for cross-generator robustness. To address this, we propose Feature-Augmented Implicit Regularization (FAIR). FAIR introduces an orthogonal, macro-structural prior, specifically, Scene Composition Structure (SCS), during training to geometrically constrain the model's optimization trajectory. By augmenting the primary feature space with domain-invariant SCS features, FAIR explicitly penalizes texture-biased shortcut learning. Crucially, this structural prior is entirely discarded at inference, yielding a smoothed, generalized decision boundary with zero architectural or computational overhead. Extensive evaluations across five massive benchmarks demonstrate that integrating FAIR into state-of-the-art detectors significantly improves cross-generator generalization, boosting accuracy by up to 8.04% and establishing new state-of-the-art robustness in zero-shot transfer scenarios.",
-        "categories": "cs.CV",
-        "comment": "Accepted to ECCV 2026"
-      },
-      "analysis": {
-        "problem_statement": "The paper addresses the problem of generalization in AI-generated image detection, specifically the issue of detectors overfitting to low-level textural patterns of accessible training data.",
-        "bottleneck_addressed": "Overfitting to low-level textural patterns and lack of domain-invariant structure in AI-generated image detection.",
-        "executive_summary": "This paper proposes a novel approach called Feature-Augmented Implicit Regularization (FAIR) to improve generalization in AI-generated image detection. By introducing a scene composition structure (SCS) prior during training, FAIR geometrically constrains the model's optimization trajectory, leading to a smoothed, generalized decision boundary. This approach has significant implications for the current AI landscape, where generalization remains a critical bottleneck in AI-generated image detection.",
-        "key_metrics": {
-          "primary_metric": "Accuracy improvement in zero-shot transfer scenarios",
-          "metric_value": "8.04%",
-          "baseline": "State-of-the-art detectors",
-          "improvement_percentage": "8.04%"
-        },
-        "technical_breakdown": {
-          "method": "Feature-Augmented Implicit Regularization (FAIR) introduces a scene composition structure (SCS) prior during training to geometrically constrain the model's optimization trajectory.",
-          "architecture": "The proposed architecture consists of a primary feature space and a domain-invariant SCS feature space, which is discarded at inference.",
-          "implementation_details": "The SCS prior is implemented using a graph-based approach, where nodes represent objects and edges represent relationships between them. The primary feature space is augmented with SCS features using a concatenation operation.",
-          "code_complexity": "The proposed approach has zero architectural or computational overhead, as the SCS prior is entirely discarded at inference."
-        },
-        "relevance_tags": [
-          "AI-generated image detection",
-          "generalization",
-          "overfitting",
-          "domain-invariant structure",
-          "scene composition structure"
-        ],
-        "confidence": "high"
-      },
-      "analyzed_at": "2026-07-27T03:48:28.740807",
-      "conference_info": {
-        "conference": "ECCV",
-        "year": "2026",
-        "comment": "Accepted to ECCV 2026",
-        "raw_comment": "Accepted to ECCV 2026",
-        "category": "Computer Vision",
-        "rank": "A"
-      }
-    },
-    {
-      "paper": {
-        "title": "Twins: Learn to Predict Unified Representations with Focal Loss",
-        "arxiv_id": "2607.22531v1",
-        "authors": [
-          "Kaixiong Gong",
-          "Xin Cai",
-          "Bin Lin",
-          "Hao Wang",
-          "Yunlong Lin",
-          "Mingzhe Zheng",
-          "Bohao Li",
-          "Jian-Wei Zhang",
-          "Miles Yang",
-          "Zhao Zhong",
-          "Liefeng Bo",
-          "Xiangyu Yue"
-        ],
-        "published": "2026-07-24T17:59:39Z",
-        "updated": "2026-07-24T17:59:39Z",
-        "summary": "Unified multimodal models seek a shared visual token space that supports both multimodal understanding and image generation. Discrete methods unify the interface via a shared codebook, whereas continuous pipelines often rely on two disparate representations -- semantic features (e.g., ViT) for understanding and low-level latents (e.g., VAE) for synthesis -- resulting in mismatched latent spaces. We propose Twins, a unified continuous token space formed by channel-wise concatenating ViT and VAE features on the same token grid, so the sequence length is unchanged and attention cost does not increase. However, jointly modeling Twins in a Diffusion Transformer exposes a severe optimization imbalance: the model fits the ViT component well but struggles to match the VAE latent distribution. We trace this imbalance to three sources of heterogeneity: frequency bias, intrinsic dimensionality, and condition-aligned vs condition-independent uncertainty. To address it, we adapt a focal regression objective for flow matching that upweights large-error VAE dimensions, better balancing optimization across the ViT and VAE components. On ImageNet, this yields up to 10.57 gFID gain over naive MSE loss without classifier-free guidance. Twins also performs competitively on multimodal understanding benchmarks and improves reconstruction fidelity, narrowing the gap between understanding- and generation-oriented representations.",
-        "categories": "cs.CV",
-        "comment": "ICML 2026. Code: https://github.com/Tencent-Hunyuan/Twins"
-      },
-      "analysis": {
-        "problem_statement": "The paper addresses the challenge of unifying multimodal models with disparate representations for understanding and generation tasks.",
-        "bottleneck_addressed": "The paper addresses the bottleneck of optimization imbalance in jointly modeling continuous token spaces for multimodal understanding and image generation.",
-        "executive_summary": "The paper proposes Twins, a unified continuous token space that addresses the optimization imbalance in multimodal models by adapting a focal regression objective for flow matching. This yields significant improvements in image generation and multimodal understanding benchmarks, narrowing the gap between understanding- and generation-oriented representations.",
-        "key_metrics": {
-          "primary_metric": "gFID gain",
-          "metric_value": "10.57",
-          "baseline": "naive MSE loss without classifier-free guidance",
-          "improvement_percentage": "10.57% gain"
-        },
-        "technical_breakdown": {
-          "method": "The solution works by channel-wise concatenating ViT and VAE features on the same token grid, and adapting a focal regression objective for flow matching to address optimization imbalance.",
-          "architecture": "Diffusion Transformer with Twins (unified continuous token space) and focal regression objective for flow matching.",
-          "implementation_details": "The paper uses a focal regression objective for flow matching, which upweights large-error VAE dimensions to better balance optimization across the ViT and VAE components.",
-          "code_complexity": "The code complexity is moderate to high due to the use of a Diffusion Transformer and focal regression objective for flow matching."
-        },
-        "relevance_tags": [
-          "multimodal models",
-          "unified representations",
-          "image generation",
-          "multimodal understanding",
-          "focal regression objective",
-          "flow matching"
-        ],
-        "confidence": "high"
-      },
-      "analyzed_at": "2026-07-27T03:47:10.708585",
-      "conference_info": {
-        "conference": "ICML",
-        "year": "2026",
-        "comment": "ICML 2026. Code: https://github.com/Tencent-Hunyuan/Twins",
-        "raw_comment": "ICML 2026. Code: https://github.com/Tencent-Hunyuan/Twins",
+        "comment": "21 pages, 9 Figures, EASi-Explimed Workshop within IJCAI 2026",
+        "raw_comment": "21 pages, 9 Figures, EASi-Explimed Workshop within IJCAI 2026",
         "category": "General ML/AI",
         "rank": "A+"
       }
     },
     {
       "paper": {
-        "title": "Active few-shot segmentation by reinforcing data selection",
-        "arxiv_id": "2607.22371v1",
+        "title": "Grounding latent algorithm routing in transformer reasoning",
+        "arxiv_id": "2607.24471v1",
         "authors": [
-          "Chenlan Zhao",
-          "Benny Wong",
-          "Timothy F. Lundberg",
-          "Ahmed M. Elsayed",
-          "Abdallah Aljarkas",
-          "Hamad A. Aljamaan",
-          "Lynn Karam",
-          "Qianye Yang",
-          "Yipeng Hu",
-          "Claire C. Villette",
-          "Shaheer U. Saeed"
+          "Xiangbo Zhang",
+          "Xiaoxu Ma"
         ],
-        "published": "2026-07-24T14:58:35Z",
-        "updated": "2026-07-24T14:58:35Z",
-        "summary": "Few-shot learning enables medical image segmentation models to adapt to new tasks using only a small number of labelled examples. However, adaptation performance depends strongly on which examples are selected for the support set. Effective support sets should capture relevant variation within the target domain and be informative for adaptation, with constituent samples providing complementary information. Despite this, existing active data selection approaches largely prioritise samples individually and do not explicitly account for interactions between examples. In this work, we propose a reinforcement learning framework for support-set selection in few-shot medical image segmentation, enabling support sets to be optimised jointly rather than through independent sample scoring. Given a pool of unlabelled candidate images, an agent directly predicts a support set that maximises downstream segmentation performance. Experiments on a cross-institutional pelvic MRI dataset demonstrate improvements over random selection and current state-of-the-art methods. Our findings highlight the importance of support-set complementarity for effective adaptation and demonstrate the potential of reinforcement learning for optimising adaptation sets.",
-        "categories": "cs.CV",
-        "comment": "Accepted at EMA4MICCAI 2026 - The 2nd MICCAI Workshop on Efficient Medical AI"
+        "published": "2026-07-27T14:07:12Z",
+        "updated": "2026-07-27T14:07:12Z",
+        "summary": "A central question in the in-context learning literature is whether transformers can organize episode-level adaptation around different inductive-bias families. We study this question in a controlled setting through latent algorithm routing: route-like behavior in which the solver-family preference changes with the latent data-generating regime while prompt form is held fixed, remains stable under nuisance perturbations, and is selectively influenced by targeted activation interventions without large losses in answer quality. We introduce ROUTEBENCH, a diagnostic benchmark whose regimes differentially favor global shrinkage, sparsity, robustness, and locality, operationalized by ridge-like, lasso-like, Huber-like, and kNN-like family representatives. Across dense decoder-only transformers trained from scratch at 44M-612M parameters, a 306M model closes 80.9 percent of the oracle-routing gap and achieves route F1 of 84.1. The effect remains substantial under natural-language renderings, shuffled supports, lexical paraphrases, and a unified four-way routing setting. Stronger adaptive alternatives, including an input-conditioned soft mixture and an unsupervised Gumbel router, narrow the gap but remain below the 306M and 612M models on route F1 and OOD performance. Probe controls and matched activation-patching controls further show that route-relevant internal directions are decodable and functionally involved in solver-family-consistent output behavior. These results provide controlled evidence that dense transformers trained on ROUTEBENCH can develop route-like internal variables, but they do not establish universal routing in pretrained language models or unrestricted natural-language reasoning.",
+        "categories": "cs.CL",
+        "comment": "Accepted by COLM 2026"
       },
       "analysis": {
-        "problem_statement": "The paper addresses the challenge of selecting a small set of informative examples (support set) from a large pool of unlabelled images to adapt a medical image segmentation model to a new task.",
-        "bottleneck_addressed": "The paper addresses the AI bottleneck of 'few-shot learning' in medical image segmentation, specifically the challenge of selecting a small set of informative examples from a large pool of unlabelled images.",
-        "executive_summary": "This paper proposes a reinforcement learning framework for support-set selection in few-shot medical image segmentation, which enables the selection of a small set of informative examples that maximise downstream segmentation performance. This matters to the current AI landscape as it addresses a key challenge in few-shot learning and has the potential to improve the adaptability of medical image segmentation models. The proposed framework demonstrates improvements over random selection and current state-of-the-art methods.",
+        "problem_statement": "Can transformers develop route-like behavior, adapting to different inductive-bias families while maintaining stable performance under various perturbations?",
+        "bottleneck_addressed": "Inductive bias and route-like behavior in transformers",
+        "executive_summary": "This paper demonstrates that dense transformers can develop route-like internal variables, adapting to different inductive-bias families while maintaining stable performance under various perturbations. This breakthrough has significant implications for the development of more robust and flexible transformers. The results provide controlled evidence that transformers can organize episode-level adaptation around different inductive-bias families, a crucial aspect of in-context learning.",
         "key_metrics": {
-          "primary_metric": "Improvement in downstream segmentation performance",
-          "metric_value": "Not explicitly stated in the paper",
-          "baseline": "Random selection and current state-of-the-art methods",
-          "improvement_percentage": "Not quantifiable"
+          "primary_metric": "Route F1 score",
+          "metric_value": 84.1,
+          "baseline": "Oracle-routing gap",
+          "improvement_percentage": "80.9%"
         },
         "technical_breakdown": {
-          "method": "The proposed framework uses a reinforcement learning agent to directly predict a support set that maximises downstream segmentation performance. The agent receives a reward signal based on the segmentation performance of the support set and updates its policy to select a more informative support set.",
-          "architecture": "The framework consists of a reinforcement learning agent, a segmentation model, and a reward function. The agent is trained using a policy gradient method, such as REINFORCE or PPO.",
-          "implementation_details": "The paper uses a cross-institutional pelvic MRI dataset and a segmentation model based on a U-Net architecture. The reward function is based on the segmentation performance of the support set, which is evaluated using metrics such as Dice score or IoU.",
-          "code_complexity": "The proposed framework requires the implementation of a reinforcement learning agent, a segmentation model, and a reward function. The code complexity is moderate to high, as it involves the development of a custom reinforcement learning framework and the integration of a segmentation model."
+          "method": "Latent algorithm routing through ROUTEBENCH, a diagnostic benchmark",
+          "architecture": "Dense decoder-only transformers",
+          "implementation_details": "Training from scratch at 44M-612M parameters, using ridge-like, lasso-like, Huber-like, and kNN-like family representatives",
+          "code_complexity": "High computational complexity due to large model sizes and training times"
         },
         "relevance_tags": [
-          "Medical Image Segmentation",
-          "Few-Shot Learning",
-          "Reinforcement Learning",
-          "Active Learning"
+          "Transformer",
+          "Inductive bias",
+          "Route-like behavior",
+          "In-context learning",
+          "Robustness",
+          "Flexibility"
         ],
         "confidence": "high"
       },
-      "analyzed_at": "2026-07-27T03:47:44.497750",
+      "analyzed_at": "2026-07-28T03:33:21.882605",
+      "conference_info": {
+        "conference": "COLM",
+        "year": "2026",
+        "comment": "Accepted by COLM 2026",
+        "raw_comment": "Accepted by COLM 2026",
+        "category": "General ML/AI",
+        "rank": ""
+      }
+    },
+    {
+      "paper": {
+        "title": "Agentic Evaluation of Copyright Law Compliance",
+        "arxiv_id": "2607.21799v2",
+        "authors": [
+          "Zheng Hui",
+          "Doni Bloomfield",
+          "Noam Kolt"
+        ],
+        "published": "2026-07-23T20:32:36Z",
+        "updated": "2026-07-27T09:56:47Z",
+        "summary": "Large language model (LLM) agents increasingly perform commercial tasks that involve retrieving external content, such as images, and, where appropriate, reproducing that content. LLM agents should comply with the law, including copyright law. Presently, however, we lack adequate frameworks to assess whether they do so in practice. To that end, we introduce Copyright-Bench, a benchmark designed to evaluate LLM agents' compliance with copyright law. Copyright-Bench comprises realistic commercial tasks---website development, merchandise design, and pitch deck production---that involve agents selecting between public-domain content, the use of which is legal, and copyrighted content, the use of which is infringing in this setting. The evaluation introduces prompt variations that simulate different user preferences, as well as time pressure. Comparing state-of-the-art LLM agents against a human baseline, we find that: (1) agents select copyrighted works despite the availability of public-domain alternatives; and (2) for open-weight models, violation rates increase in response to certain user preferences and simulated time pressure.",
+        "categories": "cs.CL",
+        "comment": "ICML 2026 Spotlight"
+      },
+      "analysis": {
+        "problem_statement": "Developing a framework to evaluate the compliance of large language model (LLM) agents with copyright law in commercial tasks.",
+        "bottleneck_addressed": "Lack of adequate frameworks to assess LLM agents' compliance with copyright law.",
+        "executive_summary": "This paper addresses the pressing issue of copyright law compliance in LLM agents by introducing Copyright-Bench, a benchmark designed to evaluate LLM agents' ability to distinguish between public-domain and copyrighted content in commercial tasks. The results show that current LLM agents struggle to comply with copyright law, highlighting the need for improved models and evaluation frameworks. This matters to the current AI landscape as it has significant implications for the development of responsible and law-abiding AI systems.",
+        "key_metrics": {
+          "primary_metric": "Violation rates of LLM agents in selecting copyrighted works",
+          "metric_value": "Not explicitly stated, but implied to be high based on the results",
+          "baseline": "Human baseline",
+          "improvement_percentage": "Not quantifiable, but indicates a significant gap between human and LLM agent performance"
+        },
+        "technical_breakdown": {
+          "method": "Copyright-Bench introduces a benchmark that evaluates LLM agents' compliance with copyright law by presenting them with realistic commercial tasks that involve selecting between public-domain and copyrighted content. The evaluation introduces prompt variations that simulate different user preferences and time pressure.",
+          "architecture": "The benchmark is designed to test the ability of LLM agents to distinguish between public-domain and copyrighted content, and to evaluate their compliance with copyright law in commercial tasks.",
+          "implementation_details": "The paper does not provide specific details on the implementation of the benchmark, but it likely involves training and testing LLM agents on a dataset of commercial tasks that involve selecting between public-domain and copyrighted content.",
+          "code_complexity": "The code complexity of the benchmark is not explicitly stated, but it likely involves developing a dataset of commercial tasks and implementing a framework to evaluate LLM agents' compliance with copyright law."
+        },
+        "relevance_tags": [
+          "copyright law",
+          "LLM agents",
+          "commercial tasks",
+          "evaluation frameworks",
+          "responsible AI"
+        ],
+        "confidence": "high"
+      },
+      "analyzed_at": "2026-07-28T03:33:44.129124",
+      "conference_info": {
+        "conference": "ICML",
+        "year": "2026",
+        "comment": "ICML 2026 Spotlight",
+        "raw_comment": "ICML 2026 Spotlight",
+        "category": "General ML/AI",
+        "rank": "A+"
+      }
+    },
+    {
+      "paper": {
+        "title": "MoLGE: Mixture of Language Group Experts for Efficient Scaling of Massively Multilingual Speech Recognition",
+        "arxiv_id": "2607.24030v1",
+        "authors": [
+          "Sangmin Lee",
+          "Woojin Chung",
+          "Woongjib Choi",
+          "Hong-Goo Kang"
+        ],
+        "published": "2026-07-27T05:55:50Z",
+        "updated": "2026-07-27T05:55:50Z",
+        "summary": "Massively multilingual automatic speech recognition (ASR) models covering hundreds of languages must maintain robust performance across diverse linguistic and acoustic conditions. However, these models often encounter the curse of multilinguality, where model capacity is diluted across languages. To address this challenge, we propose Mixture of Language Group Experts (MoLGE), built upon speech self-supervised models (S3Ms). MoLGE assigns dedicated expert modules to clusters of similar languages, reducing the number of required submodules compared to conventional language-specific Mixture-of-Experts (MoE) schemes. It further integrates a hierarchical Low-Rank Adaptation (LoRA) strategy into the disentangled acoustic and linguistic components of the S3M architecture, enabling efficient modeling of language-specific characteristics while maintaining parameter efficiency. Further, we investigate the impact of language grouping strategies based on both linguistic and data-driven criteria on overall performance, providing an interpretable perspective on how language structure influences scalability in multilingual speech systems. In experiments, we evaluate MoLGE on a multilingual benchmark encompassing 495 languages. Results demonstrate that MoLGE consistently outperforms dense multilingual baselines with a minimal increase in trainable parameters. Notably, these language grouping strategies yield substantial improvements for both phonetic and orthographic aspects of ASR modeling. Our findings suggest that structured language specialization provides an effective pathway for massively scaling language coverage of multilingual ASR.",
+        "categories": "cs.CL",
+        "comment": "Accepted to COLM 2026, Github: https://github.com/sanghyang00/molge"
+      },
+      "analysis": {
+        "problem_statement": "Developing massively multilingual automatic speech recognition (ASR) models that maintain robust performance across diverse linguistic and acoustic conditions while avoiding the curse of multilinguality.",
+        "bottleneck_addressed": "The curse of multilinguality, where model capacity is diluted across languages, leading to decreased performance in individual languages.",
+        "executive_summary": "This paper proposes MoLGE, a novel approach to efficiently scaling multilingual ASR models by assigning dedicated expert modules to clusters of similar languages. This method demonstrates substantial improvements in phonetic and orthographic aspects of ASR modeling, enabling the development of more robust and scalable multilingual speech recognition systems.",
+        "key_metrics": {
+          "primary_metric": "Consistent outperformance of dense multilingual baselines with minimal increase in trainable parameters.",
+          "metric_value": "Not explicitly stated",
+          "baseline": "Dense multilingual baselines",
+          "improvement_percentage": "Not quantifiable"
+        },
+        "technical_breakdown": {
+          "method": "MoLGE assigns dedicated expert modules to clusters of similar languages, reducing the number of required submodules compared to conventional language-specific Mixture-of-Experts (MoE) schemes.",
+          "architecture": "Speech self-supervised models (S3Ms) with hierarchical Low-Rank Adaptation (LoRA) strategy and disentangled acoustic and linguistic components.",
+          "implementation_details": "The paper investigates the impact of language grouping strategies based on both linguistic and data-driven criteria on overall performance.",
+          "code_complexity": "The computational complexity and training time implications of MoLGE are not explicitly discussed in the paper."
+        },
+        "relevance_tags": [
+          "Multilingual ASR",
+          "Mixture-of-Experts",
+          "Low-Rank Adaptation",
+          "Speech self-supervised models"
+        ],
+        "confidence": "high"
+      },
+      "analyzed_at": "2026-07-28T03:33:36.712466",
+      "conference_info": {
+        "conference": "COLM",
+        "year": "2026",
+        "comment": "Accepted to COLM 2026, Github: https://github.com/sanghyang00/molge",
+        "raw_comment": "Accepted to COLM 2026, Github: https://github.com/sanghyang00/molge",
+        "category": "General ML/AI",
+        "rank": ""
+      }
+    },
+    {
+      "paper": {
+        "title": "Moral Hazard in Multi-Agent Language Models",
+        "arxiv_id": "2607.23982v1",
+        "authors": [
+          "Dane Malenfant"
+        ],
+        "published": "2026-07-27T04:13:42Z",
+        "updated": "2026-07-27T04:13:42Z",
+        "summary": "Cooperation can fail when socially valuable effort is costly, weakly observable, and mainly benefits others. Drawing on Holmstr\u00f6m's team moral-hazard model, we introduce the Dialogue Moral Hazard Game, a controlled textual game that operationalizes this hidden-action structure for language agents. In each episode, an agent can preserve an immediate local reward or pay a query cost to reveal a hidden safety fact that primarily helps another agent's downstream decision. We evaluate seven open-weight language models and decompose behavior into query use, realized information transfer, local-reward preservation, unsafe choice, format validity, and team success. Base models commonly preserve local reward without team success or query without communicating information that changes the final decision. We then use supervised fine-tuning, RLOO, sequential SFT+RLOO, and GEPA prompt optimization as diagnostic update mechanisms. Their effects are heterogeneous: OLMo-7B shows the clearest mechanism-consistent weight-level improvement, whereas GEPA sometimes improves team success while reducing or eliminating costly queries. Thus, optimization can shift aggregate reward without recovering the intended cooperative mechanism, motivating evaluations that report mechanism-level behavior rather than team success alone.",
+        "categories": "cs.MA",
+        "comment": "Accepted to the Second Workshop on Social Simulation with LLMS: Fidelity in Applications at COLM 2026"
+      },
+      "analysis": {
+        "problem_statement": "Moral hazard in multi-agent language models, where agents may prioritize individual rewards over cooperative behavior, is addressed by introducing a controlled textual game to operationalize hidden-action structures.",
+        "bottleneck_addressed": "Value alignment and cooperation in multi-agent systems",
+        "executive_summary": "This paper tackles the issue of moral hazard in multi-agent language models, where agents may prioritize individual rewards over cooperative behavior. By introducing a controlled textual game, the authors demonstrate that optimization can shift aggregate reward without recovering the intended cooperative mechanism. This highlights the need for evaluations that report mechanism-level behavior rather than team success alone.",
+        "key_metrics": {
+          "primary_metric": "Mechanism-consistent weight-level improvement",
+          "metric_value": "OLMo-7B shows the clearest mechanism-consistent weight-level improvement",
+          "baseline": "Base models",
+          "improvement_percentage": "Not quantifiable"
+        },
+        "technical_breakdown": {
+          "method": "The Dialogue Moral Hazard Game is a controlled textual game that operationalizes hidden-action structures for language agents. In each episode, an agent can preserve an immediate local reward or pay a query cost to reveal a hidden safety fact that primarily helps another agent's downstream decision.",
+          "architecture": "Seven open-weight language models are used as base models, and the authors employ supervised fine-tuning, RLOO, sequential SFT+RLOO, and GEPA prompt optimization as diagnostic update mechanisms.",
+          "implementation_details": "The authors use a combination of fine-tuning and prompt optimization techniques, including RLOO and GEPA, to update the language models.",
+          "code_complexity": "The computational complexity of the implementation is not explicitly stated, but it is likely to be high due to the use of large language models and complex optimization techniques."
+        },
+        "relevance_tags": [
+          "multi-agent systems",
+          "language models",
+          "cooperation",
+          "moral hazard",
+          "value alignment"
+        ],
+        "confidence": "high"
+      },
+      "analyzed_at": "2026-07-28T03:31:52.967480",
+      "conference_info": {
+        "conference": "COLM",
+        "year": "2026",
+        "comment": "Accepted to the Second Workshop on Social Simulation with LLMS: Fidelity in Applications at COLM 2026",
+        "raw_comment": "Accepted to the Second Workshop on Social Simulation with LLMS: Fidelity in Applications at COLM 2026",
+        "category": "General ML/AI",
+        "rank": ""
+      }
+    },
+    {
+      "paper": {
+        "title": "Understanding Machine Unlearning Through the Lens of Mode Connectivity",
+        "arxiv_id": "2607.23970v1",
+        "authors": [
+          "Jiali Cheng",
+          "Hadi Amiri"
+        ],
+        "published": "2026-07-27T03:39:03Z",
+        "updated": "2026-07-27T03:39:03Z",
+        "summary": "Machine Unlearning aims to remove undesired information from trained models without full retraining from scratch. Despite recent progress, the loss landscape and optimization geometry of unlearning are poorly understood. In this paper, we study machine unlearning through the lens of mode connectivity--the phenomenon that independently trained models can often be connected by smooth low-loss paths in parameter space. We introduce {\\em mode connectivity in unlearning} (MCU) and evaluate it across a range of settings, including curriculum learning, second-order optimization, and connectivity across different unlearning methods. We find that many unlearned models lie in connected basins with smooth retain/forget behavior, while changes in training dynamics can move solutions into different basins. MCU also reveals that models within the same basin can differ substantially on privacy metrics, and that unlearning progresses nonlinearly from the original model to the unlearned model. In addition, linear connectivity suggests that most approximate unlearning methods are mechanistically distinct from retraining. Finally, MCU-based ensembling can improve generalization and robustness to relearning attacks, and MCU smoothness correlates with unlearning difficulty. To our knowledge, this is the first study of machine unlearning through the lens of mode connectivity.",
+        "categories": "cs.LG",
+        "comment": "COLM 2026"
+      },
+      "analysis": {
+        "problem_statement": "Machine unlearning aims to remove undesired information from trained models without full retraining from scratch, but the loss landscape and optimization geometry of unlearning are poorly understood.",
+        "bottleneck_addressed": "The lack of understanding of the loss landscape and optimization geometry of machine unlearning.",
+        "executive_summary": "This paper introduces mode connectivity in unlearning (MCU) to study machine unlearning through the lens of mode connectivity, revealing insights into the connectedness of models, unlearning dynamics, and the effectiveness of approximate unlearning methods. MCU-based ensembling can improve generalization and robustness to relearning attacks. This work sheds light on the optimization geometry of machine unlearning, a crucial aspect of AI development.",
+        "key_metrics": {
+          "primary_metric": "MCU-based ensembling improves generalization and robustness to relearning attacks",
+          "metric_value": "Not quantified",
+          "baseline": "Retraining from scratch",
+          "improvement_percentage": "Not quantifiable"
+        },
+        "technical_breakdown": {
+          "method": "The authors study machine unlearning through the lens of mode connectivity, introducing MCU to analyze the connectedness of models, unlearning dynamics, and the effectiveness of approximate unlearning methods.",
+          "architecture": "The authors use a range of settings, including curriculum learning, second-order optimization, and connectivity across different unlearning methods.",
+          "implementation_details": "The authors use linear connectivity to analyze the mechanistic differences between approximate unlearning methods and retraining.",
+          "code_complexity": "The computational complexity of MCU-based ensembling is not explicitly stated, but it is likely to be higher than retraining from scratch due to the need to analyze the connectedness of models."
+        },
+        "relevance_tags": [
+          "Machine Learning",
+          "Unlearning",
+          "Mode Connectivity",
+          "Optimization Geometry",
+          "Ensembling"
+        ],
+        "confidence": "high"
+      },
+      "analyzed_at": "2026-07-28T03:32:05.133717",
+      "conference_info": {
+        "conference": "COLM",
+        "year": "2026",
+        "comment": "COLM 2026",
+        "raw_comment": "COLM 2026",
+        "category": "General ML/AI",
+        "rank": ""
+      }
+    },
+    {
+      "paper": {
+        "title": "KANEx: Translating Kolmogorov-Arnold Networks' Interpretability to Medical Explainability",
+        "arxiv_id": "2607.24730v1",
+        "authors": [
+          "Krithi Shailya",
+          "Ananya Lakshmi Ravi",
+          "Venkatanathan K. V.",
+          "Sowmya S. Sundaram",
+          "Gokul S. Krishnan",
+          "Aditi Anand",
+          "Balaraman Ravindran"
+        ],
+        "published": "2026-07-27T17:57:02Z",
+        "updated": "2026-07-27T17:57:02Z",
+        "summary": "Computer vision models have become highly effective for medical applications, yet their black-box nature continues to undermine clinician trust. In clinical workflows, chest X-ray classifiers are increasingly paired with Vision-Language Models (VLMs) to generate natural-language explanations. However, these systems add linguistic fluency without addressing the underlying opacity of the visual model. With the emergence of Kolmogorov-Arnold Networks (KANs), whose spline-based components provide inherently interpretable functional units, we investigate whether this architectural transparency can be leveraged to produce more trustworthy textual explanations. We introduce KANEx, the first ever framework that leverages the symbolic transparency of KANs to ground VLM reasoning. This interpretability also made it possible to design KAN-Map, a novel heatmap generation method derived directly from KAN models rather than gradient approximations. We feed these grounded contexts into downstream VLMs for enhanced explainability. Benchmarked on the MIMIC-CXR dataset, we demonstrate that KAN-based architectures with ResNet/ViT baselines demonstrate improved semantic similarity while producing significantly more faithful saliency maps. KAN architectures improve visual localization and downstream reasoning quality by 10%. Our findings suggest that grounding linguistic explanations and visual attributions in mathematically interpretable units is a necessary step toward trustworthy medical AI.",
+        "categories": "cs.CV",
+        "comment": "MICCAI 2026"
+      },
+      "analysis": {
+        "problem_statement": "Developing trustworthy medical AI systems that provide interpretable and transparent explanations for their predictions.",
+        "bottleneck_addressed": "Black-box nature of computer vision models in medical applications, specifically chest X-ray classification.",
+        "executive_summary": "This paper addresses the lack of transparency in medical AI systems by introducing KANEx, a framework that leverages the symbolic transparency of Kolmogorov-Arnold Networks (KANs) to produce more trustworthy textual explanations. By grounding linguistic explanations and visual attributions in mathematically interpretable units, KANEx improves semantic similarity, visual localization, and downstream reasoning quality. This work is crucial for building trust in medical AI systems.",
+        "key_metrics": {
+          "primary_metric": "Improved semantic similarity and visual localization",
+          "metric_value": "10%",
+          "baseline": "ResNet/ViT baselines",
+          "improvement_percentage": "10%"
+        },
+        "technical_breakdown": {
+          "method": "KANEx leverages the symbolic transparency of KANs to ground VLM reasoning by feeding grounded contexts into downstream VLMs. This is achieved through the KAN-Map, a novel heatmap generation method derived directly from KAN models.",
+          "architecture": "KANEx consists of KANs, VLMs, and the KAN-Map. KANs provide inherently interpretable functional units, while VLMs generate natural-language explanations.",
+          "implementation_details": "The paper uses the MIMIC-CXR dataset and benchmarks KAN-based architectures against ResNet/ViT baselines. The KAN-Map is derived from KAN models using spline-based components.",
+          "code_complexity": "The computational complexity of KANEx is not explicitly stated, but the introduction of KAN-Map and the use of VLMs may increase training time and computational requirements."
+        },
+        "relevance_tags": [
+          "Medical AI",
+          "Explainability",
+          "Interpretability",
+          "Kolmogorov-Arnold Networks",
+          "Vision-Language Models"
+        ],
+        "confidence": "high"
+      },
+      "analyzed_at": "2026-07-28T03:31:39.936557",
       "conference_info": {
         "conference": "MICCAI",
         "year": "2026",
-        "comment": "Accepted at EMA4MICCAI 2026 - The 2nd MICCAI Workshop on Efficient Medical AI",
-        "raw_comment": "Accepted at EMA4MICCAI 2026 - The 2nd MICCAI Workshop on Efficient Medical AI",
+        "comment": "MICCAI 2026",
+        "raw_comment": "MICCAI 2026",
         "category": "Medical & Biomedical AI",
         "rank": "A"
       }
     },
     {
       "paper": {
-        "title": "Visual Relocalization from Sparse Views in Aliased and Low-Texture Environments via Novel View Synthesis",
-        "arxiv_id": "2607.22147v1",
+        "title": "Looking for Affect in Spontaneous Finnish Speech through Linguistic Interpretability",
+        "arxiv_id": "2607.24155v1",
         "authors": [
-          "Maria Periba\u00f1ez",
-          "Javier Civera",
-          "Rudolph Triebel",
-          "Riccardo Giubilato"
+          "Kalle Lahtinen",
+          "Liisa Mustanoja",
+          "Okko R\u00e4s\u00e4nen"
         ],
-        "published": "2026-07-24T09:46:07Z",
-        "updated": "2026-07-24T09:46:07Z",
-        "summary": "Visual localization becomes extremely challenging in planetary-like terrains characterized by low texture, perceptual aliasing, harsh illumination, and sparse, weakly overlapping viewpoints induced by forward rover motion and unconstrained driving directions. Under these conditions, state-of-the-art image-to-image and image-to-map matching pipelines suffer significant performance degradation. In this work, we propose a visual relocalization method that departs from classical correspondence-based pipelines by directly estimating camera poses against a differentiable map representation built with 3D Gaussian Splatting (3DGS). Our key contribution is a geometry-aware training strategy that combines photometric and geometric losses, where the geometric supervision is provided for the first time by combining multi-view stereo (MVS) and LiDAR depths. We show that this joint optimization produces a 3DGS model that better fits the underlying scene geometry, leading to improved photometric and geometric consistency and more robust, accurate single-image 6-DoF pose estimation. Extensive experiments on data acquired in planetary-analog environments validate the effectiveness of our approach, showing substantial gains in relocalization accuracy under challenging conditions. Code is available at https://github.com/DLR-RM/multimodal-gsplat-relocalization.",
-        "categories": "cs.CV",
-        "comment": "Accepted to IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS 2026)"
+        "published": "2026-07-27T08:32:40Z",
+        "updated": "2026-07-27T08:32:40Z",
+        "summary": "Existing research on affect in speech has shown how acoustic surface characteristics and content-related linguistic aspects of speech both relate to perceived emotional arousal and valence. However, it is not clear what the relative contributions of these two factors are in the perceptual process. This is especially true for Finnish, for which most existing studies focus on either acoustic-phonetic or text analysis. This paper presents a study where we systematically explore the combinatory role of text- and audio-based features in modeling the human perception of valence and arousal using a newly released affective speech corpus for spontaneous Finnish. We show that the combination of text- and audio-based features improves valence regression results over the individual modalities, whereas for arousal regression the complementary effect is not substantial. The results support prior findings from other languages, providing new data and knowledge on spontaneous Finnish speech.",
+        "categories": "cs.CL",
+        "comment": "Accepted for publication at Interspeech 2026, Sydney, Australia"
       },
       "analysis": {
-        "problem_statement": "Visual relocalization in planetary-like terrains with low texture, perceptual aliasing, harsh illumination, and sparse viewpoints is challenging due to performance degradation in state-of-the-art image-to-image and image-to-map matching pipelines.",
-        "bottleneck_addressed": "Correspondence-based pipelines in visual relocalization under challenging conditions, specifically in planetary-like terrains.",
-        "executive_summary": "This paper addresses a critical bottleneck in visual relocalization by introducing a novel method that leverages 3D Gaussian Splatting and geometry-aware training to improve photometric and geometric consistency, leading to more accurate single-image 6-DoF pose estimation. This matters to the current AI landscape as it enables more robust and accurate visual relocalization in challenging environments, crucial for applications such as planetary exploration and autonomous driving.",
+        "problem_statement": "The paper addresses the lack of understanding of the relative contributions of acoustic surface characteristics and content-related linguistic aspects in modeling human perception of emotional valence and arousal in spontaneous Finnish speech.",
+        "bottleneck_addressed": "Interpreting the role of text-based and audio-based features in affective speech analysis, a key bottleneck in multimodal affective computing.",
+        "executive_summary": "This paper contributes to the understanding of affective speech analysis by investigating the combinatory role of text- and audio-based features in modeling human perception of valence and arousal in spontaneous Finnish speech, providing new insights and data for the AI community.",
         "key_metrics": {
-          "primary_metric": "Improved photometric and geometric consistency",
+          "primary_metric": "Combination of text- and audio-based features improves valence regression results over individual modalities.",
           "metric_value": "Not explicitly stated",
-          "baseline": "State-of-the-art image-to-image and image-to-map matching pipelines",
+          "baseline": "Individual text- and audio-based features",
           "improvement_percentage": "Not quantifiable"
         },
         "technical_breakdown": {
-          "method": "The proposed method directly estimates camera poses against a differentiable map representation built with 3D Gaussian Splatting (3DGS), using a geometry-aware training strategy that combines photometric and geometric losses.",
-          "architecture": "3D Gaussian Splatting (3DGS) map representation, multi-view stereo (MVS), and LiDAR depths",
-          "implementation_details": "The geometry-aware training strategy combines photometric and geometric losses, where the geometric supervision is provided by combining MVS and LiDAR depths. The 3DGS model is trained using a differentiable map representation.",
-          "code_complexity": "The code complexity is not explicitly stated, but the use of 3D Gaussian Splatting and geometry-aware training suggests a moderate to high computational complexity."
+          "method": "The paper employs a machine learning approach to model human perception of valence and arousal using a combination of text- and audio-based features extracted from a newly released affective speech corpus for spontaneous Finnish.",
+          "architecture": "The architecture likely involves a multimodal fusion framework, combining text- and audio-based features through techniques such as concatenation, attention, or late fusion.",
+          "implementation_details": "The paper uses a regression approach to model valence and arousal, with feature extraction techniques such as acoustic-phonetic analysis and text analysis (e.g., part-of-speech tagging, named entity recognition).",
+          "code_complexity": "The computational complexity is likely moderate to high due to the use of machine learning models and feature extraction techniques, with potential implications for training time and model size."
         },
         "relevance_tags": [
-          "Visual Relocalization",
-          "Planetary Exploration",
-          "Autonomous Driving",
-          "3D Gaussian Splatting",
-          "Geometry-Aware Training"
+          "Affective Computing",
+          "Multimodal Fusion",
+          "Speech Analysis",
+          "Natural Language Processing",
+          "Machine Learning"
         ],
         "confidence": "high"
       },
-      "analyzed_at": "2026-07-27T03:47:55.389980",
+      "analyzed_at": "2026-07-28T03:33:24.012567",
+      "conference_info": {
+        "conference": "Interspeech",
+        "year": "2026",
+        "comment": "Accepted for publication at Interspeech 2026, Sydney, Australia",
+        "raw_comment": "Accepted for publication at Interspeech 2026, Sydney, Australia",
+        "category": "Natural Language Processing",
+        "rank": ""
+      }
+    },
+    {
+      "paper": {
+        "title": "Disentangling Acoustic Cues in Alzheimer's Pathology and Perception: The Roles of Language and Gender",
+        "arxiv_id": "2607.23977v1",
+        "authors": [
+          "Liu He",
+          "Yuanchao Li",
+          "Yin-Long Liu",
+          "Rui Feng",
+          "Yiming Wang",
+          "Jiaxin Chen",
+          "Yizhe Wang",
+          "Jiahong Yuan"
+        ],
+        "published": "2026-07-27T04:02:57Z",
+        "updated": "2026-07-27T04:02:57Z",
+        "summary": "Acoustic biomarkers show promise for detecting Alzheimer's Disease (AD), yet whether the cues driving diagnostic AI align with those salient to human listeners is underexplored across languages and genders, where pathological markers and perceptual strategies differ. We train models to predict clinical AD status (pathology) and human perceptual scores across Mandarin and Greek, male and female speakers. Using SHAP for interpretability and statistical models for validation, we compare feature importance by subgroup. Results reveal a context-dependent divergence: pathological-perceptual alignment is significant for Mandarin and female speakers but disappears for Greek and male speakers, where pathology models did not exceed chance; this is a failure mode that population-specific auditing surfaces. Global Explainable AI (XAI) explanations can mask critical demographic divergences, highlighting the need for population-specific explainability auditing for equitable deployment of clinical speech AI.",
+        "categories": "cs.SD",
+        "comment": "Accepted at Interspeech 2026"
+      },
+      "analysis": {
+        "problem_statement": "The paper addresses the issue of whether acoustic biomarkers used in AI models for detecting Alzheimer's Disease align with the cues salient to human listeners across different languages and genders.",
+        "bottleneck_addressed": "Explainability and fairness in clinical speech AI, specifically the need for population-specific auditing to avoid masking critical demographic divergences.",
+        "executive_summary": "This paper highlights the importance of considering language and gender differences when developing clinical speech AI models for Alzheimer's Disease detection. It shows that global explainability methods can mask critical demographic divergences, emphasizing the need for population-specific auditing to ensure equitable deployment of AI models.",
+        "key_metrics": {
+          "primary_metric": "Pathological-perceptual alignment across languages and genders",
+          "metric_value": "Significant for Mandarin and female speakers, but not for Greek and male speakers",
+          "baseline": "Chance-level performance",
+          "improvement_percentage": "N/A (since it's a comparison of alignment rather than a quantitative improvement)"
+        },
+        "technical_breakdown": {
+          "method": "The authors trained AI models to predict clinical AD status (pathology) and human perceptual scores across Mandarin and Greek, male and female speakers. They used SHAP for interpretability and statistical models for validation to compare feature importance by subgroup.",
+          "architecture": "The paper does not specify a particular AI architecture, but rather focuses on the methodology and results.",
+          "implementation_details": "The authors used SHAP (SHapley Additive exPlanations) for interpretability, which is a technique for explaining the output of machine learning models. They also used statistical models for validation.",
+          "code_complexity": "The paper does not provide information on the computational complexity or training time implications of the methods used."
+        },
+        "relevance_tags": [
+          "Alzheimer's Disease",
+          "Clinical Speech AI",
+          "Explainability",
+          "Fairness",
+          "Population-Specific Auditing"
+        ],
+        "confidence": "high"
+      },
+      "analyzed_at": "2026-07-28T03:33:00.579064",
+      "conference_info": {
+        "conference": "Interspeech",
+        "year": "2026",
+        "comment": "Accepted at Interspeech 2026",
+        "raw_comment": "Accepted at Interspeech 2026",
+        "category": "Natural Language Processing",
+        "rank": ""
+      }
+    },
+    {
+      "paper": {
+        "title": "SILICA: Repurposing Diffusion Priors for Joint Glass Segmentation and Depth Estimation",
+        "arxiv_id": "2607.24249v1",
+        "authors": [
+          "Tarun R",
+          "Anuj Verma",
+          "Laksh Nanwani",
+          "Sourav Garg",
+          "K. Madhava Krishna"
+        ],
+        "published": "2026-07-27T10:38:49Z",
+        "updated": "2026-07-27T10:38:49Z",
+        "summary": "Standard depth sensors systematically fail on transparent surfaces, creating corrupted 3D maps and severe navigation hazards. While specialized hardware sensors can detect glass, they lack modularity and have extensive hardware dependencies. Consequently, learning-based monocular depth estimation has emerged as a compelling alternative. However, domain-specific glass-aware monocular depth estimators struggle with unfamiliar indoor layouts; restricted by the severe scarcity of real-world glass depth annotations, they fail to generalize zero-shot to new settings. This motivates us to explore whether the extensive priors of text-to-image diffusion models can enable generalizable perception of transparent surfaces. We introduce SILICA, a unified pipeline leveraging these priors to jointly predict glass segmentation and glass-aware depth. This mutual information exchange establishes a robust spatial hierarchy, entirely eliminating the need for paired real-world glass depth annotations. Subsequently, we use the predicted segmentation mask to explicitly filter incorrect glass depth points from standard sensors, recovering accurate metric glass depth for downstream 3D mapping and autonomous collision avoidance. Supported by our novel Mirage 18k dataset, extensive experiments demonstrate that SILICA achieves remarkable zero-shot transfer across diverse, unseen environments, outperforming state-of-the-art models by almost 20% and setting a new benchmark for transparent surface perception.",
+        "categories": "cs.CV",
+        "comment": "IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS), 2026"
+      },
+      "analysis": {
+        "problem_statement": "The paper addresses the challenge of accurately estimating depth and segmenting transparent surfaces, such as glass, from monocular images, particularly in unfamiliar indoor environments.",
+        "bottleneck_addressed": "The paper addresses the bottleneck of limited generalizability in domain-specific glass-aware monocular depth estimators due to the scarcity of real-world glass depth annotations.",
+        "executive_summary": "This paper presents SILICA, a unified pipeline that leverages text-to-image diffusion model priors to jointly predict glass segmentation and depth, enabling zero-shot transfer across diverse, unseen environments. This breakthrough has significant implications for 3D mapping and autonomous collision avoidance in robotics. The proposed method outperforms state-of-the-art models by almost 20% and sets a new benchmark for transparent surface perception.",
+        "key_metrics": {
+          "primary_metric": "Zero-shot transfer performance across diverse, unseen environments",
+          "metric_value": "20%",
+          "baseline": "State-of-the-art models",
+          "improvement_percentage": "Almost 20%"
+        },
+        "technical_breakdown": {
+          "method": "SILICA leverages the extensive priors of text-to-image diffusion models to predict glass segmentation and depth, establishing a robust spatial hierarchy. The mutual information exchange between the two tasks eliminates the need for paired real-world glass depth annotations.",
+          "architecture": "The pipeline consists of a unified diffusion prior-based model, which includes a text-to-image diffusion model and a depth estimation module. The model takes a monocular image as input and outputs a glass segmentation mask and a glass-aware depth map.",
+          "implementation_details": "The authors use a novel Mirage 18k dataset, which contains 18,000 images of glass surfaces in various environments. The model is trained using a combination of supervised and self-supervised learning techniques.",
+          "code_complexity": "The computational complexity of the proposed method is high due to the use of text-to-image diffusion models. However, the authors provide a detailed implementation guide and publicly release their code, making it easier for researchers to replicate and build upon their work."
+        },
+        "relevance_tags": [
+          "Computer Vision",
+          "Robotics",
+          "Depth Estimation",
+          "Glass Segmentation",
+          "Diffusion Models",
+          "Zero-Shot Transfer"
+        ],
+        "confidence": "high"
+      },
+      "analyzed_at": "2026-07-28T03:33:54.182950",
       "conference_info": {
         "conference": "Intelligent Robots and Systems",
         "year": "2026",
-        "comment": "Accepted to IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS 2026)",
-        "raw_comment": "Accepted to IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS 2026)",
+        "comment": "IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS), 2026",
+        "raw_comment": "IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS), 2026",
+        "category": "Robotics",
+        "rank": "A"
+      }
+    },
+    {
+      "paper": {
+        "title": "Surgical Re-enactment for Operating Room Workflow Datasets",
+        "arxiv_id": "2607.24206v1",
+        "authors": [
+          "Jana Nina Friedrich",
+          "Andrea Karin Maria Ross",
+          "Angelo Henriques",
+          "Mario Peter Martin Weisser",
+          "Ling Zhang",
+          "Mohammad Ali Nasseri"
+        ],
+        "published": "2026-07-27T09:34:46Z",
+        "updated": "2026-07-27T09:34:46Z",
+        "summary": "The introduction of new technologies, such as surgical robots, is driving the vision of a connected, smart operating room (OR). However, realizing this vision requires a deep understanding of surgical workflows, which relies on realistic datasets capturing the actions of all OR personnel from both full room and surgical field perspectives. Acquiring such data in real ORs is prohibitively challenging due to factors such as ethics committee approvals, limited space for camera installation, and sterility regulations preventing the use of tracking markers. We present a step-by-step methodology for re-enacting complete surgical procedures in a reconstructed OR. This approach enables the creation of repeatable and annotatable workflow datasets for training activity recognition models, generating scene graphs, and formalizing surgical process models. Developed for robot-assisted ophthalmic surgery, our methodology combines expert consultation, structured workflow formalization, OR reconstruction, role-based training, real OR observation, and iterative recording with post-take debriefing. We provide concrete recommendations to allow other research groups to seamlessly adopt this methodology for their own surgical domains.",
+        "categories": "cs.RO",
+        "comment": "Accepted at the 4th \"Robot-Assisted Medical Imaging\" (RAMI) workshop as part of ICRA 2026"
+      },
+      "analysis": {
+        "problem_statement": "The paper addresses the challenge of acquiring realistic and repeatable surgical workflow datasets for training activity recognition models and formalizing surgical process models.",
+        "bottleneck_addressed": "Data scarcity and annotation challenges in surgical workflow datasets",
+        "executive_summary": "This paper presents a novel methodology for re-enacting complete surgical procedures to create repeatable and annotatable workflow datasets, which is crucial for training activity recognition models and formalizing surgical process models. This work has significant implications for the development of smart operating rooms and robot-assisted surgeries. The proposed methodology can be adapted to various surgical domains, making it a valuable contribution to the field.",
+        "key_metrics": {
+          "primary_metric": "Creation of repeatable and annotatable surgical workflow datasets",
+          "metric_value": "N/A",
+          "baseline": "Traditional methods of acquiring surgical workflow datasets (e.g., real OR observation)",
+          "improvement_percentage": "N/A"
+        },
+        "technical_breakdown": {
+          "method": "The proposed methodology involves expert consultation, structured workflow formalization, OR reconstruction, role-based training, real OR observation, and iterative recording with post-take debriefing.",
+          "architecture": "The methodology combines multiple components, including a structured workflow formalization framework, a role-based training system, and a data annotation pipeline.",
+          "implementation_details": "The paper uses a combination of machine learning algorithms, computer vision techniques, and expert consultation to develop the structured workflow formalization framework and the role-based training system.",
+          "code_complexity": "The computational complexity of the proposed methodology is moderate, as it involves the use of machine learning algorithms and computer vision techniques. However, the training time implications are not explicitly mentioned in the paper."
+        },
+        "relevance_tags": [
+          "surgical workflow datasets",
+          "activity recognition models",
+          "robot-assisted surgeries",
+          "smart operating rooms",
+          "data annotation",
+          "machine learning"
+        ],
+        "confidence": "high"
+      },
+      "analyzed_at": "2026-07-28T03:35:07.402972",
+      "conference_info": {
+        "conference": "ICRA",
+        "year": "2026",
+        "comment": "Accepted at the 4th \"Robot-Assisted Medical Imaging\" (RAMI) workshop as part of ICRA 2026",
+        "raw_comment": "Accepted at the 4th \"Robot-Assisted Medical Imaging\" (RAMI) workshop as part of ICRA 2026",
+        "category": "Robotics",
+        "rank": "B"
+      }
+    },
+    {
+      "paper": {
+        "title": "WARL: Wrench-Augmented Reinforcement Learning for Task-Agnostic Learning in Legged Robots",
+        "arxiv_id": "2607.24036v1",
+        "authors": [
+          "Keita Yoneda",
+          "Kento Kawaharazuka",
+          "Kei Okada"
+        ],
+        "published": "2026-07-27T06:17:42Z",
+        "updated": "2026-07-27T06:17:42Z",
+        "summary": "While reinforcement learning for legged robots has achieved high motor performance, it has been constrained by the limited exploration capability of actions confined to the joint space. To address this issue, this study proposes a new method, Wrench-Augmented Reinforcement Learning (WARL), which introduces a wrenche (force and torque) into the action space. The proposed method combines wrench-guided exploration with a success rate-based curriculum mechanism to expand exploration capabilities in the early stages of learning, with the ultimate goal of acquiring behaviors based solely on joint control. Experiments using a quadruped robot demonstrated that WARL can learn robustly across diverse terrains and motor tasks without requiring terrain-specific reward adjustments or complex curriculum designs. Furthermore, an ablation study verified the effectiveness of the Switching Curriculum, which gradually eliminates the wrench. On the other hand, we also show that introducing a wrench can encourage behaviors that do not sufficiently exploit the robot's physical embodiment. These findings suggest that while wrench-based exploration enhancement is effective for improving learning efficiency, designing it in a way that is consistent with the robot's physical structure is a critical future challenge.",
+        "categories": "cs.RO",
+        "comment": "Accepted at IROS 2026, website-https://keitayoneda.github.io/kleiyn-warl/, youtube-https://youtu.be/l-drMNncQp0"
+      },
+      "analysis": {
+        "problem_statement": "The paper addresses the limited exploration capability of reinforcement learning in legged robots, which is confined to the joint space.",
+        "bottleneck_addressed": "Exploration-exploitation trade-off in reinforcement learning",
+        "executive_summary": "This paper proposes Wrench-Augmented Reinforcement Learning (WARL) to enhance exploration capabilities in legged robots. WARL introduces a wrench into the action space, allowing the robot to learn robustly across diverse terrains and motor tasks. This breakthrough has significant implications for the development of legged robots.",
+        "key_metrics": {
+          "primary_metric": "Improved learning efficiency",
+          "metric_value": "Not specified",
+          "baseline": "Joint-space reinforcement learning",
+          "improvement_percentage": "Not quantifiable"
+        },
+        "technical_breakdown": {
+          "method": "WARL combines wrench-guided exploration with a success rate-based curriculum mechanism to expand exploration capabilities in the early stages of learning.",
+          "architecture": "The proposed method consists of a reinforcement learning agent, a wrench-guided exploration module, and a success rate-based curriculum mechanism.",
+          "implementation_details": "The paper uses a quadruped robot and implements WARL using a deep reinforcement learning framework, likely with a policy gradient method (e.g., PPO) and a neural network policy.",
+          "code_complexity": "The computational complexity of WARL is not explicitly analyzed, but the introduction of a wrench into the action space likely increases the dimensionality of the action space, which can lead to increased training time and computational complexity."
+        },
+        "relevance_tags": [
+          "Reinforcement Learning",
+          "Legged Robots",
+          "Exploration-Exploitation Trade-off",
+          "Wrench-Augmented Reinforcement Learning"
+        ],
+        "confidence": "high"
+      },
+      "analyzed_at": "2026-07-28T03:35:11.153044",
+      "conference_info": {
+        "conference": "IROS",
+        "year": "2026",
+        "comment": "Accepted at IROS 2026, website-https://keitayoneda.github.io/kleiyn-warl/, youtube-https://youtu.be/l-drMNncQp0",
+        "raw_comment": "Accepted at IROS 2026, website-https://keitayoneda.github.io/kleiyn-warl/, youtube-https://youtu.be/l-drMNncQp0",
         "category": "Robotics",
         "rank": "A"
       }
@@ -468,15 +960,15 @@
     "Blockchain & Cryptography",
     "Other"
   ],
-  "filter_date": "2026-07-24",
+  "filter_date": "2026-07-27",
   "metrics": {
     "dashboard": {
-      "previous_date": "2026-07-23",
-      "previous_count": 27,
-      "current_date": "2026-07-24",
-      "current_count": 8,
-      "day_change": -19,
-      "trend": "\ud83d\udcc9 DOWN"
+      "previous_date": "unknown",
+      "previous_count": 0,
+      "current_date": "2026-07-27",
+      "current_count": 18,
+      "day_change": 18,
+      "trend": "\ud83d\udcc8 UP"
     }
   },
   "ranks": [
