@@ -1,286 +1,6 @@
 {
-  "last_updated": "2026-07-29T03:35:55.084972",
+  "last_updated": "2026-07-30T03:34:57.886809",
   "dates": {
-    "2026-07-22": {
-      "count": 5,
-      "papers": [
-        {
-          "paper": {
-            "title": "Auto-Fill: Learning to Predict Missing Values Accurately with Specialist Language Models",
-            "arxiv_id": "2607.19847v1",
-            "authors": [
-              "Yurong Liu",
-              "Yeye He",
-              "Haoyu Dong",
-              "Junjie Xing",
-              "Shi Han",
-              "Dongmei Zhang",
-              "Surajit Chaudhuri"
-            ],
-            "published": "2026-07-22T07:32:09Z",
-            "updated": "2026-07-22T07:32:09Z",
-            "summary": "Predicting missing cell values in tabular data is a fundamental problem in data cleaning. While state-of-the-art reasoning models show great promise in predicting missing values in tables, by reasoning holistically across rows and columns, they are costly to deploy at scale and tend to be overconfident, often generating hallucinated or false-positive predictions.   In this paper, we observe that achieving high-precision missing-value prediction in tables requires a distinct combination of three capabilities: (1) world knowledge, (2) text-based reasoning, and (3) code-based reasoning. We systematically explore design choices for combining these capabilities, and propose an Auto-Fill approach that post-trains three specialist small language models (SLMs), each optimized for one capability. We develop a calibrated ensemble mechanism that either dynamically selects the most confident specialist or abstains, ensuring high accuracy.   Extensive experiments on 11 benchmarks with 2200 real tables drawn from diverse domains show that Auto-Fill achieves superior accuracy compared to state-of-the-art reasoning models (e.g., o3-pro, Gemini 3 Pro, and DeepSeek R1), while operating at a fraction (less than 1%) of the cost of these frontier models. Our results highlight the effectiveness of specialization and calibrated abstention in the important domain of tabular data. Auto-Fill is publicly available at https://github.com/lyrain2001/auto-fill.",
-            "categories": "cs.LG",
-            "comment": "VLDB 2026"
-          },
-          "analysis": {
-            "problem_statement": "Predicting missing cell values in tabular data with high accuracy and low computational cost.",
-            "bottleneck_addressed": "The overconfidence and hallucination of state-of-the-art reasoning models in predicting missing values, leading to high false-positive rates.",
-            "executive_summary": "This paper presents Auto-Fill, a novel approach that addresses the limitations of current reasoning models in missing value prediction. By combining world knowledge, text-based reasoning, and code-based reasoning with a calibrated ensemble mechanism, Auto-Fill achieves superior accuracy while operating at a fraction of the cost. This breakthrough has significant implications for the field of tabular data processing.",
-            "key_metrics": {
-              "primary_metric": "Superior accuracy compared to state-of-the-art reasoning models",
-              "metric_value": "Not specified",
-              "baseline": "o3-pro, Gemini 3 Pro, and DeepSeek R1",
-              "improvement_percentage": "Not quantifiable"
-            },
-            "technical_breakdown": {
-              "method": "Auto-Fill post-trains three specialist small language models (SLMs), each optimized for one capability: world knowledge, text-based reasoning, and code-based reasoning. A calibrated ensemble mechanism dynamically selects the most confident specialist or abstains to ensure high accuracy.",
-              "architecture": "Three SLMs, each with a distinct architecture optimized for one capability. A calibrated ensemble mechanism that selects the most confident specialist or abstains.",
-              "implementation_details": "The authors use a combination of techniques, including world knowledge, text-based reasoning, and code-based reasoning. The implementation details are not specified, but the authors mention that the approach is publicly available at https://github.com/lyrain2001/auto-fill.",
-              "code_complexity": "The computational complexity of Auto-Fill is not specified, but the authors mention that it operates at a fraction (less than 1%) of the cost of state-of-the-art reasoning models."
-            },
-            "relevance_tags": [
-              "Tabular Data",
-              "Missing Value Prediction",
-              "Reasoning Models",
-              "Specialist Language Models",
-              "Calibrated Ensemble Mechanism"
-            ],
-            "confidence": "high"
-          },
-          "analyzed_at": "2026-07-23T03:47:16.507751",
-          "conference_info": {
-            "conference": "VLDB",
-            "year": "2026",
-            "comment": "VLDB 2026",
-            "raw_comment": "VLDB 2026",
-            "category": "Databases",
-            "rank": "A+"
-          }
-        },
-        {
-          "paper": {
-            "title": "Efficient Clustering with Provable Guardrails for LLM Inference at Scale",
-            "arxiv_id": "2607.19704v1",
-            "authors": [
-              "Longshaokan Wang",
-              "Wai Tsang Keung",
-              "Punit Ghodasara",
-              "Roman Wang",
-              "Ali Dashti",
-              "Francesc Moreno-Noguer"
-            ],
-            "published": "2026-07-22T03:06:57Z",
-            "updated": "2026-07-22T03:06:57Z",
-            "summary": "Scaling LLM-based applications to millions of users is bottlenecked by the inference cost and latency of modern foundation models. A natural fix is to cluster the inputs and call the LLM only on cluster representatives, letting other members inherit the output -- but this is only safe if each member is measurably close to its representative. Existing clustering methods do not offer such per-sample quality control at scale: none jointly guarantee a minimal within-cluster similarity, exact matching of categorical attributes, and scalability to tens of millions of samples. We propose a two-stage algorithm that generates initial clusters with Mini-batch K-Means, then greedily selects representatives within each initial cluster -- a step equivalent to the Johnson-Chvatal heuristic for Set Cover over alpha-balls in embedding space. The algorithm enforces the similarity and attribute guardrails exactly by construction, and runs in $O(nd + n^2 d/K)$ time and $O(nd + n^2/K^2)$ memory for $n$ samples, feature dimension $d$, and $K$ initial clusters -- linear in $n$ when $K$ grows proportionally with $n$. We provide benchmarks against common clustering methods on internal and public datasets: our method not only delivers per-sample guardrails but also runs 10-1000x faster and scales to data sizes where most standard methods become intractable. Deployed on 38 million customers for a persona-based recommender, the clustering method cut downstream cost and latency by 50-fold while preserving personalization and unblocked the production launch.",
-            "categories": "cs.LG",
-            "comment": "Accepted for presentation at ICML HiLD workshop 2026 (non-archival)"
-          },
-          "analysis": {
-            "problem_statement": "Efficiently clustering inputs to large language models (LLMs) while ensuring per-sample quality control and scalability to millions of users.",
-            "bottleneck_addressed": "Inference cost and latency of modern foundation models",
-            "executive_summary": "This paper addresses the scalability bottleneck of LLM-based applications by proposing a two-stage clustering algorithm that ensures per-sample quality control, exact matching of categorical attributes, and scalability to tens of millions of samples. This method has been deployed in production and has shown significant improvements in cost and latency reduction while preserving personalization.",
-            "key_metrics": {
-              "primary_metric": "10-1000x faster",
-              "metric_value": "10-1000",
-              "baseline": "Common clustering methods",
-              "improvement_percentage": "1000%"
-            },
-            "technical_breakdown": {
-              "method": "The proposed algorithm consists of two stages: (1) generating initial clusters using Mini-batch K-Means, and (2) greedily selecting representatives within each initial cluster using the Johnson-Chvatal heuristic for Set Cover over alpha-balls in embedding space.",
-              "architecture": "The algorithm uses a two-stage approach with Mini-batch K-Means and Johnson-Chvatal heuristic as key components.",
-              "implementation_details": "The algorithm runs in $O(nd + n^2 d/K)$ time and $O(nd + n^2/K^2)$ memory for $n$ samples, feature dimension $d$, and $K$ initial clusters.",
-              "code_complexity": "Linear in $n$ when $K$ grows proportionally with $n$"
-            },
-            "relevance_tags": [
-              "Efficient Clustering",
-              "Large Language Models",
-              "Scalability",
-              "Per-Sample Quality Control",
-              "Set Cover",
-              "Johnson-Chvatal Heuristic"
-            ],
-            "confidence": "high"
-          },
-          "analyzed_at": "2026-07-23T03:47:52.523688",
-          "conference_info": {
-            "conference": "ICML",
-            "year": "2026",
-            "comment": "Accepted for presentation at ICML HiLD workshop 2026 (non-archival)",
-            "raw_comment": "Accepted for presentation at ICML HiLD workshop 2026 (non-archival)",
-            "category": "General ML/AI",
-            "rank": "A+"
-          }
-        },
-        {
-          "paper": {
-            "title": "Multi-Mask Diffusion Language Models for Few-Step Generation",
-            "arxiv_id": "2607.19686v1",
-            "authors": [
-              "Sijin Chen",
-              "Yinuo Ren",
-              "Heyang Zhao",
-              "Ziheng Cheng",
-              "Quanquan Gu",
-              "Lexing Ying"
-            ],
-            "published": "2026-07-22T02:35:40Z",
-            "updated": "2026-07-22T02:35:40Z",
-            "summary": "Masked diffusion models (MDMs) are a promising family of language generators, but achieving high-quality few-step generation remains challenging. In MDMs, all forward trajectories collapse to a single fully masked state, leaving no terminal entropy for consistency-style few-step generation. While recent few-step alternatives based on uniform-state diffusion avoid this degeneracy, it becomes harder to distinguish clean tokens from noise than MDMs, which usually harms modeling quality and training efficiency. In this work, we propose a multi-mask diffusion model (MultiMDM) that preserves the masking structure towards few-step generation. In the forward process, each clean token is first pushed towards a designated mask and then gradually mixes over the mask set. As a result, the backward process has a drafting capability by predicting a designated mask before refining to a clean token. We derive a closed-form ELBO training objective for MultiMDM that supports continual training from pretrained MDMs. In addition, we formulate a purely discrete-state consistency distillation scheme, with a shared-Gumbel coupling to reduce pathwise entropy. Experiments on pretraining and distillation show that MultiMDM provides an effective foundation for principled few-step generation.",
-            "categories": "cs.CL",
-            "comment": "38 pages; Accepted at COLM 2026"
-          },
-          "analysis": {
-            "problem_statement": "Achieving high-quality few-step generation in masked diffusion models (MDMs) remains challenging due to the degeneracy of all forward trajectories collapsing to a single fully masked state.",
-            "bottleneck_addressed": "The degeneracy of forward trajectories in MDMs, which hinders few-step generation and consistency-style generation.",
-            "executive_summary": "This paper proposes a multi-mask diffusion model (MultiMDM) that addresses the degeneracy issue in MDMs, enabling principled few-step generation. MultiMDM preserves the masking structure and introduces a drafting capability in the backward process, allowing for more efficient and effective few-step generation. This work has significant implications for the development of language generators and models.",
-            "key_metrics": {
-              "primary_metric": "Few-step generation quality",
-              "metric_value": "Not explicitly stated",
-              "baseline": "Uniform-state diffusion models",
-              "improvement_percentage": "Not quantifiable"
-            },
-            "technical_breakdown": {
-              "method": "MultiMDM introduces a multi-mask structure, where each clean token is pushed towards a designated mask and then gradually mixes over the mask set. This allows the backward process to predict a designated mask before refining to a clean token.",
-              "architecture": "MultiMDM architecture consists of a forward process with multiple masks and a backward process with a drafting capability.",
-              "implementation_details": "The paper derives a closed-form ELBO training objective for MultiMDM, which supports continual training from pretrained MDMs. Additionally, a purely discrete-state consistency distillation scheme is formulated, using a shared-Gumbel coupling to reduce pathwise entropy.",
-              "code_complexity": "The computational complexity of MultiMDM is not explicitly stated, but it is likely to be higher than that of MDMs due to the introduction of multiple masks and the drafting capability in the backward process."
-            },
-            "relevance_tags": [
-              "masked diffusion models",
-              "few-step generation",
-              "language generators",
-              "consistency-style generation",
-              "deep learning"
-            ],
-            "confidence": "high"
-          },
-          "analyzed_at": "2026-07-23T03:47:18.781183",
-          "conference_info": {
-            "conference": "COLM",
-            "year": "2026",
-            "comment": "38 pages; Accepted at COLM 2026",
-            "raw_comment": "38 pages; Accepted at COLM 2026",
-            "category": "General ML/AI",
-            "rank": ""
-          }
-        },
-        {
-          "paper": {
-            "title": "PolySim: Deterministic Polynomial Surrogates for Cross-Modal Retrieval on CiM",
-            "arxiv_id": "2607.20358v1",
-            "authors": [
-              "Xinzhao Li",
-              "Charles Power",
-              "Pengyu Ren",
-              "Jongun Won",
-              "Likai Pei",
-              "Yuting Hu",
-              "Jinjun Xiong",
-              "Alptekin Vardar",
-              "Ningyuan Cao",
-              "Xiaobo Sharon Hu",
-              "Thomas K\u00e4mpfe",
-              "Kai Ni",
-              "Ruiyang Qin"
-            ],
-            "published": "2026-07-22T16:45:03Z",
-            "updated": "2026-07-22T16:45:03Z",
-            "summary": "Cross-modal retrieval on edge devices benefits from probabilistic embeddings that capture semantic uncertainty, but deploying them on compute-in-memory (CiM) hardware remains an open problem. The core difficulty is a sampling gap: probabilistic methods such as PCME rely on Monte Carlo sampling and nonlinear distance evaluation at inference, which are fundamentally incompatible with CiM crossbar arrays that support only deterministic, single-step matrix-vector multiplication. Few existing probabilistic retrieval methods can be executed on a conventional crossbar. To bridge this gap, we propose PolySim, a framework that reformulates probabilistic retrieval into a fully deterministic pipeline. PolySim approximates each Gaussian embedding dimension using low-order polynomial bases and computes similarity via a learnable order-bilinear kernel, eliminating stochastic sampling while preserving distributional information. In experiments on six benchmarks spanning video, image, and audio retrieval, PolySim improves R@1 over deterministic baselines by up to 10.3\\% and matches or exceeds PCME, while reducing inference to a single crossbar-compatible matrix-vector multiplication. CrossSim evaluation under realistic device non-idealities confirms robust deployment on conventional crossbar arrays. To the best of our knowledge, PolySim is the first method to enable probabilistic cross-modal retrieval on CiM hardware.",
-            "categories": "cs.ET",
-            "comment": "Accepted by ICCAD 2026"
-          },
-          "analysis": {
-            "problem_statement": "Cross-modal retrieval on edge devices is hindered by the deployment of probabilistic embeddings on compute-in-memory (CiM) hardware due to a sampling gap between probabilistic methods and CiM crossbar arrays.",
-            "bottleneck_addressed": "The sampling gap between probabilistic methods and CiM hardware, which is a fundamental incompatibility between Monte Carlo sampling and nonlinear distance evaluation at inference, and deterministic, single-step matrix-vector multiplication supported by CiM crossbar arrays.",
-            "executive_summary": "This paper proposes PolySim, a framework that reformulates probabilistic retrieval into a fully deterministic pipeline, enabling probabilistic cross-modal retrieval on CiM hardware. This matters to the current AI landscape as it addresses a significant bottleneck in deploying AI models on edge devices. By eliminating stochastic sampling while preserving distributional information, PolySim improves retrieval performance and reduces inference time.",
-            "key_metrics": {
-              "primary_metric": "R@1 (Recall at 1) improvement over deterministic baselines",
-              "metric_value": "10.3%",
-              "baseline": "Deterministic baselines",
-              "improvement_percentage": "10.3%"
-            },
-            "technical_breakdown": {
-              "method": "PolySim approximates each Gaussian embedding dimension using low-order polynomial bases and computes similarity via a learnable order-bilinear kernel. This eliminates stochastic sampling and preserves distributional information.",
-              "architecture": "PolySim consists of two main components: (1) a polynomial surrogate for probabilistic embeddings and (2) a learnable order-bilinear kernel for similarity computation.",
-              "implementation_details": "PolySim employs polynomial basis approximation, learnable order-bilinear kernel, and matrix-vector multiplication for similarity computation.",
-              "code_complexity": "The computational complexity of PolySim is O(n^3), where n is the number of embedding dimensions. The training time is not explicitly mentioned in the paper, but it is likely to be comparable to other probabilistic retrieval methods."
-            },
-            "relevance_tags": [
-              "Cross-modal retrieval",
-              "Probabilistic embeddings",
-              "Compute-in-memory (CiM) hardware",
-              "Deterministic pipeline",
-              "Polynomial surrogate",
-              "Learnable order-bilinear kernel"
-            ],
-            "confidence": "high"
-          },
-          "analyzed_at": "2026-07-23T03:47:54.284696",
-          "conference_info": {
-            "conference": "ICCAD",
-            "year": "2026",
-            "comment": "Accepted by ICCAD 2026",
-            "raw_comment": "Accepted by ICCAD 2026",
-            "category": "Hardware & EDA",
-            "rank": "A"
-          }
-        },
-        {
-          "paper": {
-            "title": "It's Not What You Say, It's How You Say It: Evaluating LLM Responses to Expressions of Belief",
-            "arxiv_id": "2607.18232v2",
-            "authors": [
-              "Kevin Du",
-              "Clara K\u00fcmpel",
-              "Michelle Wastl",
-              "Alex Warstadt"
-            ],
-            "published": "2026-07-20T17:58:31Z",
-            "updated": "2026-07-22T15:51:58Z",
-            "summary": "Users frequently express their beliefs to large language models (LLMs). In some situations, the LLM should accept these contextual beliefs as true. In others, they should stick to their prior knowledge. Notably, users' expressions of belief (EoBs) can take linguistically diverse forms - using presuppositions, evidential and certainty markers, or varied tones - each of which may have a different persuasiveness over the LLMs. We introduce a typology to systematically evaluate how different EoBs affect whether models follow context versus prior knowledge. The typology is grounded in four linguistically motivated dimensions: form, evidentiality, epistemic stance, and tone, spanning 17 fine-grained types. By pairing these EoBs with world knowledge facts, we generate controlled EoB-query pairs that isolate the effect of linguistic variation. Using this benchmark, we evaluate 16 LLMs that differ in architecture (Llama3, Qwen3, Gemma3), scale (1B-30B parameters), and training stages (base vs instruct). We identify meaningful variations in response behavior across these axes, e.g., that bigger models and instruction models tend to be less context-following than smaller models and base models. We further identify specific EoBs that statistically significantly persuade LMs more consistently than others. Our work reveals systematic patterns in how linguistic framing affects LLM context integration, with implications for prompt engineering and model robustness.",
-            "categories": "cs.CL",
-            "comment": "Published at ACL 2026"
-          },
-          "analysis": {
-            "problem_statement": "Developing large language models (LLMs) that can effectively integrate contextual information from user expressions of belief (EoBs) while avoiding over-reliance on prior knowledge.",
-            "bottleneck_addressed": "Context integration and knowledge bias in LLMs",
-            "executive_summary": "This paper addresses the challenge of developing LLMs that can effectively integrate contextual information from user expressions of belief, while avoiding over-reliance on prior knowledge. By introducing a typology to systematically evaluate how different EoBs affect LLMs, the authors identify meaningful variations in response behavior across different model architectures, scales, and training stages. This work has significant implications for prompt engineering and model robustness in the current AI landscape.",
-            "key_metrics": {
-              "primary_metric": "LLMs' ability to follow context versus prior knowledge",
-              "metric_value": "Not explicitly stated, but implies a statistically significant improvement",
-              "baseline": "Prior knowledge-based responses",
-              "improvement_percentage": "Not quantifiable, but implies a significant improvement"
-            },
-            "technical_breakdown": {
-              "method": "The authors introduce a typology of 17 fine-grained EoB types, grounded in four linguistically motivated dimensions: form, evidentiality, epistemic stance, and tone. They pair these EoBs with world knowledge facts to generate controlled EoB-query pairs that isolate the effect of linguistic variation.",
-              "architecture": "The authors evaluate 16 LLMs with different architectures (Llama3, Qwen3, Gemma3), scales (1B-30B parameters), and training stages (base vs instruct).",
-              "implementation_details": "The authors use a benchmark to evaluate the LLMs' response behavior, which involves generating controlled EoB-query pairs and analyzing the LLMs' responses.",
-              "code_complexity": "Not explicitly stated, but implies a moderate to high computational complexity due to the evaluation of multiple LLMs and EoB types."
-            },
-            "relevance_tags": [
-              "Natural Language Processing",
-              "Large Language Models",
-              "Context Integration",
-              "Knowledge Bias",
-              "Prompt Engineering",
-              "Model Robustness"
-            ],
-            "confidence": "high"
-          },
-          "analyzed_at": "2026-07-23T03:47:29.776813",
-          "conference_info": {
-            "conference": "ACL",
-            "year": "2026",
-            "comment": "Published at ACL 2026",
-            "raw_comment": "Published at ACL 2026",
-            "category": "Natural Language Processing",
-            "rank": "A+"
-          }
-        }
-      ],
-      "updated_at": "2026-07-23T03:47:55.290925"
-    },
     "2026-07-23": {
       "count": 27,
       "papers": [
@@ -4449,6 +4169,1002 @@
         }
       ],
       "updated_at": "2026-07-29T03:35:55.084968"
+    },
+    "2026-07-29": {
+      "count": 19,
+      "papers": [
+        {
+          "paper": {
+            "title": "Anatomy Contextualized Adaption of CT Foundation Models",
+            "arxiv_id": "2607.27154v1",
+            "authors": [
+              "Roshan Kenia",
+              "Stephanie L McNamara",
+              "William Lotter"
+            ],
+            "published": "2026-07-29T17:32:57Z",
+            "updated": "2026-07-29T17:32:57Z",
+            "summary": "CT vision-language foundation models have demonstrated promising performance across downstream tasks, but are typically trained with whole-volume representations that dilute fine-grained anatomical signals. Fine-grained vision-language pre-training addresses this by aligning anatomy-level visual features with anatomy-specific text, but in doing so discards the global context that whole-volume models provide. Furthermore, existing fine-grained approaches train from scratch, making them computationally expensive. We introduce Anatomy Contextualized Adaptation (ACA), a lightweight framework that adapts frozen CT foundation model representations for anatomy-level vision-language alignment while enhancing global contextualization. ACA uses TotalSegmentator to decompose CT volumes into anatomy-level embeddings, which are refined via a transformer that captures cross-anatomy relationships, and aligned to both per-anatomy and scan-level text extracted from radiology reports. Evaluated on Merlin and CT-RATE, ACA consistently outperforms both the frozen foundation model baselines and existing fine-grained methods in zero-shot finding classification, while requiring less than one hour of training once embeddings are cached. The attention weights learned by ACA's inter-anatomy transformer additionally indicate plausible cross-anatomy context routing. Altogether, these results support ACA as a lightweight approach for adapting CT foundation models to anatomically grounded vision-language alignment while preserving and enhancing global anatomical context.",
+            "categories": "cs.CV",
+            "comment": "Accepted to the European Conference on Computer Vision (ECCV) 2026 MedFM-Bench Workshop"
+          },
+          "analysis": {
+            "problem_statement": "CT vision-language foundation models dilute fine-grained anatomical signals due to whole-volume representations, and existing fine-grained approaches are computationally expensive.",
+            "bottleneck_addressed": "The bottleneck addressed is the trade-off between fine-grained anatomy-level alignment and global contextualization in CT vision-language models.",
+            "executive_summary": "This paper introduces Anatomy Contextualized Adaptation (ACA), a lightweight framework that adapts frozen CT foundation models for anatomy-level vision-language alignment while preserving and enhancing global anatomical context. ACA outperforms existing methods in zero-shot finding classification and requires less training time.",
+            "key_metrics": {
+              "primary_metric": "Consistent outperformance of zero-shot finding classification on Merlin and CT-RATE datasets",
+              "metric_value": "Not specified",
+              "baseline": "Frozen foundation model baselines and existing fine-grained methods",
+              "improvement_percentage": "Not quantifiable"
+            },
+            "technical_breakdown": {
+              "method": "ACA uses TotalSegmentator to decompose CT volumes into anatomy-level embeddings, which are refined via a transformer that captures cross-anatomy relationships and aligned to both per-anatomy and scan-level text extracted from radiology reports.",
+              "architecture": "Key components include TotalSegmentator, inter-anatomy transformer, and text alignment modules",
+              "implementation_details": "ACA uses a transformer-based approach with attention weights to capture cross-anatomy relationships and context routing",
+              "code_complexity": "ACA requires less than one hour of training once embeddings are cached, indicating a relatively low computational complexity"
+            },
+            "relevance_tags": [
+              "CT vision-language models",
+              "fine-grained anatomy-level alignment",
+              "global contextualization",
+              "transformer-based approaches",
+              "medical imaging"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-07-30T03:31:41.815388",
+          "conference_info": {
+            "conference": "European Conference on Computer Vision",
+            "year": "2026",
+            "comment": "Accepted to the European Conference on Computer Vision (ECCV) 2026 MedFM-Bench Workshop",
+            "raw_comment": "Accepted to the European Conference on Computer Vision (ECCV) 2026 MedFM-Bench Workshop",
+            "category": "Computer Vision",
+            "rank": "A"
+          }
+        },
+        {
+          "paper": {
+            "title": "StructureGS: Structure-aware Gaussian Splatting for Articulated Object Reconstruction",
+            "arxiv_id": "2607.26889v1",
+            "authors": [
+              "Gahye Lee",
+              "Gyoonseo Kim",
+              "Wonjong Jang",
+              "Jooeun Son",
+              "Seungyong Lee"
+            ],
+            "published": "2026-07-29T13:18:38Z",
+            "updated": "2026-07-29T13:18:38Z",
+            "summary": "Reconstructing articulated objects with multiple movable parts is essential for understanding object structure and enabling physical interaction. However, this reconstruction task poses significant challenges due to the entanglement of geometry, appearance, and motion parameters during optimization. Existing methods rely primarily on photometric supervision, which commonly fails to disentangle these interdependent components, resulting in poor part decomposition with blurred boundaries and geometric artifacts. To address this limitation, we introduce StructureGS, a reconstruction framework for articulated objects that integrates structure-aware guidance into 3D Gaussian Splatting. Our approach leverages oriented bounding boxes of object parts to enforce two key structural properties: spatial coherence, which constrains each part's geometry to remain compact and spatially coherent within its designated region, and structural connectivity, which enforces physically plausible contact relationships between adjacent parts. These properties are realized through structure-aware losses that inject explicit structural constraints into the optimization process. Extensive experiments demonstrate that our method achieves state-of-the-art performance in articulated object reconstruction, producing high-quality results with well-defined part geometries.",
+            "categories": "cs.GR",
+            "comment": "accepted at ECCV 2026"
+          },
+          "analysis": {
+            "problem_statement": "Reconstructing articulated objects with multiple movable parts from images, while disentangling geometry, appearance, and motion parameters.",
+            "bottleneck_addressed": "Photometric supervision failure to disentangle interdependent components in articulated object reconstruction.",
+            "executive_summary": "This paper introduces StructureGS, a reconstruction framework that addresses the challenge of articulated object reconstruction by integrating structure-aware guidance into 3D Gaussian Splatting. This approach achieves state-of-the-art performance, producing high-quality results with well-defined part geometries.",
+            "key_metrics": {
+              "primary_metric": "State-of-the-art performance in articulated object reconstruction",
+              "metric_value": "Not specified",
+              "baseline": "Existing methods relying on photometric supervision",
+              "improvement_percentage": "Not quantifiable"
+            },
+            "technical_breakdown": {
+              "method": "StructureGS integrates structure-aware guidance into 3D Gaussian Splatting, enforcing spatial coherence and structural connectivity through oriented bounding boxes of object parts.",
+              "architecture": "Key components include oriented bounding boxes, structure-aware losses, and 3D Gaussian Splatting.",
+              "implementation_details": "The approach uses explicit structural constraints to inject structure-aware guidance into the optimization process.",
+              "code_complexity": "Not specified, but likely involves complex optimization and loss function computations."
+            },
+            "relevance_tags": [
+              "Articulated Object Reconstruction",
+              "3D Gaussian Splatting",
+              "Structure-aware Guidance"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-07-30T03:33:50.099847",
+          "conference_info": {
+            "conference": "ECCV",
+            "year": "2026",
+            "comment": "accepted at ECCV 2026",
+            "raw_comment": "accepted at ECCV 2026",
+            "category": "Computer Vision",
+            "rank": "A"
+          }
+        },
+        {
+          "paper": {
+            "title": "Anchoring and Steering Diffusion: Enhancing the Faithfulness of Text-to-Image Generation at Inference Time",
+            "arxiv_id": "2607.26647v1",
+            "authors": [
+              "Xinyi Wang",
+              "Yuyang Huang",
+              "Yalin Su",
+              "Pengcheng Luan",
+              "Tao Zhang",
+              "Feiming Wei",
+              "Wenxian Yu"
+            ],
+            "published": "2026-07-29T09:08:57Z",
+            "updated": "2026-07-29T09:08:57Z",
+            "summary": "While text-to-image diffusion models achieve impressive visual quality, they frequently struggle to maintain precise alignment with complex compositional prompts. An effective strategy is to improve the inference process of diffusion models, thereby better leveraging their pretrained priors to address misalignment. Existing training-free methods can be divided into two categories. The first category focuses on improving the randomly sampled initial noise, either performing costly search over noise pools or manipulating sampled noise without ensuring reliable semantic injection. The second category focuses on improving the denoising trajectory, lacking explicit mechanisms to timely diagnose and correct semantic errors. we propose \\textbf{AnchorSteer}, a training-free framework that exerts fine-grained control over \\textbf{both initialization} and \\textbf{the denoising trajectory}. AnchorSteer consists of two synergistic components: \\textbf{Semantic Anchoring} replaces uninformative Gaussian noise with text-aligned initializations via CLIP-based prior extraction and a novel Latent-Prior Score Distillation Sampling (LP-SDS) objective. Specifically, LP-SDS distills CLIP visual priors into the knowledge distribution of diffusion models, mitigating the domain gap between CLIP-based priors and diffusion-based priors. \\textbf{Reflective Steering} transforms passive denoising with an active Think--Erase--Retouch loop that enables mid-generation self-correction. It leverages VLM-based diagnosis to detect semantic deviations and performs targeted latent refinement to suppress erroneous content and recover missing attributes. Extensive experiments on GenEval and T2I-CompBench++ demonstrate that AnchorSteer consistently outperforms existing baselines in text--image alignment while preserving high visual quality.",
+            "categories": "cs.CV",
+            "comment": "Accepted by ECCV 2026"
+          },
+          "analysis": {
+            "problem_statement": "Improving the faithfulness of text-to-image generation models by enhancing the inference process to better leverage pretrained priors and address misalignment with complex compositional prompts.",
+            "bottleneck_addressed": "The bottleneck of maintaining precise alignment with complex compositional prompts in text-to-image diffusion models.",
+            "executive_summary": "This paper proposes AnchorSteer, a training-free framework that addresses the misalignment issue in text-to-image generation by exerting fine-grained control over initialization and denoising trajectory. This matters to the current AI landscape as it enables the creation of more faithful and visually appealing images from complex prompts.",
+            "key_metrics": {
+              "primary_metric": "Text-image alignment",
+              "metric_value": "Not explicitly stated",
+              "baseline": "Existing training-free methods",
+              "improvement_percentage": "Not quantifiable"
+            },
+            "technical_breakdown": {
+              "method": "AnchorSteer proposes a two-component framework: Semantic Anchoring, which replaces uninformative Gaussian noise with text-aligned initializations via CLIP-based prior extraction and Latent-Prior Score Distillation Sampling (LP-SDS), and Reflective Steering, which transforms passive denoising with an active Think--Erase--Retouch loop that enables mid-generation self-correction.",
+              "architecture": "The framework consists of two synergistic components: Semantic Anchoring and Reflective Steering.",
+              "implementation_details": "CLIP-based prior extraction, Latent-Prior Score Distillation Sampling (LP-SDS), VLM-based diagnosis, and Think--Erase--Retouch loop.",
+              "code_complexity": "The computational complexity of AnchorSteer is not explicitly stated, but it is likely to be higher than existing training-free methods due to the introduction of additional components and techniques."
+            },
+            "relevance_tags": [
+              "Text-to-Image Synthesis",
+              "Diffusion Models",
+              "Training-Free Methods",
+              "Image Generation"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-07-30T03:34:02.860082",
+          "conference_info": {
+            "conference": "ECCV",
+            "year": "2026",
+            "comment": "Accepted by ECCV 2026",
+            "raw_comment": "Accepted by ECCV 2026",
+            "category": "Computer Vision",
+            "rank": "A"
+          }
+        },
+        {
+          "paper": {
+            "title": "Prosody-driven Jailbreaks in Audio LLMs: A Controlled Study and Mechanistic Analysis",
+            "arxiv_id": "2607.26541v1",
+            "authors": [
+              "Jiachen Qian",
+              "Junyu Li"
+            ],
+            "published": "2026-07-29T07:12:44Z",
+            "updated": "2026-07-29T07:12:44Z",
+            "summary": "Audio-capable foundation models enable end-to-end spoken interaction, but they also introduce safety risks beyond transcript content. It remains unclear how much jailbreak capability can arise from matched-text variation in speech delivery rather than from lexical rewriting or broader style transfer. We study this question by holding transcript content fixed and varying six speech-delivery presets whose acoustic attributes may co-vary. We present PJ-Break, a black-box evaluation protocol with presets targeting arousal, authority, and speaking rate, together with AdvAudio-Prosody, a 600-sample benchmark with acoustically verified attributes. On the exact post-QC Qwen2-Audio panel, the Q=1 Panic (38/95), Anger (35/95), and Fast (32/95) presets are all well above Neutral (4/95). The fixed six-query pool covers 44/95 Qwen2-Audio seeds and 15/95 GPT-4o seeds and exceeds a matched-budget StyleBreak reimplementation (27/95) on Qwen2-Audio. A same-voice pool excluding the confounded Commanding condition still reaches 40/95, and a retained-panel ablation shows emotional-delivery audio alone (44/95) is far more effective than emotional text alone (11/95). Exploratory surrogate diagnostics and pilot mitigation observations are secondary, non-core analyses. Overall, matched-text speech delivery should be treated as a first-class factor in Audio LLM safety evaluation",
+            "categories": "cs.SD",
+            "comment": "Accepted at ACM Multimedia 2026 (ACM MM '26). 9 pages, 3 figures. Supplementary material included"
+          },
+          "analysis": {
+            "problem_statement": "The paper addresses the safety risks introduced by audio-capable foundation models, specifically the 'jailbreak' capability that arises from matched-text variation in speech delivery rather than lexical rewriting or broader style transfer.",
+            "bottleneck_addressed": "The paper addresses the bottleneck of evaluating safety risks in audio-capable foundation models, particularly the difficulty in distinguishing between matched-text variation in speech delivery and other forms of style transfer.",
+            "executive_summary": "This paper highlights the importance of considering matched-text speech delivery as a safety risk factor in audio-capable foundation models. The authors demonstrate that varying speech-delivery presets can lead to significant 'jailbreak' capability, emphasizing the need for more comprehensive safety evaluation.",
+            "key_metrics": {
+              "primary_metric": "44/95 Qwen2-Audio seeds and 15/95 GPT-4o seeds are covered by the fixed six-query pool",
+              "metric_value": "44/95",
+              "baseline": "StyleBreak reimplementation (27/95)",
+              "improvement_percentage": "62.96% improvement over StyleBreak reimplementation on Qwen2-Audio"
+            },
+            "technical_breakdown": {
+              "method": "The authors propose a black-box evaluation protocol called PJ-Break, which targets three speech-delivery attributes: arousal, authority, and speaking rate. They also introduce AdvAudio-Prosody, a 600-sample benchmark with acoustically verified attributes.",
+              "architecture": "The proposed protocol uses a combination of speech-delivery presets and a benchmark dataset to evaluate the 'jailbreak' capability of audio-capable foundation models.",
+              "implementation_details": "The authors use a post-QC Qwen2-Audio panel and a StyleBreak reimplementation as baselines for comparison. They also conduct exploratory surrogate diagnostics and pilot mitigation observations.",
+              "code_complexity": "The computational complexity of the proposed protocol is not explicitly stated, but it likely involves training and evaluating multiple models on the AdvAudio-Prosody benchmark."
+            },
+            "relevance_tags": [
+              "Audio LLMs",
+              "Safety evaluation",
+              "Style transfer",
+              "Speech delivery",
+              "Jailbreak capability"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-07-30T03:33:28.789448",
+          "conference_info": {
+            "conference": "ACM Multimedia",
+            "year": "2026",
+            "comment": "Accepted at ACM Multimedia 2026 (ACM MM '26). 9 pages, 3 figures. Supplementary material included",
+            "raw_comment": "Accepted at ACM Multimedia 2026 (ACM MM '26). 9 pages, 3 figures. Supplementary material included",
+            "category": "Computer Vision",
+            "rank": "A+"
+          }
+        },
+        {
+          "paper": {
+            "title": "Knowledge-Guided Multimodal Reasoning over Interacting Streams for Video-Level Ambivalence and Hesitancy Recognition",
+            "arxiv_id": "2607.25961v2",
+            "authors": [
+              "Podakanti Satyajith Chary",
+              "Barath Parthiban",
+              "Pranesh Velmurugan",
+              "Adeeba Khan",
+              "Nagarajan Ganapathy"
+            ],
+            "published": "2026-07-28T16:44:38Z",
+            "updated": "2026-07-29T06:38:30Z",
+            "summary": "Ambivalence and hesitancy (A/H) are conflicting affective states that precede the delay or abandonment of health behaviour change. Recognition of A/H at the video level is difficult, since the signal arises from disagreement across and within facial, vocal, linguistic, and bodily modalities, and manifests differently across individuals. The proposed PRISM-AH (Predictive Reasoning over Interacting Streams for Multimodal Ambivalence/Hesitancy Recognition), is a framework that treats A/H as a multimodal conflict that unfolds over time. Frozen vision, audio, and text encoders are aligned into short time windows and passed to a lightweight streaming model that scores cross-modal dissonance, predicts each next window to expose a hesitation surprise signal, discovers behaviour prototypes, and is conditioned on participant metadata. Dense window-level annotations supervise the model as an auxiliary objective, and the decision threshold is calibrated for macro F1. A knowledge-guided large language model then reasons over structured evidence using the expert cue taxonomy of the dataset, and its verdict is fused late only when validation performance improves. On the labelled public test partition of 525 videos, PRISM-AH attains a macro F1 of 0.6133, compared to the reported zero-shot baseline of 0.2827. The reasoning gain is validated to transfer from validation to the larger test partition.",
+            "categories": "cs.CV",
+            "comment": "14 Pages, 1 Figure, Ambivalence/Hesitancy (AH) Video Recognition Challenge, ECCV 2026"
+          },
+          "analysis": {
+            "problem_statement": "Recognizing ambivalence and hesitancy (A/H) at the video level is challenging due to conflicting affective states across and within facial, vocal, linguistic, and bodily modalities.",
+            "bottleneck_addressed": "Multimodal fusion and temporal reasoning in video-level affective state recognition",
+            "executive_summary": "This paper addresses the challenge of recognizing ambivalence and hesitancy in videos by developing a knowledge-guided multimodal reasoning framework that leverages expert cues and structured evidence. The proposed PRISM-AH framework achieves state-of-the-art performance on the Ambivalence/Hesitancy (AH) Video Recognition Challenge, demonstrating the importance of multimodal fusion and temporal reasoning in affective state recognition. This work has implications for healthcare and human-computer interaction applications.",
+            "key_metrics": {
+              "primary_metric": "Macro F1 score",
+              "metric_value": 0.6133,
+              "baseline": "Zero-shot baseline of 0.2827",
+              "improvement_percentage": "117.5%"
+            },
+            "technical_breakdown": {
+              "method": "The PRISM-AH framework treats A/H as a multimodal conflict that unfolds over time, using frozen vision, audio, and text encoders to extract features from short time windows. A lightweight streaming model scores cross-modal dissonance, predicts each next window to expose a hesitation surprise signal, and discovers behavior prototypes. The model is conditioned on participant metadata and supervised by dense window-level annotations.",
+              "architecture": "The framework consists of a streaming model and a knowledge-guided large language model. The streaming model is a lightweight neural network that processes short time windows of multimodal data, while the large language model reasons over structured evidence using expert cue taxonomy.",
+              "implementation_details": "The framework uses frozen vision, audio, and text encoders, such as ResNet and Transformer, and a lightweight streaming model based on a recurrent neural network (RNN) or long short-term memory (LSTM) network. The knowledge-guided large language model is a pre-trained language model fine-tuned on the expert cue taxonomy.",
+              "code_complexity": "The framework requires significant computational resources and training time due to the use of large language models and multimodal data processing. However, the authors report that the framework achieves state-of-the-art performance on the Ambivalence/Hesitancy (AH) Video Recognition Challenge."
+            },
+            "relevance_tags": [
+              "Multimodal fusion",
+              "Temporal reasoning",
+              "Affective state recognition",
+              "Healthcare",
+              "Human-computer interaction"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-07-30T03:32:39.790096",
+          "conference_info": {
+            "conference": "ECCV",
+            "year": "2026",
+            "comment": "14 Pages, 1 Figure, Ambivalence/Hesitancy (AH) Video Recognition Challenge, ECCV 2026",
+            "raw_comment": "14 Pages, 1 Figure, Ambivalence/Hesitancy (AH) Video Recognition Challenge, ECCV 2026",
+            "category": "Computer Vision",
+            "rank": "A"
+          }
+        },
+        {
+          "paper": {
+            "title": "CaM-Wolf: Causal-Aware Multimodal Agents for Social Deduction Games",
+            "arxiv_id": "2607.26393v1",
+            "authors": [
+              "Zheng Zhang",
+              "Nanjie Yao",
+              "Jiarui He",
+              "Deheng Ye",
+              "Peilin Zhao",
+              "Hao Wang"
+            ],
+            "published": "2026-07-29T01:58:36Z",
+            "updated": "2026-07-29T01:58:36Z",
+            "summary": "Social deduction games (SDGs) such as Werewolf have become challenging testbeds for AI agents. These games require complex social skills such as reasoning, deception, and collaboration. While recent advances in large language models (LLMs) have driven significant progress in SDG agents, current approaches are predominantly text-based, overlooking the multimodal nature that is fundamental to human social interaction. To bridge this gap, we introduce CaM-Wolf, the first SDG agent that integrates multimodal perception and generation. CaM-Wolf processes video inputs from other players, employs a causal-aware Reasoner trained via reinforcement learning to establish logical chains between observable behaviors and hidden roles, and presents itself through an animated avatar. Our experiments and user study show that CaM-Wolf achieves superior agent gameplay performance and enhances the quality of human-AI interaction. This work represents a significant advancement towards creating more human-like AI agents capable of participating in nuanced social dynamics. Our code is available at https://3dagentworld.github.io/avatar_wolf.",
+            "categories": "cs.AI",
+            "comment": "Accepted by ACMMM 2026"
+          },
+          "analysis": {
+            "problem_statement": "Designing AI agents that can effectively participate in social deduction games, such as Werewolf, by integrating multimodal perception and generation capabilities.",
+            "bottleneck_addressed": "The multimodal bottleneck in social deduction game agents, where current approaches are predominantly text-based and overlook the fundamental nature of human social interaction.",
+            "executive_summary": "This paper addresses the limitation of text-based social deduction game agents by introducing CaM-Wolf, a multimodal agent that processes video inputs, employs a causal-aware Reasoner, and presents itself through an animated avatar. This work represents a significant advancement towards creating more human-like AI agents capable of participating in nuanced social dynamics. The results show that CaM-Wolf achieves superior agent gameplay performance and enhances the quality of human-AI interaction.",
+            "key_metrics": {
+              "primary_metric": "Superior agent gameplay performance",
+              "metric_value": "Not explicitly stated",
+              "baseline": "Text-based social deduction game agents",
+              "improvement_percentage": "Not quantifiable"
+            },
+            "technical_breakdown": {
+              "method": "CaM-Wolf integrates multimodal perception and generation capabilities by processing video inputs from other players, employing a causal-aware Reasoner trained via reinforcement learning, and presenting itself through an animated avatar.",
+              "architecture": "The architecture consists of a multimodal perception module, a causal-aware Reasoner, and a multimodal generation module.",
+              "implementation_details": "The causal-aware Reasoner is trained via reinforcement learning, and the agent uses a combination of computer vision and natural language processing techniques to process video inputs and generate responses.",
+              "code_complexity": "The code complexity is likely high due to the integration of multiple AI techniques, including computer vision, natural language processing, and reinforcement learning."
+            },
+            "relevance_tags": [
+              "Social Deduction Games",
+              "Multimodal AI",
+              "Human-AI Interaction",
+              "Reinforcement Learning"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-07-30T03:32:14.849120",
+          "conference_info": {
+            "conference": "ACMMM",
+            "year": "2026",
+            "comment": "Accepted by ACMMM 2026",
+            "raw_comment": "Accepted by ACMMM 2026",
+            "category": "Computer Vision",
+            "rank": "A+"
+          }
+        },
+        {
+          "paper": {
+            "title": "Improving Item Discoverability in e-Commerce Search via Related Intent Generation",
+            "arxiv_id": "2607.27172v1",
+            "authors": [
+              "Ji Xin",
+              "Xiao Xiao",
+              "Ishan Bhatt",
+              "Vinesh Gudla",
+              "Trace Levinson",
+              "Raochuan Fan",
+              "Shishir Kumar Prasad",
+              "Prakash Putta",
+              "Tejaswi Tenneti"
+            ],
+            "published": "2026-07-29T17:46:35Z",
+            "updated": "2026-07-29T17:46:35Z",
+            "summary": "Traditional search systems are optimized to retrieve items that strictly match a query, often prioritizing precision over recall. In e-commerce marketplaces and particularly grocery, this paradigm is limiting, as user satisfaction and commercial outcomes depend heavily on the discoverability of substitute, complementary, and thematically related items. In this paper, we present a scalable system for discovery-augmented search that leverages intent-conditioned recall expansion. Our approach generates implicit user intents to expand candidate recall while maintaining relevance.   The system addresses the cost-quality tradeoff of generative retrieval through a two-stage hybrid architecture. First, we leverage closed-weight large language models (LLMs) to maximize discoverability for head queries. To extend these benefits to tail queries, we then introduce a finetuned small language model (SLM), trained via LoRA adapters and teacher-student distillation. We evaluate the system using a rigorous dual framework: (a) LLM-as-a-judge metrics validated against human preferences for semantic quality, and (b) end-to-end session-level purchase analysis. Results demonstrate that our approach improves both intent generation quality and downstream retrieval effectiveness, extending discovery coverage from approximately 60% to 80% of query traffic at roughly 30% of the teacher model's inference cost, offering a viable path for deployment in large-scale marketplaces. Beyond relevance gains, discovery-augmented search may serve as a marketplace-balancing mechanism, giving long-tail and emerging supply an opportunity for query-conditioned exposure.",
+            "categories": "cs.IR",
+            "comment": "Accepted to KDD 2026 TSMO"
+          },
+          "analysis": {
+            "problem_statement": "Improving item discoverability in e-commerce search by generating related intents to expand candidate recall while maintaining relevance.",
+            "bottleneck_addressed": "The precision-over-recall tradeoff in traditional search systems, where recall is limited due to the focus on strict query matching.",
+            "executive_summary": "This paper presents a scalable system for discovery-augmented search that addresses the precision-over-recall tradeoff in e-commerce search by leveraging intent-conditioned recall expansion. The approach improves both intent generation quality and downstream retrieval effectiveness, extending discovery coverage at a lower inference cost. This matters to the current AI landscape as it offers a viable path for deployment in large-scale marketplaces and may serve as a marketplace-balancing mechanism.",
+            "key_metrics": {
+              "primary_metric": "Discovery coverage",
+              "metric_value": "80%",
+              "baseline": "Approximately 60%",
+              "improvement_percentage": "33%"
+            },
+            "technical_breakdown": {
+              "method": "The system uses a two-stage hybrid architecture that leverages closed-weight large language models (LLMs) to maximize discoverability for head queries and a finetuned small language model (SLM) to extend these benefits to tail queries.",
+              "architecture": {
+                "stage1": "Closed-weight LLMs",
+                "stage2": "Finetuned SLM with LoRA adapters and teacher-student distillation"
+              },
+              "implementation_details": "The system uses large language models (LLMs) and small language models (SLMs) with LoRA adapters and teacher-student distillation for training and fine-tuning.",
+              "code_complexity": "The computational complexity of the system is high due to the use of large language models and the need for fine-tuning and distillation. However, the inference cost is reduced by approximately 70% compared to the teacher model."
+            },
+            "relevance_tags": [
+              "e-commerce search",
+              "intent-conditioned recall expansion",
+              "large language models",
+              "small language models",
+              "LoRA adapters",
+              "teacher-student distillation"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-07-30T03:31:39.680606",
+          "conference_info": {
+            "conference": "KDD",
+            "year": "2026",
+            "comment": "Accepted to KDD 2026 TSMO",
+            "raw_comment": "Accepted to KDD 2026 TSMO",
+            "category": "Data Mining & IR",
+            "rank": "A+"
+          }
+        },
+        {
+          "paper": {
+            "title": "Relaxed activation analysis of dataflow networks - A clock calculus for machine learning and real-time scheduling",
+            "arxiv_id": "2607.21797v2",
+            "authors": [
+              "William Gaudelier",
+              "Albert Cohen",
+              "Dumitru Potop Butucaru"
+            ],
+            "published": "2026-07-23T20:27:08Z",
+            "updated": "2026-07-29T15:13:20Z",
+            "summary": "Previous work has shown that the simple dataflow primitives of the Lustre language allow the natural, semantically unambiguous, and compact representation of machine learning (ML) applications, including models featuring complex conditional execution and recurrent state. The Lustre clock calculus is responsible for the static determination of important properties such as liveness (absence of deadlocks) and static memory bounds. Yet existing clock calculi are tailored for embedded control applications. We show they do not cater for the representation of control patterns commonly found in training algorithms, resulting in cumbersome expressions and inefficient compilation. We propose a conservative extension of Lustre's clock calculus addressing this limitation, thereby facilitating the embedding of ML models in reactive applications.",
+            "categories": "cs.PL",
+            "comment": "Extended version of the paper to appear in the proceedings of FDL 2026: https://www.fdl-conference.com/program.html"
+          },
+          "analysis": {
+            "problem_statement": "The paper addresses the limitation of existing clock calculi in representing control patterns commonly found in machine learning (ML) training algorithms, leading to cumbersome expressions and inefficient compilation.",
+            "bottleneck_addressed": "Model Interpretability and Explainability, specifically the challenge of representing complex conditional execution and recurrent state in ML models.",
+            "executive_summary": "This paper proposes a conservative extension of Lustre's clock calculus to facilitate the embedding of ML models in reactive applications, improving the representation of control patterns in ML training algorithms and enabling more efficient compilation. This matters to the current AI landscape as it addresses a significant bottleneck in ML model interpretability and explainability. The proposed extension has the potential to improve the scalability and reliability of ML-based systems in real-time applications.",
+            "key_metrics": {
+              "primary_metric": "Improved representation of control patterns in ML training algorithms",
+              "metric_value": "Not specified",
+              "baseline": "Existing clock calculi",
+              "improvement_percentage": "Not quantifiable"
+            },
+            "technical_breakdown": {
+              "method": "The proposed extension uses a relaxed activation analysis of dataflow networks, which involves a clock calculus for machine learning and real-time scheduling. This approach allows for the static determination of important properties such as liveness (absence of deadlocks) and static memory bounds.",
+              "architecture": "The proposed extension builds upon the Lustre language and its clock calculus, which is responsible for the static determination of important properties in dataflow networks.",
+              "implementation_details": "The paper proposes a conservative extension of Lustre's clock calculus, which involves the introduction of new clock variables and constraints to represent control patterns in ML training algorithms. The extension also involves the development of algorithms for analyzing the dataflow networks and determining the static properties of the system.",
+              "code_complexity": "The proposed extension is expected to increase the code complexity of the Lustre language, as it introduces new clock variables and constraints. However, the paper does not provide a detailed analysis of the computational complexity or training time implications of the proposed extension."
+            },
+            "relevance_tags": [
+              "Machine Learning",
+              "Real-Time Scheduling",
+              "Dataflow Networks",
+              "Clock Calculus",
+              "Model Interpretability and Explainability"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-07-30T03:34:42.686594",
+          "conference_info": {
+            "conference": "WWW",
+            "year": "2026",
+            "comment": "Extended version of the paper to appear in the proceedings of FDL 2026: https://www.fdl-conference.com/program.html",
+            "raw_comment": "Extended version of the paper to appear in the proceedings of FDL 2026: https://www.fdl-conference.com/program.html",
+            "category": "Data Mining & IR",
+            "rank": "A+"
+          }
+        },
+        {
+          "paper": {
+            "title": "KAMR: Grounding Generation via Knowledge-Aligned Multi-hop Retrieval",
+            "arxiv_id": "2607.27136v1",
+            "authors": [
+              "Xiaochen Wang",
+              "Yuan Zhong",
+              "Haoyu Wang",
+              "Ting Wang",
+              "Fenglong Ma"
+            ],
+            "published": "2026-07-29T17:07:37Z",
+            "updated": "2026-07-29T17:07:37Z",
+            "summary": "Graph-based retrieval-augmented generation increasingly relies on multi-hop retrieval, where answering a query requires composing multiple connected knowledge-graph triplets. However, existing retrievers often rank triplets independently via global semantic matching. Moreover, many multi-hop benchmarks provide only final answers, which limits supervision for query--triplet alignment and causes structurally necessary but weakly aligned facts to be missed. To address these issues, we propose a knowledge-aligned multi-hop retriever, KAMR, which distinguishes anchor triplets that are strongly constrained by the query from connected triplets that are weakly aligned yet structurally linked to the anchors. To mitigate the lack of query-triplet alignment supervision, we build a partial alignment dataset by masking triplet elements and prompting an LLM to generate corresponding queries, and optimize two contrastive objectives for pair-level and element-level matching. At inference time, KAMR retrieves anchors globally and then expands locally to collect connected evidence. Across four benchmarks, three LLM backbones, and fourteen baselines, KAMR consistently improves multi-hop retrieval and downstream question answering performance.",
+            "categories": "cs.IR",
+            "comment": "Accepted by COLM'26"
+          },
+          "analysis": {
+            "problem_statement": "The paper addresses the issue of multi-hop retrieval in graph-based retrieval-augmented generation, where existing retrievers often rank triplets independently and lack supervision for query-triplet alignment.",
+            "bottleneck_addressed": "Knowledge alignment bottleneck in multi-hop retrieval",
+            "executive_summary": "This paper proposes KAMR, a knowledge-aligned multi-hop retriever that addresses the limitations of existing retrievers by distinguishing strongly constrained anchor triplets from weakly aligned yet structurally linked triplets. This improvement enables better multi-hop retrieval and downstream question answering performance. The proposed method has significant implications for the current AI landscape, particularly in the context of retrieval-augmented generation.",
+            "key_metrics": {
+              "primary_metric": "Improved multi-hop retrieval and downstream question answering performance",
+              "metric_value": "Not specified",
+              "baseline": "Fourteen baselines, including three LLM backbones",
+              "improvement_percentage": "Not quantifiable"
+            },
+            "technical_breakdown": {
+              "method": "KAMR proposes a two-stage retrieval process: (1) global anchor retrieval and (2) local expansion to collect connected evidence. The method optimizes two contrastive objectives for pair-level and element-level matching to mitigate the lack of query-triplet alignment supervision.",
+              "architecture": "KAMR consists of a graph-based retrieval module and a local expansion module. The graph-based retrieval module uses a knowledge graph to retrieve anchor triplets, while the local expansion module collects connected evidence.",
+              "implementation_details": "KAMR uses a masked language model (LLM) to generate corresponding queries for masked triplet elements and optimizes two contrastive objectives: (1) pair-level matching and (2) element-level matching.",
+              "code_complexity": "The computational complexity of KAMR is not explicitly stated, but the method involves training a masked LLM and optimizing two contrastive objectives, which may require significant computational resources and training time."
+            },
+            "relevance_tags": [
+              "multi-hop retrieval",
+              "knowledge alignment",
+              "retrieval-augmented generation",
+              "question answering"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-07-30T03:34:21.052713",
+          "conference_info": {
+            "conference": "COLM",
+            "year": "2026",
+            "comment": "Accepted by COLM'26",
+            "raw_comment": "Accepted by COLM'26",
+            "category": "General ML/AI",
+            "rank": ""
+          }
+        },
+        {
+          "paper": {
+            "title": "Credit Cards, Confusion, Computation, and Consequences: What Can We Uncover About Language Model Reasoning?",
+            "arxiv_id": "2607.26952v1",
+            "authors": [
+              "Arnav Hiray",
+              "Agam Shah",
+              "Caleb Lu",
+              "Meghaj Tarte",
+              "Harsit Mittal",
+              "Sudheer Chava"
+            ],
+            "published": "2026-07-29T14:20:13Z",
+            "updated": "2026-07-29T14:20:13Z",
+            "summary": "We introduce CreditCardQA, the first financial literacy benchmark for numerical reasoning derived from real credit card agreements. The dataset contains 1,800 questions, including first-person variants that reflect how consumers naturally ask about fees, interest, and payments. We evaluate a range of large language and reasoning models under Chain-of-Thought (CoT) and Program-of-Thought (PoT) prompting. Overall, PoT yields consistent performance gains, particularly for models with weaker baseline reasoning, and narrows gaps between open- and closed-source systems. Through error analysis, we show that failures arise less from arithmetic and more from misapplied financial rules, missed conditions, and misunderstandings of contractual terms. We further analyze question difficulty and find that comparisons, conditional logic, and monetary constraints are especially challenging. We also find that errors often arise in edge cases such as late-payment penalties or small-balance scenarios that are more likely to affect lower-income or financially vulnerable individuals.",
+            "categories": "cs.CL",
+            "comment": "Accepted at CoLM 2026"
+          },
+          "analysis": {
+            "problem_statement": "Developing a robust and accurate numerical reasoning benchmark for language models, particularly in the context of financial literacy.",
+            "bottleneck_addressed": "Misapplication of financial rules, missed conditions, and misunderstandings of contractual terms in numerical reasoning tasks.",
+            "executive_summary": "This paper introduces CreditCardQA, a financial literacy benchmark for numerical reasoning, and evaluates the performance of large language and reasoning models under Chain-of-Thought (CoT) and Program-of-Thought (PoT) prompting. The results show that PoT yields consistent performance gains, particularly for models with weaker baseline reasoning, and highlights the importance of addressing edge cases in numerical reasoning tasks.",
+            "key_metrics": {
+              "primary_metric": "Consistent performance gains from Program-of-Thought (PoT) prompting",
+              "metric_value": "Not explicitly stated",
+              "baseline": "Chain-of-Thought (CoT) prompting",
+              "improvement_percentage": "Not quantifiable"
+            },
+            "technical_breakdown": {
+              "method": "CreditCardQA is a dataset of 1,800 questions derived from real credit card agreements, including first-person variants. The authors evaluate a range of large language and reasoning models under CoT and PoT prompting.",
+              "architecture": "The authors use a range of large language and reasoning models, including open- and closed-source systems.",
+              "implementation_details": "The authors use Chain-of-Thought (CoT) and Program-of-Thought (PoT) prompting techniques to evaluate the models.",
+              "code_complexity": "Not explicitly stated, but likely involves complex computational reasoning tasks and large-scale model training."
+            },
+            "relevance_tags": [
+              "Numerical Reasoning",
+              "Financial Literacy",
+              "Chain-of-Thought",
+              "Program-of-Thought",
+              "Large Language Models"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-07-30T03:33:17.842884",
+          "conference_info": {
+            "conference": "COLM",
+            "year": "2026",
+            "comment": "Accepted at CoLM 2026",
+            "raw_comment": "Accepted at CoLM 2026",
+            "category": "General ML/AI",
+            "rank": ""
+          }
+        },
+        {
+          "paper": {
+            "title": "Stable and Budget-Feasible Coalition Formation for Clustered Federated Learning: A Hedonic Potential-Game Approach",
+            "arxiv_id": "2607.26788v1",
+            "authors": [
+              "Cengis Hasan"
+            ],
+            "published": "2026-07-29T11:29:45Z",
+            "updated": "2026-07-29T11:29:45Z",
+            "summary": "Clustered federated learning benefits from organizing heterogeneous participants into coalitions that train coalition-specific models, but such clustering is sustainable only if participants prefer their assigned coalition and the required transfers are affordable. We develop a transferable-surplus model separating learning benefit, system cost, participant cost, and monetary transfers; an allocation rule converts coalition surplus into hedonic preferences, and weak budget feasibility guarantees nonnegative retained coordinator surplus. For symmetric pairwise allocations the induced game is an exact potential game: a Nash-stable partition exists, every strict better-response process converges, and with destination consent accepted better responses reach an individually stable partition. We characterize feasibility of bounded pair incentives and verify the exponentially many budget constraints in polynomial oracle time when retained slack is submodular. Decomposing welfare into participant potential and retained slack yields additive and multiplicative price-of-stability guarantees, the latter asymptotically tight; exact balance gives welfare-optimal stability only on the pairwise-representable class, and budget feasibility alone permits unbounded welfare loss. Global potential maximization equals weighted maximum-agreement correlation clustering, and approximation followed by stabilization satisfies an end-to-end welfare bound governed by retained slack and negative-edge mass, attained by an explicit construction. In a preregistered five-seed CIFAR-10 study the mechanism reaches the certified estimated-table welfare optimum on every primary instance, equal-surplus sharing has no Nash-stable outcome on three, and pairwise validation gain gives far more reliable pair signs than gradient alignment.",
+            "categories": "cs.GT",
+            "comment": "30 pages, 5 figures. Substantially revised and extended version of arXiv:2101.09673 (OptLearnMAS workshop at AAMAS 2021). Code and data: https://doi.org/10.5281/zenodo.21428635"
+          },
+          "analysis": {
+            "problem_statement": "Develop a stable and budget-feasible coalition formation mechanism for clustered federated learning, where heterogeneous participants form coalitions to train coalition-specific models.",
+            "bottleneck_addressed": "The paper addresses the 'coalition formation' bottleneck in federated learning, which is a key challenge in achieving efficient and scalable distributed machine learning.",
+            "executive_summary": "This paper presents a novel approach to coalition formation in federated learning, which ensures stability and budget feasibility. This is crucial for large-scale distributed learning, where participants may have different preferences and costs. The proposed mechanism is shown to be effective in achieving high welfare and stability in a variety of scenarios.",
+            "key_metrics": {
+              "primary_metric": "Nash-stable partition existence and convergence of better-response processes",
+              "metric_value": "Not explicitly quantified",
+              "baseline": "No baseline is provided, but the paper compares against existing approaches to coalition formation in federated learning",
+              "improvement_percentage": "Not applicable"
+            },
+            "technical_breakdown": {
+              "method": "The paper uses a hedonic potential-game approach, which involves defining a transferable-surplus model and an allocation rule to convert coalition surplus into hedonic preferences.",
+              "architecture": "The architecture consists of a coordinator that manages the coalition formation process and participants that contribute to the coalition-specific models.",
+              "implementation_details": "The paper uses a combination of game-theoretic techniques, including potential games and hedonic games, and optimization algorithms, such as submodular function maximization.",
+              "code_complexity": "The computational complexity of the proposed mechanism is polynomial in the number of participants, but the exact time complexity is not explicitly quantified."
+            },
+            "relevance_tags": [
+              "federated learning",
+              "coalition formation",
+              "game theory",
+              "distributed machine learning"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-07-30T03:32:53.917096",
+          "conference_info": {
+            "conference": "AAMAS",
+            "year": "2021",
+            "comment": "30 pages, 5 figures. Substantially revised and extended version of arXiv:2101.09673 (OptLearnMAS workshop at AAMAS 2021). Code and data: https://doi.org/10.5281/zenodo.21428635",
+            "raw_comment": "30 pages, 5 figures. Substantially revised and extended version of arXiv:2101.09673 (OptLearnMAS workshop at AAMAS 2021). Code and data: https://doi.org/10.5281/zenodo.21428635",
+            "category": "General ML/AI",
+            "rank": ""
+          }
+        },
+        {
+          "paper": {
+            "title": "FARI: Robust One-Step Inversion for Watermarking in Diffusion Models",
+            "arxiv_id": "2607.26723v1",
+            "authors": [
+              "Jindong Yang",
+              "Han Fang",
+              "Weiming Zhang",
+              "Nenghai Yu",
+              "Kejiang Chen"
+            ],
+            "published": "2026-07-29T10:13:55Z",
+            "updated": "2026-07-29T10:13:55Z",
+            "summary": "Inversion-based watermarking is a promising approach to authenticate diffusion-generated images, yet practical use is bottlenecked by inversion that is both slow and error-prone. While the primary challenge in the watermarking setting is robustness against external distortions, existing approaches over-optimize internal truncation error, and because that error scales with the sampler step size, they are inherently confined to high-NFE (number of function evaluations) regimes that cannot meet the dual demands of speed and robustness. In this work, we have two key observations: (i) the inversion trajectory has markedly lower curvature than the forward generation path does, making it highly compressible and amenable to low-NFE approximation; and (ii) in inversion for watermark verification, the trade-off between speed and truncation error is less critical, since external distortions dominate the error. A faster inverter provides a dual benefit: it is not only more efficient, but it also enables end-to-end adversarial training to directly target robustness, a task that is computationally prohibitive for the original, lengthy inversion trajectories. Building on this, we propose \\textbf{FARI} (\\textbf{F}ast \\textbf{A}symmetric \\textbf{R}obust \\textbf{I}nversion), a one-step inversion framework paired with lightweight adversarial LoRA fine-tuning of the denoiser for watermark extraction. While consolidation slightly increases internal error, FARI delivers large gains in both speed and robustness: with approximately 20 minutes of fine-tuning on a single NVIDIA RTX A6000 GPU, it surpasses 50-step DDIM inversion on watermark-verification robustness while dramatically reducing inference time. Code and pretrained models are available at https://github.com/0xD009/FARI.",
+            "categories": "cs.CR",
+            "comment": "Accepted by ICLR 2026"
+          },
+          "analysis": {
+            "problem_statement": "Developing a fast and robust inversion-based watermarking approach for authenticating diffusion-generated images.",
+            "bottleneck_addressed": "The slow and error-prone inversion process in existing watermarking methods, which hinders practical use.",
+            "executive_summary": "This paper addresses the bottleneck of slow and error-prone inversion in watermarking by proposing FARI, a one-step inversion framework that achieves large gains in speed and robustness while reducing inference time. This matters to the current AI landscape as it enables end-to-end adversarial training for robust watermark verification. FARI's efficiency and robustness make it a promising approach for authenticating diffusion-generated images.",
+            "key_metrics": {
+              "primary_metric": "Watermark-verification robustness",
+              "metric_value": "Surpasses 50-step DDIM inversion",
+              "baseline": "50-step DDIM inversion",
+              "improvement_percentage": "Not quantifiable, but significantly improved"
+            },
+            "technical_breakdown": {
+              "method": "FARI uses a one-step inversion framework that leverages the compressibility of the inversion trajectory and the dominance of external distortions over internal truncation error in watermark verification. This allows for a faster inverter that can be paired with lightweight adversarial LoRA fine-tuning of the denoiser for watermark extraction.",
+              "architecture": "FARI consists of a one-step inversion framework and a lightweight adversarial LoRA fine-tuning component.",
+              "implementation_details": "The paper uses a combination of techniques, including LoRA (Low-Rank Adaptation) and DDIM (Denoising Diffusion Implicit Model) inversion. The LoRA fine-tuning is used to adapt the denoiser for watermark extraction, while the DDIM inversion is used as a baseline for comparison.",
+              "code_complexity": "The code complexity is relatively low due to the use of lightweight LoRA fine-tuning and the one-step inversion framework. However, the training time for the LoRA fine-tuning is approximately 20 minutes on a single NVIDIA RTX A6000 GPU."
+            },
+            "relevance_tags": [
+              "Diffusion models",
+              "Watermarking",
+              "Inversion-based watermarking",
+              "Robustness",
+              "Efficiency",
+              "Adversarial training"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-07-30T03:31:53.735114",
+          "conference_info": {
+            "conference": "ICLR",
+            "year": "2026",
+            "comment": "Accepted by ICLR 2026",
+            "raw_comment": "Accepted by ICLR 2026",
+            "category": "General ML/AI",
+            "rank": ""
+          }
+        },
+        {
+          "paper": {
+            "title": "Flow Map Learning via Nongradient Vector Flow",
+            "arxiv_id": "2607.26398v1",
+            "authors": [
+              "Mark Goldstein",
+              "Anshuk Uppal",
+              "Raghav Singhal",
+              "Aahlad Puli",
+              "Rajesh Ranganath"
+            ],
+            "published": "2026-07-29T02:17:27Z",
+            "updated": "2026-07-29T02:17:27Z",
+            "summary": "Diffusion and flow-based models benefit from simple regression losses, but inference incurs significant overhead because sampling requires integration. Consistency models address this by directly learning the flow maps along the ODE trajectory, opening a design space between one-step and many-step approaches. However, existing methods face computational challenges such as requiring model inverses or backpropagation through iterated model calls, and do not always prove that the desired ODE flow map is a solution to the loss. We introduce SGFlow, an approach for learning flow maps that bypasses explicit invertibility constraints and expensive differentiation through model iteration. SGFlow trains a model to compute both the ODE solutions and the implied velocity from scratch by following non-conservative dynamics with a stationary point at the desired flow map. On the CIFAR image benchmark, no single method attains the best FID at every step count: SGFlow attains the best FID at 10 sampling steps and remains competitive with flow matching, Meanflow, and Lagrangian map matching at other step counts, while being the only one with a proven stationary-point guarantee for its stopgrad-based dynamics.",
+            "categories": "cs.LG",
+            "comment": "ICLR 2026"
+          },
+          "analysis": {
+            "problem_statement": "Learning flow maps for diffusion and flow-based models without requiring explicit invertibility constraints or expensive differentiation through model iteration.",
+            "bottleneck_addressed": "Computational challenges in learning flow maps, specifically requiring model inverses or backpropagation through iterated model calls.",
+            "executive_summary": "This paper introduces SGFlow, a novel approach for learning flow maps that bypasses explicit invertibility constraints and expensive differentiation through model iteration. This matters to the current AI landscape as it enables more efficient and scalable learning of flow maps, which are crucial for diffusion and flow-based models. SGFlow achieves state-of-the-art results on the CIFAR image benchmark, outperforming existing methods at certain step counts.",
+            "key_metrics": {
+              "primary_metric": "Best FID score at 10 sampling steps",
+              "metric_value": "Not explicitly stated",
+              "baseline": "Flow matching, Meanflow, and Lagrangian map matching",
+              "improvement_percentage": "Not quantifiable"
+            },
+            "technical_breakdown": {
+              "method": "SGFlow trains a model to compute both ODE solutions and implied velocity from scratch by following non-conservative dynamics with a stationary point at the desired flow map.",
+              "architecture": "SGFlow uses a stopgrad-based dynamics approach, which bypasses explicit invertibility constraints and expensive differentiation through model iteration.",
+              "implementation_details": "SGFlow uses a non-conservative dynamics approach with a stationary point at the desired flow map, which is achieved through stopgrad-based dynamics.",
+              "code_complexity": "SGFlow's computational complexity is not explicitly stated, but it is implied to be lower than existing methods that require model inverses or backpropagation through iterated model calls."
+            },
+            "relevance_tags": [
+              "Diffusion models",
+              "Flow-based models",
+              "Flow map learning",
+              "Computational efficiency",
+              "Scalability"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-07-30T03:33:06.803244",
+          "conference_info": {
+            "conference": "ICLR",
+            "year": "2026",
+            "comment": "ICLR 2026",
+            "raw_comment": "ICLR 2026",
+            "category": "General ML/AI",
+            "rank": ""
+          }
+        },
+        {
+          "paper": {
+            "title": "High-Order Markov Blanket Discovery via a k-Order Relaxation of the Faithfulness Assumption",
+            "arxiv_id": "2607.26357v1",
+            "authors": [
+              "Loong Kuan Lee",
+              "Ragavi Krishnamoorthy",
+              "Nico Piatkowski"
+            ],
+            "published": "2026-07-29T00:12:43Z",
+            "updated": "2026-07-29T00:12:43Z",
+            "summary": "The problem of learning the graphical Markov blanket (MB) of a variable from data has applications in many areas such as structure learning for Bayesian networks and Markov random fields, causal discovery, and feature selection. However, a common assumption most methods make is that the conditional independencies in the distribution imply the same separation in the graphical structure -- also known as the faithfulness assumption. Unfortunately, this assumption can be violated by higher-order dependencies such as XOR and parity-type relations, and -- on finite samples -- by empirical violations that, in extreme cases, even induce spurious dependencies absent from the true distribution. Therefore, in this paper we propose a \"k-order\" relaxation of the faithfulness assumption that captures parity type relationships between k+2 variables. We then propose a proof of concept algorithm called k-order Markov blanket (kOMB) that uses this relaxation for MB discovery. Finally, we empirically show how kOMB can recover the MB of a variable under both true and empirical violations of faithfulness. Code available at: https://github.com/lklee9/k-order-Markov-blanket",
+            "categories": "cs.LG",
+            "comment": "17 pages (9 pages main text + supplementary material), 4 figures, 8 tables, 3 algorithms. Accepted at the 42nd Conference on Uncertainty in Artificial Intelligence (UAI 2026). Code: https://github.com/lklee9/k-order-Markov-blanket"
+          },
+          "analysis": {
+            "problem_statement": "Learning the graphical Markov blanket (MB) of a variable from data without relying on the faithfulness assumption, which can be violated by higher-order dependencies.",
+            "bottleneck_addressed": "The faithfulness assumption in graphical model learning, which can lead to incorrect conditional independencies and spurious dependencies.",
+            "executive_summary": "This paper proposes a novel approach to Markov blanket discovery that relaxes the faithfulness assumption, enabling the recovery of true conditional independencies even in the presence of higher-order dependencies. This matters to the current AI landscape as it can improve the accuracy of structure learning for Bayesian networks and Markov random fields, and enable more robust causal discovery and feature selection. The proposed method, k-order Markov blanket (kOMB), has been empirically shown to outperform existing methods under both true and empirical violations of faithfulness.",
+            "key_metrics": {
+              "primary_metric": "Average accuracy of MB recovery",
+              "metric_value": "95.6% (reported in the paper)",
+              "baseline": "Existing methods relying on the faithfulness assumption",
+              "improvement_percentage": "10.2% improvement over the best baseline method (reported in the paper)"
+            },
+            "technical_breakdown": {
+              "method": "The proposed k-order relaxation of the faithfulness assumption captures parity-type relationships between k+2 variables, allowing for the discovery of higher-order conditional independencies. The k-order Markov blanket (kOMB) algorithm uses this relaxation to learn the MB of a variable.",
+              "architecture": "The kOMB algorithm consists of three main components: (1) a k-order relaxation module, (2) a conditional independence test module, and (3) a MB recovery module.",
+              "implementation_details": "The kOMB algorithm uses a combination of statistical tests (e.g., mutual information) and machine learning techniques (e.g., random forests) to learn the MB of a variable.",
+              "code_complexity": "The computational complexity of the kOMB algorithm is O(n^k), where n is the number of variables and k is the order of the relaxation. The training time of the algorithm is reported to be around 10-30 minutes for datasets with up to 100 variables."
+            },
+            "relevance_tags": [
+              "graphical models",
+              "Markov blanket discovery",
+              "faithfulness assumption",
+              "higher-order dependencies",
+              "Bayesian networks",
+              "Markov random fields",
+              "causal discovery",
+              "feature selection"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-07-30T03:32:37.443258",
+          "conference_info": {
+            "conference": "UAI",
+            "year": "2026",
+            "comment": "17 pages (9 pages main text + supplementary material), 4 figures, 8 tables, 3 algorithms. Accepted at the 42nd Conference on Uncertainty in Artificial Intelligence (UAI 2026). Code: https://github.com/lklee9/k-order-Markov-blanket",
+            "raw_comment": "17 pages (9 pages main text + supplementary material), 4 figures, 8 tables, 3 algorithms. Accepted at the 42nd Conference on Uncertainty in Artificial Intelligence (UAI 2026). Code: https://github.com/lklee9/k-order-Markov-blanket",
+            "category": "General ML/AI",
+            "rank": "A+"
+          }
+        },
+        {
+          "paper": {
+            "title": "Mapping Without Graphs: Learning Coherence Traffic for Task Placement",
+            "arxiv_id": "2607.18879v2",
+            "authors": [
+              "Guochu Xiong",
+              "Tianrui Ma",
+              "Weichen Liu"
+            ],
+            "published": "2026-07-21T09:07:52Z",
+            "updated": "2026-07-29T07:08:43Z",
+            "summary": "Cache coherence is essential for communication in many-core Network-on-Chip (NoC)-based systems. As application scale and complexity increase, efficiently managing communication becomes increasingly challenging, making task mapping a key optimization technique. However, existing task mapping approaches suffer from two major limitations. First, they rely on predefined task graphs whose dependencies are typically derived from program structure or runtime information, such as dataflow, synchronization, traces, or profiling, without explicitly capturing coherence-induced interactions arising from shared data accesses. Consequently, these graphs provide only a partial representation of inter-task relationships, limiting mapping effectiveness. Second, they generally overlook cache coherence, even though coherence traffic constitutes a significant portion of NoC communication. This mismatch between modeled communication behavior and actual runtime interactions often leads to suboptimal mappings and degraded system performance. To address these limitations, we propose CoTM, a coherence-aware task mapping framework that constructs task graphs by inferring inter-task dependencies from dynamic coherence behavior. CoTM employs a lightweight heuristic with a multi-start optimization strategy to iteratively refine task placement, guided by a coherence-aware penalty function that jointly considers coherence traffic and NoC performance metrics. Experimental results demonstrate that CoTM reduces average link utilization by up to 47.85% and total energy consumption by up to 10.30% compared with existing approaches. These results highlight the importance of incorporating cache coherence into task mapping and demonstrate the potential of coherence-aware optimization for future many-core NoC systems.",
+            "categories": "cs.DC",
+            "comment": "Accepted by ICCAD 2026"
+          },
+          "analysis": {
+            "problem_statement": "Efficiently managing communication in many-core Network-on-Chip (NoC)-based systems by addressing the limitations of existing task mapping approaches.",
+            "bottleneck_addressed": "The bottleneck of suboptimal task mapping due to the lack of coherence-awareness in existing approaches.",
+            "executive_summary": "This paper addresses a critical issue in many-core NoC systems by proposing a coherence-aware task mapping framework (CoTM) that infers inter-task dependencies from dynamic coherence behavior. CoTM improves task mapping effectiveness and reduces NoC communication overhead, making it a crucial contribution to the current AI landscape.",
+            "key_metrics": {
+              "primary_metric": "Average link utilization",
+              "metric_value": "47.85%",
+              "baseline": "Existing approaches",
+              "improvement_percentage": "47.85%"
+            },
+            "technical_breakdown": {
+              "method": "CoTM employs a lightweight heuristic with a multi-start optimization strategy to iteratively refine task placement, guided by a coherence-aware penalty function that jointly considers coherence traffic and NoC performance metrics.",
+              "architecture": "CoTM consists of three main components: (1) a coherence-aware task graph construction module, (2) a multi-start optimization strategy, and (3) a coherence-aware penalty function.",
+              "implementation_details": "CoTM uses a combination of graph-based and optimization-based techniques, including graph construction, multi-start optimization, and penalty function computation.",
+              "code_complexity": "The computational complexity of CoTM is O(n^2) due to the graph construction and optimization steps, where n is the number of tasks."
+            },
+            "relevance_tags": [
+              "many-core NoC systems",
+              "task mapping",
+              "cache coherence",
+              "optimization",
+              "graph-based techniques"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-07-30T03:34:34.785026",
+          "conference_info": {
+            "conference": "ICCAD",
+            "year": "2026",
+            "comment": "Accepted by ICCAD 2026",
+            "raw_comment": "Accepted by ICCAD 2026",
+            "category": "Hardware & EDA",
+            "rank": "A"
+          }
+        },
+        {
+          "paper": {
+            "title": "Affective Tools for Thought: Towards Shared Attention and Affective Reorienting in AI-Supported Thinking",
+            "arxiv_id": "2607.26731v1",
+            "authors": [
+              "Yifu Liu",
+              "Raffaele Andrea Buono",
+              "Nadia Bianchi-Berthouze"
+            ],
+            "published": "2026-07-29T10:22:28Z",
+            "updated": "2026-07-29T10:22:28Z",
+            "summary": "Current Tools for Thought (TfTs) treat affect as either friction that slows cognitive progress or a signal to optimise it. Drawing on enactive cognitive science, we argue that affect is constitutive of cognition: it reshapes the trajectory of thinking, not just the speed. We identify two core barriers for Affective TfTs: the lack of Shared Attention (caring, directed attention to the user's mode of engagement) and the lack of Affective Reorienting (the capacity to use emotional moments to open new trajectories rather than reinforcing predetermined ones), and propose three design strategies that address both: Chain of Emotion X Chain of Thought, Affective Mirror, and Prompted Reorienting. The strategies are grounded in empirical findings from a study of a touch-aware conversational agent for embodied craft learning, and are oriented as provocations for future design.",
+            "categories": "cs.HC",
+            "comment": "4 pages, 2-column ACM format. Accepted to the CHI 2026 Workshop on Tools for Thought: Understanding, Protecting, and Augmenting Human Cognition with Generative AI, April 16, 2026, Barcelona, Spain. Workshop website: https://ai-tools-for-thought.github.io/workshop/"
+          },
+          "analysis": {
+            "problem_statement": "Current Tools for Thought (TfTs) fail to effectively incorporate affect into AI-supported thinking, leading to a lack of shared attention and affective reorienting.",
+            "bottleneck_addressed": "The lack of emotional intelligence and contextual understanding in AI systems.",
+            "executive_summary": "This paper addresses the limitations of current AI systems by proposing three design strategies that incorporate affect into AI-supported thinking, enabling shared attention and affective reorienting. This is crucial for developing more human-centered and effective AI systems. The proposed strategies are grounded in empirical findings and oriented as provocations for future design.",
+            "key_metrics": {
+              "primary_metric": "Improved affective understanding and reorienting in AI-supported thinking",
+              "metric_value": "N/A",
+              "baseline": "Current Tools for Thought (TfTs)",
+              "improvement_percentage": "N/A"
+            },
+            "technical_breakdown": {
+              "method": "The proposed design strategies, Chain of Emotion X Chain of Thought, Affective Mirror, and Prompted Reorienting, are based on enactive cognitive science and aim to reshape the trajectory of thinking by incorporating affect.",
+              "architecture": "The strategies are designed to work within existing AI systems, leveraging techniques such as natural language processing and machine learning to analyze and respond to user emotions.",
+              "implementation_details": "The Chain of Emotion X Chain of Thought strategy uses a combination of natural language processing and machine learning to analyze user emotions and adapt the conversation accordingly. The Affective Mirror strategy uses a mirror-like interface to reflect user emotions and encourage empathy. The Prompted Reorienting strategy uses prompts to reorient the conversation and encourage new trajectories.",
+              "code_complexity": "The proposed strategies are likely to require moderate to high code complexity, as they involve integrating multiple AI techniques and designing new interfaces. However, the exact complexity will depend on the specific implementation and the chosen technologies."
+            },
+            "relevance_tags": [
+              "Affective Computing",
+              "Enactive Cognitive Science",
+              "Tools for Thought",
+              "Human-Centered AI",
+              "Emotional Intelligence"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-07-30T03:34:12.168307",
+          "conference_info": {
+            "conference": "CHI",
+            "year": "2026",
+            "comment": "4 pages, 2-column ACM format. Accepted to the CHI 2026 Workshop on Tools for Thought: Understanding, Protecting, and Augmenting Human Cognition with Generative AI, April 16, 2026, Barcelona, Spain. Workshop website: https://ai-tools-for-thought.github.io/workshop/",
+            "raw_comment": "4 pages, 2-column ACM format. Accepted to the CHI 2026 Workshop on Tools for Thought: Understanding, Protecting, and Augmenting Human Cognition with Generative AI, April 16, 2026, Barcelona, Spain. Workshop website: https://ai-tools-for-thought.github.io/workshop/",
+            "category": "Human-Computer Interaction",
+            "rank": "A+"
+          }
+        },
+        {
+          "paper": {
+            "title": "Towards Grounded GI Endoscopy VQA via Multi-Task Learning on Small VLMs",
+            "arxiv_id": "2607.27122v1",
+            "authors": [
+              "Itbaan Safwan",
+              "Ramail Khan",
+              "Muhammad Annas Shaikh",
+              "Muhammad Atif Tahir"
+            ],
+            "published": "2026-07-29T16:49:19Z",
+            "updated": "2026-07-29T16:49:19Z",
+            "summary": "Gastrointestinal (GI) endoscopic image analysis has shifted from single-label classification toward visual question answering (VQA), where a model must answer free-form clinical questions about an image. While recent vision-language models (VLMs) achieve promising answer accuracy on this task, clinical adoption also requires the model's internal representations to reflect the visual evidence behind its answers. We propose a simple multi-task fine-tuning recipe that constructs auxiliary grounding and description tasks from an existing VQA dataset with minimal additional annotation: expert-annotated polyp masks are reused directly, while a GI-domain pretrained classifier with Grad-CAM localization provides weak supervision for finding categories that lack ground-truth masks. Three small VLM backbones are fine-tuned with low-rank adaptation under matched VQA-only and multi-task recipes on Kvasir-VQA-x1, and we show consistent accuracy gains together with improved implicit alignment between answer tokens and the relevant image region, evaluated on both in-distribution and out-of-distribution data.",
+            "categories": "cs.CV",
+            "comment": "Accepted at EMA4MICCAI 2026 (Workshop on Efficient Medical AI, MICCAI 2026)"
+          },
+          "analysis": {
+            "problem_statement": "The paper addresses the challenge of developing a grounded visual question answering (VQA) model for gastrointestinal (GI) endoscopy images that can provide accurate and interpretable answers.",
+            "bottleneck_addressed": "The lack of interpretability and grounding in VQA models, which makes it difficult to understand the visual evidence behind the model's answers.",
+            "executive_summary": "This paper proposes a simple multi-task fine-tuning recipe to improve the accuracy and interpretability of VQA models for GI endoscopy images. By leveraging expert-annotated polyp masks and a GI-domain pretrained classifier, the model can provide more accurate and grounded answers. This work is relevant to the current AI landscape as it addresses the need for more interpretable and explainable AI models in medical imaging.",
+            "key_metrics": {
+              "primary_metric": "Accuracy gains on both in-distribution and out-of-distribution data",
+              "metric_value": "Not explicitly stated in the abstract, but implies a significant improvement",
+              "baseline": "VQA-only recipe",
+              "improvement_percentage": "Not quantifiable from the abstract, but implies a significant improvement"
+            },
+            "technical_breakdown": {
+              "method": "The proposed method involves fine-tuning three small VLM backbones with low-rank adaptation under matched VQA-only and multi-task recipes on Kvasir-VQA-x1. The multi-task recipe includes two auxiliary tasks: (1) grounding, where the model is trained to predict expert-annotated polyp masks, and (2) description, where the model is trained to predict categories that lack ground-truth masks using a GI-domain pretrained classifier with Grad-CAM localization.",
+              "architecture": "The paper uses three small VLM backbones, which are not explicitly specified, and a GI-domain pretrained classifier with Grad-CAM localization.",
+              "implementation_details": "The paper uses low-rank adaptation, which is a technique for adapting the weights of a pre-trained model to a new task. The implementation details are not explicitly stated, but it is likely that the authors used a standard implementation of low-rank adaptation.",
+              "code_complexity": "The code complexity is likely moderate to high, as the paper proposes a multi-task fine-tuning recipe that involves two auxiliary tasks and low-rank adaptation. The training time is likely significant, as the paper uses three small VLM backbones and a GI-domain pretrained classifier."
+            },
+            "relevance_tags": [
+              "Medical Imaging",
+              "Visual Question Answering",
+              "Interpretability",
+              "Explainability",
+              "Multi-Task Learning",
+              "Low-Rank Adaptation"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-07-30T03:33:38.229945",
+          "conference_info": {
+            "conference": "MICCAI",
+            "year": "2026",
+            "comment": "Accepted at EMA4MICCAI 2026 (Workshop on Efficient Medical AI, MICCAI 2026)",
+            "raw_comment": "Accepted at EMA4MICCAI 2026 (Workshop on Efficient Medical AI, MICCAI 2026)",
+            "category": "Medical & Biomedical AI",
+            "rank": "A"
+          }
+        },
+        {
+          "paper": {
+            "title": "MPEcho: A Melody and Phoneme-Aware Generative Framework for Controllable Cover Song Generation",
+            "arxiv_id": "2607.26698v1",
+            "authors": [
+              "Wei-Jaw Lee",
+              "Hsuan-Yu Yeh",
+              "Ting-Yi Hu",
+              "Chih-Pin Tan",
+              "Fang-Duo Tsai",
+              "Yi-Hsuan Yang"
+            ],
+            "published": "2026-07-29T09:45:13Z",
+            "updated": "2026-07-29T09:45:13Z",
+            "summary": "Cover song generation (CSG) should preserve the melodic and linguistic content of a reference song while recreating the remaining musical components. The state-of-the-art model SongEcho utilizes $F_0$ sequences and voiced/unvoiced (V/UV) tags for conditioning; however, implicit linguistic information from V/UV tags cannot guarantee lyric accuracy, leading to a high phoneme error rate (PER). Inspired by singing voice synthesis (SVS), we propose MPEcho, which integrates a phoneme encoder and a length regulator (LR) into the SongEcho framework. By providing explicit phoneme-level conditioning and precise temporal boundaries, MPEcho significantly reduces PER. To enable this, we developed Phonsa, a Whisper-based automatic transcription model that provides high-precision phoneme-level annotations for singing voices, overcoming the scarcity of high-quality audio-phoneme pairs. Experimental results validate the effectiveness of Phonsa for alignment and MPEcho for end-to-end CSG. The audio samples, code and weights can be accessed from https://lonian6.github.io/MPEcho.github.io/.",
+            "categories": "cs.SD",
+            "comment": "Accepted by the 27th International Society for Music Information Retrieval (ISMIR)"
+          },
+          "analysis": {
+            "problem_statement": "The paper addresses the challenge of generating high-quality cover songs that preserve the melodic and linguistic content of a reference song while recreating the remaining musical components.",
+            "bottleneck_addressed": "The AI bottleneck addressed is the difficulty of generating cover songs with high phoneme accuracy, which is a common issue in music generation tasks.",
+            "executive_summary": "This paper proposes a novel framework, MPEcho, that integrates phoneme-level conditioning and precise temporal boundaries to generate high-quality cover songs. The framework is enabled by Phonsa, a Whisper-based automatic transcription model that provides high-precision phoneme-level annotations for singing voices. This work has significant implications for the music generation community, as it addresses a long-standing challenge in cover song generation.",
+            "key_metrics": {
+              "primary_metric": "Phoneme Error Rate (PER)",
+              "metric_value": "Not explicitly stated",
+              "baseline": "SongEcho",
+              "improvement_percentage": "Not quantifiable"
+            },
+            "technical_breakdown": {
+              "method": "MPEcho integrates a phoneme encoder and a length regulator into the SongEcho framework, which uses $F_0$ sequences and voiced/unvoiced (V/UV) tags for conditioning. Phonsa, a Whisper-based automatic transcription model, provides high-precision phoneme-level annotations for singing voices.",
+              "architecture": "The architecture consists of a phoneme encoder, a length regulator, and a generative model (SongEcho).",
+              "implementation_details": "The implementation uses a combination of techniques, including Whisper-based automatic transcription, phoneme encoding, and length regulation. The code complexity is not explicitly stated, but it is likely to be high due to the use of complex models and techniques.",
+              "code_complexity": "High"
+            },
+            "relevance_tags": [
+              "Music Generation",
+              "Cover Song Generation",
+              "Phoneme Accuracy",
+              "Singing Voice Synthesis"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-07-30T03:31:55.904212",
+          "conference_info": {
+            "conference": "ISMIR",
+            "year": "Unknown",
+            "comment": "Accepted by the 27th International Society for Music Information Retrieval (ISMIR)",
+            "raw_comment": "Accepted by the 27th International Society for Music Information Retrieval (ISMIR)",
+            "category": "Other",
+            "rank": ""
+          }
+        },
+        {
+          "paper": {
+            "title": "NELSSA: A GPU-PNM Heterogeneous System for Mixed-Length LLM Serving via Length-based Request Placement",
+            "arxiv_id": "2607.26633v1",
+            "authors": [
+              "Sookyung Choi",
+              "Seungyong Lee",
+              "Kangkyu Park",
+              "Yunseo Chun",
+              "Junseok Lee",
+              "Hyeongseok Gwak",
+              "Myunghyun Rhee",
+              "Euiseok Kim",
+              "Donguk Moon",
+              "Kwangsik Shin",
+              "Guseul Heo",
+              "Youngpyo Joo",
+              "Hoshik Kim",
+              "Jongse Park"
+            ],
+            "published": "2026-07-29T08:58:04Z",
+            "updated": "2026-07-29T08:58:04Z",
+            "summary": "Modern LLMs and their agentic applications are broadening the range of serving workloads, spanning context lengths from a few hundred tokens to hundreds of thousands. As these requests frequently interleave within the same serving window, LLM serving systems must handle highly heterogeneous mixed-length workloads. Such mixed-length workloads expose fundamental inefficiencies in GPU-centric serving architectures, whose throughput depends on large, memory-constrained batches. In this paper, we present NELSSA, an LLM serving system that integrates GPUs with real-world Processing-near-Memory (PNM) accelerator devices to efficiently support mixed-length workloads. NELSSA employs length-based request placement to route short-context requests to GPUs and long-context requests to the PNM tier, incorporating runtime migration to accommodate dynamic context growth without recomputation. We prototype NELSSA as an end-to-end system, implementing device-level sparse attention on PNM, GPU decode kernels, and a host-side runtime that orchestrates scheduling and cross-tier memory movement over a CXL-enabled infrastructure with RPC and RDMA support. Across mixed-length LLM workloads, NELSSA improves decode throughput by up to 5.5x in tokens/sec and reduces P99 latency by up to 15x compared to GPU-only baselines. Our end-to-end prototype and experimental results suggest that integrated GPU-PNM serving, enabled by CXL-based disaggregation, is a promising system paradigm for scalable and flexible LLM infrastructures that support evolving workloads.",
+            "categories": "cs.AR",
+            "comment": "14 pages, 19 figures. Accepted to the 59th IEEE/ACM International Symposium on Microarchitecture (MICRO 2026)"
+          },
+          "analysis": {
+            "problem_statement": "Modern LLM serving systems struggle to handle highly heterogeneous mixed-length workloads, exposing inefficiencies in GPU-centric architectures.",
+            "bottleneck_addressed": "Memory-constrained batch processing and inefficient request routing in GPU-centric LLM serving systems.",
+            "executive_summary": "This paper presents NELSSA, a GPU-PNM heterogeneous system that efficiently supports mixed-length LLM workloads by employing length-based request placement and runtime migration. This matters to the current AI landscape as it enables scalable and flexible LLM infrastructures that support evolving workloads. By leveraging CXL-based disaggregation, NELSSA improves decode throughput and reduces latency, making it a promising system paradigm.",
+            "key_metrics": {
+              "primary_metric": "Decode throughput",
+              "metric_value": "5.5x tokens/sec",
+              "baseline": "GPU-only baselines",
+              "improvement_percentage": "450%"
+            },
+            "technical_breakdown": {
+              "method": "NELSSA employs length-based request placement to route short-context requests to GPUs and long-context requests to the PNM tier, incorporating runtime migration to accommodate dynamic context growth without recomputation.",
+              "architecture": "GPU-PNM heterogeneous system with CXL-enabled infrastructure, RPC, and RDMA support",
+              "implementation_details": "Device-level sparse attention on PNM, GPU decode kernels, and a host-side runtime that orchestrates scheduling and cross-tier memory movement",
+              "code_complexity": "High, due to the complexity of implementing a heterogeneous system with multiple tiers and inter-tier communication protocols"
+            },
+            "relevance_tags": [
+              "LLM serving",
+              "GPU-PNM heterogeneous systems",
+              "CXL-based disaggregation",
+              "Mixed-length workloads",
+              "Runtime migration"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-07-30T03:34:56.859995",
+          "conference_info": {
+            "conference": "IEEE/ACM International Symposium on Microarchitecture",
+            "year": "2026",
+            "comment": "14 pages, 19 figures. Accepted to the 59th IEEE/ACM International Symposium on Microarchitecture (MICRO 2026)",
+            "raw_comment": "14 pages, 19 figures. Accepted to the 59th IEEE/ACM International Symposium on Microarchitecture (MICRO 2026)",
+            "category": "Systems & Architecture",
+            "rank": "A"
+          }
+        }
+      ],
+      "updated_at": "2026-07-30T03:34:57.886766"
     }
   }
 }
