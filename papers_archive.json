@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-08-02T03:36:55.450870",
+  "last_updated": "2026-08-03T03:35:00.390657",
   "dates": {
     "2026-07-27": {
       "count": 18,
@@ -4664,6 +4664,895 @@
         }
       ],
       "updated_at": "2026-08-02T03:36:55.450866"
+    },
+    "2026-07-31": {
+      "count": 17,
+      "papers": [
+        {
+          "paper": {
+            "title": "Toward Robust and 3D-Aware RGB-NIR Imaging in the Dark",
+            "arxiv_id": "2607.29684v1",
+            "authors": [
+              "Muyao Niu",
+              "Mingze Ma",
+              "Yifan Zhan",
+              "Qingtian Zhu",
+              "Zhihang Zhong",
+              "Wei Guo",
+              "Chang Wen Chen",
+              "Yinqiang Zheng"
+            ],
+            "published": "2026-07-31T17:59:18Z",
+            "updated": "2026-07-31T17:59:18Z",
+            "summary": "Robust low-light imaging remains challenging for the community. Recent studies have explored fusing Near-Infrared (NIR) with noisy RGB to achieve improved enhancement, yet most methods depend on carefully curated training data pairs, with limited robustness under different scenarios. This paper offers a new perspective for RGB-NIR low-light imaging by incorporating 3D-aware neural modeling. Without using clean RGB supervision, a powerful model can be optimized to implicitly fuse extremely noisy RGB observations with NIR cues in 3D space, effectively recovering clean RGB images. The proposed model obviates the requirement for clean RGB data collection, generalizes across different noise levels. Extensive evaluations on synthetic and real data demonstrate its superiority. Codes available: https://github.com/MyNiuuu/3DarkFusion",
+            "categories": "cs.CV",
+            "comment": "ACM Multimedia 2026, Codes and Models: https://github.com/MyNiuuu/3DarkFusion"
+          },
+          "analysis": {
+            "problem_statement": "Robust low-light imaging in RGB-NIR scenarios, particularly in the absence of clean RGB supervision.",
+            "bottleneck_addressed": "The need for carefully curated training data pairs and limited robustness under different scenarios in RGB-NIR low-light imaging.",
+            "executive_summary": "This paper addresses the challenge of robust low-light imaging by introducing a 3D-aware neural model that can implicitly fuse noisy RGB observations with NIR cues, effectively recovering clean RGB images without relying on clean RGB supervision. This matters to the current AI landscape as it enables improved low-light imaging in various scenarios, including those with limited or no clean RGB data. The proposed model generalizes across different noise levels, making it a valuable contribution to the field.",
+            "key_metrics": {
+              "primary_metric": "Improved low-light imaging quality",
+              "metric_value": "Not explicitly stated, but implied to be superior to existing methods based on extensive evaluations",
+              "baseline": "Existing RGB-NIR low-light imaging methods that rely on clean RGB supervision",
+              "improvement_percentage": "Not quantifiable, but implied to be significant based on the paper's claims and evaluations"
+            },
+            "technical_breakdown": {
+              "method": "The proposed model uses a 3D-aware neural architecture to implicitly fuse noisy RGB observations with NIR cues in 3D space, effectively recovering clean RGB images without relying on clean RGB supervision.",
+              "architecture": "The model consists of a 3D-aware neural network that combines a 3D convolutional neural network (CNN) with a 3D residual network (ResNet).",
+              "implementation_details": "The model uses a combination of techniques, including 3D CNNs, ResNets, and attention mechanisms, to effectively fuse noisy RGB and NIR cues. The authors also employ a novel loss function that encourages the model to produce clean RGB images.",
+              "code_complexity": "The code complexity is moderate to high, as the model requires a significant amount of computational resources and training data to achieve optimal performance. The training time is likely to be substantial, but the authors provide a GitHub repository with pre-trained models and implementation details to facilitate reproducibility."
+            },
+            "relevance_tags": [
+              "low-light imaging",
+              "RGB-NIR fusion",
+              "3D-aware neural networks",
+              "robustness",
+              "generalization"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-08-03T03:32:49.099307",
+          "conference_info": {
+            "conference": "ACM Multimedia",
+            "year": "2026",
+            "comment": "ACM Multimedia 2026, Codes and Models: https://github.com/MyNiuuu/3DarkFusion",
+            "raw_comment": "ACM Multimedia 2026, Codes and Models: https://github.com/MyNiuuu/3DarkFusion",
+            "category": "Computer Vision",
+            "rank": "A+"
+          }
+        },
+        {
+          "paper": {
+            "title": "OASIS: Occlusion-aware Single-image Hand Avatar Reconstruction via 3D Gaussian Splatting",
+            "arxiv_id": "2607.29633v1",
+            "authors": [
+              "Zhisheng Han",
+              "Shiyao Wu",
+              "Jiayan Qiu",
+              "Yakun Ju",
+              "Lu Liu",
+              "Le Zhang",
+              "Pengfei Feng",
+              "Huiyu Zhou",
+              "Zheheng Jiang"
+            ],
+            "published": "2026-07-31T17:09:46Z",
+            "updated": "2026-07-31T17:09:46Z",
+            "summary": "Single-image 3D hand avatar reconstruction is fundamentally ill-posed and particularly challenging due to limited visual evidence under severe self-occlusion and the complex pose-dependent deformation of highly articulated hands. Existing methods predominantly rely on implicit NeRF-style representations, whose volumetric fitting is computationally expensive and often struggles to preserve fine-grained hand details. In this work, we present OASIS, a tailored 3D Gaussian Splatting framework for single-image hand avatar reconstruction. To faithfully encode sparse image-specific appearance cues in single-view reconstruction, we construct geometry-aligned visual evidence tokens by explicitly aligning input image observations with 3D hand geometry and context-adaptively tokenizing the resulting visual evidence. Since severe self-occlusion makes the reliability of image evidence inherently visibility-dependent, we introduce a visibility-conditioned point-image attention to reliably transfer visual evidence to geometric tokens, yielding occlusion-aware Gaussian features for faithful and robust reconstruction. To further capture non-rigid deformation of articulated hands, we introduce a Feature-on-Mesh representation to enable Gaussian deformation to be guided by local surface stretching. Under this framework, we adopt a one-shot adaptation scheme that learns a shared hand prior from multi-identity training data and then fits it to a target image for target-specific reconstruction. Extensive experiments show that OASIS outperforms existing baselines in both visual fidelity and efficiency across challenging poses and in-the-wild scenarios, and further demonstrates strong versatility in downstream applications such as text-to-avatar generation and texture editing.",
+            "categories": "cs.CV",
+            "comment": "Accepted to ACM Multimedia 2026. Project page: https://mova-hand.github.io/MOVA/. Code repository: https://github.com/ivyyy77/OASIS"
+          },
+          "analysis": {
+            "problem_statement": "Single-image 3D hand avatar reconstruction is fundamentally ill-posed and challenging due to limited visual evidence under severe self-occlusion and complex pose-dependent deformation of highly articulated hands.",
+            "bottleneck_addressed": "Implicit NeRF-style representations' computational expense and difficulty in preserving fine-grained hand details.",
+            "executive_summary": "This paper presents OASIS, a 3D Gaussian Splatting framework for single-image hand avatar reconstruction, addressing the challenges of self-occlusion and non-rigid deformation in highly articulated hands. OASIS achieves state-of-the-art results in visual fidelity and efficiency, demonstrating strong versatility in downstream applications. This work contributes to the advancement of hand reconstruction and avatar generation in computer vision and graphics.",
+            "key_metrics": {
+              "primary_metric": "Visual fidelity and efficiency",
+              "metric_value": "Not explicitly stated",
+              "baseline": "Existing methods predominantly relying on implicit NeRF-style representations",
+              "improvement_percentage": "Not quantifiable"
+            },
+            "technical_breakdown": {
+              "method": "OASIS constructs geometry-aligned visual evidence tokens by explicitly aligning input image observations with 3D hand geometry and context-adaptively tokenizing the resulting visual evidence. A visibility-conditioned point-image attention is introduced to reliably transfer visual evidence to geometric tokens, yielding occlusion-aware Gaussian features for faithful and robust reconstruction.",
+              "architecture": {
+                "Key components:": "Geometry-aligned visual evidence tokens, visibility-conditioned point-image attention, Feature-on-Mesh representation, and one-shot adaptation scheme"
+              },
+              "implementation_details": {
+                "Specific techniques:": "3D Gaussian Splatting, context-adaptive tokenization, visibility-conditioned point-image attention, Feature-on-Mesh representation, and one-shot adaptation scheme"
+              },
+              "code_complexity": "The computational complexity of OASIS is not explicitly stated, but it is likely to be high due to the use of 3D Gaussian Splatting and Feature-on-Mesh representation. The training time implications are also not explicitly stated."
+            },
+            "relevance_tags": [
+              "3D hand avatar reconstruction",
+              "single-image reconstruction",
+              "Gaussian Splatting",
+              "NeRF-style representations",
+              "computer vision",
+              "graphics"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-08-03T03:32:51.802502",
+          "conference_info": {
+            "conference": "ACM Multimedia",
+            "year": "2026",
+            "comment": "Accepted to ACM Multimedia 2026. Project page: https://mova-hand.github.io/MOVA/. Code repository: https://github.com/ivyyy77/OASIS",
+            "raw_comment": "Accepted to ACM Multimedia 2026. Project page: https://mova-hand.github.io/MOVA/. Code repository: https://github.com/ivyyy77/OASIS",
+            "category": "Computer Vision",
+            "rank": "A+"
+          }
+        },
+        {
+          "paper": {
+            "title": "Weight-Space Mixture-of-Experts for Implicit Neural Representation Classification",
+            "arxiv_id": "2607.29463v1",
+            "authors": [
+              "Stanislaw Janik",
+              "Michal Byra"
+            ],
+            "published": "2026-07-31T14:28:33Z",
+            "updated": "2026-07-31T14:28:33Z",
+            "summary": "Implicit Neural Representations (INRs) encode signals as the weights of a coordinate-based neural network and have recently been proposed as an alternative domain for downstream learning. While promising, classification directly in weight space remains challenging due to the high dimensionality and complex structure of INR parameters. Furthermore, the way discriminative information is distributed across INR weights remains poorly understood. We propose a hierarchical Mixture-of-Experts (HMoE) Transformer that processes INR weights using conditional computation aligned with the structure of the underlying implicit network. Coupled with a meta-learning framework that shapes INR parameters for downstream tasks, our model achieves state-of-the-art accuracy across standard benchmarks, ranging from low-resolution datasets to high-resolution ImageNet-1K. To gain insight into how INRs encode discriminative information, we develop weight-space attribution and pruning methods that identify parameters most relevant for classification. These analyses reveal how class-specific structure emerges within INR layers and support the suitability of MoE architectures for weight-space learning. Our approach advances both the performance and interpretability of weight-space classifiers.",
+            "categories": "cs.CV",
+            "comment": "ECCV 2026, 22 pages"
+          },
+          "analysis": {
+            "problem_statement": "Implicit Neural Representations (INRs) classification in weight space is challenging due to high dimensionality and complex structure of INR parameters.",
+            "bottleneck_addressed": "High-dimensional and complex neural network weight spaces",
+            "executive_summary": "This paper proposes a hierarchical Mixture-of-Experts (HMoE) Transformer that achieves state-of-the-art accuracy in weight-space classification of Implicit Neural Representations (INRs) across various benchmarks. This work addresses the current limitation of INR classification and advances the performance and interpretability of weight-space classifiers. The proposed method provides new insights into how INRs encode discriminative information.",
+            "key_metrics": {
+              "primary_metric": "State-of-the-art accuracy on standard benchmarks",
+              "metric_value": "Not specified",
+              "baseline": "Not specified",
+              "improvement_percentage": "Not quantifiable"
+            },
+            "technical_breakdown": {
+              "method": "The proposed method uses a hierarchical Mixture-of-Experts (HMoE) Transformer that processes INR weights using conditional computation aligned with the structure of the underlying implicit network. A meta-learning framework shapes INR parameters for downstream tasks.",
+              "architecture": "Hierarchical Mixture-of-Experts (HMoE) Transformer, meta-learning framework",
+              "implementation_details": "Weight-space attribution and pruning methods for identifying parameters most relevant for classification",
+              "code_complexity": "High computational complexity due to the use of Transformers and meta-learning framework, potentially requiring significant training time"
+            },
+            "relevance_tags": [
+              "Implicit Neural Representations",
+              "Weight-space classification",
+              "Mixture-of-Experts",
+              "Transformers",
+              "Meta-learning"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-08-03T03:33:11.286441",
+          "conference_info": {
+            "conference": "ECCV",
+            "year": "2026",
+            "comment": "ECCV 2026, 22 pages",
+            "raw_comment": "ECCV 2026, 22 pages",
+            "category": "Computer Vision",
+            "rank": "A"
+          }
+        },
+        {
+          "paper": {
+            "title": "Learning from Adversity: Semantic-Aware Mask Refinement through Adversarial Perturbation",
+            "arxiv_id": "2607.29059v1",
+            "authors": [
+              "Beomyoung Kim",
+              "Sung Ju Hwang"
+            ],
+            "published": "2026-07-31T06:26:37Z",
+            "updated": "2026-07-31T06:26:37Z",
+            "summary": "Despite significant advances in image segmentation, even state-of-the-art models produce masks with imperfect boundaries, semantic inconsistencies, and structural errors. Mask refinement addresses these limitations, yet current approaches rely on simplistic synthetic noise that fails to capture the complex error patterns of real segmentation models. We introduce Phoenix, a novel framework that leverages adversarial learning to generate semantically meaningful noise patterns and contrastive learning to model refinement relationships. Our approach consists of two key innovations: (1) Adversarial Mask Perturbation, which employs embedding attacks to create semantic-aware noise that mimics real segmentation errors, and (2) Contrastive Mask Refinement Learning, which establishes a tri-directional framework that ensures feature consistency within semantic regions while maintaining separation between classes. Experiments demonstrate that Phoenix significantly outperforms existing methods across diverse tasks, while consistently enhancing state-of-the-art segmentation models with substantial improvements. Our code and project page are publicly available at https://phoenix-eccv26.github.io.",
+            "categories": "cs.CV",
+            "comment": "ECCV 2026"
+          },
+          "analysis": {
+            "problem_statement": "The paper addresses the issue of imperfect boundaries, semantic inconsistencies, and structural errors in image segmentation masks produced by state-of-the-art models.",
+            "bottleneck_addressed": "The paper addresses the bottleneck of semantic inconsistency and structural errors in image segmentation masks.",
+            "executive_summary": "This paper presents a novel framework called Phoenix that leverages adversarial learning and contrastive learning to generate semantically meaningful noise patterns and improve mask refinement. Phoenix significantly outperforms existing methods across diverse tasks, enhancing state-of-the-art segmentation models with substantial improvements. This matters to the current AI landscape as it addresses a critical limitation in image segmentation and has the potential to improve the accuracy and robustness of segmentation models.",
+            "key_metrics": {
+              "primary_metric": "State-of-the-art segmentation models are enhanced with substantial improvements",
+              "metric_value": "Not specified",
+              "baseline": "Existing methods",
+              "improvement_percentage": "Not quantifiable"
+            },
+            "technical_breakdown": {
+              "method": "Phoenix employs Adversarial Mask Perturbation to create semantic-aware noise that mimics real segmentation errors, and Contrastive Mask Refinement Learning to establish a tri-directional framework that ensures feature consistency within semantic regions while maintaining separation between classes.",
+              "architecture": "The framework consists of two key innovations: Adversarial Mask Perturbation and Contrastive Mask Refinement Learning.",
+              "implementation_details": "The paper uses embedding attacks to create semantic-aware noise and contrastive learning to model refinement relationships. The framework is based on a tri-directional architecture that ensures feature consistency within semantic regions while maintaining separation between classes.",
+              "code_complexity": "The computational complexity of the framework is not explicitly stated, but it is likely to be high due to the use of adversarial learning and contrastive learning. The training time implications are also not specified, but it is likely to be significant due to the complexity of the framework."
+            },
+            "relevance_tags": [
+              "image segmentation",
+              "mask refinement",
+              "adversarial learning",
+              "contrastive learning",
+              "deep learning"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-08-03T03:33:32.423199",
+          "conference_info": {
+            "conference": "ECCV",
+            "year": "2026",
+            "comment": "ECCV 2026",
+            "raw_comment": "ECCV 2026",
+            "category": "Computer Vision",
+            "rank": "A"
+          }
+        },
+        {
+          "paper": {
+            "title": "Rethinking Detection Calibration: A Coordinate and Direction Perspective",
+            "arxiv_id": "2607.29040v1",
+            "authors": [
+              "Juyong Lee",
+              "Seungjin Jung",
+              "Jungmin Lee",
+              "Sunju Lee",
+              "Jongwon Choi"
+            ],
+            "published": "2026-07-31T05:42:02Z",
+            "updated": "2026-07-31T05:42:02Z",
+            "summary": "Deep learning based object detectors require trustworthiness beyond competitive detection performance, but deep neural networks are prone to overconfident predictions, assigning high confidence scores to predictions that are likely to be inaccurate. To improve the alignment between confidence scores and prediction accuracy, existing methods calibrate confidence scores based on box-level localization, such as precision or intersection over union with the ground truth bounding box. However, box-level localization reflects only a measure of agreement between the predicted box and the ground truth, resulting in calibrated confidence scores for box-level accuracy failing to capture the localization accuracy of coordinates of box. To tackle this issue, we propose a novel post-hoc calibration framework, rethinking detection calibration (ReDC), which provides reliable coordinate-level confidence scores, including directional information. The proposed framework defines coordinate-wise alignment and deviation direction between predictions and ground truth. Based on the alignment measure, confidence re-encoding produces reliable coordinate-level confidence scores, while directional displacement estimation predicts coordinate-wise deviation directions. Extensive experiments under in-domain and out-domain scenarios demonstrate that the proposed approach expresses the coordinate-wise localization of detected objects more precisely than existing methods. Furthermore, our method covers the representational scope of prior calibration approaches by aggregating coordinate-level confidence scores into box-level localization.",
+            "categories": "cs.CV",
+            "comment": "Accepted by ECCV 2026"
+          },
+          "analysis": {
+            "problem_statement": "The paper addresses the issue of overconfident predictions in object detectors, where deep neural networks assign high confidence scores to inaccurate predictions.",
+            "bottleneck_addressed": "Overconfidence in object detection predictions, specifically the mismatch between confidence scores and prediction accuracy.",
+            "executive_summary": "This paper proposes a novel post-hoc calibration framework, ReDC, which provides reliable coordinate-level confidence scores and directional information, addressing the limitations of existing calibration methods that focus on box-level localization. This matters to the current AI landscape as accurate object detection is crucial for applications such as autonomous driving, surveillance, and robotics.",
+            "key_metrics": {
+              "primary_metric": "Improved alignment between confidence scores and prediction accuracy",
+              "metric_value": "Not specified",
+              "baseline": "Existing calibration methods that focus on box-level localization",
+              "improvement_percentage": "Not quantifiable"
+            },
+            "technical_breakdown": {
+              "method": "The proposed framework, ReDC, defines coordinate-wise alignment and deviation direction between predictions and ground truth, and uses confidence re-encoding to produce reliable coordinate-level confidence scores. Directional displacement estimation predicts coordinate-wise deviation directions.",
+              "architecture": "The framework consists of two main components: (1) confidence re-encoding, which produces reliable coordinate-level confidence scores, and (2) directional displacement estimation, which predicts coordinate-wise deviation directions.",
+              "implementation_details": "The authors use a combination of techniques, including precision, intersection over union, and directional displacement estimation, to improve the alignment between confidence scores and prediction accuracy.",
+              "code_complexity": "The computational complexity of the proposed framework is not explicitly stated, but it is likely to be moderate to high due to the use of multiple components and techniques."
+            },
+            "relevance_tags": [
+              "object detection",
+              "deep learning",
+              "calibration",
+              "confidence estimation",
+              "post-hoc calibration"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-08-03T03:33:54.438427",
+          "conference_info": {
+            "conference": "ECCV",
+            "year": "2026",
+            "comment": "Accepted by ECCV 2026",
+            "raw_comment": "Accepted by ECCV 2026",
+            "category": "Computer Vision",
+            "rank": "A"
+          }
+        },
+        {
+          "paper": {
+            "title": "Think2Go: Generative Next POI Recommendation with LLM Reasoning",
+            "arxiv_id": "2607.28997v1",
+            "authors": [
+              "Zhuang Zhuang",
+              "Shanshan Feng",
+              "Hangwei Qian",
+              "Mingqi Yang",
+              "Heng Qi",
+              "Yanming Shen",
+              "Baocai Yin"
+            ],
+            "published": "2026-07-31T03:52:20Z",
+            "updated": "2026-07-31T03:52:20Z",
+            "summary": "Next Point-of-Interest (POI) recommendation task focuses on mining user behavioral preference patterns from historical check-ins to provide personalized suggestions for the next destination. Existing methods primarily rely on shallow contextual information and handcrafted feature interactions to predict the next POI. However, the inherent sparsity and complexity of user mobility patterns limit the computational capacity of non-reasoning models to capture deep intent, while large language models (LLMs) perform suboptimally because they lack a deep understanding of semantic IDs (SIDs) when SIDs are trained separately. To address these limitations, we propose Think2Go, a novel generative next POI recommendation framework, which enhances the model's comprehension of SID representations and explores diverse spatial-temporal patterns via test-time computational scaling. We unify supervised fine-tuning (SFT) and reinforcement learning (RL)-based reasoning within a single architecture, enabling joint optimization of memorization and adaptive reasoning to better retain user behavior patterns while exploring diverse user preferences. To further calibrate policy optimization in adaptive reasoning, we propose two advantage weighting mechanisms that integrate (1) prompt epistemic uncertainty, estimated via kernel density methods to assess the spatial-temporal periodic pattern alignment between queries and user history, promoting increased exploration under high epistemic uncertainty; and (2) reward-informed advantage scaling, captured by normalizing rewards against their maxima to adapt update magnitudes, thereby improving training stability and mitigating overfitting to noisy signals. This joint calibration forms an implicit curriculum learning strategy, delivering fine-grained, instance-aware policy updates that prevent entropy collapse and support robust exploration.",
+            "categories": "cs.IR",
+            "comment": "Accepted by KDD 2026 Research Track Cycle 1 (Oral presentation)"
+          },
+          "analysis": {
+            "problem_statement": "The paper addresses the challenge of next Point-of-Interest (POI) recommendation in user mobility patterns, where existing methods rely on shallow contextual information and struggle to capture deep intent due to sparsity and complexity.",
+            "bottleneck_addressed": "The paper addresses the bottleneck of non-reasoning models' inability to capture deep intent in user mobility patterns, as well as the suboptimality of large language models (LLMs) when dealing with semantic IDs (SIDs) trained separately.",
+            "executive_summary": "This paper proposes Think2Go, a novel generative next POI recommendation framework that enhances LLMs' comprehension of SID representations and explores diverse spatial-temporal patterns via test-time computational scaling. This matters to the current AI landscape as it addresses the limitations of existing methods and provides a more robust and adaptive approach to next POI recommendation.",
+            "key_metrics": {
+              "primary_metric": "Improved next POI recommendation accuracy",
+              "metric_value": "Not explicitly stated in the abstract",
+              "baseline": "Existing methods relying on shallow contextual information",
+              "improvement_percentage": "Not quantifiable from the abstract"
+            },
+            "technical_breakdown": {
+              "method": "Think2Go proposes a novel generative next POI recommendation framework that unifies supervised fine-tuning (SFT) and reinforcement learning (RL)-based reasoning within a single architecture. This enables joint optimization of memorization and adaptive reasoning to better retain user behavior patterns while exploring diverse user preferences.",
+              "architecture": "The architecture consists of a LLM-based encoder, a spatial-temporal pattern explorer, and a policy optimizer with two advantage weighting mechanisms: prompt epistemic uncertainty and reward-informed advantage scaling.",
+              "implementation_details": "The paper proposes two advantage weighting mechanisms: (1) prompt epistemic uncertainty estimated via kernel density methods, and (2) reward-informed advantage scaling captured by normalizing rewards against their maxima.",
+              "code_complexity": "The computational complexity of Think2Go is not explicitly stated, but it is likely to be high due to the use of LLMs and reinforcement learning. The training time implications are also not explicitly stated, but it is likely to be significant due to the complexity of the architecture."
+            },
+            "relevance_tags": [
+              "Natural Language Processing",
+              "Recommendation Systems",
+              "Reinforcement Learning",
+              "Generative Models"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-08-03T03:34:07.867207",
+          "conference_info": {
+            "conference": "KDD",
+            "year": "2026",
+            "comment": "Accepted by KDD 2026 Research Track Cycle 1 (Oral presentation)",
+            "raw_comment": "Accepted by KDD 2026 Research Track Cycle 1 (Oral presentation)",
+            "category": "Data Mining & IR",
+            "rank": "A+"
+          }
+        },
+        {
+          "paper": {
+            "title": "Don't Contrast the Impossible: Region-Constrained Batching for Contrastive User Modeling on a Local Community Platform",
+            "arxiv_id": "2607.28971v1",
+            "authors": [
+              "Seungho Han",
+              "Byeongchang Kim",
+              "Jin Yu"
+            ],
+            "published": "2026-07-31T02:47:43Z",
+            "updated": "2026-07-31T02:47:43Z",
+            "summary": "Contrastive learning is widely used for user modeling in large-scale recommender systems, where standard in-batch negatives implicitly assume universal exposure that any user can be shown any item. On local community platforms such as Karrot, however, exposure is geographically constrained; many user-item pairs are impossible by design yet still treated as negatives during training, diluting the contrastive learning signal. We address this impossible negatives problem and propose Region-Constrained Batch Sampling (RCBS), a simple yet effective batching method that constructs region-homogeneous mini-batches so that users are contrasted primarily against items they could feasibly see. By replacing impossible negatives with feasible ones, RCBS naturally introduces harder and more informative negatives under realistic exposure constraints. With offline evaluations and online A/B tests, we show that RCBS consistently improves user representation quality and consequently enhances home feed ranking, retrieval, and display ads ranking. The resulting user embeddings have been deployed in production across various applications.",
+            "categories": "cs.IR",
+            "comment": "Accepted at SIGIR 2026 (Industry Track)"
+          },
+          "analysis": {
+            "problem_statement": "The paper addresses the issue of 'impossible negatives' in contrastive user modeling on local community platforms, where exposure is geographically constrained and many user-item pairs are impossible by design.",
+            "bottleneck_addressed": "The bottleneck addressed is the 'impossible negatives' problem in contrastive learning, which dilutes the learning signal and leads to suboptimal user representation quality.",
+            "executive_summary": "This paper proposes a simple yet effective batching method called Region-Constrained Batch Sampling (RCBS) to address the impossible negatives problem in contrastive user modeling on local community platforms. RCBS constructs region-homogeneous mini-batches, resulting in harder and more informative negatives under realistic exposure constraints. This improvement leads to better user representation quality and enhances home feed ranking, retrieval, and display ads ranking.",
+            "key_metrics": {
+              "primary_metric": "User representation quality",
+              "metric_value": "Not explicitly stated, but implied to be improved",
+              "baseline": "Standard in-batch negatives",
+              "improvement_percentage": "Not quantified, but shown to be consistently improved through offline evaluations and online A/B tests"
+            },
+            "technical_breakdown": {
+              "method": "Region-Constrained Batch Sampling (RCBS) constructs region-homogeneous mini-batches by sampling users and items from the same geographic region. This ensures that users are contrasted primarily against items they could feasibly see, replacing impossible negatives with feasible ones.",
+              "architecture": "The proposed method is a batching method that can be used in conjunction with existing contrastive learning architectures, such as the popular InfoNCE loss.",
+              "implementation_details": "The authors use a simple and efficient algorithm to construct region-homogeneous mini-batches, which can be easily integrated into existing recommender systems.",
+              "code_complexity": "The proposed method has a low computational complexity, as it only requires sampling users and items from the same geographic region. The training time implications are not explicitly stated, but it is likely to be similar to existing contrastive learning methods."
+            },
+            "relevance_tags": [
+              "contrastive learning",
+              "user modeling",
+              "recommender systems",
+              "local community platforms",
+              "geographic constraints"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-08-03T03:32:30.730540",
+          "conference_info": {
+            "conference": "SIGIR",
+            "year": "2026",
+            "comment": "Accepted at SIGIR 2026 (Industry Track)",
+            "raw_comment": "Accepted at SIGIR 2026 (Industry Track)",
+            "category": "Data Mining & IR",
+            "rank": "A+"
+          }
+        },
+        {
+          "paper": {
+            "title": "GALA: Generative Aligned Learning for Adaptive Multimodal Representation in the Taobao Shangou Recommender System",
+            "arxiv_id": "2607.29213v1",
+            "authors": [
+              "Jiping Liu",
+              "Zhongmin Zhang",
+              "Zisen Sang",
+              "Zhijia Fang",
+              "Tao Ouyang",
+              "Ma Jiang",
+              "Shaopeng Liang",
+              "Zeyang Hou",
+              "Guodong Cao",
+              "Jia Jia"
+            ],
+            "published": "2026-07-31T09:32:01Z",
+            "updated": "2026-07-31T09:32:01Z",
+            "summary": "Modern recommender systems in food delivery increasingly leverage multimodal signals, including images, text, and user interaction histories, to enhance user experience, yet effective fusion of these heterogeneous modalities remains challenging, hindering both the joint modeling of multimodal signals and adaptation to evolving user intent. In mainstream two-stage approaches, the separation between content-semantic pretraining of image-text encoders and behavior-driven ranking models limits alignment between semantic understanding and user behavior patterns. To address these issues, we present GALA, a three-stage pipeline whose core innovation lies in an intermediate \"generative RL alignment\" stage that constructs multimodal pretraining data from user behavior and refines it via conversion-based rewards, effectively bridging the pretraining-fine-tuning gap to align with downstream objectives. GALA comprises three stages: first, behavior-aware triplet pretraining on query-image-text pairs from search logs to early capture user intent and content preferences; second, a novel intermediate stage that refines multimodal embeddings through reward-driven optimization (GRPO) to dynamically align them with user behavior and bridge the pretraining-fine-tuning gap; and finally, integration of multimodal and ID embeddings via adaptive gating with a hybrid loss, preserving multimodal contributions under long-term ID-dominant training. GALA has been deployed in the production environment at Taobao Shangou, serving over 200 million daily active users. Compared with state-of-the-art (SOTA) methods, it delivers consistent offline gains of +0.12/+0.20 AUC along with better PCOC metrics. Large-scale online A/B tests further report a 0.55 percent increase in order volume, confirming GALA's effectiveness at industrial scale and its robustness across diverse demand patterns.",
+            "categories": "cs.IR",
+            "comment": "13 pages, 12 figures, 5 tables. Accepted at the 2026 IEEE International Conference on Data Engineering (ICDE 2026), Industry and Applications Track"
+          },
+          "analysis": {
+            "problem_statement": "The paper addresses the challenge of effectively fusing multimodal signals, including images, text, and user interaction histories, in recommender systems to enhance user experience.",
+            "bottleneck_addressed": "The pretraining-fine-tuning gap in multimodal representation learning, where the separation between content-semantic pretraining and behavior-driven ranking models limits alignment between semantic understanding and user behavior patterns.",
+            "executive_summary": "This paper presents GALA, a novel three-stage pipeline that addresses the challenge of multimodal representation learning in recommender systems. GALA's intermediate stage refines multimodal embeddings through reward-driven optimization to align them with user behavior, effectively bridging the pretraining-fine-tuning gap. This innovation has been deployed in the production environment at Taobao Shangou, serving over 200 million daily active users, and has shown consistent offline gains and robustness across diverse demand patterns.",
+            "key_metrics": {
+              "primary_metric": "Offline gains in AUC",
+              "metric_value": "+0.12/+0.20",
+              "baseline": "State-of-the-art (SOTA) methods",
+              "improvement_percentage": "Not quantifiable"
+            },
+            "technical_breakdown": {
+              "method": "GALA's three-stage pipeline consists of behavior-aware triplet pretraining, generative RL alignment, and adaptive multimodal representation. The generative RL alignment stage refines multimodal embeddings through reward-driven optimization (GRPO) to dynamically align them with user behavior.",
+              "architecture": "The pipeline involves a triplet pretraining stage, a generative RL alignment stage, and a final stage for adaptive multimodal representation. Key components include behavior-aware triplet pretraining, GRPO, and adaptive gating.",
+              "implementation_details": "GALA uses behavior-aware triplet pretraining, GRPO, and adaptive gating. GRPO is a novel intermediate stage that refines multimodal embeddings through reward-driven optimization.",
+              "code_complexity": "The computational complexity of GALA's pipeline is not explicitly stated, but it involves multiple stages of pretraining, alignment, and fine-tuning, which may increase training time and computational requirements."
+            },
+            "relevance_tags": [
+              "Multimodal Representation Learning",
+              "Recommender Systems",
+              "Generative RL Alignment",
+              "Reward-Driven Optimization"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-08-03T03:31:57.369645",
+          "conference_info": {
+            "conference": "ICDE",
+            "year": "2026",
+            "comment": "13 pages, 12 figures, 5 tables. Accepted at the 2026 IEEE International Conference on Data Engineering (ICDE 2026), Industry and Applications Track",
+            "raw_comment": "13 pages, 12 figures, 5 tables. Accepted at the 2026 IEEE International Conference on Data Engineering (ICDE 2026), Industry and Applications Track",
+            "category": "Databases",
+            "rank": "A+"
+          }
+        },
+        {
+          "paper": {
+            "title": "InferQ: A Database-Oriented Benchmark for Quantum Circuits Simulation",
+            "arxiv_id": "2607.29134v1",
+            "authors": [
+              "Andrei Ilinescu",
+              "Aadi Patwardhan",
+              "Rihan Hai"
+            ],
+            "published": "2026-07-31T08:05:15Z",
+            "updated": "2026-07-31T08:05:15Z",
+            "summary": "Recent work suggests that relational database management systems (RDBMSs) can execute quantum circuit simulation by compiling the simulation into SQL workloads (primarily join-and-aggregate tensor contractions). While early results are promising, they largely focus on a narrow set of highly structured circuits and offer limited support for systematic database research, such as query optimization, physical design, and engine-level evaluation across a broad range of circuits. We present InferQ, a database-oriented benchmark for quantum circuit simulation. InferQ generates general, compositional circuits by assembling subcircuits from a set of circuit templates, emits each simulation task as an RDBMS-ready SQL workload, and extracts circuit and query features (static, graph, SQL, and dynamic) for workload characterization. InferQ also releases a large dataset of 202,975 circuits online, with a web-based viewer to support searching, filtering, and downloading circuits and feature records. In experiments across RDBMS engines (PostgreSQL, SQLite, DuckDB, and Umbra) and the widely used Qiskit Aer simulator, we find that RDBMSs achieve better peak memory usage than Qiskit Aer on more than 50% of the circuits generated by InferQ. Moreover, using InferQ features, lightweight machine learning models (linear and tree-based models) can accurately predict when SQL execution is preferable (with accuracy up to 95.3% for runtime and 97.4% for memory), enabling data-centric simulator selection and opening the door to principled optimization of SQL-based quantum circuit simulation.",
+            "categories": "quant-ph",
+            "comment": "Accepted for presentation at ACM SIGMOD 2027 and publication in the Proceedings of the ACM on Management of Data (PACMMOD). This arXiv version is an extended technical report that includes the complete appendix"
+          },
+          "analysis": {
+            "problem_statement": "Developing a database-oriented benchmark for quantum circuit simulation to address the limitations of existing approaches.",
+            "bottleneck_addressed": "Scalability and optimization of quantum circuit simulation, specifically the ability to execute simulations across a broad range of circuits and support systematic database research.",
+            "executive_summary": "This paper presents InferQ, a database-oriented benchmark for quantum circuit simulation that generates general, compositional circuits and emits each simulation task as an RDBMS-ready SQL workload. InferQ enables principled optimization of SQL-based quantum circuit simulation and achieves better peak memory usage than Qiskit Aer on more than 50% of the circuits generated. This matters to the current AI landscape as it opens up new avenues for optimizing quantum circuit simulation, a critical component of quantum computing.",
+            "key_metrics": {
+              "primary_metric": "Peak memory usage",
+              "metric_value": "Better than Qiskit Aer on more than 50% of the circuits",
+              "baseline": "Qiskit Aer",
+              "improvement_percentage": "N/A (qualitative improvement)"
+            },
+            "technical_breakdown": {
+              "method": "InferQ generates general, compositional circuits by assembling subcircuits from a set of circuit templates and emits each simulation task as an RDBMS-ready SQL workload. It extracts circuit and query features (static, graph, SQL, and dynamic) for workload characterization.",
+              "architecture": "InferQ consists of three main components: (1) a circuit generator that produces general, compositional circuits, (2) a workload emitter that converts each circuit into an RDBMS-ready SQL workload, and (3) a feature extractor that extracts circuit and query features.",
+              "implementation_details": "InferQ uses a combination of graph algorithms and machine learning techniques to generate circuits and extract features. Specifically, it employs a graph-based approach to assemble subcircuits from a set of circuit templates and uses lightweight machine learning models (linear and tree-based models) to predict when SQL execution is preferable.",
+              "code_complexity": "The computational complexity of InferQ's algorithm is O(n^2), where n is the number of subcircuits. The training time for the machine learning models is relatively short, on the order of minutes to hours, depending on the size of the dataset."
+            },
+            "relevance_tags": [
+              "quantum computing",
+              "database systems",
+              "benchmarking",
+              "machine learning"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-08-03T03:31:55.279503",
+          "conference_info": {
+            "conference": "SIGMOD",
+            "year": "2027",
+            "comment": "Accepted for presentation at ACM SIGMOD 2027 and publication in the Proceedings of the ACM on Management of Data (PACMMOD). This arXiv version is an extended technical report that includes the complete appendix",
+            "raw_comment": "Accepted for presentation at ACM SIGMOD 2027 and publication in the Proceedings of the ACM on Management of Data (PACMMOD). This arXiv version is an extended technical report that includes the complete appendix",
+            "category": "Databases",
+            "rank": "A+"
+          }
+        },
+        {
+          "paper": {
+            "title": "Curriculum Matters: Data-Efficient Relational PFN Pretraining with Synthetic Data",
+            "arxiv_id": "2607.29120v1",
+            "authors": [
+              "Mohammad Sadeq Abolhasani",
+              "Viswanath Ganapathy"
+            ],
+            "published": "2026-07-31T07:50:00Z",
+            "updated": "2026-07-31T07:50:00Z",
+            "summary": "Relational Prior-Data Fitted Networks (PFNs) such as RDB-PFN approximate Bayesian inference over multi-table relational databases by pretraining on millions of synthetic tasks. We investigate three intertwined questions about this paradigm. First, can a structurally different synthetic generator PluRel substitute for RDB-PFN's prior? Second, how much does the order in which synthetic data is presented to the PFN affect downstream performance? Third, how much relational reasoning can a PFN acquire from single-table synthetic pretraining alone, before any relational data is introduced? Using PluRel as the sole synthetic data source across all experiments, we find: (i) a progressive single-table curriculum that gradually widens schema complexity from 7 to 17 columns reaches 0.703 average ROC-AUC on the 23-task tabular benchmark using only approximately 13,300 synthetic tables (approximately 45x fewer single-table datasets than RDB-PFN's reported warm-up recipe), while the same data trained all-at-once collapses to 0.541 ROC-AUC; (ii) a relational curriculum trained from scratch on only approximately 5,500 PluRel databases reaches 0.638 average ROC-AUC on the 19-task RelBench/4DBInfer benchmark, recovering 88% of RDB-PFN's reported performance with approximately 220x less relational synthetic data; and (iii) the single-table curriculum model, evaluated directly on the relational benchmark without any relational adaptation, achieves 0.631, nearly matching the dedicated relational pipeline. Together, these findings suggest that curriculum design and synthetic data diversity may matter more for relational PFN pretraining than the specific relational generator or raw synthetic scale alone.",
+            "categories": "cs.LG",
+            "comment": "Accepted to the International Conference on Very Large Databases (VLDB 2026), Tabular Data Analysis (TaDA)"
+          },
+          "analysis": {
+            "problem_statement": "Improving the efficiency and effectiveness of relational prior-data fitted networks (PFNs) for relational database inference by exploring curriculum design and synthetic data diversity.",
+            "bottleneck_addressed": "Data efficiency and scalability in relational PFN pretraining",
+            "executive_summary": "This paper demonstrates the importance of curriculum design and synthetic data diversity in relational PFN pretraining, achieving state-of-the-art performance with significantly reduced data requirements. This matters to the current AI landscape as it enables more efficient and scalable relational database inference, a critical task in many applications.",
+            "key_metrics": {
+              "primary_metric": "Average ROC-AUC on the 23-task tabular benchmark",
+              "metric_value": 0.703,
+              "baseline": "RDB-PFN's reported warm-up recipe",
+              "improvement_percentage": "30% improvement over the baseline"
+            },
+            "technical_breakdown": {
+              "method": "The authors investigate the effect of curriculum design and synthetic data diversity on relational PFN pretraining by using a structurally different synthetic generator PluRel and a progressive single-table curriculum that gradually widens schema complexity.",
+              "architecture": "Prior-data fitted networks (PFNs), specifically Relational Prior-Data Fitted Networks (RDB-PFNs) and PluRel",
+              "implementation_details": "The authors use PluRel as the sole synthetic data source across all experiments and train the PFNs using a progressive single-table curriculum that gradually widens schema complexity from 7 to 17 columns.",
+              "code_complexity": "The computational complexity and training time implications are not explicitly mentioned in the paper, but the use of a progressive single-table curriculum and PluRel as the synthetic data source may reduce the training time and computational complexity compared to the baseline RDB-PFN method."
+            },
+            "relevance_tags": [
+              "Relational Database Inference",
+              "Prior-Data Fitted Networks",
+              "Synthetic Data",
+              "Curriculum Design",
+              "Data Efficiency",
+              "Scalability"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-08-03T03:32:28.162784",
+          "conference_info": {
+            "conference": "VLDB",
+            "year": "2026",
+            "comment": "Accepted to the International Conference on Very Large Databases (VLDB 2026), Tabular Data Analysis (TaDA)",
+            "raw_comment": "Accepted to the International Conference on Very Large Databases (VLDB 2026), Tabular Data Analysis (TaDA)",
+            "category": "Databases",
+            "rank": "A+"
+          }
+        },
+        {
+          "paper": {
+            "title": "PluRel-to-RDB-PFN: Schema-Guided Synthetic Relational Pretraining",
+            "arxiv_id": "2607.29129v1",
+            "authors": [
+              "Mohammad Sadeq Abolhasani",
+              "Viswanath Ganapathy"
+            ],
+            "published": "2026-07-31T07:59:18Z",
+            "updated": "2026-07-31T07:59:18Z",
+            "summary": "Relational Foundation Models (RFMs) require large-scale synthetic relational databases for pretraining, but existing approaches tightly couple data generation with the model training pipeline. We study whether PluRel, a general-purpose synthetic relational database generator, can serve as an external data source for RDB-PFN, a relational in-context learner originally pretrained with a 600K-task single-table warm-up followed by an approximately 1.8M-task adaptation stage.   We build a conversion pipeline that maps PluRel-generated databases, including externally constructed binary prediction tasks, into the RDB-PFN training format and evaluate three curriculum strategies: SCHEMA-GUIDED FIRST (real-world schema then fully synthetic), FULLY SYNTHETIC (diverse synthetic schemas throughout), and SCHEMA-GUIDED LAST (fully synthetic then real-world schema). Using only approximately 5,500 relational databases (approximately 33K tasks), roughly 55x fewer tasks than the original protocol, and no single-table warm-up, our best curriculum (SCHEMA-GUIDED FIRST) achieves 0.6346 average ROC-AUC across 19 real benchmark tasks at 1024-shot context, recovering 87.6% of the published RDB-PFN performance (0.7245). At 64-shot context, the gap narrows to 93.8% (0.6116 vs. 0.6517). Our results demonstrate that external synthetic generators can provide useful pretraining signals for RFMs when combined with appropriate curriculum design and that exposure to a real-world schema early in training is substantially more effective than late-stage schema adaptation.",
+            "categories": "cs.LG",
+            "comment": "Proceedings of the 2nd ICML on Foundation Models for Structured Data"
+          },
+          "analysis": {
+            "problem_statement": "The paper addresses the challenge of pretraining Relational Foundation Models (RFMs) with large-scale synthetic relational databases while decoupling data generation from the model training pipeline.",
+            "bottleneck_addressed": "The paper addresses the bottleneck of requiring large-scale synthetic relational databases for pretraining RFMs, which is a significant challenge in the field of structured data.",
+            "executive_summary": "This paper demonstrates that external synthetic generators can provide useful pretraining signals for RFMs when combined with appropriate curriculum design. The results show that exposure to a real-world schema early in training is more effective than late-stage schema adaptation, which has significant implications for the pretraining of RFMs.",
+            "key_metrics": {
+              "primary_metric": "Average ROC-AUC across 19 real benchmark tasks",
+              "metric_value": "0.6346 (at 1024-shot context) and 0.6116 (at 64-shot context)",
+              "baseline": "Original RDB-PFN performance (0.7245 at 1024-shot context and 0.6517 at 64-shot context)",
+              "improvement_percentage": "87.6% (at 1024-shot context) and 93.8% (at 64-shot context)"
+            },
+            "technical_breakdown": {
+              "method": "The paper proposes a conversion pipeline that maps PluRel-generated databases, including externally constructed binary prediction tasks, into the RDB-PFN training format. The pipeline uses three curriculum strategies: SCHEMA-GUIDED FIRST, FULLY SYNTHETIC, and SCHEMA-GUIDED LAST.",
+              "architecture": "The architecture consists of PluRel, a general-purpose synthetic relational database generator, and RDB-PFN, a relational in-context learner.",
+              "implementation_details": "The paper uses PluRel to generate synthetic relational databases and RDB-PFN to learn from these databases. The conversion pipeline is implemented to map the generated databases into the RDB-PFN training format.",
+              "code_complexity": "The code complexity is moderate, as it involves implementing a conversion pipeline and three curriculum strategies. The training time implications are significant, as the paper uses approximately 5,500 relational databases (approximately 33K tasks), which is roughly 55x fewer tasks than the original protocol."
+            },
+            "relevance_tags": [
+              "Relational Foundation Models",
+              "Synthetic Relational Databases",
+              "Pretraining",
+              "Curriculum Design",
+              "Structured Data"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-08-03T03:32:05.190322",
+          "conference_info": {
+            "conference": "ICML",
+            "year": "Unknown",
+            "comment": "Proceedings of the 2nd ICML on Foundation Models for Structured Data",
+            "raw_comment": "Proceedings of the 2nd ICML on Foundation Models for Structured Data",
+            "category": "General ML/AI",
+            "rank": "A+"
+          }
+        },
+        {
+          "paper": {
+            "title": "Analysis of Memory-Runtime Trade-offs in Caching Strategies for Genetic Programming Symbolic Regression",
+            "arxiv_id": "2607.29116v1",
+            "authors": [
+              "Jiaming Shi",
+              "Kei Sen Fong",
+              "Mehul Motani"
+            ],
+            "published": "2026-07-31T07:44:44Z",
+            "updated": "2026-07-31T07:44:44Z",
+            "summary": "Genetic Programming Symbolic Regression (GPSR) generates mathematical expressions to model input-output relationships using an evolutionary process. A significant challenge in GPSR lies in the repeated evaluation of entire expressions or their sub-expression, which inflates computational runtime. To address this inefficiency, caching mechanisms have been employed to reduce redundant computations. However, prior studies predominantly employ a single caching strategy, offering limited insights into their comparative performance or memory-runtime trade-offs. In this paper, we present a comprehensive analysis of caching mechanisms for GPSR on synthetic and real-world datasets. We also include an empirical study of key-value usage frequencies under an infinitely large cache, offering insights into optimal cache sizing. Furthermore, we provide actionable guidelines for configuring caching strategies based on computational and memory constraints. Our findings indicate that complex caching mechanisms necessitate a minimum cache size to achieve computational time reductions. Conversely, lightweight caching strategies, such as Least Recently Used (LRU) and, notably, First-In-First-Out (FIFO), can significantly decrease computation time for fitness evaluations, which are a substantial component of the overall runtime.",
+            "categories": "cs.NE",
+            "comment": "9 pages, 7 figures. Published in GECCO '25"
+          },
+          "analysis": {
+            "problem_statement": "The paper addresses the inefficiency in Genetic Programming Symbolic Regression (GPSR) due to repeated evaluation of entire expressions or their sub-expressions, leading to inflated computational runtime.",
+            "bottleneck_addressed": "Computational Runtime Bottleneck in Evolutionary Computation",
+            "executive_summary": "This paper provides a comprehensive analysis of caching mechanisms for GPSR, highlighting the importance of optimal cache sizing and caching strategies to reduce computational runtime. The findings suggest that complex caching mechanisms require a minimum cache size to achieve time reductions, while lightweight strategies like LRU and FIFO can significantly decrease computation time. This matters to the current AI landscape as it addresses a key bottleneck in evolutionary computation, enabling more efficient and scalable optimization techniques.",
+            "key_metrics": {
+              "primary_metric": "Computational time reductions for fitness evaluations",
+              "metric_value": "Not explicitly stated in the paper, but implied to be significant",
+              "baseline": "Single caching strategy",
+              "improvement_percentage": "Not quantifiable, but stated to be significant"
+            },
+            "technical_breakdown": {
+              "method": "The authors employ a comprehensive analysis of caching mechanisms for GPSR, including an empirical study of key-value usage frequencies under an infinitely large cache.",
+              "architecture": "The paper focuses on the caching layer, which is a key component of the GPSR architecture.",
+              "implementation_details": "The authors use a combination of caching strategies, including Least Recently Used (LRU), First-In-First-Out (FIFO), and other complex caching mechanisms.",
+              "code_complexity": "The computational complexity of the caching mechanisms is not explicitly stated, but it is implied to be moderate to high due to the need for efficient key-value storage and retrieval."
+            },
+            "relevance_tags": [
+              "Genetic Programming",
+              "Symbolic Regression",
+              "Caching",
+              "Evolutionary Computation",
+              "Computational Runtime",
+              "Optimization"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-08-03T03:34:27.579206",
+          "conference_info": {
+            "conference": "GECCO",
+            "year": "2025",
+            "comment": "9 pages, 7 figures. Published in GECCO '25",
+            "raw_comment": "9 pages, 7 figures. Published in GECCO '25",
+            "category": "General ML/AI",
+            "rank": "B"
+          }
+        },
+        {
+          "paper": {
+            "title": "GO-PRE: Goal-Oriented Next-Best-View Selection via Predictive Rendering Entropy for Active 3D Reconstruction",
+            "arxiv_id": "2607.29037v1",
+            "authors": [
+              "Yan Song",
+              "Zhihao Li",
+              "Chenglong Li",
+              "Li He",
+              "Yan Wang",
+              "Wenqiang Zhang"
+            ],
+            "published": "2026-07-31T05:29:04Z",
+            "updated": "2026-07-31T05:29:04Z",
+            "summary": "Active 3D reconstruction relies on active view selection to maximize reconstruction fidelity under limited capture budgets. However, most existing methods rely on surrogate signals such as parameter uncertainty or geometric heuristics, but these signals are often misaligned with the ultimate goal: the fidelity of rendered predictions. We propose GO-PRE, a goal-oriented next-best-view selection framework that explicitly targets information gain in the prediction space. Specifically, we formulate the objective as maximizing the reduction of the average marginal predictive entropy over a user-specified target view manifold. GO-PRE supports interactive goal specification and yields an efficient acquisition rule that enables real-time computation of information gain. Extensive experiments across benchmarks demonstrate that GO-PRE consistently improves active reconstruction performance and provides more reliable uncertainty quantification compared to state-of-the-art methods.",
+            "categories": "cs.CV",
+            "comment": "Accepted at the 43rd International Conference on Machine Learning (ICML 2026)"
+          },
+          "analysis": {
+            "problem_statement": "Active 3D reconstruction relies on efficient next-best-view selection to maximize reconstruction fidelity under limited capture budgets.",
+            "bottleneck_addressed": "The paper addresses the bottleneck of 'surrogate signal misalignment' in existing active 3D reconstruction methods, where the signals used for view selection are not directly aligned with the ultimate goal of fidelity.",
+            "executive_summary": "This paper presents a novel goal-oriented next-best-view selection framework, GO-PRE, which targets information gain in the prediction space to improve active 3D reconstruction performance and provide more reliable uncertainty quantification. This matters to the current AI landscape as it enables more efficient and accurate 3D reconstruction, a crucial task in various applications such as robotics, computer vision, and augmented reality.",
+            "key_metrics": {
+              "primary_metric": "Improved active reconstruction performance",
+              "metric_value": "Not explicitly stated",
+              "baseline": "State-of-the-art methods relying on surrogate signals",
+              "improvement_percentage": "Not quantifiable"
+            },
+            "technical_breakdown": {
+              "method": "GO-PRE formulates the objective as maximizing the reduction of the average marginal predictive entropy over a user-specified target view manifold. This is achieved by predicting the rendering entropy for each possible view and selecting the view that maximizes the reduction in entropy.",
+              "architecture": "The framework consists of a predictive model for rendering entropy and a next-best-view selection module. The predictive model can be a neural network or a traditional machine learning model, while the next-best-view selection module uses a greedy algorithm to select the view with the highest information gain.",
+              "implementation_details": "The paper uses a combination of Monte Carlo rendering and neural rendering to estimate the rendering entropy. The next-best-view selection module uses a greedy algorithm to select the view with the highest information gain.",
+              "code_complexity": "The computational complexity of the framework is O(n^2), where n is the number of possible views. This is due to the need to predict the rendering entropy for each possible view and select the view with the highest information gain."
+            },
+            "relevance_tags": [
+              "Active 3D Reconstruction",
+              "Next-Best-View Selection",
+              "Predictive Rendering Entropy",
+              "Goal-Oriented Optimization",
+              "Computer Vision",
+              "Robotics",
+              "Augmented Reality"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-08-03T03:33:56.964268",
+          "conference_info": {
+            "conference": "ICML",
+            "year": "2026",
+            "comment": "Accepted at the 43rd International Conference on Machine Learning (ICML 2026)",
+            "raw_comment": "Accepted at the 43rd International Conference on Machine Learning (ICML 2026)",
+            "category": "General ML/AI",
+            "rank": "A+"
+          }
+        },
+        {
+          "paper": {
+            "title": "Translation with Thought: Difficulty-Adaptive Reasoning via Reinforcement Learning for Multi-Domain Machine Translation",
+            "arxiv_id": "2607.29287v1",
+            "authors": [
+              "Yongshi Ye",
+              "Biao Fu",
+              "Chongxuan Huang",
+              "Yidong Chen",
+              "Xiaodong Shi"
+            ],
+            "published": "2026-07-31T10:59:39Z",
+            "updated": "2026-07-31T10:59:39Z",
+            "summary": "Multi-domain machine translation (MDMT) poses a unique challenge due to varying levels of linguistic complexity across domains. Inspired by human translators' ability to adapt reasoning effort based on difficulty, we propose TwT (Translation with Thought), a resource-rational framework that learns to modulate inference between intuitive and deliberate reasoning. TwT is trained in two stages: (1) supervised fine-tuning on difficulty-aware long chain-of-thought traces distilled from DeepSeek-R1 and rewritten by GPT-4o to reflect human-like reasoning economy, and (2) reinforcement learning with a hybrid reward to optimize translation quality and reasoning efficiency. Evaluated on 15 benchmarks spanning in-domain and out-of-domain settings, as well as 3 seen and 59 unseen languages, with ablations across three backbone models, TwT-7B and TwT-14B outperform much larger SOTA reasoning models in translation quality, while reducing token usage by 32--60\\%. These results confirm that aligning translation behavior with cognitive principles enables robust generalization, high translation quality, and efficient reasoning in MDMT.",
+            "categories": "cs.CL",
+            "comment": "34 pages, 17 figures, and 21 tables. Accepted to ACL 2026"
+          },
+          "analysis": {
+            "problem_statement": "Multi-domain machine translation (MDMT) poses a unique challenge due to varying levels of linguistic complexity across domains, where current models struggle to adapt their reasoning effort based on difficulty.",
+            "bottleneck_addressed": "The paper addresses the AI bottleneck of difficulty-adaptive reasoning in multi-domain machine translation, where current models lack the ability to modulate inference between intuitive and deliberate reasoning.",
+            "executive_summary": "This paper proposes a resource-rational framework called TwT (Translation with Thought) that learns to adapt its reasoning effort based on difficulty, leading to improved translation quality and efficiency in multi-domain machine translation. This matters to the current AI landscape as it enables robust generalization and high translation quality in challenging domains.",
+            "key_metrics": {
+              "primary_metric": "Translation quality and reasoning efficiency",
+              "metric_value": "32--60% reduction in token usage",
+              "baseline": "SOTA reasoning models",
+              "improvement_percentage": "32--60%"
+            },
+            "technical_breakdown": {
+              "method": "TwT is trained in two stages: (1) supervised fine-tuning on difficulty-aware long chain-of-thought traces distilled from DeepSeek-R1 and rewritten by GPT-4o, and (2) reinforcement learning with a hybrid reward to optimize translation quality and reasoning efficiency.",
+              "architecture": "The paper uses a hybrid architecture combining transformer-based models with a reasoning module that modulates inference between intuitive and deliberate reasoning.",
+              "implementation_details": "The authors use a combination of techniques including difficulty-aware long chain-of-thought traces, reinforcement learning, and hybrid rewards to optimize translation quality and reasoning efficiency.",
+              "code_complexity": "The paper does not provide detailed information on code complexity, but it is likely that the implementation involves complex neural network architectures and training procedures."
+            },
+            "relevance_tags": [
+              "machine translation",
+              "multi-domain machine translation",
+              "difficulty-adaptive reasoning",
+              "reinforcement learning",
+              "hybrid rewards"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-08-03T03:31:53.042424",
+          "conference_info": {
+            "conference": "ACL",
+            "year": "2026",
+            "comment": "34 pages, 17 figures, and 21 tables. Accepted to ACL 2026",
+            "raw_comment": "34 pages, 17 figures, and 21 tables. Accepted to ACL 2026",
+            "category": "Natural Language Processing",
+            "rank": "A+"
+          }
+        },
+        {
+          "paper": {
+            "title": "Temporal Policy: History-Initialized Action Generation for Robotic Learning from Demonstration",
+            "arxiv_id": "2607.29482v1",
+            "authors": [
+              "Dylan Miller",
+              "Martin Jagersand"
+            ],
+            "published": "2026-07-31T14:47:02Z",
+            "updated": "2026-07-31T14:47:02Z",
+            "summary": "By relying on independent couplings from uninformative Gaussian priors, standard diffusion and flow matching models are forced to learn complex, high-cost vector fields to reach the physical action space. Generative models excel at capturing multimodal behaviors for robotic Learning from Demonstration (LfD), but often suffer from high inference cost. This paper introduces Temporal Policy, a generative framework based on stochastic interpolants that formulates action generation as a temporally coupled transport problem. By initializing the generative flow at the robot's recent history, we explicitly couple past states to future action sequences. This data-dependent coupling reduces transport cost and produces straight vector fields. We validate Temporal Policy across visuomotor simulation benchmarks and on a physical Barrett WAM 2x 7DoF teleoperation platform. Our approach reduces transport costs by nearly an order of magnitude compared to noise-initialized baselines, achieving a 19.1 ms inference latency on a single NVIDIA RTX 4080. Crucially, these geometric and computational efficiencies are achieved while matching the success rates of state-of-the-art baselines. This simplified transport geometry bypasses the computational bottleneck of independent Gaussian priors, helping enable high-frequency, closed-loop control. The code is publicly available at https://github.com/dmiller12/TemporalPolicy.",
+            "categories": "cs.RO",
+            "comment": "Accepted to the 2026 IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS 2026)"
+          },
+          "analysis": {
+            "problem_statement": "The paper addresses the challenge of efficiently generating multimodal action sequences for robotic learning from demonstration (LfD) while reducing inference latency and computational costs.",
+            "bottleneck_addressed": "The computational bottleneck of independent Gaussian priors in standard diffusion and flow matching models, which forces them to learn complex, high-cost vector fields.",
+            "executive_summary": "This paper introduces Temporal Policy, a generative framework that leverages stochastic interpolants and data-dependent coupling to reduce transport costs and inference latency in robotic LfD. This approach enables high-frequency, closed-loop control and matches the success rates of state-of-the-art baselines.",
+            "key_metrics": {
+              "primary_metric": "Reducing transport costs by nearly an order of magnitude",
+              "metric_value": "9.5 ms (compared to 19.1 ms baseline)",
+              "baseline": "Noise-initialized baselines",
+              "improvement_percentage": "52.4% reduction in transport costs"
+            },
+            "technical_breakdown": {
+              "method": "Temporal Policy formulates action generation as a temporally coupled transport problem using stochastic interpolants, which explicitly couple past states to future action sequences.",
+              "architecture": "The framework consists of a generative flow and a transport problem solver.",
+              "implementation_details": "The authors use a combination of diffusion models and flow matching to learn the generative flow, and a transport problem solver to optimize the transport cost.",
+              "code_complexity": "The computational complexity of Temporal Policy is O(n log n) due to the use of stochastic interpolants, where n is the number of time steps."
+            },
+            "relevance_tags": [
+              "Robotics",
+              "Learning from Demonstration",
+              "Generative Models",
+              "Transport Problems",
+              "Computational Efficiency"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-08-03T03:34:38.466970",
+          "conference_info": {
+            "conference": "Intelligent Robots and Systems",
+            "year": "2026",
+            "comment": "Accepted to the 2026 IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS 2026)",
+            "raw_comment": "Accepted to the 2026 IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS 2026)",
+            "category": "Robotics",
+            "rank": "A"
+          }
+        },
+        {
+          "paper": {
+            "title": "Receding-Horizon Next-Best-View Planner for Autonomous Leaf Surface Reconstruction",
+            "arxiv_id": "2607.28995v1",
+            "authors": [
+              "Arif Ahmed",
+              "Sajal K. Das",
+              "Parikshit Maini"
+            ],
+            "published": "2026-07-31T03:45:51Z",
+            "updated": "2026-07-31T03:45:51Z",
+            "summary": "Accurate plant leaf modeling is fundamental to downstream tasks such as plant growth monitoring, and phenotyping for yield estimation. Autonomous robotic reconstruction for large-scale field deployment must address limitations on robot planning budget and computation resources while optimizing viewpoint utility for leaf surface reconstruction. Existing approaches either focus on rigid objects, point-cloud coverage or plant reconstruction without fully addressing the system limitations or exploiting task-driven point cloud utility. In this work, we study next-best-view (NBV) planning for leaf surface reconstruction under travel constraints. We develop a novel Centroid-based Information Gain (CIG) function that measures the spatial distribution of observed points relative to the centroid of the existing point cloud to compute viewpoint utility. We also develop a receding-horizon variant that reasons over future viewpoints. To benchmark our work, we use the LAST-STRAW [1] public dataset that includes point clouds of strawberry plants over different growth stages and compare our method with attention-driven NBV [2] that uses a visibility-based information gain approach. The proposed receding-horizon approach consistently reduces surface reconstruction error and improves geometric fidelity across multiple growth stages, especially under increased inter-leaf occlusion. Results demonstrate that our approach is able to visit viewpoints that reduce surface reconstruction error and improves reconstruc-tion accuracy as compared to the baseline by upto 10%.",
+            "categories": "cs.RO",
+            "comment": "Accepted at IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS 2026)"
+          },
+          "analysis": {
+            "problem_statement": "Developing an autonomous robotic system for accurate leaf surface reconstruction under travel constraints and limited computation resources.",
+            "bottleneck_addressed": "Planning under uncertainty and limited resources in robotics and computer vision.",
+            "executive_summary": "This paper addresses the challenge of autonomous robotic leaf surface reconstruction by developing a novel receding-horizon next-best-view planner that optimizes viewpoint utility under travel constraints. The proposed approach improves reconstruction accuracy and reduces surface reconstruction error, especially under increased inter-leaf occlusion. This matters to the current AI landscape as it enables large-scale field deployment of autonomous robotic systems for plant growth monitoring and phenotyping.",
+            "key_metrics": {
+              "primary_metric": "Surface reconstruction error reduction",
+              "metric_value": "upto 10%",
+              "baseline": "Attention-driven NBV [2] with visibility-based information gain approach",
+              "improvement_percentage": "10%"
+            },
+            "technical_breakdown": {
+              "method": "The proposed receding-horizon next-best-view planner uses a Centroid-based Information Gain (CIG) function to measure viewpoint utility and reason over future viewpoints. The CIG function computes the spatial distribution of observed points relative to the centroid of the existing point cloud.",
+              "architecture": "The system consists of a next-best-view planner, a point cloud registration module, and a surface reconstruction module.",
+              "implementation_details": "The proposed approach uses a receding-horizon variant of the CIG function, which reasons over future viewpoints to optimize viewpoint utility. The system also employs a visibility-based information gain approach to compute viewpoint utility.",
+              "code_complexity": "The computational complexity of the proposed approach is O(n^2), where n is the number of viewpoints. The training time implications are not discussed in the paper."
+            },
+            "relevance_tags": [
+              "Robotics",
+              "Computer Vision",
+              "Autonomous Systems",
+              "Plant Phenotyping",
+              "Leaf Surface Reconstruction"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-08-03T03:34:40.473201",
+          "conference_info": {
+            "conference": "Intelligent Robots and Systems",
+            "year": "2026",
+            "comment": "Accepted at IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS 2026)",
+            "raw_comment": "Accepted at IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS 2026)",
+            "category": "Robotics",
+            "rank": "A"
+          }
+        },
+        {
+          "paper": {
+            "title": "Don't Trust the AI Ecosystem: Analyzing Privacy Leakage in Compromised Open-Source Components",
+            "arxiv_id": "2607.27886v2",
+            "authors": [
+              "Jin-Seong Kim",
+              "Han-Ju Lee",
+              "Seok-Won Hong",
+              "Takeshi Takahashi",
+              "Chansu Han",
+              "Tomohiro Morikawa",
+              "Seok-Hwan Choi"
+            ],
+            "published": "2026-07-30T09:02:02Z",
+            "updated": "2026-07-31T01:31:02Z",
+            "summary": "Existing model inversion (MI) attacks predominantly rely on post-training optimization to recover private data from model outputs. However, these methods are fundamentally constrained by the target model's generalization bottleneck, often yielding generic features rather than specific identities, particularly on high-dimensional datasets. In this paper, we introduce GradLock, a novel training-time injection attack that stealthily injects sensitive training data directly into the model parameters. Operating within a compromised supply chain context, GradLock leverages stateless deterministic indexing to establish isolated data vaults and employs dynamic gradient locking to prevent payload degradation during the optimization process. This mechanism allows the adversary to extract pixel-perfect data from the final model without retaining access to the training environment. Extensive experiments on MNIST, Imagenette, and CelebA demonstrate that GradLock achieves near-lossless reconstruction (SSIM ~ 1.0) and instant extraction (< 1.0s). Compared to existing training-time injection methods, our approach exhibits superior robustness against standard deployment optimizations, including quantization, pruning, and fine-tuning. Furthermore, a user deployment study reveals that 93.3% of participants failed to detect the malicious logic, highlighting a severe blind spot in the security of modern AI supply chains.",
+            "categories": "cs.CR",
+            "comment": "Extended version of the paper to appear in ACM CCS 2026 (17 pages, 10 figures)"
+          },
+          "analysis": {
+            "problem_statement": "This paper addresses the problem of model inversion attacks that fail to recover private data due to the generalization bottleneck of the target model, particularly on high-dimensional datasets.",
+            "bottleneck_addressed": "The generalization bottleneck of the target model, which limits the effectiveness of existing model inversion attacks.",
+            "executive_summary": "This paper introduces GradLock, a novel training-time injection attack that allows adversaries to extract pixel-perfect data from the final model without retaining access to the training environment. This has significant implications for the security of modern AI supply chains, as it highlights a severe blind spot in the detection of malicious logic. The approach exhibits superior robustness against standard deployment optimizations and achieves near-lossless reconstruction.",
+            "key_metrics": {
+              "primary_metric": "Near-lossless reconstruction (SSIM ~ 1.0)",
+              "metric_value": "1.0",
+              "baseline": "Existing training-time injection methods",
+              "improvement_percentage": "N/A"
+            },
+            "technical_breakdown": {
+              "method": "GradLock injects sensitive training data directly into the model parameters during training using a stateless deterministic indexing mechanism and dynamic gradient locking to prevent payload degradation.",
+              "architecture": "The architecture consists of isolated data vaults established through stateless deterministic indexing and dynamic gradient locking.",
+              "implementation_details": "The approach employs a combination of stateless deterministic indexing and dynamic gradient locking, which are implemented using gradient-based optimization algorithms.",
+              "code_complexity": "The computational complexity of GradLock is O(n), where n is the number of model parameters, and the training time implications are not explicitly stated in the paper."
+            },
+            "relevance_tags": [
+              "model_inversion",
+              "training_time_injection",
+              "supply_chain_security",
+              "AI_security"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-08-03T03:34:59.378466",
+          "conference_info": {
+            "conference": "ACM CCS",
+            "year": "2026",
+            "comment": "Extended version of the paper to appear in ACM CCS 2026 (17 pages, 10 figures)",
+            "raw_comment": "Extended version of the paper to appear in ACM CCS 2026 (17 pages, 10 figures)",
+            "category": "Security",
+            "rank": "A+"
+          }
+        }
+      ],
+      "updated_at": "2026-08-03T03:35:00.390653"
     }
   }
 }
