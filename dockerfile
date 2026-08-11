@@ -19,6 +19,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Copy application files
 COPY arxiv_agent.py .
 COPY main.py .
+COPY mcp_server.py .
 COPY simple_dashboard.html .
 
 # Create data directory for papers.json
