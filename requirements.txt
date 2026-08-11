@@ -9,3 +9,4 @@ pydantic
 python-multipart
 pytz
 tzdata
+mcp>=2.0,<3.0
