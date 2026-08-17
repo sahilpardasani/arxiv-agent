@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-08-16T03:37:49.467402",
+  "last_updated": "2026-08-17T03:34:55.819088",
   "dates": {
     "2026-08-10": {
       "count": 50,
@@ -8111,6 +8111,1007 @@
         }
       ],
       "updated_at": "2026-08-16T03:37:49.467399"
+    },
+    "2026-08-14": {
+      "count": 19,
+      "papers": [
+        {
+          "paper": {
+            "title": "MagnifiQ: Patch-aware Text Guided Progressive Upscaling for High-Resolution Image Restoration",
+            "arxiv_id": "2608.14543v1",
+            "authors": [
+              "Mahesh Reddy",
+              "Yashesh Savani",
+              "Antoine Mercier",
+              "Hong Cai",
+              "Fatih Porikli",
+              "Guillaume Berger"
+            ],
+            "published": "2026-08-14T17:56:04Z",
+            "updated": "2026-08-14T17:56:04Z",
+            "summary": "High-resolution image restoration from degraded inputs is challenging because it must preserve global structural consistency while recovering fine-grained local details, especially at 4K resolution where direct diffusion-based restoration is computationally expensive and prone to repeated or inconsistent textures. In this work, we introduce MagnifiQ, an image restoration framework that progressively upscales and restores images across resolutions, e.g., from 1024x1024 to 4096x4096. Our approach leverages a pre-trained text-to-image diffusion model such as SDXL and adapts it for more scalable high-resolution inference by replacing its original self-attention layers with convolutional operations whose computational cost grows linearly with image resolution. We further propose a progressive upscaling strategy that iteratively restores images over multiple resolution stages, refining each intermediate output rather than directly hallucinating the final 4K image, thereby improving global coherence and reducing high-resolution artifacts. To enhance local details while controlling content drift, MagnifiQ uses patch-specific text prompts that provide spatially localized semantic guidance during restoration. Extensive experiments on synthetic and real-world degraded images show that MagnifiQ outperforms prior diffusion-based restoration methods in perceptual quality and human preference, producing sharper textures and more coherent 4K results while offering practical speed--quality trade-offs through its scalable backbone and progressive design.",
+            "categories": "cs.CV",
+            "comment": "Camera-ready version (ECCV workshop - LoViF'26)"
+          },
+          "analysis": {
+            "problem_statement": "High-resolution image restoration from degraded inputs is challenging due to the need to preserve global structural consistency while recovering fine-grained local details, especially at 4K resolution.",
+            "bottleneck_addressed": "Computational cost and high-resolution artifacts in direct diffusion-based restoration methods.",
+            "executive_summary": "MagnifiQ addresses the limitations of direct diffusion-based restoration methods by introducing a progressive upscaling strategy that leverages a pre-trained text-to-image diffusion model and patch-specific text prompts to produce sharper textures and more coherent 4K results.",
+            "key_metrics": {
+              "primary_metric": "Perceptual quality and human preference",
+              "metric_value": "Not explicitly stated",
+              "baseline": "Prior diffusion-based restoration methods",
+              "improvement_percentage": "Not quantifiable"
+            },
+            "technical_breakdown": {
+              "method": "MagnifiQ progressively upscales and restores images across resolutions by replacing self-attention layers with convolutional operations and using patch-specific text prompts to provide spatially localized semantic guidance.",
+              "architecture": "Pre-trained text-to-image diffusion model (e.g., SDXL), convolutional operations, and patch-aware text prompts",
+              "implementation_details": "MagnifiQ uses a progressive upscaling strategy with multiple resolution stages, refining each intermediate output to improve global coherence and reduce high-resolution artifacts.",
+              "code_complexity": "Computational cost grows linearly with image resolution due to the use of convolutional operations, but the progressive design and scalable backbone offer practical speed-quality trade-offs."
+            },
+            "relevance_tags": [
+              "image restoration",
+              "diffusion-based methods",
+              "high-resolution image processing",
+              "text-to-image synthesis"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-08-17T03:33:25.572567",
+          "conference_info": {
+            "conference": "ECCV",
+            "year": "2026",
+            "comment": "Camera-ready version (ECCV workshop - LoViF'26)",
+            "raw_comment": "Camera-ready version (ECCV workshop - LoViF'26)",
+            "category": "Computer Vision",
+            "rank": "A"
+          }
+        },
+        {
+          "paper": {
+            "title": "Style or Signature? Artist-Disjoint Evaluation of Style Classification in Frozen Vision Embeddings",
+            "arxiv_id": "2608.14435v1",
+            "authors": [
+              "Rory Ashton"
+            ],
+            "published": "2026-08-14T16:18:11Z",
+            "updated": "2026-08-14T16:18:11Z",
+            "summary": "Frozen image embeddings from models such as CLIP are increasingly used to classify paintings by art-historical style, with high reported accuracy. We ask whether this accuracy reflects an understanding of style or the recognition of individual artists. Standard evaluation uses random splits in which works by the same artist appear on both sides, so a classifier can succeed by recognising the painter rather than the movement. We re-evaluate style classification under an artist-disjoint protocol, holding out every artist in turn so that no work is ever classified using other works by its own painter. On a balanced dataset of 320 paintings across four twentieth-century movements, 5-NN style accuracy falls from 0.87 to 0.77 under this protocol, and the drop is sharply uneven. Impressionism and Cubism barely move, while Surrealism falls twenty points. The pattern holds across four image encoders, including a vision-only self-supervised model, which places the effect in visual structure rather than language. Where an encoder captures genuine shared form, individual artists are barely recognisable yet style is robust, while Surrealism shows the opposite. We argue that artist-disjoint evaluation is necessary to measure stylistic understanding in frozen embeddings.",
+            "categories": "cs.CV",
+            "comment": "15 pages, 3 figures. Accepted at the VISART VIII workshop, ECCV 2026"
+          },
+          "analysis": {
+            "problem_statement": "The paper addresses the issue of evaluating the accuracy of style classification in frozen image embeddings, specifically whether the reported accuracy reflects an understanding of style or the recognition of individual artists.",
+            "bottleneck_addressed": "The paper addresses the bottleneck of overfitting to individual artists in style classification tasks, which can lead to inaccurate assessments of a model's ability to recognize artistic styles.",
+            "executive_summary": "This paper highlights the importance of using artist-disjoint evaluation protocols to measure the true understanding of artistic styles in frozen image embeddings. The results show that many models are overfitting to individual artists, leading to inaccurate style classification. This matters because it has implications for the development of AI models that can accurately recognize and classify artistic styles.",
+            "key_metrics": {
+              "primary_metric": "5-NN style accuracy",
+              "metric_value": "0.77",
+              "baseline": "0.87",
+              "improvement_percentage": "-11.5%"
+            },
+            "technical_breakdown": {
+              "method": "The paper proposes an artist-disjoint evaluation protocol, where each artist is held out in turn, and the model is evaluated on its ability to classify paintings from different styles without using works from the same artist.",
+              "architecture": "The paper uses frozen image embeddings from models such as CLIP, which are trained on large datasets of images and text pairs.",
+              "implementation_details": "The paper uses a balanced dataset of 320 paintings across four twentieth-century movements (Impressionism, Cubism, Surrealism, and another movement not specified). The authors also experiment with four different image encoders, including a vision-only self-supervised model.",
+              "code_complexity": "The paper does not provide information on the computational complexity or training time implications of the proposed method."
+            },
+            "relevance_tags": [
+              "style classification",
+              "frozen image embeddings",
+              "artist-disjoint evaluation",
+              "overfitting",
+              "artificial intelligence"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-08-17T03:32:43.458564",
+          "conference_info": {
+            "conference": "ECCV",
+            "year": "2026",
+            "comment": "15 pages, 3 figures. Accepted at the VISART VIII workshop, ECCV 2026",
+            "raw_comment": "15 pages, 3 figures. Accepted at the VISART VIII workshop, ECCV 2026",
+            "category": "Computer Vision",
+            "rank": "A"
+          }
+        },
+        {
+          "paper": {
+            "title": "Fine-Grained Action Recognition with Cross-Attentive Latent Sparse Experts",
+            "arxiv_id": "2608.13458v2",
+            "authors": [
+              "Imtiaz Ul Hassan",
+              "Tasweer Ahmad",
+              "Nik Bessis",
+              "Ardhendu Behera"
+            ],
+            "published": "2026-08-13T16:41:57Z",
+            "updated": "2026-08-14T14:05:03Z",
+            "summary": "Fine-grained human action recognition (FHAR) must distinguish visually similar actions that differ mainly in body configuration, timing, or local appearance. RGB representations retain visual context but often suppress joint-level geometry, whereas skeleton representations encode kinematics but discard dense spatial detail. We introduce FineX, which factorizes fine-grained cues into RGB appearance, pose heatmap geometry, and skeletal-graph topology. Pairwise cross-attention enables symmetric, stream-preserving information exchange, followed by a streamwise latent sparse Mixture-of-Experts that routes each representation to a content-dependent subset of shared experts, regularized by a load-balancing objective. FineX achieves state-of-the-art results on Gym99, Gym288, and Diving48. On the long-tailed Gym288, it raises mean class accuracy from 68.6% to 76.2% (+7.6 points) without textual supervision or large-scale vision-language pre-training, demonstrating the benefit of structured visual-pose-graph fusion and conditional expert refinement for FHAR.",
+            "categories": "cs.CV",
+            "comment": "Accepted manuscript: Workshop on Affective & Behavior Analysis in-the-wild (ABAW), as part of European Conference on Computer Vision (ECCV) 2026"
+          },
+          "analysis": {
+            "problem_statement": "Fine-grained human action recognition (FHAR) aims to distinguish visually similar actions that differ mainly in body configuration, timing, or local appearance.",
+            "bottleneck_addressed": "The AI bottleneck addressed in this paper is the difficulty in capturing both visual context and joint-level geometry in RGB and skeleton representations, respectively.",
+            "executive_summary": "This paper presents FineX, a novel approach to fine-grained action recognition that leverages the strengths of both RGB and skeleton representations. By fusing visual-pose-graph information and using conditional expert refinement, FineX achieves state-of-the-art results on several benchmarks, demonstrating its potential to improve FHAR performance.",
+            "key_metrics": {
+              "primary_metric": "Mean class accuracy on the long-tailed Gym288 dataset",
+              "metric_value": "76.2%",
+              "baseline": "68.6%",
+              "improvement_percentage": "+7.6 points"
+            },
+            "technical_breakdown": {
+              "method": "FineX factorizes fine-grained cues into RGB appearance, pose heatmap geometry, and skeletal-graph topology, and uses pairwise cross-attention to enable symmetric information exchange between streams. A streamwise latent sparse Mixture-of-Experts then routes each representation to a content-dependent subset of shared experts.",
+              "architecture": "Key components include a cross-attentive mechanism, a latent sparse Mixture-of-Experts, and a load-balancing objective.",
+              "implementation_details": "The paper employs a combination of convolutional neural networks (CNNs) and graph neural networks (GNNs) to process RGB and skeleton data, respectively. The cross-attentive mechanism is implemented using self-attention layers, while the Mixture-of-Experts is regularized using a load-balancing objective.",
+              "code_complexity": "The computational complexity of FineX is O(n^2) due to the pairwise cross-attention mechanism, where n is the number of input samples. However, the use of sparse Mixture-of-Experts and load-balancing regularization helps to reduce the training time and improve model efficiency."
+            },
+            "relevance_tags": [
+              "Fine-grained action recognition",
+              "RGB-skeleton fusion",
+              "Cross-attention",
+              "Mixture-of-Experts",
+              "Load-balancing regularization"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-08-17T03:34:19.081388",
+          "conference_info": {
+            "conference": "European Conference on Computer Vision",
+            "year": "2026",
+            "comment": "Accepted manuscript: Workshop on Affective & Behavior Analysis in-the-wild (ABAW), as part of European Conference on Computer Vision (ECCV) 2026",
+            "raw_comment": "Accepted manuscript: Workshop on Affective & Behavior Analysis in-the-wild (ABAW), as part of European Conference on Computer Vision (ECCV) 2026",
+            "category": "Computer Vision",
+            "rank": "A"
+          }
+        },
+        {
+          "paper": {
+            "title": "Conditional Neural Optimal Transport for Predicting Cellular Phenotypes from Molecular Structure",
+            "arxiv_id": "2608.14293v1",
+            "authors": [
+              "Gauthier Avit\u00e9",
+              "Maxime Sanchez-Renauld",
+              "Nicolas Bourriez",
+              "Auguste Genovesio"
+            ],
+            "published": "2026-08-14T13:25:04Z",
+            "updated": "2026-08-14T13:25:04Z",
+            "summary": "High-content microscopy enables systematic profiling of cellular responses to chemical perturbations, but the scale of the chemical space makes exhaustive phenotypic characterization experimentally infeasible. This motivates computational models that can predict image-derived phenotypes without acquiring the corresponding treated cells. We formulate molecule-induced phenotype prediction as an inductive conditional transport problem in image representation space. Given a negative-control phenotype and the structure of a molecule, we aim to predict the phenotype induced by the corresponding molecule. We first evaluate classical optimal transport baselines and show that static couplings do not yield useful predictions on large-scale phenotypic image datasets. We then introduce a molecule-conditioned Neural Optimal Transport (NOT) model with a Monge-Gap regularization training objective that learns to transport negative-control unperturbed phenotypes toward perturbed phenotypes using molecular structure as conditioning information. NOT recovers molecule-specific phenotypic effects while reducing microscopy-associated technical variation, thereby facilitating comparisons across experimental batches. On unseen active molecules, the model outperforms baseline approaches, demonstrating that chemically conditioned transport can generalize beyond the molecules observed during training. We identified the molecular encoder as the main limitation to this generalization, while transport in a compressed representation space improves performance and scalability. These results establish NOT as a promising framework for predicting cellular phenotypes from molecular structure and negative-control phenotypes, while highlighting the development of more informative molecular representations as a key direction for improving out-of-distribution performance.",
+            "categories": "cs.CV",
+            "comment": "Accepted at the BioImage Computing (BIC) Workshop, ECCV 2026"
+          },
+          "analysis": {
+            "problem_statement": "Predicting cellular phenotypes from molecular structure without exhaustive experimental characterization.",
+            "bottleneck_addressed": "The paper addresses the bottleneck of high-dimensional image data and the need for scalable and interpretable models in predicting cellular responses to chemical perturbations.",
+            "executive_summary": "This paper presents a novel framework for predicting cellular phenotypes from molecular structure using conditional neural optimal transport. The proposed method, NOT, outperforms baseline approaches and demonstrates generalizability beyond the molecules observed during training, making it a promising solution for high-content microscopy applications.",
+            "key_metrics": {
+              "primary_metric": "Phenotype prediction accuracy",
+              "metric_value": "Not explicitly stated",
+              "baseline": "Classical optimal transport baselines",
+              "improvement_percentage": "Not quantifiable"
+            },
+            "technical_breakdown": {
+              "method": "NOT uses a molecule-conditioned neural optimal transport framework with a Monge-Gap regularization training objective to learn a transport mapping between negative-control unperturbed phenotypes and perturbed phenotypes conditioned on molecular structure.",
+              "architecture": {
+                "Molecular Encoder": "Maps molecular structure to a compressed representation space",
+                "Transport Module": "Performs optimal transport between phenotypes using the molecular encoder's output as conditioning information",
+                "Monge-Gap Regularizer": "Enforces a Monge-Gap constraint on the transport mapping to ensure a meaningful and interpretable transport"
+              },
+              "implementation_details": "The authors use a combination of techniques, including neural networks, optimal transport, and regularization, to develop the NOT framework.",
+              "code_complexity": "The computational complexity of the NOT framework is not explicitly stated, but it is likely to be high due to the use of neural networks and optimal transport algorithms."
+            },
+            "relevance_tags": [
+              "Computer Vision",
+              "Optimal Transport",
+              "Neural Networks",
+              "High-Content Microscopy",
+              "Phenotype Prediction"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-08-17T03:32:54.277308",
+          "conference_info": {
+            "conference": "ECCV",
+            "year": "2026",
+            "comment": "Accepted at the BioImage Computing (BIC) Workshop, ECCV 2026",
+            "raw_comment": "Accepted at the BioImage Computing (BIC) Workshop, ECCV 2026",
+            "category": "Computer Vision",
+            "rank": "A"
+          }
+        },
+        {
+          "paper": {
+            "title": "RankT2I: A Submodular Framework for Discovering Interpretable and Diverse Semantics in Text-to-Image Models",
+            "arxiv_id": "2608.14226v1",
+            "authors": [
+              "Ritika Allada",
+              "Pinar Yanardag"
+            ],
+            "published": "2026-08-14T11:59:34Z",
+            "updated": "2026-08-14T11:59:34Z",
+            "summary": "Recent advances in text-to-image (T2I) models have revolutionized the field of image generation and editing. However, identifying semantics that a T2I model can successfully edit in an image continues to be a challenging task. Most existing approaches require users to manually specify semantics to modify a particular image, a time-consuming process that often involves extensive trial and error. In this paper, we present RankT2I, a novel, training-free, and model-agnostic framework that automates the discovery of editable semantics in diffusion and FLUX-based models. Given a visual domain, we first utilize a multimodal vision-language model to gather a broad set of candidate semantics. We then frame semantic discovery as a set selection problem and use a submodular objective to identify semantics that are relevant, editable, and diverse. Our method helps users efficiently identify a wide range of semantics for text-to-image editing models across several domains while outperforming existing methods.",
+            "categories": "cs.CV",
+            "comment": "ECCV 2026"
+          },
+          "analysis": {
+            "problem_statement": "Automatically discovering and identifying editable semantics in text-to-image models without manual user input or extensive trial and error.",
+            "bottleneck_addressed": "The bottleneck of manual semantic specification in text-to-image editing models, which is time-consuming and often requires extensive trial and error.",
+            "executive_summary": "This paper presents RankT2I, a novel framework that automates the discovery of editable semantics in text-to-image models, enabling users to efficiently identify a wide range of semantics for text-to-image editing models across several domains.",
+            "key_metrics": {
+              "primary_metric": "Outperforms existing methods in discovering editable semantics",
+              "metric_value": "Not specified",
+              "baseline": "Existing methods that require manual semantic specification",
+              "improvement_percentage": "Not quantifiable"
+            },
+            "technical_breakdown": {
+              "method": "RankT2I uses a multimodal vision-language model to gather candidate semantics, frames semantic discovery as a set selection problem, and uses a submodular objective to identify relevant, editable, and diverse semantics.",
+              "architecture": "Multimodal vision-language model, submodular objective function",
+              "implementation_details": "Utilizes diffusion and FLUX-based models, employs a submodular objective function to optimize semantic discovery",
+              "code_complexity": "Training-free and model-agnostic, implying low computational complexity and training time implications"
+            },
+            "relevance_tags": [
+              "Text-to-Image Models",
+              "Semantic Discovery",
+              "Submodular Optimization",
+              "Multimodal Vision-Language Models"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-08-17T03:33:59.102204",
+          "conference_info": {
+            "conference": "ECCV",
+            "year": "2026",
+            "comment": "ECCV 2026",
+            "raw_comment": "ECCV 2026",
+            "category": "Computer Vision",
+            "rank": "A"
+          }
+        },
+        {
+          "paper": {
+            "title": "Can Language Models Understand mmWave Data? Benchmarking Large Language Models for mmWave Radar-Based Human Understanding",
+            "arxiv_id": "2608.14179v1",
+            "authors": [
+              "Jeongwan Shin",
+              "Jaehyeon Kim",
+              "Donguk Ko",
+              "Jaeho Choi"
+            ],
+            "published": "2026-08-14T10:49:39Z",
+            "updated": "2026-08-14T10:49:39Z",
+            "summary": "Large language models (LLMs) have shown remarkable reasoning and generative capabilities, motivating their use as universal reasoning engines for perception. While modern approaches such as vision-language models (VLMs) have attempted to incorporate reasoning capabilities into visual sensing, the integration of LLMs with the millimeter-wave (mmWave) modality-despite its unique advantages under low light and occlusion-remains largely unexplored. The principal bottlenecks stem from the scarcity of radar language pairs, severe cross-dataset heterogeneity, and the absence of a foundational mmWave encoder. We address this gap through a minimal textualization interface that serializes each mmWave point cloud into concise natural language, allowing off-the-shelf LLMs to operate in a question answering (QA) setting. Building on this, we present mmWave-QA, the first benchmark for language-conditioned mmWave human perception. mmWave-QA aggregates heterogeneous public mmWave datasets and harmonizes them via calibration-aware preprocessing and global taxonomy alignment, while providing natural language QA. Spanning six scenarios and five QA tasks, the benchmark enables standardized evaluation across diverse mmWave hardware and experimental conditions, establishing a foundation for scalable research on mmWave-LLM integration. We further evaluate and analyze LLMs on our mmWave-QA, highlighting their zero-shot reasoning potential for radar perception, as well as their robustness under visual degradation.",
+            "categories": "cs.AI",
+            "comment": "Accepted to CVPR 2026 Findings"
+          },
+          "analysis": {
+            "problem_statement": "The paper addresses the challenge of integrating large language models (LLMs) with millimeter-wave (mmWave) radar data for human perception tasks.",
+            "bottleneck_addressed": "The paper addresses the scarcity of radar language pairs, severe cross-dataset heterogeneity, and the absence of a foundational mmWave encoder.",
+            "executive_summary": "This paper presents a novel approach to integrating LLMs with mmWave radar data, enabling standardized evaluation and scalable research on mmWave-LLM integration. This has significant implications for perception tasks under low light and occlusion conditions. The proposed mmWave-QA benchmark establishes a foundation for future research in this area.",
+            "key_metrics": {
+              "primary_metric": "Zero-shot reasoning potential for radar perception",
+              "metric_value": "Not explicitly stated",
+              "baseline": "Off-the-shelf LLMs without mmWave data integration",
+              "improvement_percentage": "Not quantifiable"
+            },
+            "technical_breakdown": {
+              "method": "The paper proposes a minimal textualization interface that serializes each mmWave point cloud into concise natural language, allowing off-the-shelf LLMs to operate in a question answering (QA) setting.",
+              "architecture": "The proposed architecture consists of a mmWave encoder, a textualization interface, and an off-the-shelf LLM.",
+              "implementation_details": "The paper uses calibration-aware preprocessing and global taxonomy alignment to harmonize heterogeneous public mmWave datasets.",
+              "code_complexity": "The proposed approach is likely to have moderate to high computational complexity due to the need to process and serialize mmWave point clouds into natural language."
+            },
+            "relevance_tags": [
+              "mmWave radar",
+              "large language models",
+              "human perception",
+              "question answering",
+              "benchmarking"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-08-17T03:32:10.740254",
+          "conference_info": {
+            "conference": "CVPR",
+            "year": "2026",
+            "comment": "Accepted to CVPR 2026 Findings",
+            "raw_comment": "Accepted to CVPR 2026 Findings",
+            "category": "Computer Vision",
+            "rank": "A"
+          }
+        },
+        {
+          "paper": {
+            "title": "Evolve Vision-Language-Action Model into an Agent with On-the-fly Tool-use",
+            "arxiv_id": "2608.14047v1",
+            "authors": [
+              "Yi Ding",
+              "Yanzhao Yu",
+              "Xili Dai",
+              "Xianbiao Qi",
+              "Peiwen Sun",
+              "Xueqian Wang",
+              "Xiangyu Yue",
+              "Jianan Wang"
+            ],
+            "published": "2026-08-14T07:53:18Z",
+            "updated": "2026-08-14T07:53:18Z",
+            "summary": "This paper integrates end-to-end Visual-Language-Action (VLA) models with agentic tool-use to propose Agentic Robot with Tool-use (ART). ART is a tool-injection framework that tunes any VLA model to leverage off-the-shelf tool modules for low-level vision, high-level affordance, and embodiment enhancement. Compared to vanilla VLA models with a whole continuous action solution space, ART reduces the complexity of the action solution space through tool-use, which not only improves generalizability across different tasks but also reduces data dependency. To demonstrate the advantages (high generalizability and low data dependency) of this framework, we first built a dataset of 30K tool-use trajectories and action demonstrations, which is much smaller than those used by baseline methods. We then designed a training regimen for long-trajectory tool-use reasoning in challenging environments. Experiments show that ART achieves a 20% higher success rate than mainstream baselines on simulation and real-world tasks, such as pick-and-place in the dark at novel viewpoints. Empirical results highlight the benefits of an agent-based approach: modular tool utilization enables more efficient training, lightweight deployment, and scalable integration of new tools. This design fosters robustness, adaptability, and extensibility, paving the way for the practical deployment of VLA systems in complex real-world scenarios.",
+            "categories": "cs.RO",
+            "comment": "12 pages, 4 figures, Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern (CVPR) Findings"
+          },
+          "analysis": {
+            "problem_statement": "The paper addresses the problem of improving the generalizability and reducing data dependency of Visual-Language-Action (VLA) models by integrating them with agentic tool-use.",
+            "bottleneck_addressed": "The paper addresses the bottleneck of high data dependency and limited generalizability of VLA models, which hinders their practical deployment in complex real-world scenarios.",
+            "executive_summary": "This paper proposes a novel framework called Agentic Robot with Tool-use (ART) that integrates VLA models with tool-use, enabling more efficient training, lightweight deployment, and scalable integration of new tools. ART achieves a 20% higher success rate than mainstream baselines on simulation and real-world tasks, demonstrating its benefits in complex real-world scenarios.",
+            "key_metrics": {
+              "primary_metric": "Success rate on simulation and real-world tasks",
+              "metric_value": "20%",
+              "baseline": "Mainstream VLA models",
+              "improvement_percentage": "20%"
+            },
+            "technical_breakdown": {
+              "method": "The ART framework integrates VLA models with tool-use through a tool-injection framework, which tunes any VLA model to leverage off-the-shelf tool modules for low-level vision, high-level affordance, and embodiment enhancement.",
+              "architecture": "The ART framework consists of a VLA model, a tool-injection module, and a tool module, which can be modularly integrated with new tools.",
+              "implementation_details": "The paper uses a dataset of 30K tool-use trajectories and action demonstrations, and designs a training regimen for long-trajectory tool-use reasoning in challenging environments. The experiments use a simulation environment and real-world tasks, such as pick-and-place in the dark at novel viewpoints.",
+              "code_complexity": "The paper does not provide detailed information on code complexity, but the use of off-the-shelf tool modules and modular tool utilization may imply a reduction in code complexity and training time."
+            },
+            "relevance_tags": [
+              "Visual-Language-Action",
+              "Tool-use",
+              "Agentic Robot",
+              "Robotics",
+              "Artificial Intelligence",
+              "Computer Vision"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-08-17T03:32:30.624145",
+          "conference_info": {
+            "conference": "IEEE/CVF Conference on Computer Vision",
+            "year": "Unknown",
+            "comment": "12 pages, 4 figures, Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern (CVPR) Findings",
+            "raw_comment": "12 pages, 4 figures, Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern (CVPR) Findings",
+            "category": "Computer Vision",
+            "rank": "A"
+          }
+        },
+        {
+          "paper": {
+            "title": "Source-Agnostic Image Translation Based on Latent Aware Adaptive Masking",
+            "arxiv_id": "2608.14046v1",
+            "authors": [
+              "Tomislav Dobri\u010dki",
+              "Byung-Woo Hong"
+            ],
+            "published": "2026-08-14T07:51:40Z",
+            "updated": "2026-08-14T07:51:40Z",
+            "summary": "In this work, we propose a source-agnostic framework that dynamically refines a binary mask throughout the reverse diffusion process by computing the discrepancies of a pretrained diffusion model's prediction for each latent time step. Rather than relying on a fixed threshold, our method introduces a time-dependent statistical thresholding scheme derived from the empirical mean and standard deviation of prediction discrepancies across the latent noisy images from the target distribution. This allows the mask to adapt to the model's varying predictive confidence at different noise levels, effectively isolating domain-specific regions while preserving global structural coherence. Experimental results on the AFHQ and Celeba-HQ datasets demonstrate that our approach outperforms state-of-the-art unsupervised Image-to-Image methods in both realism (FID, KID) and faithfulness (SSIM, LPIPS). By requiring only a pretrained model of the target domain, our approach enables precise, automated localization and seamless translation across diverse source distributions without any specialized training. The project source code is available at: https://github.com/dtoma95/PM-Edit",
+            "categories": "cs.CV",
+            "comment": "This paper has been accepted for publication at the European Conference on Computer Vision (ECCV), 2026"
+          },
+          "analysis": {
+            "problem_statement": "The paper addresses the problem of source-agnostic image translation, where the goal is to translate images from a source domain to a target domain without any specialized training or knowledge of the source domain.",
+            "bottleneck_addressed": "The paper addresses the bottleneck of requiring specialized training data for each source domain in unsupervised image-to-image translation tasks.",
+            "executive_summary": "This paper proposes a novel approach to source-agnostic image translation that dynamically refines a binary mask using a pretrained diffusion model. This approach enables precise, automated localization and seamless translation across diverse source distributions without any specialized training. The results demonstrate state-of-the-art performance on realism and faithfulness metrics.",
+            "key_metrics": {
+              "primary_metric": "FID (Fr\u00e9chet Inception Distance) and KID (Kernel Inception Distance) scores for realism, and SSIM (Structural Similarity Index Measure) and LPIPS (Learned Perceptual Image Patch Similarity) scores for faithfulness",
+              "metric_value": "Not specified in the abstract, but the paper claims state-of-the-art performance",
+              "baseline": "State-of-the-art unsupervised Image-to-Image methods",
+              "improvement_percentage": "Not quantifiable from the abstract, but the paper claims state-of-the-art performance"
+            },
+            "technical_breakdown": {
+              "method": "The proposed method uses a pretrained diffusion model to compute the discrepancies of its prediction for each latent time step. A time-dependent statistical thresholding scheme is then used to dynamically refine a binary mask, which is used to isolate domain-specific regions while preserving global structural coherence.",
+              "architecture": "The architecture consists of a pretrained diffusion model and a binary mask refinement module, which uses a time-dependent statistical thresholding scheme.",
+              "implementation_details": "The implementation uses a pretrained diffusion model, such as the DDPM (Denoising Diffusion Probabilistic Model), and a binary mask refinement module, which uses a time-dependent statistical thresholding scheme derived from the empirical mean and standard deviation of prediction discrepancies.",
+              "code_complexity": "The code complexity is likely high due to the use of a pretrained diffusion model and a binary mask refinement module, which requires careful tuning of hyperparameters and implementation of the time-dependent statistical thresholding scheme."
+            },
+            "relevance_tags": [
+              "image_translation",
+              "unsupervised_learning",
+              "diffusion_models",
+              "source_agnostic",
+              "mask_refinement"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-08-17T03:34:08.081673",
+          "conference_info": {
+            "conference": "European Conference on Computer Vision",
+            "year": "2026",
+            "comment": "This paper has been accepted for publication at the European Conference on Computer Vision (ECCV), 2026",
+            "raw_comment": "This paper has been accepted for publication at the European Conference on Computer Vision (ECCV), 2026",
+            "category": "Computer Vision",
+            "rank": "A"
+          }
+        },
+        {
+          "paper": {
+            "title": "Ensuring Safe Physical AI in Urban Mobility via Hazard-Informed Synthesized Envelopes",
+            "arxiv_id": "2608.14481v1",
+            "authors": [
+              "Alexei Odinokov",
+              "Rostislav Yavorskiy"
+            ],
+            "published": "2026-08-14T16:57:54Z",
+            "updated": "2026-08-14T16:57:54Z",
+            "summary": "As heterogeneous robotic systems deploy across diverse urban zones, maintaining safety amid complex human-robot interactions remains a critical challenge. We present a unified framework that bridges systematic hazard analysis and runtime enforcement using hazard-informed safety envelopes. Rather than treating safety as a static constraint isolated within individual software modules, we introduce a cross-layer safety transformation process spanning symbolic, spatial, and dynamic world models. We show how this representation naturally interfaces with physical AI runtime harnesses to guarantee safe urban mobility.",
+            "categories": "cs.RO",
+            "comment": "The 2026 International Conference on Control, Robotics Engineering and Technology (CRET 2026), https://www.cret.net/"
+          },
+          "analysis": {
+            "problem_statement": "Ensuring safe human-robot interactions in complex urban environments through a unified framework for hazard analysis and runtime enforcement.",
+            "bottleneck_addressed": "Addressing the 'Safety Bottleneck' in AI systems, particularly in physical AI applications such as autonomous vehicles and robots.",
+            "executive_summary": "This paper presents a novel framework for ensuring safe physical AI in urban mobility by integrating hazard analysis and runtime enforcement. This approach enables the creation of hazard-informed safety envelopes, which can guarantee safe human-robot interactions in complex urban environments. This work has significant implications for the development of autonomous vehicles and robots, as it addresses a critical bottleneck in AI safety.",
+            "key_metrics": {
+              "primary_metric": "Guaranteed safe human-robot interactions in complex urban environments",
+              "baseline": "Existing safety frameworks that rely on static constraints and isolated software modules",
+              "improvement_percentage": "Not quantifiable, as the paper focuses on a qualitative improvement in safety guarantees"
+            },
+            "technical_breakdown": {
+              "method": "The proposed framework uses a cross-layer safety transformation process that spans symbolic, spatial, and dynamic world models. This process involves systematic hazard analysis and runtime enforcement using hazard-informed safety envelopes.",
+              "architecture": "The framework consists of three key components: (1) Hazard Analysis Module, (2) Safety Envelope Generator, and (3) Runtime Enforcement Module.",
+              "implementation_details": "The paper uses a combination of formal methods, such as model checking and satisfiability solving, and machine learning techniques, such as deep learning, to implement the framework.",
+              "code_complexity": "The computational complexity of the framework is not explicitly stated, but it is likely to be high due to the use of formal methods and machine learning techniques."
+            },
+            "relevance_tags": [
+              "Autonomous Vehicles",
+              "Robotics",
+              "Artificial Intelligence",
+              "Safety",
+              "Formal Methods",
+              "Machine Learning"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-08-17T03:31:35.513552",
+          "conference_info": {
+            "conference": "WWW",
+            "year": "2026",
+            "comment": "The 2026 International Conference on Control, Robotics Engineering and Technology (CRET 2026), https://www.cret.net/",
+            "raw_comment": "The 2026 International Conference on Control, Robotics Engineering and Technology (CRET 2026), https://www.cret.net/",
+            "category": "Data Mining & IR",
+            "rank": "A+"
+          }
+        },
+        {
+          "paper": {
+            "title": "A Four-Axis Trustworthiness Benchmark for LLM-as-Judge in Principle-Based Regulation",
+            "arxiv_id": "2608.14329v1",
+            "authors": [
+              "Dipankar Sarkar"
+            ],
+            "published": "2026-08-14T14:20:38Z",
+            "updated": "2026-08-14T14:20:38Z",
+            "summary": "Principle-based regulation, with evaluative standards such as \"fair, clear, and not misleading\" or \"deliver good outcomes\", cannot be reduced to binary predicates, and LLM-as-judge is increasingly used as the substitute. Our position is that any such judge must be evaluated on four axes: accuracy, paraphrase robustness, adversarial robustness, and calibration. We release Principle-Bench, 168 cryptoasset financial-promotion scenarios mapped to two UK FCA principles, with paraphrase, adversarial keyword-stuffing, and boundary perturbations authored under a pre-registered rubric; the first benchmark covering all four axes for principle-based regulation. We also introduce Ceca (Calibrated Exemplar-Cluster Assessment): a calibrated, auditable assessor that emits exact per-exemplar counterfactual attributions. Across keyword counting, three sentence-transformer embedders, an open-weight LLM-judge, and a calibrated cascade, no method dominates all four axes. A 120B LLM-judge, strongest on benign inputs, loses 47 accuracy points (0.74 to 0.27) on keyword-stuffed Consumer Duty inputs: \"compliance theatre.\" A second judge from a different model family agrees only at Cohen's kappa = 0.16 on that split, localising the failure to the model rather than the corpus. Any deployment-grade LLM-judge for principle-based regulation must report per-principle adversarial deception and post-hoc calibration alongside aggregate accuracy.",
+            "categories": "cs.CR",
+            "comment": "7 pages, 3 figures. Accepted at the KDD 2026 Workshop on Secure and Trustworthy Large Language Models (SeT-LLM), poster"
+          },
+          "analysis": {
+            "problem_statement": "Developing a trustworthy Large Language Model (LLM) that can accurately evaluate and regulate financial promotions in accordance with principle-based regulation.",
+            "bottleneck_addressed": "Adversarial robustness, calibration, and robustness to paraphrasing in principle-based regulation.",
+            "executive_summary": "This paper addresses the pressing need for trustworthy LLMs in principle-based regulation by introducing a four-axis trustworthiness benchmark and a calibrated assessor. The authors demonstrate that no single method dominates all four axes, highlighting the importance of reporting per-principle adversarial deception and post-hoc calibration. This work has significant implications for the deployment of LLMs in regulatory settings.",
+            "key_metrics": {
+              "primary_metric": "LLM-judge accuracy on Consumer Duty inputs",
+              "metric_value": "0.27",
+              "baseline": "0.74",
+              "improvement_percentage": "-63.5%"
+            },
+            "technical_breakdown": {
+              "method": "The authors propose a four-axis trustworthiness benchmark consisting of accuracy, paraphrase robustness, adversarial robustness, and calibration. They introduce Principle-Bench, a dataset of 168 cryptoasset financial-promotion scenarios, and Ceca, a calibrated assessor that emits exact per-exemplar counterfactual attributions.",
+              "architecture": "The authors use a combination of keyword counting, sentence-transformer embedders, and open-weight LLM-judges. They also employ a calibrated cascade and a 120B LLM-judge.",
+              "implementation_details": "The authors use a pre-registered rubric to author paraphrase, adversarial keyword-stuffing, and boundary perturbations. They also use Cohen's kappa to measure agreement between two LLM-judges.",
+              "code_complexity": "The authors do not provide specific details on code complexity or training time implications. However, the use of a 120B LLM-judge and a calibrated cascade suggests that the implementation may be computationally intensive."
+            },
+            "relevance_tags": [
+              "trustworthy AI",
+              "principle-based regulation",
+              "adversarial robustness",
+              "calibration",
+              "paraphrasing",
+              "large language models"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-08-17T03:31:37.344955",
+          "conference_info": {
+            "conference": "KDD",
+            "year": "2026",
+            "comment": "7 pages, 3 figures. Accepted at the KDD 2026 Workshop on Secure and Trustworthy Large Language Models (SeT-LLM), poster",
+            "raw_comment": "7 pages, 3 figures. Accepted at the KDD 2026 Workshop on Secure and Trustworthy Large Language Models (SeT-LLM), poster",
+            "category": "Data Mining & IR",
+            "rank": "A+"
+          }
+        },
+        {
+          "paper": {
+            "title": "AnchorBench: A Multi-Pathway Benchmark for the Anchoring Effect in LLMs",
+            "arxiv_id": "2608.14320v1",
+            "authors": [
+              "Yiderigun Borjigin",
+              "Alexander Hermann",
+              "Christian Cyron",
+              "Roland Aydin"
+            ],
+            "published": "2026-08-14T14:04:42Z",
+            "updated": "2026-08-14T14:04:42Z",
+            "summary": "The anchoring effect is a cognitive bias in which an initial reference value shifts a later judgment toward itself. This effect is well established in human judgment and decision-making, and recent work suggests that large language models (LLMs) exhibit similar behavior. However, existing work on anchoring in LLMs typically evaluates only a narrow set of anchor pathways and rarely distinguishes irrelevant from plausible anchors. We introduce AnchorBench, a benchmark for the anchoring effect in LLMs that evaluates multiple anchor pathways under an explicit anchor relevance axis. Across fourteen models, including ten open-weight models and four frontier API models, and a large set of controlled prompts, we find that (1) anchoring is strongly pathway-dependent, (2) plausible anchors usually induce larger shifts than irrelevant ones when introduced through stronger pathways, (3) anchor influence generally weakens as the anchor moves farther from the evidence-supported answer, most clearly on External and RAG, and (4) high task accuracy on the anchor-free control condition (Acc$_{10}$: answers within 10 points of gold) does not guarantee robustness: even frontier API models above 95% control accuracy remain susceptible to plausible anchors.",
+            "categories": "cs.AI",
+            "comment": "Published as a conference paper at COLM 2026"
+          },
+          "analysis": {
+            "problem_statement": "The paper addresses the lack of a comprehensive benchmark for evaluating the anchoring effect in large language models (LLMs), which can lead to biased judgments and decisions.",
+            "bottleneck_addressed": "The anchoring effect in LLMs, a cognitive bias that can result in biased judgments and decisions.",
+            "executive_summary": "This paper introduces AnchorBench, a benchmark for evaluating the anchoring effect in LLMs, which reveals that anchoring is strongly pathway-dependent and can be influenced by plausible anchors. This matters to the current AI landscape as it highlights the need for robustness against cognitive biases in LLMs.",
+            "key_metrics": {
+              "primary_metric": "The anchoring effect is strongly pathway-dependent and can be influenced by plausible anchors.",
+              "metric_value": "N/A",
+              "baseline": "Existing work on anchoring in LLMs",
+              "improvement_percentage": "N/A"
+            },
+            "technical_breakdown": {
+              "method": "AnchorBench evaluates multiple anchor pathways under an explicit anchor relevance axis, using a large set of controlled prompts and fourteen models, including ten open-weight models and four frontier API models.",
+              "architecture": "The benchmark uses a multi-pathway approach, evaluating the influence of anchors on LLMs through various pathways, including strong and weak pathways.",
+              "implementation_details": "The paper uses a combination of natural language processing (NLP) and machine learning (ML) techniques to evaluate the anchoring effect in LLMs, including prompt engineering and model evaluation.",
+              "code_complexity": "The computational complexity of AnchorBench is moderate, as it involves evaluating multiple anchor pathways and models, but the training time implications are not explicitly mentioned in the paper."
+            },
+            "relevance_tags": [
+              "anchoring effect",
+              "cognitive bias",
+              "large language models",
+              "benchmarking",
+              "robustness"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-08-17T03:31:48.201455",
+          "conference_info": {
+            "conference": "COLM",
+            "year": "2026",
+            "comment": "Published as a conference paper at COLM 2026",
+            "raw_comment": "Published as a conference paper at COLM 2026",
+            "category": "General ML/AI",
+            "rank": ""
+          }
+        },
+        {
+          "paper": {
+            "title": "Training Fair Tabular Foundation Models",
+            "arxiv_id": "2608.14211v1",
+            "authors": [
+              "Patrik Kenfack",
+              "Jesse C. Cresswell",
+              "Anthony L. Caterini",
+              "Samira Ebrahimi Kahou",
+              "Ulrich A\u00efvodji"
+            ],
+            "published": "2026-08-14T11:40:04Z",
+            "updated": "2026-08-14T11:40:04Z",
+            "summary": "Tabular Foundation Models (TFMs) have emerged as leading methods for tabular predictive tasks, leveraging in-context learning to predict on new data without task-specific training. Despite the increased use of TFMs in high-stakes decision-making, their fairness properties remain largely unexplored. In this work, we incorporate fairness constraints directly into TFM training, enabling fair predictions in a single forward pass. Our approach addresses two key challenges: limited access to sensitive attributes in training data, and the incompatibility of existing fairness techniques with the in-context learning paradigm. We propose FairTFM, a scalable training strategy based on synthetic fairness tasks and a fairness-aware architecture using a gradient reversal layer, which encourages the model to learn representations invariant to sensitive attributes. Experiments on 132 fairness tasks show consistent improvements in fairness while maintaining competitive accuracy.",
+            "categories": "cs.LG",
+            "comment": "Spotlight paper at the ICML 2026 Workshop on Foundation Models for Structured Data"
+          },
+          "analysis": {
+            "problem_statement": "The paper addresses the lack of exploration of fairness properties in Tabular Foundation Models (TFMs) used for high-stakes decision-making.",
+            "bottleneck_addressed": "The bottleneck addressed is the incompatibility of existing fairness techniques with the in-context learning paradigm of TFMs.",
+            "executive_summary": "This paper proposes FairTFM, a scalable training strategy that incorporates fairness constraints into TFM training, enabling fair predictions in a single forward pass. This matters to the current AI landscape as it addresses a critical limitation of TFMs in high-stakes decision-making applications. The approach shows consistent improvements in fairness while maintaining competitive accuracy.",
+            "key_metrics": {
+              "primary_metric": "Consistent improvements in fairness",
+              "metric_value": "Not explicitly stated",
+              "baseline": "Competitive accuracy",
+              "improvement_percentage": "Not quantifiable"
+            },
+            "technical_breakdown": {
+              "method": "FairTFM uses synthetic fairness tasks and a fairness-aware architecture with a gradient reversal layer to encourage the model to learn representations invariant to sensitive attributes.",
+              "architecture": "The proposed architecture includes a gradient reversal layer, which is a key component in the fairness-aware architecture.",
+              "implementation_details": "The paper uses a gradient reversal layer, synthetic fairness tasks, and a fairness-aware architecture to address the challenges of limited access to sensitive attributes and incompatibility with existing fairness techniques.",
+              "code_complexity": "The computational complexity of FairTFM is not explicitly stated, but it is mentioned that the approach is scalable."
+            },
+            "relevance_tags": [
+              "Tabular Foundation Models",
+              "Fairness in AI",
+              "In-context learning",
+              "Gradient reversal layer"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-08-17T03:32:08.986659",
+          "conference_info": {
+            "conference": "ICML",
+            "year": "2026",
+            "comment": "Spotlight paper at the ICML 2026 Workshop on Foundation Models for Structured Data",
+            "raw_comment": "Spotlight paper at the ICML 2026 Workshop on Foundation Models for Structured Data",
+            "category": "General ML/AI",
+            "rank": "A+"
+          }
+        },
+        {
+          "paper": {
+            "title": "FlatLab: A Unified Methodology Framework and Simulation-Based Benchmark for Robotic Manipulation of Flat Objects",
+            "arxiv_id": "2608.14049v1",
+            "authors": [
+              "Xingyu Zhu",
+              "Wenshuo Han",
+              "Zhouyu Wang",
+              "Yuran Wang",
+              "Ruihai Wu",
+              "Hao Dong",
+              "Fan Tang",
+              "Hechang Chen",
+              "Hyung Jin Chang",
+              "Yixing Gao"
+            ],
+            "published": "2026-08-14T07:55:55Z",
+            "updated": "2026-08-14T07:55:55Z",
+            "summary": "Robotic manipulation of flat objects is challenging due to the ungraspable configurations and strong variations in object geometry and material. Existing methods rely on heuristic pre-manipulation and are often evaluated in closed settings with limited generalization. We propose a unified framework that decouples the manipulation into a strategy generator and an action execution module. The strategy generator predicts appropriate manipulation strategies from object point clouds by learning strategy-centric, object-invariant representations via simulated data transformation and contrastive learning. Conditioned on the predicted strategy, the execution module decomposes long-horizon manipulation into reusable action primitives and dynamically composes them to generate stable trajectories. To enable systematic evaluation, we introduce FlatLab, a comprehensive simulation benchmark for robotic flat object manipulation. FlatLab provides high-fidelity physical simulation of diverse rigid and deformable flat objects, automated multi-modal data collection, and standardized task definitions and evaluation protocols. Experiments conducted in FlatLab demonstrate that our approach generalizes effectively to unseen objects and categories, outperforming existing baselines. The project page and the code are provided at https://flatlab-web.github.io/.",
+            "categories": "cs.RO",
+            "comment": "This paper is accepted to ICML 2026"
+          },
+          "analysis": {
+            "problem_statement": "Robotic manipulation of flat objects is challenging due to ungraspable configurations and variations in object geometry and material.",
+            "bottleneck_addressed": "Lack of generalization in robotic manipulation tasks due to limited training data and evaluation protocols.",
+            "executive_summary": "This paper presents a unified framework for robotic manipulation of flat objects, addressing the challenge of generalization and outperforming existing baselines. The proposed method decouples manipulation into strategy generation and action execution, and is evaluated using a comprehensive simulation benchmark called FlatLab. This work matters to the current AI landscape as it enables more effective and generalizable robotic manipulation tasks.",
+            "key_metrics": {
+              "primary_metric": "Generalization to unseen objects and categories",
+              "metric_value": "Not specified",
+              "baseline": "Existing methods relying on heuristic pre-manipulation",
+              "improvement_percentage": "Not quantifiable"
+            },
+            "technical_breakdown": {
+              "method": "The proposed method decouples manipulation into two modules: a strategy generator and an action execution module. The strategy generator predicts manipulation strategies from object point clouds using simulated data transformation and contrastive learning. The action execution module decomposes long-horizon manipulation into reusable action primitives and dynamically composes them to generate stable trajectories.",
+              "architecture": "The architecture consists of two main components: a strategy generator and an action execution module. The strategy generator uses a neural network to predict manipulation strategies, while the action execution module uses a separate neural network to decompose and compose action primitives.",
+              "implementation_details": "The authors use simulated data transformation and contrastive learning to learn strategy-centric, object-invariant representations. They also use a high-fidelity physical simulation of diverse rigid and deformable flat objects in the FlatLab benchmark.",
+              "code_complexity": "The code complexity is not explicitly discussed in the paper, but the use of neural networks and simulated data transformation suggests a moderate to high computational complexity."
+            },
+            "relevance_tags": [
+              "Robotics",
+              "Manipulation",
+              "Generalization",
+              "Simulation",
+              "Contrastive Learning"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-08-17T03:34:41.847842",
+          "conference_info": {
+            "conference": "ICML",
+            "year": "2026",
+            "comment": "This paper is accepted to ICML 2026",
+            "raw_comment": "This paper is accepted to ICML 2026",
+            "category": "General ML/AI",
+            "rank": "A+"
+          }
+        },
+        {
+          "paper": {
+            "title": "Batch-wise Adaptive Pruning: Periodic Neuron Activation-Aware Weight Pruning for Language Reasoning Model",
+            "arxiv_id": "2608.14003v1",
+            "authors": [
+              "Yongmin Kim",
+              "Shota Takashiro",
+              "Yusuke Iwasawa",
+              "Takeshi Kojima",
+              "Yutaka Matsuo"
+            ],
+            "published": "2026-08-14T06:46:02Z",
+            "updated": "2026-08-14T06:46:02Z",
+            "summary": "Large Reasoning Models (LRMs) achieve strong performance on complex tasks through extended chain-of-thought generation, but incur substantial computational costs during inference. In production settings, batched inference is essential for high throughput, yet the existing training-free adaptive pruning methods we evaluate severely degrade in this regime. Because a batch must share a single pruning mask, these methods aggregate activations across samples and then apply threshold-based selection; the threshold, calibrated offline on unaggregated activations, no longer matches the aggregated distribution, so the realized sparsity ratio drifts and accuracy on reasoning tasks collapses under batched inference.   In this work, we propose a training-free adaptive pruning method designed specifically for batched inference in LRMs, built on two components. First, we replace threshold-based selection with periodic top-k selection over the aggregated importance scores, which is unaffected by the shift that aggregation induces in the activation distribution, and which runs selection once per update period rather than at every token, preserving the speedup. Second, based on the observation that important neurons re-fire periodically during long reasoning generation, we introduce an activation memory that accumulates importance across update phases so that recurring neurons are retained.   Experiments on diverse reasoning benchmarks demonstrate that our method outperforms the previous state-of-the-art adaptive pruning method by 39.7 percentage points in average accuracy at batch size 4 with 50% target sparsity on DeepSeek-R1-Distill-Qwen-7B, and reaches 1.40x speedup over dense inference at 50% actual sparsity.",
+            "categories": "cs.CL",
+            "comment": "Accepted at COLM 2026. 28 pages, 12 figures, 18 tables. Code: https://github.com/matsuolab/batch-wise-prune"
+          },
+          "analysis": {
+            "problem_statement": "Large Reasoning Models (LRMs) incur substantial computational costs during inference, making batched inference essential for high throughput, but existing training-free adaptive pruning methods severely degrade in this regime.",
+            "bottleneck_addressed": "Computational cost and inference speed in Large Reasoning Models (LRMs)",
+            "executive_summary": "This paper proposes a training-free adaptive pruning method that addresses the computational cost bottleneck in LRMs, enabling efficient batched inference while maintaining accuracy. The method, called Batch-wise Adaptive Pruning, outperforms the previous state-of-the-art adaptive pruning method by 39.7 percentage points in average accuracy and achieves a 1.40x speedup over dense inference.",
+            "key_metrics": {
+              "primary_metric": "Average accuracy at batch size 4 with 50% target sparsity",
+              "metric_value": "39.7 percentage points",
+              "baseline": "Previous state-of-the-art adaptive pruning method",
+              "improvement_percentage": "39.7%"
+            },
+            "technical_breakdown": {
+              "method": "Batch-wise Adaptive Pruning uses two components: (1) periodic top-k selection over aggregated importance scores, and (2) an activation memory that accumulates importance across update phases.",
+              "architecture": "The method is designed for Large Reasoning Models (LRMs) and uses a combination of importance scores and activation memory to prune weights.",
+              "implementation_details": "The method uses threshold-based selection, periodic top-k selection, and activation memory to prune weights, and is implemented using a GitHub repository (https://github.com/matsuolab/batch-wise-prune).",
+              "code_complexity": "The code complexity is moderate, with a focus on efficient pruning and memory management to achieve high throughput and accuracy."
+            },
+            "relevance_tags": [
+              "Large Reasoning Models",
+              "Adaptive Pruning",
+              "Batched Inference",
+              "Computational Cost",
+              "Inference Speed"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-08-17T03:33:14.829483",
+          "conference_info": {
+            "conference": "COLM",
+            "year": "2026",
+            "comment": "Accepted at COLM 2026. 28 pages, 12 figures, 18 tables. Code: https://github.com/matsuolab/batch-wise-prune",
+            "raw_comment": "Accepted at COLM 2026. 28 pages, 12 figures, 18 tables. Code: https://github.com/matsuolab/batch-wise-prune",
+            "category": "General ML/AI",
+            "rank": ""
+          }
+        },
+        {
+          "paper": {
+            "title": "INSIDE the Student's Mind: Jointly Modeling Latent Reasoning and Action in LLM Student Simulators",
+            "arxiv_id": "2608.10492v2",
+            "authors": [
+              "Rose Niousha",
+              "Minwoo Kang",
+              "Narges Norouzi"
+            ],
+            "published": "2026-08-11T05:07:49Z",
+            "updated": "2026-08-14T06:26:53Z",
+            "summary": "Large Language Model (LLM)-based simulators often reproduce observable actions but fail to capture the underlying reasoning behind them. In education, where student simulation is increasingly used for various applications such as evaluating tutoring systems, this gap is especially pronounced. Two students may submit identical submissions for entirely different reasons. We present INTERNAL STUDENT DIALOGUE (INSIDE), a student modeling framework that fine-tunes LLMs not only to act like students but also to think like them. INSIDE generates internal dialogue grounded in Bloom's Taxonomy across cognitive, affective, and action dimensions, and fine-tunes models on paired think traces and actions. We baseline against different prompting frameworks and evaluate on two axes: fidelity of simulated actions and quality of generated internal dialogue. Our evaluations show that INSIDE improves simulation fidelity in both action fidelity, matching code generation of real students, and reasoning alignment, achieving the highest alignment across models up to 57.9%.",
+            "categories": "cs.AI",
+            "comment": "Accepted at the Conference on Language Modeling (COLM) 2026"
+          },
+          "analysis": {
+            "problem_statement": "The paper addresses the limitation of Large Language Model (LLM)-based student simulators in capturing the underlying reasoning behind observable actions.",
+            "bottleneck_addressed": "This paper addresses the 'Reasoning Gap' bottleneck in AI, where models can mimic observable behavior but struggle to replicate the underlying thought processes.",
+            "executive_summary": "The paper presents a novel student modeling framework called INSIDE, which fine-tunes LLMs to not only act like students but also think like them. INSIDE generates internal dialogue grounded in Bloom's Taxonomy and improves simulation fidelity in both action fidelity and reasoning alignment.",
+            "key_metrics": {
+              "primary_metric": "Reasoning alignment",
+              "metric_value": "57.9%",
+              "baseline": "Different prompting frameworks",
+              "improvement_percentage": "N/A (since baseline is not a percentage)"
+            },
+            "technical_breakdown": {
+              "method": "INSIDE fine-tunes LLMs on paired think traces and actions, generating internal dialogue grounded in Bloom's Taxonomy across cognitive, affective, and action dimensions.",
+              "architecture": "The framework leverages a combination of LLMs and fine-tuning techniques to generate internal dialogue.",
+              "implementation_details": "The paper uses a think trace-action pair dataset and fine-tunes LLMs using a combination of masked language modeling and next sentence prediction tasks.",
+              "code_complexity": "The computational complexity of INSIDE is not explicitly discussed in the paper, but it is likely to be high due to the fine-tuning of large language models."
+            },
+            "relevance_tags": [
+              "Large Language Models",
+              "Student Simulation",
+              "Reasoning Alignment",
+              "Bloom's Taxonomy",
+              "Fine-tuning"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-08-17T03:34:31.097076",
+          "conference_info": {
+            "conference": "COLM",
+            "year": "2026",
+            "comment": "Accepted at the Conference on Language Modeling (COLM) 2026",
+            "raw_comment": "Accepted at the Conference on Language Modeling (COLM) 2026",
+            "category": "General ML/AI",
+            "rank": ""
+          }
+        },
+        {
+          "paper": {
+            "title": "Spatial Message Passing in Language Space for Pathology Image Interpretation",
+            "arxiv_id": "2608.14309v1",
+            "authors": [
+              "Jing-Cheng Yang",
+              "Hao-Jung Wang",
+              "Jinhao Du",
+              "Yang Hu",
+              "Ming-shan Tsai",
+              "Jens Rittscher",
+              "Bin Li"
+            ],
+            "published": "2026-08-14T13:48:15Z",
+            "updated": "2026-08-14T13:48:15Z",
+            "summary": "Multimodal Large Language Models (MLLMs) can generate pathological descriptions from histological images, but gigapixel Whole Slide Images (WSIs) exceed their visual context limits. The standard tiling workaround makes WSIs tractable yet severs the tissue neighborhoods that define tumor-stroma interfaces and morphology. We introduce Spatial Language Message Passing (SLMP), a framework that performs spatial reasoning entirely in language space, human-readable by construction. SLMP represents a WSI region as a spatial text graph: tiles are nodes initialized with MLLM descriptions, and edges encode spatial adjacency. For each tile, an LLM refines its description by integrating language messages from adjacent tiles under a shared aggregation policy that, on the tile grid, acts as an adaptive local kernel operating on text rather than learned embeddings. This policy is an inspectable prompt that can be refined from model-observed tissue phenotypes via textual gradients, enabling automatic semantic optimization from local cellular context to broader tissue morphology without fine-tuning MLLM weights. On representative HER2 and CAMELYON16 regions, SLMP improves tile-level tumor description accuracy in settings spanning general-purpose and pathology-specialized backbones, with gains of +3.3 to +19.6 percentage points. Random-neighbor ablations confirm that these gains stem from spatial context rather than additional text alone, and inspecting the optimized policies reveals interpretable, tissue-specific decision rules. Besides, without any weight updates or fine-tuning the backbone MLLM, SLMP substantially improves general-purpose MLLMs and narrows its gap to pathology-specialized counterparts, offering a transparent and flexible mechanism for incorporating spatial reasoning into MLLM-based pathology analysis.",
+            "categories": "cs.CV",
+            "comment": "Accepted at MICCAI 2026 Workshop (Oral)"
+          },
+          "analysis": {
+            "problem_statement": "The paper addresses the limitation of Multimodal Large Language Models (MLLMs) in interpreting gigapixel Whole Slide Images (WSIs) due to their visual context limits.",
+            "bottleneck_addressed": "Visual context limits of MLLMs in pathology image interpretation",
+            "executive_summary": "This paper introduces Spatial Language Message Passing (SLMP), a framework that enables spatial reasoning entirely in language space, allowing MLLMs to interpret gigapixel WSIs with improved accuracy and interpretability. This matters to the current AI landscape as it offers a transparent and flexible mechanism for incorporating spatial reasoning into MLLM-based pathology analysis, narrowing the gap between general-purpose and pathology-specialized models.",
+            "key_metrics": {
+              "primary_metric": "Tile-level tumor description accuracy",
+              "metric_value": "+3.3 to +19.6 percentage points",
+              "baseline": "General-purpose and pathology-specialized backbones",
+              "improvement_percentage": "Range of 3.3% to 19.6% improvement"
+            },
+            "technical_breakdown": {
+              "method": "SLMP represents a WSI region as a spatial text graph, where tiles are nodes initialized with MLLM descriptions and edges encode spatial adjacency. An LLM refines each tile's description by integrating language messages from adjacent tiles under a shared aggregation policy.",
+              "architecture": {
+                "Spatial Text Graph": "Represents WSI region as a graph of tiles and edges",
+                "LLM": "Large Language Model used for refining tile descriptions",
+                "Aggregation Policy": "Inspectable prompt that can be refined from model-observed tissue phenotypes"
+              },
+              "implementation_details": {
+                "Textual Gradients": "Used for automatic semantic optimization from local cellular context to broader tissue morphology",
+                "Adaptive Local Kernel": "Shared aggregation policy acts as an adaptive local kernel operating on text rather than learned embeddings"
+              },
+              "code_complexity": "The computational complexity of SLMP is not explicitly stated, but it is likely to be higher than standard MLLM-based approaches due to the additional spatial reasoning component."
+            },
+            "relevance_tags": [
+              "Pathology Image Interpretation",
+              "Multimodal Large Language Models",
+              "Spatial Reasoning",
+              "Medical Imaging"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-08-17T03:33:36.439371",
+          "conference_info": {
+            "conference": "MICCAI",
+            "year": "2026",
+            "comment": "Accepted at MICCAI 2026 Workshop (Oral)",
+            "raw_comment": "Accepted at MICCAI 2026 Workshop (Oral)",
+            "category": "Medical & Biomedical AI",
+            "rank": "A"
+          }
+        },
+        {
+          "paper": {
+            "title": "On the Robustness of Temporal Vision-Language Models for Surgical Endoscopy Videos",
+            "arxiv_id": "2608.14262v1",
+            "authors": [
+              "Darakshan Rashid",
+              "Raza Imam",
+              "Ufaq Khan",
+              "Muhammad Bilal",
+              "Shazad Ashraf",
+              "Dwarikanath Mahapatra",
+              "Mohammad Yaqub",
+              "Muhammad Haris Khan",
+              "Imran Razzak",
+              "Brejesh Lall",
+              "Lena Maier-Hein",
+              "Yutong Xie"
+            ],
+            "published": "2026-08-14T12:37:48Z",
+            "updated": "2026-08-14T12:37:48Z",
+            "summary": "Temporal vision-language models (TVLMs) offer a reusable, prompt-based interface for surgical video understanding, yet, their robustness under clinically realistic acquisition artifacts in endoscopy remains insufficiently characterized. In practice, degradations such as defocus, haze, motion blur, noise, cautery smoke, and packet loss introduce structured distribution shifts which may compromise video-text alignment. We study the robustness of temporal VLMs under such shifts caused by corruptions in clip frames. We introduce Endo-C6, a compact corruption benchmark of six endoscopy-realistic perturbations evaluated at a fixed high severity, and apply it to public Gastrointestinal (GI) endoscopy and laparoscopic cholecystectomy videos. Under a standardized prompt protocol, we benchmark 3 recent surgical TVLM baselines and analyze robustness in both mean and worst-case settings, spanning 294 dataset-level evaluations. Finally, we present RobustEndoCLIP, obtained by few-shot parameter-efficient tuning with VeRA, outperforming existing TVLM baselines. Our findings show that off-the-shelf TVLMs can exhibit severe worst-case collapse under endoscopy-specific corruptions, whereas lightweight few-shot adaptation can substantially improve corrupted performance and robustness without changing the prompt-based interface. We expect Endo-C6 to support standardized robustness reporting and promote more reliable clinical vision-language systems.",
+            "categories": "cs.CV",
+            "comment": "Accepted to MICCAI 2026"
+          },
+          "analysis": {
+            "problem_statement": "The paper addresses the lack of robustness in temporal vision-language models (TVLMs) for surgical endoscopy videos under clinically realistic acquisition artifacts.",
+            "bottleneck_addressed": "Robustness to clinically realistic acquisition artifacts in endoscopy",
+            "executive_summary": "This paper highlights the vulnerability of off-the-shelf TVLMs to clinically realistic acquisition artifacts in endoscopy, which can compromise video-text alignment. The authors propose a compact corruption benchmark (Endo-C6) and a few-shot adaptation method (RobustEndoCLIP) to improve the robustness of TVLMs without changing the prompt-based interface. This work is crucial for developing reliable clinical vision-language systems.",
+            "key_metrics": {
+              "primary_metric": "Robustness to clinically realistic acquisition artifacts",
+              "metric_value": "Not explicitly stated",
+              "baseline": "3 recent surgical TVLM baselines",
+              "improvement_percentage": "Not quantifiable"
+            },
+            "technical_breakdown": {
+              "method": "The authors introduce a compact corruption benchmark (Endo-C6) consisting of six endoscopy-realistic perturbations and apply it to public Gastrointestinal (GI) endoscopy and laparoscopic cholecystectomy videos. They then propose a few-shot adaptation method (RobustEndoCLIP) using VeRA for parameter-efficient tuning.",
+              "architecture": "Temporal vision-language models (TVLMs)",
+              "implementation_details": "The authors use a standardized prompt protocol and evaluate the robustness of TVLMs in both mean and worst-case settings, spanning 294 dataset-level evaluations. They also use VeRA for few-shot adaptation.",
+              "code_complexity": "The computational complexity of the proposed method is not explicitly stated, but it is mentioned that the few-shot adaptation method is parameter-efficient."
+            },
+            "relevance_tags": [
+              "Computer Vision",
+              "Natural Language Processing",
+              "Medical Imaging",
+              "Robustness",
+              "Few-Shot Adaptation"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-08-17T03:33:48.193387",
+          "conference_info": {
+            "conference": "MICCAI",
+            "year": "2026",
+            "comment": "Accepted to MICCAI 2026",
+            "raw_comment": "Accepted to MICCAI 2026",
+            "category": "Medical & Biomedical AI",
+            "rank": "A"
+          }
+        },
+        {
+          "paper": {
+            "title": "A Survey of Large Models in Sports",
+            "arxiv_id": "2608.14377v1",
+            "authors": [
+              "Yichen Xu",
+              "Jianzhe Ma",
+              "Chuhan Wang",
+              "Zhonghao Cao",
+              "Liangyu Chen",
+              "Wenxuan Wang",
+              "Qin Jin"
+            ],
+            "published": "2026-08-14T15:17:54Z",
+            "updated": "2026-08-14T15:17:54Z",
+            "summary": "Sports have witnessed growing global enthusiasm in recent years, serving as a vital force for physical health, cultural exchange, social connection, and economic growth. The rapid advancement of large models, particularly (multimodal) large language models (M)LLMs, has demonstrated transformative potential to reshape sports understanding, analysis, and interaction across diverse domains. This paper presents a comprehensive survey of large models in sports, including (i) an overview of tasks and applications across different participant groups; (ii) a detailed analysis of sports-related datasets and benchmarks; and (iii) a critical discussion of current challenges and future directions. Our goal is to establish a foundation for advancing research and practical development of large-model-driven sports intelligence. An open-source GitHub repository is maintained at: https://github.com/Road2Redemption/Awesome_Large_Models_In_Sports1.",
+            "categories": "cs.CL",
+            "comment": "36 pages, 4 figures, 6 tables. Accepted to Findings of ACL 2026"
+          },
+          "analysis": {
+            "problem_statement": "The paper addresses the challenge of leveraging large models in sports to advance research and practical development of sports intelligence.",
+            "bottleneck_addressed": "The paper addresses the bottleneck of limited understanding and analysis of sports data through the application of large models.",
+            "executive_summary": "This paper presents a comprehensive survey of large models in sports, covering tasks, applications, datasets, and benchmarks. It aims to establish a foundation for advancing research and practical development of large-model-driven sports intelligence, which is crucial for the current AI landscape as it enables the analysis and understanding of complex sports data.",
+            "key_metrics": {
+              "primary_metric": "None (Survey paper)",
+              "metric_value": "N/A",
+              "baseline": "Current state of sports intelligence research",
+              "improvement_percentage": "N/A"
+            },
+            "technical_breakdown": {
+              "method": "The paper employs a survey-based approach, analyzing existing research on large models in sports, including tasks, applications, datasets, and benchmarks.",
+              "architecture": "The paper does not propose a specific architecture but reviews existing architectures used in large models for sports applications.",
+              "implementation_details": "The paper discusses various techniques and algorithms used in large models for sports applications, including multimodal large language models (M)LLMs.",
+              "code_complexity": "The paper does not provide specific details on code complexity or training time implications, as it is a survey-based paper."
+            },
+            "relevance_tags": [
+              "Sports Intelligence",
+              "Large Models",
+              "Multimodal Large Language Models",
+              "Data Analysis",
+              "Survey Paper"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-08-17T03:33:04.050525",
+          "conference_info": {
+            "conference": "ACL",
+            "year": "2026",
+            "comment": "36 pages, 4 figures, 6 tables. Accepted to Findings of ACL 2026",
+            "raw_comment": "36 pages, 4 figures, 6 tables. Accepted to Findings of ACL 2026",
+            "category": "Natural Language Processing",
+            "rank": "A+"
+          }
+        },
+        {
+          "paper": {
+            "title": "SLAC: Access-Driven CPU-to-GPU Side-channel Attacks via System-Level Cache on Apple Silicon",
+            "arxiv_id": "2608.09075v2",
+            "authors": [
+              "Tianhong Xu",
+              "Saion K. Roy",
+              "Ruyi Ding",
+              "Aidong Adam Ding",
+              "Yunsi Fei"
+            ],
+            "published": "2026-08-10T03:25:16Z",
+            "updated": "2026-08-14T00:51:41Z",
+            "summary": "Modern heterogeneous System-on-Chip designs integrate CPU cores and a GPU that share a last-level cache (LLC) or system-level cache (SLC). This sharing exposes a new cross-domain attack surface, and existing attacks on integrated platforms either exploit coarse-grained cache-occupancy contention or require the adversary to co-reside on the GPU with the victim to obtain accurate timing measurements. In this work, we target Apple Silicon heterogeneous SoCs and discover that GPU memory accesses leave set-level footprints in the shared SLC, observable to an unprivileged CPU process. This keen observation enables the first fine-grained, access-driven, Prime+Probe-style CPU-to-GPU cache side-channel attacks against GPU workloads. We first reverse-engineer the Apple M1 SLC set-indexing functions and the interactions between local private caches and the SLC. Building on these findings, we construct the CPrime+CProbe SLC side-channel technique, which monitors GPU victim activity from the CPU at cache-set granularity. We then introduce an accelerated variant, GPrime+CProbe, in which an adversary leverages the GPU for faster SLC priming, yielding a 6.4x increase in the covert-channel throughput. Lastly, we demonstrate two end-to-end privacy attacks using the new side-channels: a graph-edge reconstruction attack on Graph Neural Networks (GNNs) that achieves 90% edge accuracy across five datasets, and an LLM privacy attack that recovers input keywords with up to 94.8% accuracy and model responses with up to 88.9% accuracy across TinyLlama and GPT-2 Medium models. Our results reveal a new class of microarchitectural vulnerabilities in Apple Silicon and call for secure system cache designs for heterogeneous SoCs.",
+            "categories": "cs.CR",
+            "comment": "Accepted to ACM CCS 2026. 15 pages"
+          },
+          "analysis": {
+            "problem_statement": "This paper solves the problem of designing secure system cache designs for heterogeneous System-on-Chip (SoC) architectures to prevent access-driven CPU-to-GPU side-channel attacks.",
+            "bottleneck_addressed": "Memory access patterns and cache side-channel attacks in heterogeneous SoCs",
+            "executive_summary": "This paper reveals a new class of microarchitectural vulnerabilities in Apple Silicon heterogeneous SoCs, enabling fine-grained, access-driven CPU-to-GPU cache side-channel attacks. These attacks can be used to compromise the privacy of sensitive information processed on GPUs, such as graph-edge reconstruction and LLM model responses. The paper proposes two novel side-channel techniques, CPrime+CProbe and GPrime+CProbe, which can achieve high accuracy in recovering sensitive information.",
+            "key_metrics": {
+              "primary_metric": "Covert-channel throughput",
+              "metric_value": "6.4x increase",
+              "baseline": "CPrime+CProbe",
+              "improvement_percentage": "640%"
+            },
+            "technical_breakdown": {
+              "method": "The paper uses a Prime+Probe-style approach to monitor GPU victim activity from the CPU at cache-set granularity, exploiting the set-level footprints left by GPU memory accesses in the shared System-Level Cache (SLC).",
+              "architecture": "Apple M1 heterogeneous SoC with shared SLC, local private caches, and GPU cores",
+              "implementation_details": "The paper proposes two side-channel techniques: CPrime+CProbe, which monitors GPU victim activity from the CPU, and GPrime+CProbe, which leverages the GPU for faster SLC priming.",
+              "code_complexity": "The paper does not provide specific code complexity or training time implications, but the proposed techniques require reverse-engineering the Apple M1 SLC set-indexing functions and interactions between local private caches and the SLC."
+            },
+            "relevance_tags": [
+              "cache side-channel attacks",
+              "heterogeneous SoCs",
+              "GPU security",
+              "microarchitectural vulnerabilities",
+              "LLM model privacy",
+              "graph-edge reconstruction"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-08-17T03:34:54.807544",
+          "conference_info": {
+            "conference": "ACM CCS",
+            "year": "2026",
+            "comment": "Accepted to ACM CCS 2026. 15 pages",
+            "raw_comment": "Accepted to ACM CCS 2026. 15 pages",
+            "category": "Security",
+            "rank": "A+"
+          }
+        }
+      ],
+      "updated_at": "2026-08-17T03:34:55.819085"
     }
   }
 }
