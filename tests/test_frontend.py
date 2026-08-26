@@ -29,8 +29,14 @@ class FrontendRegressionTests(unittest.TestCase):
         html = Path("simple_dashboard.html").read_text(encoding="utf-8")
         self.assertNotIn(" onchange=", html)
         self.assertIn("function escapeHtml", html)
-        self.assertIn("rel=\"noopener noreferrer\"", html)
         self.assertIn("event.key === '/'", html)
+
+    def test_each_card_has_one_arxiv_link_and_visible_analysis(self):
+        html = Path("simple_dashboard.html").read_text(encoding="utf-8")
+        self.assertNotIn('class="arxiv-link"', html)
+        self.assertNotIn('<details class="analysis-details">', html)
+        self.assertIn('<section class="analysis-section"', html)
+        self.assertIn('grid-template-columns: repeat(auto-fit, minmax(min(100%, 460px), 1fr))', html)
 
 
 if __name__ == "__main__":

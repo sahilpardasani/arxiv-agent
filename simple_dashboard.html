@@ -55,11 +55,11 @@
             background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 50%, var(--bg-tertiary) 100%);
             color: var(--text-primary);
             min-height: 100vh;
-            padding: 28px 20px 60px;
+            padding: clamp(16px, 2vw, 36px) clamp(12px, 2.5vw, 48px) 60px;
             transition: background 0.3s ease, color 0.3s ease;
         }
 
-        .container { max-width: 1280px; margin: 0 auto; }
+        .container { width: 100%; max-width: none; margin: 0 auto; }
 
         .skip-link {
             position: fixed; left: 16px; top: -60px; z-index: 100;
@@ -175,6 +175,9 @@
             font-weight: 700;
             color: var(--accent-light);
         }
+
+        .metric-date { font-size: 1.1em; }
+        .is-hidden { display: none !important; }
 
         .metric-value.up   { color: var(--success-light); }
         .metric-value.down { color: #ff6464; }
@@ -292,8 +295,9 @@
         /* ===== PAPER CARDS ===== */
         .papers-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(min(100%, 360px), 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(min(100%, 460px), 1fr));
             gap: 20px;
+            align-items: start;
         }
 
         .paper-card {
@@ -315,11 +319,8 @@
         }
 
         .paper-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
+            display: block;
             margin-bottom: 16px;
-            gap: 12px;
         }
 
         .paper-title {
@@ -330,30 +331,8 @@
             line-height: 1.4;
         }
 
-        .paper-title a { color: inherit; text-decoration: none; }
-        .paper-title a:hover { color: var(--accent-light); text-decoration: underline; text-underline-offset: 3px; }
-
-        .arxiv-link {
-            display: inline-block;
-            background: var(--glass-bg);
-            border: 1px solid var(--glass-border);
-            color: var(--accent-light);
-            padding: 6px 12px;
-            border-radius: 6px;
-            font-size: 0.8em;
-            text-decoration: none;
-            font-weight: 600;
-            white-space: nowrap;
-            transition: all 0.3s;
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-        }
-
-        .arxiv-link:hover {
-            background: rgba(0, 153, 255, 0.2);
-            border-color: var(--accent-light);
-            transform: scale(1.05);
-        }
+        .paper-title a { color: inherit; text-decoration: underline; text-decoration-color: color-mix(in srgb, var(--accent) 65%, transparent); text-underline-offset: 4px; text-decoration-thickness: 1px; }
+        .paper-title a:hover { color: var(--accent-light); text-decoration-thickness: 2px; }
 
         .paper-meta-top {
             display: flex;
@@ -414,6 +393,21 @@
             color: var(--text-primary);
         }
 
+        .analysis-section {
+            margin-top: 14px;
+            border-top: 1px solid var(--border-color);
+            padding-top: 14px;
+        }
+
+        .analysis-heading {
+            color: var(--accent-light);
+            font-size: .76rem;
+            font-weight: 800;
+            letter-spacing: .1em;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+
         .summary {
             background: rgba(0, 100, 150, 0.1);
             border-left: 3px solid var(--accent);
@@ -428,15 +422,18 @@
         .paper-meta {
             font-size: 0.85em;
             color: var(--text-secondary);
-            margin-top: auto;
+            margin-top: 12px;
             padding-top: 12px;
             border-top: 1px solid var(--border-color);
         }
 
         .authors { color: var(--text-secondary); font-size: .84rem; line-height: 1.45; margin: -4px 0 12px; }
-        .analysis-details { margin-top: 10px; border-top: 1px solid var(--border-color); padding-top: 10px; }
-        .analysis-details summary { color: var(--accent-light); cursor: pointer; font-weight: 700; padding: 6px 0; }
-        .analysis-details summary:hover { text-decoration: underline; text-underline-offset: 3px; }
+        .paper-tags { display:flex; gap:8px; margin-bottom:12px; flex-wrap:wrap; align-items:center; }
+        .rank-badge { display:inline-block; padding:3px 9px; border-radius:5px; font-size:.75em; font-weight:700; letter-spacing:.05em; }
+        .rank-aplus { background:rgba(255,200,0,.18); border:1px solid rgba(255,200,0,.5); color:#ffd700; }
+        .rank-a { background:rgba(0,200,100,.15); border:1px solid rgba(0,200,100,.4); color:#00c864; }
+        .rank-b { background:rgba(100,150,255,.15); border:1px solid rgba(100,150,255,.4); color:#8ab4ff; }
+        .rank-c { background:rgba(180,180,180,.15); border:1px solid rgba(180,180,180,.4); color:#bdbdbd; }
 
         .no-results {
             text-align: center;
@@ -500,13 +497,6 @@
 
             .paper-title { font-size: 1em; }
 
-            .paper-header {
-                flex-direction: column;
-                gap: 8px;
-            }
-
-            .arxiv-link { align-self: flex-start; }
-
             .conference-badge { font-size: 0.8em; padding: 5px 10px; }
             .metrics-bar .metric-card:last-child { grid-column:1/-1; }
             .loading-grid { grid-template-columns:1fr; }
@@ -530,10 +520,10 @@
         <p class="subtitle">Important conference papers, distilled into the problem, approach, and result—so you can decide what deserves a deeper read.</p>
 
         <!-- METRICS BAR -->
-        <div class="metrics-bar" id="metricsBar" style="display:none;">
+        <div class="metrics-bar is-hidden" id="metricsBar">
             <div class="metric-card">
                 <div class="metric-label">Digest date</div>
-                <div class="metric-value" id="m-date" style="font-size:1.1em;">—</div>
+                <div class="metric-value metric-date" id="m-date">—</div>
             </div>
             <div class="metric-card">
                 <div class="metric-label">Curated papers</div>
@@ -645,9 +635,9 @@
         function renderMetrics(data) {
             const bar = document.getElementById('metricsBar');
             const dashboard = data?.metrics?.dashboard;
-            if (!dashboard) { bar.style.display = 'none'; return; }
+            if (!dashboard) { bar.classList.add('is-hidden'); return; }
 
-            bar.style.display = 'grid';
+            bar.classList.remove('is-hidden');
 
             const currentDate = dashboard.current_date || dashboard.date || data.filter_date || '—';
             const currentCount = dashboard.current_count ?? dashboard.total_papers ?? data.total_papers ?? '—';
@@ -948,28 +938,8 @@
 
         function rankBadgeHtml(rank) {
             if (!rank) return '';
-            const colors = {
-                'A+': 'rgba(255, 200, 0, 0.18)',
-                'A':  'rgba(0, 200, 100, 0.15)',
-                'B':  'rgba(100, 150, 255, 0.15)',
-                'C':  'rgba(180, 180, 180, 0.15)',
-            };
-            const borders = {
-                'A+': 'rgba(255, 200, 0, 0.5)',
-                'A':  'rgba(0, 200, 100, 0.4)',
-                'B':  'rgba(100, 150, 255, 0.4)',
-                'C':  'rgba(180, 180, 180, 0.4)',
-            };
-            const textColors = {
-                'A+': '#ffd700',
-                'A':  '#00c864',
-                'B':  '#6699ff',
-                'C':  '#aaaaaa',
-            };
-            const bg = colors[rank] || 'rgba(150,150,150,0.1)';
-            const br = borders[rank] || 'rgba(150,150,150,0.3)';
-            const tc = textColors[rank] || '#aaaaaa';
-            return `<span style="display:inline-block;background:${bg};border:1px solid ${br};color:${tc};padding:3px 9px;border-radius:5px;font-size:0.75em;font-weight:700;letter-spacing:0.05em;">${escapeHtml(rank)}</span>`;
+            const classNames = {'A+': 'rank-aplus', 'A': 'rank-a', 'B': 'rank-b', 'C': 'rank-c'};
+            return `<span class="rank-badge ${classNames[rank] || 'rank-c'}">${escapeHtml(rank)}</span>`;
         }
 
         function renderEmpty(title, message) {
@@ -1012,25 +982,24 @@
                 return `
                 <article class="paper-card">
                     <div class="paper-header">
-                        <h2 class="paper-title"><a href="${arxivUrl}" target="_blank" rel="noopener noreferrer">${escapeHtml(paper.title || 'Untitled')}</a></h2>
-                        <a href="${arxivUrl}" target="_blank" rel="noopener noreferrer" class="arxiv-link" aria-label="Open ${escapeHtml(paper.title || 'paper')} on arXiv">arXiv ↗</a>
+                        <h2 class="paper-title"><a href="${arxivUrl}" aria-label="${escapeHtml(paper.title || 'Untitled')} on arXiv">${escapeHtml(paper.title || 'Untitled')}</a></h2>
                     </div>
                     ${authors ? `<div class="authors">${escapeHtml(authors)}</div>` : ''}
                     <div class="paper-meta-top">
                         <div class="paper-id">ID: ${escapeHtml(arxivId)}</div>
                         <div class="paper-date">${escapeHtml(published)}</div>
                     </div>
-                    <div style="display:flex;gap:8px;margin-bottom:12px;flex-wrap:wrap;align-items:center;">
+                    <div class="paper-tags">
                         <div class="conference-badge">${escapeHtml(confDisplay)}</div>
                         <div class="category-tag">${escapeHtml(ci.category || 'Other')}</div>
                         ${rankBadgeHtml(rank)}
                     </div>
                     ${analysis.bottleneck_addressed ? `<div class="bottleneck">Focus: ${escapeHtml(analysis.bottleneck_addressed)}</div>` : ''}
                     ${analysis.problem_statement ? `<div class="problem"><strong>Problem:</strong> ${escapeHtml(analysis.problem_statement)}</div>` : ''}
-                    ${(analysis.executive_summary || analysis.key_metrics?.primary_metric) ? `<details class="analysis-details"><summary>View analysis</summary>
+                    ${(analysis.executive_summary || analysis.key_metrics?.primary_metric) ? `<section class="analysis-section" aria-label="Paper analysis"><h3 class="analysis-heading">Analysis</h3>
                         ${analysis.executive_summary ? `<div class="summary">${escapeHtml(analysis.executive_summary)}</div>` : ''}
                         ${analysis.key_metrics?.primary_metric ? `<div class="paper-meta"><strong>Key result:</strong> ${escapeHtml(analysis.key_metrics.primary_metric)}</div>` : ''}
-                    </details>` : ''}
+                    </section>` : ''}
                 </article>`;
             }).join('');
 
