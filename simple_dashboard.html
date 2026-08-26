@@ -3,7 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Conference AI Papers</title>
+    <title>AI Research Digest</title>
+    <script>
+        try {
+            const saved = localStorage.getItem('theme');
+            const useDark = saved === null ? matchMedia('(prefers-color-scheme: dark)').matches : saved === 'dark';
+            document.documentElement.classList.toggle('light-mode', !useDark);
+        } catch (_) {}
+    </script>
     <style>
         :root {
             --bg-primary: #1a1a2e;
@@ -16,6 +23,8 @@
             --accent-light: #00d4ff;
             --success: #00c864;
             --success-light: #00ff88;
+            --danger: #ff7474;
+            --focus-ring: #7dd3fc;
             --card-bg: rgba(30, 40, 60, 0.8);
             --glass-bg: rgba(255, 255, 255, 0.1);
             --glass-border: rgba(255, 255, 255, 0.2);
@@ -32,6 +41,8 @@
             --accent-light: #0080ff;
             --success: #009900;
             --success-light: #00bb00;
+            --danger: #c62828;
+            --focus-ring: #0066cc;
             --card-bg: #ffffff;
             --glass-bg: rgba(0, 0, 0, 0.05);
             --glass-border: rgba(0, 0, 0, 0.08);
@@ -44,11 +55,18 @@
             background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 50%, var(--bg-tertiary) 100%);
             color: var(--text-primary);
             min-height: 100vh;
-            padding: 20px;
+            padding: 28px 20px 60px;
             transition: background 0.3s ease, color 0.3s ease;
         }
 
-        .container { max-width: 1200px; margin: 0 auto; }
+        .container { max-width: 1280px; margin: 0 auto; }
+
+        .skip-link {
+            position: fixed; left: 16px; top: -60px; z-index: 100;
+            background: var(--accent); color: white; padding: 10px 14px;
+            border-radius: 8px; text-decoration: none; font-weight: 700;
+        }
+        .skip-link:focus { top: 12px; }
 
         .header {
             display: flex;
@@ -60,14 +78,16 @@
         }
 
         h1 {
-            font-size: 2.5em;
+            font-size: clamp(2rem, 4vw, 3rem);
             background: linear-gradient(120deg, var(--accent-light), var(--accent));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
             flex: 1;
-            min-width: 300px;
+            min-width: min(100%, 300px);
         }
+
+        .eyebrow { color: var(--accent-light); font-size: .78rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; margin-bottom: 6px; }
 
         .controls {
             display: flex;
@@ -75,10 +95,11 @@
             align-items: center;
         }
 
-        .theme-toggle {
+        .theme-toggle, .secondary-button {
             background: var(--glass-bg);
             border: 1px solid var(--glass-border);
             color: var(--accent-light);
+            min-height: 44px;
             padding: 8px 16px;
             border-radius: 8px;
             cursor: pointer;
@@ -89,17 +110,22 @@
             -webkit-backdrop-filter: blur(20px);
         }
 
-        .theme-toggle:hover {
+        .theme-toggle:hover, .secondary-button:hover {
             background: rgba(255, 255, 255, 0.15);
             border-color: var(--accent-light);
             transform: scale(1.02);
         }
 
+        button:focus-visible, select:focus-visible, input:focus-visible, a:focus-visible, summary:focus-visible {
+            outline: 3px solid var(--focus-ring); outline-offset: 3px;
+        }
+
         .subtitle {
-            text-align: center;
+            text-align: left;
             color: var(--text-secondary);
             margin-bottom: 20px;
             font-size: 1.05em;
+            max-width: 760px;
         }
 
         /* ===== ERROR BANNER ===== */
@@ -111,14 +137,16 @@
             background: rgba(255, 100, 100, 0.15);
             color: #ff6464;
             border: 1px solid rgba(255, 100, 100, 0.3);
-            text-align: center;
+            text-align: left;
             font-size: 0.95em;
         }
+
+        .error-banner button { margin-left: 12px; color: inherit; background: transparent; border: 1px solid currentColor; border-radius: 6px; padding: 6px 10px; cursor: pointer; }
 
         /* ===== METRICS BAR ===== */
         .metrics-bar {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            grid-template-columns: repeat(3, minmax(0, 1fr));
             gap: 12px;
             margin-bottom: 24px;
         }
@@ -128,15 +156,10 @@
             border: 1px solid var(--border-color);
             border-radius: 10px;
             padding: 14px 18px;
-            text-align: center;
+            text-align: left;
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
             transition: all 0.3s;
-        }
-
-        .metric-card:hover {
-            border-color: var(--accent);
-            transform: translateY(-2px);
         }
 
         .metric-label {
@@ -164,19 +187,28 @@
         }
 
         /* ===== FILTERS ===== */
+        .filter-panel {
+            position: sticky; top: 12px; z-index: 40;
+            background: color-mix(in srgb, var(--bg-secondary) 92%, transparent);
+            border: 1px solid var(--border-color); border-radius: 14px;
+            padding: 14px; margin-bottom: 18px;
+            box-shadow: 0 12px 36px rgba(0,0,0,.16);
+            backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px);
+        }
+
         .filters {
-            display: flex;
-            gap: 12px;
-            margin-bottom: 20px;
-            flex-wrap: nowrap;
-            align-items: center;
+            display: grid;
+            grid-template-columns: minmax(220px, 1.5fr) repeat(3, minmax(150px, 1fr)) auto;
+            gap: 10px;
+            align-items: end;
         }
 
         .filter-group {
             display: flex;
-            align-items: center;
-            gap: 8px;
-            flex-shrink: 0;
+            align-items: stretch;
+            flex-direction: column;
+            gap: 6px;
+            min-width: 0;
         }
 
         .filter-label {
@@ -188,15 +220,16 @@
 
         .glass-dropdown-wrapper {
             position: relative;
-            width: 195px;
+            width: 100%;
         }
 
         .glass-dropdown-wrapper.narrow {
-            width: 120px;
+            width: 100%;
         }
 
         .glass-dropdown {
-            padding: 10px 16px;
+            min-height: 44px;
+            padding: 10px 38px 10px 12px;
             border-radius: 10px;
             border: 1px solid var(--glass-border);
             background: var(--glass-bg);
@@ -214,6 +247,18 @@
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
             font-family: inherit;
         }
+
+        .search-input {
+            width: 100%; min-height: 44px; border-radius: 10px;
+            border: 1px solid var(--glass-border); background: var(--glass-bg);
+            color: var(--text-primary); padding: 10px 12px; font: inherit;
+        }
+        .search-input::placeholder { color: var(--text-secondary); }
+        .secondary-button { color: var(--text-primary); white-space: nowrap; }
+        .secondary-button:disabled { opacity:.45; cursor:not-allowed; transform:none; }
+        .results-bar { display:flex; justify-content:space-between; gap:12px; align-items:center; min-height:32px; margin-bottom:14px; color:var(--text-secondary); }
+        .results-count { font-weight:700; color:var(--text-primary); }
+        .keyboard-hint { font-size:.8rem; }
 
         .glass-dropdown:hover {
             background: rgba(255, 255, 255, 0.15);
@@ -247,7 +292,7 @@
         /* ===== PAPER CARDS ===== */
         .papers-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(min(100%, 360px), 1fr));
             gap: 20px;
         }
 
@@ -284,6 +329,9 @@
             flex: 1;
             line-height: 1.4;
         }
+
+        .paper-title a { color: inherit; text-decoration: none; }
+        .paper-title a:hover { color: var(--accent-light); text-decoration: underline; text-underline-offset: 3px; }
 
         .arxiv-link {
             display: inline-block;
@@ -385,6 +433,11 @@
             border-top: 1px solid var(--border-color);
         }
 
+        .authors { color: var(--text-secondary); font-size: .84rem; line-height: 1.45; margin: -4px 0 12px; }
+        .analysis-details { margin-top: 10px; border-top: 1px solid var(--border-color); padding-top: 10px; }
+        .analysis-details summary { color: var(--accent-light); cursor: pointer; font-weight: 700; padding: 6px 0; }
+        .analysis-details summary:hover { text-decoration: underline; text-underline-offset: 3px; }
+
         .no-results {
             text-align: center;
             padding: 40px;
@@ -392,9 +445,24 @@
             font-size: 1.1em;
         }
 
+        .no-results h2 { color: var(--text-primary); margin-bottom: 8px; font-size: 1.25rem; }
+        .loading-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
+        .skeleton { min-height:280px; border-radius:12px; border:1px solid var(--border-color); background:linear-gradient(90deg,var(--card-bg),var(--glass-bg),var(--card-bg)); background-size:200% 100%; animation:shimmer 1.4s infinite; }
+        @keyframes shimmer { to { background-position:-200% 0; } }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after { scroll-behavior:auto !important; animation-duration:.01ms !important; transition-duration:.01ms !important; }
+        }
+
+        @media (max-width: 980px) {
+            .filters { grid-template-columns: repeat(2, minmax(0,1fr)); }
+            .filter-group.search-group { grid-column: 1 / -1; }
+            .loading-grid { grid-template-columns:repeat(2,1fr); }
+        }
+
         /* ===== MOBILE RESPONSIVE ===== */
         @media (max-width: 640px) {
-            body { padding: 12px; }
+            body { padding: 16px 12px 40px; }
 
             h1 { font-size: 1.6em; min-width: unset; }
 
@@ -412,10 +480,9 @@
             .metric-value { font-size: 1.3em; }
             .metric-label { font-size: 0.7em; }
 
-            .filters {
-                flex-wrap: wrap;
-                gap: 8px;
-            }
+            .filter-panel { position:static; padding:12px; }
+            .filters { grid-template-columns:1fr; gap:10px; }
+            .filter-group.search-group { grid-column:auto; }
 
             .filter-group {
                 width: 100%;
@@ -441,60 +508,63 @@
             .arxiv-link { align-self: flex-start; }
 
             .conference-badge { font-size: 0.8em; padding: 5px 10px; }
+            .metrics-bar .metric-card:last-child { grid-column:1/-1; }
+            .loading-grid { grid-template-columns:1fr; }
+            .keyboard-hint { display:none; }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <h1>🚀 Conference AI Papers</h1>
-            <div class="controls">
-                <button class="theme-toggle" id="themeToggle">🌙 Dark Mode</button>
+    <a class="skip-link" href="#papers">Skip to papers</a>
+    <main class="container">
+        <header class="header">
+            <div>
+                <div class="eyebrow">Curated daily</div>
+                <h1>AI Research Digest</h1>
             </div>
-        </div>
+            <div class="controls">
+                <button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch color theme">Dark mode</button>
+            </div>
+        </header>
 
-        <p class="subtitle">Daily digest of papers from NeurIPS, ICML, CVPR, ACL, and more — sorted by category & latest date</p>
+        <p class="subtitle">Important conference papers, distilled into the problem, approach, and result—so you can decide what deserves a deeper read.</p>
 
         <!-- METRICS BAR -->
         <div class="metrics-bar" id="metricsBar" style="display:none;">
             <div class="metric-card">
-                <div class="metric-label">📅 Date</div>
+                <div class="metric-label">Digest date</div>
                 <div class="metric-value" id="m-date" style="font-size:1.1em;">—</div>
             </div>
             <div class="metric-card">
-                <div class="metric-label">📄 Papers Today</div>
+                <div class="metric-label">Curated papers</div>
                 <div class="metric-value" id="m-current">—</div>
             </div>
             <div class="metric-card">
-                <div class="metric-label">📆 Previous Day</div>
-                <div class="metric-value" id="m-previous">—</div>
+                <div class="metric-label">Compared with prior digest</div>
+                <div class="metric-value same" id="m-change">—</div>
                 <div class="metric-sub" id="m-previous-date">—</div>
-            </div>
-            <div class="metric-card">
-                <div class="metric-label">📈 Change</div>
-                <div class="metric-value" id="m-change">—</div>
-            </div>
-            <div class="metric-card">
-                <div class="metric-label">📊 Trend</div>
-                <div class="metric-value" id="m-trend">—</div>
             </div>
         </div>
 
-        <!-- ERROR BANNER (replaces old status div) -->
-        <div class="error-banner" id="errorBanner"></div>
+        <div class="error-banner" id="errorBanner" role="alert" aria-live="assertive"></div>
 
+        <section class="filter-panel" aria-label="Filter papers">
         <div class="filters">
+            <div class="filter-group search-group">
+                <label class="filter-label" for="searchInput">Search</label>
+                <input id="searchInput" class="search-input" type="search" placeholder="Title, conference, topic…" autocomplete="off">
+            </div>
             <div class="filter-group">
-                <label class="filter-label">📅 Date:</label>
+                <label class="filter-label" for="dateSelect">Digest date</label>
                 <div class="glass-dropdown-wrapper">
-                    <select id="dateSelect" class="glass-dropdown" onchange="loadPapersByDate()">
+                    <select id="dateSelect" class="glass-dropdown">
                         <option value="">Loading dates...</option>
                     </select>
                 </div>
             </div>
 
             <div class="filter-group">
-                <label class="filter-label">📚 Category:</label>
+                <label class="filter-label" for="categorySelect">Category</label>
                 <div class="glass-dropdown-wrapper">
                     <select id="categorySelect" class="glass-dropdown">
                         <option value="">All Categories</option>
@@ -503,7 +573,7 @@
             </div>
 
             <div class="filter-group">
-                <label class="filter-label">🏅 Rank:</label>
+                <label class="filter-label" for="rankSelect">Conference rank</label>
                 <div class="glass-dropdown-wrapper narrow">
                     <select id="rankSelect" class="glass-dropdown">
                         <option value="">All</option>
@@ -514,10 +584,18 @@
                     </select>
                 </div>
             </div>
+            <button class="secondary-button" id="clearFilters" type="button" disabled>Clear</button>
         </div>
+        </section>
 
-        <div id="papers"></div>
-    </div>
+        <div class="results-bar">
+            <div id="resultsCount" class="results-count" role="status" aria-live="polite">Loading papers…</div>
+            <div class="keyboard-hint">Press <strong>/</strong> to search</div>
+        </div>
+        <div id="papers" aria-busy="true">
+            <div class="loading-grid" aria-hidden="true"><div class="skeleton"></div><div class="skeleton"></div><div class="skeleton"></div></div>
+        </div>
+    </main>
 
     <script>
         // ============ DARK/LIGHT MODE ============
@@ -530,7 +608,9 @@
         }
 
         function updateThemeButton(isDark) {
-            document.getElementById('themeToggle').textContent = isDark ? '☀️ Light Mode' : '🌙 Dark Mode';
+            const button = document.getElementById('themeToggle');
+            button.textContent = isDark ? 'Light mode' : 'Dark mode';
+            button.setAttribute('aria-label', isDark ? 'Switch to light mode' : 'Switch to dark mode');
         }
 
         document.getElementById('themeToggle').addEventListener('click', () => {
@@ -543,9 +623,16 @@
         initTheme();
 
         // ============ ERROR BANNER ============
-        function showError(msg) {
+        function showError(msg, retry) {
             const banner = document.getElementById('errorBanner');
-            banner.textContent = msg;
+            banner.replaceChildren(document.createTextNode(msg));
+            if (retry) {
+                const button = document.createElement('button');
+                button.type = 'button';
+                button.textContent = 'Try again';
+                button.addEventListener('click', retry, { once: true });
+                banner.appendChild(button);
+            }
             banner.style.display = 'block';
         }
 
@@ -564,32 +651,27 @@
 
             const currentDate = dashboard.current_date || dashboard.date || data.filter_date || '—';
             const currentCount = dashboard.current_count ?? dashboard.total_papers ?? data.total_papers ?? '—';
-            const previousCount = dashboard.previous_count ?? '—';
             const previousDate = dashboard.previous_date || '';
             const change = dashboard.day_change ?? null;
-            const trend = dashboard.trend || (dashboard.note ? '📦 Archive' : '—');
 
             document.getElementById('m-date').textContent = currentDate;
             document.getElementById('m-current').textContent = currentCount;
-            document.getElementById('m-previous').textContent = previousCount;
-            document.getElementById('m-previous-date').textContent = previousDate;
+            document.getElementById('m-previous-date').textContent = previousDate ? `Previous digest: ${previousDate}` : '';
 
             const changeEl = document.getElementById('m-change');
             if (change == null) {
                 changeEl.textContent = '—';
-                changeEl.className = 'metric-value';
+                changeEl.className = 'metric-value same';
             } else if (change > 0) {
-                changeEl.textContent = `+${change}`;
-                changeEl.className = 'metric-value up';
+                changeEl.textContent = `${change} more`;
+                changeEl.className = 'metric-value same';
             } else if (change < 0) {
-                changeEl.textContent = `${change}`;
-                changeEl.className = 'metric-value down';
+                changeEl.textContent = `${Math.abs(change)} fewer`;
+                changeEl.className = 'metric-value same';
             } else {
-                changeEl.textContent = '0';
+                changeEl.textContent = 'Same count';
                 changeEl.className = 'metric-value same';
             }
-
-            document.getElementById('m-trend').textContent = trend;
         }
 
         // ============ RANK LOOKUP TABLE ============
@@ -676,12 +758,52 @@
         // ============ LOAD DATES & PAPERS ============
         let allPapers = [];
         let categories = [];
+        let papersRequest = null;
+
+        const controls = {
+            date: document.getElementById('dateSelect'),
+            category: document.getElementById('categorySelect'),
+            rank: document.getElementById('rankSelect'),
+            search: document.getElementById('searchInput'),
+            clear: document.getElementById('clearFilters'),
+        };
+
+        function setLoading(isLoading) {
+            document.getElementById('papers').setAttribute('aria-busy', String(isLoading));
+            controls.date.disabled = isLoading;
+            if (isLoading) {
+                document.getElementById('resultsCount').textContent = 'Loading papers…';
+                document.getElementById('papers').innerHTML = '<div class="loading-grid" aria-hidden="true"><div class="skeleton"></div><div class="skeleton"></div><div class="skeleton"></div></div>';
+            }
+        }
+
+        function syncUrl() {
+            const params = new URLSearchParams();
+            if (controls.date.value) params.set('date', controls.date.value);
+            if (controls.category.value) params.set('category', controls.category.value);
+            if (controls.rank.value) params.set('rank', controls.rank.value);
+            if (controls.search.value.trim()) params.set('q', controls.search.value.trim());
+            const queryString = params.toString();
+            history.replaceState(null, '', `${location.pathname}${queryString ? `?${queryString}` : ''}`);
+        }
+
+        // API data includes third-party arXiv metadata and AI-generated text.
+        // Treat all of it as untrusted before inserting it into an HTML string.
+        function escapeHtml(value) {
+            return String(value ?? '')
+                .replaceAll('&', '&amp;')
+                .replaceAll('<', '&lt;')
+                .replaceAll('>', '&gt;')
+                .replaceAll('"', '&quot;')
+                .replaceAll("'", '&#39;');
+        }
 
         async function loadDates() {
             try {
                 const response = await fetch('/api/dates');
+                if (!response.ok) throw new Error(`HTTP ${response.status}`);
                 const data = await response.json();
-                const dateSelect = document.getElementById('dateSelect');
+                const dateSelect = controls.date;
                 dateSelect.innerHTML = '';
 
                 if (data.dates && Object.keys(data.dates).length > 0) {
@@ -692,25 +814,35 @@
                         option.textContent = `${d} (${count} papers)`;
                         dateSelect.appendChild(option);
                     });
-                    loadPapersByDate();
+                    const requestedDate = new URLSearchParams(location.search).get('date');
+                    if (requestedDate && [...dateSelect.options].some(option => option.value === requestedDate)) dateSelect.value = requestedDate;
+                    await loadPapersByDate();
                 } else {
-                    dateSelect.innerHTML = '<option>No dates available yet</option>';
-                    showError('❌ No data available yet. Run the analysis first.');
+                    const option = document.createElement('option');
+                    option.textContent = 'No dates available';
+                    dateSelect.replaceChildren(option);
+                    document.getElementById('resultsCount').textContent = 'No papers available';
+                    renderEmpty('No digest yet', 'The first curated digest will appear here after analysis runs.');
                 }
             } catch (error) {
-                showError(`❌ Error loading dates: ${error.message}`);
+                document.getElementById('resultsCount').textContent = 'Unable to load';
+                showError('We could not load the available dates.', loadDates);
+                renderEmpty('Something went wrong', 'Check your connection and try again.');
             }
         }
 
         async function loadPapersByDate() {
-            const dateSelect = document.getElementById('dateSelect');
+            const dateSelect = controls.date;
             const selectedDate = dateSelect.value;
             if (!selectedDate) return;
 
             hideError();
+            if (papersRequest) papersRequest.abort();
+            papersRequest = new AbortController();
+            setLoading(true);
 
             try {
-                const response = await fetch(`/api/papers?date=${selectedDate}`);
+                const response = await fetch(`/api/papers?date=${encodeURIComponent(selectedDate)}`, { signal: papersRequest.signal });
                 if (!response.ok) throw new Error(`HTTP ${response.status}`);
                 const data = await response.json();
 
@@ -720,24 +852,32 @@
                 renderMetrics(data);
 
                 if (allPapers.length === 0) {
-                    showError('❌ No papers found for selected date');
-                    document.getElementById('papers').innerHTML = '';
+                    renderEmpty('No papers in this digest', 'Choose another date to keep exploring.');
+                    document.getElementById('resultsCount').textContent = '0 papers';
                     return;
                 }
 
-                // Reset both filters
-                document.getElementById('categorySelect').value = '';
-                document.getElementById('rankSelect').value = '';
                 populateCategories();
-                renderPapers(allPapers);
+                const params = new URLSearchParams(location.search);
+                const requestedCategory = params.get('category');
+                if (requestedCategory && [...controls.category.options].some(option => option.value === requestedCategory)) controls.category.value = requestedCategory;
+                controls.rank.value = params.get('rank') || '';
+                controls.search.value = params.get('q') || '';
+                applyFilters();
 
             } catch (error) {
-                showError(`❌ Error: ${error.message}`);
+                if (error.name === 'AbortError') return;
+                document.getElementById('resultsCount').textContent = 'Unable to load';
+                showError('We could not load this digest.', loadPapersByDate);
+                renderEmpty('Something went wrong', 'Check your connection and try again.');
+            } finally {
+                document.getElementById('papers').setAttribute('aria-busy', 'false');
+                controls.date.disabled = false;
             }
         }
 
         function populateCategories() {
-            const select = document.getElementById('categorySelect');
+            const select = controls.category;
             while (select.options.length > 1) select.remove(1);
 
             categories.forEach(category => {
@@ -751,8 +891,9 @@
         }
 
         function applyFilters() {
-            const cat = document.getElementById('categorySelect').value;
-            const rank = document.getElementById('rankSelect').value;
+            const cat = controls.category.value;
+            const rank = controls.rank.value;
+            const query = controls.search.value.trim().toLowerCase();
 
             let filtered = allPapers;
             if (cat) {
@@ -761,16 +902,45 @@
             if (rank) {
                 filtered = filtered.filter(i => (i.conference_info?.rank || '') === rank);
             }
+            if (query) {
+                filtered = filtered.filter(item => {
+                    const paper = item.paper || {};
+                    const analysis = item.analysis || {};
+                    const conference = item.conference_info || {};
+                    const fields = [paper.title, paper.authors?.join(' '), conference.conference, conference.category,
+                        analysis.problem_statement, analysis.bottleneck_addressed, analysis.executive_summary,
+                        analysis.relevance_tags?.join(' ')];
+                    return fields.some(value => String(value || '').toLowerCase().includes(query));
+                });
+            }
+            controls.clear.disabled = !cat && !rank && !query;
             renderPapers(filtered);
+            syncUrl();
         }
 
-        // Wire up filters once at startup — not inside populateCategories
-        document.getElementById('categorySelect').addEventListener('change', applyFilters);
-        document.getElementById('rankSelect').addEventListener('change', applyFilters);
+        controls.date.addEventListener('change', loadPapersByDate);
+        controls.category.addEventListener('change', applyFilters);
+        controls.rank.addEventListener('change', applyFilters);
+        controls.search.addEventListener('input', applyFilters);
+        controls.clear.addEventListener('click', () => {
+            controls.category.value = '';
+            controls.rank.value = '';
+            controls.search.value = '';
+            applyFilters();
+            controls.search.focus();
+        });
+        document.addEventListener('keydown', event => {
+            if (event.key === '/' && !['INPUT', 'SELECT', 'TEXTAREA'].includes(document.activeElement.tagName)) {
+                event.preventDefault();
+                controls.search.focus();
+            }
+        });
 
         function formatDate(dateString) {
             try {
-                return new Date(dateString).toLocaleDateString('en-US', {
+                const date = new Date(dateString);
+                if (Number.isNaN(date.getTime())) return dateString;
+                return date.toLocaleDateString('en-US', {
                     month: 'short', day: 'numeric', year: 'numeric'
                 });
             } catch { return dateString; }
@@ -799,48 +969,69 @@
             const bg = colors[rank] || 'rgba(150,150,150,0.1)';
             const br = borders[rank] || 'rgba(150,150,150,0.3)';
             const tc = textColors[rank] || '#aaaaaa';
-            return `<span style="display:inline-block;background:${bg};border:1px solid ${br};color:${tc};padding:3px 9px;border-radius:5px;font-size:0.75em;font-weight:700;letter-spacing:0.05em;">${rank}</span>`;
+            return `<span style="display:inline-block;background:${bg};border:1px solid ${br};color:${tc};padding:3px 9px;border-radius:5px;font-size:0.75em;font-weight:700;letter-spacing:0.05em;">${escapeHtml(rank)}</span>`;
+        }
+
+        function renderEmpty(title, message) {
+            document.getElementById('papers').innerHTML = `<div class="no-results"><h2>${escapeHtml(title)}</h2><p>${escapeHtml(message)}</p></div>`;
+        }
+
+        function authorLine(authors) {
+            if (!Array.isArray(authors) || authors.length === 0) return '';
+            const visible = authors.slice(0, 3).join(', ');
+            return authors.length > 3 ? `${visible} +${authors.length - 3} more` : visible;
         }
 
         function renderPapers(papers) {
             const papersEl = document.getElementById('papers');
 
             if (papers.length === 0) {
-                papersEl.innerHTML = '<div class="no-results">No papers found in selected category</div>';
+                document.getElementById('resultsCount').textContent = '0 papers';
+                renderEmpty('No matching papers', 'Try a broader search or clear one of the filters.');
                 return;
             }
+
+            const total = allPapers.length;
+            document.getElementById('resultsCount').textContent = papers.length === total
+                ? `${total} ${total === 1 ? 'paper' : 'papers'}`
+                : `${papers.length} of ${total} papers`;
 
             const html = papers.map(item => {
                 const analysis = item.analysis || {};
                 const paper = item.paper || {};
                 const ci = item.conference_info || {};
-                const arxivId = paper.arxiv_id || '';
-                const arxivUrl = `https://arxiv.org/abs/${arxivId}`;
+                const arxivId = String(paper.arxiv_id || '');
+                const safeArxivId = /^[a-z0-9.\/-]+$/i.test(arxivId) ? arxivId : '';
+                const arxivUrl = `https://arxiv.org/abs/${encodeURIComponent(safeArxivId)}`;
                 const confDisplay = ci.year && ci.year !== 'Unknown'
                     ? `${ci.conference} ${ci.year}` : ci.conference || 'Unknown';
                 const published = paper.published ? formatDate(paper.published) : 'Unknown date';
                 const rank = ci.rank || '';
+                const authors = authorLine(paper.authors);
 
                 return `
-                <div class="paper-card">
+                <article class="paper-card">
                     <div class="paper-header">
-                        <div class="paper-title">${paper.title || 'Untitled'}</div>
-                        <a href="${arxivUrl}" target="_blank" class="arxiv-link">📄 arXiv</a>
+                        <h2 class="paper-title"><a href="${arxivUrl}" target="_blank" rel="noopener noreferrer">${escapeHtml(paper.title || 'Untitled')}</a></h2>
+                        <a href="${arxivUrl}" target="_blank" rel="noopener noreferrer" class="arxiv-link" aria-label="Open ${escapeHtml(paper.title || 'paper')} on arXiv">arXiv ↗</a>
                     </div>
+                    ${authors ? `<div class="authors">${escapeHtml(authors)}</div>` : ''}
                     <div class="paper-meta-top">
-                        <div class="paper-id">ID: ${arxivId}</div>
-                        <div class="paper-date">📅 ${published}</div>
+                        <div class="paper-id">ID: ${escapeHtml(arxivId)}</div>
+                        <div class="paper-date">${escapeHtml(published)}</div>
                     </div>
                     <div style="display:flex;gap:8px;margin-bottom:12px;flex-wrap:wrap;align-items:center;">
-                        <div class="conference-badge">🏆 ${confDisplay}</div>
-                        <div class="category-tag">${ci.category || 'Other'}</div>
+                        <div class="conference-badge">${escapeHtml(confDisplay)}</div>
+                        <div class="category-tag">${escapeHtml(ci.category || 'Other')}</div>
                         ${rankBadgeHtml(rank)}
                     </div>
-                    ${analysis.bottleneck_addressed ? `<div class="bottleneck">🎯 ${analysis.bottleneck_addressed}</div>` : ''}
-                    ${analysis.problem_statement ? `<div class="problem"><strong>Problem:</strong> ${analysis.problem_statement}</div>` : ''}
-                    ${analysis.executive_summary ? `<div class="summary">${analysis.executive_summary}</div>` : ''}
-                    ${analysis.key_metrics?.primary_metric ? `<div class="paper-meta"><strong>Key Metric:</strong> ${analysis.key_metrics.primary_metric}</div>` : ''}
-                </div>`;
+                    ${analysis.bottleneck_addressed ? `<div class="bottleneck">Focus: ${escapeHtml(analysis.bottleneck_addressed)}</div>` : ''}
+                    ${analysis.problem_statement ? `<div class="problem"><strong>Problem:</strong> ${escapeHtml(analysis.problem_statement)}</div>` : ''}
+                    ${(analysis.executive_summary || analysis.key_metrics?.primary_metric) ? `<details class="analysis-details"><summary>View analysis</summary>
+                        ${analysis.executive_summary ? `<div class="summary">${escapeHtml(analysis.executive_summary)}</div>` : ''}
+                        ${analysis.key_metrics?.primary_metric ? `<div class="paper-meta"><strong>Key result:</strong> ${escapeHtml(analysis.key_metrics.primary_metric)}</div>` : ''}
+                    </details>` : ''}
+                </article>`;
             }).join('');
 
             papersEl.innerHTML = `<div class="papers-grid">${html}</div>`;

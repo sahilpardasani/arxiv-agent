@@ -6,8 +6,11 @@ __pycache__
 .env
 .DS_Store
 papers.json
+!papers.json
+!papers_archive.json
 *.md
 .pytest_cache
 .idea
 *.log
+.legacy-*.lock
 .coverage

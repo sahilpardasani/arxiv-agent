@@ -4,6 +4,7 @@ import json
 import re
 import asyncio
 import time
+import tempfile
 from datetime import datetime, date, timedelta
 from typing import Optional
 import feedparser
@@ -12,6 +13,25 @@ from groq import Groq
 
 # Initialize Groq client
 client = Groq(api_key=os.getenv("GROQ_API_KEY"))
+
+
+def write_json_atomic(path: str, data: dict) -> None:
+    """Write JSON without exposing readers to a partially-written file."""
+    destination = os.path.abspath(path)
+    directory = os.path.dirname(destination)
+    fd, temporary = tempfile.mkstemp(prefix=".json-", dir=directory, text=True)
+    try:
+        with os.fdopen(fd, "w", encoding="utf-8") as output:
+            json.dump(data, output, indent=2)
+            output.flush()
+            os.fsync(output.fileno())
+        os.replace(temporary, destination)
+    except Exception:
+        try:
+            os.unlink(temporary)
+        except FileNotFoundError:
+            pass
+        raise
 
 # Conference categories by field
 CONFERENCE_CATEGORIES = {
@@ -452,7 +472,7 @@ async def fetch_arxiv_papers_single_session(max_results: int = MAX_RESULTS_PER_C
     papers = []
     async with aiohttp.ClientSession() as session:
         for index, category in enumerate(ARXIV_CATEGORIES):
-            url = "http://export.arxiv.org/api/query"
+            url = "https://export.arxiv.org/api/query"
             params = {
                 "search_query": f"cat:{category}",
                 "start": 0,
@@ -763,8 +783,7 @@ def save_results(results: tuple, output_file: str = "papers.json", archive_file:
         },
         "ranks": ["A+", "A", "B", "C"]
     }
-    with open(output_file, "w") as f:
-        json.dump(current_output, f, indent=2)
+    write_json_atomic(output_file, current_output)
     print(f"✓ Current papers saved to {output_file}")
 
     archive = metrics.get("archive", {"last_updated": datetime.now().isoformat(), "dates": {}})
@@ -775,8 +794,7 @@ def save_results(results: tuple, output_file: str = "papers.json", archive_file:
     }
     archive["last_updated"] = datetime.now().isoformat()
     archive = cleanup_old_data(archive, days_to_keep=DAYS_TO_KEEP)
-    with open(archive_file, "w") as f:
-        json.dump(archive, f, indent=2)
+    write_json_atomic(archive_file, archive)
     print(f"✓ Archive updated: {archive_file} (keeping last {DAYS_TO_KEEP} days, total dates: {len(archive['dates'])})")
     return current_output, archive
 

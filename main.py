@@ -1,227 +1,289 @@
 #!/usr/bin/env python3
-import json
-import os
-import subprocess
-import base64
-import urllib.request
-import urllib.error
-import threading
-from contextlib import asynccontextmanager
-from datetime import datetime, timedelta
-from fastapi import FastAPI, HTTPException
-from fastapi.staticfiles import StaticFiles
-from fastapi.responses import FileResponse, HTMLResponse
-import aiofiles
-from apscheduler.schedulers.background import BackgroundScheduler
-import pytz
+"""Stateless web service. Scheduling and analysis run in separate processes."""
+from __future__ import annotations
 
+import hashlib
+import hmac
+import ipaddress
+import json
+import logging
+import os
+import random
+import re
+import threading
+import time
+from collections import defaultdict, deque
+from contextlib import asynccontextmanager
+from datetime import datetime, timedelta, timezone
+from pathlib import Path
+
+from fastapi import FastAPI, HTTPException, Request
+from fastapi.concurrency import run_in_threadpool
+from fastapi.responses import FileResponse, HTMLResponse, Response
+
+from data_store import repository
+from jobs import enqueue_analysis, redis_client
+from legacy import legacy_mode_enabled, legacy_runtime
 from mcp_server import mcp, mcp_app
 
-EST = pytz.timezone('America/New_York')
-_pipeline_lock = threading.Lock()
-_pipeline_running = False
+logger = logging.getLogger(__name__)
+BASE_DIR = Path(__file__).resolve().parent
+_response_lock = threading.Lock()
+_response_cache: dict[str, tuple[object, bytes, str]] = {}
+_local_rate_lock = threading.Lock()
+_local_request_history: dict[str, deque[float]] = defaultdict(deque)
 
 
-def push_file_to_github(filepath: str):
-    """Push a single file to GitHub via REST API."""
-    token = os.environ.get("GITHUB_TOKEN")
-    repo = os.environ.get("GITHUB_REPO")
-    if not token or not repo:
-        print(f"⚠️  GITHUB_TOKEN or GITHUB_REPO not set — skipping GitHub push for {filepath}")
-        return False
+def _trusted_proxy_networks():
+    result = []
+    for value in os.environ.get("TRUSTED_PROXY_CIDRS", "").split(","):
+        if value.strip():
+            try:
+                result.append(ipaddress.ip_network(value.strip(), strict=False))
+            except ValueError:
+                logger.error("Ignoring invalid trusted proxy: %s", value)
+    return result
+
+
+TRUSTED_PROXIES = _trusted_proxy_networks()
+
+
+def _client_ip(request: Request) -> str:
+    peer = request.client.host if request.client else "unknown"
     try:
-        with open(filepath, 'r') as f:
-            content = f.read()
-        encoded = base64.b64encode(content.encode()).decode()
-        api_url = f"https://api.github.com/repos/{repo}/contents/{filepath}"
-        headers = {"Authorization": f"token {token}", "Accept": "application/vnd.github.v3+json", "Content-Type": "application/json"}
-        req = urllib.request.Request(api_url, headers=headers)
+        trusted = any(ipaddress.ip_address(peer) in network for network in TRUSTED_PROXIES)
+    except ValueError:
+        trusted = False
+    if trusted:
+        forwarded = request.headers.get("x-forwarded-for", "").split(",")[0].strip()
         try:
-            with urllib.request.urlopen(req) as resp:
-                sha = json.loads(resp.read())["sha"]
-        except urllib.error.HTTPError as e:
-            if e.code == 404: sha = None
-            else: raise
-        payload = {"message": f"📊 Auto-update {filepath} - {datetime.now().isoformat()}", "content": encoded}
-        if sha: payload["sha"] = sha
-        data = json.dumps(payload).encode()
-        req = urllib.request.Request(api_url, data=data, method="PUT", headers=headers)
-        with urllib.request.urlopen(req) as resp: resp.read()
-        print(f"✅ Pushed {filepath} to GitHub")
-        return True
-    except Exception as e:
-        print(f"❌ Failed to push {filepath} to GitHub: {e}")
-        return False
+            return str(ipaddress.ip_address(forwarded))
+        except ValueError:
+            pass
+    return peer
 
 
-def safe_push_to_github(stdout: str):
-    if "SAFETY GUARD" in stdout:
-        print("⚠️  Skipping GitHub push — pipeline returned 0 papers (safety guard triggered)")
-        return
-    push_file_to_github("papers.json")
-    push_file_to_github("papers_archive.json")
+def _rate_spec(request: Request):
+    path, client = request.url.path, _client_ip(request)
+    if path.startswith("/mcp"):
+        return (f"mcp:{client}", int(os.environ.get("MCP_RATE_LIMIT", "30")), 60)
+    if path == "/api/trigger-analysis":
+        return (f"trigger:{client}", int(os.environ.get("TRIGGER_RATE_LIMIT", "10")), 300)
+    if path.startswith("/api/"):
+        return (f"api:{client}", int(os.environ.get("API_RATE_LIMIT", "300")), 60)
+    return None
 
 
-def run_pipeline_thread():
-    global _pipeline_running
-    if not _pipeline_lock.acquire(blocking=False):
-        print("⚠️  Pipeline already running — skipping duplicate trigger")
-        return
-    _pipeline_running = True
+def _local_rate_limit(key: str, limit: int, window: int):
+    now = time.monotonic()
+    with _local_rate_lock:
+        history = _local_request_history[key]
+        while history and history[0] <= now - window:
+            history.popleft()
+        if len(history) >= limit:
+            return max(1, int(history[0] + window - now) + 1)
+        history.append(now)
+        if len(_local_request_history) > 10_000:
+            for stale_key in [k for k, values in _local_request_history.items() if not values or values[-1] <= now - 300]:
+                _local_request_history.pop(stale_key, None)
+    return None
+
+
+def _rate_limited(spec):
+    key, limit, window = spec
     try:
-        print("\n" + "="*60); print("🚀 Running pipeline in background thread..."); print("="*60)
-        result = subprocess.run(["python", "arxiv_agent.py"], capture_output=True, text=True, timeout=1200, env={**os.environ})
-        print(result.stdout)
-        if result.stderr: print("STDERR:", result.stderr)
-        print("✅ Pipeline completed")
-        safe_push_to_github(result.stdout)
-    except subprocess.TimeoutExpired:
-        print("❌ Pipeline timed out after 20 minutes")
-    except Exception as e:
-        print(f"❌ Pipeline error: {e}")
-    finally:
-        _pipeline_running = False
-        _pipeline_lock.release()
+        client = redis_client()
+        if client is not None:
+            bucket = int(time.time()) // window
+            redis_key = f"arxiv-agent:rate:{key}:{bucket}"
+            count = client.incr(redis_key)
+            if count == 1:
+                client.expire(redis_key, window + 1)
+            return window - (int(time.time()) % window) if count > limit else None
+    except Exception:
+        logger.warning("Shared rate limiter unavailable; using per-process limit", exc_info=True)
+    return _local_rate_limit(key, limit, window)
 
 
-def daily_paper_analysis():
-    t = threading.Thread(target=run_pipeline_thread, daemon=True)
-    t.start()
-
-
-scheduler = BackgroundScheduler(timezone=EST)
-scheduler.add_job(daily_paper_analysis, 'cron', hour=23, minute=30, timezone=EST)
-scheduler.start()
+def _harden(response: Response) -> Response:
+    response.headers["X-Content-Type-Options"] = "nosniff"
+    response.headers["X-Frame-Options"] = "DENY"
+    response.headers["Referrer-Policy"] = "no-referrer"
+    response.headers["Permissions-Policy"] = "camera=(), microphone=(), geolocation=()"
+    response.headers["Content-Security-Policy"] = (
+        "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; "
+        "img-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'none'; "
+        "frame-ancestors 'none'; form-action 'self'"
+    )
+    return response
 
 
 @asynccontextmanager
 async def app_lifespan(app: FastAPI):
-    """Run MCP session management without changing the existing paper pipeline."""
-    print(f"[{datetime.now().isoformat()}] Server started")
-    print(f"Scheduler running: {scheduler.running}")
-    async with mcp.session_manager.run():
-        yield
+    app.state.accepting_traffic = True
+    await run_in_threadpool(repository.current)
+    if legacy_mode_enabled():
+        try:
+            await run_in_threadpool(legacy_runtime.start)
+        except Exception:
+            logger.exception("Could not start legacy compatibility scheduler")
+    try:
+        async with mcp.session_manager.run():
+            yield
+    finally:
+        app.state.accepting_traffic = False
+        await run_in_threadpool(legacy_runtime.stop)
 
 
-app = FastAPI(lifespan=app_lifespan)
+app = FastAPI(lifespan=app_lifespan, docs_url=None, redoc_url=None)
 app.mount("/mcp", mcp_app)
-app.mount("/static", StaticFiles(directory=".", html=True), name="static")
 
 
+@app.middleware("http")
+async def operational_middleware(request: Request, call_next):
+    content_length = request.headers.get("content-length")
+    if content_length:
+        try:
+            if int(content_length) > int(os.environ.get("MAX_REQUEST_BODY_BYTES", "1048576")):
+                return _harden(HTMLResponse("Request body too large", status_code=413))
+        except ValueError:
+            return _harden(HTMLResponse("Invalid Content-Length", status_code=400))
+    spec = _rate_spec(request)
+    if spec:
+        retry = await run_in_threadpool(_rate_limited, spec)
+        if retry is not None:
+            return _harden(HTMLResponse("Too many requests", status_code=429, headers={"Retry-After": str(retry)}))
+    return _harden(await call_next(request))
+
+
+def _require_admin(request: Request) -> None:
+    expected = os.environ.get("ADMIN_API_TOKEN", "")
+    if not expected:
+        raise HTTPException(status_code=503, detail="Manual analysis is disabled until ADMIN_API_TOKEN is configured")
+    authorization = request.headers.get("authorization", "")
+    supplied = authorization[7:] if authorization.lower().startswith("bearer ") else request.headers.get("x-admin-token", "")
+    if not supplied or not hmac.compare_digest(supplied, expected):
+        raise HTTPException(status_code=401, detail="Invalid or missing admin token", headers={"WWW-Authenticate": "Bearer"})
+
+
+def _cached_json(cache_key: str, version: object, value_factory, max_age: int = 60) -> Response:
+    cached = _response_cache.get(cache_key)
+    if cached is None or cached[0] != version:
+        with _response_lock:
+            cached = _response_cache.get(cache_key)
+            if cached is None or cached[0] != version:
+                body = json.dumps(value_factory(), ensure_ascii=False, separators=(",", ":")).encode()
+                cached = (version, body, '"' + hashlib.sha256(body).hexdigest() + '"')
+                if len(_response_cache) >= int(os.environ.get("RESPONSE_CACHE_MAX_ENTRIES", "256")):
+                    _response_cache.pop(next(iter(_response_cache)))
+                _response_cache[cache_key] = cached
+    return Response(content=cached[1], media_type="application/json", headers={
+        "ETag": cached[2], "Cache-Control": f"public, max-age={max_age}, stale-while-revalidate=300"})
+
+
+@app.get("/health/live")
 @app.get("/health")
-async def health_check():
-    return {"status": "healthy", "timestamp": datetime.now().isoformat(), "pipeline_running": _pipeline_running}
+async def liveness():
+    return {"status": "alive", "timestamp": datetime.now(timezone.utc).isoformat()}
 
 
-@app.post("/api/trigger-analysis")
-async def trigger_analysis():
-    global _pipeline_running
-    if _pipeline_running:
-        return {"status": "already_running", "message": "Pipeline is already running", "timestamp": datetime.now().isoformat()}
-    t = threading.Thread(target=run_pipeline_thread, daemon=True); t.start()
-    print("\n" + "="*60); print("📤 Manual trigger received - thread started"); print("="*60)
-    return {"status": "started", "message": "Analysis thread started", "timestamp": datetime.now().isoformat()}
+@app.get("/health/ready")
+async def readiness(request: Request):
+    ready = getattr(request.app.state, "accepting_traffic", False) and await run_in_threadpool(repository.ready)
+    if not ready:
+        raise HTTPException(status_code=503, detail="Not ready")
+    return {"status": "ready"}
+
+
+@app.post("/api/trigger-analysis", status_code=202)
+async def trigger_analysis(request: Request):
+    _require_admin(request)
+    if legacy_mode_enabled():
+        started = await run_in_threadpool(legacy_runtime.dispatch, "manual")
+        return {"status": "started" if started else "already_running", "job_id": None}
+    try:
+        queued, job = await run_in_threadpool(enqueue_analysis, "manual")
+    except Exception:
+        logger.exception("Unable to enqueue analysis")
+        raise HTTPException(status_code=503, detail="Job queue unavailable")
+    return {"status": "queued" if queued else "already_queued_or_running", "job_id": job if queued else None}
 
 
 @app.get("/api/papers")
-async def get_papers(date: str = None):
-    try:
-        if os.path.exists("papers.json"):
-            async with aiofiles.open("papers.json", "r") as f: data = json.loads(await f.read())
-        else:
-            return {"error": "No papers available yet", "total_papers": 0}
-        if not date: return data
-        if os.path.exists("papers_archive.json"):
-            async with aiofiles.open("papers_archive.json", "r") as f: archive = json.loads(await f.read())
-            if date in archive.get("dates", {}):
-                archive_data = archive["dates"][date]; current_count = archive_data.get("count", 0)
-                prev_date = (datetime.fromisoformat(date) - timedelta(days=1)).date().isoformat()
-                prev_data = archive.get("dates", {}).get(prev_date); previous_count = len(prev_data.get("papers", [])) if prev_data else 0
-                day_change = current_count - previous_count
-                return {"last_updated": archive_data.get("updated_at"), "total_papers": current_count, "papers": archive_data.get("papers", []),
-                        "categories": data.get("categories", []), "filter_date": date,
-                        "metrics": {"dashboard": {"current_date": date, "current_count": current_count,
-                        "previous_date": prev_date if prev_data else "unavailable", "previous_count": previous_count,
-                        "day_change": day_change, "trend": "📈 UP" if day_change > 0 else ("📉 DOWN" if day_change < 0 else "➡️  STABLE")}}}
-            return {"error": f"No papers found for date {date}", "available_dates": list(archive.get("dates", {}).keys()), "total_papers": 0}
-        return {"error": "Archive not available", "total_papers": 0}
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
+async def get_papers(date: str | None = None):
+    if date and not re.fullmatch(r"\d{4}-\d{2}-\d{2}", date):
+        raise HTTPException(status_code=422, detail="date must use YYYY-MM-DD")
+    current, archive = await run_in_threadpool(lambda: (repository.current(), repository.archive()))
+    version = repository.version()
+    if not current:
+        return {"error": "No papers available yet", "total_papers": 0}
+    if not date:
+        return _cached_json("papers:current", version[0], lambda: current)
+
+    block = (archive.get("dates", {}) or {}).get(date)
+    if not isinstance(block, dict):
+        # Do not let arbitrary valid-format dates create unbounded cache entries.
+        return {"error": f"No papers found for date {date}",
+                "available_dates": list((archive.get("dates", {}) or {}).keys()), "total_papers": 0}
+
+    def build_date():
+        previous_date = (datetime.fromisoformat(date) - timedelta(days=1)).date().isoformat()
+        previous = (archive.get("dates", {}) or {}).get(previous_date)
+        count = int(block.get("count", len(block.get("papers", []))) or 0)
+        previous_count = len(previous.get("papers", [])) if isinstance(previous, dict) else 0
+        change = count - previous_count
+        return {"last_updated": block.get("updated_at"), "total_papers": count, "papers": block.get("papers", []),
+                "categories": current.get("categories", []), "filter_date": date,
+                "metrics": {"dashboard": {"current_date": date, "current_count": count,
+                    "previous_date": previous_date if previous else "unavailable", "previous_count": previous_count,
+                    "day_change": change, "trend": "UP" if change > 0 else ("DOWN" if change < 0 else "STABLE")}}}
+    return _cached_json(f"papers:{date}", version, build_date)
 
 
 @app.get("/api/dates")
-async def get_available_dates():
-    try:
-        dates_info = {}
-        if os.path.exists("papers.json"):
-            async with aiofiles.open("papers.json", "r") as f: data = json.loads(await f.read())
-            filter_date = data.get("filter_date")
-            if filter_date: dates_info[filter_date] = {"count": data.get("total_papers", 0), "status": "current"}
-        if os.path.exists("papers_archive.json"):
-            async with aiofiles.open("papers_archive.json", "r") as f: archive = json.loads(await f.read())
-            for date_key, date_data in archive.get("dates", {}).items():
-                if date_key not in dates_info: dates_info[date_key] = {}
-                dates_info[date_key]["count"] = date_data.get("count", 0); dates_info[date_key]["status"] = "archived"
-        sorted_dates = sorted(dates_info.items(), key=lambda x: x[0], reverse=True)
-        return {"total_dates": len(dates_info), "dates": dict(sorted_dates), "last_updated": datetime.now().isoformat()}
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
+async def dates():
+    current, archive = await run_in_threadpool(lambda: (repository.current(), repository.archive()))
+    version = repository.version()
+    def build():
+        info = {}
+        current_date = current.get("filter_date")
+        if current_date:
+            info[current_date] = {"count": current.get("total_papers", 0), "status": "current"}
+        for key, block in (archive.get("dates", {}) or {}).items():
+            info.setdefault(key, {"count": block.get("count", 0), "status": "archived"})
+        return {"total_dates": len(info), "dates": dict(sorted(info.items(), reverse=True))}
+    return _cached_json("dates", version, build, max_age=300)
 
 
 @app.get("/api/alexa/paper")
-async def get_alexa_paper(category: str = None):
-    import random
-    ROTATION_FILE = "alexa_rotation.json"
-    try:
-        if not os.path.exists("papers.json"):
-            return {"error": "No papers available yet", "speech": "Sorry, I don't have any papers available right now."}
-        async with aiofiles.open("papers.json", "r") as f: data = json.loads(await f.read())
-        all_papers = data.get("papers", [])
-        if not all_papers: return {"error": "No papers found", "speech": "Sorry, there are no papers available right now."}
-        if category:
-            filtered = [p for p in all_papers if category.lower() in (p.get("conference_info", {}).get("category", "") or "").lower()]
-            if not filtered:
-                available = list(set(p.get("conference_info", {}).get("category", "Other") for p in all_papers)); cats = ", ".join(available[:3])
-                return {"error": "No papers found for category " + category, "available_categories": available,
-                        "speech": "Sorry, I could not find papers in " + category + ". Available categories today include " + cats + " and more."}
-        else: filtered = all_papers
-        rotation = {}
-        if os.path.exists(ROTATION_FILE):
-            try:
-                with open(ROTATION_FILE, "r") as f: rotation = json.load(f)
-            except Exception: rotation = {}
-        rotation_key = (category or "all").lower().replace(" ", "_"); queue_key = rotation_key + "_queue"; current_queue = rotation.get(queue_key, [])
-        if not current_queue:
-            current_queue = list(range(len(filtered))); random.shuffle(current_queue)
-        chosen_index = current_queue.pop(0)
-        if chosen_index >= len(filtered):
-            current_queue = list(range(len(filtered))); random.shuffle(current_queue); chosen_index = current_queue.pop(0)
-        rotation[queue_key] = current_queue
-        with open(ROTATION_FILE, "w") as f: json.dump(rotation, f)
-        paper_item = filtered[chosen_index]; paper = paper_item.get("paper", {}); analysis = paper_item.get("analysis", {}); conf_info = paper_item.get("conference_info", {})
-        title = paper.get("title", "Untitled"); conference = conf_info.get("conference", "a top conference"); year = conf_info.get("year", "")
-        conf_display = (conference + " " + year).strip(); problem = analysis.get("problem_statement", ""); summary = analysis.get("executive_summary", "")
-        arxiv_id = paper.get("arxiv_id", ""); arxiv_url = "https://arxiv.org/abs/" + arxiv_id if arxiv_id else ""
-        speech_parts = ["Here's a recent research finding"]
-        if category: speech_parts.append("in " + category)
-        speech_parts.append("from " + conf_display + "."); speech_parts.append("The paper is titled: " + title + ".")
-        if problem: speech_parts.append("It addresses: " + problem)
-        if summary: speech_parts.append(". ".join(summary.split(". ")[:2]) + ".")
-        speech_parts.append("You can find this paper on arXiv.")
-        return {"title": title, "conference": conf_display, "category": conf_info.get("category", "Other"), "arxiv_id": arxiv_id,
-                "arxiv_url": arxiv_url, "problem_statement": problem, "executive_summary": summary, "speech": " ".join(speech_parts),
-                "total_available": len(filtered), "papers_remaining_in_queue": len(current_queue), "filter_date": data.get("filter_date")}
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
+async def alexa_paper(category: str | None = None):
+    if category and len(category) > 100:
+        raise HTTPException(status_code=422, detail="category is too long")
+    data = await run_in_threadpool(repository.current)
+    papers = data.get("papers", [])
+    if category:
+        papers = [p for p in papers if category.lower() in str((p.get("conference_info", {}) or {}).get("category", "")).lower()]
+    if not papers:
+        return {"error": "No papers found", "speech": "Sorry, there are no papers available right now."}
+    item = random.choice(papers)
+    paper, analysis, conf = item.get("paper", {}), item.get("analysis", {}), item.get("conference_info", {})
+    arxiv_id, title = str(paper.get("arxiv_id", "")), str(paper.get("title", "Untitled"))
+    summary, problem = str(analysis.get("executive_summary", "")), str(analysis.get("problem_statement", ""))
+    speech = f"Here's a recent research finding. The paper is titled: {title}."
+    if problem:
+        speech += f" It addresses: {problem}"
+    return {"title": title, "conference": str(conf.get("conference", "")), "category": conf.get("category", "Other"),
+            "arxiv_id": arxiv_id, "arxiv_url": f"https://arxiv.org/abs/{arxiv_id}" if arxiv_id else "",
+            "problem_statement": problem, "executive_summary": summary, "speech": speech,
+            "total_available": len(papers), "filter_date": data.get("filter_date")}
 
 
 @app.get("/")
 async def root():
-    if os.path.exists("simple_dashboard.html"):
-        return FileResponse("simple_dashboard.html")
-    return HTMLResponse("""<html><head><title>arXiv Conference Paper Agent</title></head><body><h1>arXiv Conference Paper Agent</h1><p><a href=\"/api/papers\">View today's papers</a></p><p><a href=\"/api/dates\">View all available dates</a></p></body></html>""")
+    dashboard = BASE_DIR / "simple_dashboard.html"
+    return FileResponse(dashboard) if dashboard.exists() else HTMLResponse("<h1>arXiv Conference Paper Agent</h1>")
 
 
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run(app, host="0.0.0.0", port=8000)
+    uvicorn.run(app, host="0.0.0.0", port=8000, server_header=False, limit_concurrency=200, timeout_keep_alive=5)

@@ -1,25 +1,75 @@
 services:
-  arxiv-agent:
-    build: .
-    container_name: arxiv-paper-agent
-    ports:
-      - "8000:8000"
-    env_file:
-      - .env
-    environment:
-      - TZ=America/New_York
-      - GIT_SSH_COMMAND=ssh -i /root/.ssh/id_ed25519 -o StrictHostKeyChecking=no
-    volumes:
-      - ./papers.json:/app/papers.json
-      - ./papers_archive.json:/app/papers_archive.json
-      - ./data:/app/data
-      - ./.git:/app/.git
-      - ~/.ssh:/root/.ssh:ro
-      - ~/.gitconfig:/root/.gitconfig:ro
+  edge:
+    image: nginx:1.27-alpine
+    ports: ["8000:8080"]
+    volumes: ["./nginx.conf:/etc/nginx/nginx.conf:ro"]
+    depends_on:
+      web: {condition: service_healthy}
     restart: unless-stopped
+    read_only: true
+    tmpfs: [/var/cache/nginx, /var/run]
+  web:
+    build: {context: ., dockerfile: dockerfile}
+    env_file: [.env]
+    environment:
+      REDIS_URL: redis://redis:6379/0
+      DATA_DIR: /app/data
+      TRUSTED_PROXY_CIDRS: 172.16.0.0/12
+    expose: ["8000"]
+    volumes: ["paper-data:/app/data:ro"]
+    depends_on:
+      redis: {condition: service_healthy}
+    restart: unless-stopped
+    read_only: true
+    tmpfs: [/tmp]
+    stop_grace_period: 40s
+    deploy:
+      resources:
+        limits: {cpus: "1.0", memory: 768M}
+  worker:
+    build: {context: ., dockerfile: dockerfile}
+    command: ["python", "jobs.py"]
+    env_file: [.env]
+    environment:
+      PROCESS_ROLE: worker
+      REDIS_URL: redis://redis:6379/0
+      DATA_DIR: /app/data
+    volumes: ["paper-data:/app/data"]
+    depends_on:
+      redis: {condition: service_healthy}
+    restart: unless-stopped
+    stop_grace_period: 30s
+    deploy:
+      resources:
+        limits: {cpus: "2.0", memory: 2G}
+  scheduler:
+    build: {context: ., dockerfile: dockerfile}
+    command: ["python", "jobs.py"]
+    env_file: [.env]
+    environment:
+      PROCESS_ROLE: scheduler
+      REDIS_URL: redis://redis:6379/0
+    depends_on:
+      redis: {condition: service_healthy}
+    restart: unless-stopped
+    deploy:
+      replicas: 1
+      resources:
+        limits: {cpus: "0.25", memory: 192M}
+  redis:
+    image: redis:7.4-alpine
+    # Queue/lock keys must never be evicted. Use a separate cache Redis at very large scale.
+    command: ["redis-server", "--appendonly", "yes", "--maxmemory", "256mb", "--maxmemory-policy", "noeviction"]
+    volumes: ["redis-data:/data"]
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
-      interval: 30s
-      timeout: 10s
-      retries: 3
-      start_period: 5s
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits: {cpus: "0.5", memory: 384M}
+volumes:
+  paper-data:
+  redis-data:

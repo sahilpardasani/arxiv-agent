@@ -6,44 +6,42 @@ analysis pipeline, mutate the archive, or push to GitHub.
 """
 from __future__ import annotations
 
-import json
 import os
 import re
+from functools import lru_cache
 from collections import Counter
-from pathlib import Path
 from typing import Any
+
+from data_store import repository
 
 from mcp.server import MCPServer
 from mcp.server.transport_security import TransportSecuritySettings
 
-BASE_DIR = Path(__file__).resolve().parent
-PAPERS_FILE = BASE_DIR / "papers.json"
-ARCHIVE_FILE = BASE_DIR / "papers_archive.json"
-
 mcp = MCPServer("arXiv Conference Research")
 
 
-def _read_json(path: Path) -> dict[str, Any]:
-    if not path.exists():
-        return {}
-    try:
-        with path.open("r", encoding="utf-8") as f:
-            data = json.load(f)
-        return data if isinstance(data, dict) else {}
-    except (OSError, json.JSONDecodeError):
-        return {}
+def _bounded(value: str | None, name: str, maximum: int = 200) -> str | None:
+    if value is not None and len(value) > maximum:
+        raise ValueError(f"{name} must be at most {maximum} characters")
+    return value
 
 
 def _current_data() -> dict[str, Any]:
-    return _read_json(PAPERS_FILE)
+    return repository.current()
 
 
 def _archive_data() -> dict[str, Any]:
-    return _read_json(ARCHIVE_FILE)
+    return repository.archive()
 
 
-def _all_papers(include_archive: bool = True) -> list[dict[str, Any]]:
+def _all_papers(include_archive: bool = True) -> tuple[dict[str, Any], ...]:
+    return _all_papers_versioned(repository.version(), include_archive)
+
+
+@lru_cache(maxsize=4)
+def _all_papers_versioned(version: object, include_archive: bool) -> tuple[dict[str, Any], ...]:
     """Return newest copy of each arXiv ID, deduplicated across the archive."""
+    del version
     current = _current_data()
     archive = _archive_data() if include_archive else {}
 
@@ -77,7 +75,29 @@ def _all_papers(include_archive: bool = True) -> list[dict[str, Any]]:
         copied["source_date"] = source_date
         output.append(copied)
 
-    return output
+    return tuple(output)
+
+
+@lru_cache(maxsize=4)
+def _search_index(version: object, include_archive: bool):
+    """Build an inverted index once per file version instead of rescanning every paper."""
+    items = _all_papers_versioned(version, include_archive)
+    postings: dict[str, set[int]] = {}
+    for index, item in enumerate(items):
+        for term in set(_terms(_paper_text(item))):
+            postings.setdefault(term, set()).add(index)
+    return items, postings
+
+
+def _search_candidates(query: str, include_archive: bool):
+    items, postings = _search_index(repository.version(), include_archive)
+    terms = _terms(query)
+    if not terms:
+        return items
+    indexes: set[int] = set()
+    for term in terms:
+        indexes.update(postings.get(term, ()))
+    return tuple(items[index] for index in indexes)
 
 
 def _paper_text(item: dict[str, Any]) -> str:
@@ -182,8 +202,9 @@ def search(query: str, limit: int = 10, include_archive: bool = True) -> dict[st
     methods, implementation details, metrics, and relevance tags. Use fetch() with
     a returned id when you need the complete paper record.
     """
+    _bounded(query, "query", 500)
     limit = max(1, min(int(limit), 50))
-    scored = [(_score(item, query), item) for item in _all_papers(include_archive)]
+    scored = [(_score(item, query), item) for item in _search_candidates(query, include_archive)]
     scored = [(s, item) for s, item in scored if s > 0]
     scored.sort(key=lambda pair: (pair[0], pair[1].get("source_date", "")), reverse=True)
 
@@ -204,6 +225,7 @@ def fetch(id: str) -> dict[str, Any]:
     2608.09931. Returns the original arXiv metadata, analysis, conference info,
     and a canonical arXiv URL.
     """
+    _bounded(id, "id", 100)
     wanted = id.strip().lower()
     wanted_base = re.sub(r"v\d+$", "", wanted)
 
@@ -232,6 +254,8 @@ def recent_papers(
 
     Date uses YYYY-MM-DD. String filters are case-insensitive substring matches.
     """
+    for name, value in (("date", date), ("conference", conference), ("field", field), ("rank", rank)):
+        _bounded(value, name, 100)
     limit = max(1, min(int(limit), 100))
     items = _all_papers(include_archive=True)
 
@@ -283,6 +307,7 @@ def available_dates() -> dict[str, Any]:
 @mcp.tool()
 def paper_stats(date: str | None = None) -> dict[str, Any]:
     """Summarize paper counts by conference, research field, rank, and arXiv category."""
+    _bounded(date, "date", 100)
     items = _all_papers(include_archive=True)
     if date:
         items = [item for item in items if item.get("source_date") == date]
