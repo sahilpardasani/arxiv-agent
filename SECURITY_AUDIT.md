@@ -31,7 +31,7 @@ snapshots. This pass added the following backward-compatible controls:
 - The standalone connectivity check now uses HTTPS and the same validated model
   configuration as production.
 
-Verification: 45 regression tests passed, including model/configuration failure,
+Verification: 46 regression tests passed, including model/configuration failure,
 prompt substitution, conference replacement, snapshot preservation, publishing
 validation, and rate-limit memory bounds. `pip-audit` reported no known
 vulnerabilities in the fully pinned requirements on 2026-08-27. Bandit reported no

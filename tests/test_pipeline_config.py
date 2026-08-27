@@ -137,6 +137,13 @@ class GroqConfigurationIntegrationTests(unittest.TestCase):
         with patch.object(self.agent, "MAX_ARXIV_RESPONSE_BYTES", 4), self.assertRaises(ValueError):
             asyncio.run(self.agent.read_arxiv_response(response))
 
+    def test_arxiv_response_reads_every_network_chunk(self):
+        reader = AsyncMock(side_effect=[b"<feed>", b"complete", b"</feed>", b""])
+        response = SimpleNamespace(content=SimpleNamespace(read=reader), charset="utf-8")
+        result = asyncio.run(self.agent.read_arxiv_response(response))
+        self.assertEqual(result, "<feed>complete</feed>")
+        self.assertEqual(reader.call_count, 4)
+
 
 if __name__ == "__main__":
     unittest.main()

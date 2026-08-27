@@ -303,10 +303,19 @@ MAX_ARXIV_RESPONSE_BYTES = max(
 
 async def read_arxiv_response(response) -> str:
     """Bound decompressed upstream data before XML parsing to prevent memory abuse."""
-    raw = await response.content.read(MAX_ARXIV_RESPONSE_BYTES + 1)
-    if len(raw) > MAX_ARXIV_RESPONSE_BYTES:
-        raise ValueError("arXiv response exceeded MAX_ARXIV_RESPONSE_BYTES")
-    return raw.decode(response.charset or "utf-8", errors="replace")
+    chunks = []
+    total = 0
+    while True:
+        # StreamReader.read(n) may return any currently available bytes, not the
+        # complete response. Keep reading through EOF while enforcing the cap.
+        chunk = await response.content.read(min(64 * 1024, MAX_ARXIV_RESPONSE_BYTES + 1 - total))
+        if not chunk:
+            break
+        total += len(chunk)
+        if total > MAX_ARXIV_RESPONSE_BYTES:
+            raise ValueError("arXiv response exceeded MAX_ARXIV_RESPONSE_BYTES")
+        chunks.append(chunk)
+    return b"".join(chunks).decode(response.charset or "utf-8", errors="replace")
 
 # ===== ACCEPTANCE / REJECTION PHRASES =====
 ACCEPTANCE_PHRASES = [
