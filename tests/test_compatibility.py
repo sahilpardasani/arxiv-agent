@@ -75,5 +75,14 @@ class CompatibilityTests(unittest.TestCase):
         self.assertEqual([call.args[1] for call in publish_one.call_args_list], list(publishing.OUTPUT_NAMES))
         self.assertTrue(all(call.args[0] == Path(directory).resolve() for call in publish_one.call_args_list))
 
+    def test_invalid_github_repository_is_not_contacted(self):
+        with (
+            tempfile.TemporaryDirectory() as directory,
+            patch.dict(os.environ, {"GITHUB_TOKEN": "token", "GITHUB_REPO": "owner/repo?redirect=bad"}, clear=False),
+            patch.object(publishing, "_publish_one") as publish_one,
+        ):
+            self.assertFalse(publishing.publish_outputs("completed", Path(directory)))
+        publish_one.assert_not_called()
+
 
 if __name__ == "__main__": unittest.main()

@@ -77,13 +77,23 @@ def _rate_spec(request: Request):
 def _local_rate_limit(key: str, limit: int, window: int):
     now = time.monotonic()
     with _local_rate_lock:
+        try:
+            max_keys = max(100, min(int(os.environ.get("LOCAL_RATE_LIMIT_MAX_KEYS", "10000")), 100_000))
+        except ValueError:
+            max_keys = 10_000
+        if key not in _local_request_history and len(_local_request_history) >= max_keys:
+            stale = [k for k, values in _local_request_history.items() if not values or values[-1] <= now - 300]
+            for stale_key in stale:
+                _local_request_history.pop(stale_key, None)
+            if len(_local_request_history) >= max_keys:
+                return window
         history = _local_request_history[key]
         while history and history[0] <= now - window:
             history.popleft()
         if len(history) >= limit:
             return max(1, int(history[0] + window - now) + 1)
         history.append(now)
-        if len(_local_request_history) > 10_000:
+        if len(_local_request_history) > max_keys:
             for stale_key in [k for k, values in _local_request_history.items() if not values or values[-1] <= now - 300]:
                 _local_request_history.pop(stale_key, None)
     return None

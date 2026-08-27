@@ -89,6 +89,10 @@ The main variables are documented in `.env.example`:
 
 - `ADMIN_API_TOKEN`: required for manual analysis; keep server-side.
 - `GROQ_API_KEY`: required by the analysis pipeline.
+- `GROQ_MODEL`: Groq model ID; defaults to `qwen/qwen3.8-27b`.
+- `GROQ_REASONING_EFFORT`: Qwen reasoning mode; defaults to `none` for reliable JSON output.
+- `ANALYSIS_PROMPT_FILE`: optional trusted UTF-8 prompt template using `${title}`, `${arxiv_id}`, `${comment}`, and `${summary}` placeholders.
+- `CONFERENCE_CONFIG_FILE`: optional trusted JSON catalog with `categories` and `ranks` objects. When absent, the established built-in catalog is unchanged.
 - `REDIS_URL`: required for shared rate limiting and job dispatch.
 - `ENABLE_LEGACY_MODE`: no-Redis compatibility switch; defaults on only when Redis is absent. Set `false` for read-only development.
 - `DATA_DIR`: shared snapshot directory; defaults to the application directory locally.
@@ -96,6 +100,13 @@ The main variables are documented in `.env.example`:
 - `TRUSTED_PROXY_CIDRS`: proxies allowed to supply the client IP header.
 - `PIPELINE_TIMEOUT_SECONDS`, `PIPELINE_LOCK_TTL_SECONDS`, and `JOB_LEASE_SECONDS`: worker safety limits.
 - `API_RATE_LIMIT` and `MCP_RATE_LIMIT`: application-level limits; edge controls remain required.
+- `LOCAL_RATE_LIMIT_MAX_KEYS`: hard cap for fallback per-process client buckets.
+- `MAX_ARXIV_RESPONSE_BYTES`: decompressed response cap per arXiv category fetch.
+
+Example prompt and conference files live in `config/`. An explicitly configured
+conference file replaces the complete built-in catalog for that pipeline process;
+copy every category and alias you want retained. Configuration files are validated
+for type, size, duplicate venues, placeholders, and rank values before processing.
 
 ## HTTP endpoints
 
@@ -122,7 +133,7 @@ curl -X POST \
 
 ```bash
 python -m unittest discover -s tests -v
-python -m py_compile main.py data_store.py jobs.py mcp_server.py arxiv_agent.py
+python -m py_compile main.py data_store.py jobs.py mcp_server.py arxiv_agent.py pipeline_config.py
 docker compose config
 ```
 

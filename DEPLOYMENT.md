@@ -69,6 +69,11 @@ strong secrets, and keep `.env` outside source control.
 - Central logs, metrics and traces; alerts for queue depth, lock age, readiness,
   429/5xx rate, tail latency, and error-budget burn.
 - A secret manager for `ADMIN_API_TOKEN`, `GROQ_API_KEY`, and publishing tokens.
+- Pin `GROQ_MODEL` explicitly in deployment configuration. The default is
+  `qwen/qwen3.8-27b`; changing models never requires a code edit.
+- Mount optional `ANALYSIS_PROMPT_FILE` and `CONFERENCE_CONFIG_FILE` as trusted,
+  read-only configuration. Invalid explicit files stop the pipeline before arXiv
+  fetching or paid model calls instead of silently changing selection behavior.
 
 ## Health, failure behavior, and resource controls
 
@@ -90,7 +95,7 @@ strong secrets, and keep `.env` outside source control.
 
 ```sh
 python -m unittest discover -s tests -v
-python -m py_compile main.py data_store.py jobs.py mcp_server.py arxiv_agent.py
+python -m py_compile main.py data_store.py jobs.py mcp_server.py arxiv_agent.py pipeline_config.py
 docker compose config
 docker compose build
 ```

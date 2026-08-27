@@ -4,7 +4,7 @@ WORKDIR /app
 RUN groupadd --gid 10001 app && useradd --uid 10001 --gid app --no-create-home app
 COPY requirements.txt .
 RUN pip install --no-cache-dir --requirement requirements.txt
-COPY --chown=app:app arxiv_agent.py main.py mcp_server.py data_store.py jobs.py legacy.py publishing.py simple_dashboard.html ./
+COPY --chown=app:app arxiv_agent.py pipeline_config.py main.py mcp_server.py data_store.py jobs.py legacy.py publishing.py simple_dashboard.html ./
 COPY --chown=app:app papers.json papers_archive.json ./data/
 USER 10001:10001
 EXPOSE 8000

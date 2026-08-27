@@ -7,6 +7,7 @@ Run this to verify the setup before running the full pipeline
 import os
 import asyncio
 import sys
+from pipeline_config import groq_model, groq_reasoning_effort
 
 # Test 1: Check API key
 print("🔐 Checking Groq API key...")
@@ -34,7 +35,7 @@ print("\n🔍 Testing arXiv API fetch...")
 async def test_arxiv():
     try:
         async with aiohttp.ClientSession() as session:
-            url = "http://export.arxiv.org/api/query"
+            url = "https://export.arxiv.org/api/query"
             params = {
                 "search_query": "cat:cs.LG",
                 "start": 0,
@@ -66,9 +67,10 @@ entries = asyncio.run(test_arxiv())
 print("\n🤖 Testing Groq API...")
 try:
     client = Groq(api_key=groq_key)
+    selected_model = groq_model()
     
     test_message = client.chat.completions.create(
-        model="llama-3.1-8b-instant",
+        model=selected_model,
         messages=[
             {
                 "role": "user",
@@ -77,6 +79,8 @@ try:
         ],
         max_tokens=100,
         temperature=0.1,
+        reasoning_effort=groq_reasoning_effort(),
+        response_format={"type": "json_object"},
     )
     
     response_text = test_message.choices[0].message.content
@@ -118,10 +122,12 @@ Comment: {test_paper['comment']}
 
     try:
         response = client.chat.completions.create(
-            model="llama-3.1-8b-instant",
+            model=selected_model,
             messages=[{"role": "user", "content": analysis_prompt}],
             temperature=0.3,
             max_tokens=500,
+            reasoning_effort=groq_reasoning_effort(),
+            response_format={"type": "json_object"},
         )
         
         response_text = response.choices[0].message.content

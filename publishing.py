@@ -5,6 +5,7 @@ import base64
 import json
 import logging
 import os
+import re
 import urllib.error
 import urllib.parse
 import urllib.request
@@ -53,6 +54,9 @@ def publish_outputs(stdout: str, data_dir: str | Path) -> bool:
     token, repo = os.environ.get("GITHUB_TOKEN", ""), os.environ.get("GITHUB_REPO", "")
     if not token or not repo:
         logger.info("GitHub publishing disabled because credentials/repository are not configured")
+        return False
+    if not re.fullmatch(r"[A-Za-z0-9.-]+/[A-Za-z0-9._-]+", repo):
+        logger.error("GitHub publishing disabled because GITHUB_REPO must be owner/repository")
         return False
     try:
         directory = Path(data_dir).resolve()

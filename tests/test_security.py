@@ -99,6 +99,15 @@ class SecurityRegressionTests(unittest.TestCase):
         self.assertEqual(statuses[-1], 429)
         main._local_request_history.clear()
 
+    def test_local_rate_limit_state_has_a_hard_key_cap(self):
+        main._local_request_history.clear()
+        with patch.dict(os.environ, {"LOCAL_RATE_LIMIT_MAX_KEYS": "100"}, clear=False):
+            for index in range(100):
+                self.assertIsNone(main._local_rate_limit(f"client:{index}", 10, 60))
+            self.assertEqual(main._local_rate_limit("client:overflow", 10, 60), 60)
+        self.assertEqual(len(main._local_request_history), 100)
+        main._local_request_history.clear()
+
 
 if __name__ == "__main__":
     unittest.main()

@@ -1,0 +1,10 @@
+{
+  "categories": {
+    "General ML/AI": ["ICML", "International Conference on Machine Learning"],
+    "Natural Language Processing": ["ACL", "Association for Computational Linguistics"]
+  },
+  "ranks": {
+    "ICML": "A+",
+    "ACL": "A+"
+  }
+}
