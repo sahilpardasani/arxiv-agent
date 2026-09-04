@@ -1,1031 +1,170 @@
 {
-  "last_updated": "2026-08-31T03:42:44.798136",
-  "total_papers": 20,
+  "last_updated": "2026-09-03T23:10:39.995891",
+  "total_papers": 3,
   "papers": [
     {
       "paper": {
-        "title": "Post-Training VLMs for Video Mistake Detection",
-        "arxiv_id": "2608.28406v1",
+        "title": "When Vision Meets Graphs: A Survey on Graph Reasoning and Learning",
+        "arxiv_id": "2609.03816v1",
         "authors": [
-          "Federico Spurio",
-          "Olga Zatsarynna",
-          "Lars Doorenbos",
-          "Emad Bahrami",
-          "Gianpiero Francesca",
-          "Juergen Gall"
+          "Xinjian Zhao",
+          "Wei Pang",
+          "Zhixuan Yu",
+          "Xiangru Jian",
+          "Xiaozhuang Song",
+          "Yaoyao Xu",
+          "Zhongkai Xue",
+          "Dingshuo Chen",
+          "Shu Wu",
+          "Philip Torr",
+          "Tianshu Yu"
         ],
-        "published": "2026-08-28T14:56:58Z",
-        "updated": "2026-08-28T14:56:58Z",
-        "summary": "Human mistakes are inevitable when following instructions, yet they can lead to severe consequences. As such, there has been an increased interest in developing methods for detecting mistakes in videos, with current methods mostly focusing on closed-set protocols. While successful in controlled settings, the closed-set assumption limits their wider applicability, as any changes to the task require collecting new data and re-training models. Instead, we argue that mistake detection methods should learn the general concept of a mistake, rather than overfitting to step-specific details. To reflect this, we introduce the Mistake Detection Video Question Answering (MD-VQA) protocol and accompanying benchmark. MD-VQA tests whether methods can discern if a step was executed correctly with respect to its description, for both seen and unseen actions. To address this important challenge, we propose the first video-language-model post-training technique for mistake detection. Our method uses a tailored reward function to encourage the model to identify discrepancies between an instruction and the corresponding video. Extensive evaluations demonstrate that this approach outperforms zero-shot, supervised fine-tuning, and post-training baselines. Notably, our method generalizes especially well to unseen procedures, for instance, with an improvement of up to 11.6% over the best-performing baseline on EP-VQA, paving the way toward general mistake detection. We release our code and benchmark at https://github.com/FedeSpu/mstk.",
-        "categories": "cs.CV",
-        "comment": "Accepted at BMVC 2026"
+        "published": "2026-09-03T13:19:22Z",
+        "updated": "2026-09-03T13:19:22Z",
+        "summary": "Graphs are a fundamental data structure underlying many problems in the natural and social sciences. Over the past decade, Graph Neural Networks (GNNs) have dominated graph machine learning, supported by solid theoretical foundations. Yet scientists often understand graph structure through vision: chemists read molecular diagrams and social scientists inspect network visualizations. Despite decades of work on graph visualization, most graph learning pipelines still treat graphs purely as symbolic structures, rarely leveraging the visual form of graphs. We argue that this gap deserves renewed attention in the era of powerful vision and vision-language models. This survey provides a first systematic overview of the emerging area we term vision meets graphs, which treats visual depictions of graphs as first-class inputs for reasoning and learning. We organize existing work into three threads. Vision for Graph Reasoning studies how models can use visual depictions of graphs to understand structure and carry out multi-step reasoning. Vision for Graph Learning explores how visual features can complement or augment graph encoders beyond known limitations of message passing. Scientific Graphs examines domains where standardized depiction conventions support both reasoning and learning. Our goal is to clarify what current methods can and cannot do, and to outline a path toward foundation models that perceive and reason about graphs as scientists do.",
+        "categories": "cs.SI",
+        "comment": "IJCAI Survey Track, 2026"
       },
       "analysis": {
-        "problem_statement": "Existing video mistake detection methods rely on closed-set protocols that require retraining for new tasks, limiting their generalizability to unseen actions.",
-        "bottleneck_addressed": "Lack of generalization in video understanding models due to overfitting to specific task steps rather than learning the abstract concept of a 'mistake'.",
-        "executive_summary": "This paper addresses the limitation of closed-set mistake detection by introducing the MD-VQA protocol, which tests generalization to unseen actions. It proposes the first post-training technique for Video Language Models (VLMs) specifically tailored for mistake detection, enabling the model to discern discrepancies between instructions and video execution without task-specific retraining.",
+        "problem_statement": "The paper addresses the lack of systematic integration of visual graph representations into machine learning pipelines, which currently treat graphs as purely symbolic structures despite the human tendency to interpret them visually.",
+        "bottleneck_addressed": "Limitations of Graph Neural Networks (GNNs) in capturing global structural information and the underutilization of visual modality for graph reasoning in the era of Vision-Language Models (VLMs).",
+        "executive_summary": "This survey identifies a critical gap in graph machine learning where visual depictions are ignored, despite being a primary mode of human understanding. It proposes a new framework, 'vision meets graphs,' that leverages powerful vision models to enhance graph reasoning and learning beyond the constraints of standard message passing mechanisms.",
         "key_metrics": {
-          "primary_metric": "Improvement in mistake detection accuracy on the EP-VQA benchmark for unseen procedures",
-          "metric_value": "11.6%",
-          "baseline": "Best-performing baseline (zero-shot, supervised fine-tuning, or other post-training methods)",
-          "improvement_percentage": "11.6"
-        },
-        "technical_breakdown": {
-          "method": "Post-training of Video Language Models (VLMs) using a tailored reward function that encourages the identification of discrepancies between textual instructions and video content.",
-          "architecture": "Video-Language Model (VLM) backbone adapted via post-training (likely Reinforcement Learning from Human Feedback or similar reward-based optimization).",
-          "implementation_details": "Introduction of the Mistake Detection Video Question Answering (MD-VQA) protocol and benchmark; design of a specific reward function to align model outputs with correct mistake identification.",
-          "code_complexity": "Not explicitly stated in the abstract, but implies standard VLM post-training computational costs plus the overhead of reward model evaluation."
-        },
-        "relevance_tags": [
-          "Video-Language Models",
-          "Mistake Detection",
-          "Post-Training",
-          "Generalization",
-          "Benchmark"
-        ],
-        "confidence": "high"
-      },
-      "analyzed_at": "2026-08-31T03:40:21.132463",
-      "conference_info": {
-        "conference": "BMVC",
-        "year": "2026",
-        "comment": "Accepted at BMVC 2026",
-        "raw_comment": "Accepted at BMVC 2026",
-        "category": "Computer Vision",
-        "rank": "A"
-      }
-    },
-    {
-      "paper": {
-        "title": "Explainable Uncertainty Estimation for Reliable Medical AI",
-        "arxiv_id": "2608.28052v1",
-        "authors": [
-          "Li Rong Wang",
-          "Jamie Duell",
-          "Xinran Xu",
-          "Thomas C. Henderson",
-          "Yu Yue Hew",
-          "Pik Wan Erica Chiang",
-          "Xiao Wei Alstar Ang",
-          "Bingwen Eugene Fan",
-          "Xiuyi Fan"
-        ],
-        "published": "2026-08-28T08:17:21Z",
-        "updated": "2026-08-28T08:17:21Z",
-        "summary": "Artificial intelligence has strong potential to support clinical decision-making, yet its adoption in healthcare remains limited due to a lack of trust. Uncertainty estimation can signal unreliable predictions, and explainable AI (XAI) can clarify how predictions are made but existing methods treat them separately, providing no feature-level insight into why a prediction is uncertain or which tests to prioritize to reduce it. To address this gap, we propose explainable uncertainty estimation, which unifies uncertainty estimation and XAI to both quantify uncertainty and explain feature-level contributions. We introduce the Expected Gradients Reconstruction Uncertainty Estimate (egRUE), which incorporates prediction explanations into its uncertainty computation and decomposes uncertainty into feature-wise contributions. We prove theoretical properties of egRUE and show through experiments that it improves reliability and interpretability compared to existing methods. A user study with medical experts further demonstrates that egRUE's explanations improve calibrated trust over uncertainty scores alone, increasing confidence in correct predictions and reducing confidence in incorrect ones. By combining prediction uncertainty with feature-level explanations, egRUE strengthens decision-making support in safety-critical healthcare settings, clarifying both when predictions may be unreliable and which features drive that uncertainty.",
-        "categories": "cs.LG",
-        "comment": "Accepted at the 26th IEEE International Conference on Data Mining (ICDM)"
-      },
-      "analysis": {
-        "problem_statement": "Existing methods treat uncertainty estimation and explainable AI separately, failing to provide feature-level insights into why a medical AI prediction is uncertain or which tests to prioritize to reduce that uncertainty.",
-        "bottleneck_addressed": "Lack of trust and interpretability in safety-critical AI systems, specifically the inability to link prediction uncertainty to specific feature contributions.",
-        "executive_summary": "This paper addresses the critical gap in healthcare AI adoption by unifying uncertainty quantification with feature-level explanations. By introducing egRUE, it enables clinicians to understand not just that a prediction is uncertain, but which specific features drive that uncertainty, thereby improving calibrated trust and decision-making reliability.",
-        "key_metrics": {
-          "primary_metric": "Improvement in calibrated trust and reliability of predictions",
-          "metric_value": "Not specified in abstract",
-          "baseline": "Existing methods that treat uncertainty estimation and XAI separately",
-          "improvement_percentage": "Not specified in abstract"
-        },
-        "technical_breakdown": {
-          "method": "Proposes Expected Gradients Reconstruction Uncertainty Estimate (egRUE), which incorporates prediction explanations into uncertainty computation and decomposes uncertainty into feature-wise contributions.",
-          "architecture": "A unified framework combining uncertainty estimation mechanisms with XAI techniques (specifically leveraging gradients for reconstruction).",
-          "implementation_details": "Uses Expected Gradients to reconstruct uncertainty estimates, allowing for the decomposition of total uncertainty into individual feature contributions.",
-          "code_complexity": "Not specified in abstract"
-        },
-        "relevance_tags": [
-          "Explainable AI",
-          "Uncertainty Estimation",
-          "Medical AI",
-          "Trust Calibration"
-        ],
-        "confidence": "high"
-      },
-      "analyzed_at": "2026-08-31T03:41:14.915231",
-      "conference_info": {
-        "conference": "ICDM",
-        "year": "Unknown",
-        "comment": "Accepted at the 26th IEEE International Conference on Data Mining (ICDM)",
-        "raw_comment": "Accepted at the 26th IEEE International Conference on Data Mining (ICDM)",
-        "category": "Data Mining & IR",
-        "rank": "A+"
-      }
-    },
-    {
-      "paper": {
-        "title": "Temporal Memory-Aware Online Test-Time Adaptation on Dynamic Graphs",
-        "arxiv_id": "2608.27948v1",
-        "authors": [
-          "Bo Li",
-          "Xin Zheng",
-          "Ming Jin",
-          "Can Wang",
-          "Shirui Pan"
-        ],
-        "published": "2026-08-28T05:41:39Z",
-        "updated": "2026-08-28T05:41:39Z",
-        "summary": "Test-time adaptation (TTA) on graphs aims to adapt a graph neural network (GNN) that is well-trained on the training graph to the test graph, which involves potential distribution shifts that may harm model generalization and test-time inference. While recent efforts have investigated TTA on static graphs, there is still a research gap on dynamic graphs learned with dynamic GNN (DGNN) models, where both structural connectivity and node semantics evolve continuously over time. This makes adapting a DGNN model for reliable test-time performance substantially challenging. To fill this gap, in this work, we propose a novel framework of temporal memory-aware Online Test-Time Adaptation on Dynamic Graphs, named DGOTTA, to effectively adapt well-trained DGNNs during test time. Specifically, the proposed DGOTTA contains three modules: (1) temporal-aware augmentation, to extend the diversity of test dynamic graphs for addressing complex temporal and spatial shifts; (2) memory-aware model prediction, to alleviate catastrophic forgetting; (3) consistency-guided online adaptation, to enforce temporal alignment and memory smoothness. Extensive experiments on three real-world datasets and four DGNN backbones demonstrate that DGOTTA significantly improves generalization under diverse distribution shifts and multiple model architectures.",
-        "categories": "cs.LG",
-        "comment": "Accepted By ICDM 2026"
-      },
-      "analysis": {
-        "problem_statement": "The paper addresses the challenge of adapting Dynamic Graph Neural Networks (DGNNs) to test-time distribution shifts on dynamic graphs, where both structural connectivity and node semantics evolve continuously, a gap left by existing static graph Test-Time Adaptation (TTA) methods.",
-        "bottleneck_addressed": "Generalization under non-stationary data distributions and catastrophic forgetting in online learning scenarios for dynamic graph data.",
-        "executive_summary": "This work bridges the research gap between static graph TTA and the more complex domain of dynamic graphs, where temporal evolution introduces significant distribution shifts. By proposing DGOTTA, it offers a framework to maintain model performance in real-time streaming environments, which is critical for applications like traffic prediction, social network analysis, and financial fraud detection where data is inherently dynamic.",
-        "key_metrics": {
-          "primary_metric": "Improvement in generalization performance under diverse distribution shifts",
-          "metric_value": "Not specified in abstract",
-          "baseline": "Well-trained DGNNs without TTA and potentially other TTA baselines (implied by 'significantly improves')",
-          "improvement_percentage": "Not quantified in abstract"
-        },
-        "technical_breakdown": {
-          "method": "The framework employs a three-module approach: temporal-aware augmentation to increase test data diversity, memory-aware prediction to prevent forgetting, and consistency-guided adaptation to enforce temporal alignment.",
-          "architecture": "DGOTTA framework consisting of: (1) Temporal-aware augmentation module, (2) Memory-aware model prediction module, (3) Consistency-guided online adaptation module.",
-          "implementation_details": "Uses temporal and spatial shift handling via augmentation; incorporates memory mechanisms to alleviate catastrophic forgetting; enforces temporal alignment and memory smoothness through consistency constraints. Evaluated on three real-world datasets with four different DGNN backbones.",
-          "code_complexity": "Not specified in abstract; likely adds overhead due to augmentation and memory management, but designed for online adaptation."
-        },
-        "relevance_tags": [
-          "Graph Neural Networks",
-          "Test-Time Adaptation",
-          "Dynamic Graphs",
-          "Online Learning",
-          "Catastrophic Forgetting"
-        ],
-        "confidence": "high"
-      },
-      "analyzed_at": "2026-08-31T03:41:30.275753",
-      "conference_info": {
-        "conference": "ICDM",
-        "year": "2026",
-        "comment": "Accepted By ICDM 2026",
-        "raw_comment": "Accepted By ICDM 2026",
-        "category": "Data Mining & IR",
-        "rank": "A+"
-      }
-    },
-    {
-      "paper": {
-        "title": "Residual-Guided Randomized Neural Networks",
-        "arxiv_id": "2608.28267v1",
-        "authors": [
-          "Mushir Akhtar",
-          "M. Tanveer",
-          "Mohd. Arshad"
-        ],
-        "published": "2026-08-28T12:30:08Z",
-        "updated": "2026-08-28T12:30:08Z",
-        "summary": "Randomized neural networks enable fast and analytically tractable training by fixing the input to hidden layer parameters at random and learning the output weights in closed form; however, their performance critically depends on a single uninformed draw of hidden units. This one shot and task uninformed feature construction often leads to redundant representations and suboptimal utilization of model capacity. To address this limitation, we propose a simple and broadly applicable residual guided procedure that greedily constructs the hidden layer using a closed form residual decrease criterion. At each stage, we (i) generate a pool of random candidate units, (ii) score each candidate by the exact reduction it induces in the ridge regularized objective, (iii) select the top k units, and (iv) refit the readout in closed form using the standard design with direct input links. This procedure yields a progressive training process with a guaranteed monotonic decrease of the training objective. The method is model agnostic: only the candidate generation is architecture specific, while the scoring selection refitting loop is shared across models. Extensive experiments on 71 benchmark datasets from the UCI repository, covering both binary and multiclass classification tasks, demonstrate that the proposed residual-guided models consistently outperform their baseline counterparts in terms of accuracy, stability, and overall ranking performance.",
-        "categories": "cs.LG",
-        "comment": "Accepted at WCCI 2026"
-      },
-      "analysis": {
-        "problem_statement": "Randomized neural networks suffer from suboptimal performance and redundant representations due to relying on a single, uninformed random draw for hidden layer construction.",
-        "bottleneck_addressed": "Inefficiency and instability in feature construction for fast, analytically tractable training methods.",
-        "executive_summary": "This paper addresses the critical limitation of single-shot random feature generation in randomized neural networks by introducing a greedy, residual-guided selection process. By ensuring a monotonic decrease in the training objective, the method improves accuracy and stability without sacrificing the closed-form training efficiency that makes these models attractive for large-scale applications.",
-        "key_metrics": {
-          "primary_metric": "Consistent outperformance in accuracy, stability, and overall ranking across 71 UCI benchmark datasets.",
-          "metric_value": "Not specified in abstract",
-          "baseline": "Baseline randomized neural network counterparts (single-shot random hidden units)",
-          "improvement_percentage": "Not specified in abstract"
-        },
-        "technical_breakdown": {
-          "method": "A greedy iterative procedure that generates pools of random candidate units, scores them based on exact reduction in the ridge-regularized objective, selects the top-k units, and refits the readout layer in closed form.",
-          "architecture": "Model-agnostic framework where only candidate generation is architecture-specific; includes direct input links in the standard design.",
-          "implementation_details": "Closed-form residual decrease criterion for scoring; top-k selection strategy; standard design with direct input links for readout refitting.",
-          "code_complexity": "Iterative process involving multiple candidate generations and closed-form refits, likely increasing computational cost per training step compared to single-shot methods but maintaining analytical tractability."
-        },
-        "relevance_tags": [
-          "Randomized Neural Networks",
-          "Feature Selection",
-          "Closed-Form Learning",
-          "UCI Benchmarks",
-          "WCCI 2026"
-        ],
-        "confidence": "high"
-      },
-      "analyzed_at": "2026-08-31T03:40:33.499000",
-      "conference_info": {
-        "conference": "WCCI",
-        "year": "2026",
-        "comment": "Accepted at WCCI 2026",
-        "raw_comment": "Accepted at WCCI 2026",
-        "category": "General ML/AI",
-        "rank": ""
-      }
-    },
-    {
-      "paper": {
-        "title": "Generalized Context in Cross Attention for Transfer Learning of Disjoint Tabular Data",
-        "arxiv_id": "2608.28209v1",
-        "authors": [
-          "Kazi F. Akhter",
-          "Ibna Kowsar",
-          "Manar D. Samad"
-        ],
-        "published": "2026-08-28T11:29:39Z",
-        "updated": "2026-08-28T11:29:39Z",
-        "summary": "Unlike images and text, applying transfer learning to tabular data is challenging due to heterogeneity in feature types, structures, and semantics across disparate domains. Existing methods assume shared features across data tables to enable knowledge transfer between domains, which is unrealistic in practice. \\mds{This paper introduces generalized context learning to remove the requirement of shared features across domains. The generalized context captured by transformer projection weights for $key$, $value$, and $query$ provides rule-based generalization rather than the domain-specific context conventionally learned from transformer activations. Projection weights for $key$ from the source domain interact with the weight for $query$ in the target domain to achieve Cross-domain Attention Transfer Learning (CATTLE) in a data-agnostic manner. Our experiments on ten pairs of disjoint source-target data sets show that CATTLE can learn generalized context from a single source data set and is rank-wise and statistically superior to nine state-of-the-art baselines, including machine learning, deep learning, and transfer learning methods using large-scale pre-trained models. CATTLE achieves the best average rank (2.9) and delivers a 3.7% average AUROC gain over the baseline methods.} The CATTLE source code is available at https://tinyurl.com/pr5s8ywn.",
-        "categories": "cs.LG",
-        "comment": "Accepted for publication at Neural Networks (Elsevier)"
-      },
-      "analysis": {
-        "problem_statement": "The paper addresses the challenge of applying transfer learning to disjoint tabular data domains where feature types, structures, and semantics are heterogeneous and lack shared features, rendering standard transfer learning methods ineffective.",
-        "bottleneck_addressed": "Data heterogeneity and the lack of shared feature spaces across disparate tabular domains, which prevents effective knowledge transfer in machine learning models.",
-        "executive_summary": "This work is significant because it removes the unrealistic assumption of shared features required by existing tabular transfer learning methods, enabling data-agnostic knowledge transfer between completely disjoint domains. By leveraging transformer projection weights rather than activations, it offers a robust solution for real-world scenarios where data structures vary significantly across sources.",
-        "key_metrics": {
-          "primary_metric": "Average AUROC gain and average rank across ten pairs of disjoint source-target datasets",
-          "metric_value": "3.7% average AUROC gain; best average rank of 2.9",
-          "baseline": "Nine state-of-the-art baselines including machine learning, deep learning, and transfer learning methods using large-scale pre-trained models",
-          "improvement_percentage": "3.7%"
-        },
-        "technical_breakdown": {
-          "method": "CATTLE (Cross-domain Attention Transfer Learning) utilizes generalized context learning by transferring transformer projection weights for keys, values, and queries, allowing the source domain's key weights to interact with the target domain's query weights to achieve rule-based generalization.",
-          "architecture": "Transformer-based architecture focusing on projection weights (W_key, W_value, W_query) rather than learned activations, facilitating cross-domain attention mechanisms.",
-          "implementation_details": "The method captures generalized context via projection weights, enabling interaction between source key weights and target query weights in a data-agnostic manner without requiring shared feature spaces.",
-          "code_complexity": "Not explicitly stated in the abstract, but implies standard transformer inference/training complexity with the added step of weight transfer and interaction between domains."
-        },
-        "relevance_tags": [
-          "Transfer Learning",
-          "Tabular Data",
-          "Transformers",
-          "Cross-Domain Learning"
-        ],
-        "confidence": "high"
-      },
-      "analyzed_at": "2026-08-31T03:40:56.716193",
-      "conference_info": {
-        "conference": "Neural Networks",
-        "year": "Unknown",
-        "comment": "Accepted for publication at Neural Networks (Elsevier)",
-        "raw_comment": "Accepted for publication at Neural Networks (Elsevier)",
-        "category": "General ML/AI",
-        "rank": ""
-      }
-    },
-    {
-      "paper": {
-        "title": "OpenStamp: A Watermark for Open-Source Language Models",
-        "arxiv_id": "2608.27899v1",
-        "authors": [
-          "Miroojin Bakshi",
-          "Saksham Rastogi",
-          "Danish Pruthi"
-        ],
-        "published": "2026-08-28T04:08:01Z",
-        "updated": "2026-08-28T04:08:01Z",
-        "summary": "With the growing prevalence of large language model (LLM) generated content, watermarking is considered a promising approach for attributing text to LLMs and distinguishing it from human-written content. A prominent class of techniques embeds subtle but detectable signals in generated text by modifying token sampling probabilities. However, such methods are unsuitable for open-source models, where users have white-box access and can easily disable watermarking during inference. In this work, we introduce OpenStamp, a watermarking technique that encodes the watermarking logic directly into the model weights by modifying only the final projection, or unembedding, layer. Through experiments across two models, we show that OpenStamp achieves superior detection performance, with minimal degradation in model capabilities compared to prior methods. The implanted watermark is explicitly designed, and empirically confirmed, to be more robust to paraphrasing attacks and harder to scrub off through post-hoc fine-tuning than prior open-source watermarks. To enable developers to watermark their models, we release our code alongside watermarked versions of 4 popular open-source models.",
-        "categories": "cs.CL",
-        "comment": "Published at COLM 2026"
-      },
-      "analysis": {
-        "problem_statement": "Existing LLM watermarking techniques that modify token sampling probabilities are ineffective for open-source models because users with white-box access can easily disable the watermarking logic during inference.",
-        "bottleneck_addressed": "Attribution and provenance verification of AI-generated content in open-source ecosystems.",
-        "executive_summary": "OpenStamp addresses the critical security gap in open-source LLMs by embedding watermarking logic directly into the model weights rather than relying on external sampling modifications. This approach ensures the watermark persists even when users have full access to the model internals, providing a robust mechanism for distinguishing AI-generated text from human-written content in a landscape where model transparency is high.",
-        "key_metrics": {
-          "primary_metric": "Detection performance and robustness against paraphrasing and scrubbing attacks",
-          "metric_value": "Not specified in summary",
-          "baseline": "Prior open-source watermarking methods",
-          "improvement_percentage": "Not specified in summary"
-        },
-        "technical_breakdown": {
-          "method": "The technique modifies the final projection (unembedding) layer of the model to encode the watermarking logic directly into the weights, bypassing the need for runtime sampling adjustments that can be disabled by users.",
-          "architecture": "Standard LLM architecture with a modified final linear projection layer (unembedding) that contains the encoded watermark signal.",
-          "implementation_details": "Watermarking logic is implanted in the weights; the method is designed to be robust to paraphrasing attacks and resistant to removal via post-hoc fine-tuning.",
-          "code_complexity": "Requires modification of model weights (specifically the unembedding layer) and release of watermarked model variants; inference complexity is comparable to standard LLMs as the logic is embedded in the forward pass."
-        },
-        "relevance_tags": [
-          "LLM Watermarking",
-          "Open-Source Models",
-          "AI Safety",
-          "Content Attribution",
-          "Model Robustness"
-        ],
-        "confidence": "high"
-      },
-      "analyzed_at": "2026-08-31T03:41:37.483737",
-      "conference_info": {
-        "conference": "COLM",
-        "year": "2026",
-        "comment": "Published at COLM 2026",
-        "raw_comment": "Published at COLM 2026",
-        "category": "General ML/AI",
-        "rank": ""
-      }
-    },
-    {
-      "paper": {
-        "title": "Exploiting Per-Core Leakage: Electromagnetic Side-Channel Monitoring of Multicore Architectures",
-        "arxiv_id": "2608.28412v1",
-        "authors": [
-          "Daehyeon Bae",
-          "Sujin Park",
-          "Insup Lee",
-          "YoungGiu Jung",
-          "Kyeongsik Lee",
-          "HeeSeok Kim",
-          "Seokhie Hong"
-        ],
-        "published": "2026-08-28T15:01:37Z",
-        "updated": "2026-08-28T15:01:37Z",
-        "summary": "Multicore processors are increasingly adopted in embedded systems to meet growing performance demands. However, physical side-channel analysis of multicore architectures remains underexplored, as obtaining usable leakage is inherently challenging. Consequently, side-channel security research on such systems has lagged far behind, leaving a critical security gap. To address this gap, we reveal the electromagnetic leakage mechanisms in multicore architectures and, for the first time, demonstrate per-core leakage exploitation, thereby enabling physical side-channel analysis for these systems. As a practical extension, we present a non-intrusive side-channel monitoring method that achieves per-core granularity. To validate its feasibility and practicality, we implement a prototype on a heterogeneous SoC platform with an RF front-end, and evaluate on a commercial off-the-shelf quad-core embedded system, the Raspberry Pi 4B with ARM Cortex-A72 cores.",
-        "categories": "cs.CR",
-        "comment": "7 pages, 9 figures. Accepted at the 63rd ACM/IEEE Design Automation Conference (DAC 2026)"
-      },
-      "analysis": {
-        "problem_statement": "Physical side-channel analysis of multicore architectures is underexplored due to the inherent difficulty of isolating and extracting usable electromagnetic leakage from individual cores.",
-        "bottleneck_addressed": "This paper does not address an AI bottleneck; it addresses a hardware security and physical side-channel analysis gap in multicore embedded systems.",
-        "executive_summary": "This work is significant for the security of embedded and edge computing devices, which are increasingly used in AI inference pipelines. By demonstrating per-core electromagnetic leakage exploitation, it reveals a critical vulnerability in commercial multicore processors that could compromise sensitive data, including AI model parameters or inputs, in physical threat models.",
-        "key_metrics": {
-          "primary_metric": "Demonstration of per-core leakage exploitation and non-intrusive monitoring feasibility",
-          "metric_value": "N/A (Qualitative demonstration/Prototype validation)",
-          "baseline": "Previous lack of per-core granularity in multicore side-channel analysis",
+          "primary_metric": "N/A (Survey paper)",
+          "metric_value": "N/A",
+          "baseline": "N/A",
           "improvement_percentage": "N/A"
         },
         "technical_breakdown": {
-          "method": "The authors reveal electromagnetic leakage mechanisms specific to multicore architectures and develop a non-intrusive monitoring method that achieves per-core granularity by exploiting these distinct leakage signatures.",
-          "architecture": "The system comprises a heterogeneous SoC platform equipped with an RF front-end for signal acquisition, tested on a commercial quad-core embedded system (Raspberry Pi 4B with ARM Cortex-A72 cores).",
-          "implementation_details": "The implementation involves a prototype RF front-end to capture electromagnetic emissions and signal processing techniques to isolate leakage from individual cores within the multicore environment.",
-          "code_complexity": "N/A (Hardware/Physical layer focus; computational complexity relates to signal processing for leakage extraction, not model training)"
+          "method": "Systematic categorization of existing literature into three threads: Vision for Graph Reasoning, Vision for Graph Learning, and Scientific Graphs, focusing on using visual depictions as first-class inputs.",
+          "architecture": "Conceptual framework organizing work around the intersection of vision models (VLMs) and graph structures, rather than a specific neural network architecture.",
+          "implementation_details": "Review of methods that use visual features to complement graph encoders, multi-step reasoning via visual structure understanding, and domain-specific standardized depiction conventions.",
+          "code_complexity": "N/A (Theoretical/Survey work)"
         },
         "relevance_tags": [
-          "Hardware Security",
-          "Side-Channel Analysis",
-          "Electromagnetic Emissions",
-          "Multicore Architecture",
-          "Embedded Systems"
-        ],
-        "confidence": "high"
-      },
-      "analyzed_at": "2026-08-31T03:42:19.239855",
-      "conference_info": {
-        "conference": "ACM/IEEE Design Automation Conference",
-        "year": "2026",
-        "comment": "7 pages, 9 figures. Accepted at the 63rd ACM/IEEE Design Automation Conference (DAC 2026)",
-        "raw_comment": "7 pages, 9 figures. Accepted at the 63rd ACM/IEEE Design Automation Conference (DAC 2026)",
-        "category": "Hardware & EDA",
-        "rank": "B"
-      }
-    },
-    {
-      "paper": {
-        "title": "CheXtriev: Anatomy-Centered Representation for Case-Based Retrieval of Chest Radiographs",
-        "arxiv_id": "2608.28137v1",
-        "authors": [
-          "Naren Akash",
-          "Arihanth Tadanki",
-          "Jayanthi Sivaswamy"
-        ],
-        "published": "2026-08-28T09:57:56Z",
-        "updated": "2026-08-28T09:57:56Z",
-        "summary": "We present CheXtriev, a graph-based, anatomy-aware framework for chest radiograph retrieval. Unlike prior methods focussed on global features, our method leverages graph transformers to extract informative features from specific anatomical regions. Furthermore, it captures spatial context and the interplay between anatomical location and findings. This contextualization, grounded in evidence-based anatomy, results in a richer anatomy-aware representation and leads to more accurate, effective and efficient retrieval, particularly for less prevalent findings. CheXtriv outperforms state-of-the-art global and local approaches by 18% to 26% in retrieval accuracy and 11% to 23% in ranking quality. The code is available at https://github.com/cvit-mip/chextriev.",
-        "categories": "eess.IV",
-        "comment": "Accepted at the 27th International Conference on Medical Image Computing and Computer Assisted Intervention (MICCAI 2024)"
-      },
-      "analysis": {
-        "problem_statement": "Existing chest radiograph retrieval methods rely on global features that fail to capture the specific spatial context and interplay between anatomical locations and pathological findings, leading to suboptimal accuracy for less prevalent conditions.",
-        "bottleneck_addressed": "Lack of anatomical specificity and spatial contextualization in global feature-based medical image retrieval systems.",
-        "executive_summary": "CheXtriev addresses the limitation of global feature extraction in medical imaging by introducing a graph-based, anatomy-aware framework that models the relationship between specific anatomical regions and findings. This approach significantly enhances retrieval accuracy and ranking quality, particularly for rare or less prevalent pathologies, by grounding representations in evidence-based anatomy.",
-        "key_metrics": {
-          "primary_metric": "Retrieval accuracy and ranking quality improvement over state-of-the-art global and local approaches",
-          "metric_value": "18-26% in retrieval accuracy; 11-23% in ranking quality",
-          "baseline": "State-of-the-art global and local approaches",
-          "improvement_percentage": "18-26% (accuracy), 11-23% (ranking)"
-        },
-        "technical_breakdown": {
-          "method": "Utilizes graph transformers to extract features from specific anatomical regions, capturing spatial context and the interplay between anatomical location and findings to create a richer, anatomy-aware representation.",
-          "architecture": "Graph-based, anatomy-aware framework using graph transformers.",
-          "implementation_details": "Extraction of informative features from specific anatomical regions; modeling of spatial context and anatomical-finding interplay; grounding in evidence-based anatomy.",
-          "code_complexity": "Not specified in metadata; code available at https://github.com/cvit-mip/chextriev."
-        },
-        "relevance_tags": [
-          "Medical Image Analysis",
           "Graph Neural Networks",
-          "Chest Radiography",
-          "Case-Based Retrieval",
-          "Anatomy-Aware AI"
+          "Vision-Language Models",
+          "Graph Visualization",
+          "Multimodal Learning",
+          "Survey"
         ],
         "confidence": "high"
       },
-      "analyzed_at": "2026-08-31T03:41:06.801259",
+      "analyzed_at": "2026-09-03T23:10:38.993970",
       "conference_info": {
-        "conference": "International Conference on Medical Image Computing and Computer Assisted Intervention",
-        "year": "2024",
-        "comment": "Accepted at the 27th International Conference on Medical Image Computing and Computer Assisted Intervention (MICCAI 2024)",
-        "raw_comment": "Accepted at the 27th International Conference on Medical Image Computing and Computer Assisted Intervention (MICCAI 2024)",
-        "category": "Medical & Biomedical AI",
-        "rank": "A"
-      }
-    },
-    {
-      "paper": {
-        "title": "PULSAR: Pooled Unified Late-Interaction Search and Retrieval for Enterprise Visual Document RAG",
-        "arxiv_id": "2608.28572v1",
-        "authors": [
-          "Benjamin Constable",
-          "Anup Roy",
-          "Vishal Sharma",
-          "Rishabh Upadhyay",
-          "Robin Mills",
-          "Aidan Millar"
-        ],
-        "published": "2026-08-28T17:49:22Z",
-        "updated": "2026-08-28T17:49:22Z",
-        "summary": "Institutional investors search visually dense pitch decks, board packs, and diligence materials that change hourly near deal closing. OCR followed by figure verbalisation is costly to refresh at this scale and can lose chart detail. We present PULSAR, a production vision-first retrieval system deployed at Mubadala Investment Company. PULSAR indexes page images with a frozen ColPali-style backbone and uses a pooled two-stage late-interaction index: compact page summaries support initial retrieval, followed by exact MaxSim rescoring over a finer pooled representation. On ViDoRe V3, this design reduces median vector-search latency by 15.1 times against an unpooled configuration with less than 0.01 absolute NDCG@10 and Recall@10 loss; production median vector-search latency is 156 ms. Under concurrent load, the pooled index sustains approximately 88 times higher QPS than an unpooled index. The event-driven ingestion path is estimated to be approximately 20 times cheaper per page than the OCR+verbalisation baseline it replaced. Since March 2026, PULSAR has served 78 thousand documents and approximately 2.4 million pages across more than 3,000 deals. At the production top K, it more than doubles answer-fact recall over the OCR+verbalisation baseline.",
-        "categories": "cs.IR",
-        "comment": "Accepted at EMNLP 2026 (Industry Track)"
-      },
-      "analysis": {
-        "problem_statement": "How to efficiently retrieve and index visually dense enterprise documents (like pitch decks) for RAG systems without the high cost and latency of OCR and figure verbalization pipelines.",
-        "bottleneck_addressed": "High latency and computational cost of traditional OCR-based ingestion and retrieval for visual documents, which hinders real-time updates in dynamic enterprise environments.",
-        "executive_summary": "PULSAR addresses the critical gap in enterprise RAG for visual documents by replacing costly OCR pipelines with a vision-first, late-interaction retrieval system. It significantly reduces latency and ingestion costs while maintaining high retrieval accuracy, enabling real-time access to frequently updated financial and diligence materials.",
-        "key_metrics": {
-          "primary_metric": "Reduction in median vector-search latency",
-          "metric_value": "15.1x reduction (156 ms production median)",
-          "baseline": "Unpooled ColPali-style configuration",
-          "improvement_percentage": "93.4% reduction in latency (1 - 1/15.1)"
-        },
-        "technical_breakdown": {
-          "method": "A pooled two-stage late-interaction index using a frozen ColPali-style backbone. It uses compact page summaries for initial retrieval and exact MaxSim rescoring over a finer pooled representation for precision.",
-          "architecture": "Vision-first retrieval system with an event-driven ingestion path, a frozen visual backbone, and a two-stage retrieval pipeline (summary-based initial search + MaxSim rescoring).",
-          "implementation_details": "Uses ColPali-style backbone, MaxSim rescoring, and pooled representations to reduce vector search dimensions. Deployed at Mubadala Investment Company.",
-          "code_complexity": "Reduces computational load by 15.1x in latency and 20x in ingestion cost per page compared to OCR+verbalization. Sustains 88x higher QPS under concurrent load."
-        },
-        "relevance_tags": [
-          "RAG",
-          "Visual Document Retrieval",
-          "Late Interaction",
-          "Enterprise AI",
-          "ColPali"
-        ],
-        "confidence": "high"
-      },
-      "analyzed_at": "2026-08-31T03:41:46.616552",
-      "conference_info": {
-        "conference": "EMNLP",
+        "conference": "IJCAI",
         "year": "2026",
-        "comment": "Accepted at EMNLP 2026 (Industry Track)",
-        "raw_comment": "Accepted at EMNLP 2026 (Industry Track)",
-        "category": "Natural Language Processing",
-        "rank": "A"
-      }
-    },
-    {
-      "paper": {
-        "title": "DARTS: Decoder-Aware Representation Tuning via Surgery for Model Merging",
-        "arxiv_id": "2608.28547v1",
-        "authors": [
-          "Aaryan Ajay Sharma",
-          "Sai Nishanth Padala",
-          "Seganrasan Subramanian"
-        ],
-        "published": "2026-08-28T17:22:47Z",
-        "updated": "2026-08-28T17:22:47Z",
-        "summary": "Model merging combines multiple task-specific fine-tuned LLMs into a single multi-task model without additional training. However, merged models are known to suffer from representation bias: systematic drift between the merged model's hidden states and those of each individual source model. Prior work (Yang et al., 2024a) study and mitigate this bias for encoder-based vision models using a lightweight correction module trained with L1 loss. However, such bias is not studied for decoder models due to their autoregressive nature. We analyze the problem of representation bias in decoder models, and show two challenges absent in encoders: (1) the causal attention mask causes bias to accumulate across token positions, requiring position-dependent correction; and (2) not all token positions are equally important, i.e., high-entropy (decision-critical) positions matter far more than low-entropy ones. To address these challenges, we propose Decoder-Aware Representation Tuning via Surgery (DARTS). DARTS employs a novel entropy-weighted L1 loss to upweight correction at high-entropy positions where errors most affect generation quality, and a per-position additive bias that captures position-dependent error without overparameterization. We perform extensive evaluation on three domains: code generation (HumanEval), mathematical reasoning (GSM8K), and instruction following (AlpacaEval) on Llama-2-7B models, and show DARTS achieves significant improvement over the standard surgery approach while adding negligible parameters ($0.1\\%$ of total parameters).",
-        "categories": "cs.LG",
-        "comment": "Accepted to EMNLP 2026 Main Conference"
-      },
-      "analysis": {
-        "problem_statement": "Merged decoder-based LLMs suffer from representation bias where hidden states drift from source models, causing performance degradation that is exacerbated by causal attention accumulation and varying token importance.",
-        "bottleneck_addressed": "Model merging efficiency and multi-task capability without additional training",
-        "executive_summary": "This paper addresses the critical limitation of model merging in autoregressive LLMs, where standard correction methods fail due to the causal nature of attention. By introducing position-aware and entropy-weighted corrections, it enables more effective combination of specialized models, reducing the need for expensive retraining while maintaining high performance across diverse tasks.",
-        "key_metrics": {
-          "primary_metric": "Improvement over standard surgery approach in multi-task performance",
-          "metric_value": "Negligible parameter overhead (0.1% of total parameters)",
-          "baseline": "Standard surgery approach (Yang et al., 2024a)",
-          "improvement_percentage": "Not explicitly quantified in summary, described as 'significant improvement'"
-        },
-        "technical_breakdown": {
-          "method": "DARTS uses an entropy-weighted L1 loss to prioritize correction at high-entropy (decision-critical) token positions and a per-position additive bias to handle position-dependent error accumulation caused by causal attention.",
-          "architecture": "Lightweight correction module added to the merged model, specifically designed for decoder architectures with causal attention masks.",
-          "implementation_details": "Entropy-weighted L1 loss function; per-position additive bias vector; evaluated on Llama-2-7B across HumanEval, GSM8K, and AlpacaEval.",
-          "code_complexity": "Negligible computational overhead, adding only 0.1% of total model parameters."
-        },
-        "relevance_tags": [
-          "Model Merging",
-          "LLM Optimization",
-          "Representation Learning",
-          "Decoder Architectures",
-          "Multi-task Learning"
-        ],
-        "confidence": "high"
-      },
-      "analyzed_at": "2026-08-31T03:40:16.856543",
-      "conference_info": {
-        "conference": "EMNLP",
-        "year": "2026",
-        "comment": "Accepted to EMNLP 2026 Main Conference",
-        "raw_comment": "Accepted to EMNLP 2026 Main Conference",
-        "category": "Natural Language Processing",
-        "rank": "A"
-      }
-    },
-    {
-      "paper": {
-        "title": "Acquire, Repair, Preserve: A Diagnosis-Guided Post-Training Recipe for Small-Model Dialogue Game Agents",
-        "arxiv_id": "2608.28458v1",
-        "authors": [
-          "Nan Li"
-        ],
-        "published": "2026-08-28T15:47:47Z",
-        "updated": "2026-08-28T15:47:47Z",
-        "summary": "Interactive dialogue games test a capability that static benchmarks largely leave implicit: a model must carry state across turns, interpret feedback, and choose valid actions under changing constraints. We study this setting in the LM Playschool Challenge with a 2B open-weight model, and find that many failures are not only broad knowledge failures but also local decision failures: repeated guesses, malformed actions, and violations of feedback that the model has just seen. These diagnostics motivate a training recipe organized around three steps: acquire broad game participation through supervised fine-tuning, repair mechanically verifiable failures within one targeted dialogue-game family using turn-local preference pairs, and preserve general capabilities beyond these dialogue games. In the official final evaluation, our submission improves public clemscore from 10.67 to 38.92 and closed in-domain score from 13.41 to 41.17, while approximately preserving aggregate static performance (44.14 vs. 44.24 for the baseline). Out-of-domain clemscore remains low at 7.88, with the largest gains concentrated in unseen variants of the targeted family. Our results suggest that broad SFT brings most of the model's capability improvement; turn-local supervision can be effective when failure detection is precise, with observed transfer concentrated primarily within-family.",
-        "categories": "cs.CL",
-        "comment": "14 pages, 14 tables; Accepted to the LM Playschool Workshop at EMNLP 2026; HF model card: https://huggingface.co/chnln/Qwen3.5-2B-playpen-playornotplay"
-      },
-      "analysis": {
-        "problem_statement": "How to effectively train small (2B parameter) open-weight models to maintain state, interpret feedback, and execute valid actions in interactive dialogue games without degrading general static capabilities.",
-        "bottleneck_addressed": "Local decision failures and state management in small models during multi-turn interactive tasks, specifically addressing issues like repeated guesses and malformed actions that static benchmarks fail to capture.",
-        "executive_summary": "This paper demonstrates that a diagnosis-guided post-training recipe (SFT, targeted preference optimization, and preservation) can significantly enhance the interactive game-playing capabilities of small models. It highlights that while broad supervised fine-tuning provides the majority of capability gains, turn-local preference pairs are effective for repairing specific, mechanically verifiable failures within a targeted domain.",
-        "key_metrics": {
-          "primary_metric": "Improvement in public clemscore and closed in-domain score on the LM Playschool Challenge",
-          "metric_value": "Public clemscore: 38.92; Closed in-domain score: 41.17",
-          "baseline": "Baseline public clemscore: 10.67; Baseline closed in-domain score: 13.41",
-          "improvement_percentage": "Public clemscore: ~265%; Closed in-domain score: ~206%"
-        },
-        "technical_breakdown": {
-          "method": "A three-step post-training recipe: 1) Acquire broad game participation via Supervised Fine-Tuning (SFT); 2) Repair local decision failures using turn-local preference pairs for a specific dialogue-game family; 3) Preserve general capabilities to prevent catastrophic forgetting.",
-          "architecture": "2B open-weight model (specifically Qwen3.5-2B based on the HuggingFace link provided in metadata).",
-          "implementation_details": "Uses diagnosis-guided training to identify local decision failures (repeated guesses, malformed actions). Applies turn-local preference optimization to correct these specific errors. Evaluates using clemscore (public and closed) and static performance benchmarks.",
-          "code_complexity": "Not explicitly stated in the abstract, but involves standard SFT and preference optimization pipelines on a 2B parameter model, implying moderate computational resources compared to larger LLMs."
-        },
-        "relevance_tags": [
-          "Post-Training",
-          "Interactive Agents",
-          "Small Language Models",
-          "Preference Optimization",
-          "Dialogue Games"
-        ],
-        "confidence": "high"
-      },
-      "analyzed_at": "2026-08-31T03:40:19.119116",
-      "conference_info": {
-        "conference": "EMNLP",
-        "year": "2026",
-        "comment": "14 pages, 14 tables; Accepted to the LM Playschool Workshop at EMNLP 2026; HF model card: https://huggingface.co/chnln/Qwen3.5-2B-playpen-playornotplay",
-        "raw_comment": "14 pages, 14 tables; Accepted to the LM Playschool Workshop at EMNLP 2026; HF model card: https://huggingface.co/chnln/Qwen3.5-2B-playpen-playornotplay",
-        "category": "Natural Language Processing",
-        "rank": "A"
-      }
-    },
-    {
-      "paper": {
-        "title": "LongPIBench: A Long-Context Benchmark for Prompt Injection",
-        "arxiv_id": "2608.28411v1",
-        "authors": [
-          "Yupei Liu",
-          "Yuqi Jia",
-          "Neil Zhenqiang Gong",
-          "Jinyuan Jia"
-        ],
-        "published": "2026-08-28T15:00:33Z",
-        "updated": "2026-08-28T15:00:33Z",
-        "summary": "Prompt injection attacks pose a serious security risk to large language models in real-world applications. However, existing prompt injection benchmarks primarily focus on short-context inputs, leaving the attacks and defenses in long-context settings largely unexplored. This gap leads to a substantial overestimation of the effectiveness of current defenses. In this paper, we bridge the gap by introducing LongPIBench, a long-context benchmark for prompt injection covering 4 realistic application scenarios: paper peer review, resume screening, code review, and email summary. For each scenario, we construct a synthetic dataset and a real-world dataset, with context lengths ranging from thousands to tens of thousands of tokens. The evaluation results on LongPIBench reveal significant vulnerabilities of prompt injection defenses under long-context settings: even simple heuristic prompt injection attacks achieve high success rates and frequently bypass state-of-the-art defenses. We hope LongPIBench can serve as a practical benchmark for systematically evaluating prompt injection defenses in realistic long-context scenarios.",
-        "categories": "cs.CR",
-        "comment": "To appear in Findings of EMNLP'26"
-      },
-      "analysis": {
-        "problem_statement": "Existing prompt injection benchmarks fail to evaluate the security of large language models in long-context settings, leading to an overestimation of current defense mechanisms' effectiveness.",
-        "bottleneck_addressed": "Security and robustness evaluation gap for long-context LLM applications.",
-        "executive_summary": "This paper addresses a critical blind spot in LLM security by demonstrating that defenses effective in short-context scenarios often fail when context lengths extend to tens of thousands of tokens. By introducing LongPIBench, it provides a realistic evaluation framework for common enterprise tasks like code review and email summarization, revealing that simple heuristic attacks can still bypass state-of-the-art defenses in long-document scenarios.",
-        "key_metrics": {
-          "primary_metric": "Success rate of prompt injection attacks in bypassing defenses under long-context conditions.",
-          "metric_value": "Not specified in abstract (qualitative finding of 'high success rates')",
-          "baseline": "State-of-the-art prompt injection defenses and existing short-context benchmarks.",
-          "improvement_percentage": "N/A (Benchmark paper, not a model improvement paper)"
-        },
-        "technical_breakdown": {
-          "method": "Construction of a long-context benchmark suite comprising synthetic and real-world datasets across four specific application scenarios to systematically evaluate prompt injection vulnerabilities.",
-          "architecture": "Benchmark framework covering four scenarios: paper peer review, resume screening, code review, and email summary; each scenario includes both synthetic and real-world data variants.",
-          "implementation_details": "Context lengths range from thousands to tens of thousands of tokens; evaluation involves testing simple heuristic prompt injection attacks against state-of-the-art defense mechanisms.",
-          "code_complexity": "N/A (Evaluation benchmark; computational cost depends on the specific LLMs and defenses being tested)"
-        },
-        "relevance_tags": [
-          "LLM Security",
-          "Prompt Injection",
-          "Long-Context Evaluation",
-          "Benchmarking",
-          "AI Safety"
-        ],
-        "confidence": "high"
-      },
-      "analyzed_at": "2026-08-31T03:42:26.282087",
-      "conference_info": {
-        "conference": "EMNLP",
-        "year": "2026",
-        "comment": "To appear in Findings of EMNLP'26",
-        "raw_comment": "To appear in Findings of EMNLP'26",
-        "category": "Natural Language Processing",
-        "rank": "A"
-      }
-    },
-    {
-      "paper": {
-        "title": "CamoDocs: A Poisoning Attack Against Retrieval-Augmented Language Models Using Camouflaged Documents",
-        "arxiv_id": "2608.28389v1",
-        "authors": [
-          "Jaewon Jung",
-          "Haizhong Zheng",
-          "Hongsun Jang",
-          "Jaeyong Song",
-          "Beidi Chen",
-          "Jinho Lee"
-        ],
-        "published": "2026-08-28T14:44:28Z",
-        "updated": "2026-08-28T14:44:28Z",
-        "summary": "Retrieval-augmented generation (RAG) augments LLMs with external documents, but public or user-editable sources expose RAG systems to data poisoning: attackers can inject malicious documents to steer outputs toward targeted answers. Existing poisoning attacks often rely on query inclusion, inserting the target query into poisoned documents to improve retrieval; however, this creates lexical and embedding-space artifacts that make them easy to filter. We propose CamoDocs, a poisoning attack that avoids direct query inclusion by camouflaging adversarial documents among benign content. CamoDocs chunks synthesized benign and adversarial drafts, replaces selected tokens in benign chunks with dispersion tokens that spread poisoned-document embeddings, and applies coherence filtering to limit readability degradation. Across seven RAG defenses, three open-weight LLMs, and three benchmarks, CamoDocs achieves strong average ASR while avoiding query-overlap artifacts exploited by simple query detection. It also remains effective against proprietary models, achieving average ASRs of 61.80% on GPT-5.4-mini and 55.09% on Claude-Haiku-4.5. Finally, we show that erasure-heavy clustering defenses such as TrustRAG can reduce ASR, but only with substantial utility drops on retrieval-dependent benchmarks such as NeoQA. Code is available at https://github.com/jaewonalive/CamoDocs.",
-        "categories": "cs.CR",
-        "comment": "Accepted to EMNLP 2026"
-      },
-      "analysis": {
-        "problem_statement": "Existing data poisoning attacks against Retrieval-Augmented Generation (RAG) systems are easily detectable and filterable because they rely on direct query inclusion, creating lexical and embedding-space artifacts.",
-        "bottleneck_addressed": "Security vulnerability in RAG systems due to the detectability of adversarial documents in public or user-editable knowledge bases.",
-        "executive_summary": "This paper introduces CamoDocs, a stealthy poisoning attack that evades standard query-overlap detection by camouflaging malicious content within benign documents using dispersion tokens. It demonstrates significant attack success rates against both open-weight and proprietary LLMs, highlighting a critical gap in current RAG defense mechanisms that rely on simple lexical filtering.",
-        "key_metrics": {
-          "primary_metric": "Average Attack Success Rate (ASR) against proprietary models",
-          "metric_value": "61.80% on GPT-5.4-mini and 55.09% on Claude-Haiku-4.5",
-          "baseline": "Standard RAG defenses and simple query detection filters",
-          "improvement_percentage": "Not explicitly quantified as a percentage improvement over baselines, but noted to achieve 'strong average ASR' while avoiding artifacts exploited by simple detection."
-        },
-        "technical_breakdown": {
-          "method": "CamoDocs synthesizes benign and adversarial drafts, chunks them, and replaces selected tokens in benign chunks with dispersion tokens to spread poisoned-document embeddings without direct query inclusion.",
-          "architecture": "A pre-processing pipeline for document poisoning that integrates coherence filtering to maintain readability while embedding adversarial signals.",
-          "implementation_details": "Uses dispersion tokens to manipulate embedding space, applies coherence filtering to limit readability degradation, and avoids lexical overlap with target queries.",
-          "code_complexity": "Not specified in the abstract; involves document synthesis, token replacement, and filtering steps prior to ingestion into the RAG system."
-        },
-        "relevance_tags": [
-          "RAG Security",
-          "Data Poisoning",
-          "LLM Adversarial Attacks",
-          "AI Safety"
-        ],
-        "confidence": "high"
-      },
-      "analyzed_at": "2026-08-31T03:42:35.446231",
-      "conference_info": {
-        "conference": "EMNLP",
-        "year": "2026",
-        "comment": "Accepted to EMNLP 2026",
-        "raw_comment": "Accepted to EMNLP 2026",
-        "category": "Natural Language Processing",
-        "rank": "A"
-      }
-    },
-    {
-      "paper": {
-        "title": "GRACE:Gradient-guided Coreset Selection for LLM Unlearning",
-        "arxiv_id": "2608.28361v1",
-        "authors": [
-          "Praveen Bushipaka",
-          "Andrea D'Angelo",
-          "Lucia Passaro",
-          "Tommaso Cucinotta"
-        ],
-        "published": "2026-08-28T14:12:49Z",
-        "updated": "2026-08-28T14:12:49Z",
-        "summary": "Machine Unlearning methods for Large Language Models typically assume pre-specified forget and retain sets. In realistic settings, however, requests may provide only a few examples of undesired behavior, requiring forget and retain sets to be inferred from heterogeneous corpora. We study this data-selection problem and propose GRACE , a gradient-guided coreset selection method that constructs both forget and retain sets for LLM unlearning. GRACE first computes a forget direction from seed examples that elicit the undesired behavior, then selects a compact forget coreset whose gradients approximate this direction using non-negative orthogonal matching pursuit. To preserve model utility, it selects retain examples after projecting out the forget direction and applying clustered orthogonal matching pursuit in the remaining gradient space. Across two target domains, two model families, and four unlearning algorithms, GRACE improves model utility while maintaining comparable forget quality, with particularly consistent gains over prior gradient-based selection methods.",
-        "categories": "cs.AI",
-        "comment": "20 pages, 16 tables, 5 figures, accepted to EMNLP Findings"
-      },
-      "analysis": {
-        "problem_statement": "How to automatically infer optimal forget and retain data coresets from heterogeneous corpora when only a few seed examples of undesired behavior are provided, rather than relying on pre-specified datasets.",
-        "bottleneck_addressed": "Data curation and selection for machine unlearning, specifically the lack of scalable methods to derive representative training subsets from large, unstructured corpora without manual annotation.",
-        "executive_summary": "This paper addresses a critical gap in LLM unlearning by automating the selection of data subsets, which is currently a manual and error-prone process. By using gradient-guided coreset selection, it enables more practical and scalable unlearning workflows where specific 'forget' and 'retain' sets are not explicitly defined, thereby improving model utility while maintaining effective unlearning.",
-        "key_metrics": {
-          "primary_metric": "Improvement in model utility while maintaining comparable forget quality",
-          "metric_value": "Not specified in summary",
-          "baseline": "Prior gradient-based selection methods",
-          "improvement_percentage": "Not specified in summary"
-        },
-        "technical_breakdown": {
-          "method": "GRACE computes a forget direction from seed examples and uses non-negative orthogonal matching pursuit to select a compact forget coreset that approximates this direction. It then selects retain examples by projecting out the forget direction and applying clustered orthogonal matching pursuit in the remaining gradient space to preserve utility.",
-          "architecture": "Gradient-guided coreset selection framework integrated with standard LLM unlearning algorithms.",
-          "implementation_details": "Uses non-negative orthogonal matching pursuit for forget set selection and clustered orthogonal matching pursuit for retain set selection after gradient projection.",
-          "code_complexity": "Involves gradient computation and orthogonal matching pursuit algorithms, which are computationally intensive but operate on selected coresets rather than full corpora."
-        },
-        "relevance_tags": [
-          "Machine Unlearning",
-          "LLM",
-          "Coreset Selection",
-          "Gradient-Based Optimization",
-          "Data Efficiency"
-        ],
-        "confidence": "high"
-      },
-      "analyzed_at": "2026-08-31T03:40:25.405544",
-      "conference_info": {
-        "conference": "EMNLP",
-        "year": "Unknown",
-        "comment": "20 pages, 16 tables, 5 figures, accepted to EMNLP Findings",
-        "raw_comment": "20 pages, 16 tables, 5 figures, accepted to EMNLP Findings",
-        "category": "Natural Language Processing",
-        "rank": "A"
-      }
-    },
-    {
-      "paper": {
-        "title": "Stay Within Your Bounds: Distance-Guided Decoding for Guaranteed Context-Free Grammar Compliance",
-        "arxiv_id": "2608.28229v1",
-        "authors": [
-          "Vincenzo Collura",
-          "Karim Tit",
-          "Eleonora Giunchiglia",
-          "Mike Papadakis",
-          "Maxime Cordy"
-        ],
-        "published": "2026-08-28T11:44:53Z",
-        "updated": "2026-08-28T11:44:53Z",
-        "summary": "Grammar-constrained decoding helps large language models produce syntactically valid structured outputs, such as code, JSON, and SQL. For context-free grammars, many practical decoders enforce local prefix feasibility: each token must keep the current prefix extendable to some valid completion. Yet, under tokenizer-grammar mismatch and finite token budgets, feasible prefixes may still fail to reach acceptance. We propose a lookahead-guided decoding framework for context-free grammars based on pushdown automata. Offline, we compute bounded pushdown summaries with reachability labels and upper-bound distances to acceptance. Online, these estimates guide horizon-aware pruning and beam search. The resulting decoder is syntactically sound: every output is accepted by the target grammar. Experiments on JSON, SQL, and Linear Temporal Logic (LTL) show both consistent syntactic validity and improved completion quality over existing baselines.",
-        "categories": "cs.AI",
-        "comment": "EMNLP 2026 Findings, Long Paper"
-      },
-      "analysis": {
-        "problem_statement": "Existing grammar-constrained decoders for context-free grammars often fail to produce valid completions within finite token budgets due to tokenizer-grammar mismatches, despite maintaining local prefix feasibility.",
-        "bottleneck_addressed": "Reliability and syntactic validity of structured output generation in Large Language Models.",
-        "executive_summary": "This paper addresses the critical failure mode where LLMs generate syntactically invalid structured data (JSON, SQL, LTL) due to the gap between tokenization and grammar rules. By introducing a lookahead-guided decoding framework that guarantees acceptance, it ensures that every generated output is syntactically sound, which is essential for reliable integration of LLMs into downstream applications requiring strict format compliance.",
-        "key_metrics": {
-          "primary_metric": "Consistent syntactic validity and improved completion quality",
-          "metric_value": "Not specified in abstract",
-          "baseline": "Existing grammar-constrained decoding baselines",
-          "improvement_percentage": "Not specified in abstract"
-        },
-        "technical_breakdown": {
-          "method": "A lookahead-guided decoding framework that uses offline-computed bounded pushdown summaries to guide online horizon-aware pruning and beam search.",
-          "architecture": "Pushdown automata-based decoder with offline summary computation and online guided search.",
-          "implementation_details": "Computes reachability labels and upper-bound distances to acceptance offline; uses these estimates for horizon-aware pruning and beam search online to ensure every output is accepted by the target grammar.",
-          "code_complexity": "Involves offline computation of bounded pushdown summaries and online beam search with pruning; specific computational complexity metrics are not provided in the abstract."
-        },
-        "relevance_tags": [
-          "Grammar-Constrained Decoding",
-          "Structured Output Generation",
-          "Pushdown Automata",
-          "LLM Reliability",
-          "Context-Free Grammars"
-        ],
-        "confidence": "high"
-      },
-      "analyzed_at": "2026-08-31T03:40:40.530702",
-      "conference_info": {
-        "conference": "EMNLP",
-        "year": "2026",
-        "comment": "EMNLP 2026 Findings, Long Paper",
-        "raw_comment": "EMNLP 2026 Findings, Long Paper",
-        "category": "Natural Language Processing",
-        "rank": "A"
-      }
-    },
-    {
-      "paper": {
-        "title": "Twin Worlds: Equivariance-Based Abstention for Evidence-Grounded Reasoning",
-        "arxiv_id": "2608.28018v1",
-        "authors": [
-          "Vy Nguyen",
-          "Ziqi Xu",
-          "Jeffrey Chan",
-          "Estrid He",
-          "Feng Xia",
-          "Renqiang Luo",
-          "Erik Cambria",
-          "Xiuzhen Zhang"
-        ],
-        "published": "2026-08-28T07:33:29Z",
-        "updated": "2026-08-28T07:33:29Z",
-        "summary": "Knowledge-intensive reasoning requires Large Language Models (LLMs) to ground answers in provided evidence. When evidence is insufficient, it is desirable that models abstain rather than confidently generating unsupported answers. Existing abstention methods rely on uncertainty estimation or evidence sufficiency checks, but neither tests whether the reasoning process for generation, driven by the interaction of provided evidence and the model's internal memory parameters, is actually grounded in the evidence. A key contributing factor is that entity mentions in context activate memorised associations, causing models to generate plausible responses ungrounded in evidence. We propose Twin Worlds (TW), a framework for improving reliability in knowledge-intensive reasoning through equivariance-based abstention: unlike invariance, which requires outputs to remain unchanged, equivariance requires outputs to transform correspondingly under entity substitutions. A model grounded in the evidence should produce answers that shift consistently when entities are substituted while their relations are preserved. TW constructs multiple worlds via typed substitutions of the original input that preserve relational structure while reducing parametric priors, and uses equivariance violations as an abstention signal. Across four benchmarks and three model backbones, TW identifies when answers are not reliably grounded in the provided evidence and outperforms uncertainty- and sufficiency-based baselines.",
-        "categories": "cs.CL",
-        "comment": "Accepted to EMNLP 2026 (Main Conference)"
-      },
-      "analysis": {
-        "problem_statement": "Existing abstention methods for LLMs fail to verify if reasoning is grounded in provided evidence because entity mentions activate internal parametric memories, leading to confident but ungrounded generations when evidence is insufficient.",
-        "bottleneck_addressed": "Hallucination and lack of evidence grounding in knowledge-intensive reasoning tasks.",
-        "executive_summary": "This paper addresses the critical reliability gap where LLMs confidently generate answers based on internal memory rather than provided context. By introducing an equivariance-based abstention mechanism, it provides a robust method to detect when a model's reasoning is not actually grounded in the evidence, thereby improving the trustworthiness of AI systems in high-stakes knowledge-intensive applications.",
-        "key_metrics": {
-          "primary_metric": "Outperformance in identifying ungrounded answers compared to uncertainty- and sufficiency-based baselines.",
-          "metric_value": "Not specified in abstract",
-          "baseline": "Uncertainty estimation and evidence sufficiency checks",
-          "improvement_percentage": "Not specified in abstract"
-        },
-        "technical_breakdown": {
-          "method": "The framework constructs multiple 'twin worlds' via typed substitutions of entities in the input while preserving relational structure. It then checks for equivariance: if the model is grounded in evidence, its outputs should transform consistently under these substitutions. Violations of this equivariance property serve as the abstention signal.",
-          "architecture": "A wrapper framework around existing LLM backbones that generates substituted input variants and compares output consistency.",
-          "implementation_details": "Uses typed entity substitutions to reduce parametric priors while maintaining relational integrity; calculates equivariance violations as a metric for grounding.",
-          "code_complexity": "Requires multiple forward passes per query (one for the original and one for each substituted 'twin world'), increasing inference latency but not requiring model retraining."
-        },
-        "relevance_tags": [
-          "LLM Reliability",
-          "Abstention",
-          "Equivariance",
-          "Knowledge-Intensive Reasoning",
-          "Hallucination Mitigation"
-        ],
-        "confidence": "high"
-      },
-      "analyzed_at": "2026-08-31T03:41:21.044174",
-      "conference_info": {
-        "conference": "EMNLP",
-        "year": "2026",
-        "comment": "Accepted to EMNLP 2026 (Main Conference)",
-        "raw_comment": "Accepted to EMNLP 2026 (Main Conference)",
-        "category": "Natural Language Processing",
-        "rank": "A"
-      }
-    },
-    {
-      "paper": {
-        "title": "GOD: Govern, Observe, and Direct - A Real-Time Control Room for Agent Societies",
-        "arxiv_id": "2608.27992v1",
-        "authors": [
-          "Yige Luo",
-          "Ran Guan"
-        ],
-        "published": "2026-08-28T06:59:28Z",
-        "updated": "2026-08-28T06:59:28Z",
-        "summary": "Generative-agent systems are easier to start than to inspect. A run can contain many agents, locations, messages, commands, and model calls, yet the operator often gets either a finished replay or raw logs. That makes it hard to ask why an agent moved, test a small intervention, or package a run for another researcher. GOD is a local-first control room for agent societies. From the same browser workflow, an operator can issue targeted questions or interventions and inspect the resulting replay state. The system combines a setup wizard, Agent Studio, Map Studio, a spatial replay interface, Ask and Intervene commands, and portable experiment, map, and agent packs. Its technical contribution is the command and artifact loop: live controls and replay evidence share the same operator command model, while package contracts separate scenario, map, and profile data from local runtime state. The public release includes hosted Smallville-style and PKU replays, the open-source repository, and downloadable packs. We evaluate this path on 15 completed run slots. Across the 14 intervention runs, 78 of 84 target-agent checks recorded the commanded destination, and 169 of 182 state answers matched a saved location or action string.",
-        "categories": "cs.AI",
-        "comment": "9 pages, 5 figures. Accepted to the EMNLP 2026 System Demonstrations Track"
-      },
-      "analysis": {
-        "problem_statement": "Generative-agent systems lack real-time observability and control mechanisms, forcing operators to rely on static replays or raw logs rather than interactive inspection and intervention.",
-        "bottleneck_addressed": "Observability and controllability in multi-agent LLM simulations",
-        "executive_summary": "This paper addresses the critical gap in debugging and steering complex agent societies by providing a local-first control room that unifies live intervention with replay analysis. It is significant for the current AI landscape as it shifts agent development from a black-box execution model to a transparent, interactive engineering workflow, facilitating reproducibility and targeted debugging.",
-        "key_metrics": {
-          "primary_metric": "Accuracy of state verification and intervention execution in completed run slots",
-          "metric_value": "78/84 target-agent checks (92.8%) and 169/182 state answers (92.8%) matched expected outcomes",
-          "baseline": "Implicit baseline of unstructured raw logs or finished replays which do not provide verifiable state checks",
-          "improvement_percentage": "N/A (System demonstration with reliability metrics rather than comparative performance gain)"
-        },
-        "technical_breakdown": {
-          "method": "A unified command and artifact loop where live controls and replay evidence share the same operator command model, allowing targeted questions and interventions to be issued and verified against saved state.",
-          "architecture": "Local-first control room comprising a setup wizard, Agent Studio, Map Studio, spatial replay interface, and portable experiment/map/agent packs that separate scenario data from local runtime state.",
-          "implementation_details": "Utilizes 'Ask and Intervene' commands to interact with agents, with package contracts ensuring portability of scenario, map, and profile data independent of runtime state.",
-          "code_complexity": "N/A (System demonstration; computational complexity depends on the underlying LLM agents, not the control interface itself)"
-        },
-        "relevance_tags": [
-          "Multi-Agent Systems",
-          "LLM Agents",
-          "Observability",
-          "Simulation Control",
-          "Reproducibility"
-        ],
-        "confidence": "high"
-      },
-      "analyzed_at": "2026-08-31T03:41:54.795547",
-      "conference_info": {
-        "conference": "EMNLP",
-        "year": "2026",
-        "comment": "9 pages, 5 figures. Accepted to the EMNLP 2026 System Demonstrations Track",
-        "raw_comment": "9 pages, 5 figures. Accepted to the EMNLP 2026 System Demonstrations Track",
-        "category": "Natural Language Processing",
-        "rank": "A"
-      }
-    },
-    {
-      "paper": {
-        "title": "SKILL.state: Scalable Long-Horizon Agent Skills",
-        "arxiv_id": "2608.26263v2",
-        "authors": [
-          "Sanket Badhe",
-          "Priyanka Tiwari",
-          "Jonghyun Chung"
-        ],
-        "published": "2026-08-26T18:00:06Z",
-        "updated": "2026-08-28T03:02:32Z",
-        "summary": "Large Language Models (LLMs) increasingly act as autonomous agents executing complex, long-running procedural skills. Existing agent runtimes maintain execution by continually appending observations, actions, and intermediate reasoning traces to an ever-growing conversation history, causing latency degradation and context-poisoning failures over long horizons. We present SKILL.state, a runtime architecture that replaces append-only conversational history with an explicit, mutable execution state. At each execution step, the model receives only the immutable skill specification, the current structured execution state, and the latest observation. Intermediate reasoning is discarded immediately after producing a validated state update, preventing prompt growth with execution history. Across diverse datasets, models, and execution environments, SKILL. state improves task accuracy while substantially reducing cumulative token consumption. Our results demonstrate that explicit execution state is an effective and architecture-agnostic abstraction for scalable long-horizon agent skills.",
-        "categories": "cs.AI",
-        "comment": "accepted at EMNLP"
-      },
-      "analysis": {
-        "problem_statement": "Existing LLM agent runtimes suffer from latency degradation and context-poisoning failures due to the unbounded growth of append-only conversational histories during long-horizon tasks.",
-        "bottleneck_addressed": "Context window limitations and cumulative token latency in long-horizon autonomous agents.",
-        "executive_summary": "This paper addresses the scalability bottleneck of LLM agents by replacing unbounded conversation logs with a compact, mutable execution state. This architecture prevents prompt growth and context poisoning, enabling more reliable and cost-effective execution of complex, long-running procedural skills.",
-        "key_metrics": {
-          "primary_metric": "Task accuracy and cumulative token consumption",
-          "metric_value": "Not specified in abstract",
-          "baseline": "Append-only conversational history runtimes",
-          "improvement_percentage": "Not specified in abstract"
-        },
-        "technical_breakdown": {
-          "method": "The model receives only the immutable skill specification, current structured execution state, and latest observation at each step, discarding intermediate reasoning after state validation.",
-          "architecture": "Runtime architecture utilizing explicit, mutable execution state instead of append-only history.",
-          "implementation_details": "State updates are validated before intermediate reasoning traces are discarded to prevent prompt growth.",
-          "code_complexity": "Reduces cumulative token consumption and latency by limiting context size to current state and latest observation."
-        },
-        "relevance_tags": [
-          "LLM Agents",
-          "Context Management",
-          "Long-Horizon Tasks",
-          "Runtime Architecture"
-        ],
-        "confidence": "high"
-      },
-      "analyzed_at": "2026-08-31T03:42:02.756468",
-      "conference_info": {
-        "conference": "EMNLP",
-        "year": "Unknown",
-        "comment": "accepted at EMNLP",
-        "raw_comment": "accepted at EMNLP",
-        "category": "Natural Language Processing",
-        "rank": "A"
-      }
-    },
-    {
-      "paper": {
-        "title": "CHISEL-ing Back Source Code with AI-enabled Iterative Recovery",
-        "arxiv_id": "2608.27981v1",
-        "authors": [
-          "Varun Kohli",
-          "N Raghava",
-          "Biplab Sikdar",
-          "Dinil Mon Divakaran"
-        ],
-        "published": "2026-08-28T06:49:21Z",
-        "updated": "2026-08-28T06:49:21Z",
-        "summary": "Decompilation aims to recover high-level, compilable, and semantically equivalent code from binaries. Traditional decompilers produce pseudo-C that is difficult to read and does not compile, while the recent LLM-assisted approaches generate readable, but semantically incorrect code. LLM-aided iterative recovery is an emerging branch of research, but prior works rely on supplied test suites for semantic recovery. In this work, we present CHISEL, a test suite-free framework to iteratively recover source code from Ghidra-derived pseudo-C. CHISEL uses simple yet effective feedback from a compiler (static analysis) and a coverage-guided fuzzer (differential analysis), augmented by rich observables for grounded divergence detection and feedback, cross-iteration divergence memory, and best candidate retention. We systematically evaluate CHISEL for compilation and semantic recovery, feedback oracle soundness, and iteration overhead on 120 ExeBench functions compiled for the x86-64 architecture, across four optimizations (O0-O3), in both stripped and unstripped variants, using the open-weight Gemma4:31b LLM. CHISEL, with all recommended features, achieves an average of 96.1% re-compilability and 79.8% re-executability rates at an average of 2.1 iterations. Significantly, CHISEL recovers 26% of first-generation execution errors. At the same time, CHISEL feedback oracle falsely accepts only 9.4% candidates. Lastly, CHISEL performs significantly better than two recent prior work on LLM-assisted decompilation.",
-        "categories": "cs.CR",
-        "comment": "Accepted for publication in ACM CCS SURE 2026"
-      },
-      "analysis": {
-        "problem_statement": "The paper addresses the challenge of recovering high-level, compilable, and semantically equivalent source code from binaries without relying on pre-supplied test suites for semantic verification.",
-        "bottleneck_addressed": "Reliance on external test suites for semantic validation in LLM-assisted decompilation, which limits applicability in scenarios where tests are unavailable or proprietary.",
-        "executive_summary": "This work introduces CHISEL, a framework that leverages compiler static analysis and differential fuzzing to iteratively refine LLM-generated code, eliminating the need for ground-truth test cases. By achieving high re-compilability and re-executability rates, it advances the state of automated reverse engineering and software maintenance, making LLM-based decompilation more robust and deployable in real-world environments where test data is scarce.",
-        "key_metrics": {
-          "primary_metric": "Re-compilability and re-executability rates",
-          "metric_value": "96.1% re-compilability and 79.8% re-executability",
-          "baseline": "Two recent prior works on LLM-assisted decompilation",
-          "improvement_percentage": "Not explicitly quantified as a percentage in the summary, but described as 'significantly better' than prior works."
-        },
-        "technical_breakdown": {
-          "method": "CHISEL uses an iterative recovery loop where an LLM generates candidate source code from Ghidra-derived pseudo-C. The candidates are evaluated using compiler feedback (static analysis) and a coverage-guided fuzzer (differential analysis) to detect semantic divergences.",
-          "architecture": "The system integrates an LLM (Gemma4:31b), a compiler for static checks, and a fuzzer for dynamic differential testing. It includes modules for grounded divergence detection, cross-iteration divergence memory, and best candidate retention.",
-          "implementation_details": "The framework employs rich observables for divergence detection and uses a test-suite-free approach. It was evaluated on 120 ExeBench functions across x86-64 architecture with optimization levels O0-O3, in both stripped and unstripped variants.",
-          "code_complexity": "The process involves an average of 2.1 iterations per function, indicating a moderate computational overhead for the iterative refinement process."
-        },
-        "relevance_tags": [
-          "decompilation",
-          "LLM-assisted-programming",
-          "binary-analysis",
-          "fuzzing",
-          "static-analysis"
-        ],
-        "confidence": "high"
-      },
-      "analyzed_at": "2026-08-31T03:42:43.793892",
-      "conference_info": {
-        "conference": "ACM CCS",
-        "year": "2026",
-        "comment": "Accepted for publication in ACM CCS SURE 2026",
-        "raw_comment": "Accepted for publication in ACM CCS SURE 2026",
-        "category": "Security",
+        "comment": "IJCAI Survey Track, 2026",
+        "raw_comment": "IJCAI Survey Track, 2026",
+        "category": "General ML/AI",
         "rank": "A+"
       }
     },
     {
       "paper": {
-        "title": "Learning-Augmented Heuristics: Simple, yet Smart, Robust and Interpretable Cache Eviction",
-        "arxiv_id": "2608.27975v1",
+        "title": "FlowTT: Exploiting Computation Flow Reuse in Irregular Tensor-Train Embedding",
+        "arxiv_id": "2609.03459v1",
         "authors": [
-          "Haocheng Xia",
-          "William Nixon",
-          "Bintang Dwi Marthen",
-          "Pranav Bhandari",
-          "Juncheng Yang"
+          "Jongmin Seok",
+          "Chae Eun Rhee"
         ],
-        "published": "2026-08-28T06:45:24Z",
-        "updated": "2026-08-28T06:45:24Z",
-        "summary": "Caching is widely used across the system stack to improve performance and efficiency, with eviction algorithms at its core. Existing cache eviction policies fall into two broad categories: static heuristics (e.g., 2Q, S3-FIFO) and smart algorithms (e.g., ARC, LRB). Smart caches can adapt to workloads and have the potential to achieve higher efficiency and robustness than static heuristics. However, we find that existing smart caches suffer from objective mismatches and instability. We introduce Learning-Augmented Heuristics (LAH), a framework that learns the cache-level parameters of static heuristics. By decoupling the data and control planes, LAH supports simple, high-speed data reads and writes on the data plane, while performing occasional asynchronous learning on the control plane using cache-level features. We demonstrate the effectiveness of LAH through S4-FIFO, a Smart S3-FIFO cache eviction algorithm. We pre-train a single model on 4,140 production traces and embed it in S4-FIFO to learn optimal cache parameters. On 1,035 evaluation traces, S4-FIFO improves the mean efficiency by 26% compared to S3-FIFO and by 8% compared to 3L-Cache, the best state-of-the-art algorithm. S4-FIFO is also robust---increasing miss ratio over FIFO by 0.8% on the worst trace, whereas 3L-Cache increases FIFO's miss ratio by 8.8%. Finally, S4-FIFO's decisions are also interpretable: a language model can provide a rationale for why a particular configuration was chosen.",
+        "published": "2026-09-03T07:17:33Z",
+        "updated": "2026-09-03T07:17:33Z",
+        "summary": "Tensor-Train (TT) decomposition effectively compresses large embedding tables in recommendation models, but TT-based embedding lookup remains inefficient because partially shared computation flows across input indices are not fully reused and intermediate results are repeatedly materialized off-chip between sequential TT-core contractions. We present FlowTT, a flow-aware GPU execution framework that reformulates TT gather as a set of prefix-shared irregular computation flows. FlowTT combines flow-aligned prefix-based index grouping, a fused TT-embedding execution path with on-chip intermediate retention, and persistent-thread scheduling with chunk-based work stealing and L2 checkpointing to preserve reuse under skewed workloads. By co-designing task formation, data buffering, and scheduling with the structure of TT gather, FlowTT reduces redundant TT-core operations, global-memory traffic, and load imbalance. On Meta's synthetic recommendation benchmarks (Meta-240, Meta-480, and Meta-788), FlowTT consistently achieves the lowest latency compared to existing methods. At batch size 32,768, it reduces latency by up to 42.2% in inference and 49.2% in training relative to EcoRec, while also achieving the lowest inference peak memory usage. These results show that exposing prefix-shared computation is key to efficient TT-based embedding execution.",
         "categories": "cs.DC",
-        "comment": "22 pages, accepted to OSDI '26"
+        "comment": "9 pages, 9 figures, 3 tables. Accepted to IEEE/ACM International Conference on Computer-Aided Design (ICCAD 2026)"
       },
       "analysis": {
-        "problem_statement": "Existing smart cache eviction algorithms suffer from objective mismatches and instability, while static heuristics lack the adaptability to optimize performance across diverse workloads.",
-        "bottleneck_addressed": "System-level I/O efficiency and memory hierarchy optimization, specifically addressing the trade-off between the simplicity of static heuristics and the complexity/instability of adaptive smart caches.",
-        "executive_summary": "This paper introduces Learning-Augmented Heuristics (LAH), a framework that decouples data and control planes to allow simple, fast cache operations while asynchronously learning optimal parameters. By applying this to S3-FIFO to create S4-FIFO, the system achieves superior efficiency and robustness compared to state-of-the-art algorithms like 3L-Cache. The approach is significant for high-performance computing and cloud infrastructure, as it provides an interpretable and robust method for optimizing memory usage without the overhead of complex adaptive algorithms.",
+        "problem_statement": "TT-based embedding lookup is inefficient due to the failure to reuse partially shared computation flows across input indices and the repeated off-chip materialization of intermediate results during sequential TT-core contractions.",
+        "bottleneck_addressed": "Memory bandwidth and compute redundancy in large-scale embedding table lookups for recommendation systems.",
+        "executive_summary": "This paper addresses the inefficiency of Tensor-Train (TT) decompositions in recommendation systems by exploiting prefix-shared computation flows. It is significant for the AI landscape as it optimizes the execution of compressed embeddings on GPUs, reducing latency and memory usage for large-scale recommendation models.",
         "key_metrics": {
-          "primary_metric": "Mean efficiency improvement in cache eviction",
-          "metric_value": "26% improvement over S3-FIFO; 8% improvement over 3L-Cache",
-          "baseline": "S3-FIFO and 3L-Cache (state-of-the-art)",
-          "improvement_percentage": "26% vs S3-FIFO, 8% vs 3L-Cache"
+          "primary_metric": "Latency reduction in inference and training",
+          "metric_value": "42.2% inference, 49.2% training",
+          "baseline": "EcoRec",
+          "improvement_percentage": "42.2-49.2%"
         },
         "technical_breakdown": {
-          "method": "The LAH framework learns cache-level parameters of static heuristics by decoupling the data plane (simple reads/writes) from the control plane (asynchronous learning using cache-level features).",
-          "architecture": "A dual-plane architecture where the data plane handles high-speed operations with static logic, and the control plane runs a pre-trained model to adjust heuristic parameters asynchronously.",
-          "implementation_details": "S4-FIFO is implemented by embedding a single model pre-trained on 4,140 production traces into the S3-FIFO algorithm to learn optimal cache parameters. The system is evaluated on 1,035 traces.",
-          "code_complexity": "Low data-plane complexity due to static heuristic execution; control-plane complexity is managed via asynchronous updates, allowing for high-speed I/O without blocking on learning computations."
+          "method": "FlowTT reformulates TT gather as prefix-shared irregular computation flows, combining flow-aligned index grouping, fused execution with on-chip intermediate retention, and persistent-thread scheduling.",
+          "architecture": "Flow-aware GPU execution framework with fused TT-embedding path, on-chip intermediate retention, and L2 checkpointing.",
+          "implementation_details": "Flow-aligned prefix-based index grouping, chunk-based work stealing, and persistent-thread scheduling to preserve reuse under skewed workloads.",
+          "code_complexity": "Reduces redundant TT-core operations and global-memory traffic; specific computational complexity not explicitly stated but implies reduced memory access overhead."
         },
         "relevance_tags": [
-          "Cache Eviction",
-          "Learning-Augmented Algorithms",
-          "Systems Optimization",
-          "Interpretable AI",
-          "Memory Management"
+          "Tensor-Train Decomposition",
+          "GPU Optimization",
+          "Recommendation Systems",
+          "Embedding Lookup",
+          "Memory Hierarchy Optimization"
         ],
         "confidence": "high"
       },
-      "analyzed_at": "2026-08-31T03:42:10.156751",
+      "analyzed_at": "2026-09-03T23:10:34.980851",
       "conference_info": {
-        "conference": "OSDI",
+        "conference": "ICCAD",
         "year": "2026",
-        "comment": "22 pages, accepted to OSDI '26",
-        "raw_comment": "22 pages, accepted to OSDI '26",
+        "comment": "9 pages, 9 figures, 3 tables. Accepted to IEEE/ACM International Conference on Computer-Aided Design (ICCAD 2026)",
+        "raw_comment": "9 pages, 9 figures, 3 tables. Accepted to IEEE/ACM International Conference on Computer-Aided Design (ICCAD 2026)",
+        "category": "Hardware & EDA",
+        "rank": "A"
+      }
+    },
+    {
+      "paper": {
+        "title": "MakoXC: Rearchitecting DFT Exchange-Correlation with Matrix-Aligned and Knowledge-Organized Sparsity",
+        "arxiv_id": "2609.01025v2",
+        "authors": [
+          "Haozhi Han",
+          "Fusong Ju",
+          "Jing Bai",
+          "Ruge Zhang",
+          "Xiang Zhao",
+          "Liang Yuan",
+          "Yunquan Zhang",
+          "Ting Cao",
+          "Liu Yunxin",
+          "Yifeng Chen",
+          "Kun Li"
+        ],
+        "published": "2026-09-01T10:21:49Z",
+        "updated": "2026-09-03T05:03:25Z",
+        "summary": "Density Functional Theory (DFT) is indispensable for materials science and drug discovery, yet the exchange--correlation (XC) evaluation remains a major bottleneck due to its cubic scaling. Although linear-scaling methods exploit electronic nearsightedness to reduce asymptotic complexity, they produce irregular sparse workloads that hide implicit sparsity and prevent efficient use of modern AI accelerators. We present MakoXC, a modular matrix-aligned XC evaluation engine that rearchitects nearsightedness-induced sparsity into regular, accelerator-friendly computations. MakoXC co-designs three key techniques: (1) Matrix-Aligned Cells reorganize nearsightedness-induced interactions into dense, accelerator-aligned data clusters; (2) Sparsity-Guided Activation translates deeper implicit sparsity into numerically correct structured execution for practical linear scaling; and (3) Kernel-Fused Pipeline consolidates fragmented workloads into a unified, compute-intensive execution path that fully unleashes accelerator throughput. Extensive evaluations show that MakoXC achieves average speedups of 67.8$\\times$ speedup over standard XC evaluation and 4.7$\\times$ over state-of-the-art linear-scaling methods. When integrated into a production-grade commercial DFT package, MakoXC scales XC evaluation to ubiquitin (1,231 atoms, def2-SVP) on 64 GPUs, enabling the end-to-end DFT calculation to complete in under five minutes. By restructuring XC evaluation into a unified, structured computation, MakoXC demonstrates how scientific workloads can achieve genuine low complexity while maximizing parallel efficiency on AI accelerators.",
+        "categories": "cs.DC",
+        "comment": "Accepted in the International Conference for High Performance Computing, Networking, Storage, and Analysis (SC'26)"
+      },
+      "analysis": {
+        "problem_statement": "Standard linear-scaling Density Functional Theory (DFT) methods generate irregular sparse workloads that fail to efficiently utilize modern AI accelerators due to hidden implicit sparsity.",
+        "bottleneck_addressed": "Memory bandwidth and compute utilization inefficiencies caused by irregular sparse matrix operations on GPU/accelerator hardware.",
+        "executive_summary": "This paper addresses the critical gap between theoretical linear-scaling algorithms and practical hardware efficiency in scientific computing. By restructuring irregular sparse data into dense, accelerator-aligned clusters, it enables high-throughput execution of DFT calculations on AI accelerators, significantly reducing the time for large-scale molecular simulations.",
+        "key_metrics": {
+          "primary_metric": "Speedup over standard and linear-scaling baselines",
+          "metric_value": "67.8x (vs standard), 4.7x (vs SOTA linear-scaling)",
+          "baseline": "Standard XC evaluation and state-of-the-art linear-scaling methods",
+          "improvement_percentage": "6680% vs standard, 370% vs SOTA linear-scaling"
+        },
+        "technical_breakdown": {
+          "method": "MakoXC rearchitects exchange-correlation (XC) evaluation by co-designing data layout and execution strategies to transform irregular sparsity into regular, dense computations suitable for GPUs.",
+          "architecture": "Modular matrix-aligned XC evaluation engine featuring Matrix-Aligned Cells, Sparsity-Guided Activation, and a Kernel-Fused Pipeline.",
+          "implementation_details": "Uses Matrix-Aligned Cells to cluster interactions into dense blocks; Sparsity-Guided Activation ensures numerical correctness for linear scaling; Kernel-Fused Pipeline consolidates fragmented workloads into unified compute-intensive paths.",
+          "code_complexity": "Achieves practical linear scaling for XC evaluation, enabling end-to-end DFT calculations for 1,231 atoms on 64 GPUs in under five minutes."
+        },
+        "relevance_tags": [
+          "HPC",
+          "Density Functional Theory",
+          "GPU Acceleration",
+          "Sparse Matrix Optimization",
+          "Scientific Computing"
+        ],
+        "confidence": "high"
+      },
+      "analyzed_at": "2026-09-03T23:10:37.062915",
+      "conference_info": {
+        "conference": "International Conference for High Performance Computing",
+        "year": "2026",
+        "comment": "Accepted in the International Conference for High Performance Computing, Networking, Storage, and Analysis (SC'26)",
+        "raw_comment": "Accepted in the International Conference for High Performance Computing, Networking, Storage, and Analysis (SC'26)",
         "category": "Systems & Architecture",
-        "rank": "A+"
+        "rank": ""
       }
     }
   ],
@@ -1046,15 +185,15 @@
     "Blockchain & Cryptography",
     "Other"
   ],
-  "filter_date": "2026-08-28",
+  "filter_date": "2026-09-03",
   "metrics": {
     "dashboard": {
-      "previous_date": "2026-08-27",
-      "previous_count": 62,
-      "current_date": "2026-08-28",
-      "current_count": 20,
-      "day_change": -42,
-      "trend": "\ud83d\udcc9 DOWN"
+      "previous_date": "unknown",
+      "previous_count": 0,
+      "current_date": "2026-09-03",
+      "current_count": 3,
+      "day_change": 3,
+      "trend": "\ud83d\udcc8 UP"
     }
   },
   "ranks": [
