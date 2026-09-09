@@ -1,170 +1,520 @@
 {
-  "last_updated": "2026-09-03T23:10:39.995891",
-  "total_papers": 3,
+  "last_updated": "2026-09-08T23:27:51.730969",
+  "total_papers": 10,
   "papers": [
     {
       "paper": {
-        "title": "When Vision Meets Graphs: A Survey on Graph Reasoning and Learning",
-        "arxiv_id": "2609.03816v1",
+        "title": "Heat Kernel Textures: the Geodesic Gaussians That Do Not Splat",
+        "arxiv_id": "2609.07557v1",
         "authors": [
-          "Xinjian Zhao",
-          "Wei Pang",
-          "Zhixuan Yu",
-          "Xiangru Jian",
-          "Xiaozhuang Song",
-          "Yaoyao Xu",
-          "Zhongkai Xue",
-          "Dingshuo Chen",
-          "Shu Wu",
-          "Philip Torr",
-          "Tianshu Yu"
+          "Simone Foti",
+          "Caner Korkmaz",
+          "Stefanos Zafeiriou",
+          "Tolga Birdal"
         ],
-        "published": "2026-09-03T13:19:22Z",
-        "updated": "2026-09-03T13:19:22Z",
-        "summary": "Graphs are a fundamental data structure underlying many problems in the natural and social sciences. Over the past decade, Graph Neural Networks (GNNs) have dominated graph machine learning, supported by solid theoretical foundations. Yet scientists often understand graph structure through vision: chemists read molecular diagrams and social scientists inspect network visualizations. Despite decades of work on graph visualization, most graph learning pipelines still treat graphs purely as symbolic structures, rarely leveraging the visual form of graphs. We argue that this gap deserves renewed attention in the era of powerful vision and vision-language models. This survey provides a first systematic overview of the emerging area we term vision meets graphs, which treats visual depictions of graphs as first-class inputs for reasoning and learning. We organize existing work into three threads. Vision for Graph Reasoning studies how models can use visual depictions of graphs to understand structure and carry out multi-step reasoning. Vision for Graph Learning explores how visual features can complement or augment graph encoders beyond known limitations of message passing. Scientific Graphs examines domains where standardized depiction conventions support both reasoning and learning. Our goal is to clarify what current methods can and cannot do, and to outline a path toward foundation models that perceive and reason about graphs as scientists do.",
-        "categories": "cs.SI",
-        "comment": "IJCAI Survey Track, 2026"
+        "published": "2026-09-07T14:39:55Z",
+        "updated": "2026-09-07T14:39:55Z",
+        "summary": "3D Gaussian Splatting has recently revolutionised novel view synthesis as well as many other 3D vision methods and applications. Drawing inspiration from this representation, we now rethink textures to overcome the main issues of UV mapping while considerably lowering their memory footprint. Heat Kernel Textures (HKTex) eliminate UV unwrapping as well as their persistent issues of wasted UV space, seams, distortions, vertex-duplication, and varying resolution. Grounded in discrete Riemannian geometry and intrinsically defined on any manifold surface discretised as a triangular mesh, HKTex uses anisotropic heat kernels as geodesic equivalents to Gaussians. Like our kernels, also the optimisation of their position and the adaptive densification strategies were redefined to operate on the surface of the object to be textureised. Our novel representation is also fully integrated with a physically based renderer and can be optimised either from existing textures or multi-view images. Our project page and code are available at circle-group.github.io/research/HeatKernelTextures.",
+        "categories": "cs.CV",
+        "comment": "ECCV 2026 (Long Oral)"
       },
       "analysis": {
-        "problem_statement": "The paper addresses the lack of systematic integration of visual graph representations into machine learning pipelines, which currently treat graphs as purely symbolic structures despite the human tendency to interpret them visually.",
-        "bottleneck_addressed": "Limitations of Graph Neural Networks (GNNs) in capturing global structural information and the underutilization of visual modality for graph reasoning in the era of Vision-Language Models (VLMs).",
-        "executive_summary": "This survey identifies a critical gap in graph machine learning where visual depictions are ignored, despite being a primary mode of human understanding. It proposes a new framework, 'vision meets graphs,' that leverages powerful vision models to enhance graph reasoning and learning beyond the constraints of standard message passing mechanisms.",
+        "problem_statement": "The paper addresses the inherent limitations of UV mapping for 3D textures, specifically issues related to wasted UV space, seams, distortions, vertex duplication, and varying resolution.",
+        "bottleneck_addressed": "Memory footprint and representation efficiency in 3D texture synthesis and storage.",
+        "executive_summary": "This work introduces Heat Kernel Textures (HKTex), a novel representation that eliminates the need for UV unwrapping by defining textures intrinsically on triangular meshes using anisotropic heat kernels. By leveraging discrete Riemannian geometry, it offers a more memory-efficient and geometrically consistent alternative to traditional texture maps, integrating seamlessly with physically based rendering.",
         "key_metrics": {
-          "primary_metric": "N/A (Survey paper)",
-          "metric_value": "N/A",
-          "baseline": "N/A",
-          "improvement_percentage": "N/A"
+          "primary_metric": "Reduction in memory footprint and elimination of UV mapping artifacts",
+          "metric_value": "Not specified in summary",
+          "baseline": "Standard UV mapping and 3D Gaussian Splatting-inspired representations",
+          "improvement_percentage": "Not specified in summary"
         },
         "technical_breakdown": {
-          "method": "Systematic categorization of existing literature into three threads: Vision for Graph Reasoning, Vision for Graph Learning, and Scientific Graphs, focusing on using visual depictions as first-class inputs.",
-          "architecture": "Conceptual framework organizing work around the intersection of vision models (VLMs) and graph structures, rather than a specific neural network architecture.",
-          "implementation_details": "Review of methods that use visual features to complement graph encoders, multi-step reasoning via visual structure understanding, and domain-specific standardized depiction conventions.",
-          "code_complexity": "N/A (Theoretical/Survey work)"
+          "method": "The method uses anisotropic heat kernels as geodesic equivalents to Gaussians, defined intrinsically on the surface of a triangular mesh to represent texture information without UV coordinates.",
+          "architecture": "A texture representation based on discrete Riemannian geometry, integrated with a physically based renderer, supporting optimization from existing textures or multi-view images.",
+          "implementation_details": "Utilizes adaptive densification strategies and position optimization defined directly on the object's surface, avoiding the need for UV unwrapping.",
+          "code_complexity": "Not explicitly stated, but implies lower memory usage compared to UV maps; computational cost depends on the number of heat kernels and the mesh complexity."
         },
         "relevance_tags": [
-          "Graph Neural Networks",
-          "Vision-Language Models",
-          "Graph Visualization",
-          "Multimodal Learning",
-          "Survey"
+          "3D Vision",
+          "Texture Synthesis",
+          "Geometric Deep Learning",
+          "Novel View Synthesis",
+          "Riemannian Geometry"
         ],
         "confidence": "high"
       },
-      "analyzed_at": "2026-09-03T23:10:38.993970",
+      "analyzed_at": "2026-09-08T23:13:15.524952",
       "conference_info": {
-        "conference": "IJCAI",
+        "conference": "ECCV",
         "year": "2026",
-        "comment": "IJCAI Survey Track, 2026",
-        "raw_comment": "IJCAI Survey Track, 2026",
+        "comment": "ECCV 2026 (Long Oral)",
+        "raw_comment": "ECCV 2026 (Long Oral)",
+        "category": "Computer Vision",
+        "rank": "A"
+      }
+    },
+    {
+      "paper": {
+        "title": "Trust-But-Verify: Poisoning-Resilient Locally Private Graph Learning Protocols",
+        "arxiv_id": "2609.07063v1",
+        "authors": [
+          "Longzhu He",
+          "Li Sun",
+          "Hao Peng",
+          "Ruijie Wang",
+          "Raymond Chi-Wing Wong",
+          "Sen Su"
+        ],
+        "published": "2026-09-07T05:38:06Z",
+        "updated": "2026-09-07T05:38:06Z",
+        "summary": "Built upon local differential privacy (LDP), locally private graph learning protocols have emerged as an important paradigm for decentralized graph learning, balancing privacy protection and learning utility. Under such protocols, each user locally perturbs their node features and adjacency information before transmission, ensuring formal privacy guarantees without original data leaving the device. However, the inherently open participation nature renders these protocols critically vulnerable to data poisoning attacks, where adversaries inject carefully crafted malicious nodes to corrupt neighborhood aggregation and degrade downstream utility. Despite the severity of this threat, effective defenses in this setting remain largely unexplored. In this paper, we propose VERITAS, a poisoning-resilient locally private graph learning protocol built on a trust-but-verify paradigm. By introducing a verification list encoding graded peer trust levels, VERITAS jointly privatizes node features and graph structure on the user side, while exploiting bilateral attestation asymmetry on the server side to identify and prune malicious nodes. Concretely, VERITAS comprises four synergistic stages: (1) local data perturbation, (2) attestation-driven malicious node pruning, (3) utility restoration via dual denoising, and (4) robust private graph learning. Extensive experiments on four real-world benchmark datasets across multiple LDP mechanisms and GNN architectures demonstrate that VERITAS effectively defends against data poisoning attacks and significantly improves downstream graph learning utility under rigorous privacy guarantees.",
+        "categories": "cs.LG",
+        "comment": "ICDM 2026"
+      },
+      "analysis": {
+        "problem_statement": "Locally private graph learning protocols are vulnerable to data poisoning attacks where adversaries inject malicious nodes to corrupt neighborhood aggregation and degrade downstream utility.",
+        "bottleneck_addressed": "Security and robustness in decentralized, privacy-preserving machine learning systems.",
+        "executive_summary": "This paper addresses the critical security gap in locally private graph learning, where open participation allows adversaries to poison data without violating privacy constraints. By introducing a trust-but-verify paradigm, it enables the detection and pruning of malicious nodes while maintaining formal privacy guarantees, thereby bridging the trade-off between privacy, security, and utility in decentralized graph analytics.",
+        "key_metrics": {
+          "primary_metric": "Downstream graph learning utility under data poisoning attacks",
+          "metric_value": "Not specified in abstract",
+          "baseline": "Standard locally private graph learning protocols without poisoning defenses",
+          "improvement_percentage": "Not specified in abstract"
+        },
+        "technical_breakdown": {
+          "method": "VERITAS employs a four-stage pipeline: local perturbation of features and structure, server-side identification of malicious nodes using bilateral attestation asymmetry, utility restoration via dual denoising, and robust private graph learning.",
+          "architecture": "A decentralized protocol involving user-side local differential privacy (LDP) mechanisms and server-side verification logic based on a verification list encoding graded peer trust levels.",
+          "implementation_details": "Uses bilateral attestation asymmetry to identify and prune malicious nodes; applies dual denoising to restore utility after pruning; compatible with multiple LDP mechanisms and GNN architectures.",
+          "code_complexity": "Not specified, but involves additional server-side verification and pruning steps compared to standard LDP protocols."
+        },
+        "relevance_tags": [
+          "Local Differential Privacy",
+          "Graph Neural Networks",
+          "Data Poisoning Defense",
+          "Decentralized Learning",
+          "Security"
+        ],
+        "confidence": "high"
+      },
+      "analyzed_at": "2026-09-08T23:24:14.445904",
+      "conference_info": {
+        "conference": "ICDM",
+        "year": "2026",
+        "comment": "ICDM 2026",
+        "raw_comment": "ICDM 2026",
+        "category": "Data Mining & IR",
+        "rank": "A+"
+      }
+    },
+    {
+      "paper": {
+        "title": "Conditioned Initialization for Attention",
+        "arxiv_id": "2609.07086v1",
+        "authors": [
+          "Hemanth Saratchandran",
+          "Simon Lucey"
+        ],
+        "published": "2026-09-07T06:17:58Z",
+        "updated": "2026-09-07T06:17:58Z",
+        "summary": "Transformers are a dominant architecture in modern machine learning, powering applications across vision, language, and beyond. At the core of their success lies the attention layer, where the query, key, and value matrices determine how token dependencies are captured. While considerable work has focused on scaling and optimizing Transformers, comparatively little attention has been paid to how the weights of the queries, keys and values are initialized. Common practice relies on random initialization or alternatives such as mimetic initialization, which imitates weight patterns from converged models, and weight selection, which transfers weights from a teacher model. In this paper, we argue that initialization can introduce an optimization bias that fundamentally shapes training dynamics. We propose conditioned initialization, a principled scheme that initializes attention weights to improve the spectral properties of the attention layer. Theoretically, we show that conditioned initialization can potentially reduce the condition number of the attention Jacobian, leading to more stable optimization. Empirically, it accelerates convergence and improves generalization across diverse applications, highlighting conditioning as a critical yet underexplored area for advancing Transformer performance. Importantly, conditioned initialization is simple to apply and integrates seamlessly into a wide range of Transformer architectures.",
+        "categories": "cs.LG",
+        "comment": "ICLR 2026"
+      },
+      "analysis": {
+        "problem_statement": "The paper addresses the suboptimal training dynamics and convergence speed of Transformers caused by the lack of principled initialization strategies for attention query, key, and value weights.",
+        "bottleneck_addressed": "Optimization stability and convergence efficiency in deep learning training.",
+        "executive_summary": "This work identifies that standard random or mimetic initialization of attention weights introduces optimization bias that hinders training. By proposing a conditioned initialization scheme that improves the spectral properties of the attention Jacobian, the paper offers a simple, drop-in method to accelerate convergence and enhance generalization across various Transformer applications.",
+        "key_metrics": {
+          "primary_metric": "Convergence speed and generalization performance",
+          "metric_value": "Not specified in summary",
+          "baseline": "Random initialization, mimetic initialization, and weight selection",
+          "improvement_percentage": "Not specified in summary"
+        },
+        "technical_breakdown": {
+          "method": "A principled initialization scheme that sets attention weights to optimize the spectral properties of the attention layer, specifically aiming to reduce the condition number of the attention Jacobian.",
+          "architecture": "Applies to the query, key, and value matrices within standard Transformer attention layers.",
+          "implementation_details": "Conditioned initialization algorithm designed to improve spectral conditioning; integrates seamlessly into existing Transformer architectures without structural changes.",
+          "code_complexity": "Low overhead; described as simple to apply with no significant architectural modifications required."
+        },
+        "relevance_tags": [
+          "Transformer Optimization",
+          "Weight Initialization",
+          "Spectral Properties",
+          "Training Dynamics"
+        ],
+        "confidence": "high"
+      },
+      "analyzed_at": "2026-09-08T23:24:12.341176",
+      "conference_info": {
+        "conference": "ICLR",
+        "year": "2026",
+        "comment": "ICLR 2026",
+        "raw_comment": "ICLR 2026",
+        "category": "General ML/AI",
+        "rank": ""
+      }
+    },
+    {
+      "paper": {
+        "title": "Noisy-Space Policy Gradient for Diffusion Policies in Offline Reinforcement Learning",
+        "arxiv_id": "2609.06882v1",
+        "authors": [
+          "Mahmoud Selim",
+          "Cristina Cipriani",
+          "Karl H. Johansson"
+        ],
+        "published": "2026-09-07T00:08:13Z",
+        "updated": "2026-09-07T00:08:13Z",
+        "summary": "Diffusion policies offer a powerful and expressive parameterization for continuous control. Yet, their integration with reinforcement learning remains conceptually and algorithmically challenging. In this work, we address this gap by introducing a noisy-space action-value (Q-)function that assigns values to diffusion latents through the distribution of executed actions induced by the denoising process. We show that this construction admits a precise semantic interpretation and derive a noisy-space policy gradient (NSPG) that optimizes noisy latents using only clean action-space value estimates. Building on this result, we formulate a KL-regularized policy improvement over noisy latents and show that the resulting objective admits a diffusion-compatible regression form, avoiding backpropagation through the denoising process. Empirical results on state-based D4RL benchmarks and vision-based OGBench tasks demonstrate that the proposed noisy-space objective provides a principled and effective basis for training diffusion policies in offline reinforcement learning. Project webpage: https://mahmoud-selim.github.io/NSPG/",
+        "categories": "cs.LG",
+        "comment": "Accepted at the 43rd International Conference on Machine Learning (ICML 2026)"
+      },
+      "analysis": {
+        "problem_statement": "The paper addresses the algorithmic and conceptual challenges of integrating diffusion policies with reinforcement learning, specifically by deriving a policy gradient method that optimizes diffusion latents without requiring backpropagation through the denoising process.",
+        "bottleneck_addressed": "Optimization complexity and gradient instability in training expressive diffusion-based policies for continuous control.",
+        "executive_summary": "This work provides a principled framework for offline reinforcement learning with diffusion policies by introducing a noisy-space Q-function and a corresponding policy gradient. It resolves the computational burden of backpropagating through the multi-step denoising process by using clean action-space value estimates, enabling more stable and efficient training on both state-based and vision-based benchmarks.",
+        "key_metrics": {
+          "primary_metric": "Performance on state-based D4RL and vision-based OGBench tasks",
+          "metric_value": "Not specified in summary",
+          "baseline": "Standard diffusion policy training methods in offline RL",
+          "improvement_percentage": "Not specified in summary"
+        },
+        "technical_breakdown": {
+          "method": "Introduces a noisy-space action-value function that assigns values to diffusion latents based on the distribution of executed actions. Derives a Noisy-Space Policy Gradient (NSPG) that optimizes noisy latents using clean action-space value estimates, avoiding backpropagation through the denoising chain.",
+          "architecture": "Diffusion policy parameterization for continuous control, coupled with a KL-regularized policy improvement objective over noisy latents.",
+          "implementation_details": "Formulates a diffusion-compatible regression form for the objective, allowing for direct regression targets rather than complex gradient flows through the denoising steps.",
+          "code_complexity": "Reduces computational overhead by eliminating the need for backpropagation through the iterative denoising process, likely improving training efficiency compared to standard diffusion RL methods."
+        },
+        "relevance_tags": [
+          "Offline Reinforcement Learning",
+          "Diffusion Models",
+          "Continuous Control",
+          "Policy Gradient",
+          "ICML 2026"
+        ],
+        "confidence": "high"
+      },
+      "analyzed_at": "2026-09-08T23:24:44.580778",
+      "conference_info": {
+        "conference": "ICML",
+        "year": "2026",
+        "comment": "Accepted at the 43rd International Conference on Machine Learning (ICML 2026)",
+        "raw_comment": "Accepted at the 43rd International Conference on Machine Learning (ICML 2026)",
         "category": "General ML/AI",
         "rank": "A+"
       }
     },
     {
       "paper": {
-        "title": "FlowTT: Exploiting Computation Flow Reuse in Irregular Tensor-Train Embedding",
-        "arxiv_id": "2609.03459v1",
+        "title": "Spatial Feature-wise Linear Modulation (SpFiLM) for Contrast Agent-Aware Brain Parcellation",
+        "arxiv_id": "2609.07718v1",
         "authors": [
-          "Jongmin Seok",
-          "Chae Eun Rhee"
+          "Pushpendra Singh",
+          "Joshua R. Astley",
+          "Roman Rodionov",
+          "John Duncan",
+          "Tom Vercauteren",
+          "Rachel Sparks"
         ],
-        "published": "2026-09-03T07:17:33Z",
-        "updated": "2026-09-03T07:17:33Z",
-        "summary": "Tensor-Train (TT) decomposition effectively compresses large embedding tables in recommendation models, but TT-based embedding lookup remains inefficient because partially shared computation flows across input indices are not fully reused and intermediate results are repeatedly materialized off-chip between sequential TT-core contractions. We present FlowTT, a flow-aware GPU execution framework that reformulates TT gather as a set of prefix-shared irregular computation flows. FlowTT combines flow-aligned prefix-based index grouping, a fused TT-embedding execution path with on-chip intermediate retention, and persistent-thread scheduling with chunk-based work stealing and L2 checkpointing to preserve reuse under skewed workloads. By co-designing task formation, data buffering, and scheduling with the structure of TT gather, FlowTT reduces redundant TT-core operations, global-memory traffic, and load imbalance. On Meta's synthetic recommendation benchmarks (Meta-240, Meta-480, and Meta-788), FlowTT consistently achieves the lowest latency compared to existing methods. At batch size 32,768, it reduces latency by up to 42.2% in inference and 49.2% in training relative to EcoRec, while also achieving the lowest inference peak memory usage. These results show that exposing prefix-shared computation is key to efficient TT-based embedding execution.",
-        "categories": "cs.DC",
-        "comment": "9 pages, 9 figures, 3 tables. Accepted to IEEE/ACM International Conference on Computer-Aided Design (ICCAD 2026)"
+        "published": "2026-09-07T16:31:12Z",
+        "updated": "2026-09-07T16:31:12Z",
+        "summary": "Most automated brain parcellation tools are developed and validated on T1-weighted (T1w) MRI. Yet, some clinical workflows for which parcellation is relevant only use contrast-enhanced T1w (T1ce) MRI, on which T1w-trained models are less accurate. We present a unified network that parcellates both pre- and post-contrast agent T1w MRI reliably, trained on a combination of the two with conditioning that spatially modulates its response differently for each. Feature-wise Linear Modulation (FiLM) is a known approach for input-based modulation in networks. It applies a per-channel scale and shift uniformly across the input. However, the appearance change between pre- and post-contrast varies locally across the brain, making FiLM suboptimal for our use case. In this work, we introduce Spatial FiLM (SpFiLM), a conditioning layer whose modulation varies spatially, assembling a voxel-wise scale and shift from image-derived spatial patterns. Using a cohort of 134 patients with paired T1w and T1ce MRI parcellated into 106 classes, the addition of SpFiLM layers in a UNet increased the mean Dice on the test set of 25 patients from 80.2% to 84.1%, a 4.9% relative improvement. Adding SpFiLM layers led to the best performance on both pre- and post-contrast MRI, even when controlling for network parameter counts.",
+        "categories": "eess.IV",
+        "comment": "10 pages, 2 figures. Accepted at MLCN 2026 (MICCAI workshop)"
       },
       "analysis": {
-        "problem_statement": "TT-based embedding lookup is inefficient due to the failure to reuse partially shared computation flows across input indices and the repeated off-chip materialization of intermediate results during sequential TT-core contractions.",
-        "bottleneck_addressed": "Memory bandwidth and compute redundancy in large-scale embedding table lookups for recommendation systems.",
-        "executive_summary": "This paper addresses the inefficiency of Tensor-Train (TT) decompositions in recommendation systems by exploiting prefix-shared computation flows. It is significant for the AI landscape as it optimizes the execution of compressed embeddings on GPUs, reducing latency and memory usage for large-scale recommendation models.",
+        "problem_statement": "Standard brain parcellation models trained on T1-weighted MRI exhibit reduced accuracy when applied to contrast-enhanced T1-weighted MRI due to local, spatially varying appearance changes that uniform conditioning methods fail to capture.",
+        "bottleneck_addressed": "Domain shift and modality-specific feature invariance in medical image segmentation, specifically addressing the lack of spatially adaptive conditioning for contrast agent effects.",
+        "executive_summary": "This work addresses a critical gap in clinical AI workflows where parcellation is required on contrast-enhanced scans, for which standard T1w-trained models are suboptimal. By introducing Spatial FiLM (SpFiLM), the paper demonstrates that spatially varying modulation significantly outperforms uniform channel-wise scaling, enabling a single unified network to handle both pre- and post-contrast data with higher fidelity.",
         "key_metrics": {
-          "primary_metric": "Latency reduction in inference and training",
-          "metric_value": "42.2% inference, 49.2% training",
-          "baseline": "EcoRec",
-          "improvement_percentage": "42.2-49.2%"
+          "primary_metric": "Mean Dice coefficient on test set",
+          "metric_value": "84.1%",
+          "baseline": "UNet without SpFiLM layers (80.2% mean Dice)",
+          "improvement_percentage": "4.9% relative improvement"
         },
         "technical_breakdown": {
-          "method": "FlowTT reformulates TT gather as prefix-shared irregular computation flows, combining flow-aligned index grouping, fused execution with on-chip intermediate retention, and persistent-thread scheduling.",
-          "architecture": "Flow-aware GPU execution framework with fused TT-embedding path, on-chip intermediate retention, and L2 checkpointing.",
-          "implementation_details": "Flow-aligned prefix-based index grouping, chunk-based work stealing, and persistent-thread scheduling to preserve reuse under skewed workloads.",
-          "code_complexity": "Reduces redundant TT-core operations and global-memory traffic; specific computational complexity not explicitly stated but implies reduced memory access overhead."
+          "method": "The method introduces Spatial Feature-wise Linear Modulation (SpFiLM), which generates voxel-wise scale and shift parameters derived from spatial patterns in the input image, allowing the network to modulate its response locally rather than uniformly across channels.",
+          "architecture": "A UNet backbone augmented with SpFiLM conditioning layers that replace or supplement standard FiLM layers to handle the spatial heterogeneity of contrast enhancement.",
+          "implementation_details": "The model is trained on a combined cohort of 134 patients with paired T1w and T1ce MRI, parcellated into 106 classes. The conditioning mechanism assembles spatial patterns from the image to drive the modulation, ensuring the network adapts to local contrast variations.",
+          "code_complexity": "The addition of SpFiLM layers increases computational overhead compared to standard UNet, but the paper notes it achieves the best performance even when controlling for network parameter counts, suggesting an efficient trade-off between complexity and accuracy."
         },
         "relevance_tags": [
-          "Tensor-Train Decomposition",
-          "GPU Optimization",
-          "Recommendation Systems",
-          "Embedding Lookup",
-          "Memory Hierarchy Optimization"
+          "Medical Image Segmentation",
+          "Brain Parcellation",
+          "Domain Adaptation",
+          "FiLM Conditioning",
+          "MRI Analysis"
         ],
         "confidence": "high"
       },
-      "analyzed_at": "2026-09-03T23:10:34.980851",
+      "analyzed_at": "2026-09-08T23:12:15.984498",
       "conference_info": {
-        "conference": "ICCAD",
+        "conference": "MICCAI",
         "year": "2026",
-        "comment": "9 pages, 9 figures, 3 tables. Accepted to IEEE/ACM International Conference on Computer-Aided Design (ICCAD 2026)",
-        "raw_comment": "9 pages, 9 figures, 3 tables. Accepted to IEEE/ACM International Conference on Computer-Aided Design (ICCAD 2026)",
-        "category": "Hardware & EDA",
+        "comment": "10 pages, 2 figures. Accepted at MLCN 2026 (MICCAI workshop)",
+        "raw_comment": "10 pages, 2 figures. Accepted at MLCN 2026 (MICCAI workshop)",
+        "category": "Medical & Biomedical AI",
         "rank": "A"
       }
     },
     {
       "paper": {
-        "title": "MakoXC: Rearchitecting DFT Exchange-Correlation with Matrix-Aligned and Knowledge-Organized Sparsity",
-        "arxiv_id": "2609.01025v2",
+        "title": "Latent-to-Latent Flow for Volumetric Stochastic Segmentation",
+        "arxiv_id": "2609.07460v1",
         "authors": [
-          "Haozhi Han",
-          "Fusong Ju",
-          "Jing Bai",
-          "Ruge Zhang",
-          "Xiang Zhao",
-          "Liang Yuan",
-          "Yunquan Zhang",
-          "Ting Cao",
-          "Liu Yunxin",
-          "Yifeng Chen",
-          "Kun Li"
+          "Omar Todd",
+          "Sooha Kim",
+          "Raghav Mehta",
+          "Katherine Mackay",
+          "David Bernstein",
+          "Alexandra Taylor",
+          "Fabio De Sousa Ribeiro",
+          "Ben Glocker"
         ],
-        "published": "2026-09-01T10:21:49Z",
-        "updated": "2026-09-03T05:03:25Z",
-        "summary": "Density Functional Theory (DFT) is indispensable for materials science and drug discovery, yet the exchange--correlation (XC) evaluation remains a major bottleneck due to its cubic scaling. Although linear-scaling methods exploit electronic nearsightedness to reduce asymptotic complexity, they produce irregular sparse workloads that hide implicit sparsity and prevent efficient use of modern AI accelerators. We present MakoXC, a modular matrix-aligned XC evaluation engine that rearchitects nearsightedness-induced sparsity into regular, accelerator-friendly computations. MakoXC co-designs three key techniques: (1) Matrix-Aligned Cells reorganize nearsightedness-induced interactions into dense, accelerator-aligned data clusters; (2) Sparsity-Guided Activation translates deeper implicit sparsity into numerically correct structured execution for practical linear scaling; and (3) Kernel-Fused Pipeline consolidates fragmented workloads into a unified, compute-intensive execution path that fully unleashes accelerator throughput. Extensive evaluations show that MakoXC achieves average speedups of 67.8$\\times$ speedup over standard XC evaluation and 4.7$\\times$ over state-of-the-art linear-scaling methods. When integrated into a production-grade commercial DFT package, MakoXC scales XC evaluation to ubiquitin (1,231 atoms, def2-SVP) on 64 GPUs, enabling the end-to-end DFT calculation to complete in under five minutes. By restructuring XC evaluation into a unified, structured computation, MakoXC demonstrates how scientific workloads can achieve genuine low complexity while maximizing parallel efficiency on AI accelerators.",
-        "categories": "cs.DC",
-        "comment": "Accepted in the International Conference for High Performance Computing, Networking, Storage, and Analysis (SC'26)"
+        "published": "2026-09-07T13:10:57Z",
+        "updated": "2026-09-07T13:10:57Z",
+        "summary": "Uncertainty arising from inter-observer variability in medical image segmentation plays an important role in developing treatment plans. Research in this area is inhibited by the lack of multiple annotations for large-scale medical datasets, especially for volumetric data, which suffers from additional scaling and computational complexity challenges. Flow matching has emerged as a powerful framework for generative modelling and has also been demonstrated to maintain strong performance when working with latent representations of images. In this work, we introduce a latent-to-latent flow technique for stochastic segmentation of medical volumes via encoded representations of both the image and label space. We evaluate our method on two challenging applications covering delineation uncertainty for radiotherapy planning and multiple organ structure segmentation, improving efficiency up to 14x compared with full resolution models while maintaining clinically relevant performance.",
+        "categories": "cs.CV",
+        "comment": "Accepted at MICCAI 2026"
       },
       "analysis": {
-        "problem_statement": "Standard linear-scaling Density Functional Theory (DFT) methods generate irregular sparse workloads that fail to efficiently utilize modern AI accelerators due to hidden implicit sparsity.",
-        "bottleneck_addressed": "Memory bandwidth and compute utilization inefficiencies caused by irregular sparse matrix operations on GPU/accelerator hardware.",
-        "executive_summary": "This paper addresses the critical gap between theoretical linear-scaling algorithms and practical hardware efficiency in scientific computing. By restructuring irregular sparse data into dense, accelerator-aligned clusters, it enables high-throughput execution of DFT calculations on AI accelerators, significantly reducing the time for large-scale molecular simulations.",
+        "problem_statement": "The paper addresses the high computational cost and data scarcity challenges associated with generating multiple stochastic segmentation annotations for volumetric medical images to quantify inter-observer uncertainty.",
+        "bottleneck_addressed": "Computational efficiency in high-dimensional volumetric data generation and the lack of multi-annotator ground truth data for uncertainty estimation.",
+        "executive_summary": "This work leverages latent space flow matching to generate stochastic segmentation maps for medical volumes, significantly reducing computational overhead compared to pixel-space methods. By operating on encoded representations, it enables efficient uncertainty quantification for radiotherapy planning and organ segmentation, which is critical for robust clinical decision-making where annotation data is scarce.",
         "key_metrics": {
-          "primary_metric": "Speedup over standard and linear-scaling baselines",
-          "metric_value": "67.8x (vs standard), 4.7x (vs SOTA linear-scaling)",
-          "baseline": "Standard XC evaluation and state-of-the-art linear-scaling methods",
-          "improvement_percentage": "6680% vs standard, 370% vs SOTA linear-scaling"
+          "primary_metric": "Computational efficiency improvement",
+          "metric_value": "14x",
+          "baseline": "Full resolution models",
+          "improvement_percentage": "1300%"
         },
         "technical_breakdown": {
-          "method": "MakoXC rearchitects exchange-correlation (XC) evaluation by co-designing data layout and execution strategies to transform irregular sparsity into regular, dense computations suitable for GPUs.",
-          "architecture": "Modular matrix-aligned XC evaluation engine featuring Matrix-Aligned Cells, Sparsity-Guided Activation, and a Kernel-Fused Pipeline.",
-          "implementation_details": "Uses Matrix-Aligned Cells to cluster interactions into dense blocks; Sparsity-Guided Activation ensures numerical correctness for linear scaling; Kernel-Fused Pipeline consolidates fragmented workloads into unified compute-intensive paths.",
-          "code_complexity": "Achieves practical linear scaling for XC evaluation, enabling end-to-end DFT calculations for 1,231 atoms on 64 GPUs in under five minutes."
+          "method": "Latent-to-Latent Flow Matching",
+          "architecture": "Encoder-decoder framework operating in latent space for both image and label domains, utilizing flow matching for generative modeling.",
+          "implementation_details": "The method encodes input medical volumes and target labels into latent representations, then applies a flow matching model to learn the vector field that transports noise to the latent label distribution, allowing for stochastic sampling of segmentation maps.",
+          "code_complexity": "Reduces computational complexity by operating in a lower-dimensional latent space rather than full volumetric resolution, achieving up to 14x efficiency gains."
         },
         "relevance_tags": [
-          "HPC",
-          "Density Functional Theory",
-          "GPU Acceleration",
-          "Sparse Matrix Optimization",
-          "Scientific Computing"
+          "Medical Image Segmentation",
+          "Flow Matching",
+          "Uncertainty Quantification",
+          "Latent Space Modeling",
+          "Volumetric Data"
         ],
         "confidence": "high"
       },
-      "analyzed_at": "2026-09-03T23:10:37.062915",
+      "analyzed_at": "2026-09-08T23:13:20.481979",
       "conference_info": {
-        "conference": "International Conference for High Performance Computing",
+        "conference": "MICCAI",
         "year": "2026",
-        "comment": "Accepted in the International Conference for High Performance Computing, Networking, Storage, and Analysis (SC'26)",
-        "raw_comment": "Accepted in the International Conference for High Performance Computing, Networking, Storage, and Analysis (SC'26)",
-        "category": "Systems & Architecture",
-        "rank": ""
+        "comment": "Accepted at MICCAI 2026",
+        "raw_comment": "Accepted at MICCAI 2026",
+        "category": "Medical & Biomedical AI",
+        "rank": "A"
+      }
+    },
+    {
+      "paper": {
+        "title": "The Art of Hierarchical Competing Patterns: Gaussian Process Optimization of Hyphenation",
+        "arxiv_id": "2609.07638v1",
+        "authors": [
+          "Ond\u0159ej Sojka",
+          "Petr Sojka"
+        ],
+        "published": "2026-09-07T15:31:17Z",
+        "updated": "2026-09-07T15:31:17Z",
+        "summary": "Hyphenation patterns remain a compact and widely deployed solution for word breaking in typesetting systems, text processors, and web rendering engines, but their generation still depends on manually tuned patgen program parameter profiles. We formulate patgen profile selection as a black-box hyperparameter optimization problem and evaluate Gaussian-process Bayesian optimization for this task. The search objective combines a precision-oriented F_{1/7}-score with an explicit trie size-accuracy trade-off using a normalized trie-size penalty.   We evaluate the method on 17 hyphenated word-list datasets covering 14 languages and multiple scripts. Against two strong hand-tuned profiles regenerated from the same 8/10 training split and evaluated on the same 1/10 held-out test split, the GP-optimized profiles improve F_{1/7} on 16 of 17 datasets and reduce trie size on all 17. The median optimized/baseline trie ratio is 0.407. A dataset-level sign test gives p = 1.37e-4; a separate budget-matched comparison on five representative datasets shows that systematic search is competitive and usually improves over the best hand-tuned profile under the fixed comparison objective. The results show that model-based optimization can make pattern generation more reproducible and less dependent on expert trial-and-error while keeping the accuracy-compactness trade-off explicit.",
+        "categories": "cs.CL",
+        "comment": "17 pages, 10 figures, 9 tables. Accepted at EMNLP 2026 (Findings). Code and data: https://github.com/ondrejsojka/pat-gen-opt"
+      },
+      "analysis": {
+        "problem_statement": "The paper addresses the lack of reproducibility and reliance on manual expert tuning in the generation of hyphenation patterns by formulating the selection of patgen program parameters as a black-box hyperparameter optimization problem.",
+        "bottleneck_addressed": "This addresses the bottleneck of manual, non-reproducible heuristic tuning in specialized NLP preprocessing tasks, specifically replacing expert trial-and-error with systematic, model-based optimization.",
+        "executive_summary": "This work demonstrates that Gaussian Process Bayesian Optimization can systematically outperform hand-tuned configurations for hyphenation pattern generation, a critical component in typesetting and text rendering. By explicitly optimizing for both accuracy (F_{1/7}) and compactness (trie size), the method offers a reproducible alternative to traditional manual profiling, reducing dependency on domain-specific expert intuition.",
+        "key_metrics": {
+          "primary_metric": "Improvement in F_{1/7} score and reduction in trie size across 17 datasets",
+          "metric_value": "Median optimized/baseline trie ratio of 0.407; F_{1/7} improved on 16/17 datasets",
+          "baseline": "Two strong hand-tuned patgen profiles regenerated from the same training split",
+          "improvement_percentage": "Approximately 59.3% reduction in median trie size (1 - 0.407)"
+        },
+        "technical_breakdown": {
+          "method": "Gaussian Process (GP) Bayesian Optimization is used to search the hyperparameter space of the patgen program, treating the selection of parameter profiles as a black-box optimization task.",
+          "architecture": "The system consists of a black-box objective function that combines a precision-oriented F_{1/7} score with a normalized trie-size penalty, optimized via GP surrogate models.",
+          "implementation_details": "The search objective explicitly balances accuracy and compactness using a normalized trie-size penalty. The method is evaluated on 17 hyphenated word-list datasets covering 14 languages and multiple scripts using an 8/10 training and 1/10 held-out test split.",
+          "code_complexity": "The computational cost is dominated by the evaluation of the patgen program and the calculation of the objective function during the Bayesian optimization loop, which is generally lower than training deep learning models but higher than single-shot manual tuning."
+        },
+        "relevance_tags": [
+          "Bayesian Optimization",
+          "NLP Preprocessing",
+          "Hyperparameter Tuning",
+          "Typesetting",
+          "Gaussian Processes"
+        ],
+        "confidence": "high"
+      },
+      "analyzed_at": "2026-09-08T23:12:47.463231",
+      "conference_info": {
+        "conference": "EMNLP",
+        "year": "2026",
+        "comment": "17 pages, 10 figures, 9 tables. Accepted at EMNLP 2026 (Findings). Code and data: https://github.com/ondrejsojka/pat-gen-opt",
+        "raw_comment": "17 pages, 10 figures, 9 tables. Accepted at EMNLP 2026 (Findings). Code and data: https://github.com/ondrejsojka/pat-gen-opt",
+        "category": "Natural Language Processing",
+        "rank": "A"
+      }
+    },
+    {
+      "paper": {
+        "title": "Parallelism Strategy Chaining for Fast Training Convergence",
+        "arxiv_id": "2609.07236v1",
+        "authors": [
+          "Minchul Kang",
+          "Changyong Shin",
+          "Younghun Go",
+          "Hyunho Lee",
+          "Jinwoo Jeong",
+          "Chuck Yoo",
+          "Gyeongsik Yang"
+        ],
+        "published": "2026-09-07T08:55:14Z",
+        "updated": "2026-09-07T08:55:14Z",
+        "summary": "Selecting a parallelism strategy - the configuration of data, tensor, and pipeline parallelism degrees together with micro- and global-batch sizes - largely determines the training efficiency of large language models. State-of-the-art methods search for a parallelism strategy offline and select the single strategy that minimizes per-iteration time. But we find that they neglect the target validation perplexity and time-to-perplexity (TTP). In particular, our analysis reveals that the best strategy yielding the fastest perplexity improvement changes multiple times during training. As a result, state-of-the-art methods are 1.8-11.4x slower in TTP than the strategy sequence that selects the best strategy at each iteration. This paper proposes CONA, a new training method that introduces online strategy chaining. Instead of a single strategy selected offline, CONA ranks candidate strategies during training using a surrogate metric built from compute throughput and gradient statistics, and switches the current strategy to a new strategy with a higher metric. In our evaluation with GPT-3 1.3B, BERT-Large, and Llama-3.2-1B, CONA reaches the target validation perplexity 1.4-9.6x faster than state-of-the-art methods. Moreover, CONA closely tracks the perplexity achieved by the sequence that selects the best strategy at each iteration, within 2.6%.",
+        "categories": "cs.LG",
+        "comment": "Accepted to EMNLP 2026 Main Conference"
+      },
+      "analysis": {
+        "problem_statement": "Existing methods for selecting LLM training parallelism strategies optimize for per-iteration speed offline, neglecting the dynamic nature of time-to-perplexity (TTP) which requires changing strategies during training.",
+        "bottleneck_addressed": "Training efficiency and time-to-target-perplexity (TTP) for large language models.",
+        "executive_summary": "This paper addresses the inefficiency of static parallelism strategies in LLM training by demonstrating that the optimal configuration for perplexity improvement changes over time. By introducing online strategy switching, the method significantly reduces the time required to reach target validation perplexity compared to state-of-the-art offline search methods.",
+        "key_metrics": {
+          "primary_metric": "Time-to-Perplexity (TTP) reduction",
+          "metric_value": "1.4-9.6x faster",
+          "baseline": "State-of-the-art offline parallelism strategy selection methods",
+          "improvement_percentage": "28.6% to 896% reduction in time-to-perplexity"
+        },
+        "technical_breakdown": {
+          "method": "CONA uses online strategy chaining, ranking candidate parallelism strategies during training via a surrogate metric and switching to the strategy with the highest metric value.",
+          "architecture": "A dynamic training loop that monitors compute throughput and gradient statistics to evaluate and switch between different configurations of data, tensor, and pipeline parallelism degrees.",
+          "implementation_details": "The surrogate metric is constructed from compute throughput and gradient statistics to predict perplexity improvement without requiring full validation steps for every candidate strategy.",
+          "code_complexity": "Requires runtime monitoring and strategy switching logic; computational overhead is minimal compared to the training time saved, as it tracks the optimal strategy sequence within 2.6%."
+        },
+        "relevance_tags": [
+          "LLM Training",
+          "Parallelism Optimization",
+          "Distributed Computing",
+          "Efficiency"
+        ],
+        "confidence": "high"
+      },
+      "analyzed_at": "2026-09-08T23:16:44.726634",
+      "conference_info": {
+        "conference": "EMNLP",
+        "year": "2026",
+        "comment": "Accepted to EMNLP 2026 Main Conference",
+        "raw_comment": "Accepted to EMNLP 2026 Main Conference",
+        "category": "Natural Language Processing",
+        "rank": "A"
+      }
+    },
+    {
+      "paper": {
+        "title": "CircuitLens: Reasoning Circuits as Data Selection Signals for Reinforcement Learning with Verifiable Rewards",
+        "arxiv_id": "2609.07183v1",
+        "authors": [
+          "Zhuofan Chen",
+          "Ziqian Jiao",
+          "Yikai Cui",
+          "Zhixin Cai",
+          "Jun Bai",
+          "Wenge Rong"
+        ],
+        "published": "2026-09-07T08:14:26Z",
+        "updated": "2026-09-07T08:14:26Z",
+        "summary": "Reinforcement learning with verifiable rewards (RLVR) is sensitive to which problems a model trains on, yet existing selection criteria--difficulty filtering, hand-curation, reward-trajectory scoring--assess data value as an intrinsic property of problems, independent of the model that will learn from them. We introduce Circuit Reasoning Score (CRS), a selection signal derived from 46 reasoning-sensitive attention heads identified via contrastive ablation, computed in a single forward pass on the frozen base model without reward labels or rollouts. CRS runs against the intuitive hypothesis that stronger reasoning-circuit engagement produces better training data: on Qwen2.5-Math-7B, the lowest-engagement decile improves over random selection on three medium-difficulty benchmarks (GSM8K +2.0 pp, OlympiadBench +1.6 pp, Minerva +2.9 pp), while the highest-engagement decile gains less and is indistinguishable from the middle decile. The advantage has boundary conditions: on a domain-curated pool no selection method separates from the others; at 1.5B scale the useful direction differs; and the lowest-reward training condition produces the strongest downstream generalization. Within the Qwen2.5-Math settings tested, RLVR data selection appears regime-dependent rather than reducible to a static ranking of problem quality.",
+        "categories": "cs.CL",
+        "comment": "Accepted at EMNLP 2026 Findings. Long paper. 9 pages + references + appendix"
+      },
+      "analysis": {
+        "problem_statement": "The paper addresses the lack of model-aware criteria for selecting training data in Reinforcement Learning with Verifiable Rewards (RLVR), where existing methods treat data quality as an intrinsic property rather than a function of the specific model's reasoning capabilities.",
+        "bottleneck_addressed": "Data efficiency and selection bias in post-training reinforcement learning, specifically the inability of static difficulty filters to predict which problems will yield the most effective learning signal for a given model.",
+        "executive_summary": "This work challenges the standard assumption that harder or more heavily engaged reasoning circuits yield better RLVR training data by introducing the Circuit Reasoning Score (CRS). It demonstrates that counter-intuitively, problems with low engagement of specific reasoning-sensitive attention heads can lead to superior downstream performance compared to random selection or high-engagement data. This suggests that RLVR data selection is regime-dependent and requires dynamic, model-specific signals rather than static problem quality rankings.",
+        "key_metrics": {
+          "primary_metric": "Improvement in benchmark accuracy over random selection using the lowest-engagement decile of data",
+          "metric_value": "+2.9 pp on Minerva, +2.0 pp on GSM8K, +1.6 pp on OlympiadBench",
+          "baseline": "Random selection of training data",
+          "improvement_percentage": "2.0-2.9 percentage points absolute improvement"
+        },
+        "technical_breakdown": {
+          "method": "The method uses contrastive ablation to identify 46 reasoning-sensitive attention heads in a frozen base model. It then computes a Circuit Reasoning Score (CRS) based on the engagement of these heads during a single forward pass, using this score to rank and select training data for RLVR.",
+          "architecture": "Leverages the attention mechanism of the base LLM (specifically Qwen2.5-Math-7B) without modifying the model weights; relies on a frozen inference pass to generate selection signals.",
+          "implementation_details": "Identifies 46 specific attention heads via contrastive ablation; computes CRS in a single forward pass without requiring reward labels or rollouts; selects data based on deciles of CRS (notably finding the lowest-engagement decile to be optimal in certain settings).",
+          "code_complexity": "Low computational overhead for selection as it requires only a single forward pass on the frozen model, avoiding the cost of rollouts or reward model inference during the selection phase."
+        },
+        "relevance_tags": [
+          "Reinforcement Learning",
+          "Data Selection",
+          "Interpretability",
+          "LLM Post-Training",
+          "Attention Mechanisms"
+        ],
+        "confidence": "high"
+      },
+      "analyzed_at": "2026-09-08T23:22:48.304398",
+      "conference_info": {
+        "conference": "EMNLP",
+        "year": "2026",
+        "comment": "Accepted at EMNLP 2026 Findings. Long paper. 9 pages + references + appendix",
+        "raw_comment": "Accepted at EMNLP 2026 Findings. Long paper. 9 pages + references + appendix",
+        "category": "Natural Language Processing",
+        "rank": "A"
+      }
+    },
+    {
+      "paper": {
+        "title": "Contextual Observer Grounding: Evaluating Situated Spatial Reasoning in Vision-Language Models",
+        "arxiv_id": "2609.06880v1",
+        "authors": [
+          "Mimo Shirasaka",
+          "Haochen Zhang",
+          "Yonatan Bisk"
+        ],
+        "published": "2026-09-07T00:00:13Z",
+        "updated": "2026-09-07T00:00:13Z",
+        "summary": "Reasoning over language instructions in embodied tasks such as robotics often requires understanding spatial relations from a speaker's situated perspective. Humans infer such perspectives from shared environmental knowledge, activity context, and commonsense. Recent vision-language models (VLMs) appear capable of spatial reasoning, but their ability to infer a speaker's viewpoint from contextual cues and interpret situated spatial relations from that viewpoint remains unclear. We call this capability contextual observer grounding. To study this capability, we construct the Point-of-View Benchmark (POVBench), a dataset of 3D scenes and queries that disentangles Inferred, Stated, and Given forms of observer grounding in natural embodied communication. Given multi-view observations and a natural-language sentence, models must localize unseen or underspecified targets from situated spatial and contextual cues. Across state-of-the-art VLMs, localizing targets from directional language remains challenging, even when observer grounding is made explicit. We find that explicit breakdowns of observer-relative spatial reasoning improve target localization. Our project page is available at https://mimo-owl.github.io/POVBench/.",
+        "categories": "cs.CV",
+        "comment": "Accepted to EMNLP 2026 Findings"
+      },
+      "analysis": {
+        "problem_statement": "The paper addresses the inability of current Vision-Language Models (VLMs) to accurately localize targets in 3D scenes by inferring a speaker's situated perspective and interpreting spatial relations from that specific viewpoint.",
+        "bottleneck_addressed": "Contextual spatial reasoning and viewpoint inference in embodied AI.",
+        "executive_summary": "This work identifies a critical gap in VLMs' ability to perform 'contextual observer grounding,' where models must infer a human's perspective from environmental cues rather than just following explicit instructions. By introducing POVBench, the study demonstrates that even state-of-the-art models struggle with directional language localization, highlighting a significant barrier to deploying VLMs in robotics and embodied tasks.",
+        "key_metrics": {
+          "primary_metric": "Target localization accuracy from situated spatial cues",
+          "metric_value": "Not specified in abstract",
+          "baseline": "State-of-the-art Vision-Language Models (VLMs)",
+          "improvement_percentage": "Not specified in abstract"
+        },
+        "technical_breakdown": {
+          "method": "Construction of POVBench, a dataset of 3D scenes and queries that disentangles Inferred, Stated, and Given forms of observer grounding, requiring models to localize targets from multi-view observations and natural language sentences.",
+          "architecture": "Evaluation framework utilizing multi-view 3D scene representations and natural language processing for spatial query resolution.",
+          "implementation_details": "Disentangles observer grounding into Inferred, Stated, and Given forms; utilizes explicit breakdowns of observer-relative spatial reasoning to improve localization.",
+          "code_complexity": "Not specified in abstract"
+        },
+        "relevance_tags": [
+          "Vision-Language Models",
+          "Spatial Reasoning",
+          "Embodied AI",
+          "Benchmarking",
+          "Robotics"
+        ],
+        "confidence": "high"
+      },
+      "analyzed_at": "2026-09-08T23:27:50.729727",
+      "conference_info": {
+        "conference": "EMNLP",
+        "year": "2026",
+        "comment": "Accepted to EMNLP 2026 Findings",
+        "raw_comment": "Accepted to EMNLP 2026 Findings",
+        "category": "Natural Language Processing",
+        "rank": "A"
       }
     }
   ],
@@ -185,14 +535,14 @@
     "Blockchain & Cryptography",
     "Other"
   ],
-  "filter_date": "2026-09-03",
+  "filter_date": "2026-09-07",
   "metrics": {
     "dashboard": {
       "previous_date": "unknown",
       "previous_count": 0,
-      "current_date": "2026-09-03",
-      "current_count": 3,
-      "day_change": 3,
+      "current_date": "2026-09-07",
+      "current_count": 10,
+      "day_change": 10,
       "trend": "\ud83d\udcc8 UP"
     }
   },
