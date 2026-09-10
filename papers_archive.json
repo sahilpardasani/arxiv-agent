@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-09-08T23:27:51.915739",
+  "last_updated": "2026-09-09T23:08:59.040600",
   "dates": {
     "2026-09-03": {
       "count": 74,
@@ -4374,6 +4374,172 @@
         }
       ],
       "updated_at": "2026-09-08T23:27:51.915735"
+    },
+    "2026-09-09": {
+      "count": 3,
+      "papers": [
+        {
+          "paper": {
+            "title": "Assembling Two Parts in One Hand",
+            "arxiv_id": "2609.10137v1",
+            "authors": [
+              "Liuao Pei",
+              "Tianyue Wu",
+              "Hui Zhang",
+              "Ping Luo",
+              "Jie Song"
+            ],
+            "published": "2026-09-09T13:17:34Z",
+            "updated": "2026-09-09T13:17:34Z",
+            "summary": "A hallmark of human dexterity is the cooperative use of fingers, where different fingers take on distinct yet coordinated roles to accomplish fine manipu- lation, such as capping a pen with the hand that holds it. We study this finger-level coordination through in-hand assembly: mating two rigid objects within a single dexterous hand, with no second arm and no fixture. We present a reinforcement learning formulation to solve this problem in a unified framework, which is driven by a goal relative pose between the two parts. Finger coordination is shaped by a function-based auxiliary reward and regularized toward a single human reference pose, while domain randomization and a fusion of historical proprioception and object observation confer robustness to occlusion-induced estimation noise. The same recipe solves three different assembly tasks (Bottle, Syringe, and Marker). Trained purely in simulation, the policies transfer zero-shot to hardware with a single camera, demonstrating robustness to state-estimation errors caused by oc- clusion. Our experiments also reveal that in-hand assembly places demands on hand morphology and can serve as a benchmark for modern robotic hand systems. Videos and code are available at https://ltbgbird.github.io/in-hand-assembly-page/.",
+            "categories": "cs.RO",
+            "comment": "To appear on Conference on Robot Learning (CoRL) 2026. Project website: https://ltbgbird.github.io/in-hand-assembly-page/"
+          },
+          "analysis": {
+            "problem_statement": "The paper addresses the challenge of achieving cooperative finger-level coordination to assemble two rigid objects within a single dexterous hand without external fixtures or a second arm.",
+            "bottleneck_addressed": "Sim-to-real transfer gap in dexterous manipulation, specifically regarding robustness to state-estimation errors caused by occlusion and the lack of unified frameworks for multi-finger coordination.",
+            "executive_summary": "This work demonstrates that complex in-hand assembly tasks can be solved using a unified reinforcement learning framework that relies on goal-relative poses and function-based rewards. By fusing historical proprioception with object observations, the method achieves zero-shot transfer from simulation to hardware, highlighting the potential of RL for fine-grained dexterous manipulation.",
+            "key_metrics": {
+              "primary_metric": "Zero-shot sim-to-real transfer success across three assembly tasks (Bottle, Syringe, Marker)",
+              "metric_value": "Not explicitly quantified in summary",
+              "baseline": "Simulation-trained policies without specific robustness mechanisms for occlusion",
+              "improvement_percentage": "Not provided"
+            },
+            "technical_breakdown": {
+              "method": "Reinforcement learning formulation driven by a goal relative pose between two parts, utilizing a function-based auxiliary reward to shape finger coordination and regularizing toward a human reference pose.",
+              "architecture": "Unified RL framework incorporating domain randomization and a fusion module for historical proprioception and object observation.",
+              "implementation_details": "Uses a single camera for state estimation on hardware; applies domain randomization to handle occlusion-induced noise; trained purely in simulation.",
+              "code_complexity": "Not specified, but implies standard RL training pipelines with simulation-to-real deployment overhead."
+            },
+            "relevance_tags": [
+              "Dexterous Manipulation",
+              "Reinforcement Learning",
+              "Sim-to-Real Transfer",
+              "Robot Learning"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-09-09T23:07:34.764902",
+          "conference_info": {
+            "conference": "Conference on Robot Learning",
+            "year": "2026",
+            "comment": "To appear on Conference on Robot Learning (CoRL) 2026. Project website: https://ltbgbird.github.io/in-hand-assembly-page/",
+            "raw_comment": "To appear on Conference on Robot Learning (CoRL) 2026. Project website: https://ltbgbird.github.io/in-hand-assembly-page/",
+            "category": "Robotics",
+            "rank": ""
+          }
+        },
+        {
+          "paper": {
+            "title": "Monkey See, Can Monkey Do? A Benchmark for Evaluating Robot Skill Learning by Observation",
+            "arxiv_id": "2609.08209v2",
+            "authors": [
+              "Weiwei Gu",
+              "Anmol Gupta",
+              "Anant Sah",
+              "Ryan Varghese",
+              "Lalitha Shreya Vanam",
+              "Prabhath Adireddi",
+              "Peter Karkus",
+              "Nakul Gopalan"
+            ],
+            "published": "2026-09-08T03:48:44Z",
+            "updated": "2026-09-09T03:55:01Z",
+            "summary": "Learning from Observation (LfO) is a fundamental robotic capability that replicates how humans and animals socially learn from each other. Beyond its biological parallels, this modality provides a practical solution for data scaling in sample-inefficient and data-starved domains like robotics. Recent work has demonstrated promising results in learning manipulation skills from human videos, yet progress in this area remains difficult to assess. Existing methods vary widely in assumptions, hardware choices, and environment setups making it difficult to draw meaningful comparisons and identify advances in the field. To address these challenges, we introduce RoboReel: a unified benchmark for evaluating models that learn policies from human videos. RoboReel consists of bundled real-world human demonstration videos, simulated robot trajectories, and evaluation environments on ten manipulation tasks. We develop four test suites to evaluate the models' performance on multiple axes, including the robustness to visual distractors and the ability to complete long-horizon tasks. Our benchmark covers learning-from-observation models from different categories, and studies the effectiveness of multiple representation choices in our benchmark evaluation that covers over seven state-of-the-art algorithms (including our VLA based variants) in the field of LfO. Finally, we present an analysis of the different types of algorithms showing that long-horizon tasks and tasks with low tolerances are still challenging for current models. Webpage: https://roboreel.github.io",
+            "categories": "cs.RO",
+            "comment": "31 pages, 8 tables, 11 figures. In Proceedings of CoRL 2026"
+          },
+          "analysis": {
+            "problem_statement": "The lack of a standardized, unified benchmark makes it difficult to compare and assess the progress of Learning from Observation (LfO) models in robotics due to varying assumptions, hardware, and environment setups.",
+            "bottleneck_addressed": "Evaluation standardization and data scaling in sample-inefficient, data-starved robotic domains.",
+            "executive_summary": "This paper introduces RoboReel, a unified benchmark that standardizes the evaluation of robot skill learning from human videos by providing consistent datasets and evaluation environments. It addresses the fragmentation in the LfO field, enabling meaningful comparisons across diverse algorithms and highlighting persistent challenges in long-horizon and low-tolerance tasks.",
+            "key_metrics": {
+              "primary_metric": "Comparative performance analysis of over seven state-of-the-art LfO algorithms across four test suites.",
+              "metric_value": "N/A (Benchmark paper; no single primary improvement metric)",
+              "baseline": "Seven state-of-the-art algorithms including VLA-based variants.",
+              "improvement_percentage": "N/A"
+            },
+            "technical_breakdown": {
+              "method": "A unified benchmark framework comprising bundled real-world human demonstration videos, simulated robot trajectories, and evaluation environments for ten manipulation tasks.",
+              "architecture": "Four distinct test suites designed to evaluate model performance on multiple axes, including robustness to visual distractors and long-horizon task completion.",
+              "implementation_details": "Covers learning-from-observation models from different categories and analyzes the effectiveness of multiple representation choices.",
+              "code_complexity": "N/A (Focus is on benchmark infrastructure and evaluation rather than a novel training algorithm)."
+            },
+            "relevance_tags": [
+              "Robotics",
+              "Learning from Observation",
+              "Benchmarking",
+              "Manipulation",
+              "Vision-Language-Action"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-09-09T23:07:55.774945",
+          "conference_info": {
+            "conference": "CoRL",
+            "year": "2026",
+            "comment": "31 pages, 8 tables, 11 figures. In Proceedings of CoRL 2026",
+            "raw_comment": "31 pages, 8 tables, 11 figures. In Proceedings of CoRL 2026",
+            "category": "Robotics",
+            "rank": ""
+          }
+        },
+        {
+          "paper": {
+            "title": "Breaking Fault Lines: Unifying TEE-Assisted BFT Consensus in Partially Trusted Worlds",
+            "arxiv_id": "2609.09742v1",
+            "authors": [
+              "Xiaoqing Wen",
+              "Tong Liu",
+              "Jianyu Niu",
+              "Jialin Li",
+              "Cong Wang",
+              "Yinqian Zhang",
+              "Chen Feng"
+            ],
+            "published": "2026-09-09T05:33:57Z",
+            "updated": "2026-09-09T05:33:57Z",
+            "summary": "This paper revisits TEE-assisted BFT under a universal partial-TEE model, where an arbitrary subset of replicas execute inside TEEs while the remaining replicas operate without hardware trust guarantees. We show that heterogeneous trust changes the structure of quorum formation and fault tolerance. In particular, we derive a tight resilience bound f < max {n/3, m/2}, where n is the total number of replicas and m is the number of TEE-enabled replicas. The result reveals a sharp threshold phenomenon: TEEs improve fault tolerance only once they exceed two-thirds of the deployment.   Guided by this characterization, we introduce two protocol principles: (1) a dual-quorum construction that safely combines TEE-only and mixed quorums, and (2) a TEE-leader fast path that leverages hardware-enforced non-equivocation to reduce both consensus and view-change latency. We realize these ideas in Raftel, which is, to our knowledge, the first HotStuff-style BFT protocol designed explicitly for arbitrary partial-TEE deployments, and in chained-Raftel, a pipelined variant that further accelerates mixed-trust execution. We implement both protocols atop Intel SGX and evaluate them in LAN and WAN environments. Our results show that Raftel achieves up to 625 TPS with sub-670 ms latency in WAN settings, outperforming HotStuff by up to 308 TPS in throughput while approaching the performance of fully TEE-assisted protocols.",
+            "categories": "cs.DC",
+            "comment": "Accepted to EuroSys 2027"
+          },
+          "analysis": {
+            "problem_statement": "The paper addresses the lack of a unified theoretical framework and efficient protocol design for Byzantine Fault Tolerance (BFT) consensus in heterogeneous environments where only an arbitrary subset of replicas are protected by Trusted Execution Environments (TEEs).",
+            "bottleneck_addressed": "This is not an AI bottleneck; it addresses a distributed systems and cryptographic security bottleneck regarding fault tolerance in mixed-trust infrastructure.",
+            "executive_summary": "This work provides a rigorous resilience bound for BFT systems with partial TEE adoption, revealing that TEEs only improve fault tolerance when they constitute more than two-thirds of the deployment. It introduces Raftel, a protocol that optimizes consensus latency and throughput in these partially trusted settings, which is relevant for securing decentralized infrastructure but has no direct impact on AI model training or inference performance.",
+            "key_metrics": {
+              "primary_metric": "Throughput improvement over HotStuff in WAN settings",
+              "metric_value": "625 TPS (Raftel) vs ~317 TPS (HotStuff)",
+              "baseline": "HotStuff",
+              "improvement_percentage": "Approximately 97% (derived from 'up to 308 TPS' improvement over baseline)"
+            },
+            "technical_breakdown": {
+              "method": "Derives a tight resilience bound f < max {n/3, m/2} for partial-TEE models and implements a dual-quorum construction that combines TEE-only and mixed quorums, alongside a TEE-leader fast path to reduce latency.",
+              "architecture": "Raftel (HotStuff-style BFT protocol) and chained-Raftel (pipelined variant), implemented atop Intel SGX.",
+              "implementation_details": "Utilizes hardware-enforced non-equivocation from TEEs to optimize view-change latency and consensus rounds; evaluated in LAN and WAN environments.",
+              "code_complexity": "Not specified in metadata; focuses on protocol-level latency (sub-670 ms) and throughput (625 TPS) rather than computational complexity of AI models."
+            },
+            "relevance_tags": [
+              "Distributed Systems",
+              "Byzantine Fault Tolerance",
+              "Trusted Execution Environments",
+              "Cryptography",
+              "Consensus Protocols"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-09-09T23:08:58.030964",
+          "conference_info": {
+            "conference": "EuroSys",
+            "year": "2027",
+            "comment": "Accepted to EuroSys 2027",
+            "raw_comment": "Accepted to EuroSys 2027",
+            "category": "Systems & Architecture",
+            "rank": "A"
+          }
+        }
+      ],
+      "updated_at": "2026-09-09T23:08:59.040595"
     }
   }
 }
