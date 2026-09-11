@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-09-09T23:08:59.040600",
+  "last_updated": "2026-09-10T23:11:25.229548",
   "dates": {
     "2026-09-03": {
       "count": 74,
@@ -4540,6 +4540,127 @@
         }
       ],
       "updated_at": "2026-09-09T23:08:59.040595"
+    },
+    "2026-09-10": {
+      "count": 2,
+      "papers": [
+        {
+          "paper": {
+            "title": "Caption-once, Frames-on-Demand: Visual-Need Routing for Budget-Aware Agentic Long Video Understanding",
+            "arxiv_id": "2609.11899v1",
+            "authors": [
+              "Weitong Cai",
+              "Hang Zhang",
+              "Yukai Huang",
+              "Yiqiao Xie",
+              "Shan Gao",
+              "Jiankang Deng",
+              "Songcen Xu",
+              "Jifei Song",
+              "Zhensong Zhang"
+            ],
+            "published": "2026-09-10T17:53:59Z",
+            "updated": "2026-09-10T17:53:59Z",
+            "summary": "Long-video understanding on edge devices must reason over hours of content under tight compute and bandwidth budgets. Subsampling visual tokens loses temporal structure, while text-only video memories lose fine-grained visual attributes. We observe a visual-textual duality: language memories carry long-range temporal structure better than dense frames, while pixels remain decisive for attribute-level perception. Building on this insight, we propose Caption-once, Frames-onDemand (CFD), a budget-aware edge-cloud agentic framework. The edge runs a single offline captioning pass that builds a dual-track narrative index, an event-level story skeleton plus a clip-level micro-log, cached and reused across queries without re-captioning. At query time, a cloud-side MLLM reasons over the index in a story-first loop centered on a lightweight Visual-Need Router: a per-query gating module that triggers bounded keyframe retrieval only for perceptual questions (appearance, on-screen text, attribute disambiguation) and keeps temporal-structural questions in language space. The router turns visual access into a first-class, query-conditioned cost, capping per-query frame consumption regardless of video length. Experiments on long-video benchmarks demonstrate strong accuracy-efficiency trade-offs while substantially reducing online visual processing.",
+            "categories": "cs.CV",
+            "comment": "EMNLP 2026 Main Conference"
+          },
+          "analysis": {
+            "problem_statement": "The paper addresses the high computational and bandwidth costs of processing long-form video on edge devices, where existing methods either lose temporal structure through subsampling or lack fine-grained visual detail in text-only memories.",
+            "bottleneck_addressed": "Computational efficiency and bandwidth constraints for long-context video understanding on resource-constrained edge devices.",
+            "executive_summary": "This work introduces a budget-aware edge-cloud framework that decouples temporal reasoning from visual perception, allowing edge devices to cache a static narrative index while the cloud selectively retrieves frames only when necessary. By treating visual access as a query-conditioned cost rather than a fixed overhead, it enables efficient long-video understanding without re-processing raw video data for every query.",
+            "key_metrics": {
+              "primary_metric": "Accuracy-efficiency trade-off in long-video understanding",
+              "metric_value": "Not specified in abstract",
+              "baseline": "Standard subsampling and text-only video memory methods",
+              "improvement_percentage": "Not specified in abstract"
+            },
+            "technical_breakdown": {
+              "method": "The system uses a 'Caption-once, Frames-on-Demand' approach where an edge device performs a single offline captioning pass to create a dual-track index (event-level story skeleton and clip-level micro-log). At query time, a cloud-side MLLM uses a Visual-Need Router to determine if the query requires visual details; if so, it triggers bounded keyframe retrieval, otherwise it relies solely on the language index.",
+              "architecture": "Edge-cloud agentic framework comprising an edge-side offline captioning module, a cached dual-track narrative index, a cloud-side MLLM for reasoning, and a lightweight Visual-Need Router for gating visual retrieval.",
+              "implementation_details": "Dual-track narrative index (event-level story skeleton + clip-level micro-log), per-query gating module (Visual-Need Router) that distinguishes between perceptual questions (requiring frames) and temporal-structural questions (handled in language space), and bounded keyframe retrieval.",
+              "code_complexity": "Reduces online visual processing by capping per-query frame consumption regardless of video length; shifts heavy lifting to a single offline captioning pass and cloud-side reasoning."
+            },
+            "relevance_tags": [
+              "Long Video Understanding",
+              "Edge-Cloud Computing",
+              "Multimodal LLMs",
+              "Efficient Inference",
+              "Agentic AI"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-09-10T23:11:22.201400",
+          "conference_info": {
+            "conference": "EMNLP",
+            "year": "2026",
+            "comment": "EMNLP 2026 Main Conference",
+            "raw_comment": "EMNLP 2026 Main Conference",
+            "category": "Natural Language Processing",
+            "rank": "A"
+          }
+        },
+        {
+          "paper": {
+            "title": "OmegaUse-SOP: SOP Engineering for Professional Computer Use from Human Demonstrations",
+            "arxiv_id": "2609.02149v3",
+            "authors": [
+              "Yixiong Xiao",
+              "Lang An",
+              "Hucheng Yang",
+              "Pinxue Ma",
+              "Yongquan Chen",
+              "Jingjia Cao",
+              "Yusai Zhao",
+              "Ting Wang",
+              "Ting Liu",
+              "Siqi Bao",
+              "Jingbo Zhou",
+              "Hua Wu"
+            ],
+            "published": "2026-09-02T06:03:18Z",
+            "updated": "2026-09-10T15:52:42Z",
+            "summary": "Large language models (LLMs) are increasingly evolving from conversational assistants into agents capable of operating external digital environments. Graphical user interface (GUI) agents play an important role in this transition, as many real-world workflows remain accessible only through user-facing software interfaces. However, despite recent progress on general computer-use benchmarks, domain-specific professional standard operating procedures (SOPs) remain challenging for GUI agents because they often involve implicit domain knowledge, software-specific conventions, and task-level verification requirements. We introduce OmegaUse-SOP, a human-in-the-loop SOP Engineering system for transforming human demonstrations of professional computer use into reusable SOP skills for GUI agents. Analogous to prompt engineering, SOP Engineering iteratively refines demonstrations, execution rules, and domain knowledge to convert professional SOPs into reusable GUI-agent skills. OmegaUse-SOP consists of four modules: Observe, Reason, Configure, and Execute. Together, these modules record expert operations as multimodal GUI traces, abstract low-level events into semantic step-level instructions, incorporate domain rules and task-specific parameters, and execute the resulting skills in live GUI environments through step-wise grounding, action generation, and verification. To demonstrate its effectiveness, we collaborate with a power-sector client and test OmegaUse-SOP on photovoltaic simulation workflows in PVsyst 7.2. The results suggest that OmegaUse-SOP can improve GUI-agent reliability on professional SOP tasks, highlighting a practical path toward deploying GUI agents in domain-specific professional software environments.",
+            "categories": "cs.HC",
+            "comment": "Accpeted to EMNLP 2026 demo track"
+          },
+          "analysis": {
+            "problem_statement": "GUI agents struggle to execute domain-specific professional Standard Operating Procedures (SOPs) due to implicit domain knowledge, software-specific conventions, and complex task-level verification requirements.",
+            "bottleneck_addressed": "Lack of reusable, structured skills for domain-specific professional workflows in GUI agents, bridging the gap between general computer-use capabilities and specialized industrial tasks.",
+            "executive_summary": "This paper introduces a human-in-the-loop framework that transforms expert human demonstrations into reusable, structured SOP skills for GUI agents. By abstracting low-level GUI events into semantic instructions and incorporating domain rules, it addresses the reliability gap in deploying LLM-based agents in specialized professional software environments like power-sector simulation tools.",
+            "key_metrics": {
+              "primary_metric": "Improvement in GUI-agent reliability on professional SOP tasks",
+              "metric_value": "Not specified in abstract",
+              "baseline": "General computer-use benchmarks / Standard GUI agents",
+              "improvement_percentage": "Not specified in abstract"
+            },
+            "technical_breakdown": {
+              "method": "SOP Engineering: An iterative process that refines human demonstrations, execution rules, and domain knowledge to create reusable GUI-agent skills.",
+              "architecture": "Four-module system: Observe (records multimodal GUI traces), Reason (abstracts events into semantic step-level instructions), Configure (incorporates domain rules and parameters), and Execute (performs step-wise grounding, action generation, and verification in live environments).",
+              "implementation_details": "Uses multimodal GUI trace recording, semantic abstraction of low-level events, and step-wise verification mechanisms. Tested on PVsyst 7.2 for photovoltaic simulation workflows.",
+              "code_complexity": "Not specified; relies on iterative refinement and live execution verification rather than explicit training complexity metrics."
+            },
+            "relevance_tags": [
+              "GUI Agents",
+              "SOP Engineering",
+              "Human-in-the-Loop",
+              "Domain-Specific AI",
+              "Computer Use"
+            ],
+            "confidence": "medium"
+          },
+          "analyzed_at": "2026-09-10T23:11:24.223679",
+          "conference_info": {
+            "conference": "EMNLP",
+            "year": "2026",
+            "comment": "Accpeted to EMNLP 2026 demo track",
+            "raw_comment": "Accpeted to EMNLP 2026 demo track",
+            "category": "Natural Language Processing",
+            "rank": "A"
+          }
+        }
+      ],
+      "updated_at": "2026-09-10T23:11:25.229545"
     }
   }
 }
