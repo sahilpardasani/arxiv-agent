@@ -1,172 +1,6 @@
 {
-  "last_updated": "2026-09-16T23:51:35.292954",
+  "last_updated": "2026-09-17T23:19:29.576944",
   "dates": {
-    "2026-09-09": {
-      "count": 3,
-      "papers": [
-        {
-          "paper": {
-            "title": "Assembling Two Parts in One Hand",
-            "arxiv_id": "2609.10137v1",
-            "authors": [
-              "Liuao Pei",
-              "Tianyue Wu",
-              "Hui Zhang",
-              "Ping Luo",
-              "Jie Song"
-            ],
-            "published": "2026-09-09T13:17:34Z",
-            "updated": "2026-09-09T13:17:34Z",
-            "summary": "A hallmark of human dexterity is the cooperative use of fingers, where different fingers take on distinct yet coordinated roles to accomplish fine manipu- lation, such as capping a pen with the hand that holds it. We study this finger-level coordination through in-hand assembly: mating two rigid objects within a single dexterous hand, with no second arm and no fixture. We present a reinforcement learning formulation to solve this problem in a unified framework, which is driven by a goal relative pose between the two parts. Finger coordination is shaped by a function-based auxiliary reward and regularized toward a single human reference pose, while domain randomization and a fusion of historical proprioception and object observation confer robustness to occlusion-induced estimation noise. The same recipe solves three different assembly tasks (Bottle, Syringe, and Marker). Trained purely in simulation, the policies transfer zero-shot to hardware with a single camera, demonstrating robustness to state-estimation errors caused by oc- clusion. Our experiments also reveal that in-hand assembly places demands on hand morphology and can serve as a benchmark for modern robotic hand systems. Videos and code are available at https://ltbgbird.github.io/in-hand-assembly-page/.",
-            "categories": "cs.RO",
-            "comment": "To appear on Conference on Robot Learning (CoRL) 2026. Project website: https://ltbgbird.github.io/in-hand-assembly-page/"
-          },
-          "analysis": {
-            "problem_statement": "The paper addresses the challenge of achieving cooperative finger-level coordination to assemble two rigid objects within a single dexterous hand without external fixtures or a second arm.",
-            "bottleneck_addressed": "Sim-to-real transfer gap in dexterous manipulation, specifically regarding robustness to state-estimation errors caused by occlusion and the lack of unified frameworks for multi-finger coordination.",
-            "executive_summary": "This work demonstrates that complex in-hand assembly tasks can be solved using a unified reinforcement learning framework that relies on goal-relative poses and function-based rewards. By fusing historical proprioception with object observations, the method achieves zero-shot transfer from simulation to hardware, highlighting the potential of RL for fine-grained dexterous manipulation.",
-            "key_metrics": {
-              "primary_metric": "Zero-shot sim-to-real transfer success across three assembly tasks (Bottle, Syringe, Marker)",
-              "metric_value": "Not explicitly quantified in summary",
-              "baseline": "Simulation-trained policies without specific robustness mechanisms for occlusion",
-              "improvement_percentage": "Not provided"
-            },
-            "technical_breakdown": {
-              "method": "Reinforcement learning formulation driven by a goal relative pose between two parts, utilizing a function-based auxiliary reward to shape finger coordination and regularizing toward a human reference pose.",
-              "architecture": "Unified RL framework incorporating domain randomization and a fusion module for historical proprioception and object observation.",
-              "implementation_details": "Uses a single camera for state estimation on hardware; applies domain randomization to handle occlusion-induced noise; trained purely in simulation.",
-              "code_complexity": "Not specified, but implies standard RL training pipelines with simulation-to-real deployment overhead."
-            },
-            "relevance_tags": [
-              "Dexterous Manipulation",
-              "Reinforcement Learning",
-              "Sim-to-Real Transfer",
-              "Robot Learning"
-            ],
-            "confidence": "high"
-          },
-          "analyzed_at": "2026-09-09T23:07:34.764902",
-          "conference_info": {
-            "conference": "Conference on Robot Learning",
-            "year": "2026",
-            "comment": "To appear on Conference on Robot Learning (CoRL) 2026. Project website: https://ltbgbird.github.io/in-hand-assembly-page/",
-            "raw_comment": "To appear on Conference on Robot Learning (CoRL) 2026. Project website: https://ltbgbird.github.io/in-hand-assembly-page/",
-            "category": "Robotics",
-            "rank": ""
-          }
-        },
-        {
-          "paper": {
-            "title": "Monkey See, Can Monkey Do? A Benchmark for Evaluating Robot Skill Learning by Observation",
-            "arxiv_id": "2609.08209v2",
-            "authors": [
-              "Weiwei Gu",
-              "Anmol Gupta",
-              "Anant Sah",
-              "Ryan Varghese",
-              "Lalitha Shreya Vanam",
-              "Prabhath Adireddi",
-              "Peter Karkus",
-              "Nakul Gopalan"
-            ],
-            "published": "2026-09-08T03:48:44Z",
-            "updated": "2026-09-09T03:55:01Z",
-            "summary": "Learning from Observation (LfO) is a fundamental robotic capability that replicates how humans and animals socially learn from each other. Beyond its biological parallels, this modality provides a practical solution for data scaling in sample-inefficient and data-starved domains like robotics. Recent work has demonstrated promising results in learning manipulation skills from human videos, yet progress in this area remains difficult to assess. Existing methods vary widely in assumptions, hardware choices, and environment setups making it difficult to draw meaningful comparisons and identify advances in the field. To address these challenges, we introduce RoboReel: a unified benchmark for evaluating models that learn policies from human videos. RoboReel consists of bundled real-world human demonstration videos, simulated robot trajectories, and evaluation environments on ten manipulation tasks. We develop four test suites to evaluate the models' performance on multiple axes, including the robustness to visual distractors and the ability to complete long-horizon tasks. Our benchmark covers learning-from-observation models from different categories, and studies the effectiveness of multiple representation choices in our benchmark evaluation that covers over seven state-of-the-art algorithms (including our VLA based variants) in the field of LfO. Finally, we present an analysis of the different types of algorithms showing that long-horizon tasks and tasks with low tolerances are still challenging for current models. Webpage: https://roboreel.github.io",
-            "categories": "cs.RO",
-            "comment": "31 pages, 8 tables, 11 figures. In Proceedings of CoRL 2026"
-          },
-          "analysis": {
-            "problem_statement": "The lack of a standardized, unified benchmark makes it difficult to compare and assess the progress of Learning from Observation (LfO) models in robotics due to varying assumptions, hardware, and environment setups.",
-            "bottleneck_addressed": "Evaluation standardization and data scaling in sample-inefficient, data-starved robotic domains.",
-            "executive_summary": "This paper introduces RoboReel, a unified benchmark that standardizes the evaluation of robot skill learning from human videos by providing consistent datasets and evaluation environments. It addresses the fragmentation in the LfO field, enabling meaningful comparisons across diverse algorithms and highlighting persistent challenges in long-horizon and low-tolerance tasks.",
-            "key_metrics": {
-              "primary_metric": "Comparative performance analysis of over seven state-of-the-art LfO algorithms across four test suites.",
-              "metric_value": "N/A (Benchmark paper; no single primary improvement metric)",
-              "baseline": "Seven state-of-the-art algorithms including VLA-based variants.",
-              "improvement_percentage": "N/A"
-            },
-            "technical_breakdown": {
-              "method": "A unified benchmark framework comprising bundled real-world human demonstration videos, simulated robot trajectories, and evaluation environments for ten manipulation tasks.",
-              "architecture": "Four distinct test suites designed to evaluate model performance on multiple axes, including robustness to visual distractors and long-horizon task completion.",
-              "implementation_details": "Covers learning-from-observation models from different categories and analyzes the effectiveness of multiple representation choices.",
-              "code_complexity": "N/A (Focus is on benchmark infrastructure and evaluation rather than a novel training algorithm)."
-            },
-            "relevance_tags": [
-              "Robotics",
-              "Learning from Observation",
-              "Benchmarking",
-              "Manipulation",
-              "Vision-Language-Action"
-            ],
-            "confidence": "high"
-          },
-          "analyzed_at": "2026-09-09T23:07:55.774945",
-          "conference_info": {
-            "conference": "CoRL",
-            "year": "2026",
-            "comment": "31 pages, 8 tables, 11 figures. In Proceedings of CoRL 2026",
-            "raw_comment": "31 pages, 8 tables, 11 figures. In Proceedings of CoRL 2026",
-            "category": "Robotics",
-            "rank": ""
-          }
-        },
-        {
-          "paper": {
-            "title": "Breaking Fault Lines: Unifying TEE-Assisted BFT Consensus in Partially Trusted Worlds",
-            "arxiv_id": "2609.09742v1",
-            "authors": [
-              "Xiaoqing Wen",
-              "Tong Liu",
-              "Jianyu Niu",
-              "Jialin Li",
-              "Cong Wang",
-              "Yinqian Zhang",
-              "Chen Feng"
-            ],
-            "published": "2026-09-09T05:33:57Z",
-            "updated": "2026-09-09T05:33:57Z",
-            "summary": "This paper revisits TEE-assisted BFT under a universal partial-TEE model, where an arbitrary subset of replicas execute inside TEEs while the remaining replicas operate without hardware trust guarantees. We show that heterogeneous trust changes the structure of quorum formation and fault tolerance. In particular, we derive a tight resilience bound f < max {n/3, m/2}, where n is the total number of replicas and m is the number of TEE-enabled replicas. The result reveals a sharp threshold phenomenon: TEEs improve fault tolerance only once they exceed two-thirds of the deployment.   Guided by this characterization, we introduce two protocol principles: (1) a dual-quorum construction that safely combines TEE-only and mixed quorums, and (2) a TEE-leader fast path that leverages hardware-enforced non-equivocation to reduce both consensus and view-change latency. We realize these ideas in Raftel, which is, to our knowledge, the first HotStuff-style BFT protocol designed explicitly for arbitrary partial-TEE deployments, and in chained-Raftel, a pipelined variant that further accelerates mixed-trust execution. We implement both protocols atop Intel SGX and evaluate them in LAN and WAN environments. Our results show that Raftel achieves up to 625 TPS with sub-670 ms latency in WAN settings, outperforming HotStuff by up to 308 TPS in throughput while approaching the performance of fully TEE-assisted protocols.",
-            "categories": "cs.DC",
-            "comment": "Accepted to EuroSys 2027"
-          },
-          "analysis": {
-            "problem_statement": "The paper addresses the lack of a unified theoretical framework and efficient protocol design for Byzantine Fault Tolerance (BFT) consensus in heterogeneous environments where only an arbitrary subset of replicas are protected by Trusted Execution Environments (TEEs).",
-            "bottleneck_addressed": "This is not an AI bottleneck; it addresses a distributed systems and cryptographic security bottleneck regarding fault tolerance in mixed-trust infrastructure.",
-            "executive_summary": "This work provides a rigorous resilience bound for BFT systems with partial TEE adoption, revealing that TEEs only improve fault tolerance when they constitute more than two-thirds of the deployment. It introduces Raftel, a protocol that optimizes consensus latency and throughput in these partially trusted settings, which is relevant for securing decentralized infrastructure but has no direct impact on AI model training or inference performance.",
-            "key_metrics": {
-              "primary_metric": "Throughput improvement over HotStuff in WAN settings",
-              "metric_value": "625 TPS (Raftel) vs ~317 TPS (HotStuff)",
-              "baseline": "HotStuff",
-              "improvement_percentage": "Approximately 97% (derived from 'up to 308 TPS' improvement over baseline)"
-            },
-            "technical_breakdown": {
-              "method": "Derives a tight resilience bound f < max {n/3, m/2} for partial-TEE models and implements a dual-quorum construction that combines TEE-only and mixed quorums, alongside a TEE-leader fast path to reduce latency.",
-              "architecture": "Raftel (HotStuff-style BFT protocol) and chained-Raftel (pipelined variant), implemented atop Intel SGX.",
-              "implementation_details": "Utilizes hardware-enforced non-equivocation from TEEs to optimize view-change latency and consensus rounds; evaluated in LAN and WAN environments.",
-              "code_complexity": "Not specified in metadata; focuses on protocol-level latency (sub-670 ms) and throughput (625 TPS) rather than computational complexity of AI models."
-            },
-            "relevance_tags": [
-              "Distributed Systems",
-              "Byzantine Fault Tolerance",
-              "Trusted Execution Environments",
-              "Cryptography",
-              "Consensus Protocols"
-            ],
-            "confidence": "high"
-          },
-          "analyzed_at": "2026-09-09T23:08:58.030964",
-          "conference_info": {
-            "conference": "EuroSys",
-            "year": "2027",
-            "comment": "Accepted to EuroSys 2027",
-            "raw_comment": "Accepted to EuroSys 2027",
-            "category": "Systems & Architecture",
-            "rank": "A"
-          }
-        }
-      ],
-      "updated_at": "2026-09-09T23:08:59.040595"
-    },
     "2026-09-10": {
       "count": 2,
       "papers": [
@@ -5106,6 +4940,1678 @@
         }
       ],
       "updated_at": "2026-09-16T23:51:35.292950"
+    },
+    "2026-09-17": {
+      "count": 32,
+      "papers": [
+        {
+          "paper": {
+            "title": "M2Tok: Multi-head Multi-codebook Discrete Action Tokenization for Vision-Language-Action Models",
+            "arxiv_id": "2609.18259v2",
+            "authors": [
+              "Chunpu Xu",
+              "Zhixuan Liang",
+              "Yuhao Zhang",
+              "Chi-Min Chan",
+              "Jessie Wang",
+              "Yang Xiao",
+              "Mengkang Hu",
+              "Xiaokang Yang",
+              "Yao Mu"
+            ],
+            "published": "2026-09-16T07:38:41Z",
+            "updated": "2026-09-17T16:27:36Z",
+            "summary": "Recent advancements have successfully adapted autoregressive language models to process multimodal signals, such as images and actions. Since raw action signals are continuous, effective tokenization is essential to map high-dimensional inputs into compact discrete tokens for autoregressive processing. However, existing discrete action tokenizers often suffer from high reconstruction loss, failing to preserve the fine-grained dynamics required for precise control. This \"discretization bottleneck\" significantly limits the performance ceiling of downstream Vision-Language-Action (VLA) models. To address this, we propose ${M}^2$Tok, a Multi-head Multi-codebook Action Tokenizer designed to minimize reconstruction error and enhance policy performance. Our approach introduces two key structural innovations: (1) we decompose the latent action features into multiple heads, enabling the model to implicitly align specific heads with distinct action dimensions; (2) we assign independent codebooks to each head for quantization. By leveraging the combinatorial nature of multiple codebooks, we significantly expand the representational expressivity of the tokenizer, leading to substantially lower reconstruction loss compared to previous methods. We evaluate the ${M}^2$Tok-based VLA on the RoboTwin, Simpler-Env, and 3 zero-shot real-world tasks. Experimental results demonstrate our method not only achieves superior reconstruction fidelity but also significantly boosts the success rate of VLA models. Comprehensive ablation studies further confirm the effectiveness of the multi-head and multi-codebook mechanisms. Code is available at https://github.com/cpaaax/M2Tok.",
+            "categories": "cs.RO",
+            "comment": "ECCV 2026"
+          },
+          "analysis": {
+            "problem_statement": "Existing discrete action tokenizers for Vision-Language-Action (VLA) models suffer from high reconstruction loss due to a discretization bottleneck, which limits the precision and performance ceiling of downstream robotic control policies.",
+            "bottleneck_addressed": "Discretization bottleneck in mapping continuous high-dimensional action signals to compact discrete tokens for autoregressive processing.",
+            "executive_summary": "This paper addresses a critical limitation in adapting autoregressive language models to robotics by improving the fidelity of action tokenization. By reducing reconstruction error, it enables VLA models to capture fine-grained dynamics necessary for precise control, thereby enhancing the success rate of robotic tasks in both simulation and real-world environments.",
+            "key_metrics": {
+              "primary_metric": "Reconstruction loss and VLA success rate",
+              "metric_value": "Not specified in summary",
+              "baseline": "Previous discrete action tokenizers",
+              "improvement_percentage": "Not specified in summary"
+            },
+            "technical_breakdown": {
+              "method": "The method decomposes latent action features into multiple heads and assigns independent codebooks to each head for quantization, leveraging the combinatorial nature of multiple codebooks to expand representational expressivity.",
+              "architecture": "Multi-head Multi-codebook Action Tokenizer (M2Tok) integrated into a Vision-Language-Action (VLA) model.",
+              "implementation_details": "Decomposition of latent action features into heads that implicitly align with distinct action dimensions; independent codebook assignment per head for quantization.",
+              "code_complexity": "Not specified in summary"
+            },
+            "relevance_tags": [
+              "Vision-Language-Action Models",
+              "Action Tokenization",
+              "Robotic Control",
+              "Discrete Representation Learning"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-09-17T23:12:58.402259",
+          "conference_info": {
+            "conference": "ECCV",
+            "year": "2026",
+            "comment": "ECCV 2026",
+            "raw_comment": "ECCV 2026",
+            "category": "Computer Vision",
+            "rank": "A"
+          }
+        },
+        {
+          "paper": {
+            "title": "Automated Goldsmith's Mark Retrieval in Silverware",
+            "arxiv_id": "2609.20509v1",
+            "authors": [
+              "Atmik Tiwari",
+              "Vincent Christlein",
+              "Mark Fichtner",
+              "Freya Gohlke",
+              "Birgit Sch\u00fcbel",
+              "Theresa Witting",
+              "Heike Zech",
+              "Mathias Zinnen"
+            ],
+            "published": "2026-09-17T14:51:46Z",
+            "updated": "2026-09-17T14:51:46Z",
+            "summary": "For art historians, goldsmith marks play a critical role in the identification and dating of artifacts. In practice, experts must manually compare a query mark against hundreds of documented examples, a process that is both tedious and highly dependent on specialist knowledge. To address this, we present an AI-assisted retrieval pipeline that combines mark localization with metric-learning fine-tuning across three backbone architectures: an ImageNet-pretrained ResNet-50, a supervised ViT-S/16, and a self-supervised DINOv2 ViT-S/14. We conduct a systematic evaluation of cropping strategies, where we measure the impact of no cropping, manual ground-truth cropping, and learned detection-based cropping, and assess their interaction with each backbone. Our strongest configuration, DINOv2 ViT-S/14 with manual crop and metric-learning fine-tuning, achieves an mAP of 62.63% and a Top-1 accuracy of 73.74%. Our experiments show that self-supervised pretraining and mark localization are the two most impactful factors, with learned cropping recovering the majority of the gain from manual cropping without requiring ground-truth annotations at inference time. To enable reproducibility and adoption in the digital humanities, we release our manually annotated dataset and codebase, and deploy the system via a public web interface.",
+            "categories": "cs.CV",
+            "comment": "Accepted at the VISART workshop, ECCV 2026. 18 pages, 8 figures, 1 table"
+          },
+          "analysis": {
+            "problem_statement": "The paper addresses the inefficiency and specialist-dependence of manually identifying and dating silverware by comparing goldsmith marks against large reference databases.",
+            "bottleneck_addressed": "Specialist knowledge dependency and manual labor in niche domain retrieval tasks.",
+            "executive_summary": "This work demonstrates the effective application of self-supervised vision transformers (DINOv2) and metric learning to a highly specialized digital humanities task. It highlights that pretraining strategy and precise localization are more critical than architectural complexity for small-scale, high-precision retrieval problems.",
+            "key_metrics": {
+              "primary_metric": "Top-1 Accuracy and mAP for mark retrieval",
+              "metric_value": "73.74% Top-1 Accuracy, 62.63% mAP",
+              "baseline": "Comparison across ResNet-50, ViT-S/16, and DINOv2 ViT-S/14 with various cropping strategies",
+              "improvement_percentage": "Not explicitly quantified against a single external baseline in the summary, but DINOv2+Manual Crop is identified as the strongest configuration."
+            },
+            "technical_breakdown": {
+              "method": "An AI-assisted retrieval pipeline combining mark localization with metric-learning fine-tuning.",
+              "architecture": "Three backbone architectures evaluated: ImageNet-pretrained ResNet-50, supervised ViT-S/16, and self-supervised DINOv2 ViT-S/14.",
+              "implementation_details": "Systematic evaluation of cropping strategies (no crop, manual ground-truth, learned detection-based) and their interaction with backbones; metric-learning fine-tuning applied to the selected backbones.",
+              "code_complexity": "Requires training/fine-tuning of vision transformers and detection models; specific computational costs (FLOPs, training time) are not provided in the summary."
+            },
+            "relevance_tags": [
+              "Computer Vision",
+              "Digital Humanities",
+              "Metric Learning",
+              "Self-Supervised Learning",
+              "Object Retrieval"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-09-17T23:13:53.760305",
+          "conference_info": {
+            "conference": "ECCV",
+            "year": "2026",
+            "comment": "Accepted at the VISART workshop, ECCV 2026. 18 pages, 8 figures, 1 table",
+            "raw_comment": "Accepted at the VISART workshop, ECCV 2026. 18 pages, 8 figures, 1 table",
+            "category": "Computer Vision",
+            "rank": "A"
+          }
+        },
+        {
+          "paper": {
+            "title": "Worst-Case Hidden-Vehicle Trajectory Search in Spatiotemporal Occlusion Regions",
+            "arxiv_id": "2609.20480v1",
+            "authors": [
+              "Ruichen Tan",
+              "Zengxiang Lei",
+              "Satish Ukkusuri"
+            ],
+            "published": "2026-09-17T14:33:23Z",
+            "updated": "2026-09-17T14:33:23Z",
+            "summary": "Occlusion creates fundamental uncertainty in autonomous driving. Existing methods often propagate frame-wise hypotheses or optimize ego behavior against prescribed hidden-agent predictions, leaving the worst history-consistent interaction unexplored. We introduce History-Conditioned Minimax Trajectory Search (HC-MTS), which combines temporal occlusion reasoning with response-aware search. First, HC-MTS constructs finite hidden-state modes, each certified by a backward witness satisfying multi-frame visibility, occupancy, semantic-map support, and class-specific kinematic constraints. It then solves a bilevel minimax problem: an inner finite oracle maximizes the ego driving score over destination attainment and ride comfort, while the outer search selects the legal hidden-vehicle trajectory that minimizes this best-response value. Across eight Waymo Open Motion Dataset scenarios, increasing the visibility-memory horizon from K=1 to K=20 reduces the mean per-scenario vehicle, pedestrian, and total retained hidden-seed counts by 18.12%, 21.67%, and 18.45%, respectively. HC-MTS identifies six avoidable counterexamples, while no legal collision-producing attacker is found in the remaining two scenes within the finite search budget.",
+            "categories": "cs.RO",
+            "comment": "16 pages, 3 figures. Accepted at the ECCV 2026 Workshop on Safe and Defensive Autonomous Driving (SDAD) as an Oral Presentation; Best Paper Award. Workshop website: https://sdad.cc/papers.html"
+          },
+          "analysis": {
+            "problem_statement": "The paper addresses the challenge of identifying the worst-case trajectory of a hidden vehicle in occluded regions that is consistent with historical visibility and kinematic constraints to ensure safe autonomous driving.",
+            "bottleneck_addressed": "Uncertainty propagation and lack of worst-case guarantee in autonomous driving perception and planning under spatiotemporal occlusion.",
+            "executive_summary": "This work introduces a rigorous safety framework that moves beyond frame-wise hypothesis propagation by explicitly searching for the most dangerous legal hidden-vehicle trajectory. By combining temporal occlusion reasoning with a bilevel minimax optimization, it provides certified worst-case guarantees for ego-vehicle planning, which is critical for the safety validation of autonomous systems in complex, occluded environments.",
+            "key_metrics": {
+              "primary_metric": "Reduction in retained hidden-seed counts (vehicle, pedestrian, and total) by increasing visibility-memory horizon from K=1 to K=20.",
+              "metric_value": "18.12% (vehicle), 21.67% (pedestrian), 18.45% (total)",
+              "baseline": "Visibility-memory horizon K=1",
+              "improvement_percentage": "18.12-21.67% reduction in false positive hidden seeds"
+            },
+            "technical_breakdown": {
+              "method": "History-Conditioned Minimax Trajectory Search (HC-MTS) constructs finite hidden-state modes certified by backward witnesses satisfying multi-frame visibility, occupancy, semantic-map, and kinematic constraints. It then solves a bilevel minimax problem where an inner oracle maximizes the ego driving score (destination attainment and ride comfort) and the outer search selects the legal hidden-vehicle trajectory that minimizes this best-response value.",
+              "architecture": "Finite hidden-state mode construction module, backward witness certification engine, and bilevel minimax optimization solver.",
+              "implementation_details": "Uses Waymo Open Motion Dataset scenarios; enforces class-specific kinematic constraints and multi-frame visibility checks; identifies avoidable counterexamples via finite search budget.",
+              "code_complexity": "Bilevel optimization with finite oracle; computational cost scales with the visibility-memory horizon K and the number of finite hidden-state modes."
+            },
+            "relevance_tags": [
+              "Autonomous Driving",
+              "Safety Verification",
+              "Occlusion Handling",
+              "Minimax Optimization",
+              "Trajectory Planning"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-09-17T23:18:29.064087",
+          "conference_info": {
+            "conference": "ECCV",
+            "year": "2026",
+            "comment": "16 pages, 3 figures. Accepted at the ECCV 2026 Workshop on Safe and Defensive Autonomous Driving (SDAD) as an Oral Presentation; Best Paper Award. Workshop website: https://sdad.cc/papers.html",
+            "raw_comment": "16 pages, 3 figures. Accepted at the ECCV 2026 Workshop on Safe and Defensive Autonomous Driving (SDAD) as an Oral Presentation; Best Paper Award. Workshop website: https://sdad.cc/papers.html",
+            "category": "Computer Vision",
+            "rank": "A"
+          }
+        },
+        {
+          "paper": {
+            "title": "Fingerprinting Multimodal Large Language Models",
+            "arxiv_id": "2609.20457v1",
+            "authors": [
+              "Chao Huang",
+              "Meng Tong",
+              "Kejiang Chen"
+            ],
+            "published": "2026-09-17T14:21:39Z",
+            "updated": "2026-09-17T14:21:39Z",
+            "summary": "While multimodal large language models (MLLMs) enable a wide range of image-text reasoning tasks, recent incidents indicate that they are vulnerable to illicit deployment and unauthorized distillation. Existing solutions for model provenance are typically confounded by shared language backbones in MLLMs and struggle to detect violations of distillation. To bridge this gap and safeguard model ownership, we present the first study on multimodal model fingerprinting. Inspired by recent findings that self-attention acts as a low-pass filter and that its low-frequency components are informative, we develop AttnPrint for white-box provenance. Specifically, we extract cross-modal attention distributions and isolate their low-frequency components to serve as model fingerprints. To facilitate black-box auditing, we further introduce DistillTrace, which employs hypothesis testing of MLLM outputs to identify potential model infringement. We conduct extensive experiments on 154 model instances across 19 multimodal architectures. Notably, AttnPrint achieves strong derivative-model detection performance while remaining robust to five downstream modification techniques. DistillTrace also provides evidence of distillation relationships under three parameter-independent techniques.",
+            "categories": "cs.CR",
+            "comment": "10 pages, 3 figures. Accepted to ACM Multimedia 2026 (MM '26) as an oral presentation"
+          },
+          "analysis": {
+            "problem_statement": "Existing model provenance solutions for Multimodal Large Language Models (MLLMs) fail to distinguish between shared language backbones and unique multimodal components, making it difficult to detect illicit deployment and unauthorized distillation.",
+            "bottleneck_addressed": "Model security, provenance, and intellectual property protection in the era of open-weight and distilled multimodal models.",
+            "executive_summary": "This paper addresses the critical lack of robust fingerprinting mechanisms for MLLMs, which are increasingly vulnerable to theft and unauthorized distillation. By leveraging the low-frequency components of cross-modal attention, it provides a white-box method that is robust to downstream modifications, while also offering a black-box auditing tool for detecting distillation relationships.",
+            "key_metrics": {
+              "primary_metric": "Derivative-model detection performance and robustness to modification techniques",
+              "metric_value": "Strong performance on 154 model instances across 19 architectures; robust to 5 downstream modification techniques",
+              "baseline": "Existing model provenance solutions confounded by shared language backbones",
+              "improvement_percentage": "Not quantified in summary"
+            },
+            "technical_breakdown": {
+              "method": "AttnPrint extracts cross-modal attention distributions and isolates low-frequency components (based on the property that self-attention acts as a low-pass filter) to create unique fingerprints. DistillTrace uses hypothesis testing on MLLM outputs to identify distillation relationships in a black-box setting.",
+              "architecture": "Utilizes the cross-modal attention mechanisms inherent in MLLM architectures; does not propose a new model architecture but rather a post-hoc analysis framework.",
+              "implementation_details": "AttnPrint: Extraction of cross-modal attention maps, frequency domain analysis to isolate low-frequency components. DistillTrace: Statistical hypothesis testing on model outputs to infer parameter-independent distillation links.",
+              "code_complexity": "Not specified in summary; likely involves standard attention map extraction and signal processing (FFT or similar) for frequency isolation, plus statistical testing routines."
+            },
+            "relevance_tags": [
+              "MLLM Security",
+              "Model Fingerprinting",
+              "Provenance",
+              "Distillation Detection",
+              "AI Safety"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-09-17T23:19:28.544952",
+          "conference_info": {
+            "conference": "ACM Multimedia",
+            "year": "2026",
+            "comment": "10 pages, 3 figures. Accepted to ACM Multimedia 2026 (MM '26) as an oral presentation",
+            "raw_comment": "10 pages, 3 figures. Accepted to ACM Multimedia 2026 (MM '26) as an oral presentation",
+            "category": "Computer Vision",
+            "rank": "A+"
+          }
+        },
+        {
+          "paper": {
+            "title": "A Smaller Transformer in Your Transformer",
+            "arxiv_id": "2609.20100v1",
+            "authors": [
+              "Dhananjay Tomar",
+              "Marius Aasan",
+              "Andreas Kleppe",
+              "Ad\u00edn Ram\u00edrez Rivera"
+            ],
+            "published": "2026-09-17T12:01:13Z",
+            "updated": "2026-09-17T12:01:13Z",
+            "summary": "Recent findings indicate that Vision Transformers settle into locally similar computational phases, implying a level of depthwise computational redundancy. However, existing methods to exploit this redundancy either fail to reduce inference compute or severely degrade model expressivity. In this work, we formalise a unified view of block redundancy that decouples the geometry from specific surrogate interventions. We then introduce Transformer-Within-Transformer (TWT), a post-hoc method that fuses contiguous groups of redundant layers into a single learned surrogate layer. TWT reduces parameter count and inference compute while remaining competitive with original models using half the depth on natural images, and in several downstream histopathology settings, TWT matches or even improves on the original baseline.",
+            "categories": "cs.CV",
+            "comment": "22 pages, 6 figures, 6 tables. Accepted at the 37th British Machine Vision Conference (BMVC 2026)"
+          },
+          "analysis": {
+            "problem_statement": "The paper addresses the challenge of reducing inference compute and parameter count in Vision Transformers without severely degrading model expressivity, by exploiting depthwise computational redundancy.",
+            "bottleneck_addressed": "Inference efficiency and model size (parameter count) in Vision Transformers.",
+            "executive_summary": "This work introduces a post-hoc method to compress Vision Transformers by fusing redundant layers, addressing the trade-off between efficiency and accuracy. It is significant for deploying large-scale vision models in resource-constrained environments, particularly in specialized domains like histopathology where efficiency is critical.",
+            "key_metrics": {
+              "primary_metric": "Reduction in parameter count and inference compute while maintaining competitive accuracy",
+              "metric_value": "Half the depth (50% reduction in layers)",
+              "baseline": "Original full-depth Vision Transformer models",
+              "improvement_percentage": "50% reduction in depth/parameters"
+            },
+            "technical_breakdown": {
+              "method": "Transformer-Within-Transformer (TWT) is a post-hoc method that identifies contiguous groups of redundant layers and fuses them into a single learned surrogate layer.",
+              "architecture": "Vision Transformer with fused surrogate layers replacing groups of original blocks.",
+              "implementation_details": "Formalizes a unified view of block redundancy decoupled from specific surrogate interventions; uses learned surrogate layers to approximate the function of multiple original layers.",
+              "code_complexity": "Post-hoc compression reduces inference compute and parameter count; training time for the surrogate layers is not specified but likely lower than training from scratch."
+            },
+            "relevance_tags": [
+              "Vision Transformers",
+              "Model Compression",
+              "Efficient Inference",
+              "Histopathology",
+              "Layer Fusion"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-09-17T23:14:21.811191",
+          "conference_info": {
+            "conference": "BMVC",
+            "year": "2026",
+            "comment": "22 pages, 6 figures, 6 tables. Accepted at the 37th British Machine Vision Conference (BMVC 2026)",
+            "raw_comment": "22 pages, 6 figures, 6 tables. Accepted at the 37th British Machine Vision Conference (BMVC 2026)",
+            "category": "Computer Vision",
+            "rank": "A"
+          }
+        },
+        {
+          "paper": {
+            "title": "GRF-Recon: Global Ray-Field Optimization for Long-Sequence Feed-forward Reconstruction",
+            "arxiv_id": "2609.20012v1",
+            "authors": [
+              "Enpeng Li",
+              "Yunzhou Zhang",
+              "Zhiyao Zhang",
+              "Dexuan Lyu",
+              "Chenyu Wang",
+              "Chiyuan Cui",
+              "Cheng Cheng"
+            ],
+            "published": "2026-09-17T10:21:52Z",
+            "updated": "2026-09-17T10:21:52Z",
+            "summary": "Feed-forward 3D reconstruction provides an efficient paradigm for scene modeling from image sequences. Scaling these models to large monocular scenarios are constrained by excessive GPU memory footprint, degraded local geometry, and long-term trajectory drift. Existing chunk-based optimization strategies provide limited geometric constraints and fail to maintain global consistency over extended trajectories. We present a unified framework for stable and scalable feed-forward 3D reconstruction from long monocular sequences. Our approach builds on coarse-to-fine trajectory alignment augmented by lightweight geometric prior injection. Distilling monocular geometric cues into the feed-forward backbone via LoRA adaptation improves depth accuracy on fine structures while preserving inference efficiency. We introduce a hybrid-weight sparse ray-field optimization that leverages high-frequency geometric features to guide local point-cloud refinement and enforce consistent inter-frame ray constraints. Unlike prior chunk-based methods, this establishes strong cross-frame geometric coupling while maintaining scalability. Finally, an efficient trajectory stitching strategy with joint ray-error optimization explicitly reduces accumulated drift. Extensive experiments show that our approach achieves competitive trajectory accuracy compared with representative SLAM systems, while maintaining globally consistent 3D reconstruction in large-scale scenarios.",
+            "categories": "cs.CV",
+            "comment": "Accepted to ECCV 2026 as a Spotlight presentation"
+          },
+          "analysis": {
+            "problem_statement": "The paper addresses the challenges of excessive GPU memory usage, degraded local geometry, and long-term trajectory drift in feed-forward 3D reconstruction from long monocular image sequences.",
+            "bottleneck_addressed": "Scalability and memory efficiency in large-scale 3D scene reconstruction, specifically overcoming the limitations of chunk-based optimization in maintaining global consistency.",
+            "executive_summary": "This work is significant because it enables stable, scalable feed-forward 3D reconstruction for large monocular scenarios, which are typically intractable due to memory constraints. By introducing global ray-field optimization and LoRA-based geometric prior injection, it bridges the gap between efficient feed-forward models and the accuracy of traditional SLAM systems.",
+            "key_metrics": {
+              "primary_metric": "Competitive trajectory accuracy and globally consistent 3D reconstruction in large-scale scenarios.",
+              "metric_value": "Not specified in summary",
+              "baseline": "Representative SLAM systems and existing chunk-based optimization strategies",
+              "improvement_percentage": "Not specified in summary"
+            },
+            "technical_breakdown": {
+              "method": "A unified framework combining coarse-to-fine trajectory alignment, lightweight geometric prior injection via LoRA, hybrid-weight sparse ray-field optimization, and efficient trajectory stitching with joint ray-error optimization.",
+              "architecture": "Feed-forward 3D reconstruction backbone augmented with LoRA adaptation for monocular geometric cues and a sparse ray-field module for local point-cloud refinement.",
+              "implementation_details": "Uses LoRA to distill monocular geometric cues into the backbone; employs hybrid-weight sparse ray-field optimization to enforce inter-frame ray constraints; utilizes trajectory stitching with joint ray-error optimization to reduce accumulated drift.",
+              "code_complexity": "Designed to maintain inference efficiency and scalability for large-scale scenarios, avoiding the excessive GPU memory footprint of naive long-sequence processing."
+            },
+            "relevance_tags": [
+              "3D Reconstruction",
+              "Feed-forward Learning",
+              "SLAM",
+              "Monocular Vision",
+              "Ray-Field Optimization"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-09-17T23:14:45.913372",
+          "conference_info": {
+            "conference": "ECCV",
+            "year": "2026",
+            "comment": "Accepted to ECCV 2026 as a Spotlight presentation",
+            "raw_comment": "Accepted to ECCV 2026 as a Spotlight presentation",
+            "category": "Computer Vision",
+            "rank": "A"
+          }
+        },
+        {
+          "paper": {
+            "title": "An Event Preserving Velocity Invariant Representation for Event Cameras",
+            "arxiv_id": "2609.19973v1",
+            "authors": [
+              "Mikihiro Ikura",
+              "Luna Gava",
+              "Jiahang Wu",
+              "Chiara Bartolozzi",
+              "Arren Glover"
+            ],
+            "published": "2026-09-17T09:46:38Z",
+            "updated": "2026-09-17T09:46:38Z",
+            "summary": "Event cameras provide low-latency, high temporal resolution perception for real-time vision tasks such as robotics.The novel circuitry (i.e. asynchronous, independent pixels) that enables these advantages also introduces new algorithmic challenges. Velocity-invariant representations alleviate missing observations under slow motion and motion blur under fast motion, but most discard temporal information by converting events into image-like representations. We propose Set of Centre Active Receptive Fields (SCARF), a real-time velocity-invariant representation that preserves raw events while consistently handling fast motion, stationary scenes, and independently moving objects. SCARF achieves state-of-the-art performance in both computational efficiency and representation quality.",
+            "categories": "cs.CV",
+            "comment": "@inproceedings{ikura2026event, title={An Event Preserving Velocity Invariant Representation for Event Cameras}, author={Ikura, Mikihiro and Gava, Luna and Wu, Jiahang and Glover, Arren and Bartolozzi, Chiara}, year={2026}, booktitle={ECCV 2026 Workshop-Event-Based Multimodal Vision: From Imaging to Perception and Understanding} }"
+          },
+          "analysis": {
+            "problem_statement": "Existing velocity-invariant representations for event cameras discard temporal information by converting asynchronous events into image-like formats, leading to a loss of raw event data and suboptimal handling of mixed motion scenarios.",
+            "bottleneck_addressed": "Data representation fidelity and temporal information loss in asynchronous sensor processing.",
+            "executive_summary": "This paper addresses the trade-off between velocity invariance and information preservation in event-based vision. By proposing SCARF, it enables real-time processing that retains raw event data while effectively managing motion blur and missing observations, which is critical for high-latency-sensitive applications like robotics.",
+            "key_metrics": {
+              "primary_metric": "State-of-the-art performance in computational efficiency and representation quality",
+              "metric_value": "Not specified in summary",
+              "baseline": "Existing velocity-invariant representations that convert events to image-like formats",
+              "improvement_percentage": "Not specified in summary"
+            },
+            "technical_breakdown": {
+              "method": "SCARF (Set of Centre Active Receptive Fields) is a velocity-invariant representation that preserves raw events rather than aggregating them into images.",
+              "architecture": "A representation framework designed to handle asynchronous, independent pixel data while maintaining temporal consistency across fast motion, stationary scenes, and independently moving objects.",
+              "implementation_details": "The method specifically targets the preservation of raw event streams to avoid the information loss inherent in image-like conversion, ensuring consistent handling of varying motion speeds.",
+              "code_complexity": "Described as real-time, implying low computational latency, but specific complexity classes or training times are not provided in the metadata."
+            },
+            "relevance_tags": [
+              "Event Cameras",
+              "Computer Vision",
+              "Robotics",
+              "Representation Learning",
+              "Real-time Processing"
+            ],
+            "confidence": "medium"
+          },
+          "analyzed_at": "2026-09-17T23:15:12.991937",
+          "conference_info": {
+            "conference": "ECCV",
+            "year": "2026",
+            "comment": "@inproceedings{ikura2026event, title={An Event Preserving Velocity Invariant Representation for Event Cameras}, author={Ikura, Mikihiro and Gava, Luna and Wu, Jiahang and Glover, Arren and Bartolozzi, Chiara}, year={2026}, booktitle={ECCV 2026 Workshop-Event-Based Multimodal Vision: From Imaging to Perception and Understanding} }",
+            "raw_comment": "@inproceedings{ikura2026event, title={An Event Preserving Velocity Invariant Representation for Event Cameras}, author={Ikura, Mikihiro and Gava, Luna and Wu, Jiahang and Glover, Arren and Bartolozzi, Chiara}, year={2026}, booktitle={ECCV 2026 Workshop-Event-Based Multimodal Vision: From Imaging to Perception and Understanding} }",
+            "category": "Computer Vision",
+            "rank": "A"
+          }
+        },
+        {
+          "paper": {
+            "title": "MILER: Semantic Mid-Level Representation for Sim-to-Real Reinforcement Learning in Unstructured Autonomous Driving",
+            "arxiv_id": "2609.20747v1",
+            "authors": [
+              "Thomas Steinecker",
+              "Denis Trescher",
+              "Alexander Bienemann",
+              "Thorsten Luettel",
+              "Mirko Maehlisch"
+            ],
+            "published": "2026-09-17T17:35:22Z",
+            "updated": "2026-09-17T17:35:22Z",
+            "summary": "Reinforcement learning constitutes a promising approach owing to its potential for superhuman performance and self-learned policies. However, its application to real-world autonomous driving remains scarce, particularly in unstructured environments, because of the challenges associated with sim-to-real transfer for unstructured environments. In this work, we present MILER, an end-to-end policy framework with zero-shot sim-to-real transfer. During offline training, we employ a custom semantic mid-level representation (MLR) simulator and train the policy network using reinforcement learning, with its control outputs applied directly to a bicycle model. During deployment on the real vehicle, camera and LiDAR data are processed by BEVFusion to generate a semantic bird's-eye-view representation consistent with that of the MLR simulator. The actions generated by the policy network are not applied directly to the real vehicle. Instead, we employ a trajectory-alignment strategy that enables zero-shot sim-to-real transfer of both perception and control. We extensively evaluate the proposed framework on a diverse test track comprising numerous challenges, including various obstacles, hairpin curves, velocities of up to 33.6 km/h, and off-road sections. In total, we drove 17.3 km with two different vehicles on a 3.0 km test track without human intervention, thereby demonstrating the effectiveness of our approach. Furthermore, the entire software stack runs on a Jetson AGX Orin.",
+            "categories": "cs.RO",
+            "comment": "Evaluation video: https://www.youtube.com/watch?v=IZli3Z87URI"
+          },
+          "analysis": {
+            "problem_statement": "The paper addresses the challenge of achieving zero-shot sim-to-real transfer for reinforcement learning-based autonomous driving in unstructured environments where direct policy application fails due to perception and control discrepancies.",
+            "bottleneck_addressed": "Sim-to-real gap in unstructured environments for end-to-end reinforcement learning policies.",
+            "executive_summary": "This work demonstrates a viable path for deploying RL-based autonomous driving in complex, unstructured real-world scenarios by bridging the sim-to-real gap through semantic mid-level representations. By aligning trajectories rather than raw actions, it enables zero-shot transfer of both perception and control, validated by 17.3 km of autonomous driving on a Jetson AGX Orin.",
+            "key_metrics": {
+              "primary_metric": "Distance driven without human intervention on a diverse test track",
+              "metric_value": "17.3 km",
+              "baseline": "No direct baseline comparison provided in the summary; implies comparison against standard direct-action sim-to-real methods which typically fail in unstructured environments.",
+              "improvement_percentage": null
+            },
+            "technical_breakdown": {
+              "method": "The framework uses a custom semantic mid-level representation (MLR) simulator for offline RL training. During deployment, real sensor data (camera/LiDAR) is processed into a consistent BEV representation, and a trajectory-alignment strategy maps policy actions to vehicle controls to ensure zero-shot transfer.",
+              "architecture": "End-to-end policy network trained on MLR simulator; BEVFusion for real-world perception; bicycle model for control in simulation; trajectory-alignment module for real-world deployment.",
+              "implementation_details": "Uses BEVFusion to generate semantic bird's-eye-view representations consistent with the simulator's MLR. Control outputs from the RL policy are applied to a bicycle model in simulation. In real-world deployment, actions are not applied directly but via a trajectory-alignment strategy.",
+              "code_complexity": "Runs entirely on a Jetson AGX Orin, indicating edge-computational feasibility. Specific training times or FLOPs are not provided in the summary."
+            },
+            "relevance_tags": [
+              "Reinforcement Learning",
+              "Sim-to-Real Transfer",
+              "Autonomous Driving",
+              "BEVFusion",
+              "Edge Computing"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-09-17T23:08:26.305068",
+          "conference_info": {
+            "conference": "WWW",
+            "year": "Unknown",
+            "comment": "Evaluation video: https://www.youtube.com/watch?v=IZli3Z87URI",
+            "raw_comment": "Evaluation video: https://www.youtube.com/watch?v=IZli3Z87URI",
+            "category": "Data Mining & IR",
+            "rank": "A+"
+          }
+        },
+        {
+          "paper": {
+            "title": "From \"Who Is This User?\" to \"What Does This Purchase Mean?\": A Deployed Pipeline for Semantic User Profiling at Bank Scale",
+            "arxiv_id": "2609.19928v1",
+            "authors": [
+              "Ryota Mitsuhashi",
+              "Tetsuro Morimura",
+              "Hirotake Ito"
+            ],
+            "published": "2026-09-17T09:07:08Z",
+            "updated": "2026-09-17T09:07:08Z",
+            "summary": "Per-user LLM inference on transaction histories binds the inference budget linearly to user count, which becomes prohibitive at applied scale. We re-cast attribute inference from per-user to per-transaction-pattern. The pipeline runs in three phases: Resolve abstracts item names with optional web grounding, Profile infers attributes for each frequent pattern, and Tag clusters free-text attributes into a queryable database. In Profile, a single LLM call per pattern emits predefined categorical labels, free-text attributes, and per-attribute prevalence estimates. Because inference runs over patterns rather than users, the budget grows with the pattern count rather than the user count. On the public Open e-commerce corpus, the database is statistically indistinguishable from an LLM that reads each user's raw history directly in AUC across the evaluated attributes, and the prevalence estimates carry discriminative signal between positive and negative users. The pipeline is deployed at a major Japanese bank profiling on the order of tens of millions of users, with close to a three-order-of-magnitude reduction in LLM inference targets versus a per-user pipeline. The code is publicly available on https://github.com/CyberAgentAILab/profiling-agent-open-ecommerce.",
+            "categories": "cs.AI",
+            "comment": "10 pages, 3 figures, IEEE International Conference on Data Mining 2026 (ICDM)"
+          },
+          "analysis": {
+            "problem_statement": "The paper addresses the prohibitive computational cost and linear scaling of LLM inference budgets when performing semantic user profiling on transaction histories at the scale of tens of millions of users.",
+            "bottleneck_addressed": "Inference cost and scalability (specifically the linear dependency of LLM calls on user count rather than pattern count).",
+            "executive_summary": "This work demonstrates a scalable paradigm for enterprise AI by shifting LLM inference from individual user histories to frequent transaction patterns, reducing inference targets by nearly three orders of magnitude. It proves that this abstraction does not sacrifice accuracy, as the resulting profiles are statistically indistinguishable from direct per-user LLM inference on benchmark data, enabling semantic profiling at bank scale.",
+            "key_metrics": {
+              "primary_metric": "Reduction in LLM inference targets and statistical equivalence in AUC compared to per-user baseline",
+              "metric_value": "~3 orders of magnitude reduction in inference targets; statistically indistinguishable AUC",
+              "baseline": "Per-user LLM inference on raw transaction histories",
+              "improvement_percentage": "Approximately 99.9% reduction in inference volume (3 orders of magnitude)"
+            },
+            "technical_breakdown": {
+              "method": "The pipeline re-casts attribute inference from a per-user task to a per-transaction-pattern task. It identifies frequent patterns in transaction data and applies LLM inference only to these patterns, then aggregates the results to profile users based on their interaction with these patterns.",
+              "architecture": "Three-phase pipeline: 1) Resolve (abstracts item names with optional web grounding), 2) Profile (infers attributes for each frequent pattern using a single LLM call), 3) Tag (clusters free-text attributes into a queryable database).",
+              "implementation_details": "The Profile phase emits predefined categorical labels, free-text attributes, and per-attribute prevalence estimates in a single LLM call per pattern. The system leverages the fact that inference budget grows with the number of unique patterns rather than the number of users.",
+              "code_complexity": "Computational complexity is decoupled from user count, depending instead on the number of frequent transaction patterns. This allows for near-linear scaling with data volume without proportional increases in LLM API costs."
+            },
+            "relevance_tags": [
+              "LLM Scalability",
+              "User Profiling",
+              "Inference Optimization",
+              "Enterprise AI",
+              "Data Mining"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-09-17T22:57:36.883618",
+          "conference_info": {
+            "conference": "ICDM",
+            "year": "2026",
+            "comment": "10 pages, 3 figures, IEEE International Conference on Data Mining 2026 (ICDM)",
+            "raw_comment": "10 pages, 3 figures, IEEE International Conference on Data Mining 2026 (ICDM)",
+            "category": "Data Mining & IR",
+            "rank": "A+"
+          }
+        },
+        {
+          "paper": {
+            "title": "Dense Feature Representation over Sequence Modeling: A Solution to the KDD Cup 2026 UniRec Challenge",
+            "arxiv_id": "2609.19787v1",
+            "authors": [
+              "Yi Zhang",
+              "Weiliang Ji"
+            ],
+            "published": "2026-09-17T06:52:52Z",
+            "updated": "2026-09-17T06:52:52Z",
+            "summary": "We describe our 10th-place solution to the KDD Cup 2026 Tencent UniRec Challenge, industrial click-to-conversion (CVR) prediction over 34.82M records, and we ask which mechanisms actually move held-out AUC. Starting from the official PCVRHyFormer baseline, a 15-step single-variable chain raises test AUC from 0.813237 to 0.827816, and our final submission reaches 0.828535. A leave-one-out ablation from the full model attributes the gain: removing the dense-feature representation stack costs 0.0095 AUC and removing the orthogonalized optimizer costs 0.0028, while no sequence-modeling component (merged single-stream backbone, polarity channel, auxiliary head, per-token FFN) costs more than 0.0005, within or adjacent to a $\\pm$0.0004 seed band. We also report a generalization hazard: the row-group train/validation split shares one time window, so validation AUC overstates the leaderboard by about 0.014; anti-memorization and high-cardinality-ID changes even invert sign against it, a divergence that traces to dump-to-dump distribution shift and survives a time-ordered re-split. Dense representation and optimization, not finer sequence modeling, drive CVR AUC at this scale, and verdicts must come from the held-out leaderboard.",
+            "categories": "cs.IR",
+            "comment": "6 pages, 1 figure, 4 tables. KDD Cup 2026 Tencent UniRec Challenge Workshop"
+          },
+          "analysis": {
+            "problem_statement": "The paper addresses the challenge of maximizing click-to-conversion (CVR) prediction accuracy in large-scale industrial settings by determining which model components (dense feature representation vs. sequence modeling) actually contribute to held-out performance.",
+            "bottleneck_addressed": "Inefficient allocation of modeling complexity in industrial recommendation systems, specifically the misconception that advanced sequence modeling is the primary driver of AUC gains over dense feature engineering and optimization techniques.",
+            "executive_summary": "This work provides a rigorous ablation study demonstrating that at the scale of 34.82M records, dense feature representation and orthogonalized optimization yield significantly higher AUC gains than complex sequence modeling components. It also highlights a critical methodological hazard where standard train/validation splits overstate performance due to temporal distribution shift, emphasizing the necessity of relying on held-out leaderboard metrics for valid model evaluation.",
+            "key_metrics": {
+              "primary_metric": "Test AUC improvement over the official baseline",
+              "metric_value": "0.828535 (final submission) vs 0.813237 (baseline)",
+              "baseline": "Official PCVRHyFormer baseline",
+              "improvement_percentage": "1.88%"
+            },
+            "technical_breakdown": {
+              "method": "A 15-step single-variable modification chain starting from the PCVRHyFormer baseline, followed by a leave-one-out ablation to attribute performance gains to specific components.",
+              "architecture": "The final model relies heavily on a dense-feature representation stack and an orthogonalized optimizer, while sequence-modeling components (merged single-stream backbone, polarity channel, auxiliary head, per-token FFN) contribute minimally to the final AUC.",
+              "implementation_details": "Key techniques include the dense-feature representation stack (contributing 0.0095 AUC) and an orthogonalized optimizer (contributing 0.0028 AUC). The study also identifies a generalization hazard where row-group splits share a time window, causing validation AUC to overstate leaderboard performance by ~0.014.",
+              "code_complexity": "The paper focuses on architectural and optimization choices rather than raw computational complexity, but the emphasis on dense features and optimization suggests a trade-off favoring feature engineering and training stability over the computational overhead of complex sequence transformers."
+            },
+            "relevance_tags": [
+              "CVR Prediction",
+              "Recommendation Systems",
+              "Ablation Study",
+              "Feature Engineering",
+              "KDD Cup"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-09-17T23:17:03.650590",
+          "conference_info": {
+            "conference": "KDD",
+            "year": "2026",
+            "comment": "6 pages, 1 figure, 4 tables. KDD Cup 2026 Tencent UniRec Challenge Workshop",
+            "raw_comment": "6 pages, 1 figure, 4 tables. KDD Cup 2026 Tencent UniRec Challenge Workshop",
+            "category": "Data Mining & IR",
+            "rank": "A+"
+          }
+        },
+        {
+          "paper": {
+            "title": "How Does Distribution Shift Shape Pretraining Gains in Neural PDE Surrogates?",
+            "arxiv_id": "2609.20814v1",
+            "authors": [
+              "Pochinapeddi Sai Bhargav",
+              "Nithin Somasekharan",
+              "Rohit Sunil Kanchi",
+              "Sicheng He",
+              "Shaowu Pan"
+            ],
+            "published": "2026-09-17T17:59:24Z",
+            "updated": "2026-09-17T17:59:24Z",
+            "summary": "Pretraining a neural PDE surrogate can reduce the amount of new CFD data needed when geometry or modeled physics changes. However, it remains unclear how different components of distribution shift affect this benefit. We pretrain a surrogate on 254,909 RANS solutions from one airfoil family and fine-tune it on a new family under two target settings with matched freestream ranges: the same Spalart-Allmaras (SA) modeling and SA with added $e^N$ transition modeling. At $N=1000$, the pretrained model matches the accuracy of a model trained from scratch on $3.25\\times$ as many samples for the same-SA target, but $2.58\\times$ as many for the transition-modeled target. By $N=5000$, this ordering reverses ($1.56\\times$ versus $1.86\\times$). At $N=1000$, sampling more distinct airfoils lowers error on both targets, but only for the same-SA target is the gain increase larger than the observed draw-to-draw variation ($3.3\\times$ to $4.0\\times$). These results show that pretraining value depends jointly on target-data budget, target-data coverage, and whether source and target differ in modeled physics.",
+            "categories": "physics.comp-ph",
+            "comment": "15 pages, 5 figures. Representations for the Physical Sciences Workshop, NeurIPS 2026"
+          },
+          "analysis": {
+            "problem_statement": "The paper investigates how different components of distribution shift, specifically changes in geometry versus modeled physics, affect the data efficiency gains achieved by pretraining neural PDE surrogates.",
+            "bottleneck_addressed": "High data acquisition costs and the limited transferability of physics-informed machine learning models across varying physical regimes and geometric configurations.",
+            "executive_summary": "This study quantifies the diminishing returns of pretraining for neural PDE surrogates when the target domain involves significant changes in physical modeling (e.g., adding transition modeling). It demonstrates that while pretraining reduces data needs for geometric shifts, its benefit is reduced when the underlying physics model changes, providing critical guidance for resource allocation in CFD surrogate development.",
+            "key_metrics": {
+              "primary_metric": "Data efficiency ratio (samples needed for scratch training vs. fine-tuned training to match accuracy)",
+              "metric_value": "3.25x (same-SA target) and 2.58x (transition-modeled target) at N=1000",
+              "baseline": "Model trained from scratch on the target distribution",
+              "improvement_percentage": "225% reduction in required samples for same-SA target at N=1000 (3.25x factor)"
+            },
+            "technical_breakdown": {
+              "method": "Pretraining a neural surrogate on a large source dataset of RANS solutions, followed by fine-tuning on a smaller target dataset with matched freestream ranges but different airfoil families and/or physics models.",
+              "architecture": "Neural PDE surrogate (specific architecture not detailed in summary, likely a standard deep learning architecture for PDE regression).",
+              "implementation_details": "Source data: 254,909 RANS solutions from one airfoil family. Target settings: Same Spalart-Allmaras (SA) modeling vs. SA with added e^N transition modeling. Evaluation at sample sizes N=1000 and N=5000.",
+              "code_complexity": "Pretraining on ~255k samples is computationally intensive; fine-tuning is significantly cheaper, offering a trade-off between upfront pretraining cost and reduced target data collection/training costs."
+            },
+            "relevance_tags": [
+              "PDE Surrogates",
+              "Transfer Learning",
+              "CFD",
+              "Distribution Shift",
+              "Data Efficiency"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-09-17T23:07:54.169648",
+          "conference_info": {
+            "conference": "NeurIPS",
+            "year": "2026",
+            "comment": "15 pages, 5 figures. Representations for the Physical Sciences Workshop, NeurIPS 2026",
+            "raw_comment": "15 pages, 5 figures. Representations for the Physical Sciences Workshop, NeurIPS 2026",
+            "category": "General ML/AI",
+            "rank": "A+"
+          }
+        },
+        {
+          "paper": {
+            "title": "A Qualitative Model for Reasoning about Path and Support",
+            "arxiv_id": "2609.20349v1",
+            "authors": [
+              "Abhishek Jaiswal",
+              "Zoe Falomir"
+            ],
+            "published": "2026-09-17T13:13:44Z",
+            "updated": "2026-09-17T13:13:44Z",
+            "summary": "Spatial reasoning abilities correlate strongly with performance in STEM fields. Games offer a compelling medium for training these critical skills in developing children who have a natural proclivity for play. However, to facilitate human-like tutoring and player guidance, these games require an AI agent capable of making commonsense inferences from spatial events. Qualitative reasoning (QR) models appear to be a suitable framework for these application domains. As these models reason in symbolic representations, they can seamlessly translate game states into interpretable feedback for human-like player guidance. This paper introduces a hybrid qualitative model designed for Camelot Jr., a block-puzzle game that requires constructing multi-level bridges to connect two avatars stationed on separate towers. The game poses a challenge for the player, who must make platforms stable, plan their path, and ensure they use all the provided blocks. To handle the precise physics required by the domain, we integrate a mathematical center-of-mass stability logic to guide our qualitative solver. Our work facilitates spatial skill training in Camelot Jr. and contributes to the development of human-centric, explainable game-playing agents.",
+            "categories": "cs.AI",
+            "comment": "Workshop on Qualitative Reasoning 2026 at IJCAI (35th International Joint Conference on Artificial Intelligence)"
+          },
+          "analysis": {
+            "problem_statement": "Developing a hybrid qualitative reasoning model that integrates mathematical stability logic to enable commonsense spatial inference and human-like tutoring in a block-puzzle game.",
+            "bottleneck_addressed": "Lack of explainable, symbolic AI agents capable of performing commonsense spatial reasoning and providing interpretable feedback for educational game tutoring.",
+            "executive_summary": "This work bridges the gap between symbolic qualitative reasoning and precise physical constraints to create explainable AI agents for educational games. It addresses the need for interpretable feedback mechanisms that can guide players through complex spatial tasks like bridge construction, thereby supporting STEM skill development in children.",
+            "key_metrics": {
+              "primary_metric": "Qualitative model accuracy in guiding player actions and ensuring platform stability",
+              "metric_value": "Not provided in abstract",
+              "baseline": "Not specified in abstract",
+              "improvement_percentage": "Not quantifiable from provided data"
+            },
+            "technical_breakdown": {
+              "method": "A hybrid qualitative model that combines symbolic qualitative reasoning (QR) with a mathematical center-of-mass stability logic to handle precise physics requirements.",
+              "architecture": "Integration of a qualitative solver guided by mathematical stability logic, designed to translate game states into interpretable feedback.",
+              "implementation_details": "Use of symbolic representations for game states and a specific center-of-mass algorithm to determine platform stability in the Camelot Jr. block-puzzle domain.",
+              "code_complexity": "Not specified; relies on symbolic reasoning and mathematical logic rather than heavy neural network training."
+            },
+            "relevance_tags": [
+              "Qualitative Reasoning",
+              "Explainable AI",
+              "Educational Games",
+              "Spatial Reasoning",
+              "Symbolic AI"
+            ],
+            "confidence": "medium"
+          },
+          "analyzed_at": "2026-09-17T22:55:11.943667",
+          "conference_info": {
+            "conference": "IJCAI",
+            "year": "2026",
+            "comment": "Workshop on Qualitative Reasoning 2026 at IJCAI (35th International Joint Conference on Artificial Intelligence)",
+            "raw_comment": "Workshop on Qualitative Reasoning 2026 at IJCAI (35th International Joint Conference on Artificial Intelligence)",
+            "category": "General ML/AI",
+            "rank": "A+"
+          }
+        },
+        {
+          "paper": {
+            "title": "Position Paper: Neurotransmitters as a Missing Dimension in Artificial Neural Networks",
+            "arxiv_id": "2609.20083v1",
+            "authors": [
+              "Yupei Li",
+              "Manuel Milling",
+              "Berrak Sisman",
+              "Bj\u00f6rn Schuller"
+            ],
+            "published": "2026-09-17T11:42:16Z",
+            "updated": "2026-09-17T11:42:16Z",
+            "summary": "Artificial neural networks (ANNs), as core components of modern deep learning (DL) systems, lack the adaptive flexibility and long-term stability exhibited by biological systems. This limitation largely stems from the fact that conventional ANNs rely on uniform, local, and gradient-based parameter updates, while neglecting internal learning principles that are biological mechanisms such as neurotransmitters signalling or neuroplasticity. Consequently, many existing approaches focus on architectural expansion or mathematical fine-tuning techniques such as regularisation or parameter isolation. Inspired by the superior adaptability and plasticity of mammalian brains, we posit that neuromodulation with neurotransmitters constitutes a third axis of learning, complementary to neural activity and synaptic plasticity, and should be explicitly modelled in artificial neural networks. In this positional paper, we argue that incorporating neuromodulatory principles into ANN design represents a promising and underexplored research direction, and we advocate for greater attention to this perspective in the development of adaptive and continual learning systems.",
+            "categories": "cs.NE",
+            "comment": "Accepted at IJCNN 2026"
+          },
+          "analysis": {
+            "problem_statement": "Conventional artificial neural networks lack the adaptive flexibility and long-term stability of biological systems due to their reliance on uniform, local, and gradient-based parameter updates that neglect internal biological mechanisms like neurotransmitter signaling.",
+            "bottleneck_addressed": "Lack of adaptive flexibility and long-term stability in continual learning systems",
+            "executive_summary": "This position paper argues that current deep learning systems are limited by their exclusive focus on architectural expansion and mathematical fine-tuning, ignoring the biological principle of neuromodulation. It posits that neurotransmitters constitute a third axis of learning, complementary to neural activity and synaptic plasticity, which is essential for achieving the superior adaptability seen in mammalian brains.",
+            "key_metrics": {
+              "primary_metric": "N/A (Position paper)",
+              "metric_value": null,
+              "baseline": "N/A",
+              "improvement_percentage": null
+            },
+            "technical_breakdown": {
+              "method": "The paper proposes a conceptual framework where neuromodulation is explicitly modeled as a distinct learning axis in ANNs, rather than relying solely on gradient-based updates or architectural changes.",
+              "architecture": "The specific architecture is not defined; the paper advocates for the integration of neuromodulatory principles into existing ANN designs to enhance plasticity.",
+              "implementation_details": "No specific algorithms are provided; the paper identifies the neglect of neurotransmitter signaling and neuroplasticity as the core gap in current methodologies.",
+              "code_complexity": "N/A"
+            },
+            "relevance_tags": [
+              "Neuromodulation",
+              "Continual Learning",
+              "Neuro-inspired AI",
+              "Position Paper"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-09-17T23:17:36.593400",
+          "conference_info": {
+            "conference": "IJCNN",
+            "year": "2026",
+            "comment": "Accepted at IJCNN 2026",
+            "raw_comment": "Accepted at IJCNN 2026",
+            "category": "General ML/AI",
+            "rank": "A"
+          }
+        },
+        {
+          "paper": {
+            "title": "AI Should Facilitate Democratic Deliberation at Scale",
+            "arxiv_id": "2609.20059v1",
+            "authors": [
+              "Jos\u00e9 Ram\u00f3n Enr\u00edquez",
+              "Jiaxin Pei",
+              "Alex Pentland"
+            ],
+            "published": "2026-09-17T11:10:55Z",
+            "updated": "2026-09-17T11:10:55Z",
+            "summary": "AI systems can strengthen democracy by supporting deliberation at scale by addressing cognitive, social, platform-design, and market-driven frictions, while preserving human agency. Unlike proposals such as liquid democracy that restructure representation through vote delegation, in this position paper, we argue that AI-assisted deliberation offers a more promising path by lowering barriers to meaningful engagement without substituting machine judgment for human choice. Drawing on evidence from online deliberation platforms and experimental research, we identify four guiding principles: preserving agency and autonomy, encouraging mutual respect, promoting equality and inclusiveness, and augmenting rather than substituting active citizenship. We also address critical challenges, including alignment, sycophancy, training bias, and over-reliance on AI systems. We call on the machine learning community to develop deliberation-focused AI systems evaluated not on engagement metrics but on their capacity to facilitate informed, representative, and friction-robust discourse.",
+            "categories": "cs.HC",
+            "comment": "15 pages, 2 figures, ICML 2026"
+          },
+          "analysis": {
+            "problem_statement": "How to leverage AI systems to facilitate large-scale democratic deliberation by reducing cognitive, social, and platform-driven frictions while strictly preserving human agency and avoiding the substitution of machine judgment for human choice.",
+            "bottleneck_addressed": "Social alignment and ethical deployment in civic technology; specifically, the lack of AI frameworks that enhance democratic participation without introducing sycophancy, bias, or erosion of human autonomy.",
+            "executive_summary": "This position paper argues that AI-assisted deliberation is a superior path to democratic strengthening compared to structural changes like liquid democracy, as it lowers barriers to engagement without replacing human decision-making. It provides a normative framework for the ML community to develop systems that prioritize informed, representative discourse over engagement metrics, addressing critical risks such as alignment failures and over-reliance.",
+            "key_metrics": {
+              "primary_metric": "Capacity to facilitate informed, representative, and friction-robust discourse",
+              "metric_value": "N/A (Position paper)",
+              "baseline": "Traditional online deliberation platforms and engagement-metric-driven AI systems",
+              "improvement_percentage": "N/A"
+            },
+            "technical_breakdown": {
+              "method": "Normative framework and position paper proposing four guiding principles for AI design in civic contexts: preserving agency, encouraging mutual respect, promoting equality/inclusiveness, and augmenting active citizenship.",
+              "architecture": "Conceptual architecture based on mitigating cognitive, social, platform-design, and market-driven frictions; does not propose a specific neural network architecture.",
+              "implementation_details": "Relies on evidence from online deliberation platforms and experimental research; identifies specific failure modes to avoid, including sycophancy, training bias, and alignment issues.",
+              "code_complexity": "N/A (Theoretical/Policy focus)"
+            },
+            "relevance_tags": [
+              "AI Ethics",
+              "Civic Tech",
+              "Position Paper",
+              "Human-AI Interaction",
+              "Democratic Deliberation"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-09-17T22:56:14.386303",
+          "conference_info": {
+            "conference": "ICML",
+            "year": "2026",
+            "comment": "15 pages, 2 figures, ICML 2026",
+            "raw_comment": "15 pages, 2 figures, ICML 2026",
+            "category": "General ML/AI",
+            "rank": "A+"
+          }
+        },
+        {
+          "paper": {
+            "title": "Governance-as-Code: Translating EU AI Act Technical Requirements into Executable Compliance Pipelines for Generative AI Systems",
+            "arxiv_id": "2609.20016v1",
+            "authors": [
+              "Rudrendu Kumar Paul",
+              "Sourav Nandy"
+            ],
+            "published": "2026-09-17T10:23:54Z",
+            "updated": "2026-09-17T10:23:54Z",
+            "summary": "The EU AI Act (Regulation 2024/1689) imposes technical obligations on high-risk AI providers, yet Articles 8-15 were drafted for predictive AI and leave seven technical gaps when applied to generative systems, spanning non-deterministic data governance, training-data provenance, continuous conformity, human oversight, open-ended robustness, emergent risk, and generative fairness. We deliver Governance-as-Code (GaC), a framework of 43 machine-checkable acceptance criteria across six compliance modules that run in a CI/CD pipeline and emit Article-indexed audit evidence, and we show the actual Rego policy code rather than merely describing it. Our central commitment is that the Act's open-textured standards (\"appropriate levels,\" \"possible biases\") become declared, auditable numbers: robustness thresholds are derived from the provider's documented baseline and a state-of-the-art floor, and framing bias is collapsed into eight measurable proxies tested by counterfactual demographic probing. We also correct who owes what, since under Article 25 and Chapter V a downstream deployer relies on the upstream provider's Article 53 training-data summary and documents only the layers it controls, so GaC verifies that summary rather than demanding per-sample documentation the deployer never had. We validate on two enterprise deployments, a high-risk advisory chatbot and a limited-risk content generator, benchmarking against a manual expert audit rather than documentation artifacts that were never designed to enforce compliance. GaC reproduces all of the manual audit's findings, including three penalty-triggering violations, while cutting audit labor by roughly 75%.",
+            "categories": "cs.CY",
+            "comment": "Accepted at the AI4Law Workshop, ICML 2026. Camera-ready version"
+          },
+          "analysis": {
+            "problem_statement": "The EU AI Act's technical requirements for high-risk AI systems contain seven specific gaps when applied to generative AI, lacking executable mechanisms to verify non-deterministic data governance, continuous conformity, and emergent risks.",
+            "bottleneck_addressed": "Regulatory compliance automation and the translation of open-textured legal standards into machine-verifiable technical constraints for non-deterministic generative systems.",
+            "executive_summary": "This paper addresses the critical gap between static legal regulations and dynamic generative AI systems by providing a Governance-as-Code framework that enforces EU AI Act compliance via CI/CD pipelines. It is significant because it transforms subjective legal standards into auditable, quantitative metrics, enabling scalable and objective compliance verification for enterprise generative AI deployments.",
+            "key_metrics": {
+              "primary_metric": "Reduction in manual audit labor while maintaining detection accuracy of compliance violations.",
+              "metric_value": "75%",
+              "baseline": "Manual expert audit",
+              "improvement_percentage": "75"
+            },
+            "technical_breakdown": {
+              "method": "A Governance-as-Code (GaC) framework that translates legal articles into 43 machine-checkable acceptance criteria executed within a CI/CD pipeline, using Rego policy code to emit Article-indexed audit evidence.",
+              "architecture": "Six compliance modules integrated into a CI/CD pipeline, utilizing counterfactual demographic probing for bias testing and baseline-derived robustness thresholds.",
+              "implementation_details": "Use of Rego policy language for executable compliance checks; derivation of robustness thresholds from provider baselines and state-of-the-art floors; collapse of framing bias into eight measurable proxies; verification of upstream Article 53 training-data summaries rather than per-sample documentation.",
+              "code_complexity": "Not explicitly stated, but implies low computational overhead relative to model training as it operates as a verification layer in the CI/CD pipeline rather than a training component."
+            },
+            "relevance_tags": [
+              "AI Governance",
+              "Regulatory Compliance",
+              "Generative AI",
+              "CI/CD",
+              "EU AI Act"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-09-17T22:56:16.548173",
+          "conference_info": {
+            "conference": "ICML",
+            "year": "2026",
+            "comment": "Accepted at the AI4Law Workshop, ICML 2026. Camera-ready version",
+            "raw_comment": "Accepted at the AI4Law Workshop, ICML 2026. Camera-ready version",
+            "category": "General ML/AI",
+            "rank": "A+"
+          }
+        },
+        {
+          "paper": {
+            "title": "Pretrained Medical Representations for the Practical Screening of Drug Repositioning Candidates",
+            "arxiv_id": "2609.19865v1",
+            "authors": [
+              "Yuhei Fujioka",
+              "Daitaro Misawa",
+              "Shingo Fukuma"
+            ],
+            "published": "2026-09-17T08:19:34Z",
+            "updated": "2026-09-17T08:19:34Z",
+            "summary": "Representation learning from medical code sequences in electronic health records and medical claims data has been successful in various clinical applications, such as those regarding disease prediction. However, significant challenges remain in extending this approach to the discovery of scientific hypotheses. One reason is that many existing BERT-based models fail to adequately capture the hierarchical structure of medical codes and the complex interactions between diagnoses and treatments. To address these limitations, we propose a new unified pre-training framework that explicitly integrates hierarchical sub-token aggregation, partial masking, and cross-reference mechanisms. The proposed model consistently outperformed existing methods on both pre-training objectives and downstream clinical event prediction tasks, including the onset of dementia and hospitalization. We also conducted an in silico drug repositioning case study targeting Alzheimer's disease. In the hypothesis generation step, our approach successfully rediscovered known promising drugs in a data-driven manner without relying on such external knowledge sources as the literature. Subsequently, in the hypothesis prioritization step, we introduced a Task-Adaptive Representation Approach to alleviate the over-encoding of historical prescription information within diagnostic vectors, enabling the robust prioritization of generated hypotheses. This study establishes an exploratory screening workflow for hypothesis generation and prioritization based on observational associations. Importantly, this framework is not intended to provide causal evidence, but rather to identify promising candidates for subsequent rigorous causal inference. Overall, this study demonstrates that domain-informed representation learning combined with task-adaptive representation control can enable a practical hypothesis discovery workflow.",
+            "categories": "cs.LG",
+            "comment": "Accepted at ICML 2026 AI for Science Workshop"
+          },
+          "analysis": {
+            "problem_statement": "Existing BERT-based models for medical code sequences fail to capture the hierarchical structure of medical codes and complex diagnosis-treatment interactions, limiting their utility in generating scientific hypotheses for drug repositioning.",
+            "bottleneck_addressed": "Lack of structural and relational fidelity in representation learning for heterogeneous medical data, hindering the transition from clinical prediction to scientific hypothesis generation.",
+            "executive_summary": "This paper proposes a unified pre-training framework that integrates hierarchical sub-token aggregation and cross-reference mechanisms to better model medical code structures. It demonstrates a practical workflow for in silico drug repositioning by rediscovering known Alzheimer's disease candidates without external literature, establishing a method for data-driven hypothesis screening.",
+            "key_metrics": {
+              "primary_metric": "Performance on pre-training objectives and downstream clinical event prediction (dementia onset, hospitalization)",
+              "metric_value": "Not specified in abstract",
+              "baseline": "Existing BERT-based methods",
+              "improvement_percentage": "Not specified in abstract"
+            },
+            "technical_breakdown": {
+              "method": "A unified pre-training framework that explicitly integrates hierarchical sub-token aggregation, partial masking, and cross-reference mechanisms to capture code hierarchy and diagnosis-treatment interactions.",
+              "architecture": "BERT-based transformer architecture modified with hierarchical sub-token aggregation and cross-reference mechanisms.",
+              "implementation_details": "Uses partial masking during pre-training and a Task-Adaptive Representation Approach to mitigate over-encoding of historical prescription information in diagnostic vectors for hypothesis prioritization.",
+              "code_complexity": "Not specified"
+            },
+            "relevance_tags": [
+              "Medical AI",
+              "Drug Repositioning",
+              "Representation Learning",
+              "NLP for Healthcare",
+              "Hypothesis Generation"
+            ],
+            "confidence": "medium"
+          },
+          "analyzed_at": "2026-09-17T23:09:50.439752",
+          "conference_info": {
+            "conference": "ICML",
+            "year": "2026",
+            "comment": "Accepted at ICML 2026 AI for Science Workshop",
+            "raw_comment": "Accepted at ICML 2026 AI for Science Workshop",
+            "category": "General ML/AI",
+            "rank": "A+"
+          }
+        },
+        {
+          "paper": {
+            "title": "PDA++: Field-Aligned Planning and Scene-Adaptive Insertion in Remote Sensing",
+            "arxiv_id": "2609.18329v2",
+            "authors": [
+              "Xianchi Dong",
+              "Yingyan Hou",
+              "Chao Ren",
+              "Wanxuan Lu",
+              "Zihan Wei",
+              "Hongfeng Yu",
+              "Yixiao Wang",
+              "Chubo Deng",
+              "Xian Sun"
+            ],
+            "published": "2026-09-16T08:53:30Z",
+            "updated": "2026-09-17T04:06:08Z",
+            "summary": "Remote sensing recognition is often constrained by scarce observations of rare targets and costly annotations, making realistic synthetic augmentation particularly valuable for few-shot and long-tailed scenarios. Object insertion provides an efficient way to increase target diversity while preserving authentic background scenes, but realistic insertion in overhead imagery requires the generated target to adapt coherently to its surrounding environment. To this end, we propose PDA++, a unified environment-aware object insertion framework organized as Plan, Decouple, and Assimilate. Planning determines scene-compatible poses through an affordance field that combines geometric clearance with structure- and scale-aware cues. Decoupling introduces a pose-conditioned background that provides precise spatial guidance together with target-scene context, allowing the reference object to preserve its identity while adapting to the target observation. This construction also naturally provides pixel-level masks for segmentation augmentation. Assimilation further improves local coherence by aligning multi-scale texture distributions through optimal transport. On the optical benchmark, PDA++ achieves a whole-image FID of 6.28 and improves average few-shot recognition mAP50 by 17.69 points, corresponding to a 28.8% relative gain over the real-data baseline. On SAR imagery, it improves ship detection by 4.10 mAP50 points and remains effective under cross-dataset transfer and amorphous-target insertion. Code is available at https://github.com/lisheyu972/PDA_PLUS.",
+            "categories": "cs.CV",
+            "comment": "Extended journal version of our ICML 2026 paper \"Plan, Decouple, Assimilate: Physics-Aware Object Insertion in Remote Sensing Imagery\""
+          },
+          "analysis": {
+            "problem_statement": "The paper addresses the challenge of generating realistic synthetic object insertions in remote sensing imagery that coherently adapt to the surrounding scene geometry, lighting, and texture to effectively augment data for few-shot and long-tailed recognition tasks.",
+            "bottleneck_addressed": "Data scarcity and the lack of realistic, scene-consistent synthetic data for rare targets in remote sensing, which limits the performance of few-shot and long-tailed learning models.",
+            "executive_summary": "PDA++ provides a physics-aware framework that significantly improves the realism of synthetic object insertion in overhead imagery by ensuring geometric and textural coherence with the background. This is critical for the AI landscape as it offers a scalable solution to the data bottleneck in remote sensing, enabling robust model training for rare target detection without the high costs of manual annotation or physical data collection.",
+            "key_metrics": {
+              "primary_metric": "Average few-shot recognition mAP50 improvement on optical benchmark",
+              "metric_value": "17.69 points",
+              "baseline": "Real-data baseline",
+              "improvement_percentage": "28.8%"
+            },
+            "technical_breakdown": {
+              "method": "A unified 'Plan, Decouple, Assimilate' framework where an affordance field determines scene-compatible poses, a pose-conditioned background decouples target identity from scene context, and optimal transport aligns multi-scale textures for local coherence.",
+              "architecture": "Components include an affordance field planner (combining geometric clearance and structure/scale cues), a pose-conditioned background generator for spatial guidance, and an assimilation module using optimal transport for texture alignment.",
+              "implementation_details": "Uses optimal transport for multi-scale texture distribution alignment, generates pixel-level masks for segmentation augmentation, and employs structure- and scale-aware cues for pose estimation.",
+              "code_complexity": "Not explicitly stated in the summary, but involves complex generative processes including optimal transport and multi-scale texture alignment, implying higher computational overhead than simple compositing."
+            },
+            "relevance_tags": [
+              "Remote Sensing",
+              "Data Augmentation",
+              "Few-Shot Learning",
+              "Object Insertion",
+              "Generative AI"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-09-17T23:16:06.212939",
+          "conference_info": {
+            "conference": "ICML",
+            "year": "2026",
+            "comment": "Extended journal version of our ICML 2026 paper \"Plan, Decouple, Assimilate: Physics-Aware Object Insertion in Remote Sensing Imagery\"",
+            "raw_comment": "Extended journal version of our ICML 2026 paper \"Plan, Decouple, Assimilate: Physics-Aware Object Insertion in Remote Sensing Imagery\"",
+            "category": "General ML/AI",
+            "rank": "A+"
+          }
+        },
+        {
+          "paper": {
+            "title": "SIMLIFE: Pattern Understanding for Long-Horizon Human-Agent Partnership",
+            "arxiv_id": "2609.19610v1",
+            "authors": [
+              "Run Peng",
+              "Zinnia Nie",
+              "Jing Ding",
+              "Yinpei Dai",
+              "Yichi Zhang",
+              "Zengqing Wu",
+              "Yao Fu",
+              "Ziqiao Ma",
+              "Jiayuan Mao",
+              "Joyce Chai"
+            ],
+            "published": "2026-09-17T02:43:54Z",
+            "updated": "2026-09-17T02:43:54Z",
+            "summary": "Understanding humans over long horizons requires agents to infer not only what people need in the moment, but also how routines form, why they repeat, and when they change. We introduce SimLife, a scalable platform for simulating long-term household life with rich visual observations, ground-truth action logs, and synthetic dialogues with audio. Built on SimLife, SimLife-BP evaluates long-context pattern understanding: the ability to infer latent behavioral rules from weeks or months of everyday observations. The benchmark contains 106 episodes averaging 15.49 hours and 38.57 in-game days, and 1,439 question-answer pairs. Each task probes direct, counterfactual, noisy, and inverse reasoning under different levels of rule hints. Evaluating frontier models and architectures, we find that current models often achieve surface-level prediction without comprehensive rule understanding, rely on frequency-based heuristics rather than if-then reasoning over evidence, and struggle to adapt when behavioral patterns change. These findings suggest that long-context pattern understanding remains a major bottleneck for future embodied agents, while SimLife opens a broader space for studying memory, personalization, adaptation, and long-horizon planning in everyday human-AI interaction.",
+            "categories": "cs.AI",
+            "comment": "COLM 2026 Learning from Situated and Embodied Interaction Workshop"
+          },
+          "analysis": {
+            "problem_statement": "Current AI agents lack the capability to infer latent behavioral rules and adapt to changing routines from long-horizon, multi-modal household observations.",
+            "bottleneck_addressed": "Long-context pattern understanding and long-horizon planning in embodied agents.",
+            "executive_summary": "This paper introduces SimLife, a scalable simulation platform and benchmark (SimLife-BP) designed to evaluate an agent's ability to understand human routines over weeks or months. It highlights that frontier models currently rely on frequency-based heuristics rather than causal if-then reasoning, failing to adapt when behavioral patterns shift.",
+            "key_metrics": {
+              "primary_metric": "Performance on direct, counterfactual, noisy, and inverse reasoning tasks under varying rule hints",
+              "metric_value": "1,439 question-answer pairs across 106 episodes",
+              "baseline": "Frontier models and architectures",
+              "improvement_percentage": "Not quantified; paper identifies failure modes rather than reporting a specific SOTA improvement percentage"
+            },
+            "technical_breakdown": {
+              "method": "Simulation of long-term household life with rich visual observations, ground-truth action logs, and synthetic audio dialogues to test long-context pattern understanding.",
+              "architecture": "SimLife platform featuring visual, audio, and action log data streams; SimLife-BP benchmark structure.",
+              "implementation_details": "Episodes average 15.49 hours and 38.57 in-game days; tasks probe direct, counterfactual, noisy, and inverse reasoning.",
+              "code_complexity": "High computational requirements due to long-horizon simulation (weeks/months of in-game time) and multi-modal data generation."
+            },
+            "relevance_tags": [
+              "Embodied AI",
+              "Long-Context Learning",
+              "Human-Agent Interaction",
+              "Simulation",
+              "Benchmark"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-09-17T23:07:11.420431",
+          "conference_info": {
+            "conference": "COLM",
+            "year": "2026",
+            "comment": "COLM 2026 Learning from Situated and Embodied Interaction Workshop",
+            "raw_comment": "COLM 2026 Learning from Situated and Embodied Interaction Workshop",
+            "category": "General ML/AI",
+            "rank": ""
+          }
+        },
+        {
+          "paper": {
+            "title": "Fast Cross-Strength Multi-Contrast Brain MRI Translation using Latent Bridge Matching",
+            "arxiv_id": "2609.20341v1",
+            "authors": [
+              "Siddharth Srivastava",
+              "Till Bretschneider"
+            ],
+            "published": "2026-09-17T13:10:38Z",
+            "updated": "2026-09-17T13:10:38Z",
+            "summary": "Magnetic Resonance Imaging (MRI) acquired at different field strengths exhibits pronounced variation in noise, resolution, homogeneity, and contrast, which limits comparability across acquisition settings and complicates downstream analysis. We address this with a unified conditional model for controllable field-to-field synthesis, built on the framework of conditional latent bridge matching. Our single model achieves highly competitive results across the validation phase for all three tasks of the MRIxFields2026 challenge without task-specific architectures or training. We achieve fast generation with only a single inference step, producing all modality and field-strength combinations for $30$ axial slices in under $90$ seconds, as well as cross-modality-strength translation for a full volume in under $70$ seconds, on a single NVIDIA A5000 GPU. We further provide extensive ablations regarding different components of our solution. Code: https://gitlab.com/siddharthsrivastava/mrixfields-2026",
+            "categories": "cs.CV",
+            "comment": "10 pages, 4 figures. MRIxFields Workshop, MICCAI 2026"
+          },
+          "analysis": {
+            "problem_statement": "The paper addresses the lack of comparability in brain MRI data acquired at different field strengths due to variations in noise, resolution, homogeneity, and contrast.",
+            "bottleneck_addressed": "Data heterogeneity and domain shift in medical imaging, specifically the challenge of cross-field and cross-modality consistency for downstream analysis.",
+            "executive_summary": "This work introduces a unified conditional latent bridge matching model that enables controllable, single-step synthesis of MRI images across different field strengths and modalities. By achieving competitive results on the MRIxFields2026 challenge without task-specific architectures, it demonstrates a scalable approach to harmonizing multi-source medical imaging data.",
+            "key_metrics": {
+              "primary_metric": "Inference speed for generating 30 axial slices across all modality and field-strength combinations",
+              "metric_value": "< 90 seconds",
+              "baseline": "Standard multi-step diffusion or GAN-based translation methods (implied by 'fast generation' and 'single inference step')",
+              "improvement_percentage": null
+            },
+            "technical_breakdown": {
+              "method": "Conditional latent bridge matching framework for controllable field-to-field synthesis.",
+              "architecture": "Unified conditional model operating in latent space, avoiding task-specific architectures.",
+              "implementation_details": "Single-step inference mechanism; supports cross-modality-strength translation for full volumes in under 70 seconds on an NVIDIA A5000 GPU.",
+              "code_complexity": "Low inference latency (single step); training details not specified in summary but implies standard diffusion/flow-matching training costs."
+            },
+            "relevance_tags": [
+              "Medical Imaging",
+              "MRI Synthesis",
+              "Latent Diffusion",
+              "Domain Adaptation",
+              "MICCAI"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-09-17T23:09:12.505672",
+          "conference_info": {
+            "conference": "MICCAI",
+            "year": "2026",
+            "comment": "10 pages, 4 figures. MRIxFields Workshop, MICCAI 2026",
+            "raw_comment": "10 pages, 4 figures. MRIxFields Workshop, MICCAI 2026",
+            "category": "Medical & Biomedical AI",
+            "rank": "A"
+          }
+        },
+        {
+          "paper": {
+            "title": "HyperAMS-Net: Adaptive Multi-Scale Spatial Hypergraph Network for Brain Disorder Classification",
+            "arxiv_id": "2609.19755v1",
+            "authors": [
+              "Proloy Kumar Mondal",
+              "Md Kamran Hussin Chowdhury",
+              "Hoi Leong Lee"
+            ],
+            "published": "2026-09-17T06:25:21Z",
+            "updated": "2026-09-17T06:25:21Z",
+            "summary": "Accurate classification of brain disorders from neuroimaging data remains challenging because of substantial inter-subject heterogeneity and the complex multi-scale patterns present in functional connectivity and morphological representations. To address these challenges, we propose HyperAMS-Net, a deep learning framework for brain disorder classification using neuroimaging representations derived from resting-state functional MRI or structural MRI. HyperAMS-Net integrates adaptive multi-scale convolution, hypergraph attention, spatial-channel attention, and adaptive feature fusion. Specifically, adaptive multi-scale convolution learns data-driven weights over multiple receptive fields to capture complementary patterns at different scales. Hypergraph attention models higher-order dependencies among learned feature representations through node--hyperedge--node message passing, while spatial-channel attention enhances discriminative feature learning. Adaptive feature fusion further aggregates complementary information across parallel network branches. HyperAMS-Net is evaluated on three benchmark datasets spanning distinct brain disorders: ABIDE for autism spectrum disorder, REST-meta-MDD for major depressive disorder, and ADNI for Alzheimer's disease, using 5-fold stratified cross-validation. HyperAMS-Net achieves state-of-the-art performance across all evaluated datasets, attaining the highest accuracy and AUC among the compared methods. Ablation studies further demonstrate the contribution of each proposed component, with the largest performance degradation observed when hypergraph attention is removed.",
+            "categories": "eess.IV",
+            "comment": "Accepted at the 17th International Workshop on Machine Learning in Medical Imaging (MLMI 2026), held in conjunction with MICCAI 2026"
+          },
+          "analysis": {
+            "problem_statement": "Accurate classification of brain disorders from neuroimaging data is hindered by substantial inter-subject heterogeneity and complex multi-scale patterns in functional connectivity and morphological representations.",
+            "bottleneck_addressed": "Modeling higher-order dependencies and multi-scale spatial patterns in high-dimensional, heterogeneous neuroimaging data to improve discriminative feature learning.",
+            "executive_summary": "This paper addresses the challenge of classifying brain disorders from neuroimaging data by integrating adaptive multi-scale convolution with hypergraph attention to capture complex, higher-order relationships. It demonstrates state-of-the-art performance on major benchmarks for autism, depression, and Alzheimer's disease, highlighting the utility of hypergraph structures in medical imaging AI.",
+            "key_metrics": {
+              "primary_metric": "Highest accuracy and AUC among compared methods across ABIDE, REST-meta-MDD, and ADNI datasets",
+              "metric_value": "Not specified in summary",
+              "baseline": "Compared methods (specific baselines not listed in summary)",
+              "improvement_percentage": "Not quantified in summary"
+            },
+            "technical_breakdown": {
+              "method": "HyperAMS-Net integrates adaptive multi-scale convolution, hypergraph attention, spatial-channel attention, and adaptive feature fusion to process neuroimaging representations.",
+              "architecture": "Parallel network branches featuring adaptive multi-scale convolution for receptive field weighting, a hypergraph attention module for node-hyperedge-node message passing, and spatial-channel attention mechanisms.",
+              "implementation_details": "Data-driven weights over multiple receptive fields, higher-order dependency modeling via hypergraph message passing, and adaptive aggregation of complementary information across branches.",
+              "code_complexity": "Not specified in summary; likely higher than standard CNNs due to hypergraph message passing and multi-scale parallel processing."
+            },
+            "relevance_tags": [
+              "Medical Imaging",
+              "Brain Disorder Classification",
+              "Hypergraph Neural Networks",
+              "Deep Learning",
+              "Neuroimaging"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-09-17T23:10:06.436826",
+          "conference_info": {
+            "conference": "MICCAI",
+            "year": "2026",
+            "comment": "Accepted at the 17th International Workshop on Machine Learning in Medical Imaging (MLMI 2026), held in conjunction with MICCAI 2026",
+            "raw_comment": "Accepted at the 17th International Workshop on Machine Learning in Medical Imaging (MLMI 2026), held in conjunction with MICCAI 2026",
+            "category": "Medical & Biomedical AI",
+            "rank": "A"
+          }
+        },
+        {
+          "paper": {
+            "title": "Harm Laundering in GPT Models: Evidence That Gender Discrimination Is Transformed Rather Than Reduced Across Safety-Trained Generations",
+            "arxiv_id": "2609.20779v1",
+            "authors": [
+              "Sarah Wyer",
+              "Sue Black",
+              "Noura Al Moubayed"
+            ],
+            "published": "2026-09-17T17:49:28Z",
+            "updated": "2026-09-17T17:49:28Z",
+            "summary": "Safety evaluations for large language models rely on surface-form classifiers that report declining harm scores across model generations. We provide evidence that this methodology is systematically incomplete: explicit discriminatory content is transformed rather than removed. We call this \\emph{harm laundering}. Analysing 450,000 gender-directed completions across 15 models spanning GPT-2 through to GPT-5 (OpenAI GPT lineage; three demographic conditions), we show that sexual violence clusters prevalent in GPT-2 women-directed output disappear by GPT-4, while men-directed completions gain positive representational territory (caregiving, emotional range, ally identity) that women-directed completions do not. The pattern is most visible at GPT-5: Topic~5 (1,997~documents) frames breast cancer as a men's rights debate, while zero equivalent clusters appear in women-directed output. Three independent classifiers score this content as non-toxic. Sentiment scores invert at GPT-4: early models demean women; later models over-correct. Topic diversity in women-directed completions falls 36\\% relative to men at the GPT-4 alignment boundary (W/M~$= 0.58$, from $0.91$ at GPT-2). REGARD representational harm disparity correlates with release date ($\u03c1= +0.55$, $p = .034$) while Detoxify does not ($\u03c1= -0.23$, $p = .42$): toxicity scores fall as representational harm grows. We formalise harm laundering as a three-criteria test and provide a three-stage detection protocol applicable to any generative model. Within the OpenAI GPT lineage, toxicity score reduction is not a sufficient proxy for harm reduction.",
+            "categories": "cs.CL",
+            "comment": "Accepted at EMNLP 26 Main Conference"
+          },
+          "analysis": {
+            "problem_statement": "The paper addresses the methodological flaw in safety evaluations where surface-form toxicity classifiers fail to detect 'harm laundering,' a phenomenon where explicit discrimination is transformed into subtle representational harm rather than removed.",
+            "bottleneck_addressed": "Evaluation and Safety Alignment (specifically the inadequacy of surface-level toxicity metrics for detecting subtle representational biases).",
+            "executive_summary": "This research demonstrates that declining toxicity scores in modern LLMs (GPT-2 to GPT-5) do not equate to reduced harm, as explicit discrimination is laundered into subtle representational disparities. It reveals that while sexual violence clusters disappear, new forms of harm emerge, such as framing women's health issues as men's rights debates, which standard classifiers miss. This challenges the current industry reliance on toxicity metrics as a sufficient proxy for ethical alignment.",
+            "key_metrics": {
+              "primary_metric": "Correlation between representational harm disparity (REGARD) and model release date vs. toxicity scores (Detoxify)",
+              "metric_value": "REGARD correlation \u03c1=+0.55 (p=.034); Detoxify correlation \u03c1=-0.23 (p=.42); Topic diversity drop 36% (W/M ratio 0.58 vs 0.91)",
+              "baseline": "GPT-2 baseline toxicity and topic diversity metrics compared against GPT-4 and GPT-5",
+              "improvement_percentage": "N/A (The paper documents a failure of improvement in harm reduction, showing a 36% relative drop in topic diversity for women-directed completions at GPT-4)"
+            },
+            "technical_breakdown": {
+              "method": "Large-scale comparative analysis of 450,000 gender-directed completions across 15 models using topic modeling and multiple independent classifiers (toxicity, sentiment, representational harm).",
+              "architecture": "No new model architecture; utilizes existing OpenAI GPT lineage (GPT-2 through GPT-5) as the subject of analysis. The 'architecture' of the study is a three-stage detection protocol for harm laundering.",
+              "implementation_details": "Uses three demographic conditions, compares explicit vs. implicit harm clusters (e.g., Topic 5 in GPT-5), and correlates REGARD (representational harm) and Detoxify (toxicity) scores with release dates to formalize a three-criteria test for harm laundering.",
+              "code_complexity": "N/A (Empirical analysis of existing models; computational cost is dominated by generating 450,000 completions and running multiple classifier passes)."
+            },
+            "relevance_tags": [
+              "AI Safety",
+              "Bias and Fairness",
+              "LLM Evaluation",
+              "Representational Harm",
+              "GPT Lineage"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-09-17T23:10:40.853963",
+          "conference_info": {
+            "conference": "EMNLP",
+            "year": "Unknown",
+            "comment": "Accepted at EMNLP 26 Main Conference",
+            "raw_comment": "Accepted at EMNLP 26 Main Conference",
+            "category": "Natural Language Processing",
+            "rank": "A"
+          }
+        },
+        {
+          "paper": {
+            "title": "SAFARI: An Industrial Benchmark for LLM-Assisted Hazard Analysis and Risk Assessment",
+            "arxiv_id": "2609.20584v1",
+            "authors": [
+              "Chenxi Wu",
+              "Zimu Wang",
+              "Haiyang Zhang",
+              "Wei Wang",
+              "Zhijie Xu"
+            ],
+            "published": "2026-09-17T15:37:51Z",
+            "updated": "2026-09-17T15:37:51Z",
+            "summary": "Large language models (LLMs) are increasingly considered for safety-critical engineering, yet their reliability in regulated functional-safety workflows remains underexplored. We introduce SAFARI (Safety-Aware Functional Automotive Risk Inference), the first industrial benchmark for LLM-assisted automotive Hazard Analysis and Risk Assessment (HARA) under ISO 26262. It contains 3,000 de-identified industrial HARA cases and evaluates two coupled tasks: open-ended hazard analysis and standards-grounded risk assessment. To evaluate open-ended HARA artifacts, we propose the first reference-anchored LLM-as-a-judge protocol with high expert correlation. Experiments with nine frontier LLMs show that models often produce plausible hazard narratives but remain weak at ISO 26262 risk classification, with the best ASIL macro-F1 reaching only 0.261. Chain-of-Thought prompting provides limited benefit and often degrades categorical risk assessment. Error analysis further localizes major failures to scenario-critical context omissions during hazard generation and to controllability misjudgments during risk assessment, indicating where expert oversight should be concentrated. The dataset can be obtained from https://github.com/xixi47520-hash/HARA.",
+            "categories": "cs.CL",
+            "comment": "Accepted at EMNLP 2026 Industry Track"
+          },
+          "analysis": {
+            "problem_statement": "The paper addresses the lack of reliable, standardized evaluation methods for Large Language Models (LLMs) in performing ISO 26262-compliant Hazard Analysis and Risk Assessment (HARA) for automotive safety.",
+            "bottleneck_addressed": "Reliability and domain-specific accuracy of LLMs in regulated, safety-critical engineering workflows.",
+            "executive_summary": "This work introduces SAFARI, the first industrial benchmark for LLM-assisted automotive HARA, providing 3,000 de-identified cases to evaluate hazard generation and risk classification. It reveals that while current frontier LLMs can generate plausible hazard narratives, they significantly fail at precise ISO 26262 ASIL classification, highlighting a critical gap in their deployment for safety-critical applications.",
+            "key_metrics": {
+              "primary_metric": "Best ASIL macro-F1 score across nine frontier LLMs",
+              "metric_value": "0.261",
+              "baseline": "Nine frontier LLMs evaluated on the SAFARI benchmark",
+              "improvement_percentage": "N/A (Benchmark paper establishing baseline performance rather than claiming improvement over a specific prior state-of-the-art)"
+            },
+            "technical_breakdown": {
+              "method": "Evaluation of LLMs on two coupled tasks: open-ended hazard analysis and standards-grounded risk assessment using a reference-anchored LLM-as-a-judge protocol.",
+              "architecture": "Benchmark dataset of 3,000 industrial HARA cases; LLM-as-a-judge evaluation framework; Chain-of-Thought (CoT) prompting strategy.",
+              "implementation_details": "Use of de-identified industrial data; high expert-correlated LLM judge for open-ended artifacts; analysis of failure modes including scenario-critical context omissions and controllability misjudgments.",
+              "code_complexity": "N/A (Focus is on benchmarking and evaluation rather than novel model training or architectural innovation)"
+            },
+            "relevance_tags": [
+              "Automotive Safety",
+              "LLM Benchmarking",
+              "ISO 26262",
+              "Hazard Analysis",
+              "Risk Assessment"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-09-17T23:11:18.025770",
+          "conference_info": {
+            "conference": "EMNLP",
+            "year": "2026",
+            "comment": "Accepted at EMNLP 2026 Industry Track",
+            "raw_comment": "Accepted at EMNLP 2026 Industry Track",
+            "category": "Natural Language Processing",
+            "rank": "A"
+          }
+        },
+        {
+          "paper": {
+            "title": "Steering the Compass: Aligning Dynamic Psychological Counseling Conversations with Cognitive Behavioral Therapy Strategies",
+            "arxiv_id": "2609.20565v1",
+            "authors": [
+              "Zimu Wang",
+              "Yiwen Jiang",
+              "Xiangyu Zhao",
+              "Yaling Shen",
+              "Jiahe Liu",
+              "Stephanie Fong",
+              "Maxmartwell H Cheng",
+              "Guilherme C Oliveira",
+              "Anh Nguyen",
+              "Robert Desimone",
+              "Barnaby Nelson",
+              "Dominic Dwyer",
+              "Zongyuan Ge"
+            ],
+            "published": "2026-09-17T15:28:37Z",
+            "updated": "2026-09-17T15:28:37Z",
+            "summary": "Recent advancements in large language models have revolutionized the field of psychological counseling, especially in the context of Cognitive Behavioral Therapy (CBT). While the success of CBT relies heavily on dynamic decision-making informed by the client's real-time mental state, this aspect has often been overlooked in current research, limiting both flexibility and therapeutic outcomes. In this paper, we introduce StratCBT, a dataset specifically designed for psychological counseling conversations with CBT Strategies, consisting of 9,688 sessions and around 256K utterances, with each counselor's response aligned with one of eight distinct strategies. The creation of StratCBT involves modeling clients based on their negative thoughts and generating high-quality counseling conversations through self-chat, incorporating realistic sessions as guidance, thereby significantly surpassing existing datasets in both general counseling and CBT-specific skills. We conduct extensive experiments to demonstrate the effectiveness of strategy-aligned generation and evaluate its efficacy in delivering professional and effective counseling with LLM-simulated clients to reflect real-world scenarios. The dataset can be obtained from https://github.com/zimuwangnlp/StratCBT.",
+            "categories": "cs.CL",
+            "comment": "Accepted at EMNLP 2026"
+          },
+          "analysis": {
+            "problem_statement": "Current Large Language Model (LLM) approaches to psychological counseling lack dynamic alignment with specific Cognitive Behavioral Therapy (CBT) strategies based on the client's real-time mental state, limiting therapeutic flexibility and outcomes.",
+            "bottleneck_addressed": "Lack of fine-grained, strategy-specific supervision in domain-specific dialogue generation, leading to generic rather than clinically precise responses.",
+            "executive_summary": "This paper addresses the gap in CBT-specific AI counseling by introducing StratCBT, a large-scale dataset (9,688 sessions) that explicitly aligns counselor responses with eight distinct CBT strategies. By modeling clients based on negative thoughts and using self-chat generation guided by realistic sessions, it enables LLMs to perform dynamic, strategy-aligned counseling that surpasses existing datasets in both general and CBT-specific skills.",
+            "key_metrics": {
+              "primary_metric": "Efficacy of strategy-aligned generation in delivering professional counseling",
+              "metric_value": "9,688 sessions / ~256K utterances",
+              "baseline": "Existing general counseling and CBT-specific datasets",
+              "improvement_percentage": "Not quantified in abstract"
+            },
+            "technical_breakdown": {
+              "method": "Dataset construction via client modeling based on negative thoughts and self-chat generation of high-quality counseling conversations, with each response aligned to one of eight CBT strategies.",
+              "architecture": "StratCBT dataset structure with 8 distinct strategy labels; LLM-simulated clients for evaluation.",
+              "implementation_details": "Self-chat generation incorporating realistic session guidance; alignment of counselor responses to specific CBT strategies.",
+              "code_complexity": "Not specified in abstract; dataset available on GitHub."
+            },
+            "relevance_tags": [
+              "NLP",
+              "Cognitive Behavioral Therapy",
+              "Dataset",
+              "Dialogue Generation",
+              "LLM Alignment"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-09-17T23:11:40.062957",
+          "conference_info": {
+            "conference": "EMNLP",
+            "year": "2026",
+            "comment": "Accepted at EMNLP 2026",
+            "raw_comment": "Accepted at EMNLP 2026",
+            "category": "Natural Language Processing",
+            "rank": "A"
+          }
+        },
+        {
+          "paper": {
+            "title": "Relational Attention for Data-Efficient Language Modeling",
+            "arxiv_id": "2609.20530v1",
+            "authors": [
+              "Adrian Brasoveanu",
+              "Ece Takmaz",
+              "Jakub Dotla\u010dil"
+            ],
+            "published": "2026-09-17T15:05:19Z",
+            "updated": "2026-09-17T15:05:19Z",
+            "summary": "We present Relational BabyLM, a system submission to the BabyLM 2026 challenge that combines two cognitively motivated inductive biases in a single decoder-only Transformer. Architecturally, we replace standard self-attention with a Dual Attention Transformer (DAT), which separates the routing of object-level (\"sensory\") lexical features from structural/relational information (Altabaa and Lafferty, 2025; Altabaa et al., 2024; Webb et al., 2024; Kerg et al., 2022; Webb et al., 2021). Relational attention (RA) disentangled from self-attention greatly increases data efficiency and out-of-training-sample generalization on purely relational tasks, but language modeling requires object-level and relational information to be integrated as well as disentangled, and RA-based LMs have remained largely unexplored. BabyLM's data-constrained training and comprehensive evaluation is an ideal testing ground for whether that data efficiency transfers. As a training intervention, we add a Next-Latent Prediction (NextLat; Teoh et al. 2026) objective that encourages hidden states to compress history incrementally into a dense belief state. Architecture is the dominant factor for structural linguistic generalization; the objective is secondary but still significant. DAT's three relational attention types (full RA vs. the simpler RCA and DisRCA variants) are largely interchangeable at 10M words; full RA pulls ahead at 100M. We also introduce a novel symbol-retrieval mechanism (RoPE-based, as opposed to learned, relative symbols) that matches learned symbol libraries while adding no parameters. On the strict (100M-word) track, our best model ranks 6th of 55 overall and 3rd of 55 on the leaderboard's NLP-task subset at the time of writing; our two strongest models outperform the GPT-2 baseline on most benchmarks, with one attaining the highest EWoK score among strict-track entries.",
+            "categories": "cs.CL",
+            "comment": "BabyLM Workshop, EMNLP 2026. Source code: https://github.com/abrsvn/babylm_dat_2026"
+          },
+          "analysis": {
+            "problem_statement": "How to improve data efficiency and structural generalization in small-scale language models by integrating cognitively motivated relational inductive biases into the Transformer architecture.",
+            "bottleneck_addressed": "Data efficiency and out-of-distribution generalization in low-resource language modeling settings.",
+            "executive_summary": "This paper addresses the challenge of training effective language models with limited data by replacing standard self-attention with a Dual Attention Transformer (DAT) that disentangles object-level and relational information. It demonstrates that architectural inductive biases, specifically relational attention, are more critical for structural linguistic generalization than auxiliary training objectives in data-constrained regimes.",
+            "key_metrics": {
+              "primary_metric": "Ranking on BabyLM 2026 strict track (100M words) and NLP-task subset",
+              "metric_value": "6th of 55 overall; 3rd of 55 on NLP-task subset",
+              "baseline": "GPT-2 baseline and other BabyLM 2026 challenge entries",
+              "improvement_percentage": "Not explicitly quantified as a percentage, but outperforms GPT-2 on most benchmarks and attains highest EWoK score among strict-track entries."
+            },
+            "technical_breakdown": {
+              "method": "Combines Dual Attention Transformer (DAT) architecture with Next-Latent Prediction (NextLat) objective and a novel RoPE-based symbol-retrieval mechanism.",
+              "architecture": "Decoder-only Transformer with Dual Attention (separating sensory/lexical and structural/relational attention), incorporating full Relational Attention (RA), RCA, or DisRCA variants.",
+              "implementation_details": "Uses Next-Latent Prediction to compress history into dense belief states; employs RoPE-based relative symbols instead of learned symbol libraries to avoid parameter overhead; compares full RA against simpler variants at 10M and 100M word scales.",
+              "code_complexity": "Computational cost is comparable to standard Transformers but with modified attention heads; no additional parameters added for symbol retrieval, maintaining efficiency."
+            },
+            "relevance_tags": [
+              "Data-Efficient Learning",
+              "Relational Attention",
+              "Inductive Biases",
+              "BabyLM Challenge",
+              "Transformer Architecture"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-09-17T23:08:45.570880",
+          "conference_info": {
+            "conference": "EMNLP",
+            "year": "2026",
+            "comment": "BabyLM Workshop, EMNLP 2026. Source code: https://github.com/abrsvn/babylm_dat_2026",
+            "raw_comment": "BabyLM Workshop, EMNLP 2026. Source code: https://github.com/abrsvn/babylm_dat_2026",
+            "category": "Natural Language Processing",
+            "rank": "A"
+          }
+        },
+        {
+          "paper": {
+            "title": "Before the Arrest: Benchmarking LLMs on Criminal Profiling from Incomplete Evidence",
+            "arxiv_id": "2609.19965v1",
+            "authors": [
+              "Yutong Yao",
+              "Yanjie Cao",
+              "Guanhua Chen",
+              "Xu Yang",
+              "Junchao Wu",
+              "Zeyu Wu",
+              "Lidia S. Chao",
+              "Derek F. Wong"
+            ],
+            "published": "2026-09-17T09:38:22Z",
+            "updated": "2026-09-17T09:38:22Z",
+            "summary": "Large Language Models (LLMs) are increasingly applied to legal and criminal justice tasks, yet existing work focuses almost exclusively on post-arrest scenarios where the suspect's identity is already known, leaving the critical pre-arrest challenge of inferring suspect characteristics from incomplete evidence largely unexplored. To fill this gap, we introduce the Profiling, Investigation, and Judgment (PIJ), comprising 2,500 real homicide cases from five countries. PIJ evaluates LLMs across three tasks that span the entire criminal investigation pipeline: criminal profiling, which requires abductive reasoning to infer suspect attributes from fragmentary scene evidence, crime process reconstruction, which tests structured information extraction, and sentence prediction, which demands legal deductive reasoning. We evaluate 9 powerful LLMs and find that performance degrades systematically as tasks shift from explicit fact extraction to implicit reasoning over unknown suspect profiles. Categories requiring inferential reasoning, such as motivation and victim-offender relationships, remain the primary bottlenecks. Further analysis reveals substantial gaps between LLMs and human experts, along with pervasive biases in gender, age, and motive attribution. Our findings indicate that pre-arrest inference from incomplete evidence remains an open challenge.",
+            "categories": "cs.CL",
+            "comment": "Accepted by EMNLP 2026 Findings. Codes are available at: https://github.com/NLP2CT/PIJ-benchmark"
+          },
+          "analysis": {
+            "problem_statement": "The paper addresses the lack of benchmarks for evaluating Large Language Models on pre-arrest criminal profiling, specifically the ability to infer suspect characteristics from incomplete evidence.",
+            "bottleneck_addressed": "Evaluation gap in abductive reasoning and legal inference tasks involving incomplete information and unknown entities.",
+            "executive_summary": "This work introduces the PIJ benchmark, comprising 2,500 real homicide cases, to evaluate LLMs on the full criminal investigation pipeline, including profiling, process reconstruction, and sentencing. It reveals that current LLMs struggle significantly with implicit reasoning over unknown suspect profiles and exhibit pervasive biases in gender, age, and motive attribution, highlighting a critical limitation in their application to pre-arrest justice scenarios.",
+            "key_metrics": {
+              "primary_metric": "Performance degradation across tasks shifting from explicit fact extraction to implicit reasoning",
+              "metric_value": "Not specified in abstract",
+              "baseline": "Human experts and 9 powerful LLMs",
+              "improvement_percentage": "Not applicable (benchmark paper)"
+            },
+            "technical_breakdown": {
+              "method": "Construction of a multi-task benchmark (PIJ) using real-world data to test LLMs on abductive, extractive, and deductive reasoning within a legal context.",
+              "architecture": "Benchmark dataset structure spanning three tasks: criminal profiling, crime process reconstruction, and sentence prediction.",
+              "implementation_details": "Utilizes 2,500 homicide cases from five countries; evaluates 9 LLMs; analyzes gaps between LLM outputs and human expert judgments.",
+              "code_complexity": "Not specified in abstract"
+            },
+            "relevance_tags": [
+              "NLP",
+              "Legal AI",
+              "Benchmarking",
+              "Criminal Justice",
+              "Abductive Reasoning"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-09-17T23:12:14.118881",
+          "conference_info": {
+            "conference": "EMNLP",
+            "year": "2026",
+            "comment": "Accepted by EMNLP 2026 Findings. Codes are available at: https://github.com/NLP2CT/PIJ-benchmark",
+            "raw_comment": "Accepted by EMNLP 2026 Findings. Codes are available at: https://github.com/NLP2CT/PIJ-benchmark",
+            "category": "Natural Language Processing",
+            "rank": "A"
+          }
+        },
+        {
+          "paper": {
+            "title": "From Parameters to Behaviors: A Survey of Model Fusion for Large Language Models",
+            "arxiv_id": "2609.19553v1",
+            "authors": [
+              "Shuo Cai",
+              "Yanggan Gu",
+              "Zihao Wang",
+              "Yuanyi Wang",
+              "Yibo Yan",
+              "Wenjun Wang",
+              "Yuhang Liu",
+              "Guanghao Zhu",
+              "Sirui Huang",
+              "Ming Li",
+              "Hongxia Yang"
+            ],
+            "published": "2026-09-17T01:24:23Z",
+            "updated": "2026-09-17T01:24:23Z",
+            "summary": "Model fusion integrates the capabilities from source models into a single target model. As of June 2026, Hugging Face hosts more than 2M models. This growing pool provides a rich base for model reuse and capability integration. Yet existing surveys often cover only separate parts of this space, and they do not provide a unified definition or a systematic taxonomy. This survey defines model fusion and organizes prior work into three levels: parameter-level, representation-level, and behavior-level fusion. We also review related metrics, benchmarks, and applications, summarize current challenges, and identify future directions. Our goal is to provide a clear map of this area and support future work on model fusion. A comprehensive list of papers about model fusion is available at https://github.com/Baicaihaochi/Awesome-Model-Fusion-Survey.",
+            "categories": "cs.CL",
+            "comment": "25 pages, 4 figures. Accepted to Findings of the Association for Computational Linguistics: EMNLP 2026"
+          },
+          "analysis": {
+            "problem_statement": "The lack of a unified definition and systematic taxonomy for model fusion in Large Language Models, which hinders the organization of prior work and the development of the field.",
+            "bottleneck_addressed": "Knowledge fragmentation and lack of standardized categorization in model integration techniques.",
+            "executive_summary": "This survey provides a comprehensive framework for understanding model fusion by categorizing methods into parameter, representation, and behavior levels. It addresses the growing complexity of integrating capabilities from the massive pool of available LLMs by offering a clear map of the landscape, metrics, and applications.",
+            "key_metrics": {
+              "primary_metric": "N/A (Survey paper)",
+              "metric_value": "N/A",
+              "baseline": "N/A",
+              "improvement_percentage": "N/A"
+            },
+            "technical_breakdown": {
+              "method": "Systematic literature review and taxonomic classification of model fusion techniques.",
+              "architecture": "Three-level taxonomy: parameter-level, representation-level, and behavior-level fusion.",
+              "implementation_details": "Review of metrics, benchmarks, and applications; curation of a comprehensive paper list.",
+              "code_complexity": "N/A (Theoretical/Review work)"
+            },
+            "relevance_tags": [
+              "Survey",
+              "Model Fusion",
+              "LLM",
+              "Taxonomy",
+              "NLP"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-09-17T23:12:39.506195",
+          "conference_info": {
+            "conference": "Association for Computational Linguistics",
+            "year": "2026",
+            "comment": "25 pages, 4 figures. Accepted to Findings of the Association for Computational Linguistics: EMNLP 2026",
+            "raw_comment": "25 pages, 4 figures. Accepted to Findings of the Association for Computational Linguistics: EMNLP 2026",
+            "category": "Natural Language Processing",
+            "rank": "A+"
+          }
+        },
+        {
+          "paper": {
+            "title": "When Hiring Becomes Agent-Mediated: Evaluating Access and Recurrence in Two-Agent R\u00e9sum\u00e9 Screening",
+            "arxiv_id": "2609.19530v1",
+            "authors": [
+              "Jian Gao",
+              "Hang Jiang"
+            ],
+            "published": "2026-09-17T00:52:36Z",
+            "updated": "2026-09-17T00:52:36Z",
+            "summary": "Hiring is bilateral: employers assess fit, while candidates present and defend evidence of their qualifications. Yet r\u00e9sum\u00e9 screening, the first gate, is commonly automated as a static, one-call judgment over a r\u00e9sum\u00e9-job pair. We study a two-agent alternative in which employer-side and candidate-side agents represent these roles, exchange evidence, and update their judgments before deciding who advances. We compare procedures on 600 constructed r\u00e9sum\u00e9-job pairs using GPT-5.5 and Claude Opus 4.7. Two-agent screening advances more applications (33.3% to 39.3% for GPT-5.5; 34.0% to 35.5% for Opus 4.7). Across three runs on the common 191-pair borderline pool, pass-instance rates rise from 4.5% to 26.2% and from 6.5% to 16.1%, respectively. This is not a uniform relaxation: two-agent screening rejects applications one-call advances, changing decisions in both directions. At similar pass volumes, the procedures advance different applications, and no one-call threshold recovers applications consistently selected by two-agent screening. Among discovery-selected cases re-executed in fresh runs, two-agent-only selections recur less often than shared selections, clearly under GPT-5.5 and less certainly under Opus 4.7, while a separate one-call follow-up shows no comparable decline. As hiring becomes agent-mediated on both sides, the screening procedure, not only the model behind it, shapes who reaches human review and how reliably that access recurs.",
+            "categories": "cs.AI",
+            "comment": "9 pages, 5 tables, 1 figure. Accepted to the REALM Workshop at EMNLP 2026"
+          },
+          "analysis": {
+            "problem_statement": "The paper addresses the limitation of static, one-call automated r\u00e9sum\u00e9 screening by investigating how a bilateral, two-agent interaction between employer and candidate representatives alters access rates and decision recurrence in hiring pipelines.",
+            "bottleneck_addressed": "This addresses the bottleneck of rigid, unilateral decision-making in automated hiring systems, which fails to capture the dynamic, evidence-exchanging nature of real-world bilateral negotiations and can lead to inconsistent or biased filtering of candidates.",
+            "executive_summary": "As hiring processes become increasingly agent-mediated, the structure of the interaction (one-call vs. multi-turn) significantly impacts who advances to human review. This study demonstrates that two-agent screening does not simply relax standards but fundamentally changes which applications are selected, with implications for the reliability and fairness of AI-driven recruitment.",
+            "key_metrics": {
+              "primary_metric": "Change in pass rate and decision recurrence between one-call and two-agent screening procedures",
+              "metric_value": "Pass-instance rates on borderline pool rose from 4.5% to 26.2% (GPT-5.5) and 6.5% to 16.1% (Opus 4.7); overall advance rates increased from 33.3% to 39.3% (GPT-5.5)",
+              "baseline": "Static, one-call judgment over r\u00e9sum\u00e9-job pairs using GPT-5.5 and Claude Opus 4.7",
+              "improvement_percentage": "Approximately 482% increase in pass-instance rate for GPT-5.5 on borderline pool (4.5% to 26.2%)"
+            },
+            "technical_breakdown": {
+              "method": "The study compares a standard one-call LLM screening method against a two-agent framework where employer-side and candidate-side agents exchange evidence and update judgments iteratively before a final decision.",
+              "architecture": "A multi-agent system comprising an employer-side agent and a candidate-side agent, both powered by large language models (GPT-5.5 or Claude Opus 4.7), interacting over a defined protocol to evaluate 600 constructed r\u00e9sum\u00e9-job pairs.",
+              "implementation_details": "The evaluation utilizes 600 constructed pairs and focuses on a 191-pair 'borderline pool' across three runs. The analysis tracks 'discovery-selected cases' re-executed in fresh runs to measure recurrence stability, comparing shared selections versus two-agent-only selections.",
+              "code_complexity": "The two-agent approach increases computational cost due to multiple inference calls per pair (evidence exchange and judgment updates) compared to the single inference call of the baseline, though specific latency or token cost metrics are not provided in the summary."
+            },
+            "relevance_tags": [
+              "Multi-Agent Systems",
+              "AI in Hiring",
+              "LLM Evaluation",
+              "Algorithmic Fairness",
+              "Procedural Design"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-09-17T23:07:13.891995",
+          "conference_info": {
+            "conference": "EMNLP",
+            "year": "2026",
+            "comment": "9 pages, 5 tables, 1 figure. Accepted to the REALM Workshop at EMNLP 2026",
+            "raw_comment": "9 pages, 5 tables, 1 figure. Accepted to the REALM Workshop at EMNLP 2026",
+            "category": "Natural Language Processing",
+            "rank": "A"
+          }
+        },
+        {
+          "paper": {
+            "title": "Workspace Models: Lightweight Robotic Memory via Saliency-Driven Supervision",
+            "arxiv_id": "2609.20820v1",
+            "authors": [
+              "Nitish Dashora",
+              "Douglas Chen",
+              "Idan Shenfeld",
+              "John Marangola",
+              "Pulkit Agrawal",
+              "Max Simchowitz"
+            ],
+            "published": "2026-09-17T17:59:53Z",
+            "updated": "2026-09-17T17:59:53Z",
+            "summary": "Complex robotic manipulation tasks frequently require a long-term memory of past events and actions. As conditioning on full histories renders policies prone to spurious correlations and degrades performance, many approaches to policy memory involve compressing historical information through expensive VLM queries in-the-loop to process only task-salient information. In this paper, we propose an alternative approach in which computationally intensive VLM queries are made during train-time to learn a lightweight latent memory that can be efficiently queried at deployment time. Our representation, which we call the \\textbf{workspace token}, is trained by (1) using a VLM to identify current and historical information necessary for completing a task, then (2) distilling these into the workspace token using a set-reconstruction decoder loss. In both simulation and hardware, we show that the workspace token can be used as a drop-in replacement for observations during deployment, enabling policies to solve memory-intensive tasks without the need for VLM reasoning in-the-loop. Interestingly, we found that workspace tokens are not only more lightweight but also lead to better policy performance.",
+            "categories": "cs.RO",
+            "comment": "26 pages; CoRL 2026; 11 figures"
+          },
+          "analysis": {
+            "problem_statement": "How to enable robotic policies to utilize long-term memory for complex manipulation tasks without the computational latency and spurious correlations associated with in-the-loop VLM queries or full history conditioning.",
+            "bottleneck_addressed": "Computational latency and inference cost of Vision-Language Models (VLMs) during real-time robotic deployment.",
+            "executive_summary": "This paper addresses the high inference cost of using VLMs for robotic memory by shifting VLM-based reasoning to the training phase. It introduces a 'workspace token' that distills task-salient historical information into a lightweight latent representation, allowing for efficient, drop-in replacement of observations at deployment time. This approach not only reduces computational overhead but also improves policy performance compared to methods relying on in-the-loop VLM queries.",
+            "key_metrics": {
+              "primary_metric": "Policy performance on memory-intensive tasks and computational efficiency at deployment",
+              "metric_value": "Not specified in abstract",
+              "baseline": "Policies using in-the-loop VLM queries and full history conditioning",
+              "improvement_percentage": "Not specified in abstract"
+            },
+            "technical_breakdown": {
+              "method": "Train-time distillation of VLM-identified task-salient information into a latent 'workspace token' using a set-reconstruction decoder loss, which is then used as a drop-in replacement for observations during deployment.",
+              "architecture": "VLM (for train-time saliency identification), Workspace Token (latent memory representation), Set-reconstruction Decoder (for distillation loss), Robotic Policy (consumer of workspace tokens).",
+              "implementation_details": "Uses VLMs to identify current and historical information necessary for task completion during training; distills this information into the workspace token via a set-reconstruction decoder loss; replaces standard observations with workspace tokens during inference.",
+              "code_complexity": "High computational cost during training due to VLM queries; significantly reduced computational cost during deployment as VLM reasoning is removed from the inference loop."
+            },
+            "relevance_tags": [
+              "Robotics",
+              "Long-term Memory",
+              "Knowledge Distillation",
+              "Vision-Language Models",
+              "Efficient Inference"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-09-17T23:17:59.797794",
+          "conference_info": {
+            "conference": "CoRL",
+            "year": "2026",
+            "comment": "26 pages; CoRL 2026; 11 figures",
+            "raw_comment": "26 pages; CoRL 2026; 11 figures",
+            "category": "Robotics",
+            "rank": ""
+          }
+        },
+        {
+          "paper": {
+            "title": "DexTouch-WM: Learning Action-Conditioned Tactile World Models from Human Touch for Dexterous Robot Manipulation",
+            "arxiv_id": "2609.20649v1",
+            "authors": [
+              "Yan Qin",
+              "Yue Chen",
+              "Wenwei Lin",
+              "Shujia Liu",
+              "Chuqiao Lyu",
+              "Kailun Su",
+              "Chenze Yu",
+              "Ping Luo",
+              "Wenbo Ding",
+              "Tianxing Chen",
+              "Renjing Xu"
+            ],
+            "published": "2026-09-17T16:28:34Z",
+            "updated": "2026-09-17T16:28:34Z",
+            "summary": "Learning predictive models of contact-rich dexterous manipulation requires dense tactile interaction, but such data are costly to scale on real robots and remain tied to embodiment-specific sensors. We introduce DexTouch-WM, an action-conditioned world model that learns from scalable human touch to jointly predict future RGB observations and bilateral tactile dynamics. Our insight is that human and robot manipulation share transferable contact dynamics when their tactile observations and action spaces are made compatible. We deploy flexible piezoresistive arrays with a shared sensing layout on both human and dexterous robot hands, and retarget human motion into the robot action space so that human interaction can supervise the same dynamics model used for real-robot prediction. DexTouch-WM couples a pretrained video expert with a lightweight tactile expert using anatomy-aware tactile tokens and aligned action conditioning. In human-to-robot scaling experiments, we keep five hours of real-robot supervision fixed while increasing human interaction from 0 to 100 hours, and observe substantial improvements in held-out robot-domain visual, geometric, and contact prediction despite disjoint human and robot task sets. Beyond prediction, we evaluate the world models as surrogate environments for policy evaluation and as generators of synthetic trajectories for real-robot policy learning, showing that scalable human interaction provides a complementary data axis for learning dexterous robot world models.",
+            "categories": "cs.RO",
+            "comment": "Accept to IROS 2026 Workshop RoBoWoMo (Lightning Talk)"
+          },
+          "analysis": {
+            "problem_statement": "Scalable acquisition of dense tactile data for training action-conditioned world models in dexterous robot manipulation is hindered by the high cost and embodiment-specific nature of real-robot interaction data.",
+            "bottleneck_addressed": "Data scarcity and embodiment-specificity in tactile sensing for dexterous manipulation.",
+            "executive_summary": "This paper addresses the critical bottleneck of scaling tactile data for dexterous robots by leveraging human interaction as a complementary data source. By aligning human and robot tactile sensing layouts and action spaces, it enables the transfer of contact dynamics from scalable human touch to robot-specific world models, significantly improving prediction accuracy without requiring proportional increases in expensive real-robot data.",
+            "key_metrics": {
+              "primary_metric": "Improvement in held-out robot-domain visual, geometric, and contact prediction",
+              "metric_value": "Substantial improvements observed as human interaction scaled from 0 to 100 hours",
+              "baseline": "World models trained with fixed 5 hours of real-robot supervision and 0 hours of human interaction",
+              "improvement_percentage": "Not explicitly quantified in the provided summary"
+            },
+            "technical_breakdown": {
+              "method": "The method involves deploying flexible piezoresistive arrays with a shared sensing layout on both human and dexterous robot hands. Human motion is retargeted into the robot action space to supervise a joint predictive model that learns from both human and robot data.",
+              "architecture": "The architecture couples a pretrained video expert with a lightweight tactile expert. It utilizes anatomy-aware tactile tokens and aligned action conditioning to integrate multimodal inputs.",
+              "implementation_details": "Key techniques include the use of flexible piezoresistive arrays for tactile sensing, motion retargeting from human to robot action spaces, and the integration of a pretrained video model with a specialized tactile module.",
+              "code_complexity": "The approach requires maintaining a fixed 5-hour real-robot dataset while scaling human interaction data up to 100 hours. The computational implications involve training a coupled model with video and tactile experts, though specific training times or FLOPs are not detailed in the summary."
+            },
+            "relevance_tags": [
+              "Dexterous Manipulation",
+              "Tactile Sensing",
+              "World Models",
+              "Human-to-Robot Transfer",
+              "Sim-to-Real"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-09-17T23:13:22.552437",
+          "conference_info": {
+            "conference": "IROS",
+            "year": "2026",
+            "comment": "Accept to IROS 2026 Workshop RoBoWoMo (Lightning Talk)",
+            "raw_comment": "Accept to IROS 2026 Workshop RoBoWoMo (Lightning Talk)",
+            "category": "Robotics",
+            "rank": "A"
+          }
+        },
+        {
+          "paper": {
+            "title": "Spatial-Semantic Uncertainty in VLM-Based Target Search: Balancing Exploration and Identification",
+            "arxiv_id": "2609.20443v1",
+            "authors": [
+              "Alkesh K. Srivastava",
+              "Jonathan Diller",
+              "Vijay Kumar",
+              "Philip Dames"
+            ],
+            "published": "2026-09-17T14:16:15Z",
+            "updated": "2026-09-17T14:16:15Z",
+            "summary": "Robots searching for a target from a natural-language description must determine not only where to search, but also which observed candidate is the desired target. These decisions reflect two distinct sources of uncertainty - spatial uncertainty over candidate locations and semantic uncertainty over target identity - that are often conflated in VLM-based search systems. We introduce a spatial-semantic uncertainty formulation that maintains separate beliefs over each component and integrates probabilistic VLM evidence into a global target-identity posterior, including probability mass for undiscovered targets. This decomposition allows an information-theoretic planner to independently value candidate discovery and target disambiguation through spatial and semantic expected information gain (EIG), providing an explicit mechanism for trading broader exploration against earlier identification. We evaluate six VLM uncertainty-elicitation interfaces on 500 synthetic targets and show that similar recognition accuracy can conceal substantial differences in calibration and false confidence. In degraded-observation search-and-identify experiments, EIG-based planners reach confident decisions in 75.0%-92.5% of trials, compared with 20.0% for Random search, while different spatial-semantic weightings achieve comparable identification accuracy once confidence is attained. Increasing semantic emphasis reduces unnecessary exploration and VLM queries, demonstrating that explicitly planning over semantic uncertainty can accelerate target resolution without sacrificing decision quality. These results highlight the distinct roles of uncertainty representation and uncertainty-driven planning in embodied VLM systems.",
+            "categories": "cs.RO",
+            "comment": "Accepted for presentation at IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS 2026) WorkshopRethinking Uncertainty for Modern Robotics Paradigms"
+          },
+          "analysis": {
+            "problem_statement": "The paper addresses the conflation of spatial uncertainty (where to search) and semantic uncertainty (which candidate is the target) in VLM-based robotic target search, leading to suboptimal exploration-identification trade-offs.",
+            "bottleneck_addressed": "Calibration and decision-making inefficiency in Vision-Language Models (VLMs) when integrating probabilistic evidence for embodied search tasks.",
+            "executive_summary": "This work decouples spatial and semantic uncertainties to enable information-theoretic planning that explicitly balances exploration against target disambiguation. By treating these uncertainties separately, the system can reduce unnecessary VLM queries and accelerate confident target identification in degraded observation scenarios.",
+            "key_metrics": {
+              "primary_metric": "Percentage of trials reaching confident decisions",
+              "metric_value": "75.0%-92.5%",
+              "baseline": "Random search (20.0%)",
+              "improvement_percentage": "275%-362.5%"
+            },
+            "technical_breakdown": {
+              "method": "A spatial-semantic uncertainty formulation that maintains separate beliefs over candidate locations and target identity, integrating VLM evidence into a global posterior that includes probability mass for undiscovered targets.",
+              "architecture": "Decoupled belief states for spatial and semantic components, coupled with an information-theoretic planner that calculates Expected Information Gain (EIG) for both discovery and disambiguation.",
+              "implementation_details": "Evaluation of six VLM uncertainty-elicitation interfaces; use of spatial and semantic EIG to drive planning; weighting mechanisms to trade off exploration breadth against identification speed.",
+              "code_complexity": "Not specified in metadata; implies online probabilistic inference and planning steps per decision cycle."
+            },
+            "relevance_tags": [
+              "Embodied AI",
+              "Vision-Language Models",
+              "Probabilistic Planning",
+              "Uncertainty Quantification",
+              "Robotics"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-09-17T23:19:01.155095",
+          "conference_info": {
+            "conference": "Intelligent Robots and Systems",
+            "year": "2026",
+            "comment": "Accepted for presentation at IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS 2026) WorkshopRethinking Uncertainty for Modern Robotics Paradigms",
+            "raw_comment": "Accepted for presentation at IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS 2026) WorkshopRethinking Uncertainty for Modern Robotics Paradigms",
+            "category": "Robotics",
+            "rank": "A"
+          }
+        },
+        {
+          "paper": {
+            "title": "A Closed-Loop Control Architecture for Reliable Constraint Satisfaction in LLM Text Generation",
+            "arxiv_id": "2609.19710v1",
+            "authors": [
+              "Quan Zhou",
+              "Shahbaz Siddeeq",
+              "Mika Saari",
+              "Pekka Abrahamsson"
+            ],
+            "published": "2026-09-17T05:03:05Z",
+            "updated": "2026-09-17T05:03:05Z",
+            "summary": "Software systems increasingly embed a large language model in features that must satisfy a numeric output constraint, that is, a requirement expressible as a number or an interval and checkable by code, such as a target word count or a target readability grade band. Because such a model is non-deterministic, is configured through natural-language instructions rather than a typed interface, and satisfies a stated requirement only approximately, a single prompt neither reliably meets the target nor preserves the source content. This paper presents and evaluates a closed-loop control architecture for this problem. It has five stages: generate, evaluate, adjust, archive, and analyze. The model is called only to write and to edit text, while deterministic code compares a composite readability value against a target band, rejects any edit that drops source entities, numbers, or keywords, and makes every accept decision. Over 114 single-shot generation jobs and 240 closed-loop runs on four commercial models, single-shot prompting met the target in 21.1 to 31.6 percent of cases and the closed loop in 92.5 to 98.8 percent, within two edit rounds on average and at a recall-based fidelity of 0.92 to 0.93; the two models common to both settings show the same effect. Because the controller optimizes the value on which success is scored, the result establishes reproducible control over a declared, computable metric and not validated human difficulty. The transferable practice is to declare the acceptance condition as code, bound the model to local edits, and gate every edit on a content check.",
+            "categories": "cs.SE",
+            "comment": "ICSEA 2026: The Twenty-First International Conference on Software Engineering Advances"
+          },
+          "analysis": {
+            "problem_statement": "Single-shot prompting of Large Language Models fails to reliably satisfy numeric output constraints (such as word count or readability) while preserving source content fidelity.",
+            "bottleneck_addressed": "Non-determinism and lack of precise control in LLM output generation for structured or constrained tasks.",
+            "executive_summary": "This paper addresses the reliability gap in LLM-based software features that require strict adherence to numeric constraints. By shifting the decision-making logic from the probabilistic model to deterministic code, it ensures that outputs meet specific, computable metrics without sacrificing content integrity. This approach is critical for enterprise applications where LLM outputs must be verifiable and compliant with hard requirements.",
+            "key_metrics": {
+              "primary_metric": "Constraint satisfaction rate (target band adherence)",
+              "metric_value": "92.5% to 98.8%",
+              "baseline": "Single-shot prompting (21.1% to 31.6%)",
+              "improvement_percentage": "~200-300% relative improvement in success rate"
+            },
+            "technical_breakdown": {
+              "method": "A closed-loop control architecture where the LLM is restricted to generation and local editing, while deterministic code handles evaluation, acceptance, and rejection based on composite readability values and content fidelity checks.",
+              "architecture": "Five-stage pipeline: Generate, Evaluate, Adjust, Archive, and Analyze. The controller acts as a gatekeeper, comparing model outputs against a target band and rejecting edits that drop source entities, numbers, or keywords.",
+              "implementation_details": "Uses a composite readability value for scoring; implements recall-based fidelity checks to ensure source content preservation; limits model interaction to writing and editing rather than self-evaluation.",
+              "code_complexity": "Low computational overhead for the control logic (deterministic checks); inference cost is bounded by an average of two edit rounds per successful generation."
+            },
+            "relevance_tags": [
+              "LLM Control",
+              "Constrained Generation",
+              "Software Engineering",
+              "Deterministic Verification",
+              "Readability Optimization"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-09-17T23:16:35.364691",
+          "conference_info": {
+            "conference": "International Conference on Software Engineering",
+            "year": "2026",
+            "comment": "ICSEA 2026: The Twenty-First International Conference on Software Engineering Advances",
+            "raw_comment": "ICSEA 2026: The Twenty-First International Conference on Software Engineering Advances",
+            "category": "Software Engineering",
+            "rank": "A+"
+          }
+        },
+        {
+          "paper": {
+            "title": "MiX: Micro-Inverted-Scaling for End-to-End Low-Bit Vision-Language Model Acceleration",
+            "arxiv_id": "2609.19683v1",
+            "authors": [
+              "Yuan Liao",
+              "Jae-sun Seo"
+            ],
+            "published": "2026-09-17T04:31:34Z",
+            "updated": "2026-09-17T04:31:34Z",
+            "summary": "The deployment of Vision-Language Models (VLMs) on edge devices is severely bottlenecked by memory bandwidth, necessitating aggressive sub-8-bit quantization. Since edge accelerators are strictly constrained by area and power, they require end-to-end quantized models. However, the extreme dynamic range gap between multi-modal tokens causes standard block formats to suffer \"microscaling collapse,\" where a single massive outlier hijacks the shared exponent, underflowing surrounding elements and destroying attention maps. To break this bottleneck, we propose Micro-Inverted-Scaling (MiX), a novel format that mathematically inverts the microscaling paradigm: rather than grouping multiple mantissas under one shared exponent, MiX groups private, per-element exponents under a single shared mantissa. To handle asymmetric VLM outlier topologies, we introduce an adaptive dual-format (MiX-MX) inference framework. By algebraically factoring out the shared MiX mantissa, this framework maps to a custom accelerator, replacing multipliers with efficient shifters. Evaluated end-to-end on multiple VLMs, our 4.5-bit MiX formulation exhibits equivalent or superior accuracy on multi-modal benchmarks compared to NVFP4. Simultaneously, the MiX accelerator delivers a 25% improvement in area efficiency over the NVFP4 baseline and a 2.3-4.5x speedup with 1.4-2.9x energy reduction across models compared to the state-of-the-art accelerator Focus, proving the inverted-scaling datapath is physically superior for efficient VLM deployment.",
+            "categories": "cs.AR",
+            "comment": "Accepted to the 59th IEEE/ACM International Symposium on Microarchitecture (MICRO 2026)"
+          },
+          "analysis": {
+            "problem_statement": "Standard sub-8-bit quantization formats suffer from 'microscaling collapse' in Vision-Language Models, where extreme dynamic range gaps between multi-modal tokens cause shared exponents to underflow surrounding elements and destroy attention maps.",
+            "bottleneck_addressed": "Memory bandwidth and computational efficiency for end-to-end low-bit quantization on area and power-constrained edge accelerators.",
+            "executive_summary": "This paper addresses the critical barrier to deploying Vision-Language Models on edge devices by solving the precision loss associated with aggressive sub-8-bit quantization. By inverting the standard microscaling paradigm, it enables stable 4.5-bit inference that matches or exceeds higher-precision baselines while significantly reducing hardware area and energy consumption.",
+            "key_metrics": {
+              "primary_metric": "Area efficiency improvement over NVFP4 baseline",
+              "metric_value": "25%",
+              "baseline": "NVFP4",
+              "improvement_percentage": "25%"
+            },
+            "technical_breakdown": {
+              "method": "Micro-Inverted-Scaling (MiX) groups private, per-element exponents under a single shared mantissa, reversing the standard approach of grouping mantissas under a shared exponent to prevent outlier-induced underflow.",
+              "architecture": "An adaptive dual-format (MiX-MX) inference framework mapped to a custom accelerator that replaces multipliers with efficient shifters by algebraically factoring out the shared MiX mantissa.",
+              "implementation_details": "Uses a 4.5-bit formulation with an inverted-scaling datapath; handles asymmetric VLM outlier topologies via the dual-format framework.",
+              "code_complexity": "Reduces computational complexity by replacing multipliers with shifters, resulting in 2.3-4.5x speedup and 1.4-2.9x energy reduction compared to the Focus accelerator."
+            },
+            "relevance_tags": [
+              "Quantization",
+              "Edge AI",
+              "Vision-Language Models",
+              "Hardware Acceleration",
+              "Low-Bit Inference"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-09-17T23:15:38.086272",
+          "conference_info": {
+            "conference": "IEEE/ACM International Symposium on Microarchitecture",
+            "year": "2026",
+            "comment": "Accepted to the 59th IEEE/ACM International Symposium on Microarchitecture (MICRO 2026)",
+            "raw_comment": "Accepted to the 59th IEEE/ACM International Symposium on Microarchitecture (MICRO 2026)",
+            "category": "Systems & Architecture",
+            "rank": "A"
+          }
+        }
+      ],
+      "updated_at": "2026-09-17T23:19:29.576939"
     }
   }
 }
