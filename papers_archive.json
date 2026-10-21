@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-18T23:13:42.128124",
+  "last_updated": "2026-10-20T23:21:01.942887",
   "dates": {
     "2026-10-15": {
       "count": 21,
@@ -1145,6 +1145,1241 @@
         }
       ],
       "updated_at": "2026-10-18T23:13:42.128119"
+    },
+    "2026-10-20": {
+      "count": 24,
+      "papers": [
+        {
+          "paper": {
+            "title": "CountVideoBench: A Benchmark to Evaluate Prediction Biases on the Object Counting task by Video-Language Models",
+            "arxiv_id": "2610.28356v1",
+            "authors": [
+              "Marc Chapus",
+              "Carlos Crispim-Junior",
+              "V\u00e9ronique Eglin",
+              "Atilla Baskurt"
+            ],
+            "published": "2026-10-20T15:20:28Z",
+            "updated": "2026-10-20T15:20:28Z",
+            "summary": "Object counting in videos remains a poorly characterized capability of multimodal large language models. Counting questions are included in many existing VideoQA benchmarks, but the ground-truth count distributions in these benchmarks are heavily skewed toward small values. Across the nine benchmarks we survey, the median ground-truth count is at most five, and the three most frequent values together account for between 45% and 93% of the videos. The resulting mean accuracy is then dominated by the most frequent counts; a value-dependent bias at a rare count contributes negligibly to the average and remains invisible. We introduce CountVideoBench, a benchmark of 2,600 synthetic videos covering 26 cardinalities in the interval [5, 50] (100 videos each), grouped into six clusters of consecutive counts that span the range while enabling near-neighbor comparisons. Each video contains a single class of static objects under a controlled camera motion, removing object motion and reducing recognition as confounds. We evaluate sixteen video-language models from nine architecture families in a zero-shot setting. No model exceeds 27.6% Exact Match. The dependence of accuracy on cardinality varies across models, ranging from monotonic decline to a non-monotonic peak-and-collapse pattern, which rules out increasing difficulty with cardinality as the dominant explanation of counting failure. Every model further concentrates its predictions on its own set of preferred integers, with accuracy peaks coinciding with these values and collapsing at adjacent counts. These findings highlight the need for balanced, diagnostic counting benchmarks to reliably assess this fundamental visual capability.",
+            "categories": "cs.CV",
+            "comment": "Accepted at BMVC 2026. Project page: https://countvideobench.github.io"
+          },
+          "analysis": {
+            "problem_statement": "Existing VideoQA benchmarks suffer from heavily skewed ground-truth count distributions that mask value-dependent prediction biases in Video-Language Models, making it impossible to accurately assess their object counting capabilities across different cardinalities.",
+            "bottleneck_addressed": "Evaluation bias and lack of diagnostic granularity in multimodal model benchmarks, specifically regarding the ability to count objects in video sequences.",
+            "executive_summary": "This paper exposes a critical blind spot in current AI evaluation standards where skewed data distributions hide systematic counting errors in Video-Language Models. By introducing a balanced synthetic benchmark, it reveals that no current model exceeds 27.6% accuracy and that models exhibit specific 'preferred integer' biases rather than simple difficulty scaling. This highlights the need for diagnostic benchmarks to reliably measure fundamental visual capabilities in multimodal systems.",
+            "key_metrics": {
+              "primary_metric": "Exact Match accuracy on balanced count distribution",
+              "metric_value": "27.6%",
+              "baseline": "Performance of 16 video-language models from 9 architecture families in zero-shot setting",
+              "improvement_percentage": "N/A (This is a diagnostic benchmark, not a method improvement paper)"
+            },
+            "technical_breakdown": {
+              "method": "Construction of a synthetic benchmark with controlled variables (static objects, single class, controlled camera motion) to isolate counting capability from recognition and motion confounds.",
+              "architecture": "Benchmark dataset consisting of 2,600 synthetic videos covering 26 cardinalities (5-50) grouped into six clusters for near-neighbor comparison.",
+              "implementation_details": "Zero-shot evaluation of 16 VLMs; analysis of accuracy dependence on cardinality; identification of non-monotonic peak-and-collapse patterns and model-specific preferred integers.",
+              "code_complexity": "N/A (Dataset and evaluation framework)"
+            },
+            "relevance_tags": [
+              "Video-Language Models",
+              "Benchmarking",
+              "Object Counting",
+              "Multimodal AI",
+              "Evaluation Bias"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-10-20T23:11:08.183056",
+          "conference_info": {
+            "conference": "BMVC",
+            "year": "2026",
+            "comment": "Accepted at BMVC 2026. Project page: https://countvideobench.github.io",
+            "raw_comment": "Accepted at BMVC 2026. Project page: https://countvideobench.github.io",
+            "category": "Computer Vision",
+            "rank": "A"
+          }
+        },
+        {
+          "paper": {
+            "title": "ABACUS: A Benchmark for Image Editing Models to Assess Object Category and Counting Under Scene Conservation",
+            "arxiv_id": "2610.28316v1",
+            "authors": [
+              "Aymen Lassoued",
+              "Angelique Loesch",
+              "Romaric Audigier"
+            ],
+            "published": "2026-10-20T14:53:22Z",
+            "updated": "2026-10-20T14:53:22Z",
+            "summary": "Instruction-based image editing models can now add, remove a specified number of objects or change their category while preserving the scene. Yet these models often fail to produce the correct number, and these failures grow sharply as scenes become more complex and the requested count increases. Current benchmarks largely miss this problem: they score edits with holistic similarity metrics or with vision-language model (VLM) judges that are themselves poor at counting, so numerical errors go unnoticed or are graded incorrectly. As a result, the true numerical ability of today's editing models has never been accurately measured. We address this issue with ABACUS, a new benchmark, evaluation protocol and dedicated scoring metric for numerical image editing. Our protocol is judge-free: no VLM or MLLM scores an edit or counts objects (a VLM only confirms the category of rare ambiguous crops). Instead, it verifies each edit at the instance level against panoptic ground truth confirmed by detector consensus, checking both that the exact requested count was achieved and that the rest of the scene was preserved, across the add, remove and change operations. By evaluating leading image editors, our method reveals substantial numerical editing failures that worsen with increasing scene complexity and object count; failures that prior benchmarks often overlooked or misjudged.",
+            "categories": "cs.CV",
+            "comment": "Accepted at WACV 2027 (Evaluations & Datasets track). Code and data: https://github.com/CEA-LIST/ABACUS"
+          },
+          "analysis": {
+            "problem_statement": "Current benchmarks for instruction-based image editing models fail to accurately measure numerical editing capabilities (add, remove, change object counts) because they rely on holistic similarity metrics or VLM judges that are themselves poor at counting.",
+            "bottleneck_addressed": "Evaluation reliability and the inability of existing metrics to detect numerical errors in generative outputs.",
+            "executive_summary": "This paper addresses a critical gap in the evaluation of generative AI models by introducing a judge-free benchmark that accurately measures the ability of image editors to handle specific object counts. It reveals that current state-of-the-art models suffer from significant numerical failures that were previously overlooked or misjudged by VLM-based evaluators.",
+            "key_metrics": {
+              "primary_metric": "Accurate detection of numerical editing failures (count accuracy and scene preservation) across add, remove, and change operations.",
+              "metric_value": "Not specified in abstract (qualitative finding of 'substantial failures')",
+              "baseline": "Holistic similarity metrics and VLM/MLLM judges",
+              "improvement_percentage": "Not quantified in abstract"
+            },
+            "technical_breakdown": {
+              "method": "A judge-free evaluation protocol that verifies edits at the instance level against panoptic ground truth, checking for exact count achievement and scene preservation.",
+              "architecture": "Benchmark dataset (ABACUS), evaluation protocol, and dedicated scoring metric.",
+              "implementation_details": "Uses detector consensus to confirm panoptic ground truth; VLMs are used only to confirm categories of rare ambiguous crops, not for counting or scoring.",
+              "code_complexity": "Not specified in abstract"
+            },
+            "relevance_tags": [
+              "Image Editing",
+              "Benchmarking",
+              "Evaluation Metrics",
+              "Generative AI",
+              "Counting"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-10-20T23:11:33.236956",
+          "conference_info": {
+            "conference": "WACV",
+            "year": "2027",
+            "comment": "Accepted at WACV 2027 (Evaluations & Datasets track). Code and data: https://github.com/CEA-LIST/ABACUS",
+            "raw_comment": "Accepted at WACV 2027 (Evaluations & Datasets track). Code and data: https://github.com/CEA-LIST/ABACUS",
+            "category": "Computer Vision",
+            "rank": "A"
+          }
+        },
+        {
+          "paper": {
+            "title": "CPVB-RG: Cross-Prior Visual Bridging for Prior-Aware Chest X-Ray Report Generation",
+            "arxiv_id": "2610.28289v1",
+            "authors": [
+              "Sike Xiang",
+              "Shuang Chen",
+              "Julie Cox",
+              "Amir Atapour-Abarghouei"
+            ],
+            "published": "2026-10-20T14:38:03Z",
+            "updated": "2026-10-20T14:38:03Z",
+            "summary": "Radiologists interpret follow-up chest X-rays by comparing current and prior examinations to identify new, resolved or progressing findings. Most report generation systems either omit this longitudinal context or fuse prior features without distinguishing interval changes from anatomy that remains stable over time. We propose CPVB-RG, a prior-aware framework that combines current and prior radiographs with available clinical text. Its Cross-Prior Visual Bridge (CPVB) contains Progression-Guided Focus Attention (PGFA) and two Cross-Attention units. PGFA is designed to contrast progression-difference attention with shared-spatial attention, aiming to reduce invariant responses whilst retaining coarse spatial correspondence between examinations. The Cross-Attention units then connect the resulting longitudinal visual evidence with clinical semantics. CPVB-RG is trained in two stages, using prior-guided image-text alignment followed by autoregressive report generation with a lightweight language decoder. Experiments on MIMIC-CXR and IU X-Ray show consistent improvements across language and clinical metrics. On MIMIC-CXR, CPVB-RG achieves 0.2847 F1RadGraph and 0.6692 VLScore, with statistically significant gains over the closest decoder-matched prior-aware baseline. These results support the effectiveness of the proposed difference-aware and spatially guided fusion design for prior-aware chest X-ray report generation.",
+            "categories": "cs.CV",
+            "comment": "Accepted at WACV 2027"
+          },
+          "analysis": {
+            "problem_statement": "Existing chest X-ray report generation systems fail to effectively distinguish between interval changes (new, resolved, or progressing findings) and stable anatomical structures when comparing current and prior radiographs.",
+            "bottleneck_addressed": "Lack of longitudinal context and inability to model temporal progression in medical imaging analysis.",
+            "executive_summary": "This paper addresses the critical gap in AI-driven radiology where systems treat each X-ray in isolation, ignoring the clinical necessity of comparing follow-up images to identify disease progression. By introducing a mechanism that explicitly contrasts progression-difference attention with shared spatial attention, it enables more clinically accurate report generation that reflects the dynamic nature of patient conditions.",
+            "key_metrics": {
+              "primary_metric": "F1RadGraph and VLScore on MIMIC-CXR",
+              "metric_value": "0.2847 F1RadGraph, 0.6692 VLScore",
+              "baseline": "Closest decoder-matched prior-aware baseline",
+              "improvement_percentage": "Not explicitly quantified in percentage, but described as statistically significant gains"
+            },
+            "technical_breakdown": {
+              "method": "A prior-aware framework that fuses current and prior radiographs with clinical text using a Cross-Prior Visual Bridge (CPVB) to separate interval changes from stable anatomy.",
+              "architecture": "CPVB module containing Progression-Guided Focus Attention (PGFA) and two Cross-Attention units, followed by a lightweight autoregressive language decoder.",
+              "implementation_details": "PGFA contrasts progression-difference attention with shared-spatial attention to reduce invariant responses while retaining spatial correspondence; training involves two stages: prior-guided image-text alignment and autoregressive report generation.",
+              "code_complexity": "Two-stage training process; specific computational complexity metrics are not provided in the summary."
+            },
+            "relevance_tags": [
+              "Medical Imaging",
+              "Report Generation",
+              "Longitudinal Analysis",
+              "Attention Mechanisms",
+              "Chest X-Ray"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-10-20T23:12:26.027797",
+          "conference_info": {
+            "conference": "WACV",
+            "year": "2027",
+            "comment": "Accepted at WACV 2027",
+            "raw_comment": "Accepted at WACV 2027",
+            "category": "Computer Vision",
+            "rank": "A"
+          }
+        },
+        {
+          "paper": {
+            "title": "Attractive Faces Skew Text-to-Image Reward Models and Leaderboards",
+            "arxiv_id": "2610.28195v1",
+            "authors": [
+              "Harvey Mannering",
+              "Zhiwu Huang",
+              "Adam Pr\u00fcgel-Bennett"
+            ],
+            "published": "2026-10-20T13:35:34Z",
+            "updated": "2026-10-20T13:35:34Z",
+            "summary": "Human preference is now central to the evaluation, guidance, finetuning, and ranking of text-to-image models. However, the susceptibility of human preferences to bias in image generation remains underexplored. We identify a key observation: for human faces, perceived attractiveness overrides image quality in preference judgments, even when comparing real photographs of identical fidelity. In a controlled user study, annotators rank more attractive faces as higher quality, even when unattractive real faces are compared with attractive AI-generated ones. We examine the downstream consequences of this bias. Firstly, simulating Elo rankings from user study data shows attractiveness can invert a leaderboard's ranking, elevating synthetic attractive faces over real, unattractive ones. Secondly, the same bias reappears in the human preference models. Editing 40 annotated facial attributes in isolation, we find that attractiveness is the strongest correlate of score for four of five human preference models (PickScore, MPS, HPSv2.1, HPSv3), and the strongest predictor of score in regression analysis. We further show that preference aligned generation shifts faces toward younger, more feminine faces, and can override explicit prompts for unattractive faces, thereby limiting user control. Finally, we explore mitigation strategies, both for data collection and post training on human preference models. These findings highlight the need for preference models that disentangle image quality from human cognitive bias, enabling more reliable evaluation.",
+            "categories": "cs.CV",
+            "comment": "WACV 2027"
+          },
+          "analysis": {
+            "problem_statement": "Human preference models and leaderboards for text-to-image generation are systematically biased by facial attractiveness, which overrides actual image quality metrics and distorts model evaluation and alignment.",
+            "bottleneck_addressed": "Evaluation bias and alignment distortion in human preference-based reward models.",
+            "executive_summary": "This paper reveals that current human preference models (e.g., PickScore, HPSv2.1) conflate facial attractiveness with image quality, leading to skewed leaderboards where attractive synthetic faces are ranked above higher-fidelity real ones. This bias causes preference-aligned generation to drift toward specific demographic features (younger, feminine), overriding explicit user prompts and limiting controllability.",
+            "key_metrics": {
+              "primary_metric": "Correlation of facial attractiveness with preference model scores and leaderboard ranking inversion",
+              "metric_value": "Attractiveness is the strongest correlate for 4/5 models; 40 facial attributes edited in isolation",
+              "baseline": "Real photographs of identical fidelity vs. AI-generated images; unedited baseline preference scores",
+              "improvement_percentage": "N/A (Diagnostic study identifying bias rather than proposing a single performance-improving algorithm)"
+            },
+            "technical_breakdown": {
+              "method": "Controlled user studies to establish the bias, followed by ablation studies on preference models by editing facial attributes in isolation, and simulation of Elo rankings to demonstrate downstream leaderboard effects.",
+              "architecture": "Analysis of existing human preference models (PickScore, MPS, HPSv2.1, HPSv3) and text-to-image generation pipelines; no new generative architecture is proposed, but mitigation strategies for data collection and post-training are explored.",
+              "implementation_details": "Isolation editing of 40 annotated facial attributes; regression analysis to identify attractiveness as the strongest predictor of score; simulation of Elo rankings from user study data; comparison of real vs. synthetic face rankings.",
+              "code_complexity": "N/A (Focus is on empirical analysis and bias identification rather than computational optimization of a new model)"
+            },
+            "relevance_tags": [
+              "Human Preference Models",
+              "Text-to-Image Evaluation",
+              "Bias and Fairness",
+              "Reward Modeling",
+              "Leaderboard Integrity"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-10-20T23:13:45.407309",
+          "conference_info": {
+            "conference": "WACV",
+            "year": "2027",
+            "comment": "WACV 2027",
+            "raw_comment": "WACV 2027",
+            "category": "Computer Vision",
+            "rank": "A"
+          }
+        },
+        {
+          "paper": {
+            "title": "Media Intelligence Platform: Multimodal Detection of Synthetic and Manipulated Content",
+            "arxiv_id": "2610.27974v1",
+            "authors": [
+              "David Fischinger",
+              "Marcel Hasenbalg",
+              "Silvia Poletti",
+              "Davide Antonutti",
+              "Mina Sch\u00fctz",
+              "Lam Pham",
+              "Justin Ilyes",
+              "P\u00e9ter Rjabcsenk\u00f3",
+              "Simon Freitter",
+              "Martin Boyer"
+            ],
+            "published": "2026-10-20T10:18:49Z",
+            "updated": "2026-10-20T10:18:49Z",
+            "summary": "The rapid progress of generative artificial intelligence has led to a significant increase in manipulated multimedia content, including synthetic faces, forged videos, AI-generated images, fake audio, and locally edited images. Existing detection approaches are typically designed for a single manipulation type, limiting their applicability in real-world scenarios involving heterogeneous media sources. In this work, we present the Media Intelligence Platform (MIP), a unified web-based framework for multimodal media forensics integrating specialized modules for fake video detection, face morphing detection, AI-generated image detection, audio deepfake detection, localized image manipulation detection, and text analysis. Its modular architecture enables flexible integration of heterogeneous models and supports future extensions for emerging manipulation techniques. Experimental results on representative benchmark datasets demonstrate reliable detection performance across multiple media modalities while providing a practical and user-friendly interface for forensic investigations. The platform highlights the potential of unified multimodal systems for comprehensive deepfake detection in real-world environments, and is accompanied by a public demonstrator released with this workshop submission to support reproducibility and community evaluation.",
+            "categories": "cs.CV",
+            "comment": "ECCV 2026, Workshop on AI for Multimedia Forensics & Disinformation Detection (AI4MFDD2026)"
+          },
+          "analysis": {
+            "problem_statement": "Existing deepfake detection systems are typically specialized for single manipulation types, limiting their effectiveness in real-world scenarios involving heterogeneous and multimodal media sources.",
+            "bottleneck_addressed": "Lack of unified, scalable frameworks for multimodal forensic analysis and the fragmentation of detection models across different media types (video, audio, image, text).",
+            "executive_summary": "This paper addresses the critical need for a unified platform to combat the rising tide of heterogeneous synthetic media by integrating specialized detection modules into a single web-based framework. It provides a practical solution for forensic investigations by enabling flexible integration of diverse models and offering a user-friendly interface for comprehensive deepfake analysis.",
+            "key_metrics": {
+              "primary_metric": "Reliable detection performance across multiple media modalities on representative benchmark datasets",
+              "metric_value": "Not specified in abstract",
+              "baseline": "Single-manipulation-type detection approaches",
+              "improvement_percentage": "Not quantified in abstract"
+            },
+            "technical_breakdown": {
+              "method": "A unified web-based framework integrating specialized modules for various manipulation types, allowing for flexible integration of heterogeneous models.",
+              "architecture": "Modular architecture with distinct components for fake video, face morphing, AI-generated image, audio deepfake, localized image manipulation, and text analysis.",
+              "implementation_details": "Integration of specialized detection models for each modality; includes a public demonstrator for reproducibility.",
+              "code_complexity": "Not specified; implies modular design to support future extensions and heterogeneous model integration."
+            },
+            "relevance_tags": [
+              "Multimodal Forensics",
+              "Deepfake Detection",
+              "Media Integrity",
+              "Web Framework",
+              "AI Security"
+            ],
+            "confidence": "medium"
+          },
+          "analyzed_at": "2026-10-20T23:15:04.284430",
+          "conference_info": {
+            "conference": "ECCV",
+            "year": "2026",
+            "comment": "ECCV 2026, Workshop on AI for Multimedia Forensics & Disinformation Detection (AI4MFDD2026)",
+            "raw_comment": "ECCV 2026, Workshop on AI for Multimedia Forensics & Disinformation Detection (AI4MFDD2026)",
+            "category": "Computer Vision",
+            "rank": "A"
+          }
+        },
+        {
+          "paper": {
+            "title": "CILA: Confusion-based Instance-wise Logit Adjustment for Long-Tailed Recognition",
+            "arxiv_id": "2610.27728v1",
+            "authors": [
+              "Jiyoung Lim",
+              "Jee-Hyong Lee"
+            ],
+            "published": "2026-10-20T06:47:42Z",
+            "updated": "2026-10-20T06:47:42Z",
+            "summary": "Real-world datasets are inherently class-imbalanced, leading models to favor majority classes and struggle with minority ones. Existing logit adjustment methods address this by modifying logits based on class frequencies, but their class-wise adjustments ignore instance-wise confusion and often suppress informative signals from confusing non-target classes. This results in insufficient learning of such classes, increased prediction uncertainty, and limited generalization.   To address this, we propose two complementary methods. First, \\textbf{Confusion-based Instance-wise Logit Adjustment (CILA)} adaptively adjusts logits based on instance-wise confusion between the target and non-target classes, restoring informative gradients that class-wise adjustment suppresses. Second, \\textbf{Batch-adaptation Noise-Injection (BNI)} perturbs the target logit during training, extending the confusion-aware update to correctly classified but near-boundary samples that the penalty alone cannot reach. CILA is a loss-agnostic plug-in module that can be seamlessly integrated into existing long-tailed learning methods, and consistently improves performance across multiple benchmarks. Our code will be available at https://github.com/maya0395/CILA.",
+            "categories": "cs.CV",
+            "comment": "WACV 2027 Accepted"
+          },
+          "analysis": {
+            "problem_statement": "Existing class-wise logit adjustment methods for long-tailed recognition fail to account for instance-wise confusion, leading to suppressed informative gradients from non-target classes and increased prediction uncertainty.",
+            "bottleneck_addressed": "Class imbalance and instance-level ambiguity in long-tailed distribution learning.",
+            "executive_summary": "This paper addresses the limitation of standard logit adjustment in long-tailed learning by introducing instance-aware mechanisms that preserve informative signals from confusing classes. By combining confusion-based logit adjustment with batch-adaptation noise injection, it improves the model's ability to learn near-boundary samples and enhances generalization across imbalanced datasets.",
+            "key_metrics": {
+              "primary_metric": "Consistent performance improvement across multiple long-tailed recognition benchmarks.",
+              "metric_value": "Not specified in abstract",
+              "baseline": "Existing class-wise logit adjustment methods and standard long-tailed learning baselines.",
+              "improvement_percentage": "Not specified in abstract"
+            },
+            "technical_breakdown": {
+              "method": "The solution employs two complementary techniques: CILA, which adaptively adjusts logits based on instance-wise confusion between target and non-target classes to restore informative gradients, and BNI, which perturbs target logits during training to extend updates to correctly classified but near-boundary samples.",
+              "architecture": "A loss-agnostic plug-in module integrated into existing long-tailed learning frameworks, consisting of a confusion-based adjustment mechanism and a noise-injection component.",
+              "implementation_details": "CILA calculates adjustments based on the confusion matrix or similarity between the target class and non-target classes for each instance. BNI introduces controlled noise to the target logit to ensure that samples near the decision boundary receive appropriate gradient updates.",
+              "code_complexity": "Low overhead as it is a plug-in module; specific computational complexity is not detailed in the abstract but implies minimal additional cost compared to standard logit adjustment."
+            },
+            "relevance_tags": [
+              "Long-Tailed Learning",
+              "Logit Adjustment",
+              "Class Imbalance",
+              "Computer Vision",
+              "WACV 2027"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-10-20T23:18:04.810312",
+          "conference_info": {
+            "conference": "WACV",
+            "year": "2027",
+            "comment": "WACV 2027 Accepted",
+            "raw_comment": "WACV 2027 Accepted",
+            "category": "Computer Vision",
+            "rank": "A"
+          }
+        },
+        {
+          "paper": {
+            "title": "Push-Pull Attentional Anchoring for Diffusion Concept Erasure",
+            "arxiv_id": "2610.27719v1",
+            "authors": [
+              "Nattanat Chatthee",
+              "Tagon Sompong",
+              "Ekapol Chuangsuwanich",
+              "Supasorn Suwajanakorn"
+            ],
+            "published": "2026-10-20T06:38:51Z",
+            "updated": "2026-10-20T06:38:51Z",
+            "summary": "Rapid advances in diffusion models have raised concerns about privacy, harmful content, and copyright violations. Concept erasure methods aim to address these risks by removing undesirable concepts from pretrained models without full retraining. However, existing approaches often degrade non-target generation quality through heuristic strength scaling (e.g., classifier-free guidance or negative prompt scaling), leading to uncontrolled and excessive semantic drift. To address this, we propose Push-Pull Attentional Anchoring (PPAA), a mechanism in the cross-attention space that displaces target representations while anchoring the scale of erasure via bounded cosine-similarity constraints. By using a relative similarity ratio instead of an absolute difference, our adaptive threshold represents a meaningful percentage of semantic retention, facilitating a single value to be applied uniformly across layers. We conduct extensive experiments across multiple concept categories, including celebrities, artistic styles, nudity, and intellectual property. Our method achieves favorable trade-offs against prior approaches on Stable Diffusion v1.4 and demonstrates its applicability to modern architectures such as FLUX.",
+            "categories": "cs.CV",
+            "comment": "Accepted to ECCV 2026 (Spotlight)"
+          },
+          "analysis": {
+            "problem_statement": "Existing concept erasure methods in diffusion models cause uncontrolled semantic drift and degrade non-target generation quality due to heuristic strength scaling.",
+            "bottleneck_addressed": "Safety and controllability in generative AI, specifically the trade-off between effective concept removal and preservation of general model utility.",
+            "executive_summary": "This paper addresses the critical issue of semantic drift in diffusion model editing, where removing harmful or copyrighted concepts often breaks the model's ability to generate unrelated content. By introducing a bounded cosine-similarity constraint in the cross-attention space, it enables precise, uniform control over erasure strength without requiring full retraining.",
+            "key_metrics": {
+              "primary_metric": "Favorable trade-offs in concept erasure efficacy vs. non-target generation quality",
+              "metric_value": "Not specified in summary",
+              "baseline": "Prior approaches using heuristic strength scaling (e.g., classifier-free guidance or negative prompt scaling) on Stable Diffusion v1.4",
+              "improvement_percentage": "Not specified in summary"
+            },
+            "technical_breakdown": {
+              "method": "Push-Pull Attentional Anchoring (PPAA) displaces target representations in cross-attention while anchoring erasure scale via bounded cosine-similarity constraints.",
+              "architecture": "Operates within the cross-attention space of diffusion models, compatible with architectures like Stable Diffusion v1.4 and FLUX.",
+              "implementation_details": "Uses a relative similarity ratio instead of absolute difference to define an adaptive threshold representing a percentage of semantic retention, allowing a single value to be applied uniformly across layers.",
+              "code_complexity": "Not specified in summary"
+            },
+            "relevance_tags": [
+              "Diffusion Models",
+              "Concept Erasure",
+              "AI Safety",
+              "Cross-Attention",
+              "Model Editing"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-10-20T23:18:06.832134",
+          "conference_info": {
+            "conference": "ECCV",
+            "year": "2026",
+            "comment": "Accepted to ECCV 2026 (Spotlight)",
+            "raw_comment": "Accepted to ECCV 2026 (Spotlight)",
+            "category": "Computer Vision",
+            "rank": "A"
+          }
+        },
+        {
+          "paper": {
+            "title": "WaveSpec: Multi-Spectral Iris Presentation Attack Detection via Wavelength-Conditioned Spectral Coherence Adaptation",
+            "arxiv_id": "2610.27608v1",
+            "authors": [
+              "Raghavendra Ramachandra"
+            ],
+            "published": "2026-10-20T04:20:23Z",
+            "updated": "2026-10-20T04:20:23Z",
+            "summary": "Multispectral iris presentation attack detection benefits from observing the same iris across multiple near-infrared wavelengths, but existing methods often use wavelength information mainly for conditioning or fusion. This can limit their ability to explicitly model whether the spectral response of a sample is coherent across bands. In this paper, we propose \\textbf{WaveSpec}, a multispectral iris PAD framework that performs feature-level spectral coherence adaptation. Each NIR band is first encoded with a DINOv2 backbone. The proposed Set Conditioned Spectral Coherence Adapter then updates each band feature using the consensus of the available spectral set, the band-specific deviation from that consensus, and wavelength identity. The adapted features are projected into structural, spectral, and anomaly representations, adaptively pooled, and classified as bona fide or attack. We evaluate WaveSpec on the MSIrPAD benchmark under a strict cross-artefact protocol, where the model is trained with one presentation attack instrument and tested on unseen attacks. WaveSpec reduces the average D-EER from 8.45\\% for SpectraIrisPAD to 3.33\\%, and reduces average BPCER@APCER=1\\% from 43.16\\% to 12.07\\%. Ablation results show that the SCSA adapter and spectral residual are central to the improvement, while a band-subset analysis shows that WaveSpec remains effective under partial spectral observations and performs best when all five bands are available. The method adds only modest computational overhead, with 11.15 ms end-to-end latency per five-band sample on an NVIDIA L40S-48Q GPU.",
+            "categories": "cs.CV",
+            "comment": "Accepted at WACV 2027"
+          },
+          "analysis": {
+            "problem_statement": "Existing multispectral iris presentation attack detection methods fail to explicitly model the spectral coherence of samples across multiple near-infrared bands, limiting their ability to distinguish bona fide irises from sophisticated attacks.",
+            "bottleneck_addressed": "Lack of explicit modeling of cross-band spectral consistency in multimodal biometric verification, leading to poor generalization against unseen presentation attacks.",
+            "executive_summary": "This paper addresses a critical vulnerability in biometric security by introducing a framework that leverages spectral coherence as a primary discriminator for presentation attacks. By explicitly modeling the consistency of spectral responses across wavelengths, the method significantly improves robustness against cross-artifact attacks, which is essential for deploying reliable iris recognition systems in high-security environments.",
+            "key_metrics": {
+              "primary_metric": "Reduction in average D-EER (Detection Error Equalization Rate) and BPCER@APCER=1% under a strict cross-artifact protocol",
+              "metric_value": "D-EER reduced to 3.33%; BPCER@APCER=1% reduced to 12.07%",
+              "baseline": "SpectraIrisPAD (D-EER 8.45%; BPCER@APCER=1% 43.16%)",
+              "improvement_percentage": "60.6% reduction in D-EER; 72.0% reduction in BPCER@APCER=1%"
+            },
+            "technical_breakdown": {
+              "method": "The framework encodes each NIR band using a DINOv2 backbone and applies a Set Conditioned Spectral Coherence Adapter (SCSA) to update features based on spectral consensus, band-specific deviation, and wavelength identity. These adapted features are projected into structural, spectral, and anomaly representations, adaptively pooled, and classified.",
+              "architecture": "DINOv2 backbone for feature extraction, Set Conditioned Spectral Coherence Adapter (SCSA) for feature refinement, and a multi-branch projection head for structural, spectral, and anomaly classification.",
+              "implementation_details": "Uses DINOv2 for initial encoding; SCSA utilizes set-based consensus and deviation metrics; adaptive pooling combines multi-representation features; evaluated on MSIrPAD benchmark with cross-artifact protocol.",
+              "code_complexity": "Modest computational overhead with 11.15 ms end-to-end latency per five-band sample on an NVIDIA L40S-48Q GPU."
+            },
+            "relevance_tags": [
+              "Biometric Security",
+              "Presentation Attack Detection",
+              "Multispectral Imaging",
+              "Computer Vision",
+              "Iris Recognition"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-10-20T23:19:04.486451",
+          "conference_info": {
+            "conference": "WACV",
+            "year": "2027",
+            "comment": "Accepted at WACV 2027",
+            "raw_comment": "Accepted at WACV 2027",
+            "category": "Computer Vision",
+            "rank": "A"
+          }
+        },
+        {
+          "paper": {
+            "title": "CityPaint: A Free Lunch from 2D Diffusion for City-Scale 3D Texturing",
+            "arxiv_id": "2610.27564v1",
+            "authors": [
+              "Yuchen Zou",
+              "Lihuang Fang",
+              "Siyu Zhu",
+              "Xiao Hu"
+            ],
+            "published": "2026-10-20T03:25:20Z",
+            "updated": "2026-10-20T03:25:20Z",
+            "summary": "Generating high-fidelity, city-scale 3D environments plays a crucial role in applications such as virtual reality, gaming, and urban digital twins. However, the scarcity of real-world city-scale 3D training data forces existing methods to either stitch independently generated assets or learn from synthetic urban corpora, often sacrificing realism and global consistency. In contrast, 2D image data and their corresponding generative models are abundant and encode rich visual priors. To bridge this gap, we propose CityPaint, a novel framework that leverages 2D diffusion models to generate globally consistent city-scale 3D textures without relying on city-scale 3D training data. Specifically, CityPaint integrates geometric priors with the generative power of 2D diffusion models, introducing a robust top-$K$ camera baking strategy for iterative texture projection. To address the artifacts of 2D-to-3D projection, we further propose a decoupled refinement mechanism that separately optimizes terrain and building textures. Extensive experiments show that CityPaint produces globally coherent textures with fine local details and achieves favorable results against strong baselines in both visual quality and cross-view consistency.",
+            "categories": "cs.CV",
+            "comment": "Accepted at ACM Multimedia 2026"
+          },
+          "analysis": {
+            "problem_statement": "The scarcity of real-world city-scale 3D training data hinders the generation of high-fidelity, globally consistent 3D urban environments, forcing existing methods to rely on asset stitching or synthetic data that compromises realism.",
+            "bottleneck_addressed": "Data scarcity and the lack of global consistency in 3D generative models due to the absence of large-scale 3D training corpora.",
+            "executive_summary": "CityPaint addresses the critical gap in urban digital twin and VR applications by leveraging abundant 2D image priors to generate coherent city-scale 3D textures without requiring 3D training data. This approach significantly reduces the dependency on expensive 3D data collection and annotation, enabling scalable generation of realistic urban environments.",
+            "key_metrics": {
+              "primary_metric": "Visual quality and cross-view consistency of generated textures",
+              "metric_value": "Not specified in summary",
+              "baseline": "Strong baselines (specific names not provided in summary)",
+              "improvement_percentage": "Not quantified in summary"
+            },
+            "technical_breakdown": {
+              "method": "Integrates geometric priors with 2D diffusion models to project textures onto 3D city-scale meshes, using a top-K camera baking strategy for iterative projection and a decoupled refinement mechanism for terrain and buildings.",
+              "architecture": "2D Diffusion Model backbone, Geometric Prior Module, Top-K Camera Baking Strategy, Decoupled Refinement Module (Terrain/Building specific).",
+              "implementation_details": "Robust top-K camera baking for iterative texture projection; separate optimization paths for terrain and building textures to mitigate 2D-to-3D projection artifacts.",
+              "code_complexity": "Not specified in summary; likely high due to iterative projection and dual-branch refinement on city-scale data."
+            },
+            "relevance_tags": [
+              "3D Generation",
+              "Diffusion Models",
+              "Urban Digital Twins",
+              "2D-to-3D Transfer",
+              "Computer Graphics"
+            ],
+            "confidence": "medium"
+          },
+          "analyzed_at": "2026-10-20T23:20:05.381261",
+          "conference_info": {
+            "conference": "ACM Multimedia",
+            "year": "2026",
+            "comment": "Accepted at ACM Multimedia 2026",
+            "raw_comment": "Accepted at ACM Multimedia 2026",
+            "category": "Computer Vision",
+            "rank": "A+"
+          }
+        },
+        {
+          "paper": {
+            "title": "AEON: Unifying Video and 3D World Models",
+            "arxiv_id": "2610.28631v1",
+            "authors": [
+              "Weiqi Zhang",
+              "Wenyuan Zhang",
+              "Yu-Shen Liu",
+              "Junsheng Zhou"
+            ],
+            "published": "2026-10-20T17:59:51Z",
+            "updated": "2026-10-20T17:59:51Z",
+            "summary": "Current world models for explicit world simulation typically follow two distinct pathways: (1) video generative models (e.g., Sora), which simulate realistic appearances but fail to preserve 3D consistency; and (2) 3D generative models (e.g., Marble), which generate geometrically consistent scenes but often yield static, less realistic observations. We present AEON, a unified framework that bridges video-based and 3D-based world models and combines the benefits of both. The key insight of AEON lies in a generative model that operates within the text- or image-conditioned video latent space while producing renderable 4D graphics primitives---specifically, 4D Gaussian Splatting (4DGS)---as the explicit world representation. We train a 4D reconstruction model to predict both 4DGS and camera poses from monocular videos, serving as our initialized 4D decoder. Furthermore, we design a domain adapter that translates generative video latents into reconstructive 4D latents through a distillation process on the video VAE. AEON naturally supports video-based world modeling by rendering 4DGS at predicted camera trajectories, and constructs a persistent 4D environment with scene dynamics for realistic world simulation. Consequently, AEON empowers a diverse range of world modeling applications and achieves state-of-the-art performance on standard benchmarks. Project Page: https://weiqi-zhang.github.io/AEON",
+            "categories": "cs.CV",
+            "comment": "Accepted to NeurIPS 2026. Project Page: https://weiqi-zhang.github.io/AEON"
+          },
+          "analysis": {
+            "problem_statement": "Existing world models are fragmented into video-based approaches that lack 3D consistency and 3D-based approaches that lack realistic dynamics, creating a gap in generating both photorealistic and geometrically coherent world simulations.",
+            "bottleneck_addressed": "The lack of a unified representation that simultaneously preserves 3D/4D geometric consistency and the high-fidelity visual realism of video generative models.",
+            "executive_summary": "AEON bridges the divide between video and 3D world models by generating renderable 4D Gaussian Splatting primitives directly from video latent spaces. This allows for the creation of persistent, dynamic 4D environments that are both visually realistic and geometrically consistent, enabling more robust world simulation applications.",
+            "key_metrics": {
+              "primary_metric": "State-of-the-art performance on standard world modeling benchmarks",
+              "metric_value": "Not specified in abstract",
+              "baseline": "Video generative models (e.g., Sora) and 3D generative models (e.g., Marble)",
+              "improvement_percentage": "Not specified in abstract"
+            },
+            "technical_breakdown": {
+              "method": "A unified framework that operates in text/image-conditioned video latent space to produce 4D Gaussian Splatting (4DGS) as the explicit world representation, using a domain adapter to translate generative video latents into reconstructive 4D latents.",
+              "architecture": "Consists of a 4D reconstruction model (initialized 4D decoder) that predicts 4DGS and camera poses from monocular videos, and a domain adapter that performs distillation on the video VAE to bridge generative and reconstructive latent spaces.",
+              "implementation_details": "Uses 4D Gaussian Splatting (4DGS) for explicit world representation; employs a distillation process on the video VAE for latent translation; supports rendering 4DGS at predicted camera trajectories for video-based world modeling.",
+              "code_complexity": "Not specified in abstract"
+            },
+            "relevance_tags": [
+              "World Models",
+              "4D Gaussian Splatting",
+              "Video Generation",
+              "3D Reconstruction",
+              "NeurIPS 2026"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-10-20T23:09:45.265666",
+          "conference_info": {
+            "conference": "NeurIPS",
+            "year": "2026",
+            "comment": "Accepted to NeurIPS 2026. Project Page: https://weiqi-zhang.github.io/AEON",
+            "raw_comment": "Accepted to NeurIPS 2026. Project Page: https://weiqi-zhang.github.io/AEON",
+            "category": "General ML/AI",
+            "rank": "A+"
+          }
+        },
+        {
+          "paper": {
+            "title": "KoalaGS: Complexity-Aware Continuous Level of Detail for Gaussian Splatting",
+            "arxiv_id": "2610.28615v1",
+            "authors": [
+              "Radu Beche",
+              "Raoul de Charette"
+            ],
+            "published": "2026-10-20T17:55:06Z",
+            "updated": "2026-10-20T17:55:06Z",
+            "summary": "Deploying a trained 3D Gaussian Splatting scene under shrinking compute budgets requires one primitive set to remain effective when rendered at smaller prefixes. In this continuous level of detail (LoD) setting, the challenge is to decide which Gaussians should retain capacity as the budget decreases. A pilot study on 3DGS-MCMC reconstructions shows that image complexity, computed from the input views before optimization, predicts where reconstruction error concentrates in image and 3D space. It also reveals that simple regions contain too many Gaussians and degrade as much as complex ones at lower budgets, despite being inherently cheaper to represent. Subsequently, in KoalaGS, during training we use this complexity prior to bias relocation toward poorly reconstructed areas while ensuring smooth degradation across LoDs. A primitive importance score then enables inference at low-capacity, while preserving the scene structure. Tested across three datasets, KoalaGS maintains competitive full-capacity quality while significantly improving quality across the budget spectrum, yielding smoother transitions across LoDs, and enabling faster progressive streaming.",
+            "categories": "cs.CV",
+            "comment": "NeurIPS 2026 (Spotlight). Project page https://rdbch.github.io/koalags"
+          },
+          "analysis": {
+            "problem_statement": "How to optimize the selection and retention of 3D Gaussian primitives to maintain high reconstruction quality when rendering under shrinking compute budgets (continuous Level of Detail).",
+            "bottleneck_addressed": "Compute efficiency and memory constraints in real-time 3D rendering and streaming.",
+            "executive_summary": "This paper addresses the critical challenge of deploying 3D Gaussian Splatting scenes in resource-constrained environments by introducing a complexity-aware Level of Detail (LoD) system. By leveraging pre-optimization image complexity as a prior, KoalaGS ensures smoother quality degradation and better preservation of scene structure at lower capacities, which is essential for scalable, progressive 3D content delivery.",
+            "key_metrics": {
+              "primary_metric": "Quality improvement across the budget spectrum and smoother LoD transitions",
+              "metric_value": "Not specified in summary",
+              "baseline": "Standard 3DGS-MCMC reconstructions and full-capacity quality benchmarks",
+              "improvement_percentage": "Not specified in summary"
+            },
+            "technical_breakdown": {
+              "method": "Uses a complexity prior derived from input views to bias Gaussian relocation toward poorly reconstructed areas during training, and employs a primitive importance score for low-capacity inference.",
+              "architecture": "3D Gaussian Splatting framework with a complexity-aware training module and an importance scoring mechanism for LoD selection.",
+              "implementation_details": "Pilot study on 3DGS-MCMC reconstructions; complexity computed from input views before optimization; biasing relocation during training; primitive importance scoring at inference.",
+              "code_complexity": "Adds complexity prior computation and importance scoring to the standard 3DGS training/inference pipeline; enables faster progressive streaming."
+            },
+            "relevance_tags": [
+              "3D Gaussian Splatting",
+              "Level of Detail",
+              "Real-time Rendering",
+              "Neural Rendering",
+              "Compute Efficiency"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-10-20T23:10:01.400609",
+          "conference_info": {
+            "conference": "NeurIPS",
+            "year": "2026",
+            "comment": "NeurIPS 2026 (Spotlight). Project page https://rdbch.github.io/koalags",
+            "raw_comment": "NeurIPS 2026 (Spotlight). Project page https://rdbch.github.io/koalags",
+            "category": "General ML/AI",
+            "rank": "A+"
+          }
+        },
+        {
+          "paper": {
+            "title": "WorldSR: Harnessing World Knowledge Search for Grounded Image Super-Resolution",
+            "arxiv_id": "2610.28423v1",
+            "authors": [
+              "Junyuan Deng",
+              "Xinyi Wu",
+              "Zhenyao Wu",
+              "Song Wang",
+              "Yu Wang",
+              "Congchao Zhu"
+            ],
+            "published": "2026-10-20T15:54:25Z",
+            "updated": "2026-10-20T15:54:25Z",
+            "summary": "Generative-prior-based super-resolution (SR) methods leverage implicit knowledge learned from large-scale models to enhance low-resolution inputs. However, such priors are inherently stochastic and optimized for diverse generation, conflicting with the deterministic, high-fidelity reconstruction required for SR. It is also tied to the base model, costly to update, and prone to hallucinations as real-world data evolves. To address these limitations, we introduce WorldSR, a novel framework that augments SR with explicit, entity-aligned visual world knowledge. WorldSR automatically decomposes the input into semantic entities and performs entity-wise retrieval of structurally and semantically aligned images from a large-scale external corpus. For efficiency and reliability, we incorporate a memory mechanism to reuse previously retrieved results and a multi-step filtering process to refine candidate references. The selected references as world knowledge are then integrated through a novel multi-reference super-resolution model, which provides fine-grained constraints for detail synthesis and structural recovery. Experiments on real-world SR benchmarks show that WorldSR consistently improves structural fidelity and visual quality, outperforming existing generative super-resolution methods. Our results suggest that entity-level grounding in external visual world knowledge provides a simple and effective complement to model-bound generative priors.",
+            "categories": "cs.CV",
+            "comment": "Accepted at NeurIPS 2026. Project Page: https://gwanjyun.github.io/worldsr.github.io/"
+          },
+          "analysis": {
+            "problem_statement": "Generative-prior-based super-resolution methods suffer from stochasticity, hallucinations, and high update costs due to their reliance on implicit, model-bound knowledge rather than explicit, deterministic reconstruction constraints.",
+            "bottleneck_addressed": "Hallucination and lack of factual grounding in generative image restoration models.",
+            "executive_summary": "This paper addresses the conflict between the stochastic nature of generative priors and the deterministic requirements of high-fidelity image super-resolution. By introducing explicit, entity-aligned visual world knowledge retrieved from external corpora, it reduces hallucinations and improves structural fidelity without requiring costly retraining of base models.",
+            "key_metrics": {
+              "primary_metric": "Structural fidelity and visual quality improvement on real-world SR benchmarks",
+              "metric_value": "Not specified in abstract",
+              "baseline": "Existing generative super-resolution methods",
+              "improvement_percentage": "Not specified in abstract"
+            },
+            "technical_breakdown": {
+              "method": "The framework decomposes input images into semantic entities, retrieves structurally and semantically aligned reference images from an external corpus, and integrates these references into a multi-reference SR model to constrain detail synthesis.",
+              "architecture": "Components include a semantic entity decomposer, an entity-wise retrieval module with a memory mechanism for caching, a multi-step filtering process for candidate refinement, and a novel multi-reference super-resolution model.",
+              "implementation_details": "Uses explicit entity-aligned visual world knowledge, memory mechanisms to reuse retrieved results for efficiency, and multi-step filtering to ensure reliability of candidate references.",
+              "code_complexity": "Introduces retrieval and filtering overhead but aims for efficiency via memory reuse; avoids the high cost of updating base generative models."
+            },
+            "relevance_tags": [
+              "Image Super-Resolution",
+              "Retrieval-Augmented Generation",
+              "Computer Vision",
+              "NeurIPS 2026"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-10-20T23:10:50.720369",
+          "conference_info": {
+            "conference": "NeurIPS",
+            "year": "2026",
+            "comment": "Accepted at NeurIPS 2026. Project Page: https://gwanjyun.github.io/worldsr.github.io/",
+            "raw_comment": "Accepted at NeurIPS 2026. Project Page: https://gwanjyun.github.io/worldsr.github.io/",
+            "category": "General ML/AI",
+            "rank": "A+"
+          }
+        },
+        {
+          "paper": {
+            "title": "Towards Consistent Geospatial Representations: Aligning One Encoder to Many Foundation Models",
+            "arxiv_id": "2610.28313v1",
+            "authors": [
+              "Arthur Ouaknine",
+              "David Rolnick"
+            ],
+            "published": "2026-10-20T14:52:21Z",
+            "updated": "2026-10-20T14:52:21Z",
+            "summary": "Geospatial foundation models (GFMs) differ widely in pretraining objective, modality and resolution, and none leads across benchmarks. We ask whether their representations are complementary, and whether a single encoder can inherit that complementarity. We introduce Pangaea-Latents, an extension of the Pangaea benchmark providing frozen embeddings of $5$ GFMs over its $11$ datasets, along with reproduced baselines, and find GFM embeddings to be neither redundant nor disjoint. We then propose GeoMixture, a preliminary framework to align a ViT to several GFMs per dataset through a multi-representation alignment (mREPA) objective. Our encoder ties the best GFM in average rank across nine Pangaea datasets, trading peak performance for cross-task consistency.",
+            "categories": "cs.CV",
+            "comment": "Accepted at NeurIPS REO Workshop 2026"
+          },
+          "analysis": {
+            "problem_statement": "Geospatial foundation models (GFMs) exhibit diverse and non-dominant performance across benchmarks, raising the question of whether their complementary representations can be unified into a single, consistent encoder.",
+            "bottleneck_addressed": "Lack of a single dominant geospatial foundation model and the inconsistency of performance across different geospatial tasks and datasets.",
+            "executive_summary": "This paper addresses the fragmentation in the geospatial AI landscape by demonstrating that embeddings from different GFMs are complementary rather than redundant. It introduces a framework to align a single ViT encoder with multiple GFMs, aiming to achieve cross-task consistency without sacrificing average performance.",
+            "key_metrics": {
+              "primary_metric": "Average rank across nine Pangaea datasets",
+              "metric_value": "Ties the best GFM in average rank",
+              "baseline": "Individual Geospatial Foundation Models (GFMs) and reproduced baselines",
+              "improvement_percentage": "Not quantified as a percentage; described as tying the best GFM in average rank while trading peak performance for consistency"
+            },
+            "technical_breakdown": {
+              "method": "The paper introduces Pangaea-Latents, a benchmark extension providing frozen embeddings from 5 GFMs over 11 datasets, and proposes GeoMixture, a framework that aligns a ViT encoder to multiple GFMs using a multi-representation alignment (mREPA) objective.",
+              "architecture": "A Vision Transformer (ViT) encoder aligned to multiple Geospatial Foundation Models (GFMs) per dataset.",
+              "implementation_details": "Utilizes a multi-representation alignment (mREPA) objective to align the single encoder with several GFMs. Includes reproduced baselines and analysis of frozen embeddings from 5 GFMs over 11 Pangaea datasets.",
+              "code_complexity": "Not specified in the provided metadata."
+            },
+            "relevance_tags": [
+              "Geospatial AI",
+              "Foundation Models",
+              "Representation Learning",
+              "Benchmarking",
+              "ViT"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-10-20T23:11:55.782858",
+          "conference_info": {
+            "conference": "NeurIPS",
+            "year": "2026",
+            "comment": "Accepted at NeurIPS REO Workshop 2026",
+            "raw_comment": "Accepted at NeurIPS REO Workshop 2026",
+            "category": "General ML/AI",
+            "rank": "A+"
+          }
+        },
+        {
+          "paper": {
+            "title": "P$^3$-VLM: A Point-based Alternative for Grounded 3D Vision-Language Models",
+            "arxiv_id": "2610.28018v1",
+            "authors": [
+              "Anna-Maria Halacheva",
+              "Jan-Nico Zaech",
+              "Sombit Dey",
+              "Luc Van Gool",
+              "Danda Pani Paudel"
+            ],
+            "published": "2026-10-20T11:08:07Z",
+            "updated": "2026-10-20T11:08:07Z",
+            "summary": "Examining existing benchmarks for grounding in 3D VLMs reveals a pervasive \"semantic leakage\" in the evaluation and prompting protocols: a heavy reliance on bounding boxes as spatial prompts or representation primitives. Because bounding boxes are highly informative of object categories, they introduce a shortcut for the models to neglect visual information during 3D VLM training. We demonstrate this with a \"blind\" LLM that, prompted only with the box coordinates, can perform surprisingly well. To further analyze this shortcut, we propose point-based grounding prompting - querying models with a single 3D point instead of a box. Under this protocol, the accuracy of the blind LLM drops from 36.4% to 18.0% on ScanNet's Nr3D, and similarly degrades for 3D VLMs (e.g. LL3DA).   Building on this insight, we introduce P$^3$-VLM, a novel tri-pathway 3D VLM that supports point-based prompts and achieves 52.1% state-of-the-art accuracy on location-grounded captioning under this setting. To achieve this, we redesign the architecture while keeping it detector-free, scene-centric, and suitable for 3D GS inputs. P$^3$-VLM utilizes three complementary pathways (location-, task-, and context-aware), enabling strong reasoning about scenes without any bounding box dependencies. The key benefit of point-based learning is a consistent improvement across settings: P$^3$-VLM achieves state-of-the-art performance under point-based grounding while also improving robustness, OOD generalization, and performance on ungrounded scene-centric 3D VQA benchmarks, reflecting its reduced reliance on bounding-box shortcuts and resulting stronger visual-spatial reasoning.",
+            "categories": "cs.CV",
+            "comment": "NeurIPS 2026, Spotlight"
+          },
+          "analysis": {
+            "problem_statement": "The paper addresses the issue of 'semantic leakage' in 3D Vision-Language Models (VLMs) where bounding box prompts provide excessive category information, allowing models to rely on shortcuts rather than genuine visual-spatial reasoning.",
+            "bottleneck_addressed": "Evaluation integrity and model robustness in 3D VLMs, specifically the over-reliance on bounding box priors that mask poor visual grounding capabilities.",
+            "executive_summary": "This work reveals that standard 3D VLM benchmarks are compromised by bounding box prompts that leak semantic information, enabling models to bypass visual processing. By introducing point-based grounding, the authors demonstrate a significant drop in performance for existing models, highlighting a critical gap in current 3D VLM robustness. The proposed P$^3$-VLM architecture overcomes this by using point-based prompts to enforce stronger visual-spatial reasoning, resulting in improved generalization and state-of-the-art performance.",
+            "key_metrics": {
+              "primary_metric": "Location-grounded captioning accuracy under point-based grounding protocol",
+              "metric_value": "52.1%",
+              "baseline": "Previous state-of-the-art 3D VLMs (e.g., LL3DA) and blind LLM baselines",
+              "improvement_percentage": "Not explicitly quantified as a percentage against SOTA, but represents a significant gap over the 'blind' LLM baseline (18.0%) and existing 3D VLMs which degrade significantly under point-based prompts."
+            },
+            "technical_breakdown": {
+              "method": "The paper introduces a point-based grounding protocol to eliminate bounding box semantic leakage and proposes P$^3$-VLM, a tri-pathway architecture that processes 3D Gaussian Splatting (GS) inputs without detectors.",
+              "architecture": "A detector-free, scene-centric tri-pathway architecture comprising location-aware, task-aware, and context-aware pathways to handle point-based prompts and scene reasoning.",
+              "implementation_details": "Utilizes 3D Gaussian Splatting (3D GS) as input representation; replaces bounding box prompts with single 3D point queries; employs a 'blind' LLM baseline to quantify semantic leakage from box coordinates.",
+              "code_complexity": "Not specified in the summary, but the detector-free design and reliance on 3D GS inputs suggest a focus on efficient scene-level processing rather than object-level detection overhead."
+            },
+            "relevance_tags": [
+              "3D Vision-Language Models",
+              "Grounding",
+              "Benchmarking",
+              "3D Gaussian Splatting",
+              "NeurIPS 2026"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-10-20T23:13:47.745047",
+          "conference_info": {
+            "conference": "NeurIPS",
+            "year": "2026",
+            "comment": "NeurIPS 2026, Spotlight",
+            "raw_comment": "NeurIPS 2026, Spotlight",
+            "category": "General ML/AI",
+            "rank": "A+"
+          }
+        },
+        {
+          "paper": {
+            "title": "Beyond the Evidence Boundary: Behavioral Mirage Under Progressive Degradation in Medical VLMs",
+            "arxiv_id": "2610.28000v1",
+            "authors": [
+              "Edric Castel C. Hao",
+              "Rez Samantha Z. Floresca"
+            ],
+            "published": "2026-10-20T10:45:40Z",
+            "updated": "2026-10-20T10:45:40Z",
+            "summary": "VLMs for medical image interpretation are typically evaluated on clean inputs, despite the progressive evidence loss that can occur in high stakes clinical settings. Existing robustness studies show that performance can degrade while confidence remains high, but do not establish when a previously reliable model-case pair ceases to behave reliably. We introduce a baseline-anchored framework that traces baseline-correct cases through progressive image degradation to identify an empirical evidence boundary, and define mirage as continued commitment at this boundary, regardless of correctness. Across three VLMs on three medical datasets, only MedGemma provides a sufficiently large baseline-correct pool for trajectory analysis. On VQA-RAD, the only dataset in which the question text varies, language-only answerability is associated with baseline correctness (AUROC 0.677) and with commitment at the boundary (AUROC 0.653 to 0.670). MedGemma's post-boundary behavior is heterogeneous, including direct mirage, correct recovery, mirage dissolution, consistent abstention, and oscillation, with mirage rates of 16.0 to 100.0% across dataset-modality pairs. Despite this behavioral heterogeneity, residual-stream probes decode commit-versus-abstain behavior at the boundary with AUROC of 0.895 to 0.994 under nested cross-validation. These results show that progressive evidence loss can produce persistent commitment that output entropy and abstention behavior do not consistently reflect, motivating boundary-aware evaluation, option-order controls, and improved abstention mechanisms for reliable medical foundation models operating under partial observation.",
+            "categories": "cs.CV",
+            "comment": "Accepted to WMHS Workshop @ NeurIPS 2026"
+          },
+          "analysis": {
+            "problem_statement": "The paper addresses the lack of a standardized method to identify the specific point of 'evidence boundary' where medical Vision-Language Models (VLMs) cease to be reliable under progressive image degradation, and to characterize the 'behavioral mirage' phenomenon where models maintain high confidence despite lost evidence.",
+            "bottleneck_addressed": "Reliability and robustness under distribution shift (specifically progressive evidence loss) in high-stakes clinical AI, where standard clean-input evaluation masks critical failure modes.",
+            "executive_summary": "This work is critical for the deployment of medical VLMs because it demonstrates that standard robustness metrics fail to capture when a model's confidence becomes decoupled from its actual reliability. By defining an empirical 'evidence boundary' and quantifying 'mirage' behavior, it provides a framework for boundary-aware evaluation that is essential for ensuring safety in clinical settings where image quality is often suboptimal.",
+            "key_metrics": {
+              "primary_metric": "Decodability of commit-versus-abstain behavior at the evidence boundary using residual-stream probes",
+              "metric_value": "AUROC 0.895 to 0.994",
+              "baseline": "Output entropy and standard abstention behavior (which are shown to be inconsistent)",
+              "improvement_percentage": "Not applicable (diagnostic metric rather than performance improvement over a baseline model)"
+            },
+            "technical_breakdown": {
+              "method": "A baseline-anchored framework that tracks specific model-case pairs through progressive image degradation to identify the empirical evidence boundary, defining 'mirage' as continued commitment at this boundary regardless of correctness.",
+              "architecture": "Evaluation framework applied to three VLMs (including MedGemma) across three medical datasets; utilizes residual-stream probes for internal state analysis.",
+              "implementation_details": "Uses nested cross-validation for probe evaluation; analyzes language-only answerability via AUROC; categorizes post-boundary behaviors into direct mirage, correct recovery, mirage dissolution, consistent abstention, and oscillation.",
+              "code_complexity": "Not specified in metadata; involves trajectory analysis and internal state probing rather than model training."
+            },
+            "relevance_tags": [
+              "Medical VLMs",
+              "Robustness",
+              "Uncertainty Quantification",
+              "Behavioral Analysis",
+              "Clinical AI Safety"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-10-20T23:14:25.239860",
+          "conference_info": {
+            "conference": "NeurIPS",
+            "year": "2026",
+            "comment": "Accepted to WMHS Workshop @ NeurIPS 2026",
+            "raw_comment": "Accepted to WMHS Workshop @ NeurIPS 2026",
+            "category": "General ML/AI",
+            "rank": "A+"
+          }
+        },
+        {
+          "paper": {
+            "title": "Efficient SAM3 Adaptation for Multi-Class Semantic Segmentation via Dense Competitive Representations",
+            "arxiv_id": "2610.27960v1",
+            "authors": [
+              "Wenbin Liao",
+              "Hao Zhu",
+              "Yike Ma",
+              "Hao Jiang",
+              "Feng Dai"
+            ],
+            "published": "2026-10-20T10:06:19Z",
+            "updated": "2026-10-20T10:06:19Z",
+            "summary": "The Segment Anything Model 3 (SAM3) has achieved significant progress in Promptable Concept Segmentation (PCS) by processing short noun phrases to generate segmentation masks with unique instance identifiers. While SAM3 excels at single-concept segmentation, it falls short in complex, real-world environments where multiple concepts must be segmented simultaneously. In particular, SAM3 typically fails to simultaneously process concepts with semantic overlap, leading to semantic misclassifications and redundant mask predictions. Moreover, as the number of concepts increases, the independent inference paradigm introduces prohibitive inference latency. To address these limitations, we propose the Dense Competitive Representations SAM (DCR-SAM) framework. By decoupling cross-modal interactions, the proposed method alleviates the inference latency. To resolve semantic misclassifications, DCR-SAM dynamically aligns textual concepts with visual representations and incorporates a dense competition head to enforce explicit inter-class competition. Furthermore, a learnable background token is applied to absorb non-target objects dynamically. These mechanisms effectively suppress overlapping predictions and generate high-fidelity masks. Extensive experimental evaluations across multiple benchmarks demonstrate that the proposed framework: (1) achieves a 2.3% $\\sim$ 10.7% performance improvement over state-of-the-art methods, (2) delivers a 33$\\times$ inference speedup compared to the native SAM3, and (3) exhibits strong robustness across diverse scenarios.",
+            "categories": "cs.CV",
+            "comment": "Accepted by NeurIPS 2026. Code is available at https://github.com/set-path/DCR-SAM/tree/main"
+          },
+          "analysis": {
+            "problem_statement": "SAM3 suffers from semantic misclassifications, redundant mask predictions, and prohibitive inference latency when processing multiple concepts with semantic overlap simultaneously.",
+            "bottleneck_addressed": "Inference latency and semantic disambiguation in multi-concept segmentation.",
+            "executive_summary": "This paper addresses the critical limitation of SAM3 in real-world environments requiring simultaneous segmentation of multiple, potentially overlapping concepts. By introducing a framework that decouples cross-modal interactions and enforces inter-class competition, it significantly reduces computational overhead while improving segmentation accuracy.",
+            "key_metrics": {
+              "primary_metric": "Performance improvement over state-of-the-art methods and inference speedup",
+              "metric_value": "2.3% - 10.7% performance gain; 33x speedup",
+              "baseline": "State-of-the-art methods and native SAM3",
+              "improvement_percentage": "2.3-10.7%"
+            },
+            "technical_breakdown": {
+              "method": "The DCR-SAM framework decouples cross-modal interactions to reduce latency, dynamically aligns textual concepts with visual representations, and uses a dense competition head to enforce explicit inter-class competition.",
+              "architecture": "DCR-SAM framework built upon SAM3, featuring a dense competition head and a learnable background token.",
+              "implementation_details": "Utilizes a dense competition head to suppress overlapping predictions and a learnable background token to absorb non-target objects dynamically.",
+              "code_complexity": "Achieves a 33x inference speedup compared to native SAM3 by alleviating inference latency through decoupled cross-modal interactions."
+            },
+            "relevance_tags": [
+              "Semantic Segmentation",
+              "SAM3",
+              "Efficient Inference",
+              "Multi-Class Segmentation"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-10-20T23:15:21.489176",
+          "conference_info": {
+            "conference": "NeurIPS",
+            "year": "2026",
+            "comment": "Accepted by NeurIPS 2026. Code is available at https://github.com/set-path/DCR-SAM/tree/main",
+            "raw_comment": "Accepted by NeurIPS 2026. Code is available at https://github.com/set-path/DCR-SAM/tree/main",
+            "category": "General ML/AI",
+            "rank": "A+"
+          }
+        },
+        {
+          "paper": {
+            "title": "Decoupling Action from Egocentric Observation for World Simulation",
+            "arxiv_id": "2610.27946v1",
+            "authors": [
+              "Yue Ma",
+              "Pengjie Song",
+              "Xinyu Wang",
+              "Yi He",
+              "Zeqian Long",
+              "Fangneng Zhan",
+              "Kaichen Zhou",
+              "Hongyu Liu",
+              "Hongfa Wang",
+              "Peihao Li",
+              "Haoyang Huang",
+              "Nan Duan",
+              "Qifeng Chen"
+            ],
+            "published": "2026-10-20T09:52:46Z",
+            "updated": "2026-10-20T09:52:46Z",
+            "summary": "Egocentric action transfer aims to decouple the semantic action from egocentric observations and reproduce them in new visual contexts, enabling scalable world simulation, embodied policy learning, and robotic data generation. Existing approaches to transferring actions rely on condition-guided video generation, which converts the observation video into explicit geometric controls (e.g., hand poses or meshes) to drive synthesis. However, these methods introduce geometric estimation errors, making it difficult to preserve physically plausible interactions when transferred to new scenes. Alternatively, motion transfer methods directly extract motion patterns from the observation video, yet motion-level features alone cannot encode rich contact dynamics, frequently leading to severe hand structural collapse and implausible contact layout. To address both limitations, we present EgoACT, a test-time framework for egocentric action transfer that operates directly on the denoising process of video diffusion models without requiring additional geometric estimators. EgoACT uses Velocity-guided Structure Anchoring to stabilize reference-consistent hand-object structure in the early denoising stage, and Sparse Correspondence Calibration to refine reliable local correspondences in the mid-to-late denoising stages. Together, these two components preserve transferable action semantics while improving temporal coherence and interaction realism. We further establish EgoActionBench, a benchmark for evaluating action preservation, visual quality, and hand-object plausibility across diverse egocentric manipulation scenarios. Experiments show that EgoACT generates more coherent and physically plausible interaction videos than strong baselines.",
+            "categories": "cs.CV",
+            "comment": "Accepted by NeurIPS 2026, Project page: https://ego-act.github.io/, Code: https://github.com/mayuelala/EgoACT"
+          },
+          "analysis": {
+            "problem_statement": "The paper addresses the challenge of transferring egocentric actions to new visual contexts while preserving physically plausible hand-object interactions, overcoming the geometric estimation errors of control-based methods and structural collapse of motion-transfer methods.",
+            "bottleneck_addressed": "Preservation of physical plausibility and structural integrity in generative video models during cross-context action transfer.",
+            "executive_summary": "EgoACT enables scalable world simulation and robotic data generation by decoupling semantic actions from specific egocentric observations without relying on explicit geometric estimators. By operating directly within the denoising process of video diffusion models, it mitigates the propagation of estimation errors and structural artifacts that plague existing condition-guided and motion-transfer approaches.",
+            "key_metrics": {
+              "primary_metric": "Generation of more coherent and physically plausible interaction videos compared to strong baselines.",
+              "metric_value": "Not provided in summary",
+              "baseline": "Strong baselines for egocentric action transfer (condition-guided video generation and motion transfer methods)",
+              "improvement_percentage": "Not provided in summary"
+            },
+            "technical_breakdown": {
+              "method": "A test-time framework that modifies the denoising process of video diffusion models to transfer actions, avoiding the need for external geometric estimators like hand pose or mesh extraction.",
+              "architecture": "Two-stage intervention in the diffusion denoising pipeline: an early stage for structural stabilization and a mid-to-late stage for correspondence refinement.",
+              "implementation_details": "Utilizes Velocity-guided Structure Anchoring to stabilize reference-consistent hand-object structure in early denoising, and Sparse Correspondence Calibration to refine local correspondences in mid-to-late denoising.",
+              "code_complexity": "Test-time framework; specific computational overhead or training time implications are not detailed in the provided summary."
+            },
+            "relevance_tags": [
+              "Video Diffusion",
+              "Egocentric Vision",
+              "World Simulation",
+              "Robotic Data Generation",
+              "Action Transfer"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-10-20T23:15:45.264284",
+          "conference_info": {
+            "conference": "NeurIPS",
+            "year": "2026",
+            "comment": "Accepted by NeurIPS 2026, Project page: https://ego-act.github.io/, Code: https://github.com/mayuelala/EgoACT",
+            "raw_comment": "Accepted by NeurIPS 2026, Project page: https://ego-act.github.io/, Code: https://github.com/mayuelala/EgoACT",
+            "category": "General ML/AI",
+            "rank": "A+"
+          }
+        },
+        {
+          "paper": {
+            "title": "Staged Continual Adaptation of Multimodal Foundation Models for Japanese Financial Documents",
+            "arxiv_id": "2610.27904v1",
+            "authors": [
+              "Genshin Kakimoto",
+              "Atsushi Yanagisawa"
+            ],
+            "published": "2026-10-20T09:19:36Z",
+            "updated": "2026-10-20T09:19:36Z",
+            "summary": "Staged post-training of multimodal foundation models chains vision-language alignment, reasoning distillation, and domain tuning, yet how each phase trades capabilities against the others remains under-characterised. Tracking an 8.4B-parameter model from an un-fine-tuned baseline through three training phases on Japanese financial documents (evaluated on five text-input benchmarks), we find the phases interact non-additively: math-only distillation overwrites the financial knowledge acquired earlier even as procedural math skill survives, and the domain phase repairs more than it installs. A skip-phase ablation is best for domain knowledge but forfeits numerical-reasoning gains, so per-phase contributions are not decomposable and the best checkpoint is task-dependent, with implications for checkpoint retention and scheduling rather than added stages.",
+            "categories": "cs.AI",
+            "comment": "17 pages, 10 figures, 9 tables. Presented at the ICML 2026 Workshop \"Continual Adaptation at Scale: Towards Sustainable AI\". Code: https://github.com/AtsushiYanaigsawa768/Compass"
+          },
+          "analysis": {
+            "problem_statement": "The paper investigates the non-additive interactions and capability trade-offs between staged post-training phases (alignment, distillation, and domain tuning) in multimodal foundation models.",
+            "bottleneck_addressed": "Catastrophic forgetting and the lack of decomposability in multi-stage continual adaptation pipelines, specifically regarding checkpoint selection and capability retention.",
+            "executive_summary": "This study reveals that standard staged post-training does not yield additive improvements, as later phases can overwrite earlier domain knowledge while preserving procedural skills. It demonstrates that the optimal checkpoint is task-dependent, suggesting that current strategies for checkpoint retention and scheduling in sustainable AI pipelines are suboptimal.",
+            "key_metrics": {
+              "primary_metric": "Qualitative analysis of capability trade-offs and non-additive interactions across training phases",
+              "metric_value": "N/A (Qualitative/Comparative analysis)",
+              "baseline": "Un-fine-tuned 8.4B-parameter baseline model",
+              "improvement_percentage": "N/A"
+            },
+            "technical_breakdown": {
+              "method": "Tracking an 8.4B-parameter multimodal model through three distinct post-training phases: vision-language alignment, reasoning distillation, and domain tuning, evaluated on five text-input benchmarks.",
+              "architecture": "8.4B-parameter Multimodal Foundation Model (specific architecture not detailed in summary, likely VLM).",
+              "implementation_details": "Staged post-training pipeline involving math-only distillation and Japanese financial document domain tuning; includes skip-phase ablations to isolate phase contributions.",
+              "code_complexity": "Not specified in summary; involves multi-stage fine-tuning of an 8.4B parameter model."
+            },
+            "relevance_tags": [
+              "Continual Learning",
+              "Multimodal LLMs",
+              "Post-Training",
+              "Catastrophic Forgetting",
+              "Financial NLP"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-10-20T23:16:12.306214",
+          "conference_info": {
+            "conference": "ICML",
+            "year": "2026",
+            "comment": "17 pages, 10 figures, 9 tables. Presented at the ICML 2026 Workshop \"Continual Adaptation at Scale: Towards Sustainable AI\". Code: https://github.com/AtsushiYanaigsawa768/Compass",
+            "raw_comment": "17 pages, 10 figures, 9 tables. Presented at the ICML 2026 Workshop \"Continual Adaptation at Scale: Towards Sustainable AI\". Code: https://github.com/AtsushiYanaigsawa768/Compass",
+            "category": "General ML/AI",
+            "rank": "A+"
+          }
+        },
+        {
+          "paper": {
+            "title": "Give the Model a Finger: Developmentally Aligned Evaluation of Counting in Vision-Language Models",
+            "arxiv_id": "2610.27756v1",
+            "authors": [
+              "Yingxin Jia",
+              "Hui Geng",
+              "Wenxin Yang",
+              "Mohan Zhang"
+            ],
+            "published": "2026-10-20T07:19:03Z",
+            "updated": "2026-10-20T07:19:03Z",
+            "summary": "Vision-language models (VLMs) are exact on small sets and drift into estimation on larger ones, a profile reminiscent of children before they master counting. Children cross the barrier with epistemic actions: pointing at each item while reciting number words, moving counted items aside, partitioning the array. We give VLMs the same actions as dumb image tools with no visual intelligence of their own in a training-free agent loop. Our central claim is about measurement, not intervention: a model that counts by marking leaves a normally hidden serial procedure on the image, and the developmental principles of counting turn those marks into an interpretable audit of serial visual reasoning: every tag is classified against point-level ground truth as on-target, duplicate, phantom, or omitted, the answer is checked against the number of tags, and order irrelevance is tested by forcing opposite traversal orders. Across 9 models, 682 images, and 7 harness conditions we find that (i) the exact-counting range is a model-specific signature spanning nearly two orders of magnitude (R80 from 3 to 150 dots); (ii) as an intervention the finger mostly fails: tags help 4 of 9 models on small-count photographs, hurt imprecise pointers, and rarely beat a verbal routine or a blind point list; what the loop buys is an auditable trace, not accuracy; (iii) as measurement it succeeds: a tag-perturbation probe shows that precise pointers read their answers off the tags, pointing precision tracks which models benefit, dense scenes fail by omission, and models rarely revise after seeing their own tags; and (iv) the capacities dissociate: models follow an instructed traversal order yet often change their answer when it reverses, and children's regular-over-scattered advantage appears only under the routine and survives lattices that defeat a rows-times-columns shortcut.",
+            "categories": "cs.AI",
+            "comment": "NeurIPS 2026 Workshop BabyVLM"
+          },
+          "analysis": {
+            "problem_statement": "The paper addresses the lack of interpretable, developmentally aligned evaluation metrics for counting in Vision-Language Models (VLMs), specifically by introducing a training-free agent loop that uses image marking to audit serial visual reasoning.",
+            "bottleneck_addressed": "Interpretability and evaluation of visual reasoning capabilities in VLMs, particularly the distinction between exact counting and estimation.",
+            "executive_summary": "This work provides a novel measurement framework that treats counting as a serial procedure, allowing for an auditable trace of a model's reasoning by analyzing the placement and consistency of visual tags. It reveals that while adding 'finger' actions rarely improves accuracy, it exposes model-specific signatures in counting range and dissociations in cognitive capacities, such as order irrelevance.",
+            "key_metrics": {
+              "primary_metric": "Range of exact counting (R80) and auditability of serial reasoning via tag classification",
+              "metric_value": "R80 spans from 3 to 150 dots across models",
+              "baseline": "Verbal routine and blind point list baselines",
+              "improvement_percentage": "N/A (Focus is on measurement/interpretability rather than accuracy improvement; tags help 4/9 models on small counts but rarely beat baselines)"
+            },
+            "technical_breakdown": {
+              "method": "A training-free agent loop where VLMs are given 'dumb image tools' to mark items while counting. The system classifies tags against ground truth (on-target, duplicate, phantom, omitted) and tests order irrelevance by forcing opposite traversal orders.",
+              "architecture": "Agent loop integrating VLM with external image manipulation tools; no internal architectural changes to the VLM.",
+              "implementation_details": "Tag-perturbation probes, classification of tags against point-level ground truth, and comparison of answers against tag counts. Evaluation across 9 models, 682 images, and 7 harness conditions.",
+              "code_complexity": "Training-free; computational cost is dominated by the inference of the VLM and the overhead of the agent loop for image manipulation and tag analysis."
+            },
+            "relevance_tags": [
+              "Vision-Language Models",
+              "Counting",
+              "Interpretability",
+              "Developmental Psychology",
+              "Agent-based Evaluation"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-10-20T23:16:34.557934",
+          "conference_info": {
+            "conference": "NeurIPS",
+            "year": "2026",
+            "comment": "NeurIPS 2026 Workshop BabyVLM",
+            "raw_comment": "NeurIPS 2026 Workshop BabyVLM",
+            "category": "General ML/AI",
+            "rank": "A+"
+          }
+        },
+        {
+          "paper": {
+            "title": "A Principled Optimal Transport Framework for Frame Selection in Long Video Understanding",
+            "arxiv_id": "2610.27692v1",
+            "authors": [
+              "Ziwei Zhao",
+              "Yuhang Liu"
+            ],
+            "published": "2026-10-20T06:12:30Z",
+            "updated": "2026-10-20T06:12:30Z",
+            "summary": "Long-video understanding with multimodal LLMs is fundamentally constrained by the mismatch between video length and the model's limited visual context budget, making frame selection essential for practical reasoning. Existing query-aware methods typically rely on heuristic pipelines: they assign one-dimensional query-conditioned scores to frames and then apply sampling, ranking, or extraction rules to form the final subset. While effective in practice, such methods are generally not derived from an explicit optimization objective and struggle to capture the heterogeneous evidence required for complex reasoning. In this paper, we revisit long-video frame selection from a principled optimization perspective. We formulate it as a structured evidence-allocation problem and propose OTFS, an optimal transport framework that maps multiple evidence sources onto video frames. To reflect the asymmetry of this problem---important evidence should be preserved, whereas redundant frames need not absorb mass---we instantiate this view with a semi-unbalanced entropic optimal transport objective and an efficient solver, OTFS-Sinkhorn. Combined with an exact dynamic program for coverage-aware subset extraction, OTFS yields a practical two-stage training-free pipeline. We further show that, in the single-source case, our formulation induces a Gibbs-type distribution over frames, making Q-Frame's temperature-scaled distribution a special case of our framework while also providing a broader perspective for understanding related prior methods. Experiments on three long-video understanding benchmarks show that OTFS consistently outperforms strong training-free baselines. Codes are available at https://github.com/barry664/OTFS.",
+            "categories": "cs.CV",
+            "comment": "Accepted by NeurIPS 2026"
+          },
+          "analysis": {
+            "problem_statement": "The paper addresses the challenge of selecting a limited subset of frames from long videos for multimodal LLMs by replacing heuristic scoring with a principled optimal transport optimization objective.",
+            "bottleneck_addressed": "Limited visual context budget in multimodal LLMs relative to the length of long-form video content.",
+            "executive_summary": "This work provides a theoretical foundation for frame selection by formulating it as a semi-unbalanced optimal transport problem, ensuring that critical evidence is preserved while redundant frames are downweighted. It offers a training-free pipeline that unifies various heuristic approaches, including Q-Frame, under a single mathematical framework, improving the robustness of long-video reasoning without requiring model fine-tuning.",
+            "key_metrics": {
+              "primary_metric": "Consistent outperformance of strong training-free baselines on long-video understanding benchmarks",
+              "metric_value": "Not specified in summary",
+              "baseline": "Strong training-free baselines (including Q-Frame and other heuristic methods)",
+              "improvement_percentage": "Not specified in summary"
+            },
+            "technical_breakdown": {
+              "method": "Formulates frame selection as a structured evidence-allocation problem using semi-unbalanced entropic optimal transport to map evidence sources to video frames, followed by exact dynamic programming for subset extraction.",
+              "architecture": "Two-stage training-free pipeline: 1) OTFS-Sinkhorn solver for semi-unbalanced entropic optimal transport, 2) Coverage-aware subset extraction via dynamic programming.",
+              "implementation_details": "Uses a semi-unbalanced entropic OT objective to handle asymmetry (preserving important evidence vs. redundant frames). In the single-source case, it induces a Gibbs-type distribution, subsuming Q-Frame's temperature-scaled distribution as a special case.",
+              "code_complexity": "Training-free; relies on an efficient Sinkhorn solver and exact dynamic programming, implying linear or near-linear complexity relative to the number of frames and evidence sources, suitable for practical inference."
+            },
+            "relevance_tags": [
+              "Optimal Transport",
+              "Long Video Understanding",
+              "Multimodal LLMs",
+              "Frame Selection",
+              "Training-Free Methods"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-10-20T23:18:31.077300",
+          "conference_info": {
+            "conference": "NeurIPS",
+            "year": "2026",
+            "comment": "Accepted by NeurIPS 2026",
+            "raw_comment": "Accepted by NeurIPS 2026",
+            "category": "General ML/AI",
+            "rank": "A+"
+          }
+        },
+        {
+          "paper": {
+            "title": "Real In, Real Out: What If We Only Use Real Data for Scene Text Editing?",
+            "arxiv_id": "2610.27592v1",
+            "authors": [
+              "Xingsong Ye",
+              "Yongkun Du",
+              "Jiaxin Zhang",
+              "Chong Sun",
+              "Zhineng Chen"
+            ],
+            "published": "2026-10-20T03:58:22Z",
+            "updated": "2026-10-20T03:58:22Z",
+            "summary": "Aiming to modify textual content while preserving the original style, Scene Text Editing (STE) has significant practical value in many applications. STE typically requires paired images before and after editing for training. However, recent approaches rely heavily on synthetic paired data and complex disentanglement strategies. They struggle to faithfully capture the diversity and complexity of natural scenes, often producing artifacts or hallucinations. In this work, we challenge the common practice and investigate whether STE can be driven by turning each real sample into its own paired supervision. Concretely, we explore multiple ways to disrupt the original image (e.g., Crop, Shuffle, Mask) to construct self-paired training data, and build a strong baseline (TextRIRO}) upon a conditional diffusion architecture. Our experiments show that combining character-column shuffling with image cropping (Shuffle&Crop) effectively destroys text semantics while preserving key style cues, enabling the model to learn editing behaviors directly from the real text image. With this concise yet real-oriented design, TextRIRO achieves promising performance in both accuracy and visual realism across real-world benchmarks, substantially mitigating the synthetic-to-real domain gap. Furthermore, we leverage TextRIRO to build TextRIRO-3M, a large-scale realistic dataset for long-text recognition by concatenating edited and original images. Experimental results show that training recognition models with TextRIRO-3M significantly improves recognition accuracy, demonstrating that TextRIRO provides highly useful training resources for downstream tasks. Overall, TextRIRO lifts STE to realistic, reliable, and widely applicable new levels. Code is available at https://github.com/YesianRohn/TextRIRO.",
+            "categories": "cs.CV",
+            "comment": "Accepted as a conference paper at NeurIPS 2026"
+          },
+          "analysis": {
+            "problem_statement": "How to perform high-fidelity scene text editing without relying on synthetic paired data or complex disentanglement strategies that fail to capture natural scene diversity.",
+            "bottleneck_addressed": "The synthetic-to-real domain gap and the dependency on artificial paired supervision in generative editing tasks.",
+            "executive_summary": "This paper challenges the standard paradigm of using synthetic data for scene text editing by demonstrating that self-paired real data, created through simple disruptions like cropping and shuffling, is sufficient for training robust models. By eliminating the need for complex disentanglement, the approach reduces artifacts and hallucinations, offering a more realistic and reliable solution for practical applications.",
+            "key_metrics": {
+              "primary_metric": "Accuracy and visual realism on real-world benchmarks",
+              "metric_value": "Not explicitly quantified in the abstract",
+              "baseline": "Recent approaches relying on synthetic paired data and complex disentanglement strategies",
+              "improvement_percentage": "Not explicitly quantified in the abstract"
+            },
+            "technical_breakdown": {
+              "method": "Constructs self-paired training data by disrupting original real images (Crop, Shuffle, Mask) to create supervision signals, specifically using a combination of character-column shuffling and image cropping (Shuffle&Crop) to destroy text semantics while preserving style cues.",
+              "architecture": "Conditional diffusion architecture named TextRIRO.",
+              "implementation_details": "Uses Shuffle&Crop to generate paired data; leverages the model to build TextRIRO-3M, a large-scale dataset for long-text recognition by concatenating edited and original images.",
+              "code_complexity": "Not specified in the provided metadata."
+            },
+            "relevance_tags": [
+              "Scene Text Editing",
+              "Diffusion Models",
+              "Self-Supervised Learning",
+              "Real-World Data",
+              "Computer Vision"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-10-20T23:19:36.217915",
+          "conference_info": {
+            "conference": "NeurIPS",
+            "year": "2026",
+            "comment": "Accepted as a conference paper at NeurIPS 2026",
+            "raw_comment": "Accepted as a conference paper at NeurIPS 2026",
+            "category": "General ML/AI",
+            "rank": "A+"
+          }
+        },
+        {
+          "paper": {
+            "title": "Recoverability and Verifier Strength: Two Measured Preconditions for Unattended Agent Self-Improvement",
+            "arxiv_id": "2610.27465v1",
+            "authors": [
+              "De Wang",
+              "Peng Qi"
+            ],
+            "published": "2026-10-20T01:32:13Z",
+            "updated": "2026-10-20T01:32:13Z",
+            "summary": "Agent platforms are starting to improve their own agents: they read a deployed agent's execution traces, derive a change, have an automated verifier approve it, and release it with no human author. How much of this loop can safely run without a human? We propose two quantities a platform can measure. Verifier strength $\u03c3$ is how well the available verifier -- often an LLM judge -- agrees with a trusted reference verifier; it limits how much a step can improve the agent. Recoverability is how cheaply a bad change can be undone: whether undoing it needs a new verifier approval, and how much of the old behavior a rollback restores. A step should run unattended only if both are adequate. On our platform this rule allows prompt, tool and skill edits to run unattended and keeps weight updates under human sign-off.   Our main contribution is these two definitions and how to measure them. We built a platform that applies the rule and tested it in two ways: on the platform's own approval gate, and in controlled experiments on the $\u03c4^2$-bench agent benchmark. On verifier strength, the platform's LLM judge sometimes gave the same score no matter what it was shown (9 of 37 settings) and reported no error, so a verifier can look healthy while approving anything; its strength must be measured, and two simple tests catch the failure. On recoverability, restoring a saved copy brought the agent back to its original behavior, but a regenerated undo did not, so only changes whose old version is kept can be reversed without a human; and while a change was deployed, it altered the outcome of 17 percent of tasks beyond normal run-to-run variation, which no undo repairs. Together these support the rule: a change can run unattended only when its old version is kept and its verifier's strength has been measured.",
+            "categories": "cs.AI",
+            "comment": "Accepted at the NeurIPS 2026 Workshop on AgenticOS. 6 pages + appendix"
+          },
+          "analysis": {
+            "problem_statement": "Determining safe, measurable preconditions for allowing AI agents to autonomously modify their own configurations (prompts, tools, weights) without human intervention.",
+            "bottleneck_addressed": "The lack of safety guarantees and verification mechanisms for unattended autonomous self-improvement loops in agentic systems.",
+            "executive_summary": "This paper addresses the critical safety gap in autonomous agent self-improvement by defining two measurable preconditions: verifier strength and recoverability. It demonstrates that current LLM-based verifiers can fail silently (approving all changes) and that not all changes are safely reversible, necessitating strict human oversight for weight updates while allowing unattended prompt/tool edits under specific conditions.",
+            "key_metrics": {
+              "primary_metric": "Verifier reliability and change reversibility",
+              "metric_value": "9/37 verifier settings failed; 17% of tasks affected by deployed changes beyond variation",
+              "baseline": "Trusted reference verifier and original agent behavior",
+              "improvement_percentage": "N/A (Safety/Measurement framework rather than performance optimization)"
+            },
+            "technical_breakdown": {
+              "method": "Defines 'Verifier Strength' (agreement with trusted reference) and 'Recoverability' (cost/feasibility of undoing changes). Implements a rule-based gate that permits unattended execution only if both metrics meet thresholds.",
+              "architecture": "Agent platform with an automated approval gate, LLM judge verifier, and rollback mechanism. Tested on platform's own gate and \u03c4\u00b2-bench benchmark.",
+              "implementation_details": "Uses LLM judges as verifiers; compares saved copies vs. regenerated undos for recoverability; measures verifier strength via agreement tests to catch silent failures (e.g., constant scoring).",
+              "code_complexity": "N/A (Focus is on system design and measurement protocols rather than algorithmic complexity)"
+            },
+            "relevance_tags": [
+              "AI Safety",
+              "Agentic Systems",
+              "Self-Improvement",
+              "Verification",
+              "NeurIPS 2026"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-10-20T23:21:00.931998",
+          "conference_info": {
+            "conference": "NeurIPS",
+            "year": "2026",
+            "comment": "Accepted at the NeurIPS 2026 Workshop on AgenticOS. 6 pages + appendix",
+            "raw_comment": "Accepted at the NeurIPS 2026 Workshop on AgenticOS. 6 pages + appendix",
+            "category": "General ML/AI",
+            "rank": "A+"
+          }
+        },
+        {
+          "paper": {
+            "title": "LoRASpace: A Pool-Wide Shared Substrate for Static and Dynamic Multi-LoRA Composition",
+            "arxiv_id": "2610.27444v1",
+            "authors": [
+              "Thamirawaran Sathiyalogeswaran",
+              "Navindu De Silva",
+              "Chamikara Siriwardane",
+              "W. K. Alwis",
+              "Jason Mars",
+              "Udaya Sampath K. Perera Miriya Thanthrige",
+              "Ranga Rodrigo"
+            ],
+            "published": "2026-10-20T00:46:19Z",
+            "updated": "2026-10-20T00:46:19Z",
+            "summary": "Low-rank adaptation (LoRA) attaches small low-rank matrices to a frozen backbone, and public repositories host many LoRAs per backbone, each for a different concept or task. Combining several LoRAs in one generation forces a trade-off. Merging their weights into one update needs a single forward pass, but LoRAs trained for different concepts interfere and quality drops. Running each LoRA in its own forward pass (composite) preserves quality, but inference time grows linearly with the number of active LoRAs. We study a property of LoRA pools overlooked by prior multi-LoRA work. In real LoRA pools, the stacked low-rank factors need far fewer directions than their summed ranks. Using singular value decomposition, we find the minimal subspace that keeps 99% of the factor energy. On three diffusion pools, only 46% to 57% of the summed LoRA ranks is needed, and the subspace grows sub-linearly with pool size. A 48-LoRA sub-pool of LoRA-Hub on FLAN-T5 tasks shows comparable overlap (62%), while the diversity-curated LoRA-Retriever benchmark sits near the no-overlap baseline (96%), so pool composition rather than modality predicts where compression is large. We build on this overlap with LoRASpace, a training-free method that computes the subspace once per pool and reuses it in two inference modes, a static mode at merge cost and a dynamic mode for input-dependent routing. On the diffusion pools, static LoRASpace matches composite quality at merge cost, and dynamic LoRASpace is more than 6x faster than composite with six active LoRAs on a 17-LoRA pool, mainly because it runs one backbone pass instead of six. In an ablation, static variants at the same rank match LoRASpace, so the quality gain does not depend on the pool-wide basis. On the near-orthogonal LoRA-Retriever benchmark, compression is small and gains come from coupling with external retrieval.",
+            "categories": "cs.CV",
+            "comment": "Accepted at NeurIPS 2026. 29 pages, 6 figures, 26 tables. Code: https://github.com/Thamirawaran/loraspace. Project page: https://thamirawaran.github.io/loraspace"
+          },
+          "analysis": {
+            "problem_statement": "The paper addresses the trade-off between inference latency and generation quality when combining multiple Low-Rank Adaptation (LoRA) modules, where merging weights causes interference and running separate forward passes scales linearly with the number of active LoRAs.",
+            "bottleneck_addressed": "Inference latency and computational overhead in multi-LoRA composition.",
+            "executive_summary": "This work identifies that real-world LoRA pools exhibit significant subspace overlap, allowing for a shared low-dimensional basis that reduces the effective rank required to preserve model quality. By leveraging this property, LoRASpace enables static merging at minimal cost and dynamic routing with significant speedups, decoupling inference time from the number of active adapters.",
+            "key_metrics": {
+              "primary_metric": "Inference speedup over composite multi-LoRA execution",
+              "metric_value": ">6x",
+              "baseline": "Composite inference (running each LoRA in its own forward pass)",
+              "improvement_percentage": ">500%"
+            },
+            "technical_breakdown": {
+              "method": "The method performs a Singular Value Decomposition (SVD) on the stacked low-rank factors of a LoRA pool to identify a minimal subspace retaining 99% of the factor energy. This shared subspace is then used for two inference modes: a static mode that merges weights into a single update, and a dynamic mode that routes inputs through the shared basis, requiring only one backbone forward pass regardless of the number of active LoRAs.",
+              "architecture": "A pool-wide shared substrate (subspace) derived from the union of LoRA factors, supporting both static weight merging and dynamic input-dependent routing without modifying the frozen backbone.",
+              "implementation_details": "Uses SVD to determine the minimal subspace; evaluates on diffusion pools (46-57% rank reduction) and FLAN-T5 (62% overlap); compares against no-overlap baselines (96% rank retention) to show pool composition dictates compressibility.",
+              "code_complexity": "Training-free; requires a one-time SVD computation per pool. Inference complexity is reduced from O(N) backbone passes (where N is the number of active LoRAs) to O(1) backbone pass in dynamic mode."
+            },
+            "relevance_tags": [
+              "LoRA",
+              "Model Compression",
+              "Inference Optimization",
+              "Multi-Task Learning",
+              "Diffusion Models"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-10-20T23:20:32.767935",
+          "conference_info": {
+            "conference": "NeurIPS",
+            "year": "2026",
+            "comment": "Accepted at NeurIPS 2026. 29 pages, 6 figures, 26 tables. Code: https://github.com/Thamirawaran/loraspace. Project page: https://thamirawaran.github.io/loraspace",
+            "raw_comment": "Accepted at NeurIPS 2026. 29 pages, 6 figures, 26 tables. Code: https://github.com/Thamirawaran/loraspace. Project page: https://thamirawaran.github.io/loraspace",
+            "category": "General ML/AI",
+            "rank": "A+"
+          }
+        },
+        {
+          "paper": {
+            "title": "SceneRig: An Agentic System for Simulation-Ready 3D Scene Reconstruction from Single Images",
+            "arxiv_id": "2610.28585v1",
+            "authors": [
+              "Rundong Luo",
+              "Yunong Liu",
+              "Di Cao",
+              "Matthew Tancik",
+              "Shyamal Buch",
+              "Colton Stearns",
+              "Wenqi Xian"
+            ],
+            "published": "2026-10-20T17:39:42Z",
+            "updated": "2026-10-20T17:39:42Z",
+            "summary": "Simulation is a powerful tool for robotics, but building diverse, simulation-ready scenes at scale remains difficult. Reconstructing scenes from single images is a promising alternative, but visual similarity alone is insufficient: objects must also be recovered, accurately placed, and physically grounded. Existing methods that rely on post-hoc physics settling often misplace objects, producing scenes that look correct but behave poorly under manipulation. We present SceneRig, an agentic system that turns a single image into an editable, simulation-ready scene. SceneRig combines geometric, visual, and physical tools to reconstruct a faithful 3D scene. An agent then performs edit-and-validate loops inside a physics simulator to achieve physical stability. Across diverse inputs, SceneRig improves instance segmentation, object-centric appearance, and 3D placement while keeping the reconstructed scenes physically stable. Furthermore, SceneRig is effective for downstream robotics: its scenes predict real-robot policy outcomes more accurately than the baseline method and more reliably support replay of recorded manipulations without trajectory adaptation.",
+            "categories": "cs.RO",
+            "comment": "Accepted at CoRL 2026 Agentic Robotics Workshop. Project page: https://red-fairy.github.io/SceneRig/"
+          },
+          "analysis": {
+            "problem_statement": "Existing methods for reconstructing 3D scenes from single images often produce visually similar but physically unstable scenes that fail under robotic manipulation due to misplaced objects.",
+            "bottleneck_addressed": "The gap between visual fidelity and physical grounding in simulation-ready scene reconstruction, specifically the issue of post-hoc physics settling leading to incorrect object placement.",
+            "executive_summary": "SceneRig addresses the critical challenge of creating diverse, simulation-ready environments for robotics by ensuring not just visual accuracy but also physical stability and correct object placement. By using an agentic system with edit-and-validate loops in a physics simulator, it bridges the sim-to-real gap more effectively than baseline methods. This is significant for the AI landscape as it enables more reliable policy evaluation and manipulation replay without the need for trajectory adaptation.",
+            "key_metrics": {
+              "primary_metric": "Accuracy in predicting real-robot policy outcomes and reliability of manipulation replay",
+              "metric_value": "Not specified in summary",
+              "baseline": "Baseline method (likely referring to existing single-image reconstruction methods with post-hoc physics settling)",
+              "improvement_percentage": "Not specified in summary"
+            },
+            "technical_breakdown": {
+              "method": "An agentic system that combines geometric, visual, and physical tools to reconstruct a 3D scene, followed by an agent performing edit-and-validate loops within a physics simulator to ensure physical stability.",
+              "architecture": "Agentic system with integrated geometric, visual, and physical tools; physics simulator for validation; edit-and-validate loop mechanism.",
+              "implementation_details": "Uses instance segmentation, object-centric appearance modeling, and 3D placement algorithms; employs iterative refinement via physics simulation to correct object placement and ensure stability.",
+              "code_complexity": "Not specified in summary; likely involves iterative physics simulations and agent-based decision-making, which may be computationally intensive."
+            },
+            "relevance_tags": [
+              "3D Reconstruction",
+              "Robotics Simulation",
+              "Agentic Systems",
+              "Physics-Based Validation",
+              "Sim-to-Real Transfer"
+            ],
+            "confidence": "medium"
+          },
+          "analyzed_at": "2026-10-20T23:10:22.540929",
+          "conference_info": {
+            "conference": "CoRL",
+            "year": "2026",
+            "comment": "Accepted at CoRL 2026 Agentic Robotics Workshop. Project page: https://red-fairy.github.io/SceneRig/",
+            "raw_comment": "Accepted at CoRL 2026 Agentic Robotics Workshop. Project page: https://red-fairy.github.io/SceneRig/",
+            "category": "Robotics",
+            "rank": ""
+          }
+        }
+      ],
+      "updated_at": "2026-10-20T23:21:01.942883"
     }
   }
 }
