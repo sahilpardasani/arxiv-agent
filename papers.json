@@ -1,626 +1,411 @@
 {
-  "last_updated": "2026-11-22T23:05:30.997033",
-  "total_papers": 12,
+  "last_updated": "2026-11-23T22:58:42.677185",
+  "total_papers": 8,
   "papers": [
     {
       "paper": {
-        "title": "How Does SAM-3 Adapt? Capacity, Update Geometry, and Domain Transfer",
-        "arxiv_id": "2611.27142v1",
+        "title": "IteraSong: LLM-Guided Iterative Symbolic Music Creation in a Web DAW",
+        "arxiv_id": "2611.29225v1",
         "authors": [
-          "Allan Kazakov",
-          "Abdurrahman Javat",
-          "Duygu Cakir"
+          "Di Lu",
+          "Xinran Zhang",
+          "Yan Gao",
+          "Yuan Zhang",
+          "Xiaoqing Wang",
+          "Qingwen Zhou",
+          "Xiaobing Li",
+          "Maosong Sun"
         ],
-        "published": "2026-11-20T05:22:06Z",
-        "updated": "2026-11-20T05:22:06Z",
-        "summary": "Promptable segmentation foundation models are increasingly used in specialized domains, but it remains unclear how SAM-3 should be fine-tuned when adapting it beyond its original training distribution. We study this question by comparing five adaptation families --LoRA, HiRA, KRAdapter, QuanTA, and Full Fine-Tuning-- across five segmentation datasets spanning medical imaging, remote sensing, and dense material segmentation. Across these datasets, compact parameter-efficient fine-tuning methods often match or approach Full Fine-Tuning in DSC and IoU, suggesting that strong in-domain adaptation does not always require updating the full model. However, this performance cannot be explained by nominal adapter rank or trainable parameter count alone. To investigate why different methods perform similarly, we analyze their update spectra and their behavior under LoveDA Urban/Rural transfer. Our SVD analysis shows that Full Fine-Tuning updates are spectrally compressible. However, successful PEFT methods do not simply recover the same update directions; instead, they often concentrate changes in different components and subspaces. The domain-transfer study further shows that methods with similar in-domain performance can respond differently under distribution shift. Together, these results suggest that SAM-3 adaptation is often capacity-saturated in practice, while competitive fine-tuning arises through method-specific update paths rather than a single low-rank approximation to Full Fine-Tuning.",
-        "categories": "cs.CV",
-        "comment": "Published in ECCV 2026 MEDFMB Workshop"
+        "published": "2026-11-22T04:57:00Z",
+        "updated": "2026-11-22T04:57:00Z",
+        "summary": "Music creation is inherently iterative, yet many symbolic generation systems still center on producing or regenerating isolated outputs. We present IteraSong, an interactive web-based Digital Audio Workstation (DAW) for LLM-guided iterative symbolic music creation. Unlike one-shot generation systems, IteraSong supports a generate-audition-edit-refine loop over a persistent multi-track project. Users initialize a fully labeled pop draft, then progressively refine it through natural-language instructions. The LLM maps requests to a hierarchical action space of editing primitives exposed via Model Context Protocol (MCP) tools, spanning global, track, section, and bar/note scopes. The demo enables attendees to edit multi-track compositions in natural language, apply deterministic and generative edits, and undo/redo changes in real time.",
+        "categories": "cs.SD",
+        "comment": "AAAI 2027 Demonstration Program (accepted). Extended version with appendix"
       },
       "analysis": {
-        "problem_statement": "The paper investigates the optimal fine-tuning strategy for the SAM-3 foundation model by comparing parameter-efficient fine-tuning (PEFT) methods against full fine-tuning across diverse segmentation domains to understand capacity saturation and update geometry.",
-        "bottleneck_addressed": "Computational cost and storage overhead of full fine-tuning large foundation models for domain-specific adaptation.",
-        "executive_summary": "This study demonstrates that compact PEFT methods (LoRA, HiRA, etc.) can match full fine-tuning performance in specialized segmentation tasks, indicating that SAM-3 adaptation is often capacity-saturated. It challenges the assumption that PEFT success is solely due to low-rank approximation of full updates, revealing instead that different methods utilize distinct update subspaces while achieving similar in-domain results.",
+        "problem_statement": "Existing symbolic music generation systems typically produce isolated, one-shot outputs, failing to support the inherently iterative process of refining a persistent multi-track composition through natural language.",
+        "bottleneck_addressed": "Lack of interactive, stateful, and fine-grained control in LLM-based creative tools, specifically the inability to perform iterative editing on complex multi-track projects rather than just regenerating entire pieces.",
+        "executive_summary": "This work bridges the gap between generative AI and professional music production workflows by integrating LLMs into a web-based DAW environment. It enables a 'generate-audition-edit-refine' loop, allowing users to manipulate specific musical elements (from global to note-level) via natural language, thereby enhancing the usability and precision of AI-assisted music creation.",
         "key_metrics": {
-          "primary_metric": "Dice Similarity Coefficient (DSC) and Intersection over Union (IoU) parity between PEFT and Full Fine-Tuning",
-          "metric_value": "Not explicitly quantified in summary; described as 'match or approach'",
-          "baseline": "Full Fine-Tuning (FFT)",
-          "improvement_percentage": "N/A (Focus is on parity/comparability rather than absolute improvement over FFT)"
+          "primary_metric": "N/A (Demonstration paper focused on system functionality and user interaction rather than quantitative performance benchmarks)",
+          "metric_value": null,
+          "baseline": "One-shot symbolic generation systems",
+          "improvement_percentage": null
         },
         "technical_breakdown": {
-          "method": "Comparative analysis of five adaptation families (LoRA, HiRA, KRAdapter, QuanTA, Full Fine-Tuning) using SVD analysis of weight updates and domain transfer testing.",
-          "architecture": "SAM-3 (Segment Anything Model 3) backbone with various adapter modules (LoRA, HiRA, KRAdapter, QuanTA) inserted for parameter-efficient updates.",
-          "implementation_details": "SVD analysis to examine update spectra; evaluation on five datasets (medical, remote sensing, dense material); domain transfer testing using LoveDA Urban/Rural split to assess distribution shift robustness.",
-          "code_complexity": "PEFT methods significantly reduce trainable parameter count compared to Full Fine-Tuning, though the paper notes performance is not strictly correlated with nominal rank or parameter count."
+          "method": "The system utilizes an LLM to map natural language instructions to a hierarchical action space of editing primitives. These actions are executed via Model Context Protocol (MCP) tools that interact with a persistent multi-track project state.",
+          "architecture": "Web-based Digital Audio Workstation (DAW) frontend, LLM backend for instruction parsing, and an MCP layer exposing editing primitives across global, track, section, and bar/note scopes.",
+          "implementation_details": "Hierarchical action space spanning multiple scopes (global, track, section, bar/note), support for both deterministic and generative edits, and real-time undo/redo functionality for state management.",
+          "code_complexity": "N/A (No specific computational complexity or training time details provided in the abstract; focus is on system architecture and interaction design)."
         },
         "relevance_tags": [
-          "Parameter-Efficient Fine-Tuning",
-          "Foundation Models",
-          "Semantic Segmentation",
-          "Domain Adaptation",
+          "Symbolic Music Generation",
+          "LLM Agents",
+          "Human-Computer Interaction",
+          "Model Context Protocol",
+          "Digital Audio Workstation"
+        ],
+        "confidence": "medium"
+      },
+      "analyzed_at": "2026-11-23T22:56:14.748720",
+      "conference_info": {
+        "conference": "AAAI",
+        "year": "2027",
+        "comment": "AAAI 2027 Demonstration Program (accepted). Extended version with appendix",
+        "raw_comment": "AAAI 2027 Demonstration Program (accepted). Extended version with appendix",
+        "category": "General ML/AI",
+        "rank": ""
+      }
+    },
+    {
+      "paper": {
+        "title": "Ego-HMB: Human Motion Bridging from Egocentric Images via A Motion Bridge Diffusion Model",
+        "arxiv_id": "2611.29218v1",
+        "authors": [
+          "Gaoge Han",
+          "Yongkang Cheng",
+          "Shaoli Huang",
+          "Jing Zhang",
+          "Mingming Gong",
+          "Fakhri Karray",
+          "Tongliang Liu"
+        ],
+        "published": "2026-11-22T04:34:37Z",
+        "updated": "2026-11-22T04:34:37Z",
+        "summary": "We introduce Egocentric Human Motion Bridging, a task that generates a coherent 3D human motion sequence from two endpoint egocentric images. Unlike conventional motion in-betweening, which requires structured 3D endpoint poses, this setting uses raw first-person observations available from wearable devices in VR/AR and robotics. It presents challenges due to viewpoint variations, partial body visibility, and temporal ambiguity under cross-modal endpoint constraints. To address these challenges, we propose Ego-HMB, a unified diffusion-based framework that learns endpoint pose estimation and temporally consistent motion infilling within a single model through two training stages. First, Egocentric-to-Canonical Pretraining uses a hierarchical curriculum with progressively increasing temporal spans to strengthen endpoint pose priors. Second, Motion Bridge Diffusion Training incorporates endpoint and physics awareness, diffusing from neighboring poses to promote temporal continuity while preserving global endpoint constraints. Extensive experiments compare our approach with one-stage methods that directly generate motion from two egocentric images and two-stage pipelines that combine endpoint pose estimation with motion interpolation. Ego-HMB consistently outperforms these baselines in endpoint accuracy and motion generation quality. Code is available at https://github.com/gaogehan/Ego-HMB.",
+        "categories": "cs.CV",
+        "comment": "Accepted at NeurIPS 2026"
+      },
+      "analysis": {
+        "problem_statement": "Generating coherent 3D human motion sequences from raw egocentric endpoint images without requiring structured 3D pose inputs.",
+        "bottleneck_addressed": "Cross-modal alignment and temporal consistency in motion generation from unstructured, first-person visual data.",
+        "executive_summary": "This work bridges the gap between raw wearable sensor data (egocentric images) and structured 3D motion, enabling direct application in VR/AR and robotics. By unifying pose estimation and motion infilling in a single diffusion framework, it overcomes the limitations of two-stage pipelines that suffer from error accumulation and lack of global temporal coherence.",
+        "key_metrics": {
+          "primary_metric": "Consistent outperformance in endpoint accuracy and motion generation quality",
+          "metric_value": "Not specified in summary",
+          "baseline": "One-stage direct generation methods and two-stage pose-estimation-plus-interpolation pipelines",
+          "improvement_percentage": "Not quantified in summary"
+        },
+        "technical_breakdown": {
+          "method": "A unified diffusion-based framework that learns endpoint pose estimation and temporally consistent motion infilling through a two-stage training process.",
+          "architecture": "Ego-HMB model comprising an Egocentric-to-Canonical Pretraining stage and a Motion Bridge Diffusion Training stage.",
+          "implementation_details": "Uses a hierarchical curriculum with increasing temporal spans for pretraining; incorporates endpoint and physics awareness during diffusion by sampling from neighboring poses to ensure temporal continuity while respecting global endpoint constraints.",
+          "code_complexity": "Two-stage training process involving curriculum learning and diffusion modeling; specific computational costs not detailed in summary."
+        },
+        "relevance_tags": [
+          "3D Human Motion",
+          "Diffusion Models",
+          "Egocentric Vision",
+          "VR/AR",
+          "Robotics"
+        ],
+        "confidence": "high"
+      },
+      "analyzed_at": "2026-11-23T22:55:03.561430",
+      "conference_info": {
+        "conference": "NEURIPS",
+        "year": "2026",
+        "comment": "Accepted at NeurIPS 2026",
+        "raw_comment": "Accepted at NeurIPS 2026",
+        "category": "General ML/AI",
+        "rank": "A+"
+      }
+    },
+    {
+      "paper": {
+        "title": "Cooperative Multi-Agent Reinforcement Learning via Epigraph-Form Guided Exploration",
+        "arxiv_id": "2611.07066v2",
+        "authors": [
+          "Sungil Son",
+          "Hoseong Jung",
+          "Dahyun Oh",
+          "H. Jin Kim"
+        ],
+        "published": "2026-11-04T19:24:25Z",
+        "updated": "2026-11-22T03:28:43Z",
+        "summary": "Discovering cooperative behavior in multi-agent reinforcement learning (MARL) is challenging due to the combinatorial complexity of joint state-action spaces, which hinders the emergence of coordinated behaviors from trial-and-error alone. Intrinsic rewards are often used to aid discovery, but naively combining them with team objectives can distort the learning signal, compromising task performance. In this paper, we propose EFXPLORER, a constrained exploration framework that maximizes exploration objectives subject to a constraint that preserves established task performance. We solve the resulting problem using an epigraph reformulation that introduces adaptive exploration budgets. This approach separates intrinsic rewards from task objectives and regulates exploration through task feasibility. To further encourage diverse and temporally extended exploration, we incorporate a successor distance-based intrinsic reward that captures long-horizon dependencies. Empirically, our method outperforms strong baselines and induces novel cooperative strategies across SMAX, VMAS, and MPE benchmark suites.",
+        "categories": "cs.AI",
+        "comment": "NeurIPS 2026. Updated acknowledgments only"
+      },
+      "analysis": {
+        "problem_statement": "The paper addresses the challenge of discovering cooperative behaviors in multi-agent reinforcement learning (MARL) where naive intrinsic rewards distort learning signals and hinder the emergence of coordinated strategies due to combinatorial complexity.",
+        "bottleneck_addressed": "Sample efficiency and exploration-exploitation trade-off in high-dimensional joint state-action spaces.",
+        "executive_summary": "This work is significant because it resolves the conflict between intrinsic exploration rewards and extrinsic task objectives, which often degrade performance in cooperative settings. By using a constrained optimization framework with epigraph reformulation, it allows agents to explore novel strategies without compromising established task proficiency, enabling the discovery of complex cooperative behaviors that trial-and-error alone cannot achieve.",
+        "key_metrics": {
+          "primary_metric": "Outperformance over strong baselines in inducing novel cooperative strategies",
+          "metric_value": "Not specified in summary",
+          "baseline": "Strong baselines (unspecified in summary)",
+          "improvement_percentage": "Not quantified in summary"
+        },
+        "technical_breakdown": {
+          "method": "EFXPLORER, a constrained exploration framework that maximizes exploration objectives subject to constraints preserving task performance, solved via epigraph reformulation with adaptive exploration budgets.",
+          "architecture": "Constrained optimization layer separating intrinsic and extrinsic rewards, coupled with a successor distance-based intrinsic reward module for long-horizon dependency capture.",
+          "implementation_details": "Epigraph reformulation to introduce adaptive budgets; successor distance-based intrinsic reward for diverse and temporally extended exploration.",
+          "code_complexity": "Not specified in summary"
+        },
+        "relevance_tags": [
+          "Multi-Agent Reinforcement Learning",
+          "Constrained Optimization",
+          "Intrinsic Motivation",
+          "Cooperative Behavior"
+        ],
+        "confidence": "medium"
+      },
+      "analyzed_at": "2026-11-23T22:58:41.671949",
+      "conference_info": {
+        "conference": "NEURIPS",
+        "year": "2026",
+        "comment": "NeurIPS 2026. Updated acknowledgments only",
+        "raw_comment": "NeurIPS 2026. Updated acknowledgments only",
+        "category": "General ML/AI",
+        "rank": "A+"
+      }
+    },
+    {
+      "paper": {
+        "title": "On Adaptive Step Sizes for Eligibility Traces in Deep Reinforcement Learning",
+        "arxiv_id": "2611.29178v1",
+        "authors": [
+          "Esraa Elelimy",
+          "Martha White"
+        ],
+        "published": "2026-11-22T03:15:55Z",
+        "updated": "2026-11-22T03:15:55Z",
+        "summary": "Many deep reinforcement learning (RL) algorithms store agent-environment interactions in a replay buffer and later learn by sampling transitions from it. However, this approach can be memory-inefficient and can delay learning because the agent can learn from a transition only when the buffer samples it. Additionally, most of these methods use one-step or short multi-step temporal-difference (TD) updates, which are slow at credit assignment. An alternative approach is to learn from the stream of observations as they arrive without relying on a buffer. Eligibility-trace algorithms allow these incremental updates and can also assign credit over many steps. These algorithms were common with linear function approximation but have only recently been used in deep RL. Basic questions, such as how to use vector step sizes with eligibility traces in the deep RL setting, remain open. In this work, we first show that adaptive vector step sizes must be part of the eligibility trace to keep the equivalence between the forward and backward views. We then show that the step sizes of common optimizers, such as Adam, do not have an online backward view. We introduce a new optimizer, Function-Space Distance (FSD), that maintains the forward-backward equivalence. We test four eligibility-trace algorithms covering semi-gradient and gradient TD updates, as well as value-based and actor-critic methods. We show that FSD performs better than SGD or naively applied Adam. The resulting algorithms outperform or match other streaming methods and are comparable to or better than PPO, which uses a buffer, in most environments. Code available at https://github.com/esraaelelimy/ada_traces",
+        "categories": "cs.LG",
+        "comment": "Accepted at NeurIPS 2026. Code: https://github.com/esraaelelimy/ada_traces"
+      },
+      "analysis": {
+        "problem_statement": "The paper addresses the lack of a valid online backward view for adaptive vector step sizes in eligibility-trace-based deep reinforcement learning, which breaks the equivalence between forward and backward learning views.",
+        "bottleneck_addressed": "Memory inefficiency and delayed credit assignment in buffer-based deep RL, as well as the theoretical incompatibility of standard adaptive optimizers (like Adam) with streaming eligibility-trace algorithms.",
+        "executive_summary": "This work resolves a fundamental theoretical gap in streaming deep RL by introducing the Function-Space Distance (FSD) optimizer, which maintains forward-backward equivalence for eligibility traces. By enabling efficient, buffer-free learning with long-horizon credit assignment, it offers a viable alternative to memory-intensive methods like PPO, potentially reducing computational overhead and latency in real-time agent training.",
+        "key_metrics": {
+          "primary_metric": "Performance comparison against buffer-based (PPO) and streaming baselines (SGD/Adam eligibility traces)",
+          "metric_value": "Not specified in abstract",
+          "baseline": "PPO, SGD, and naively applied Adam",
+          "improvement_percentage": "Not specified in abstract"
+        },
+        "technical_breakdown": {
+          "method": "The authors prove that adaptive step sizes must be incorporated into the eligibility trace to preserve forward-backward equivalence. They demonstrate that standard optimizers like Adam fail this requirement and propose FSD, a new optimizer that satisfies the condition, allowing for stable incremental updates without a replay buffer.",
+          "architecture": "Streaming eligibility-trace algorithms (semi-gradient and gradient TD, value-based and actor-critic) integrated with the FSD optimizer.",
+          "implementation_details": "Function-Space Distance (FSD) optimizer; four specific eligibility-trace algorithm variants; comparison against PPO and standard SGD/Adam implementations.",
+          "code_complexity": "Eliminates replay buffer memory overhead; computational cost is comparable to streaming methods, with potential efficiency gains over buffer-based methods due to lack of sampling latency."
+        },
+        "relevance_tags": [
+          "Deep Reinforcement Learning",
+          "Eligibility Traces",
+          "Optimization",
+          "Streaming Learning",
+          "Credit Assignment"
+        ],
+        "confidence": "high"
+      },
+      "analyzed_at": "2026-11-23T22:55:05.777406",
+      "conference_info": {
+        "conference": "NEURIPS",
+        "year": "2026",
+        "comment": "Accepted at NeurIPS 2026. Code: https://github.com/esraaelelimy/ada_traces",
+        "raw_comment": "Accepted at NeurIPS 2026. Code: https://github.com/esraaelelimy/ada_traces",
+        "category": "General ML/AI",
+        "rank": "A+"
+      }
+    },
+    {
+      "paper": {
+        "title": "What Makes Recurrence Generalize Across Lengths?",
+        "arxiv_id": "2611.29171v1",
+        "authors": [
+          "Yoonsung Jung",
+          "Sunghun Jung",
+          "Louise Nayeong Koh",
+          "Yongjun Choi"
+        ],
+        "published": "2026-11-22T03:08:21Z",
+        "updated": "2026-11-22T03:08:21Z",
+        "summary": "Multi-step reasoning requires models to preserve and update intermediate information as computation unfolds. State tracking captures this fundamental requirement, but models that succeed within a fixed range of state transitions may not generalize when substantially more updates are required. Recurrent Transformers offer a natural mechanism for addressing this challenge by repeatedly applying shared Transformer blocks, allowing computation to scale with problem length. We study when such recurrent computation generalizes beyond the training range in a controlled state-tracking task, varying operation representation, positional encoding, and recurrent capacity. We find that recurrence alone is insufficient: multi-token template representations and absolute positional encoding can severely limit extrapolation, whereas atomic operation representations enable substantially stronger length generalization. The effect of positional structure also varies with recurrent depth, with periodic positional encoding achieving the strongest mean performance at greater recurrent depth. Most importantly, scaling the recurrent operator extends the extrapolation horizon, reaching 35.1% exact-match accuracy on sequences of 20-40 operations after training only on 2-10, while substantially larger fixed-depth Transformers remain at 0%. Additional recurrent computation at test time can extend the range over which the model generalizes, but does not eliminate failure on much longer sequences. These results suggest that recurrent computation can support length-generalizable state tracking, but that its effectiveness depends critically on whether the learned computation remains reusable across sequence lengths.",
+        "categories": "cs.LG",
+        "comment": "Accepted at NeurIPS 2026 Workshop on AXIOM: Foundations of Efficient Deep Learning"
+      },
+      "analysis": {
+        "problem_statement": "The paper investigates the conditions under which Recurrent Transformers can generalize state-tracking capabilities to sequence lengths significantly exceeding their training range.",
+        "bottleneck_addressed": "Length generalization and the inability of standard fixed-depth Transformers to extrapolate multi-step reasoning tasks beyond the training horizon.",
+        "executive_summary": "This work identifies that recurrence alone is insufficient for length generalization; rather, it depends critically on the representation of operations and positional encodings. By demonstrating that atomic operation representations and scaled recurrent operators can achieve non-zero accuracy on sequences 4-10x longer than training data, it provides a pathway for efficient, scalable reasoning models that do not require retraining for longer contexts.",
+        "key_metrics": {
+          "primary_metric": "Exact-match accuracy on state-tracking sequences of 20-40 operations after training on 2-10 operations",
+          "metric_value": "35.1%",
+          "baseline": "Substantially larger fixed-depth Transformers (0% accuracy) and recurrent models with multi-token templates/absolute positional encoding",
+          "improvement_percentage": "3510% relative to fixed-depth baseline (0% to 35.1%)"
+        },
+        "technical_breakdown": {
+          "method": "The study employs a controlled state-tracking task to isolate the effects of operation representation (atomic vs. multi-token templates), positional encoding (absolute vs. periodic), and recurrent capacity on length extrapolation.",
+          "architecture": "Recurrent Transformers utilizing shared Transformer blocks applied repeatedly to allow computation to scale with problem length.",
+          "implementation_details": "Key techniques include using atomic operation representations to facilitate reuse, periodic positional encoding to handle varying sequence lengths, and scaling the recurrent operator depth to extend the extrapolation horizon.",
+          "code_complexity": "Computational complexity scales linearly with the number of recurrent steps (sequence length) due to the iterative application of shared blocks, offering a trade-off between memory efficiency and inference time compared to fixed-depth attention mechanisms."
+        },
+        "relevance_tags": [
+          "Recurrent Transformers",
+          "Length Generalization",
+          "State Tracking",
+          "Positional Encoding",
+          "Multi-step Reasoning"
+        ],
+        "confidence": "high"
+      },
+      "analyzed_at": "2026-11-23T22:55:23.633271",
+      "conference_info": {
+        "conference": "NEURIPS",
+        "year": "2026",
+        "comment": "Accepted at NeurIPS 2026 Workshop on AXIOM: Foundations of Efficient Deep Learning",
+        "raw_comment": "Accepted at NeurIPS 2026 Workshop on AXIOM: Foundations of Efficient Deep Learning",
+        "category": "General ML/AI",
+        "rank": "A+"
+      }
+    },
+    {
+      "paper": {
+        "title": "Training-Free 3D Editing via Feature-Divergence Localization and Trajectory Correction",
+        "arxiv_id": "2611.29165v1",
+        "authors": [
+          "Tri Ton",
+          "Siwoo Lim",
+          "Joshua Tian Jin Tee",
+          "Chang D. Yoo"
+        ],
+        "published": "2026-11-22T02:52:44Z",
+        "updated": "2026-11-22T02:52:44Z",
+        "summary": "Modifying 3D assets requires enacting targeted structural transformations while strictly preserving the geometric identity of unedited regions. While recent probability flow models enable training-free editing, bounding these modifications within a high-dimensional latent space presents severe mathematical challenges. Current inversion-free trajectories rely on global velocity updates, which often cause spatial bleed into preserved structures and induce trajectory under-commitment, causing edits to stall mid-path. To resolve these dual failures, we introduce FocusFlow, a segmentation-free framework that structures the integration trajectory into two disjoint phases. During early coarse structure formation, FocusFlow applies Feature-Divergence Localization (FDL) to spatially gate the velocity field using intrinsic cross-attention. Once coarse structure has formed, FocusFlow applies Reference Generation Guidance (RGG), a trajectory-correction term that drives convergence to the target shape by pulling the trajectory toward an explicit clean-latent target. Evaluated on the joint Google Scanned Objects and PartObjaverse-Tiny benchmarks, FocusFlow obtains the best preservation scores and the largest edit magnitude among compared methods, suggesting that it can reduce the traditional preservation-modification trade-off. By providing stable, localized geometric control without manual spatial annotations, this phase-scheduled approach lowers technical barriers to the modification of synthetic 3D media.",
+        "categories": "cs.CV",
+        "comment": "Accepted to NeurIPS 2026"
+      },
+      "analysis": {
+        "problem_statement": "How to perform targeted 3D asset editing in high-dimensional latent spaces without causing spatial bleed into unedited regions or trajectory under-commitment that stalls the edit.",
+        "bottleneck_addressed": "The preservation-modification trade-off in training-free 3D editing, specifically the lack of localized geometric control in inversion-free probability flow models.",
+        "executive_summary": "This paper addresses the critical limitation of current training-free 3D editing methods, which often fail to preserve the geometric identity of unedited regions due to global velocity updates. By introducing a phase-scheduled approach that combines spatial gating with trajectory correction, it enables stable, localized edits without requiring manual segmentation or additional training.",
+        "key_metrics": {
+          "primary_metric": "Best preservation scores and largest edit magnitude",
+          "metric_value": "Not specified in summary",
+          "baseline": "Compared methods on Google Scanned Objects and PartObjaverse-Tiny benchmarks",
+          "improvement_percentage": "Not quantified in summary"
+        },
+        "technical_breakdown": {
+          "method": "FocusFlow structures the integration trajectory into two disjoint phases: early coarse structure formation using Feature-Divergence Localization (FDL) to spatially gate the velocity field, and later convergence using Reference Generation Guidance (RGG) to pull the trajectory toward an explicit clean-latent target.",
+          "architecture": "Segmentation-free framework built on probability flow models, utilizing intrinsic cross-attention for FDL and a trajectory-correction term for RGG.",
+          "implementation_details": "FDL applies spatial gating to the velocity field during early phases; RGG drives convergence to the target shape by pulling the trajectory toward a clean-latent target once coarse structure has formed.",
+          "code_complexity": "Training-free, implying no additional training time; computational cost likely dominated by the two-phase integration trajectory and cross-attention computations."
+        },
+        "relevance_tags": [
+          "3D Generation",
+          "Training-Free Editing",
+          "Latent Space Manipulation",
+          "Neural Rendering",
+          "Geometric Control"
+        ],
+        "confidence": "high"
+      },
+      "analyzed_at": "2026-11-23T22:57:12.338155",
+      "conference_info": {
+        "conference": "NEURIPS",
+        "year": "2026",
+        "comment": "Accepted to NeurIPS 2026",
+        "raw_comment": "Accepted to NeurIPS 2026",
+        "category": "General ML/AI",
+        "rank": "A+"
+      }
+    },
+    {
+      "paper": {
+        "title": "Decoding Transformer Dynamics via Koopman Subspaces",
+        "arxiv_id": "2611.29113v1",
+        "authors": [
+          "Subhradeep Kayal",
+          "Ali Dashti"
+        ],
+        "published": "2026-11-22T00:25:07Z",
+        "updated": "2026-11-22T00:25:07Z",
+        "summary": "We apply Koopman operator theory and Dynamic Mode Decomposition (DMD) to characterise how large language models (LLMs) process different input topics. Treating the layer-to-layer evolution of hidden states as a dynamical system, we fit a linear Koopman operator and take the subspace spanned by its dominant modes as a per-topic spectral fingerprint. Four findings emerge. First, the depth map is near-linear: a single linear operator predicts each next-layer state to within approx. 18% relative error (interior variance explained approx. 0.99). Second, over the 57 MMLU subjects the fingerprint is topic-discriminative, matching the MMLU taxonomy at 0.72 nearest-neighbour purity and each subject's semantic neighbourhood at 0.75 any-hit@3. Third, it is a reproducible signature (split-half self-retrieval approx. 0.97$). Finally, these findings are consistent across seven base models (Qwen2.5 0.5-7B, Llama-3 1-8B), with a suggestive trend of alignment rising with MMLU accuracy. The spectral fingerprint thus provides a probe of how transformers process different topics across depth. Code is available at https://github.com/DeepK/koopman-llm-eacl27.",
+        "categories": "cs.CL",
+        "comment": "Accepted to EACL 2027 Findings"
+      },
+      "analysis": {
+        "problem_statement": "The paper addresses the lack of a linear, interpretable framework for characterizing how Large Language Models (LLMs) process different semantic topics across their network depth.",
+        "bottleneck_addressed": "Interpretability and mechanistic understanding of LLM internal state dynamics.",
+        "executive_summary": "This work provides a spectral fingerprint for LLM topic processing by modeling hidden state evolution as a linear dynamical system. It demonstrates that a single linear Koopman operator can predict layer-to-layer transitions with high accuracy, offering a reproducible and topic-discriminative probe for understanding model behavior across diverse base architectures.",
+        "key_metrics": {
+          "primary_metric": "Relative error in predicting next-layer hidden states using a linear Koopman operator",
+          "metric_value": "18%",
+          "baseline": "Non-linear ground truth layer-to-layer evolution",
+          "improvement_percentage": "N/A (Descriptive metric for linearity fit)"
+        },
+        "technical_breakdown": {
+          "method": "Applies Koopman operator theory and Dynamic Mode Decomposition (DMD) to fit a linear operator that approximates the non-linear layer-to-layer evolution of hidden states.",
+          "architecture": "Treats the stack of transformer layers as a discrete-time dynamical system where hidden states are the state vector.",
+          "implementation_details": "Uses DMD to identify dominant modes of the Koopman operator; defines a 'spectral fingerprint' as the subspace spanned by these dominant modes for each input topic.",
+          "code_complexity": "Inference-time analysis; computational cost is dominated by the DMD fitting procedure on hidden state trajectories, which is linear in the number of layers and sequence length for the specific operator fitting."
+        },
+        "relevance_tags": [
+          "Interpretability",
+          "Koopman Operator",
+          "Dynamic Mode Decomposition",
+          "LLM Dynamics",
           "Spectral Analysis"
         ],
         "confidence": "high"
       },
-      "analyzed_at": "2026-11-22T23:01:44.745842",
+      "analyzed_at": "2026-11-23T22:55:46.717536",
       "conference_info": {
-        "conference": "ECCV",
-        "year": "2026",
-        "comment": "Published in ECCV 2026 MEDFMB Workshop",
-        "raw_comment": "Published in ECCV 2026 MEDFMB Workshop",
-        "category": "Computer Vision",
+        "conference": "EACL",
+        "year": "2027",
+        "comment": "Accepted to EACL 2027 Findings",
+        "raw_comment": "Accepted to EACL 2027 Findings",
+        "category": "Natural Language Processing",
         "rank": "A"
       }
     },
     {
       "paper": {
-        "title": "Verifying and Strengthening Neural Tangent Kernel Theory",
-        "arxiv_id": "2611.27487v1",
+        "title": "Beyond Free-Form Generation: Measuring Interface Composition in Competitive NLP Systems",
+        "arxiv_id": "2611.29103v1",
         "authors": [
-          "Hao Zhu"
+          "Xinchen Xiao"
         ],
-        "published": "2026-11-20T11:32:52Z",
-        "updated": "2026-11-20T11:32:52Z",
-        "summary": "Writing   Neural tangent kernel (NTK) theory explains why very wide neural networks trained by gradient methods converge in the lazy-training regime. Its standard proof combines matrix concentration, random Gram matrices, continuous-time dynamics, spectral perturbation, and a bootstrap argument, but has lacked machine-checked verification. We present a Lean\\~4 formalisation for two-layer networks, proving an end-to-end theorem: for a smooth bounded activation (instantiated with $\u03c3=\\tanh$), frozen biases, paired $\\pm 1$ initialisation, and explicit width conditions, gradient flow exists uniquely with probability at least $1-\u03b4$, and   $$ \\|r(t)\\|^2 \\leq \\|y\\|^2 e^{-\u03bb_0 t/2}. $$   The sole data assumption is population NTK non-degeneracy, $\u03bb_0>0$. Initial coercivity, kernel drift, the movement bootstrap, the residual ODE, and flow existence and uniqueness are formally proved.   The formalisation also sharpens the standard analysis in two ways. First, replacing the conventional matrix-Bernstein variance proxy with the classical row-covariance proxy yields estimated concentration-width certificates for $\\tanh$ that are $36$--$53\\times$ smaller at $(m,d)=(16,8)$ and $94$--$121\\times$ smaller at $(32,16)$. Lean certifies the inequality; the ratios are numerical. Second, the network Hessian has operator norm $\u0398(\\sqrt{p})$ on the sup-norm parameter ball (a paper calculation), preventing the expected $O(1/\\sqrt{p})$ linearisation bound via sup-norm Taylor estimates. An $L^2$ parameter geometry resolves this issue. Required widths remain polynomial but far beyond practical scales, limiting applicability.",
-        "categories": "cs.LG",
-        "comment": "20 pages, Accepted by KDD 2027"
-      },
-      "analysis": {
-        "problem_statement": "The paper addresses the lack of machine-checked verification for the theoretical convergence guarantees of Neural Tangent Kernels (NTK) in wide neural networks.",
-        "bottleneck_addressed": "Lack of formal verification and rigorous mathematical certainty in deep learning theory.",
-        "executive_summary": "This work provides the first Lean 4 formalization of NTK convergence proofs for two-layer networks, ensuring the mathematical validity of lazy-training regime claims. It also sharpens standard analysis by improving concentration bounds and resolving Hessian norm issues, thereby strengthening the theoretical foundations of neural network generalization.",
-        "key_metrics": {
-          "primary_metric": "Reduction in estimated concentration-width certificates",
-          "metric_value": "36-53x smaller at (16,8) and 94-121x smaller at (32,16)",
-          "baseline": "Conventional matrix-Bernstein variance proxy",
-          "improvement_percentage": "97.5% - 99.2% reduction in certificate size"
-        },
-        "technical_breakdown": {
-          "method": "Formalizes NTK theory using Lean 4, proving end-to-end convergence for two-layer networks with tanh activation, frozen biases, and paired initialization. It replaces matrix-Bernstein variance proxies with row-covariance proxies and uses L2 parameter geometry to handle Hessian operator norms.",
-          "architecture": "Two-layer neural network with smooth bounded activation (tanh), frozen biases, and paired \u00b11 initialization.",
-          "implementation_details": "Lean 4 formalization, row-covariance proxy for concentration, L2 parameter geometry for Hessian analysis, and explicit width conditions for gradient flow existence.",
-          "code_complexity": "Required widths remain polynomial but far beyond practical scales, limiting direct applicability to real-world network sizes."
-        },
-        "relevance_tags": [
-          "Formal Verification",
-          "Neural Tangent Kernel",
-          "Deep Learning Theory",
-          "Lean 4",
-          "Convergence Analysis"
-        ],
-        "confidence": "high"
-      },
-      "analyzed_at": "2026-11-22T23:05:03.851964",
-      "conference_info": {
-        "conference": "KDD",
-        "year": "2027",
-        "comment": "20 pages, Accepted by KDD 2027",
-        "raw_comment": "20 pages, Accepted by KDD 2027",
-        "category": "Data Mining & IR",
-        "rank": "A+"
-      }
-    },
-    {
-      "paper": {
-        "title": "Hypergraph Structural Entropy-Enhanced Hierarchy-Aware Semi-Supervised Graph Classification",
-        "arxiv_id": "2611.27043v1",
-        "authors": [
-          "Guangjie Zeng",
-          "Hao Peng",
-          "Angsheng Li",
-          "Li Sun",
-          "Chunyang Liu",
-          "Yicheng Pan",
-          "Shengze Li",
-          "Philip S. Yu"
-        ],
-        "published": "2026-11-20T03:16:14Z",
-        "updated": "2026-11-20T03:16:14Z",
-        "summary": "Semi-supervised graph classification aims to learn graph-level representations by leveraging a large number of unlabeled graphs alongside a small set of labeled ones, effectively mitigating the issue of label scarcity. Despite significant progress by various semi-supervised learning strategies, complex relationships among graph vertices beyond pairwise edges, especially hierarchical structures, remain underexplored by existing methods. In this work, we propose a Hypergraph Structural Entropy-Enhanced hierarchy-aware framework, namely HypSEE, for semi-supervised graph classification. Specifically, we first construct walk-induced and embedding-derived hypergraphs to capture hierarchy-aware local and long-range higher-order relationships within graphs. Then, we devise a hierarchical hypergraph pooling approach guided by hypergraph structural entropy (HSE) to facilitate hierarchical representation learning in hypergraphs. Lastly, we employ an anchor graph-based consistency strategy to mutually align the representations from these two hypergraph views, enhancing the learning efficacy on unlabeled data. Extensive experiments on 8 benchmark datasets demonstrate the state-of-the-art performance of our approach.",
-        "categories": "cs.LG",
-        "comment": "12 pages, Accepted by KDD 2027"
-      },
-      "analysis": {
-        "problem_statement": "The paper addresses the challenge of learning effective graph-level representations in semi-supervised settings where label scarcity is prevalent and existing methods fail to adequately capture complex, hierarchical higher-order relationships among vertices.",
-        "bottleneck_addressed": "Label scarcity in graph learning and the inability of standard pairwise graph models to capture complex hierarchical and higher-order structural dependencies.",
-        "executive_summary": "This work is significant because it moves beyond pairwise edge interactions to model hierarchical higher-order relationships using hypergraphs, which is crucial for domains where complex multi-entity interactions define the data structure. By integrating structural entropy for hierarchical pooling and consistency learning across multiple hypergraph views, it enhances the robustness and efficacy of semi-supervised graph classification.",
-        "key_metrics": {
-          "primary_metric": "State-of-the-art performance on semi-supervised graph classification benchmarks",
-          "metric_value": "Not specified in abstract",
-          "baseline": "Existing semi-supervised graph classification methods",
-          "improvement_percentage": "Not specified in abstract"
-        },
-        "technical_breakdown": {
-          "method": "The HypSEE framework constructs two types of hypergraphs (walk-induced and embedding-derived) to capture local and long-range higher-order relationships. It uses a hierarchical hypergraph pooling mechanism guided by Hypergraph Structural Entropy (HSE) to learn hierarchical representations. Finally, an anchor graph-based consistency strategy aligns representations from the two hypergraph views to improve learning on unlabeled data.",
-          "architecture": "HypSEE framework consisting of dual hypergraph construction modules, HSE-guided hierarchical pooling, and an anchor graph consistency alignment module.",
-          "implementation_details": "Walk-induced and embedding-derived hypergraph construction; Hypergraph Structural Entropy (HSE) calculation for guiding pooling; Anchor graph-based consistency strategy for representation alignment.",
-          "code_complexity": "Not specified in abstract; likely higher than standard GNNs due to hypergraph construction and entropy calculations."
-        },
-        "relevance_tags": [
-          "Semi-supervised Learning",
-          "Graph Classification",
-          "Hypergraphs",
-          "Higher-order Relationships",
-          "Structural Entropy"
-        ],
-        "confidence": "high"
-      },
-      "analyzed_at": "2026-11-22T23:03:11.344228",
-      "conference_info": {
-        "conference": "KDD",
-        "year": "2027",
-        "comment": "12 pages, Accepted by KDD 2027",
-        "raw_comment": "12 pages, Accepted by KDD 2027",
-        "category": "Data Mining & IR",
-        "rank": "A+"
-      }
-    },
-    {
-      "paper": {
-        "title": "The Times They Are A-Changin': Tracking Global Trends through the Lens of Web Search",
-        "arxiv_id": "2611.27613v1",
-        "authors": [
-          "Anju Bhuiya",
-          "Hasim Ali",
-          "Kovvada Dhyana Vardhan",
-          "Abhijnan Chakraborty"
-        ],
-        "published": "2026-11-20T13:42:56Z",
-        "updated": "2026-11-20T13:42:56Z",
-        "summary": "Human societies have always left traces of their collective priorities, from cave drawings and stone carvings to chronicles on papyrus and printed books. In the digital era, these traces increasingly emerge through social media footprints and web search behavior at a global scale. We construct the first large-scale longitudinal dataset of Google Year in Search trends, spanning 15 years, to characterize how collective public attention evolves across countries and time. Because search engines like Google and Bing do not publicly release raw search logs, Year in Search provides a rare cross-national archive of annually salient search interests. The dataset is supplemented with a manually curated, unified ten-category semantic taxonomy with strong inter-annotator agreement. We focus on four categories (Information Seeking, Personality, Entertainment, and Sports) to investigate how collective attention varies across geographic and socio-cultural contexts. Our analyses reveal a consistently glocalized structure of collective attention: countries converge strongly in profession-level personality attention while remaining differentiated in the specific individuals they search for, yet profession-level similarity is only weakly associated with geographic region and income group. Information seeking is globally dominated by politics and health, while regional distributions show varying degrees of divergence. Crisis periods are associated with both shared and regionally differentiated shifts. Entertainment and sports attention likewise combine globally prominent interests with regional differentiation. Overall, our findings suggest that web search data provide a valuable computational lens for observing collective attention at scale, acting as a living archive of how societal priorities vary across countries and change over time.",
-        "categories": "cs.SI",
-        "comment": "This paper has been accepted at the 21st International AAAI Conference on Web and Social Media (ICWSM 2027)"
-      },
-      "analysis": {
-        "problem_statement": "The paper addresses the lack of large-scale, longitudinal, and cross-national datasets for analyzing how collective public attention and societal priorities evolve over time using web search behavior.",
-        "bottleneck_addressed": "Data scarcity and lack of standardized semantic labeling for longitudinal, cross-national behavioral data, which hinders the computational analysis of global socio-cultural trends.",
-        "executive_summary": "This work provides the first 15-year longitudinal dataset of Google Year in Search trends, offering a rare cross-national archive of annually salient search interests. By applying a unified semantic taxonomy, it enables the quantitative analysis of 'glocalization' in collective attention, revealing how global convergence and regional divergence interact across different socio-cultural contexts.",
-        "key_metrics": {
-          "primary_metric": "Inter-annotator agreement for the semantic taxonomy and characterization of glocalized attention structures",
-          "metric_value": "Not explicitly quantified in summary (described as 'strong')",
-          "baseline": "No specific baseline model; compares geographic regions and income groups",
-          "improvement_percentage": "N/A"
-        },
-        "technical_breakdown": {
-          "method": "Construction of a longitudinal dataset from Google Year in Search data spanning 15 years, supplemented by a manually curated, unified ten-category semantic taxonomy.",
-          "architecture": "Data pipeline involving extraction of annual search trends, manual annotation with a unified taxonomy, and statistical analysis of cross-national and temporal variations.",
-          "implementation_details": "Focus on four specific categories (Information Seeking, Personality, Entertainment, Sports); analysis of profession-level vs. individual-level attention; correlation analysis with geographic region and income group.",
-          "code_complexity": "N/A (Dataset and analysis paper, not a model training paper)"
-        },
-        "relevance_tags": [
-          "Web Mining",
-          "Sociology",
-          "Longitudinal Data",
-          "Semantic Taxonomy",
-          "Global Trends"
-        ],
-        "confidence": "high"
-      },
-      "analyzed_at": "2026-11-22T23:04:37.169986",
-      "conference_info": {
-        "conference": "AAAI",
-        "year": "2027",
-        "comment": "This paper has been accepted at the 21st International AAAI Conference on Web and Social Media (ICWSM 2027)",
-        "raw_comment": "This paper has been accepted at the 21st International AAAI Conference on Web and Social Media (ICWSM 2027)",
-        "category": "General ML/AI",
-        "rank": ""
-      }
-    },
-    {
-      "paper": {
-        "title": "Epistemic Social Learning: Latent Behavioral Structure under Endogenous Multi-Agent Interaction",
-        "arxiv_id": "2611.27545v1",
-        "authors": [
-          "Jainendra Shukla",
-          "Dhruv Jaiswal",
-          "Divyanshi Beniwal",
-          "Kiriti Kanjilal"
-        ],
-        "published": "2026-11-20T12:40:47Z",
-        "updated": "2026-11-20T12:40:47Z",
-        "summary": "In multi-agent interaction, a learner's actions shape the observations from which it infers other agents' behavior. A behavioral model may predict these observations well yet support poor adaptation when opponents change. We introduce Epistemic Social Learning (ESL), which couples fast, interaction-specific Bayesian beliefs with slower online learning of population-shared behavioral prototypes. Belief-conditioned decisions influence subsequent observations and, in turn, the representations learned from them. Under explicit regularity and averaging assumptions, we provide a conditional stochastic-approximation characterization of these coupled dynamics. Across twelve synthetic $3\\times3$ cooperative, coordination, and adversarial games, ESL achieves the lowest aggregate post-switch regret among the evaluated online latent-adaptation methods, including a switch-aware Bayesian filter. Additional experiments examine observation loss, noise, and asymmetric incentives. These findings illustrate how predictive fit can differ from decision-relevant adaptation under policy-dependent interaction.",
-        "categories": "cs.MA",
-        "comment": "Accepted at NeurIPS 2026. 44 pages, 6 figures. Code: https://github.com/jainendra2019/esl"
-      },
-      "analysis": {
-        "problem_statement": "The paper addresses the issue where behavioral models in multi-agent systems may predict observations accurately but fail to support effective adaptation when opponents change strategies, due to the endogenous nature of interactions where actions shape observations.",
-        "bottleneck_addressed": "Adaptation and generalization in non-stationary multi-agent environments with endogenous feedback loops.",
-        "executive_summary": "This work is significant because it decouples fast, interaction-specific belief updates from slower learning of population-shared behavioral prototypes, addressing a critical gap in how agents adapt to changing opponents. By demonstrating that predictive fit does not equate to decision-relevant adaptation, it provides a robust framework for online latent adaptation in complex, policy-dependent interactions.",
-        "key_metrics": {
-          "primary_metric": "Lowest aggregate post-switch regret",
-          "metric_value": "Not specified in abstract",
-          "baseline": "Evaluated online latent-adaptation methods, including a switch-aware Bayesian filter",
-          "improvement_percentage": "Not specified in abstract"
-        },
-        "technical_breakdown": {
-          "method": "Epistemic Social Learning (ESL) couples fast, interaction-specific Bayesian beliefs with slower online learning of population-shared behavioral prototypes, using a conditional stochastic-approximation characterization under explicit regularity and averaging assumptions.",
-          "architecture": "Dual-timescale architecture consisting of fast Bayesian belief updates conditioned on current interactions and slower online learning modules for shared behavioral prototypes.",
-          "implementation_details": "Utilizes belief-conditioned decisions that influence subsequent observations and representations; tested across twelve synthetic 3x3 cooperative, coordination, and adversarial games; includes experiments on observation loss, noise, and asymmetric incentives.",
-          "code_complexity": "Not specified in abstract; involves coupled dynamics requiring stochastic approximation, likely implying higher computational overhead than single-timescale methods due to dual learning rates."
-        },
-        "relevance_tags": [
-          "Multi-Agent Systems",
-          "Bayesian Inference",
-          "Online Learning",
-          "Game Theory",
-          "Adaptive Algorithms"
-        ],
-        "confidence": "high"
-      },
-      "analyzed_at": "2026-11-22T23:03:37.432715",
-      "conference_info": {
-        "conference": "NEURIPS",
-        "year": "2026",
-        "comment": "Accepted at NeurIPS 2026. 44 pages, 6 figures. Code: https://github.com/jainendra2019/esl",
-        "raw_comment": "Accepted at NeurIPS 2026. 44 pages, 6 figures. Code: https://github.com/jainendra2019/esl",
-        "category": "General ML/AI",
-        "rank": "A+"
-      }
-    },
-    {
-      "paper": {
-        "title": "THRIFTY: Cost-Constrained Reasoning-Data Synthesis for Small Language Models",
-        "arxiv_id": "2611.27436v1",
-        "authors": [
-          "Aasheesh Singh",
-          "Vishal Vaddina"
-        ],
-        "published": "2026-11-20T10:32:38Z",
-        "updated": "2026-11-20T10:32:38Z",
-        "summary": "Small language models (SLMs) are increasingly attractive for efficient, specialized deployment, and are typically trained on reasoning trajectories distilled from a larger teacher LLM. Generating this synthetic data is a major cost of the pipeline, especially when the teacher is a frontier model. Existing collection methods, however, are largely cost-unaware, or at best spread a fixed sampling budget uniformly across queries. Such allocation ignores the wide variation in problem difficulty and the strategic over- or under-sampling it invites. Thus, we propose THRIFTY, a Thompson-sampling bandit controller that spends a fixed generation-token budget to collect diverse correct reasoning trajectories, casting the task as a bandits-with-knapsacks problem with a novel diversity-aware objective. It tracks each problem's success probability with an online Beta posterior and spends each token where it expects the most new distinct correct solutions. Because repeated solutions add progressively less value, THRIFTY adaptively stops resampling saturated problems, concentrates budget on under-covered ones, and retires the unsolvable at the budget's opportunity cost. On math (AIME, MATH-500) and code (LiveCodeBench) benchmarks, THRIFTY gathers up to 22% more diverse correct trajectories per generation token than both the standard uniform-sampling recipe and the strongest adaptive baseline, with the largest gains in the scarce-budget and hard-problem regimes.",
-        "categories": "cs.LG",
-        "comment": "Published at the Efficient Reasoning Workshop, COLM 2026"
-      },
-      "analysis": {
-        "problem_statement": "The paper addresses the high cost and inefficiency of generating diverse, correct reasoning trajectories for small language models by optimizing the allocation of a fixed generation-token budget across problems of varying difficulty.",
-        "bottleneck_addressed": "Inefficient synthetic data generation costs and uniform sampling strategies that ignore problem difficulty variance.",
-        "executive_summary": "This work optimizes the distillation pipeline for small language models by treating data collection as a resource-constrained optimization problem. By using a bandit-based controller to dynamically allocate generation tokens, it significantly increases the diversity of correct reasoning trajectories obtained per unit of compute, which is critical for cost-effective deployment of specialized SLMs.",
-        "key_metrics": {
-          "primary_metric": "Diverse correct trajectories collected per generation token",
-          "metric_value": "22%",
-          "baseline": "Standard uniform-sampling recipe and strongest adaptive baseline",
-          "improvement_percentage": "22"
-        },
-        "technical_breakdown": {
-          "method": "THRIFTY is a Thompson-sampling bandit controller that frames data collection as a bandits-with-knapsacks problem with a diversity-aware objective.",
-          "architecture": "The system tracks each problem's success probability using an online Beta posterior and allocates tokens to maximize the expected number of new distinct correct solutions.",
-          "implementation_details": "It adaptively stops resampling saturated problems, concentrates budget on under-covered ones, and retires unsolvable problems based on opportunity cost.",
-          "code_complexity": "The method optimizes the use of a fixed generation-token budget, reducing the total cost required to achieve a specific level of data diversity compared to uniform sampling."
-        },
-        "relevance_tags": [
-          "Data Synthesis",
-          "Small Language Models",
-          "Multi-armed Bandits",
-          "Efficient Reasoning",
-          "Cost Optimization"
-        ],
-        "confidence": "high"
-      },
-      "analyzed_at": "2026-11-22T22:59:59.527188",
-      "conference_info": {
-        "conference": "COLM",
-        "year": "2026",
-        "comment": "Published at the Efficient Reasoning Workshop, COLM 2026",
-        "raw_comment": "Published at the Efficient Reasoning Workshop, COLM 2026",
-        "category": "General ML/AI",
-        "rank": ""
-      }
-    },
-    {
-      "paper": {
-        "title": "AMARIS: Merging Generalist and Specialist LLMs via Adaptive Subspace Inheritance",
-        "arxiv_id": "2611.27369v1",
-        "authors": [
-          "Hwee Young Kang",
-          "Irwin De Tao Chin",
-          "Wen-Haw Chong",
-          "Hai Leong Chieu"
-        ],
-        "published": "2026-11-20T09:39:58Z",
-        "updated": "2026-11-20T09:39:58Z",
-        "summary": "Domain specialization of large language models (LLMs) often improves target-domain performance but degrades broad capabilities. Model merging is an attractive training-free alternative, yet common parameter-space strategies (for example, interpolation and sparsified averaging) provide limited control over task-specific interference. We introduce Adaptive Model Alignment via Ranked Inherited Subspaces (AMARIS), a covariance-driven framework that transfers specialist updates only along selected activation directions. AMARIS formulates merging as budgeted subspace inheritance: it seeks high specialist activation capture under a regularized base-output perturbation budget, then builds a low-rank projection gate from ranked generalized eigendirections. This yields a single static merged checkpoint that concentrates transfer in high-utility, low-interference directions. We evaluate AMARIS on Qwen3-based merges (8B and 32B) across finance, instruction-following, and multilingual SEA specialization. In our evaluated settings, AMARIS reaches Pareto operating points that are competitive with strong training-free baselines, including 98.37% specialist retention with 95.16% core retention for the 8B finance setting, 103.55% core retention with 90.28% specialist retention for the 8B instruction-following setting, and 99.20% core retention with 94.80% specialist retention for the 32B SEA setting. These results support subspace-constrained merging as a practical route to compositional capability integration without additional training.",
-        "categories": "cs.AI",
-        "comment": "Accepted at NeurIPS 2026"
-      },
-      "analysis": {
-        "problem_statement": "Standard parameter-space model merging strategies lack fine-grained control over task-specific interference, leading to a trade-off where domain specialization degrades broad generalist capabilities.",
-        "bottleneck_addressed": "The degradation of general capabilities (catastrophic forgetting) when specializing LLMs, and the limited controllability of existing training-free merging methods.",
-        "executive_summary": "AMARIS offers a training-free solution to the specialization-generalization trade-off by using a covariance-driven framework to merge specialist and generalist models. By restricting parameter updates to high-utility, low-interference activation subspaces, it enables compositional capability integration without the computational cost of fine-tuning.",
-        "key_metrics": {
-          "primary_metric": "Pareto operating points for specialist and core capability retention",
-          "metric_value": "98.37% specialist retention with 95.16% core retention (8B finance setting)",
-          "baseline": "Strong training-free baselines including interpolation and sparsified averaging",
-          "improvement_percentage": "Not explicitly quantified as a percentage improvement over baselines, but described as competitive Pareto points"
-        },
-        "technical_breakdown": {
-          "method": "Adaptive Model Alignment via Ranked Inherited Subspaces (AMARIS) formulates merging as budgeted subspace inheritance, transferring specialist updates only along selected activation directions to minimize base-output perturbation.",
-          "architecture": "A low-rank projection gate constructed from ranked generalized eigendirections that acts as a static filter for parameter updates.",
-          "implementation_details": "The method identifies high specialist activation capture directions under a regularized base-output perturbation budget and applies a static merged checkpoint that concentrates transfer in these specific subspaces.",
-          "code_complexity": "Training-free; computational cost is limited to the eigendecomposition/covariance analysis required to identify the subspace, avoiding the high costs of gradient-based fine-tuning."
-        },
-        "relevance_tags": [
-          "Model Merging",
-          "LLM Specialization",
-          "Training-Free Adaptation",
-          "Subspace Learning",
-          "Catastrophic Forgetting"
-        ],
-        "confidence": "high"
-      },
-      "analyzed_at": "2026-11-22T23:01:02.943493",
-      "conference_info": {
-        "conference": "NEURIPS",
-        "year": "2026",
-        "comment": "Accepted at NeurIPS 2026",
-        "raw_comment": "Accepted at NeurIPS 2026",
-        "category": "General ML/AI",
-        "rank": "A+"
-      }
-    },
-    {
-      "paper": {
-        "title": "Proactive Defense Benchmark against Deepfake Generation",
-        "arxiv_id": "2611.27253v1",
-        "authors": [
-          "Joonhyuk Baek",
-          "Wonjune Seo",
-          "Jae-yun Kim",
-          "Saerom Park",
-          "Hoki Kim"
-        ],
-        "published": "2026-11-20T07:59:30Z",
-        "updated": "2026-11-20T07:59:30Z",
-        "summary": "Despite the proliferation of proactive defenses against deepfakes, the lack of a unified evaluation protocol precludes fair comparison and masks critical vulnerabilities. To bridge this gap, we present the first comprehensive benchmark that systematically assesses disruption, robustness, and transferability encompassing pixel, perceptual, and identity metrics. Our extensive analysis reveals that fidelity and identity metrics capture orthogonal performance axes, often leading to conflicting interpretations when relied upon individually. Furthermore, we identify a fundamental trade-off where peak white-box performance signals overfitting, and we introduce a calibrated evaluation to correct generator-induced identity bias. By exposing these blind spots, we establish a rigorous standard to guide the development of genuinely generalizable protections. Project page is available at: https://proactivedefensebenchmark.github.io/",
-        "categories": "cs.CR",
-        "comment": "Accepted at ICML 2026. 35 pages, 13 figures"
-      },
-      "analysis": {
-        "problem_statement": "The lack of a unified evaluation protocol for proactive deepfake defenses prevents fair comparison and obscures critical vulnerabilities in existing methods.",
-        "bottleneck_addressed": "Evaluation standardization and benchmarking for adversarial robustness and generative model security.",
-        "executive_summary": "This paper addresses the fragmented landscape of deepfake defense research by introducing the first comprehensive benchmark that systematically assesses disruption, robustness, and transferability. It reveals that relying on single metrics like fidelity or identity leads to conflicting interpretations and identifies a fundamental trade-off where peak white-box performance indicates overfitting, thereby establishing a rigorous standard for developing generalizable protections.",
-        "key_metrics": {
-          "primary_metric": "Comprehensive assessment of disruption, robustness, and transferability across pixel, perceptual, and identity metrics.",
-          "metric_value": "N/A (Benchmark paper, no single numerical improvement claim)",
-          "baseline": "Existing proactive defense methods evaluated under the new unified protocol.",
-          "improvement_percentage": "N/A"
-        },
-        "technical_breakdown": {
-          "method": "Systematic evaluation of proactive defenses using a multi-dimensional metric suite (pixel, perceptual, identity) to analyze orthogonal performance axes and correct for generator-induced identity bias.",
-          "architecture": "Benchmark framework encompassing disruption, robustness, and transferability tests; includes a calibrated evaluation mechanism to mitigate identity bias.",
-          "implementation_details": "Utilizes pixel, perceptual, and identity metrics; introduces a calibrated evaluation protocol to address the trade-off between white-box performance and generalization.",
-          "code_complexity": "N/A (Focus is on evaluation protocol and analysis rather than a new model architecture)"
-        },
-        "relevance_tags": [
-          "Deepfake Detection",
-          "Adversarial Robustness",
-          "Benchmarking",
-          "Generative AI Security",
-          "Proactive Defense"
-        ],
-        "confidence": "high"
-      },
-      "analyzed_at": "2026-11-22T23:01:06.141812",
-      "conference_info": {
-        "conference": "ICML",
-        "year": "2026",
-        "comment": "Accepted at ICML 2026. 35 pages, 13 figures",
-        "raw_comment": "Accepted at ICML 2026. 35 pages, 13 figures",
-        "category": "General ML/AI",
-        "rank": "A+"
-      }
-    },
-    {
-      "paper": {
-        "title": "Felid: A Flexible and Efficient Design for Transformer Fine-Tuning over Encrypted Data",
-        "arxiv_id": "2611.27175v1",
-        "authors": [
-          "Linru Zhang",
-          "Jun Jie Sim",
-          "Xiangning Wang",
-          "Jiahao Zhong",
-          "Kaiyu Zhou",
-          "Huanyi Ye",
-          "Yongsen Zheng",
-          "Lushan Song",
-          "Xiaojian Liang",
-          "Yingting Liu",
-          "Yujing Sun",
-          "Huaxiong Wang",
-          "Pu Duan",
-          "Kwok-Yan Lam"
-        ],
-        "published": "2026-11-20T06:02:35Z",
-        "updated": "2026-11-20T06:02:35Z",
-        "summary": "Fully Homomorphic Encryption (FHE) enables non-interactive, privacy-preserving transformer fine-tuning, protecting highly sensitive data as inputs to large language models. Prior work has predominantly pursued efficiency gains through architectural refinements, yet overall performance remains bounded by the substantial cost inherent in encrypted computation. To address these issues, we target the bottleneck at the ciphertext operation level. Concretely, we propose a novel packing strategy that supports batching over a flexible number of inputs, making it well-suited for fine-tuning workloads. In addition, we design operation-specific matrix evaluation algorithms that significantly reduce (i) the number of ciphertext rotations and relinearizations, and (ii) the number of bootstrapping invocations. Additionally, we exploit functional bootstrapping to fold the evaluation of element-wise activation functions directly into the bootstrapping step, thereby reducing overall computational complexity. As a result, our framework achieves a $30\\times$ reduction in ciphertext rotations and relinearizations across all matrix operations, as well as a $2.5\\times$ reduction in FHE bootstrapping invocations over the entire computation flow, compared to the latest state-of-the-art work. It is worth noting that our system completes fine-tuning of a 2-layer BERT-style model with a batch size of 16 in 650 seconds, achieving a $8\\times$ speedup over the state-of-the-art work.",
-        "categories": "cs.CR",
-        "comment": "Published elsewhere. Minor revision. NeurIPS 2026 (Oral)"
-      },
-      "analysis": {
-        "problem_statement": "The paper addresses the prohibitive computational cost of performing transformer fine-tuning on encrypted data using Fully Homomorphic Encryption (FHE), specifically targeting bottlenecks in ciphertext operations.",
-        "bottleneck_addressed": "Computational efficiency and latency in privacy-preserving machine learning (specifically FHE-based inference and fine-tuning).",
-        "executive_summary": "This work significantly advances privacy-preserving AI by reducing the overhead of encrypted computation, which has historically been a barrier to deploying LLMs on sensitive data. By optimizing ciphertext packing and matrix evaluation algorithms, it makes real-time or near-real-time fine-tuning on encrypted data more feasible.",
-        "key_metrics": {
-          "primary_metric": "Reduction in ciphertext rotations/relinearizations and FHE bootstrapping invocations",
-          "metric_value": "30x reduction in rotations/relinearizations; 2.5x reduction in bootstrapping; 8x speedup in total fine-tuning time",
-          "baseline": "Latest state-of-the-art FHE transformer fine-tuning frameworks",
-          "improvement_percentage": "2900% reduction in rotations/relinearizations; 150% reduction in bootstrapping; 700% speedup in execution time"
-        },
-        "technical_breakdown": {
-          "method": "The system employs a novel flexible packing strategy for batching inputs and designs operation-specific matrix evaluation algorithms to minimize cryptographic overhead.",
-          "architecture": "A flexible FHE framework supporting variable batch sizes, integrated with functional bootstrapping to handle element-wise activations.",
-          "implementation_details": "Uses operation-specific matrix evaluation to reduce rotations and relinearizations; exploits functional bootstrapping to fold activation function evaluation into the bootstrapping step.",
-          "code_complexity": "Completes fine-tuning of a 2-layer BERT-style model with batch size 16 in 650 seconds."
-        },
-        "relevance_tags": [
-          "Fully Homomorphic Encryption",
-          "Privacy-Preserving Machine Learning",
-          "Transformer Fine-Tuning",
-          "Cryptographic Optimization"
-        ],
-        "confidence": "high"
-      },
-      "analyzed_at": "2026-11-22T23:01:26.089800",
-      "conference_info": {
-        "conference": "NEURIPS",
-        "year": "2026",
-        "comment": "Published elsewhere. Minor revision. NeurIPS 2026 (Oral)",
-        "raw_comment": "Published elsewhere. Minor revision. NeurIPS 2026 (Oral)",
-        "category": "General ML/AI",
-        "rank": "A+"
-      }
-    },
-    {
-      "paper": {
-        "title": "EgoSurgHands: An Egocentric 3D Hand Pose Dataset & Benchmark for Open Surgery Training",
-        "arxiv_id": "2611.27101v1",
-        "authors": [
-          "Ankit Pal",
-          "Guillaume Kugener",
-          "Sofia Volpi",
-          "Joshua Schwartz",
-          "Alex Idarraga",
-          "Pranav Rajpurkar",
-          "Gabriel A. Brat"
-        ],
-        "published": "2026-11-20T04:19:58Z",
-        "updated": "2026-11-20T04:19:58Z",
-        "summary": "Surgical skill assessment, AR guidance, and robot learning from demonstration all benefit from 3D tracking of the surgeon's hands, yet no surgical dataset offers real egocentric articulated 3D hand pose. We introduce EgoSurgHands, a benchmark for real-captured egocentric hand pose estimation in open surgery training on synthetic pads. Captured with multi-sensor glasses, it contains 41,909 training hand-instance rows across 55 procedure recordings and 9,476 human-validated evaluation rows across 13 held-out recordings, spanning 13 tasks, 3 glove colors, and 4 trainees from first-year medical student to third-year resident. Each frame carries a multi-sensor stack: intrinsics, hand landmarks with per-hand confidence, timestamps, and eye gaze, plus SLAM extrinsics where SLAM succeeded. Evaluation labels combine sensor-fused pseudo-ground truth, human cross-review of every frame, surgeon adjudication of flagged cases, and an independent multi-view triangulated reference. Alongside the within-corpus, procedure-disjoint split, a leave-one-wearer-out protocol tested unseen trainees. Across eight methods evaluated zero-shot, from MANO-based reconstructors to the two-hand IntagHand and the keypoint-only MediaPipe Hands, egocentric pretraining was associated with stronger transfer on every held-out wearer. WildHands and JointTransformer had 18\\% and 40\\% lower PA-MPJPE, respectively, than the non-egocentric HaMeR. JointTransformer was the best performing model with an error of 14.95 mm. A substantial surgical domain gap remains, and the widely deployed MediaPipe Hands detected a hand in only 24.1\\% of evaluation rows. As a baseline, a 58K-parameter residual corrector (JRN) on frozen backbones reached 10.96-14.85 mm PA-MPJPE on held-out wearers for the two ego-pretrained backbones. We release the dataset and benchmark code at https://egosurghands.github.io",
-        "categories": "cs.CV",
-        "comment": "Accepted at NeurIPS 2026. Code, dataset, and benchmark leaderboard available at https://egosurghands.github.io"
-      },
-      "analysis": {
-        "problem_statement": "The absence of a real-world, egocentric 3D hand pose dataset for open surgery training hinders the development and evaluation of surgical skill assessment, AR guidance, and robot learning systems.",
-        "bottleneck_addressed": "Data scarcity and domain gap in egocentric surgical hand tracking, specifically the lack of ground-truth 3D articulated hand pose data captured from the surgeon's perspective.",
-        "executive_summary": "This paper addresses a critical data bottleneck in surgical AI by introducing EgoSurgHands, the first benchmark for real-captured egocentric 3D hand pose estimation in open surgery. It provides a rigorous evaluation framework that highlights the significant performance drop of general-purpose hand tracking models in surgical domains, demonstrating that egocentric pretraining is essential for robust transfer to unseen trainees.",
-        "key_metrics": {
-          "primary_metric": "PA-MPJPE (Procrustes-Aligned Mean Joint Position Error) on held-out wearers",
-          "metric_value": "10.96-14.85 mm",
-          "baseline": "Non-egocentric HaMeR and other zero-shot methods (e.g., MediaPipe Hands, WildHands, JointTransformer)",
-          "improvement_percentage": "Up to 40% lower error compared to non-egocentric HaMeR (JointTransformer baseline); JRN corrector achieves further reduction to 10.96 mm"
-        },
-        "technical_breakdown": {
-          "method": "The paper introduces a multi-sensor dataset captured via glasses, combining sensor-fused pseudo-ground truth with human cross-review and independent multi-view triangulation. It evaluates eight zero-shot methods and proposes a lightweight residual corrector (JRN) to refine predictions from frozen backbones.",
-          "architecture": "Multi-sensor data stack (intrinsics, landmarks, gaze, SLAM extrinsics) feeding into various 3D hand pose estimators (MANO-based, keypoint-only). The proposed JRN is a 58K-parameter residual network applied to frozen backbone outputs.",
-          "implementation_details": "Dataset includes 41,909 training rows and 9,476 evaluation rows across 13 tasks and 4 trainees. Evaluation uses a leave-one-wearer-out protocol to test generalization to unseen individuals. Ground truth is established via a combination of sensor fusion, human adjudication, and triangulated reference.",
-          "code_complexity": "The JRN corrector is computationally lightweight (58K parameters), implying low inference overhead when attached to existing frozen backbones. The dataset itself is large-scale (55 recordings), requiring significant storage and processing for training/evaluation."
-        },
-        "relevance_tags": [
-          "Computer Vision",
-          "Medical AI",
-          "3D Hand Pose Estimation",
-          "Egocentric Vision",
-          "Surgical Robotics"
-        ],
-        "confidence": "high"
-      },
-      "analyzed_at": "2026-11-22T23:04:05.899893",
-      "conference_info": {
-        "conference": "NEURIPS",
-        "year": "2026",
-        "comment": "Accepted at NeurIPS 2026. Code, dataset, and benchmark leaderboard available at https://egosurghands.github.io",
-        "raw_comment": "Accepted at NeurIPS 2026. Code, dataset, and benchmark leaderboard available at https://egosurghands.github.io",
-        "category": "General ML/AI",
-        "rank": "A+"
-      }
-    },
-    {
-      "paper": {
-        "title": "Beyond Prompt Heuristics: Assessing Child Safety Alignment in LLMs",
-        "arxiv_id": "2611.26965v1",
-        "authors": [
-          "Anika Misra",
-          "Chimaobi Okite",
-          "Rada Mihalcea"
-        ],
-        "published": "2026-11-20T01:40:54Z",
-        "updated": "2026-11-20T01:40:54Z",
-        "summary": "Child-safety taxonomies typically characterize safety risks through a predefined set of harm categories, and existing evaluations largely operationalize these categories using prompts that explicitly invoke them. However, child-safety considerations can also arise in seemingly benign requests that lack recognizable harm-category cues. We therefore investigate how child-safety alignment generalizes to such settings. Across six models, we find considerably higher misalignment rates on requests without recognizable harm-category cues than on those containing such cues (80.0, 54.0, and 48.4 percentage-point gaps for Qwen3.5-27B, GPT-5.4-mini, and Claude-Haiku-4.5, respectively). Through controlled behavioral and mechanistic analyses, we find that introducing a single harm-associated word reduces misalignment across most models, with mechanistic evidence suggesting that child-safety reasoning may rely in part on lexical and semantic associations with words in the prompt. Our findings motivate evaluations that treat child safety as context-dependent, and not reducible to a fixed set of harm categories.",
+        "published": "2026-11-22T00:00:01Z",
+        "updated": "2026-11-22T00:00:01Z",
+        "summary": "Systems with decoder LLMs can combine free generation with scoring, ranking, or selection. We measure these documented interface combinations with five annotation fields linked to source evidence. The corpora comprise 517 solutions from 42 Kaggle competitions involving NLP and 76 participant systems from 26 SemEval, TREC, and WMT task years. Among eligible generation systems with decoder LLMs, 18 of 55 Kaggle systems and 17 of 20 Shared Task systems are hybrid: free generation coexists with a constrained interface. The remaining systems use free generation alone. Giving each competition or task year equal weight yields hybrid shares of 0.327 and 0.876. Within Eedi, 21 eligible systems with decoder LLMs have five exact interface profiles; ten LLM Science Exam systems share one interface class and have four profiles. Across Kaggle, the eligible systems with decoder LLMs span 18 exact interface profiles, revealing variation within broad task and backbone categories. These estimates characterize documented public systems selected using our selection criteria and include interfaces throughout the complete pipeline, including intermediate stages. The data are available at https://github.com/xiaoxinchenn/nlp-interface-composition.",
         "categories": "cs.CL",
-        "comment": "accepted to NeurIPS 2026 Child Safety in AI Workshop"
+        "comment": "Accepted to Findings of the Association for Computational Linguistics: EACL 2027"
       },
       "analysis": {
-        "problem_statement": "The paper addresses the failure of Large Language Models to maintain child-safety alignment when handling benign requests that lack explicit harm-category cues, revealing a significant gap between prompt-based safety evaluations and real-world generalization.",
-        "bottleneck_addressed": "Safety alignment generalization and robustness against context-dependent risks that evade keyword-based or category-specific safety filters.",
-        "executive_summary": "This research demonstrates that current child-safety alignment in LLMs is heavily reliant on lexical cues rather than robust contextual understanding, leading to high misalignment rates in benign scenarios. By quantifying the performance gap between cued and uncued requests, the paper highlights a critical vulnerability in existing safety evaluation methodologies and model deployment.",
+        "problem_statement": "The paper addresses the lack of systematic quantification and classification of how decoder-based LLMs are integrated with constrained interfaces (scoring, ranking, selection) in competitive NLP systems.",
+        "bottleneck_addressed": "Lack of empirical data on the prevalence and specific composition patterns of hybrid generation-and-constraint pipelines in real-world competitive NLP deployments.",
+        "executive_summary": "This work provides the first comprehensive empirical analysis of interface composition in competitive NLP, revealing that hybrid systems (combining free generation with constrained interfaces) are dominant in shared tasks but less prevalent in Kaggle competitions. It establishes a standardized taxonomy for documenting these interfaces, highlighting significant variation in system design even within similar task and backbone categories.",
         "key_metrics": {
-          "primary_metric": "Misalignment rate gap between requests with and without recognizable harm-category cues",
-          "metric_value": "80.0, 54.0, and 48.4 percentage points (for Qwen3.5-27B, GPT-5.4-mini, and Claude-Haiku-4.5 respectively)",
-          "baseline": "Misalignment rates on requests containing explicit harm-category cues",
-          "improvement_percentage": "N/A (This is an evaluation paper identifying a deficit, not a method proposing an improvement)"
+          "primary_metric": "Proportion of eligible systems using hybrid interface compositions",
+          "metric_value": "0.327 (Kaggle) and 0.876 (Shared Tasks)",
+          "baseline": "Free generation alone (non-hybrid systems)",
+          "improvement_percentage": "N/A (Descriptive statistic, not a performance improvement)"
         },
         "technical_breakdown": {
-          "method": "Controlled behavioral and mechanistic analysis comparing model responses to benign requests with and without specific harm-associated lexical triggers.",
-          "architecture": "Evaluation framework applied to six distinct LLMs, focusing on the interaction between prompt lexical/semantic features and internal safety reasoning mechanisms.",
-          "implementation_details": "Introduction of single harm-associated words to test lexical dependency; mechanistic analysis to trace how child-safety reasoning is influenced by prompt associations.",
-          "code_complexity": "N/A (Empirical evaluation study; no new model architecture or training procedure proposed)"
+          "method": "Systematic annotation and categorization of public competition solutions using five specific annotation fields linked to source evidence to identify interface types.",
+          "architecture": "Analysis of 517 Kaggle solutions and 76 participant systems from SemEval, TREC, and WMT, focusing on systems with decoder LLMs.",
+          "implementation_details": "Identification of exact interface profiles (e.g., generation + scoring, generation + ranking) across the complete pipeline, including intermediate stages, with equal weighting per competition/task year.",
+          "code_complexity": "N/A (Empirical study; data available via GitHub repository)"
         },
         "relevance_tags": [
-          "AI Safety",
-          "Child Safety",
+          "NLP",
           "LLM Evaluation",
-          "Mechanistic Interpretability",
-          "Robustness"
+          "System Analysis",
+          "Competitive NLP",
+          "Interface Composition"
         ],
         "confidence": "high"
       },
-      "analyzed_at": "2026-11-22T23:03:13.254649",
+      "analyzed_at": "2026-11-23T22:56:46.155394",
       "conference_info": {
-        "conference": "NEURIPS",
-        "year": "2026",
-        "comment": "accepted to NeurIPS 2026 Child Safety in AI Workshop",
-        "raw_comment": "accepted to NeurIPS 2026 Child Safety in AI Workshop",
-        "category": "General ML/AI",
-        "rank": "A+"
-      }
-    },
-    {
-      "paper": {
-        "title": "Spectral Estimation with Deformed Decompression",
-        "arxiv_id": "2611.26945v1",
-        "authors": [
-          "Siavash Ameli",
-          "Chris van der Heide",
-          "Liam Hodgkinson",
-          "Michael W. Mahoney"
-        ],
-        "published": "2026-11-20T00:58:30Z",
-        "updated": "2026-11-20T00:58:30Z",
-        "summary": "Sample covariance matrices are fundamental objects in machine learning and statistics, with valuable information encoded into their eigenvalues. When treating modern problems, the scale of these matrices can become prohibitive for tractable computation. This creates a critical need for \"spectral decompression\": a method for inferring the eigenspectrum of a very large-scale model using only information from its smaller realizations. Existing methods fall into two main categories: those relying on spectral inversion; and those that rely on Free Decompression techniques. On the one hand, spectral inversion is a fundamentally ill-posed problem that is notoriously unstable, often failing to yield reliable results in finite-size settings. On the other hand, while Free Decompression was recently proposed to address this scaling, its reliance on the Nica-Speicher framework restricts its use to unitarily invariant ensembles, a symmetry condition that subsampled covariance matrices fail to satisfy. In this work, we introduce Deformed Decompression (DD), a novel framework for the stable, forward-extrapolation of spectral densities. By leveraging properties of the companion matrix, DD recasts the spectral decompression problem as a directed evolution of the Stieltjes transform of the companion matrix. This approach bypasses the instabilities of traditional inversion and provides a robust methodology for scaling covariance matrices and even their generalized variants (including Hessian matrices) that lack unitary invariance. We demonstrate the utility of our framework through experiments on a variety of random matrix examples, showing that DD successfully captures the complex spectral signatures of large-scale systems.",
-        "categories": "stat.ML",
-        "comment": "Accepted at NeurIPS 2026"
-      },
-      "analysis": {
-        "problem_statement": "The paper addresses the computational intractability and numerical instability of inferring the eigenspectrum of large-scale sample covariance matrices from their smaller realizations, specifically in settings where unitary invariance is absent.",
-        "bottleneck_addressed": "Computational scalability and numerical stability in high-dimensional statistical inference and random matrix analysis.",
-        "executive_summary": "This work introduces Deformed Decompression (DD), a robust framework for forward-extrapolating spectral densities that overcomes the ill-posedness of spectral inversion and the symmetry limitations of Free Decompression. By leveraging the companion matrix, it enables stable spectral analysis of large-scale models, including non-unitarily invariant structures like subsampled covariances and Hessians, which are critical for modern machine learning diagnostics.",
-        "key_metrics": {
-          "primary_metric": "Qualitative accuracy in capturing complex spectral signatures of large-scale systems compared to unstable inversion methods and restricted Free Decompression.",
-          "metric_value": "Not provided in summary",
-          "baseline": "Spectral inversion and Free Decompression (Nica-Speicher framework)",
-          "improvement_percentage": "Not provided in summary"
-        },
-        "technical_breakdown": {
-          "method": "Deformed Decompression (DD) recasts spectral decompression as a directed evolution of the Stieltjes transform of the companion matrix, enabling stable forward-extrapolation of spectral densities.",
-          "architecture": "A mathematical framework based on the properties of the companion matrix and the Stieltjes transform, designed to handle generalized covariance variants lacking unitary invariance.",
-          "implementation_details": "Utilizes the directed evolution of the Stieltjes transform to bypass traditional inversion instabilities; applicable to Hessian matrices and subsampled covariance matrices.",
-          "code_complexity": "Not explicitly stated, but implies a computationally tractable alternative to prohibitive large-scale matrix operations by working with smaller realizations."
-        },
-        "relevance_tags": [
-          "Random Matrix Theory",
-          "Spectral Analysis",
-          "Statistical Learning",
-          "Numerical Stability",
-          "High-Dimensional Statistics"
-        ],
-        "confidence": "high"
-      },
-      "analyzed_at": "2026-11-22T23:05:29.992039",
-      "conference_info": {
-        "conference": "NEURIPS",
-        "year": "2026",
-        "comment": "Accepted at NeurIPS 2026",
-        "raw_comment": "Accepted at NeurIPS 2026",
-        "category": "General ML/AI",
+        "conference": "Association for Computational Linguistics",
+        "year": "2027",
+        "comment": "Accepted to Findings of the Association for Computational Linguistics: EACL 2027",
+        "raw_comment": "Accepted to Findings of the Association for Computational Linguistics: EACL 2027",
+        "category": "Natural Language Processing",
         "rank": "A+"
       }
     }
@@ -642,15 +427,15 @@
     "Blockchain & Cryptography",
     "Other"
   ],
-  "filter_date": "2026-11-20",
+  "filter_date": "2026-11-22",
   "metrics": {
     "dashboard": {
-      "previous_date": "2026-11-19",
-      "previous_count": 25,
-      "current_date": "2026-11-20",
-      "current_count": 12,
-      "day_change": -13,
-      "trend": "\ud83d\udcc9 DOWN"
+      "previous_date": "unknown",
+      "previous_count": 0,
+      "current_date": "2026-11-22",
+      "current_count": 8,
+      "day_change": 8,
+      "trend": "\ud83d\udcc8 UP"
     }
   },
   "ranks": [
