@@ -1,118 +1,6 @@
 {
-  "last_updated": "2026-11-22T23:05:31.002503",
+  "last_updated": "2026-11-23T22:58:42.682337",
   "dates": {
-    "2026-11-15": {
-      "count": 2,
-      "papers": [
-        {
-          "paper": {
-            "title": "Data Attribution Should Steer Pretraining",
-            "arxiv_id": "2611.19698v1",
-            "authors": [
-              "Glenn Matlin",
-              "Chandreyi Chakraborty",
-              "Mohammed Rehan Parwani",
-              "Saehee Eom",
-              "Anthony Wen-Ming Zang",
-              "Akhil Theerthala",
-              "Arjun Chatterjee",
-              "Tejas Khandwekar",
-              "Brandon Michaels",
-              "Alvin Deng",
-              "Mark Riedl"
-            ],
-            "published": "2026-11-15T01:03:01Z",
-            "updated": "2026-11-15T01:03:01Z",
-            "summary": "Pretraining data curation decides what a model learns from, yet what makes a document worth learning from depends on what the model already knows. Influence-driven selectors already rank documents to improve one run; we argue that training-data attribution should steer pretraining by identifying testable data properties that become reusable curation criteria, evaluated on new data against cheaper selectors at matched total cost, discovery included. A document ranking is consumed by the run it was computed for, whereas an explained data property can be tested across corpora and checkpoints, especially where familiar quality signals diverge from measured usefulness. Because historical contribution, an understandable explanation, and future data value require distinct evidence, we specify a feedback loop that interprets attributed sources, tests candidate data changes, and states for five claim types what evidence each requires and what none establishes. We close with a falsifiable comparison against perplexity, classifier, and mixing baselines at equal total compute.",
-            "categories": "cs.LG",
-            "comment": "Accepted to the 3rd Workshop on Attributing Model Behavior at Scale: Data Attribution and Provenance (ATTRIB 2026) at NeurIPS 2026, Idea Track. 4 pages main text, 13 pages total, 1 figure, 2 tables"
-          },
-          "analysis": {
-            "problem_statement": "Current pretraining data curation relies on static, run-specific influence rankings that cannot be reused across different corpora or model checkpoints, failing to identify generalizable data properties that predict future utility.",
-            "bottleneck_addressed": "Data Curation Efficiency and Reusability",
-            "executive_summary": "This paper addresses the inefficiency of treating data attribution as a one-off ranking task by proposing a framework that converts attribution signals into reusable, testable data properties. It argues that understanding *why* data is useful allows for cheaper, more scalable curation strategies that can be applied to new datasets without re-computing expensive influence metrics for every new pretraining run.",
-            "key_metrics": {
-              "primary_metric": "Comparison of curation effectiveness against baselines at equal total compute",
-              "metric_value": "Not provided in summary",
-              "baseline": "Perplexity, classifier, and mixing baselines",
-              "improvement_percentage": "Not provided in summary"
-            },
-            "technical_breakdown": {
-              "method": "The paper proposes a feedback loop that interprets attributed sources to identify explainable data properties, which are then tested as reusable curation criteria against cheaper selectors.",
-              "architecture": "A conceptual framework consisting of an attribution interpretation module, a property testing mechanism, and a cost-matched evaluation pipeline.",
-              "implementation_details": "The method distinguishes between historical contribution, explanation, and future value, specifying evidence requirements for five distinct claim types to ensure falsifiability.",
-              "code_complexity": "Aims to reduce computational cost by replacing expensive per-run influence calculations with cheaper, reusable property tests, evaluated at matched total compute including discovery costs."
-            },
-            "relevance_tags": [
-              "Data Attribution",
-              "Pretraining Curation",
-              "Model Interpretability",
-              "Data Provenance"
-            ],
-            "confidence": "medium"
-          },
-          "analyzed_at": "2026-11-16T22:53:36.969371",
-          "conference_info": {
-            "conference": "NEURIPS",
-            "year": "2026",
-            "comment": "Accepted to the 3rd Workshop on Attributing Model Behavior at Scale: Data Attribution and Provenance (ATTRIB 2026) at NeurIPS 2026, Idea Track. 4 pages main text, 13 pages total, 1 figure, 2 tables",
-            "raw_comment": "Accepted to the 3rd Workshop on Attributing Model Behavior at Scale: Data Attribution and Provenance (ATTRIB 2026) at NeurIPS 2026, Idea Track. 4 pages main text, 13 pages total, 1 figure, 2 tables",
-            "category": "General ML/AI",
-            "rank": "A+"
-          }
-        },
-        {
-          "paper": {
-            "title": "Cache or Denoise Less? Residual Reuse in a Flow-Matching World Action Model",
-            "arxiv_id": "2611.19709v1",
-            "authors": [
-              "Abhinav Gupta",
-              "Nissan Pow"
-            ],
-            "published": "2026-11-15T01:40:18Z",
-            "updated": "2026-11-15T01:40:18Z",
-            "summary": "Flow-matching robot policies generate each action chunk through repeated network evaluations, one per denoising step. Cross-cycle caches such as C$^3$ache reuse computation from earlier replanning calls, but whether they beat simply taking fewer steps is unclear. We compare the two in Fast-WAM, a 6B-parameter world action model, on LIBERO-Goal. Two uncached steps keep the success of ten: on all 500 initial states they are non-inferior within two percentage points, for one checkpoint and noise seed. Under PyTorch's default compile mode, they also cut a replanning call on an RTX A6000 from 202 to 92 ms. This leaves little room for caching. A cache that keeps two fresh steps cannot be faster than two uncached steps: every call still encodes the images, runs the video expert and computes those two steps. Caching the first of two steps, refreshed every fourth call, saves at most 11--14% of a call by our cost model. Cached policies are also fragile. Their losses tracked the share of the flow path the cached steps cover: under Fast-WAM's current time shift, C$^3$ache's eight cached steps cover 80% of the path instead of 44%, and the cached policy succeeds on 63% of states against 95% uncached. Resampling the noise on every call cost caches covering 60% or more of the path 14--40 points. These results argue for fewer-step baselines and for testing reuse under the deployed sampler and noise settings. We release our evaluation harness, logs and a checklist.",
-            "categories": "cs.RO",
-            "comment": "Honorable Mention at the CoRL 2026 Workshop on Efficient Foundation Models for Real-Time Embodied AI (EEAI). Code and data available at https://github.com/gabhinav001/cache-or-denoise-less"
-          },
-          "analysis": {
-            "problem_statement": "The paper investigates whether cross-cycle caching mechanisms in flow-matching robot policies provide superior latency and performance benefits compared to simply reducing the number of denoising steps.",
-            "bottleneck_addressed": "Inference latency and computational overhead in real-time embodied AI policies using flow-matching models.",
-            "executive_summary": "This study challenges the assumption that complex caching strategies like C^3ache are necessary for efficient robot control, demonstrating that reducing denoising steps is often more effective. It reveals that caching can introduce fragility and performance degradation if not aligned with the specific noise schedule and sampler settings. The findings advocate for simpler, fewer-step baselines in the design of real-time world action models.",
-            "key_metrics": {
-              "primary_metric": "Latency reduction and task success rate comparison between cached and uncached policies",
-              "metric_value": "92 ms (cached/fewer steps) vs 202 ms (baseline); 63% success (cached) vs 95% success (uncached)",
-              "baseline": "Standard flow-matching policy with 10 denoising steps and C^3ache caching",
-              "improvement_percentage": "54.5% latency reduction (202ms to 92ms)"
-            },
-            "technical_breakdown": {
-              "method": "Empirical comparison of cross-cycle caching (C^3ache) versus reducing the number of denoising steps in a flow-matching framework, analyzing the impact on latency and success rates under specific noise and time-shift configurations.",
-              "architecture": "Fast-WAM, a 6B-parameter world action model, evaluated on the LIBERO-Goal benchmark.",
-              "implementation_details": "Uses PyTorch's default compile mode; analyzes the coverage of the flow path by cached steps (e.g., 80% vs 44%); tests fragility by resampling noise on every call.",
-              "code_complexity": "Reduces per-call computation by eliminating redundant network evaluations for cached steps, but introduces complexity in managing cache validity and noise consistency."
-            },
-            "relevance_tags": [
-              "Robotics",
-              "Flow-Matching",
-              "Inference Optimization",
-              "Embodied AI",
-              "Latency Reduction"
-            ],
-            "confidence": "high"
-          },
-          "analyzed_at": "2026-11-16T22:53:34.974083",
-          "conference_info": {
-            "conference": "CoRL",
-            "year": "2026",
-            "comment": "Honorable Mention at the CoRL 2026 Workshop on Efficient Foundation Models for Real-Time Embodied AI (EEAI). Code and data available at https://github.com/gabhinav001/cache-or-denoise-less",
-            "raw_comment": "Honorable Mention at the CoRL 2026 Workshop on Efficient Foundation Models for Real-Time Embodied AI (EEAI). Code and data available at https://github.com/gabhinav001/cache-or-denoise-less",
-            "category": "Robotics",
-            "rank": ""
-          }
-        }
-      ],
-      "updated_at": "2026-11-16T22:53:37.980133"
-    },
     "2026-11-17": {
       "count": 30,
       "papers": [
@@ -5472,6 +5360,419 @@
         }
       ],
       "updated_at": "2026-11-22T23:05:31.002498"
+    },
+    "2026-11-22": {
+      "count": 8,
+      "papers": [
+        {
+          "paper": {
+            "title": "IteraSong: LLM-Guided Iterative Symbolic Music Creation in a Web DAW",
+            "arxiv_id": "2611.29225v1",
+            "authors": [
+              "Di Lu",
+              "Xinran Zhang",
+              "Yan Gao",
+              "Yuan Zhang",
+              "Xiaoqing Wang",
+              "Qingwen Zhou",
+              "Xiaobing Li",
+              "Maosong Sun"
+            ],
+            "published": "2026-11-22T04:57:00Z",
+            "updated": "2026-11-22T04:57:00Z",
+            "summary": "Music creation is inherently iterative, yet many symbolic generation systems still center on producing or regenerating isolated outputs. We present IteraSong, an interactive web-based Digital Audio Workstation (DAW) for LLM-guided iterative symbolic music creation. Unlike one-shot generation systems, IteraSong supports a generate-audition-edit-refine loop over a persistent multi-track project. Users initialize a fully labeled pop draft, then progressively refine it through natural-language instructions. The LLM maps requests to a hierarchical action space of editing primitives exposed via Model Context Protocol (MCP) tools, spanning global, track, section, and bar/note scopes. The demo enables attendees to edit multi-track compositions in natural language, apply deterministic and generative edits, and undo/redo changes in real time.",
+            "categories": "cs.SD",
+            "comment": "AAAI 2027 Demonstration Program (accepted). Extended version with appendix"
+          },
+          "analysis": {
+            "problem_statement": "Existing symbolic music generation systems typically produce isolated, one-shot outputs, failing to support the inherently iterative process of refining a persistent multi-track composition through natural language.",
+            "bottleneck_addressed": "Lack of interactive, stateful, and fine-grained control in LLM-based creative tools, specifically the inability to perform iterative editing on complex multi-track projects rather than just regenerating entire pieces.",
+            "executive_summary": "This work bridges the gap between generative AI and professional music production workflows by integrating LLMs into a web-based DAW environment. It enables a 'generate-audition-edit-refine' loop, allowing users to manipulate specific musical elements (from global to note-level) via natural language, thereby enhancing the usability and precision of AI-assisted music creation.",
+            "key_metrics": {
+              "primary_metric": "N/A (Demonstration paper focused on system functionality and user interaction rather than quantitative performance benchmarks)",
+              "metric_value": null,
+              "baseline": "One-shot symbolic generation systems",
+              "improvement_percentage": null
+            },
+            "technical_breakdown": {
+              "method": "The system utilizes an LLM to map natural language instructions to a hierarchical action space of editing primitives. These actions are executed via Model Context Protocol (MCP) tools that interact with a persistent multi-track project state.",
+              "architecture": "Web-based Digital Audio Workstation (DAW) frontend, LLM backend for instruction parsing, and an MCP layer exposing editing primitives across global, track, section, and bar/note scopes.",
+              "implementation_details": "Hierarchical action space spanning multiple scopes (global, track, section, bar/note), support for both deterministic and generative edits, and real-time undo/redo functionality for state management.",
+              "code_complexity": "N/A (No specific computational complexity or training time details provided in the abstract; focus is on system architecture and interaction design)."
+            },
+            "relevance_tags": [
+              "Symbolic Music Generation",
+              "LLM Agents",
+              "Human-Computer Interaction",
+              "Model Context Protocol",
+              "Digital Audio Workstation"
+            ],
+            "confidence": "medium"
+          },
+          "analyzed_at": "2026-11-23T22:56:14.748720",
+          "conference_info": {
+            "conference": "AAAI",
+            "year": "2027",
+            "comment": "AAAI 2027 Demonstration Program (accepted). Extended version with appendix",
+            "raw_comment": "AAAI 2027 Demonstration Program (accepted). Extended version with appendix",
+            "category": "General ML/AI",
+            "rank": ""
+          }
+        },
+        {
+          "paper": {
+            "title": "Ego-HMB: Human Motion Bridging from Egocentric Images via A Motion Bridge Diffusion Model",
+            "arxiv_id": "2611.29218v1",
+            "authors": [
+              "Gaoge Han",
+              "Yongkang Cheng",
+              "Shaoli Huang",
+              "Jing Zhang",
+              "Mingming Gong",
+              "Fakhri Karray",
+              "Tongliang Liu"
+            ],
+            "published": "2026-11-22T04:34:37Z",
+            "updated": "2026-11-22T04:34:37Z",
+            "summary": "We introduce Egocentric Human Motion Bridging, a task that generates a coherent 3D human motion sequence from two endpoint egocentric images. Unlike conventional motion in-betweening, which requires structured 3D endpoint poses, this setting uses raw first-person observations available from wearable devices in VR/AR and robotics. It presents challenges due to viewpoint variations, partial body visibility, and temporal ambiguity under cross-modal endpoint constraints. To address these challenges, we propose Ego-HMB, a unified diffusion-based framework that learns endpoint pose estimation and temporally consistent motion infilling within a single model through two training stages. First, Egocentric-to-Canonical Pretraining uses a hierarchical curriculum with progressively increasing temporal spans to strengthen endpoint pose priors. Second, Motion Bridge Diffusion Training incorporates endpoint and physics awareness, diffusing from neighboring poses to promote temporal continuity while preserving global endpoint constraints. Extensive experiments compare our approach with one-stage methods that directly generate motion from two egocentric images and two-stage pipelines that combine endpoint pose estimation with motion interpolation. Ego-HMB consistently outperforms these baselines in endpoint accuracy and motion generation quality. Code is available at https://github.com/gaogehan/Ego-HMB.",
+            "categories": "cs.CV",
+            "comment": "Accepted at NeurIPS 2026"
+          },
+          "analysis": {
+            "problem_statement": "Generating coherent 3D human motion sequences from raw egocentric endpoint images without requiring structured 3D pose inputs.",
+            "bottleneck_addressed": "Cross-modal alignment and temporal consistency in motion generation from unstructured, first-person visual data.",
+            "executive_summary": "This work bridges the gap between raw wearable sensor data (egocentric images) and structured 3D motion, enabling direct application in VR/AR and robotics. By unifying pose estimation and motion infilling in a single diffusion framework, it overcomes the limitations of two-stage pipelines that suffer from error accumulation and lack of global temporal coherence.",
+            "key_metrics": {
+              "primary_metric": "Consistent outperformance in endpoint accuracy and motion generation quality",
+              "metric_value": "Not specified in summary",
+              "baseline": "One-stage direct generation methods and two-stage pose-estimation-plus-interpolation pipelines",
+              "improvement_percentage": "Not quantified in summary"
+            },
+            "technical_breakdown": {
+              "method": "A unified diffusion-based framework that learns endpoint pose estimation and temporally consistent motion infilling through a two-stage training process.",
+              "architecture": "Ego-HMB model comprising an Egocentric-to-Canonical Pretraining stage and a Motion Bridge Diffusion Training stage.",
+              "implementation_details": "Uses a hierarchical curriculum with increasing temporal spans for pretraining; incorporates endpoint and physics awareness during diffusion by sampling from neighboring poses to ensure temporal continuity while respecting global endpoint constraints.",
+              "code_complexity": "Two-stage training process involving curriculum learning and diffusion modeling; specific computational costs not detailed in summary."
+            },
+            "relevance_tags": [
+              "3D Human Motion",
+              "Diffusion Models",
+              "Egocentric Vision",
+              "VR/AR",
+              "Robotics"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-11-23T22:55:03.561430",
+          "conference_info": {
+            "conference": "NEURIPS",
+            "year": "2026",
+            "comment": "Accepted at NeurIPS 2026",
+            "raw_comment": "Accepted at NeurIPS 2026",
+            "category": "General ML/AI",
+            "rank": "A+"
+          }
+        },
+        {
+          "paper": {
+            "title": "Cooperative Multi-Agent Reinforcement Learning via Epigraph-Form Guided Exploration",
+            "arxiv_id": "2611.07066v2",
+            "authors": [
+              "Sungil Son",
+              "Hoseong Jung",
+              "Dahyun Oh",
+              "H. Jin Kim"
+            ],
+            "published": "2026-11-04T19:24:25Z",
+            "updated": "2026-11-22T03:28:43Z",
+            "summary": "Discovering cooperative behavior in multi-agent reinforcement learning (MARL) is challenging due to the combinatorial complexity of joint state-action spaces, which hinders the emergence of coordinated behaviors from trial-and-error alone. Intrinsic rewards are often used to aid discovery, but naively combining them with team objectives can distort the learning signal, compromising task performance. In this paper, we propose EFXPLORER, a constrained exploration framework that maximizes exploration objectives subject to a constraint that preserves established task performance. We solve the resulting problem using an epigraph reformulation that introduces adaptive exploration budgets. This approach separates intrinsic rewards from task objectives and regulates exploration through task feasibility. To further encourage diverse and temporally extended exploration, we incorporate a successor distance-based intrinsic reward that captures long-horizon dependencies. Empirically, our method outperforms strong baselines and induces novel cooperative strategies across SMAX, VMAS, and MPE benchmark suites.",
+            "categories": "cs.AI",
+            "comment": "NeurIPS 2026. Updated acknowledgments only"
+          },
+          "analysis": {
+            "problem_statement": "The paper addresses the challenge of discovering cooperative behaviors in multi-agent reinforcement learning (MARL) where naive intrinsic rewards distort learning signals and hinder the emergence of coordinated strategies due to combinatorial complexity.",
+            "bottleneck_addressed": "Sample efficiency and exploration-exploitation trade-off in high-dimensional joint state-action spaces.",
+            "executive_summary": "This work is significant because it resolves the conflict between intrinsic exploration rewards and extrinsic task objectives, which often degrade performance in cooperative settings. By using a constrained optimization framework with epigraph reformulation, it allows agents to explore novel strategies without compromising established task proficiency, enabling the discovery of complex cooperative behaviors that trial-and-error alone cannot achieve.",
+            "key_metrics": {
+              "primary_metric": "Outperformance over strong baselines in inducing novel cooperative strategies",
+              "metric_value": "Not specified in summary",
+              "baseline": "Strong baselines (unspecified in summary)",
+              "improvement_percentage": "Not quantified in summary"
+            },
+            "technical_breakdown": {
+              "method": "EFXPLORER, a constrained exploration framework that maximizes exploration objectives subject to constraints preserving task performance, solved via epigraph reformulation with adaptive exploration budgets.",
+              "architecture": "Constrained optimization layer separating intrinsic and extrinsic rewards, coupled with a successor distance-based intrinsic reward module for long-horizon dependency capture.",
+              "implementation_details": "Epigraph reformulation to introduce adaptive budgets; successor distance-based intrinsic reward for diverse and temporally extended exploration.",
+              "code_complexity": "Not specified in summary"
+            },
+            "relevance_tags": [
+              "Multi-Agent Reinforcement Learning",
+              "Constrained Optimization",
+              "Intrinsic Motivation",
+              "Cooperative Behavior"
+            ],
+            "confidence": "medium"
+          },
+          "analyzed_at": "2026-11-23T22:58:41.671949",
+          "conference_info": {
+            "conference": "NEURIPS",
+            "year": "2026",
+            "comment": "NeurIPS 2026. Updated acknowledgments only",
+            "raw_comment": "NeurIPS 2026. Updated acknowledgments only",
+            "category": "General ML/AI",
+            "rank": "A+"
+          }
+        },
+        {
+          "paper": {
+            "title": "On Adaptive Step Sizes for Eligibility Traces in Deep Reinforcement Learning",
+            "arxiv_id": "2611.29178v1",
+            "authors": [
+              "Esraa Elelimy",
+              "Martha White"
+            ],
+            "published": "2026-11-22T03:15:55Z",
+            "updated": "2026-11-22T03:15:55Z",
+            "summary": "Many deep reinforcement learning (RL) algorithms store agent-environment interactions in a replay buffer and later learn by sampling transitions from it. However, this approach can be memory-inefficient and can delay learning because the agent can learn from a transition only when the buffer samples it. Additionally, most of these methods use one-step or short multi-step temporal-difference (TD) updates, which are slow at credit assignment. An alternative approach is to learn from the stream of observations as they arrive without relying on a buffer. Eligibility-trace algorithms allow these incremental updates and can also assign credit over many steps. These algorithms were common with linear function approximation but have only recently been used in deep RL. Basic questions, such as how to use vector step sizes with eligibility traces in the deep RL setting, remain open. In this work, we first show that adaptive vector step sizes must be part of the eligibility trace to keep the equivalence between the forward and backward views. We then show that the step sizes of common optimizers, such as Adam, do not have an online backward view. We introduce a new optimizer, Function-Space Distance (FSD), that maintains the forward-backward equivalence. We test four eligibility-trace algorithms covering semi-gradient and gradient TD updates, as well as value-based and actor-critic methods. We show that FSD performs better than SGD or naively applied Adam. The resulting algorithms outperform or match other streaming methods and are comparable to or better than PPO, which uses a buffer, in most environments. Code available at https://github.com/esraaelelimy/ada_traces",
+            "categories": "cs.LG",
+            "comment": "Accepted at NeurIPS 2026. Code: https://github.com/esraaelelimy/ada_traces"
+          },
+          "analysis": {
+            "problem_statement": "The paper addresses the lack of a valid online backward view for adaptive vector step sizes in eligibility-trace-based deep reinforcement learning, which breaks the equivalence between forward and backward learning views.",
+            "bottleneck_addressed": "Memory inefficiency and delayed credit assignment in buffer-based deep RL, as well as the theoretical incompatibility of standard adaptive optimizers (like Adam) with streaming eligibility-trace algorithms.",
+            "executive_summary": "This work resolves a fundamental theoretical gap in streaming deep RL by introducing the Function-Space Distance (FSD) optimizer, which maintains forward-backward equivalence for eligibility traces. By enabling efficient, buffer-free learning with long-horizon credit assignment, it offers a viable alternative to memory-intensive methods like PPO, potentially reducing computational overhead and latency in real-time agent training.",
+            "key_metrics": {
+              "primary_metric": "Performance comparison against buffer-based (PPO) and streaming baselines (SGD/Adam eligibility traces)",
+              "metric_value": "Not specified in abstract",
+              "baseline": "PPO, SGD, and naively applied Adam",
+              "improvement_percentage": "Not specified in abstract"
+            },
+            "technical_breakdown": {
+              "method": "The authors prove that adaptive step sizes must be incorporated into the eligibility trace to preserve forward-backward equivalence. They demonstrate that standard optimizers like Adam fail this requirement and propose FSD, a new optimizer that satisfies the condition, allowing for stable incremental updates without a replay buffer.",
+              "architecture": "Streaming eligibility-trace algorithms (semi-gradient and gradient TD, value-based and actor-critic) integrated with the FSD optimizer.",
+              "implementation_details": "Function-Space Distance (FSD) optimizer; four specific eligibility-trace algorithm variants; comparison against PPO and standard SGD/Adam implementations.",
+              "code_complexity": "Eliminates replay buffer memory overhead; computational cost is comparable to streaming methods, with potential efficiency gains over buffer-based methods due to lack of sampling latency."
+            },
+            "relevance_tags": [
+              "Deep Reinforcement Learning",
+              "Eligibility Traces",
+              "Optimization",
+              "Streaming Learning",
+              "Credit Assignment"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-11-23T22:55:05.777406",
+          "conference_info": {
+            "conference": "NEURIPS",
+            "year": "2026",
+            "comment": "Accepted at NeurIPS 2026. Code: https://github.com/esraaelelimy/ada_traces",
+            "raw_comment": "Accepted at NeurIPS 2026. Code: https://github.com/esraaelelimy/ada_traces",
+            "category": "General ML/AI",
+            "rank": "A+"
+          }
+        },
+        {
+          "paper": {
+            "title": "What Makes Recurrence Generalize Across Lengths?",
+            "arxiv_id": "2611.29171v1",
+            "authors": [
+              "Yoonsung Jung",
+              "Sunghun Jung",
+              "Louise Nayeong Koh",
+              "Yongjun Choi"
+            ],
+            "published": "2026-11-22T03:08:21Z",
+            "updated": "2026-11-22T03:08:21Z",
+            "summary": "Multi-step reasoning requires models to preserve and update intermediate information as computation unfolds. State tracking captures this fundamental requirement, but models that succeed within a fixed range of state transitions may not generalize when substantially more updates are required. Recurrent Transformers offer a natural mechanism for addressing this challenge by repeatedly applying shared Transformer blocks, allowing computation to scale with problem length. We study when such recurrent computation generalizes beyond the training range in a controlled state-tracking task, varying operation representation, positional encoding, and recurrent capacity. We find that recurrence alone is insufficient: multi-token template representations and absolute positional encoding can severely limit extrapolation, whereas atomic operation representations enable substantially stronger length generalization. The effect of positional structure also varies with recurrent depth, with periodic positional encoding achieving the strongest mean performance at greater recurrent depth. Most importantly, scaling the recurrent operator extends the extrapolation horizon, reaching 35.1% exact-match accuracy on sequences of 20-40 operations after training only on 2-10, while substantially larger fixed-depth Transformers remain at 0%. Additional recurrent computation at test time can extend the range over which the model generalizes, but does not eliminate failure on much longer sequences. These results suggest that recurrent computation can support length-generalizable state tracking, but that its effectiveness depends critically on whether the learned computation remains reusable across sequence lengths.",
+            "categories": "cs.LG",
+            "comment": "Accepted at NeurIPS 2026 Workshop on AXIOM: Foundations of Efficient Deep Learning"
+          },
+          "analysis": {
+            "problem_statement": "The paper investigates the conditions under which Recurrent Transformers can generalize state-tracking capabilities to sequence lengths significantly exceeding their training range.",
+            "bottleneck_addressed": "Length generalization and the inability of standard fixed-depth Transformers to extrapolate multi-step reasoning tasks beyond the training horizon.",
+            "executive_summary": "This work identifies that recurrence alone is insufficient for length generalization; rather, it depends critically on the representation of operations and positional encodings. By demonstrating that atomic operation representations and scaled recurrent operators can achieve non-zero accuracy on sequences 4-10x longer than training data, it provides a pathway for efficient, scalable reasoning models that do not require retraining for longer contexts.",
+            "key_metrics": {
+              "primary_metric": "Exact-match accuracy on state-tracking sequences of 20-40 operations after training on 2-10 operations",
+              "metric_value": "35.1%",
+              "baseline": "Substantially larger fixed-depth Transformers (0% accuracy) and recurrent models with multi-token templates/absolute positional encoding",
+              "improvement_percentage": "3510% relative to fixed-depth baseline (0% to 35.1%)"
+            },
+            "technical_breakdown": {
+              "method": "The study employs a controlled state-tracking task to isolate the effects of operation representation (atomic vs. multi-token templates), positional encoding (absolute vs. periodic), and recurrent capacity on length extrapolation.",
+              "architecture": "Recurrent Transformers utilizing shared Transformer blocks applied repeatedly to allow computation to scale with problem length.",
+              "implementation_details": "Key techniques include using atomic operation representations to facilitate reuse, periodic positional encoding to handle varying sequence lengths, and scaling the recurrent operator depth to extend the extrapolation horizon.",
+              "code_complexity": "Computational complexity scales linearly with the number of recurrent steps (sequence length) due to the iterative application of shared blocks, offering a trade-off between memory efficiency and inference time compared to fixed-depth attention mechanisms."
+            },
+            "relevance_tags": [
+              "Recurrent Transformers",
+              "Length Generalization",
+              "State Tracking",
+              "Positional Encoding",
+              "Multi-step Reasoning"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-11-23T22:55:23.633271",
+          "conference_info": {
+            "conference": "NEURIPS",
+            "year": "2026",
+            "comment": "Accepted at NeurIPS 2026 Workshop on AXIOM: Foundations of Efficient Deep Learning",
+            "raw_comment": "Accepted at NeurIPS 2026 Workshop on AXIOM: Foundations of Efficient Deep Learning",
+            "category": "General ML/AI",
+            "rank": "A+"
+          }
+        },
+        {
+          "paper": {
+            "title": "Training-Free 3D Editing via Feature-Divergence Localization and Trajectory Correction",
+            "arxiv_id": "2611.29165v1",
+            "authors": [
+              "Tri Ton",
+              "Siwoo Lim",
+              "Joshua Tian Jin Tee",
+              "Chang D. Yoo"
+            ],
+            "published": "2026-11-22T02:52:44Z",
+            "updated": "2026-11-22T02:52:44Z",
+            "summary": "Modifying 3D assets requires enacting targeted structural transformations while strictly preserving the geometric identity of unedited regions. While recent probability flow models enable training-free editing, bounding these modifications within a high-dimensional latent space presents severe mathematical challenges. Current inversion-free trajectories rely on global velocity updates, which often cause spatial bleed into preserved structures and induce trajectory under-commitment, causing edits to stall mid-path. To resolve these dual failures, we introduce FocusFlow, a segmentation-free framework that structures the integration trajectory into two disjoint phases. During early coarse structure formation, FocusFlow applies Feature-Divergence Localization (FDL) to spatially gate the velocity field using intrinsic cross-attention. Once coarse structure has formed, FocusFlow applies Reference Generation Guidance (RGG), a trajectory-correction term that drives convergence to the target shape by pulling the trajectory toward an explicit clean-latent target. Evaluated on the joint Google Scanned Objects and PartObjaverse-Tiny benchmarks, FocusFlow obtains the best preservation scores and the largest edit magnitude among compared methods, suggesting that it can reduce the traditional preservation-modification trade-off. By providing stable, localized geometric control without manual spatial annotations, this phase-scheduled approach lowers technical barriers to the modification of synthetic 3D media.",
+            "categories": "cs.CV",
+            "comment": "Accepted to NeurIPS 2026"
+          },
+          "analysis": {
+            "problem_statement": "How to perform targeted 3D asset editing in high-dimensional latent spaces without causing spatial bleed into unedited regions or trajectory under-commitment that stalls the edit.",
+            "bottleneck_addressed": "The preservation-modification trade-off in training-free 3D editing, specifically the lack of localized geometric control in inversion-free probability flow models.",
+            "executive_summary": "This paper addresses the critical limitation of current training-free 3D editing methods, which often fail to preserve the geometric identity of unedited regions due to global velocity updates. By introducing a phase-scheduled approach that combines spatial gating with trajectory correction, it enables stable, localized edits without requiring manual segmentation or additional training.",
+            "key_metrics": {
+              "primary_metric": "Best preservation scores and largest edit magnitude",
+              "metric_value": "Not specified in summary",
+              "baseline": "Compared methods on Google Scanned Objects and PartObjaverse-Tiny benchmarks",
+              "improvement_percentage": "Not quantified in summary"
+            },
+            "technical_breakdown": {
+              "method": "FocusFlow structures the integration trajectory into two disjoint phases: early coarse structure formation using Feature-Divergence Localization (FDL) to spatially gate the velocity field, and later convergence using Reference Generation Guidance (RGG) to pull the trajectory toward an explicit clean-latent target.",
+              "architecture": "Segmentation-free framework built on probability flow models, utilizing intrinsic cross-attention for FDL and a trajectory-correction term for RGG.",
+              "implementation_details": "FDL applies spatial gating to the velocity field during early phases; RGG drives convergence to the target shape by pulling the trajectory toward a clean-latent target once coarse structure has formed.",
+              "code_complexity": "Training-free, implying no additional training time; computational cost likely dominated by the two-phase integration trajectory and cross-attention computations."
+            },
+            "relevance_tags": [
+              "3D Generation",
+              "Training-Free Editing",
+              "Latent Space Manipulation",
+              "Neural Rendering",
+              "Geometric Control"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-11-23T22:57:12.338155",
+          "conference_info": {
+            "conference": "NEURIPS",
+            "year": "2026",
+            "comment": "Accepted to NeurIPS 2026",
+            "raw_comment": "Accepted to NeurIPS 2026",
+            "category": "General ML/AI",
+            "rank": "A+"
+          }
+        },
+        {
+          "paper": {
+            "title": "Decoding Transformer Dynamics via Koopman Subspaces",
+            "arxiv_id": "2611.29113v1",
+            "authors": [
+              "Subhradeep Kayal",
+              "Ali Dashti"
+            ],
+            "published": "2026-11-22T00:25:07Z",
+            "updated": "2026-11-22T00:25:07Z",
+            "summary": "We apply Koopman operator theory and Dynamic Mode Decomposition (DMD) to characterise how large language models (LLMs) process different input topics. Treating the layer-to-layer evolution of hidden states as a dynamical system, we fit a linear Koopman operator and take the subspace spanned by its dominant modes as a per-topic spectral fingerprint. Four findings emerge. First, the depth map is near-linear: a single linear operator predicts each next-layer state to within approx. 18% relative error (interior variance explained approx. 0.99). Second, over the 57 MMLU subjects the fingerprint is topic-discriminative, matching the MMLU taxonomy at 0.72 nearest-neighbour purity and each subject's semantic neighbourhood at 0.75 any-hit@3. Third, it is a reproducible signature (split-half self-retrieval approx. 0.97$). Finally, these findings are consistent across seven base models (Qwen2.5 0.5-7B, Llama-3 1-8B), with a suggestive trend of alignment rising with MMLU accuracy. The spectral fingerprint thus provides a probe of how transformers process different topics across depth. Code is available at https://github.com/DeepK/koopman-llm-eacl27.",
+            "categories": "cs.CL",
+            "comment": "Accepted to EACL 2027 Findings"
+          },
+          "analysis": {
+            "problem_statement": "The paper addresses the lack of a linear, interpretable framework for characterizing how Large Language Models (LLMs) process different semantic topics across their network depth.",
+            "bottleneck_addressed": "Interpretability and mechanistic understanding of LLM internal state dynamics.",
+            "executive_summary": "This work provides a spectral fingerprint for LLM topic processing by modeling hidden state evolution as a linear dynamical system. It demonstrates that a single linear Koopman operator can predict layer-to-layer transitions with high accuracy, offering a reproducible and topic-discriminative probe for understanding model behavior across diverse base architectures.",
+            "key_metrics": {
+              "primary_metric": "Relative error in predicting next-layer hidden states using a linear Koopman operator",
+              "metric_value": "18%",
+              "baseline": "Non-linear ground truth layer-to-layer evolution",
+              "improvement_percentage": "N/A (Descriptive metric for linearity fit)"
+            },
+            "technical_breakdown": {
+              "method": "Applies Koopman operator theory and Dynamic Mode Decomposition (DMD) to fit a linear operator that approximates the non-linear layer-to-layer evolution of hidden states.",
+              "architecture": "Treats the stack of transformer layers as a discrete-time dynamical system where hidden states are the state vector.",
+              "implementation_details": "Uses DMD to identify dominant modes of the Koopman operator; defines a 'spectral fingerprint' as the subspace spanned by these dominant modes for each input topic.",
+              "code_complexity": "Inference-time analysis; computational cost is dominated by the DMD fitting procedure on hidden state trajectories, which is linear in the number of layers and sequence length for the specific operator fitting."
+            },
+            "relevance_tags": [
+              "Interpretability",
+              "Koopman Operator",
+              "Dynamic Mode Decomposition",
+              "LLM Dynamics",
+              "Spectral Analysis"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-11-23T22:55:46.717536",
+          "conference_info": {
+            "conference": "EACL",
+            "year": "2027",
+            "comment": "Accepted to EACL 2027 Findings",
+            "raw_comment": "Accepted to EACL 2027 Findings",
+            "category": "Natural Language Processing",
+            "rank": "A"
+          }
+        },
+        {
+          "paper": {
+            "title": "Beyond Free-Form Generation: Measuring Interface Composition in Competitive NLP Systems",
+            "arxiv_id": "2611.29103v1",
+            "authors": [
+              "Xinchen Xiao"
+            ],
+            "published": "2026-11-22T00:00:01Z",
+            "updated": "2026-11-22T00:00:01Z",
+            "summary": "Systems with decoder LLMs can combine free generation with scoring, ranking, or selection. We measure these documented interface combinations with five annotation fields linked to source evidence. The corpora comprise 517 solutions from 42 Kaggle competitions involving NLP and 76 participant systems from 26 SemEval, TREC, and WMT task years. Among eligible generation systems with decoder LLMs, 18 of 55 Kaggle systems and 17 of 20 Shared Task systems are hybrid: free generation coexists with a constrained interface. The remaining systems use free generation alone. Giving each competition or task year equal weight yields hybrid shares of 0.327 and 0.876. Within Eedi, 21 eligible systems with decoder LLMs have five exact interface profiles; ten LLM Science Exam systems share one interface class and have four profiles. Across Kaggle, the eligible systems with decoder LLMs span 18 exact interface profiles, revealing variation within broad task and backbone categories. These estimates characterize documented public systems selected using our selection criteria and include interfaces throughout the complete pipeline, including intermediate stages. The data are available at https://github.com/xiaoxinchenn/nlp-interface-composition.",
+            "categories": "cs.CL",
+            "comment": "Accepted to Findings of the Association for Computational Linguistics: EACL 2027"
+          },
+          "analysis": {
+            "problem_statement": "The paper addresses the lack of systematic quantification and classification of how decoder-based LLMs are integrated with constrained interfaces (scoring, ranking, selection) in competitive NLP systems.",
+            "bottleneck_addressed": "Lack of empirical data on the prevalence and specific composition patterns of hybrid generation-and-constraint pipelines in real-world competitive NLP deployments.",
+            "executive_summary": "This work provides the first comprehensive empirical analysis of interface composition in competitive NLP, revealing that hybrid systems (combining free generation with constrained interfaces) are dominant in shared tasks but less prevalent in Kaggle competitions. It establishes a standardized taxonomy for documenting these interfaces, highlighting significant variation in system design even within similar task and backbone categories.",
+            "key_metrics": {
+              "primary_metric": "Proportion of eligible systems using hybrid interface compositions",
+              "metric_value": "0.327 (Kaggle) and 0.876 (Shared Tasks)",
+              "baseline": "Free generation alone (non-hybrid systems)",
+              "improvement_percentage": "N/A (Descriptive statistic, not a performance improvement)"
+            },
+            "technical_breakdown": {
+              "method": "Systematic annotation and categorization of public competition solutions using five specific annotation fields linked to source evidence to identify interface types.",
+              "architecture": "Analysis of 517 Kaggle solutions and 76 participant systems from SemEval, TREC, and WMT, focusing on systems with decoder LLMs.",
+              "implementation_details": "Identification of exact interface profiles (e.g., generation + scoring, generation + ranking) across the complete pipeline, including intermediate stages, with equal weighting per competition/task year.",
+              "code_complexity": "N/A (Empirical study; data available via GitHub repository)"
+            },
+            "relevance_tags": [
+              "NLP",
+              "LLM Evaluation",
+              "System Analysis",
+              "Competitive NLP",
+              "Interface Composition"
+            ],
+            "confidence": "high"
+          },
+          "analyzed_at": "2026-11-23T22:56:46.155394",
+          "conference_info": {
+            "conference": "Association for Computational Linguistics",
+            "year": "2027",
+            "comment": "Accepted to Findings of the Association for Computational Linguistics: EACL 2027",
+            "raw_comment": "Accepted to Findings of the Association for Computational Linguistics: EACL 2027",
+            "category": "Natural Language Processing",
+            "rank": "A+"
+          }
+        }
+      ],
+      "updated_at": "2026-11-23T22:58:42.682334"
     }
   }
 }
